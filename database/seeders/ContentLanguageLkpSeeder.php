@@ -23,7 +23,7 @@ class ContentLanguageLkpSeeder extends Seeder {
             ['id' => 1, 'name' => 'Ελληνικά', 'code' => 'el', 'img_path' => '/img/lang/el.png'],
             ['id' => 2, 'name' => 'English', 'code' => 'en', 'img_path' => '/img/lang/en.png'],
             ['id' => 3, 'name' => 'Spanish', 'code' => 'sp', 'img_path' => '/img/lang/sp.png'],
-            ['id' => 3, 'name' => 'Italian', 'code' => 'it', 'img_path' => '/img/lang/sp.png']
+            ['id' => 4, 'name' => 'Italian', 'code' => 'it', 'img_path' => '/img/lang/it.png']
         ];
 
         foreach ($data as $datum) {
