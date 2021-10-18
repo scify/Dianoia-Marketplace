@@ -1,0 +1,45 @@
+@import "variables";
+
+#intro {
+    .link-info {
+        font-style: italic;
+    }
+}
+
+.accordion-item {
+    box-shadow: 2px 4px 8px 4px rgba(0, 0, 0, 0.1);
+
+    .title-number {
+        border: 1px solid $blue;
+        margin-right: 15px;
+        border-radius: 100%;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        padding-top: 10px;
+        font-weight: bold;
+    }
+}
+
+.note {
+    font-style: italic;
+    color: $orange-darker;
+    font-size: 90%;
+}
+
+#resources-content {
+    .hint {
+        color: $blue;
+    }
+
+    .hint-arrow {
+        font-size: toRem(32);
+    }
+}
+
+#types-checkboxes {
+    .form-check-label {
+        font-size: large;
+        font-weight: bold;
+    }
+}

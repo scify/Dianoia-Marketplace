@@ -1,0 +1,64 @@
+// Typography
+$font-family-sans-serif: 'Roboto', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+$body-color: #2e2e2e;
+// Colors
+$blue: #76B7D6;
+$blue-dark: darken($blue, 50%);
+$blue-light: #D0EFFE;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #FEE8D0;
+$orange-dark: #FFCC95;
+$orange-darker: #E87620;
+$yellow: #FFDA60;
+$green: #39BA6E;
+$green-light: #71c6ac;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+$grey: #C7C7C7;
+$gray-600: #8a8a8a;
+$beige: #dbbeb4;
+$white: #ffffff;
+
+// Body
+$body-bg: $white;
+
+$font-size-base: 1rem;
+$line-height-base: 1.6;
+
+$font-color: $body-color;
+
+$colors: (
+    "blue": $blue,
+    "orange": $orange,
+    "gray": $grey,
+    "gray-dark": #8a8a8a,
+    "gray-light": #e4e4e4
+);
+
+$theme-colors: (
+    "primary": $blue,
+    "danger": $red,
+    "success": $green
+);
+
+$html-font-size: 16px;
+$navbar-light-bg-color: #E6F6F1;
+
+@function toRem($value) {
+    $remValue: ($value / 16) + rem;
+    @return $remValue;
+}
+
+$display-font-sizes: (
+    1: toRem(50px),
+    2: 4.5rem,
+    3: 4rem,
+    4: 3.5rem,
+    5: 3rem,
+    6: 2.5rem
+);
