@@ -1,0 +1,99 @@
+/* #region Section with user card (user-info & excercises-tabs) */
+
+.user-card {
+    @media screen and (max-width: 768px) {
+        text-align: center;
+
+        button {
+            margin-top: 2.5rem;
+        }
+    }
+
+    .user-info,
+    .excercises-tabs {
+        margin: 0;
+    }
+
+
+    .user-info {
+        padding: 40px 0 40px 55px;
+
+        span {
+            font-size: 1.8rem;
+        }
+
+        p {
+            color: var( --color-blue-light-1);
+        }
+    }
+
+    .excercises-tabs {
+        background-color: var(--color-offwhite);
+        padding-top: 2rem;
+
+        .nav-tabs {
+       
+                justify-content: space-evenly;
+            
+            .nav-item {
+                .nav-link {
+                    color: var(--color-primary);
+                    font-size: 2.6rem;
+               
+                }
+
+                .nav-link.active {
+                    background-color: var(--color-offwhite);
+                    border: none;
+                    border-bottom: var(--color-blue-light-1) 3px solid;
+                }
+            }
+        }
+    }
+
+}
+
+/* #endregion */
+
+
+
+/* #region Section with results */
+
+.total-results {
+    border: 2px solid var(--color-grey);
+    padding: 2rem;
+    font-size: 2.6rem;
+
+    @media screen and (max-width: 768px) {
+        text-align: center;
+    }
+
+    &.row {
+        margin: 0;
+        align-items: center;
+    }
+    .input-group {
+        
+        @media screen and (max-width: 768px) {
+            margin-top: 2.5rem;
+        }
+        ::placeholder {
+            font-style: italic;
+        }
+
+        .btn-outline-primary {
+            color: black;
+            font-weight: bold;
+            font-size: 14px;
+            border-color: #ced4da;
+            background-color: #f2f3f5;
+        }
+    }
+}
+
+/* #endregion */
+
+
+.without-results {
+    padding: 15rem;
+}

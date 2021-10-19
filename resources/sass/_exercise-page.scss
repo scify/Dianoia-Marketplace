@@ -1,0 +1,168 @@
+@mixin mainTitleSection {
+    height: 95vh;
+    background-size: cover;
+    background-position: bottom;
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.exercise-options {
+    @include mainTitleSection;
+
+    background-image: url('../../public/img/title-image.png'); //linear-gradient(rgba(72, 138, 255, 0.7)),
+    &__text-box {
+        background-color: var(--color-blue-light-1);
+
+        .row {
+            margin: 20px;
+        }
+        .text-box-1 {
+            padding: 60px;
+            border-top: 3px solid white;
+            background-image: url('../../public/img/3.png');
+            background-repeat: no-repeat;
+            background-position: 2% 10%;
+        }
+
+        .text-box-2 {
+            padding: 40px;
+            border-right: 3px solid white;
+            background-image: url('../../public/img/1.png');
+            background-repeat: no-repeat;
+            background-position: 2% 0;
+        }
+
+        .text-box-3 {
+            padding: 40px;
+            background-image: url('../../public/img/2.png');
+            background-repeat: no-repeat;
+            background-position: 2% 0;
+        }
+    }
+}
+
+.search-section {
+    background-color: var(--color-grey-light);
+    padding: 4rem 0;
+
+    &__options {
+
+        @media screen and (max-width: 980px) {
+            justify-content: center;
+            flex-wrap: wrap;
+            .dropdown {
+                margin: 5px;
+            }
+        }
+
+        .dropdown-item {
+            font-size: 1.4rem;
+            color: var(--color-grey-light-2);
+        }
+    }
+
+    &__input {
+        border-top: 1px solid var(--color-grey);
+        border-bottom: 1px solid var(--color-grey);
+        height: 10vh;
+
+        .input-group {
+            flex: 0 0 40%;
+
+            ::placeholder {
+                font-style: italic;
+            }
+
+            .btn-outline-primary {
+                color: black;
+                font-weight: bold;
+                font-size: 14px;
+                border-color: #ced4da;
+                background-color: #f2f3f5;
+            }
+        }
+    }
+
+    &__results {
+        margin-top: 10rem;
+    }
+}
+
+.exercise-template {
+    padding: 0;
+
+    .exercise-box {
+        &#patient-template {
+            border-top: 10px solid var(--color-blue-light-1);
+        }
+
+        &#carer-template {
+            border-top: 10px solid var(--color-blue-light-2);
+        }
+
+        &#registered-template {
+            border-top: 10px solid var(--color-grey-light-2);
+
+            .registered-message {
+                color: var(--color-orange);
+                border: 1px solid var(--color-orange);
+                padding: 1rem;
+                margin: 2rem;
+            }
+            .exercise-title-row,
+            .exercise-rating {
+                filter: grayscale(100%) opacity(40%);
+            }
+        }
+
+        color: var(--color-grey-dark);
+
+        .exercise-title-row,
+        .exercise-rating {
+                @media screen and (max-width: 600px) {
+                text-align: center;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+        }
+
+        .exercise-title-row {
+            .description {
+                max-width: 80rem;
+                .title {
+                    font-weight: 600;
+                    color: var(--color-primary);
+
+                }
+            }
+
+            .fa-edit {
+                font-size: 3rem;
+                margin-right: 2rem;
+                color: black;
+                cursor: pointer;
+            }
+        }
+
+        .exercise-rating {
+            .rating {
+                .checked {
+                    color: var(--color-yellow);
+                }
+
+                p {
+                    font-size: 1rem;
+                }
+            }
+
+            .category {
+                flex: 0 0 30%;
+                color: var(--color-blue-dark);
+                font-weight: 600;
+                text-align: right;
+            }
+        }
+    }
+}

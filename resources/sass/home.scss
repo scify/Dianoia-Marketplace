@@ -1,8 +1,8 @@
-@import "variables";
+@import "common/variables";
 
 #intro-carousel-row {
     height: calc(100vh - 75px - 3rem - 100px);
-    background-image: url("/img/background-carousel-landing-page.png");
+    background-image: url("/public/img/background-carousel-landing-page.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

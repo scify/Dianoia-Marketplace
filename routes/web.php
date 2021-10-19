@@ -18,8 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home')->name('home');
-//Route::view('/homepage', 'homepage')->name('homepage');
+Route::view('/', 'homepage')->name('homepage');
 Route::view('/about', 'about')->name('about');
 Route::get('/lang/{lang}', [UserController::class, 'setLangLocaleCookie'])->name('set-lang-locale');
 Route::get('/exercises', [ResourceController::class, 'index'])->name('resources.index');

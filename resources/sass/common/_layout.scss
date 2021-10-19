@@ -1,0 +1,156 @@
+@mixin mainTitleSection {
+    height: 95vh;
+    background-size: cover;
+    background-position: bottom;
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.navigation {
+    font-size: 4rem;
+    text-align: center;
+    border-bottom: 3px solid grey;
+}
+
+/// HEADER
+
+.header {
+    @include mainTitleSection;
+
+    //background-image: linear-gradient(rgba(72, 138, 255, 0.7)), url(public/img/header-image.png);
+
+    &__text-box-1 {
+        padding: 60px;
+        background-color: var(--color-blue-light-1);
+
+        ul {
+            list-style: none;
+        }
+    }
+
+    &__text-box-2 {
+        padding: 40px;
+        background-color: #ffffff;
+        color: var(--color-blue-light-1);
+        text-align: center;
+    }
+
+    &__text-box-3 {
+        padding: 40px;
+        background-color: var(--color-blue-dark);
+        text-align: center;
+    }
+}
+
+.mobile-app,
+.patient,
+.carer {
+    display: flex;
+    align-items: center;
+}
+.mobile-app {
+    background-color: var(--color-grey-light);
+    height: 80vh;
+
+    h1 {
+        color: var(--color-blue-light-1);
+    }
+
+    p {
+        color: var(--color-primary);
+    }
+}
+
+.patient,
+.carer {
+    background-repeat: no-repeat;
+    height: 55vh;
+
+    h1,
+    p {
+        color: #ffffff;
+        max-width: 60%;
+
+        @media screen and (max-width: 962px) {
+            max-width: 100%;
+        }
+    }
+}
+
+.patient {
+    background-image:  url('../../../public/img/grandmother-flowers.png'); //linear-gradient(rgba(72, 138, 255, 0.8))
+    background-position: right;
+}
+
+.carer {
+    background-image:  url('../../../public/img/carer-help.png'); //linear-gradient(rgba(0, 188, 212, 0.8))
+    background-position: left;
+
+    &__text {
+        margin-left: 45%;
+
+        @media screen and (max-width: 1441px) {
+            margin-left: 30%;
+        }
+
+        @media screen and (max-width: 962px) {
+            margin-left: 0;
+        }
+    }
+}
+
+
+
+
+/// FOOTER
+.footer {
+    background-color: var(--color-blue-dark);
+    font-size: 1.4rem;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px;
+}
+
+
+
+///// FORM PAGE
+.form-page {
+    background-color: var(--color-grey-dark-2);
+    display: flex;
+    align-items: center;
+    height: 100vh;
+
+    form {
+        background-color: #ffff;
+        width: 45%;
+        height: 55%;
+        padding: 30px;
+
+        label {
+            color: var(--color-grey-dark);
+            font-size: 1.6rem;
+        }
+
+        button {
+            width: 100%;
+        }
+
+        .form-control {
+            min-height: 54px;
+            background-color: var( --color-offwhite);
+
+            &::placeholder {
+                font-style: italic;
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+
+
+
+
+
+

@@ -52,7 +52,7 @@ export default {
 </script>
 <style scoped lang="scss">
 
-@import "resources/sass/variables";
-@import "resources/sass/modal";
+@import "resources/sass/common/variables";
+@import "resources/sass/common/modal";
 
 </style>

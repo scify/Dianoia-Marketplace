@@ -15,7 +15,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-    <link rel="stylesheet" href="sass/main.css">
+    <link rel="stylesheet" href="resources/sass/main.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -33,7 +33,7 @@
 
     <main>
 
-        <div class="exercise-options">
+        <div class="exercise-options ">
             <div class="exercise-options__title content">
                 <h1 class="mb-3">
                     Ασκήσεις
@@ -76,7 +76,7 @@
 
         <div class="search-section mt-5">
 
-            <div class="search-section__options content">
+            <div class="search-section__options content d-flex justify-content-between">
 
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -146,7 +146,7 @@
                 </div>
             </div>
 
-            <div class="search-section__input mt-5 content  mb-5">
+            <div class="search-section__input mt-5 content mb-5 d-flex justify-content-between align-items-center">
                 <p><i class="fas fa-long-arrow-alt-down"></i> | <i class="fas fa-long-arrow-alt-up"></i> 2 συνολικές
                     δραστηριότητες</p>
 
@@ -159,38 +159,43 @@
                 </div>
             </div>
 
-            <div class="search-section__results shadow content ">
-                <div class="result-template">
-                    <div class="result-title-row">
-                        <div>
-                            <p class="title">Σκίαση σχημάτων.</p>
-                            <p>Αντιγράψτε τα σχέδια, σκιάζοντας τα αντίστοιχα τετράγωνα.</p>
+            <div class="search-section__results ">
+                <div class="exercise-template shadow content mb-5 mt-5">
+                    <div class="exercise-box">
+                        <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="title">Σκίαση σχημάτων.</p>
+                                <p>Αντιγράψτε τα σχέδια, σκιάζοντας τα αντίστοιχα τετράγωνα.</p>
+
+                            </div>
+                            <a href="#" class="btn btn--secondary" target="_blank">Δες την άσκηση</a>
+                        </div>
+                        <hr>
+                        <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">
+                            <div class="rating">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <p>Δώσε την δική σου βαθμολογία</p>
+                            </div>
+                            <div class="created-by">Δημιουργήθηκε από Επαγγελματίας φροντιστής</div>
+                            <div class="level">Κανονικό επίπεδο</div>
+                            <div class="language">Ελληνικά</div>
+                            <div class="category">Ασκήσεις προσοχής</div>
 
                         </div>
-                        <a href="#" class="btn btn--secondary" target="_blank">Δες την άσκηση</a>
-                    </div>
-                    <hr>
-                    <div class="result-rating">
-                        <div class="rating">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <p>Δώσε την δική σου βαθμολογία</p>
-                        </div>
-                        <div class="created-by">Δημιουργήθηκε από Επαγγελματίας φροντιστής</div>
-                        <div class="level">Κανονικό επίπεδο</div>
-                        <div class="language">Ελληνικά</div>
-                        <div class="category">Ασκήσεις προσοχής</div>
-
                     </div>
                 </div>
-
             </div>
 
 
         </div>
+
+
+
+
 
     </main>
 

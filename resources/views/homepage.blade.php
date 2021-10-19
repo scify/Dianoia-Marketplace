@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-    <link rel="stylesheet" href="sass/main.css">
-
-
+    <link rel="stylesheet" href="{{mix('dist/css/app.css')}}">
 
     <title>dianoia marketplace</title>
 </head>
@@ -59,7 +54,7 @@
     <main>
         <div class="mobile-app">
             <div class="mobile-app__text content">
-        
+
                     <h1 class="mb-5">διΆνοια mobile εφαρμογή.</h1>
                     <p>Η ΔιΆνοια είναι μία εφαρμογή smartphone για φροντιστές ανθρώπων με ήπια γνωστική διαταραχή ή
                         αρχόμενη
@@ -69,10 +64,10 @@
                         τονώσουμε την
                         αυτοπεποίθησή του ανθρώπου με άνοια, περάσουν χρόνο ευχάριστα. Καθώς και ευχάριστες ασκήσεις και
                         συμβουλές χαλάρωσης για τους φροντιστές, ώστε να ενδυναμώσουν ψυχολογικά.</p>
-           
+
                <a href="#" class="mt-5 btn btn--primary" target="_blank">Κατέβασε την εφαρμογή</a>
 
-        
+
             </div>
 
         </div>
@@ -91,10 +86,9 @@
                     κοινότητα.
                 </p>
                 <a href="#" class="mt-5 btn btn--tertiary" target="_blank">Δες τις ασκήσεις</a>
-          
+
             </div>
 
-        </div>
         </div>
         <div class="carer mt-5">
        <!--     <img class="img-fluid" loading="lazy" src="/img/grandmother-flowers.png" alt="title-image"> -->
@@ -106,19 +100,16 @@
                     έτσι ώστε να επανέλθει δυναμικά. Χρησιμοποίησε τις δραστηριότητες για φροντιστές. Μπορείς ταυτόχρονα
                     να ανατρέξεις στις πηγές που προσφέρουμε, με συμβουλές ειδικών και άφθονη βιβλιογραφία.</p>
 
-        
+
                 <a href="#" class="mt-5 btn btn--tertiary" target="_blank">Δες τι σου προσφέρεται</a>
             </div>
 
         </div>
-        </div>
     </main>
 
     <footer class="footer">
-       <p>Created by SciFY @2021</p> 
+       <p>Created by SciFY @2021</p>
     </footer>
 
 </body>
-
-
 </html>

@@ -1,0 +1,9 @@
+@mixin mainTitleSection {
+    height: 95vh;
+    background-size: cover;
+    background-position: bottom;
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    align-items: center;
+}

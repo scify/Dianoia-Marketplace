@@ -1,0 +1,114 @@
+.form {
+    border: 2px solid grey;
+    max-width: 830px;
+    margin: 0 auto;
+
+    .form-title {
+        font-size: 2rem;
+        font-weight: 600;
+        padding: 2rem;
+    }
+
+    .form-fields {
+        padding: 3rem;
+
+        .form-control[type="text"] {
+            min-height: 5.4rem;
+        }
+
+        span,
+        .required-text {
+            color: rgb(255, 0, 0);
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+
+        .file {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid grey;
+            max-width: 240px;
+
+            input {
+                position: absolute;
+                font-size: 50px;
+                opacity: 0;
+                right: 0;
+                top: 0;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .prototype-file,
+    a {
+        color: #ffffff;
+    }
+
+    .prototype-file {
+        background-color: var(--color-blue-dark);
+        font-size: 1.4rem;
+        padding: 2rem 15rem;
+    }
+}
+
+.submit-exercise-file {
+    padding: 3rem;
+
+    .pdf-file {      
+  
+        .btn {
+            min-width: 5rem;
+
+            &.circle {
+                background: white;
+                border: 2px solid black;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+        }
+
+        .file {
+            position: relative;
+            overflow: hidden;
+
+            input {
+                position: absolute;
+                font-size: 50px;
+                opacity: 0;
+                right: 0;
+                top: 0;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .uploaded-file {
+        border: 1px solid grey;
+        display: inline-block;
+        padding: 0.8rem;
+        color: var(--color-green);
+
+        button {
+            min-width: 5rem;
+        }
+    }
+    .copyright-rules {
+        border-top: 1px solid var(--color-grey);
+        border-bottom: 1px solid var(--color-grey);
+        padding: 2rem;
+    }
+
+    .admin-message {
+        background-color: var(--color-orange);
+        padding: 3rem;
+        color: #ffffff;
+    }
+}
+
+.submmit-btn {
+
+    flex-wrap: wrap;
+}

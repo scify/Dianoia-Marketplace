@@ -193,7 +193,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "resources/sass/variables";
+@import "resources/sass/common/variables";
 
 .btn.selected {
     background-color: $blue;
