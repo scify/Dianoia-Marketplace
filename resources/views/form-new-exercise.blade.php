@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('css')
-    <link rel="stylesheet" href="{{ mix('dist/css/communication-cards-create-edit.css') }}">
+    <link rel="stylesheet" href="{{ mix('dist/css/create-edit.css') }}">
 @endpush
 
 @section('content')
@@ -18,7 +18,7 @@
         {{ csrf_field() }}
         <div class="container rounded py-4" style="border:1px solid grey">
             <div class="mx-3">
-                <b>{{trans("messages.new_package")}}</b>
+                <b>New Exercise</b>
             </div>
             <hr/>
             <div class="container-sm px-5">
@@ -41,6 +41,32 @@
                             <option value="{{$lang->id}}"> {{$lang->name}} </option>
                         @endif
 
+                        @endforeach
+                    </select>
+                    <!--<input type="radio" class="form-control" id="category_lang"> -->
+                </div>
+                <div class="mb-3">
+                    <label for="exercise_difficulty" class="form-label">Difficulty</label>
+                    <select class="form-select" aria-label="category_lang" name="difficulty_id">
+                        @foreach ($viewModel->difficulties as $difficulty){
+                        @if($viewModel->resource->difficulty_id === $difficulty->id)
+                            <option selected> {{$difficulty->name}} </option>
+                        @else
+                            <option value="{{$difficulty->id}}"> {{$difficulty->name}} </option>
+                        @endif
+                        @endforeach
+                    </select>
+                    <!--<input type="radio" class="form-control" id="category_lang"> -->
+                </div>
+                <div class="mb-3">
+                    <label for="exercise_type" class="form-label">Κατηγορία</label>
+                    <select class="form-select" aria-label="category_lang" name="type_id">
+                        @foreach ($viewModel->types as $type){
+                        @if($viewModel->resource->type_id === $type->id)
+                            <option selected> {{$type->name}} </option>
+                        @else
+                            <option value="{{$type->id}}"> {{$type->name}} </option>
+                        @endif
                         @endforeach
                     </select>
                     <!--<input type="radio" class="form-control" id="category_lang"> -->
@@ -75,16 +101,15 @@
                 <div class="alert alert-danger">{{$message}}</div>
                 @enderror
                 <div class="mb-3">
-                    <label for="sound_file" class="form-label">Upload Exercise (pdf)<span
+                    <label for="contents_file" class="form-label">Upload Exercise (pdf/txt)<span
                             style="color:#ff0000">*</span></label>
                     @if($viewModel->isEditMode())
-                        <input type="file" class="form-control" id="customFile" />
+                        <input type="file" class="form-control" id="customFile" name="contents_file" />
                     @else
-                        <input type="file" class="form-control" id="customFile" />
-
+                        <input type="file" class="form-control" id="customFile" name="contents_file"/>
                     @endif
                 </div>
-                @error('sound')
+                @error('contents_file')
                 <div class="alert alert-danger">{{$message}}</div>
                 @enderror
             </div>
@@ -96,7 +121,7 @@
                     {{trans("messages.cancel")}}
                 </a>
 
-                <input  id="packageSubmitBtn" class="btn btn-primary ms-4" type="submit" value={{trans("messages.save_card")}}>
+                <input  id="exerciseSubmitBtn" class="btn btn-primary ms-4" type="submit" value={{trans("messages.save_card")}}>
             </div>
         </div>
     </form>

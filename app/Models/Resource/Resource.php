@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Resource extends Model
 {
     use SoftDeletes;
+
     /**
      * The table associated with the model.
      *
@@ -26,23 +27,11 @@ class Resource extends Model
     protected $fillable = [
         'name',
         'lang_id', 'creator_user_id',
-        'admin_user_id', 'img_path', 'audio_path',
-        'resource_parent_id', 'type_id'
+        'admin_user_id', 'img_path', 'status_id', 'content_file_path', 'type_id'
     ];
 
-    public function childrenResources(): HasMany {
-        return $this->hasMany(
-            Resource::class,
-            'resource_parent_id',
-            'id'
-        );
-    }
-
-    public function creator(): HasOne {
+    public function creator(): HasOne
+    {
         return $this->hasOne(User::class, 'id', 'creator_user_id');
-    }
-
-    public function parent(): HasOne {
-        return $this->hasOne(Resource::class, 'id', 'card_id');
     }
 }

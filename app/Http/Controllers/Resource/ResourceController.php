@@ -52,8 +52,23 @@ class ResourceController extends Controller
         $viewModel = Collection::empty();
         $viewModel->resourcesPackagesStatuses = [ResourceStatusesLkp::APPROVED];
         $viewModel->isAdmin = Auth::check() && $this->userManager->isAdmin(Auth::user());
-        return view('patient_resources.index')->with(
+        return view('exercises.index')->with(
             ['viewModel' =>$viewModel, 'user' => Auth::user()]);
+    }
+
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return View
+     */
+    public function display(): View
+    {
+
+//        $createResourceViewModel = $this->communicationResourceManager->getCreateResourceViewModel();
+        $displayResourceViewModel = $this->resourceManager->getCreateResourcesViewModel();
+        return view('exercise-page')->with(['viewModel' => $displayResourceViewModel]);
     }
 
 
@@ -62,14 +77,17 @@ class ResourceController extends Controller
      *
      * @return View
      */
-    public function create(): View
+    public function create(Request $request): View
     {
-
-//        $createResourceViewModel = $this->communicationResourceManager->getCreateResourceViewModel();
-        $createResourceViewModel = $this->resourceManager->getCreateResourcesViewModel();
-
-        return view('exercises.create-edit')->with(['viewModel' => $createResourceViewModel]);
+        $createResourceViewModel = $this->resourceManager->getCreateResourcesViewModel(
+            [
+                "type_id" => $request->type_id,
+            ]
+        );
+        return view('form-new-exercise')->with(['viewModel' => $createResourceViewModel]);
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -84,45 +102,17 @@ class ResourceController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:100',
             'image' => 'mimes:jpg,png,jpeg|required|file|between:3,1000|nullable',
-            'type_id' => 'required'
+            'contents_file' => "required|mimes:pdf,txt|max:10000",
+            'type_id' => "required|integer|gt:0",
+            'difficulty_id' =>  "required|integer|gt:0",
         ]);
-
-        $type_id = intval($request->type_id);
-        /*switch($type_id){
-            case ResourceTypesLkp::COMMUNICATION:
-
-        }
-        */
-        if ($type_id === ResourceTypesLkp::COMMUNICATION) {
-            $this->validate($request, ['sound' => 'required|file|between:10,1000|nullable']);
-            $manager = $this->patientResourcesPackageManager;
-            $ret_route = "patient_resources.edit";
-        } else if ($type_id === ResourceTypesLkp::SIMILAR_GAME) {
-            $manager = $this->similarityCarerResourcesPackageManager;
-            $ret_route = "carer_resources.edit";
-        } else if ($type_id === ResourceTypesLkp::TIME_GAME) {
-            $manager = $this->timeCarerResourcesPackageManager;
-            $ret_route = "carer_resources.edit";
-        } else if ($type_id === ResourceTypesLkp::RESPONSE_GAME) {
-            $manager = $this->responseCarerResourcesPackageManager;
-            $ret_route = "carer_resources.edit";
-        } else {
-            throw(new \ValueError("Type not supported"));
-        }
         try {
             $resource = $this->resourceManager->storeResource($request);
-            if ($resource->resource_parent_id == null) {
-                $resourcePackage = $manager->storeResourcePackage($resource, $request['lang']);
-            } else {
-                $resourcePackage = $manager->getResourcesPackageWithCoverCard($resource->resource_parent_id);
-            }
-            $redirect_id = $resourcePackage->id;
-
-
-            return redirect()->route($ret_route, $redirect_id)
-                ->with('flash_message_success', 'The resource has been successfully created');
+            return  redirect()->back()->with('flash_message_success', 'The exercise has been successfully created');
+//            return redirect()->route('resources.update', $resource->id)
+//                ->with('flash_message_success', 'The exercise has been successfully created');
         } catch (Exception $e) {
-            return redirect()->with('flash_message_failure', 'Failure - resource card has not been added');
+            return redirect()->with('flash_message_failure', 'Failure - the exercise has not been added');
         }
 
 

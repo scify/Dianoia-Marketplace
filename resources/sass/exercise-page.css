@@ -1,0 +1,110 @@
+.exercise-options {
+  height: 95vh;
+  background-size: cover;
+  background-position: bottom;
+  color: #ffffff;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(72, 138, 255, 0.7))), url(../img/title-image.png);
+  background-image: linear-gradient(rgba(72, 138, 255, 0.7)), url(../img/title-image.png);
+}
+
+.exercise-options__text-box {
+  background-color: var(--color-blue-light-1);
+}
+
+.exercise-options__text-box .row {
+  margin: 20px;
+}
+
+.exercise-options__text-box .text-box-1 {
+  padding: 60px;
+  border-top: 3px solid white;
+  background-image: url(../img/3.png);
+  background-repeat: no-repeat;
+  background-position: 2% 10%;
+}
+
+.exercise-options__text-box .text-box-2 {
+  padding: 40px;
+  border-right: 3px solid white;
+  background-image: url(../img/1.png);
+  background-repeat: no-repeat;
+  background-position: 2% 0;
+}
+
+.exercise-options__text-box .text-box-3 {
+  padding: 40px;
+  background-image: url(../img/2.png);
+  background-repeat: no-repeat;
+  background-position: 2% 0;
+}
+
+.search-section {
+  background-color: var(--color-grey-light);
+  padding: 4rem 0;
+}
+
+@media screen and (max-width: 980px) {
+  .search-section__options {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .search-section__options .dropdown {
+    margin: 5px;
+  }
+}
+
+.search-section__options .dropdown-item {
+  font-size: 1.4rem;
+  color: var(--color-grey-light-2);
+}
+
+.search-section__input {
+  border-top: 1px solid var(--color-grey);
+  border-bottom: 1px solid var(--color-grey);
+  height: 10vh;
+}
+
+.search-section__input .input-group {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 40%;
+          flex: 0 0 40%;
+}
+
+.search-section__input .input-group ::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.search-section__input .input-group :-ms-input-placeholder {
+  font-style: italic;
+}
+
+.search-section__input .input-group ::-ms-input-placeholder {
+  font-style: italic;
+}
+
+.search-section__input .input-group ::placeholder {
+  font-style: italic;
+}
+
+.search-section__input .input-group .btn-outline-primary {
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  border-color: #ced4da;
+  background-color: #f2f3f5;
+}
+
+.search-section__results {
+  margin-top: 10rem;
+}
+/*# sourceMappingURL=exercise-page.css.map */

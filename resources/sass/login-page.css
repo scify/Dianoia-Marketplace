@@ -1,0 +1,46 @@
+.login-page {
+  background-color: var(--color-grey-dark-2);
+  height: 100vh;
+}
+
+.login-page form {
+  background-color: #ffff;
+  width: 45%;
+  height: 55%;
+  padding: 30px;
+}
+
+.login-page form label {
+  color: var(--color-grey-dark);
+  font-size: 1.6rem;
+}
+
+.login-page form button {
+  width: 100%;
+}
+
+.login-page form .form-control {
+  min-height: 54px;
+  background-color: var(--color-offwhite);
+}
+
+.login-page form .form-control::-webkit-input-placeholder {
+  font-style: italic;
+  font-size: 1.8rem;
+}
+
+.login-page form .form-control:-ms-input-placeholder {
+  font-style: italic;
+  font-size: 1.8rem;
+}
+
+.login-page form .form-control::-ms-input-placeholder {
+  font-style: italic;
+  font-size: 1.8rem;
+}
+
+.login-page form .form-control::placeholder {
+  font-style: italic;
+  font-size: 1.8rem;
+}
+/*# sourceMappingURL=login-page.css.map */

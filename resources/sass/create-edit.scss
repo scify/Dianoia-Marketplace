@@ -1,0 +1,103 @@
+@import "resources/sass/common/variables";
+
+.card-title {
+    font-weight: bold;
+    font-size: toRem(18);
+    text-align:center;
+}
+
+.card-subtitle {
+    font-size: toRem(14);
+    font-style: italic;
+}
+
+.rate-text {
+    font-size: toRem(10);
+    color: $gray-600;
+}
+
+.rate-link {
+    text-decoration: underline;
+    color: $gray-600;
+}
+
+.fa-star {
+    font-style: toRem(20);
+    color: $yellow;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-container {
+    position: absolute;
+    right: 0;
+
+    .actions-btn {
+        height: auto;
+        padding: 5px;
+    }
+}
+/*
+.card {
+    box-shadow: 2px 4px 8px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+    flex: 0;
+    &:hover:not(.disabled) {
+        cursor: pointer;
+        box-shadow: 3px 5px 9px 5px rgba(0, 0, 0, 0.2);
+    }
+    width:300px;
+    margin-right:20px;
+    min-width:auto;
+    margin-bottom: 20px;
+    img {
+        width: 150px;
+
+    }
+
+}
+*/
+
+
+
+
+
+.all-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .single-card {
+        width: 300px;
+        position: relative;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+
+        .card-title {
+            min-height: 50px;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .card-body {
+            width: 200px;
+        }
+
+    }
+}
+
+.modal {
+    .modal-wrapper {
+        padding-top: 2%;
+    }
+}
+
+.dropdown-menu {
+    z-index: 100000;
+}

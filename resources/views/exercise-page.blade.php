@@ -1,35 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-
+@extends('layouts.app')
+@push('css')
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-    <link rel="stylesheet" href="resources/sass/main.css">
-
+    <link rel="stylesheet" href="{{mix('dist/css/main.css')}}">
+    <link rel="stylesheet" href="{{mix('dist/css/exercise-page.css')}}">
+    <link rel="stylesheet" href="{{mix('dist/css/exercise-template.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+          integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+@endpush
 
-    <title>dianoia marketplace</title>
-</head>
-
-<body>
-
-    <div class="navigation">
-        MENU
-    </div>
-
-
+@section('content')
 
     <main>
 
@@ -80,7 +63,7 @@
 
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                         Γλώσσα
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -94,7 +77,7 @@
 
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton2"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                         Επίπεδο
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
@@ -108,7 +91,7 @@
 
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton3"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                         Κατηγορία
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
@@ -121,7 +104,7 @@
 
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton4"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                         Βαθμολογία
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
@@ -134,7 +117,7 @@
 
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton5"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                         Χρήστης
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
@@ -152,16 +135,16 @@
 
                 <div class="input-group">
                     <input type="search" class="form-control rounded" placeholder="Αναζήτηση καταχωρήσεων"
-                        aria-label="Search" aria-describedby="search-addon" />
+                           aria-label="Search" aria-describedby="search-addon" />
                     <button type="button" class="btn btn-outline-primary">Αναζήτηση</button>
                 </div>
-                <div> <a href="#" class="btn btn--primary" target="_blank">Δημιούργησε νέα άσκηση</a>
+                <div> <a href="{{route('resources.create',['viewModel' => $viewModel])}}" class="btn btn--primary" target="_blank">Δημιούργησε νέα άσκηση</a>
                 </div>
             </div>
 
-            <div class="search-section__results ">
+            <div class="search-section__results">
                 <div class="exercise-template shadow content mb-5 mt-5">
-                    <div class="exercise-box">
+                    <div class="exercise-box" id="patient-template">
                         <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">
                             <div>
                                 <p class="title">Σκίαση σχημάτων.</p>
@@ -188,22 +171,42 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="exercise-template shadow content mb-5 mt-5">
+                    <div class="exercise-box" id="carer-template">
+                        <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="title">Εβδομαδιαίο Πρόγραμμα Δραστηριοτήτων</p>
+                                <p>Δημιουργήστε το εβδομαδιαίο σας πρόγραμμα με τις δραστηριότητές σας.</p>
+
+                            </div>
+                            <a href="#" class="btn btn--secondary" target="_blank">Δες την άσκηση</a>
+                        </div>
+                        <hr>
+                        <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">
+                            <div class="rating">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <p>Δώσε την δική σου βαθμολογία</p>
+                            </div>
+                            <div class="created-by">Δημιουργήθηκε από  Alzheimer Athens</div>
+                            <div class="language">Ελληνικά</div>
+                            <div class="category">Ασκήσεις για φροντιστές</div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
         </div>
-
-
-
-
 
     </main>
 
-    <footer class="footer">
-        <p>Created by SciFY @2021</p>
-    </footer>
 
-</body>
+@endsection
 
-
-</html>
+@push('scripts')
+    <script src="{{ mix('dist/js/create-edit-resource.js') }}"></script>
+@endpush

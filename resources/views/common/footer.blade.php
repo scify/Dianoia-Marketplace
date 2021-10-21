@@ -5,8 +5,7 @@
                 <div class="col-sm-6 col-md-3 item">
                     <h3>{!! __('messages.services') !!}</h3>
                     <ul>
-                        <li><a href="{{ route('patient_resources.index') }}">{!! __('messages.patient_cards') !!}</a></li>
-                        <li><a href="{{ route('carer_resources.index') }}">{!! __('messages.carer_cards') !!}</a></li>
+                        <li><a href="{{ route('resources.index') }}">Exercises</a></li>
                         <li><a href="#">{!! __('messages.content_guidelines') !!}</a></li>
                     </ul>
                 </div>

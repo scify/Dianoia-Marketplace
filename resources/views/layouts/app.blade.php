@@ -19,7 +19,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
         @include('common.favicons')
-    <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('dist/css/main.css') }}">
     @stack('css')
             <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

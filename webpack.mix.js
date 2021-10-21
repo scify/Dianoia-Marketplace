@@ -30,13 +30,14 @@ mix.autoload({
     'jquery': ['$', 'window.jQuery', 'jQuery']
 });
 
-mix.sass('resources/sass/app.scss', 'public/dist/css')
-    .sass('resources/sass/user-management-page.scss', 'public/dist/css')
-    .sass('resources/sass/common/footer.scss', 'public/dist/css')
-    .sass('resources/sass/home.scss', 'public/dist/css')
+mix.sass('resources/sass/main.scss', 'public/dist/css')
+    .sass('resources/sass/login-page.scss', 'public/dist/css')
+    .sass('resources/sass/exercise-template.scss', 'public/dist/css')
+    .sass('resources/sass/homepage.scss', 'public/dist/css')
+    .sass('resources/sass/profile-page.scss', 'public/dist/css')
+    .sass('resources/sass/exercise-page.scss', 'public/dist/css')
     .sass('resources/sass/resources-packages-index.scss', 'public/dist/css')
-    .sass('resources/sass/_profile-page.scss', 'public/dist/css')
-    .sass('resources/sass/_exercise-page.scss', 'public/dist/css')
+    .sass('resources/sass/create-edit.scss', 'public/dist/css')
     .sourceMaps()
     .webpackConfig({
         devtool: 'source-map'

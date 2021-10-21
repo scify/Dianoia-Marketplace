@@ -1,0 +1,97 @@
+.header {
+  height: 95vh;
+  background-size: cover;
+  background-position: bottom;
+  color: #ffffff;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url(../img/header-image.png);
+}
+
+.header__text-box-1 {
+  padding: 60px;
+  background-color: var(--color-blue-light-1);
+}
+
+.header__text-box-1 ul {
+  list-style: none;
+}
+
+.header__text-box-2 {
+  padding: 40px;
+  background-color: #ffffff;
+  color: var(--color-blue-light-1);
+  text-align: center;
+}
+
+.header__text-box-3 {
+  padding: 40px;
+  background-color: var(--color-blue-dark);
+  text-align: center;
+}
+
+.mobile-app {
+  background-color: var(--color-grey-light);
+  height: 80vh;
+}
+
+.mobile-app h1 {
+  color: var(--color-blue-light-1);
+}
+
+.mobile-app p {
+  color: var(--color-primary);
+}
+
+.patient,
+.carer {
+  background-repeat: no-repeat;
+  height: 51vh;
+}
+
+.patient h1,
+.patient p,
+.carer h1,
+.carer p {
+  color: #ffffff;
+  max-width: 60%;
+}
+
+@media screen and (max-width: 962px) {
+  .patient h1,
+  .patient p,
+  .carer h1,
+  .carer p {
+    max-width: 100%;
+  }
+}
+
+.patient {
+  background: var(--color-blue-light-1) url(../img/grandmother-flowers.png) right no-repeat;
+}
+
+.carer {
+  background: var(--color-blue-light-2) url(../img/carer-help.png) left no-repeat;
+}
+
+.carer__text {
+  margin-left: 45%;
+}
+
+@media screen and (max-width: 1441px) {
+  .carer__text {
+    margin-left: 30%;
+  }
+}
+
+@media screen and (max-width: 962px) {
+  .carer__text {
+    margin-left: 0;
+  }
+}
+/*# sourceMappingURL=homepage.css.map */

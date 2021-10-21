@@ -1,0 +1,126 @@
+.back-color {
+      background-color: grey;
+  //  background-color: var(  --color-grey-light);
+}
+
+.form-control[type="text"] {
+    min-height: 5.4rem;
+}
+
+.file {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid grey;
+    max-width: 240px;
+
+    input {
+        position: absolute;
+        font-size: 50px;
+        opacity: 0;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+    }
+}
+
+/* #region FORM PAGE */
+
+.form-new {
+    border: 2px solid grey;
+    max-width: 830px;
+    margin: 0 auto;
+
+    &__title {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    &__fields {
+        span,
+        .required-text {
+            color: rgb(255, 0, 0);
+            font-size: 1.4rem;
+            font-weight: 400;
+        }
+    }
+
+    &__prototype-file,
+    a {
+        color: #ffffff;
+    }
+
+    &__prototype-file {
+        background-color: var(--color-blue-dark);
+        font-size: 1.4rem;
+        padding: 2rem 15rem;
+    }
+
+    &__submit-exercise-file {
+        .pdf-file {
+            .btn {
+                min-width: 5rem;
+
+                &.circle {
+                    background: white;
+                    border: 2px solid black;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                }
+            }
+
+            .file {
+                position: relative;
+                overflow: hidden;
+
+                input {
+                    position: absolute;
+                    font-size: 50px;
+                    opacity: 0;
+                    right: 0;
+                    top: 0;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .uploaded-file {
+            border: 1px solid grey;
+            display: inline-block;
+            color: var(--color-green);
+
+            button {
+                min-width: 5rem;
+            }
+        }
+        .copyright-rules {
+            border-top: 1px solid var(--color-grey);
+            border-bottom: 1px solid var(--color-grey);
+        }
+
+        .admin-message {
+            background-color: var(--color-orange);
+            color: #ffffff;
+        }
+    }
+
+    &__submmit-btn {
+        flex-wrap: wrap;
+    }
+}
+
+/* #endregion */
+
+/* #region EDIT FORM PAGE STEP 1*/
+.form-edit {
+
+    .form-control[type="text"] {
+        background-color: var(  --color-grey-light);
+    }
+    #no-image {
+        font-size: 1.4rem;
+    }
+}
+
+/* #endregion */

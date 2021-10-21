@@ -4,7 +4,7 @@ namespace App\ViewModels;
 
 use Illuminate\Support\Collection;
 
-class CarerResourcePackagesIndexPage {
+class ExercisesIndexPage {
 
     public $resourceTypesLkp;
 

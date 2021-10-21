@@ -21,6 +21,7 @@ class ResourceTypeLkpTableSeeder extends Seeder {
             ['id' => 2, 'name' => 'Memory', 'description' => 'Ασκήσεις Μνήμης'],
             ['id' => 3, 'name' => 'Reason', 'description' => 'Ασκήσεις Σκέψης & Λόγου'],
             ['id' => 4, 'name' => 'Executive', 'description' => 'Εκτελεστικές λειτουργίες'],
+            ['id' => 5, 'name' => 'Carer', 'description' => 'Ασκήσεις για Φροντιστές'],
         ];
 
         foreach ($data as $datum) {

@@ -3,10 +3,9 @@
 namespace App\Repository\Resource;
 
 
-abstract class ContentLanguagesLkp {
+abstract class DifficultiesLkp {
     //ATTENTION: these values match with the db values defined in database\seeds\ContentLanguageLkpSeeder.php
-    const GREEK = 1;
-    const ENGLISH = 2;
-    const SPANISH = 3;
-    const ITALIAN = 4;
+    const EASY = 1;
+    const MEDIUM = 2;
+    const DIFFICULT = 3;
 }

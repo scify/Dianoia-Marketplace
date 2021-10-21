@@ -5,33 +5,6 @@ import {Modal} from 'bootstrap';
         init();
     });
 
-    var listenForModalSoundChanges = function listenForModalSoundChanges() {
-        $('#modal_sound_file').on("change", function ($event) {
-            $('#modal_player').hide('fast');
-            $("#modal_mp3_src").attr("src", URL.createObjectURL($event.target.files[0]));
-            var audio = $("#modal_player");
-            audio[0].pause();
-            audio[0].load();
-            audio[0].play();
-            audio[0].oncanplaythrough = audio[0].play();
-            $('#modal_player').show('slow');
-        });
-    }; // data attr in $this
-
-
-    let listenForSoundChanges = function () {
-        $('#sound_file').on("change", function ($event) {
-            $('#player').hide('fast');
-            $("#mp3_src").attr("src", URL.createObjectURL($event.target.files[0]));
-            let audio = $("#player");
-            audio[0].pause();
-            audio[0].load();
-            audio[0].play();
-            audio[0].oncanplaythrough = audio[0].play();
-            $('#player').show('slow');
-        });
-    }
-
     let listenForNewCardClick = function () {
         $('#newCardBtn').on("click", function () {
 
@@ -81,13 +54,13 @@ import {Modal} from 'bootstrap';
     }
 
 
-    let listenForPackageSubmitClick = function () {
-        $('#packageSubmitBtn').on("click", function () {
-            console.log('clicked  package submit');
-            let parent_id = $("#parentId").attr('value');
+    let listenForExerciseSubmitClick = function () {
+        $('#exerciseSubmitBtn').on("click", function () {
+            console.log('clicked  exercise submit');
+            let exercise_id = $("#exercise_id").attr('value');
             let type_id = $("#type_id").attr('value');
             // const route = window.route('resources.update_resource,[\'id\' => '.concat(card_id).concat(', \'type_id\' => ').concat(type_id).concat(']'));
-            let route = window.route('resources.update',parent_id);
+            let route = window.route('resources.update', exercise_id);
             // console.log(route);
             let lastChar = route.substr(-1); // Selects the last character
             if (lastChar === '/') {         // If the last character is a slash
@@ -236,7 +209,7 @@ import {Modal} from 'bootstrap';
         listenForNewCardClick();
         listenForDeleteCardClick();
         listenForSaveBundleClick();
-        listenForPackageSubmitClick();
+        // listenForExerciseSubmitClick();
         // downloadBundleXML()
     };
 

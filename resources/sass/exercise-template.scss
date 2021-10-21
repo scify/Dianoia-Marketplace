@@ -1,0 +1,76 @@
+.exercise-template {
+    padding: 0;
+
+    .exercise-box {
+        &#patient-template {
+            border-top: 10px solid var(--color-blue-light-1);
+        }
+
+        &#carer-template {
+            border-top: 10px solid var(--color-blue-light-2);
+        }
+
+        &#registered-template {
+            border-top: 10px solid var(--color-grey-light-2);
+
+            .registered-message {
+                color: var(--color-orange);
+                border: 1px solid var(--color-orange);
+                padding: 1rem;
+                margin: 2rem;
+            }
+            .exercise-title-row,
+            .exercise-rating {
+                filter: grayscale(100%) opacity(40%);
+            }
+        }
+
+        color: var(--color-grey-dark);
+
+        .exercise-title-row,
+        .exercise-rating {
+                @media screen and (max-width: 600px) {
+                text-align: center;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+        }
+
+        .exercise-title-row {
+            .description {
+                max-width: 80rem;
+                .title {
+                    font-weight: 600;
+                    color: var(--color-primary);
+
+                }
+            }
+
+            .fa-edit {
+                font-size: 3rem;
+                margin-right: 2rem;
+                color: black;
+                cursor: pointer;
+            }
+        }
+
+        .exercise-rating {
+            .rating {
+                .checked {
+                    color: var(--color-yellow);
+                }
+
+                p {
+                    font-size: 1rem;
+                }
+            }
+
+            .category {
+                flex: 0 0 30%;
+                color: var(--color-blue-dark);
+                font-weight: 600;
+                text-align: right;
+            }
+        }
+    }
+}

@@ -1,5 +1,9 @@
-// bootstrap
+@import "common/base";
+@import "common/buttons";
+@import "common/mixins";
 @import "common/variables";
+
+// bootstrap
 @import "~bootstrap/scss/bootstrap";
 @import "~flickity/dist/flickity.min.css";
 // FontAwesome
@@ -7,16 +11,6 @@
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
-@import "common/footer";
-@import "resources/sass/common/base";
-@import "resources/sass/common/buttons";
-@import "resources/sass/common/form";
-@import "resources/sass/exercise-page";
-@import "resources/sass/common/layout";
-@import "resources/sass/common/mixins";
-@import "resources/sass/profile-page";
-
-
 
 .navbar {
     background-color: $navbar-light-bg-color;
@@ -62,3 +56,4 @@ a {
 a.link-info {
     color: $blue;
 }
+

@@ -1,35 +1,3 @@
-:root {
-    --color-primary: #222222;
-
-    --color-blue-light-1: #488AFF;
-    --color-blue-light-2:  #00BCD4;
-    --color-blue:  #2774FE;
-    --color-blue-dark: #3F51B5;
-
-    --color-green:  #32DB64;
-
-    --color-yellow:  #ECD43A;
-
-    --color-orange:  #EE8E10;
-
-    --color-offwhite:   #F4F4F4;
-
-    --color-grey-light:  #F8F8F8;
-    --color-grey-light-2:  #AEAEAE;
-
-    --color-grey: #C7C7C7;
-    --color-grey-dark: #646464;
-    --color-grey-dark-2:   #303654;
-
-    --shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
-    --shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
-
-    --line: 1px solid var(--color-blue-light-1);
-}
-
-
-// FONT
-$default-font-size: 1.8rem;
 
 * {
     margin: 0;
@@ -57,7 +25,7 @@ body {
     line-height: 1.6;
     color: var(--color-primary);
 
-    font-size: $default-font-size;
+    font-size: 1.8rem;
 
     min-height: 100vh;
 }
@@ -102,4 +70,19 @@ a {
     font-weight: 500;
     text-decoration: underline;
     color: var(--color-blue-dark);
+}
+
+.navigation {
+    font-size: 4rem;
+    text-align: center;
+    border-bottom: 3px solid grey;
+}
+
+/// FOOTER
+.footer {
+    background-color: var(--color-blue-dark);
+    font-size: 1.4rem;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px;
 }

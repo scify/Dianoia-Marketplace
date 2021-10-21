@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('home') }}" tabindex="-1">
-            <img
-                loading="lazy"
-                src="{{ asset('img/dianoia_logo.jpg') }}" height="150px" alt="Marketplace logo">
+        <a class="navbar-brand" href="{{ route('homepage') }}" tabindex="-1">
+{{--            <img--}}
+{{--                loading="lazy"--}}
+{{--                src="{{ asset('img/dianoia_logo.jpg') }}" height="150px" alt="Marketplace logo">--}}
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ UrlMatchesMenuItem("resources.create-edit") }}"
-                       href="{{route('resources.create')}}">
+                       href="{{route('resources.display')}}">
                         Create Content
                     </a>
                 </li>
