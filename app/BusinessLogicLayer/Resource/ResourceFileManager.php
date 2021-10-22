@@ -16,12 +16,14 @@ class ResourceFileManager
 {
     private $IMG_FOLDER;
     private $AUDIO_FOLDER;
+    private $PDF_FOLDER;
     private $RESOURCE_PREFIX_FOLDER;
-    private array $SUPPORTED_FILE_TYPES = ["audio","image"];
+    private array $SUPPORTED_FILE_TYPES = ["audio","image", "pdf"];
     protected ResourceRepository $resourceRepository;
     public function __construct() {
         $this->IMG_FOLDER = getenv('IMG_FOLDER ') ?: "img/" ;
         $this->AUDIO_FOLDER = getenv('AUDIO_FOLDER ') ?: "audio/" ;
+        $this->PDF_FOLDER = getenv('PDF_FOLDER ') ?: "pdf/" ;
         $this->RESOURCE_PREFIX_FOLDER = getenv('RESOURCE_PREFIX_FOLDER') ?: "resources/" ;
     }
 
@@ -52,7 +54,8 @@ class ResourceFileManager
     /**
      * @throws FileNotFoundException
      */
-    public  function saveAudio($id, Request $request){
+    public  function saveAudio($id, Request $request): ?string
+    {
         $contentAudio = $request->file('sound');
         if (!$contentAudio){
             throw(new FileNotFoundException('Audio missing'));
@@ -63,14 +66,37 @@ class ResourceFileManager
         return $this->getResourceFullPath($normalizedAudioName,"audio");
     }
 
-    public  function saveImage($id, Request $request){
+    /**
+     * @throws FileNotFoundException
+     */
+    public  function saveImage($id, Request $request): ?string
+    {
         $contentImage = $request->file('image');
-
+        if (!$contentImage){
+            throw(new FileNotFoundException('Image missing'));
+        }
         $imageFolder = $this->getResourceFileFolder("image");
         $normalizedImageName =$this->getNormalizedResourceName($contentImage,$id);
         $contentImage->storeAs($imageFolder, $normalizedImageName, ['disk' => 'public']);
         return $this->getResourceFullPath($normalizedImageName,"image");
     }
+
+
+    /**
+     * @throws FileNotFoundException
+     */
+    public  function savePdf($id, Request $request): ?string
+    {
+        $contentPdf = $request->file('contents_file');
+        if (!$contentPdf) {
+            throw(new FileNotFoundException('Pdf missing'));
+        }
+        $pdfFolder = $this->getResourceFileFolder("pdf");
+        $normalizedPdfName =$this->getNormalizedResourceName($contentPdf,$id);
+        $contentPdf->storeAs($pdfFolder, $normalizedPdfName, ['disk' => 'public']);
+        return $this->getResourceFullPath($normalizedPdfName,"pdf");
+    }
+
 
 
     public function getResourceFullPath($name,$type): ?string
@@ -80,7 +106,10 @@ class ResourceFileManager
             return $this->getResourceFileAudioPath($name);
         } elseif ($type == "image") {
             return $this->getResourceFileImagePath($name);
+        } elseif ($type == "pdf") {
+            return $this->getResourceFilePdfPath($name);
         }
+
     }
 
     public function getResourceFileFolder($type): ?string
@@ -90,17 +119,24 @@ class ResourceFileManager
             return $this->getResourceAudioFolder();
         } elseif ($type == "image") {
             return $this->getResourceImageFolder();
+        } elseif ($type == "pdf") {
+            return $this->getResourcePdfFolder();
         }
     }
 
-    public function getResourceFileAudioPath($name)
+    public function getResourceFileAudioPath($name): string
     {
         return $this->getResourceAudioFolder() . $name;
     }
 
-    public function getResourceFileImagePath($name)
+    public function getResourceFileImagePath($name): string
     {
         return $this->getResourceImageFolder() . $name;
+    }
+
+    public function getResourceFilePdfPath($name): string
+    {
+        return $this->getResourcePdfFolder() . $name;
     }
 
 
@@ -110,6 +146,9 @@ class ResourceFileManager
     }
     public function getResourceAudioFolder(): string{
         return $this->RESOURCE_PREFIX_FOLDER.$this->AUDIO_FOLDER;
+    }
+    public function getResourcePdfFolder(): string{
+        return $this->RESOURCE_PREFIX_FOLDER.$this->PDF_FOLDER;
     }
 
     public function copyResourceToDirectory($directory, $name, $type){
@@ -131,7 +170,8 @@ class ResourceFileManager
     }
 
 
-    public function cloneResourceToDirectory($name, $type){
+    public function cloneResourceToDirectory($name, $type): string
+    {
 
         $dir = $this->getResourceFileFolder($type);
         $source = storage_path('app/public').'/'.$this->getResourceFullPath($name,$type);

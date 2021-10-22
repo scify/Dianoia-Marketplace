@@ -13,9 +13,7 @@ use App\Repository\Resource\ResourceTypeLkpRepository;
 use App\Repository\Resource\ResourceTypesLkp;
 use App\ViewModels\CreateEditResourceVM;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
 class ResourceManager {
@@ -71,6 +69,9 @@ class ResourceManager {
     }
 
 
+    /**
+     * @throws FileNotFoundException
+     */
     public function storeResource(Request $request)
     {
         $storeArr = [
@@ -89,7 +90,7 @@ class ResourceManager {
         $resourceFileManager = new ResourceFileManager();
         $img_path = $resourceFileManager->saveImage($resource->id, $request);
         try{
-            $pdf_path = $resourceFileManager->saveAudio($resource->id, $request);
+            $pdf_path = $resourceFileManager->savePdf($resource->id, $request);
         }
         catch(FileNotFoundException $e){
             $pdf_path = null;
