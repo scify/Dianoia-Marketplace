@@ -13,6 +13,7 @@ use App\Repository\Resource\ResourceTypeLkpRepository;
 use App\Repository\Resource\ResourceTypesLkp;
 use App\ViewModels\CreateEditResourceVM;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,6 +46,23 @@ class ResourceManager {
         );
     }
 
+    public function getDisplayResourcesViewModel(array $resource_params = []): CreateEditResourceVM {
+        $contentLanguages = $this->getContentLanguagesForResources();
+        $difficulties = $this->getDifficultiesForResources();
+
+        $type_ids = $this->getResourceTypes()->map(
+            function($type_entry){
+                return $type_entry->id;
+            }
+        );
+        return new CreateEditResourceVM(
+            $contentLanguages, $difficulties, $type_ids, new  Resource($resource_params), -1
+        );
+    }
+
+
+
+
     public function getResourceTypes()
     {
         return $this->resourceTypeLkpRepository->all();
@@ -67,6 +85,14 @@ class ResourceManager {
     public function getResource($id){
         return $this->resourceRepository->find($id);
     }
+
+
+    public function getResources(int $lang_id, $user_id = null, array $status_ids ) {
+        $ret = $this->resourceRepository->getResources($user_id, $lang_id, $status_ids);
+        return $ret;
+    }
+
+
 
 
     /**
@@ -111,7 +137,7 @@ class ResourceManager {
             "name" => $request['name'],
 //            "lang_id" => $request['lang'],
             "img_path" => null,
-            "audio_path" => null,
+            "pdf_path" => null,
 //            'type_id' => ResourceTypesLkp::COMMUNICATION,
 //            'status_id' => ResourceStatusesLkp::CREATED_PENDING_APPROVAL,
 //            'resource_parent_id' => $request->parentId ? intval($request->parentId) : null,
@@ -120,7 +146,6 @@ class ResourceManager {
         ];
         $old_resource = $this->resourceRepository->find($id);
         $storeArr['img_path'] = $old_resource['img_path'];
-        $storeArr['audio_path'] = $old_resource['audio_path'];
         $resource = $this->resourceRepository->update($storeArr, $id);
         $resourceFileManager = new ResourceFileManager();
         if (isset($request['image'])) {
@@ -128,13 +153,6 @@ class ResourceManager {
             $img_path = $resourceFileManager->saveImage($resource->id, $request);
             $resource = $this->resourceRepository->update([
                 'img_path' => $img_path],
-                $resource->id);
-        }
-        if (isset($request['sound'])) {
-            $resourceFileManager->deleteResourceAudio($old_resource);
-            $audio_path = $resourceFileManager->saveAudio($resource->id, $request);
-            $resource = $this->resourceRepository->update([
-                'audio_path' => $audio_path],
                 $resource->id);
         }
 

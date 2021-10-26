@@ -7,6 +7,7 @@ namespace App\ViewModels;
 use App\Models\Resource\Resource;
 use Illuminate\Collections\ItemNotFoundException;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use PHPUnit\Exception;
 use App\Repository\Resource\ResourceTypesLkp;
 

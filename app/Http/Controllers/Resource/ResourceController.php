@@ -3,12 +3,6 @@
 namespace App\Http\Controllers\Resource;
 
 use App\BusinessLogicLayer\Resource\ResourceManager;
-use App\BusinessLogicLayer\Resource\ResourcesPackageManager;
-use App\BusinessLogicLayer\Resource\PatientResourcesPackageManager;
-use App\BusinessLogicLayer\Resource\SimilarityCarerResourcesPackageManager;
-use App\BusinessLogicLayer\Resource\TimeCarerResourcesPackageManager;
-use App\BusinessLogicLayer\Resource\CarerResourcesPackageManager;
-use App\BusinessLogicLayer\Resource\ResponseCarerResourcesPackageManager;
 use App\BusinessLogicLayer\User\UserManager;
 use App\Models\User;
 use App\Notifications\AdminNotice;
@@ -67,8 +61,9 @@ class ResourceController extends Controller
     {
 
 //        $createResourceViewModel = $this->communicationResourceManager->getCreateResourceViewModel();
-        $displayResourceViewModel = $this->resourceManager->getCreateResourcesViewModel();
-        return view('exercise-page')->with(['viewModel' => $displayResourceViewModel]);
+        $displayResourceViewModel = $this->resourceManager->getDisplayResourcesViewModel();
+        $displayResourceViewModel->isAdmin = Auth::check() && $this->userManager->isAdmin(Auth::user());
+        return view('exercise-page')->with(['viewModel' => $displayResourceViewModel,  'user' => Auth::user()]);
     }
 
 
@@ -247,6 +242,21 @@ class ResourceController extends Controller
             abort(404);
         }
     }
+
+    public function getResources(Request $request)
+    {
+        $user_id = null;
+        if ($request->user_id_to_get_content) {
+            $user_id = intval($request->user_id_to_get_content);
+        }
+        $status_ids = explode(',', $request->status_ids);
+        return $this->resourceManager->getResources(
+            $request->lang_id,
+            $user_id,
+            $status_ids
+        );
+    }
+
 
     public function approve_pending_packages()
     {

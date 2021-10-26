@@ -39,13 +39,13 @@ Route::middleware(['auth'])->group(function () {
             'create' => 'resources.create',
             'store' => 'resources.store',
             'edit' => 'resources.edit',
-            'download_package' => 'resources.download_package',
             'update' => 'resources.update',
             'destroy' => 'resources.destroy'
         ]);
     Route::get('resources/display_exercises', [ResourceController::class, 'display'])->name('resources.display');
     Route::get('resources/approve_pending_packages', [ResourceController::class, 'approve_pending_packages'])->name('resources_packages.approve_pending_packages');
-    Route::get("resources/clone_package/{id}", [ResourceController::class, 'clone_package'])->name('resources_packages.clone_package');
+    Route::get("resources/download/{id}", [ResourceController::class, 'download'])->name('resources.download');
+    Route::get("resources/clone/{id}", [ResourceController::class, 'clone'])->name('resources.clone');
     Route::get("/my-packages", [ResourceController::class, 'my_packages'])->name('resources_packages.my_packages');
     Route::get("/resources/delete/package/{id}", [ResourceController::class, 'delete_package'])->name('resources_packages.destroy_package');
     Route::post("/resources/approve/{id}", [ResourceController::class, 'approve'])->name('resources.approve');

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{mix('dist/css/exercise-template.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ mix('dist/css/resources-index.css') }}">
 @endpush
 
 @section('content')
@@ -202,6 +203,17 @@
             </div>
         </div>
 
+        <div class="row mt-5">
+            <div class="col">
+                <exercises-with-filters
+                    :resources-route="'{{ route('resources.get') }}'"
+                    :user='@json($user)'
+                    :resources-statuses='@json($viewModel->types)'
+                    :is-admin="'{{$viewModel->isAdmin}}'"
+                    :approve-resources="{{0}}">
+                </exercises-with-filters>
+            </div>
+        </div>
     </main>
 
 

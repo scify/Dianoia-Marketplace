@@ -1,43 +1,36 @@
 <template>
-    <div v-if="resourcesPackage.id">
+    <div v-if="resource.id">
         <div class="card w-100" >
             <div class="dropdown-container">
                 <div class="dropdown">
                     <button class="btn btn-outline-secondary dropdown-toggle actions-btn" type="button"
-                            :id="'dropdownMenuButton_' + resourcesPackage.id" data-bs-toggle="dropdown"
+                            :id="'dropdownMenuButton_' + resource.id" data-bs-toggle="dropdown"
                             aria-expanded="false">
                         <i class="fas fa-ellipsis-v"></i>
                     </button>
-                    <ul class="dropdown-menu" :aria-labelledby="'dropdownMenuButton_' + resourcesPackage.id">
+                    <ul class="dropdown-menu" :aria-labelledby="'dropdownMenuButton_' + resource.id">
 
 
-                        <li v-if="!isAdminPageForPackageApproval()">
-                            <a v-if="isPatientPackage()" class="dropdown-item"
-                               :href="getDownloadPatientPackageRoute()"><i
-                                class="fas fa-file-download me-2"></i>Download</a>
-                            <a v-else-if="isCarerPackage()" class="dropdown-item"
-                               :href="getDownloadCarerPackageRoute()"><i
+                        <li v-if="!isAdminPageForExerciseApproval()">
+                            <a  class="dropdown-item" :href="getDownloadExerciseRoute()"><i
                                 class="fas fa-file-download me-2"></i>Download</a>
                         </li>
-                        <li v-if="!isAdminPageForPackageApproval()">
+                        <li v-if="!isAdminPageForExerciseApproval()">
                             <a class="dropdown-item"
-                               :href="getClonePackageRoute()"><i
+                               :href="getCloneExerciseRoute()"><i
                                 class="fas fa-clone me-2"></i>Clone</a>
                         </li>
 
-                        <li v-if="(!loggedInUserIsDifferentFromContentUser() || loggedInUserIsAdmin()) && !isAdminPageForPackageApproval()">
-                            <a v-if="isPatientPackage()" class="dropdown-item"
-                               :href="getEditPatientPackageRoute()"><i
-                                class="fas fa-edit me-2"></i>Edit</a>
-                            <a v-else-if="isCarerPackage()" class="dropdown-item" :href="getEditCarerPackageRoute()"><i
+                        <li v-if="(!loggedInUserIsDifferentFromContentUser() || loggedInUserIsAdmin()) && !isAdminPageForExerciseApproval()">
+                            <a  class="dropdown-item" :href="getEditExerciseRoute()"><i
                                 class="fas fa-edit me-2"></i>Edit</a>
                             <a class="dropdown-item" @click="showDeleteModal"><i
                                 class="fas fa-trash-alt me-2"></i>Delete</a>
                         </li>
                         <li v-if="loggedInUserIsAdmin()">
-                            <a class="dropdown-item" @click="approvePackage"><i
+                            <a class="dropdown-item" @click="approveExercise"><i
                                 class="fas fa-check-circle me-2"></i>Approve</a>
-                            <a class="dropdown-item" @click="showPackageRejectionModal"><i
+                            <a class="dropdown-item" @click="showExerciseRejectionModal"><i
                                 class="fas fa-angry me-2"></i>Reject</a>
                         </li>
                         <li v-else>
@@ -46,19 +39,14 @@
                     </ul>
                 </div>
             </div>
-            <img :src="'/storage/'+resourcesPackage.cover_resource.img_path" class="card-img-top"
-                 :alt="resourcesPackage.cover_resource.name">
+            <img :src="'/storage/'+resource.img_path" class="card-img-top"
+                 :alt="resource.name">
             <div class="card-body">
                 <p class="card-title"  style="margin-bottom: 0;">
-                    {{ resourcesPackage.cover_resource.name }}
+                    {{ resource.name }}
                 </p>
-                <audio v-if="isPatientPackage()" controls class="mt-1" controls="controls" style="width: 100%;">
-                    <source v-bind:src="'storage/' + resourcesPackage.cover_resource.audio_path" type="audio/mpeg" />
-                    Your browser does not support the audio element.
-                </audio>
-
                 <p class="card-subtitle mb-2 text-muted">
-                    {{ trans('messages.made_by') }} {{ resourcesPackage.creator.name }}
+                    {{ trans('messages.made_by') }} {{ resource.creator.name }}
                 </p>
                 <button
                     @click="showChildrenResourcesModal"
@@ -81,51 +69,14 @@
             </div>
         </div>
         <modal
-            @canceled="resourceChildrenModalOpen = false"
-            id="children-resources-modal"
-            class="modal"
-            :classes="'modal-dialog-centered modal-dialog-scrollable modal-xl'"
-            :open="resourceChildrenModalOpen"
-            :allow-close="true">
-            <template v-slot:header>
-                <h5 class="modal-title pl-2">{{ trans('messages.package_cards_modal_title') }}
-                    <b>{{ resourcesPackage.cover_resource.name }}</b>
-                </h5>
-            </template>
-            <template v-slot:body>
-                <div class="container py-3">
-                    <div class="row">
-                        <div
-                            v-for="(resource, index) in resourcesPackage.cover_resource.children_resources" :key="index"
-                            class="col-md-4 col-sm-12 mb-3">
-                                <div class="card w-100">
-                                    <img :src="'/storage/' + resource.img_path" class="card-img-top"
-                                         :alt="resource.name">
-                                    <div class="card-body">
-                                        <p class="card-title">
-                                            {{ resource.name }}
-                                        </p>
-                                        <audio v-if="isPatientPackage()" controls class="mt-3 w-100">
-                                            <source :src="'/storage/' + resource.audio_path"
-                                                    type="audio/mpeg">
-                                        </audio>
-                                    </div>
-                                </div>
-
-                        </div>
-                    </div>
-                </div>
-            </template>
-        </modal>
-        <modal
             @canceled="rateModalOpen = false"
-            id="rate-package-modal"
+            id="rate-exercise-modal"
             class="modal"
             :open="rateModalOpen"
             :allow-close="true">
             <template v-slot:header>
-                <h5 class="modal-title pl-2">{{ trans('messages.rate_package_modal_title') }}
-                    <b>{{ resourcesPackage.cover_resource.name }}</b>
+                <h5 class="modal-title pl-2">{{ trans('messages.rate_exercise_modal_title') }}
+                    <b>{{ resource.name }}</b>
                 </h5>
             </template>
             <template v-slot:body>
@@ -133,7 +84,7 @@
                     <div class="row mb-4">
                         <div class="col">
                             <h6 v-if="userLoggedIn()">{{ getRateTitleForUser() }}</h6>
-                            <h6 v-else>You need to sign in in order to rate this package.</h6>
+                            <h6 v-else>You need to sign in in order to rate this exercise.</h6>
                         </div>
                     </div>
                     <div class="row" v-if="userLoggedIn()">
@@ -141,7 +92,7 @@
                              class="col-2"
                              v-bind:class="{'offset-1': index === 1}">
                             <button
-                                @click="ratePackage(index)"
+                                @click="rateExercise(index)"
                                 class="rate-btn btn btn btn-outline-light w-100 p-0">
                                 <i class="fa-star"
                                    v-bind:class="{ fas: resourceHasRatingFromUser(index), far: !resourceHasRatingFromUser(index) }"></i>
@@ -160,13 +111,13 @@
         </modal>
         <modal
             @canceled="deleteModalOpen = false"
-            id="delete-package-modal"
+            id="delete-exercise-modal"
             class="modal"
             :open="deleteModalOpen"
             :allow-close="true">
             <template v-slot:header>
-                <h5 class="modal-title pl-2">{{ trans('messages.delete_package') }}
-                    <b>{{ resourcesPackage.cover_resource.name }}</b>
+                <h5 class="modal-title pl-2">{{ trans('messages.delete_exercise') }}
+                    <b>{{ resource.name }}</b>
                 </h5>
             </template>
             <template v-slot:body>
@@ -177,7 +128,7 @@
                                 <h4>{{trans('messages.warning_deletion')}}</h4>
                             </div>
 
-                            <a :href="getDeletePackageRoute()" class="btn btn-danger">
+                            <a :href="getDeleteExerciseRoute()" class="btn btn-danger">
                                 {{trans('messages.delete')}}
                             </a>
                         </div>
@@ -186,15 +137,15 @@
             </template>
         </modal>
         <modal
-            @canceled="packageRejectionModalOpen = false"
-            id="package-rejection-modal"
+            @canceled="exerciseRejectionModalOpen = false"
+            id="exercise-rejection-modal"
             class="modal"
-            :open="packageRejectionModalOpen"
+            :open="exerciseRejectionModalOpen"
             :allow-close="true">
 
             <template v-slot:header>
-                <h5 class="modal-title pl-2">{{ trans('messages.reject_package') }}
-                    <b>{{ resourcesPackage.cover_resource.name }}</b>
+                <h5 class="modal-title pl-2">{{ trans('messages.reject_exercise') }}
+                    <b>{{ resource.name }}</b>
                 </h5>
             </template>
             <template v-slot:body>
@@ -206,8 +157,8 @@
                         <div id="rejectForm">
                             <textarea rows="4" cols="50" v-model="rejectionMessage"></textarea>
                             <p>{{trans('messages.warning_rejection')}}</p>
-                            <button @click="rejectPackage" class="btn btn-danger">
-                                {{trans('messages.reject_package')}}
+                            <button @click="rejectExercise" class="btn btn-danger">
+                                {{trans('messages.reject_exercise')}}
                             </button>
                         </div>
                     </div>
@@ -224,7 +175,7 @@ export default {
         this.computeTotalRating();
     },
     props: {
-        resourcesPackage: {
+        resource: {
             type: Object,
             default: function () {
                 return {}
@@ -236,22 +187,23 @@ export default {
                 return {}
             }
         },
+        resourcesRoute: String,
         userIdToGetContent: Number,
-        packagesType: String,
+        exercisesType: String,
         isAdmin: String,
-        approvePackages: Number
+        approveExercises: Number
     },
     data: function () {
         return {
             userRating: 0,
             totalRating: 0,
             maxRating: 5,
-            rejectionMessage: "this package violates the platform rules of conduct",
+            rejectionMessage: "this exercise violates the platform rules of conduct",
             resourceChildrenModalOpen: false,
             rateModalOpen: false,
             deleteModalOpen: false,
-            packageRejectionModalOpen: false,
-            rateTitleKey: 'rate_package_modal_body_text_no_rating'
+            exerciseRejectionModalOpen: false,
+            rateTitleKey: 'rate_exercise_modal_body_text_no_rating'
         }
     },
     methods: {
@@ -263,26 +215,20 @@ export default {
         getFormValues () {
             this.output = this.$refs.message.value
         },
-        getDownloadCarerPackageRoute() {
-            return route('carer_resources.download_package', this.resourcesPackage.id);
+        getDownloadExerciseRoute() {
+            return route('resources.download', this.resource.id);
         },
-        getDownloadPatientPackageRoute() {
-            return route('patient_resources.download_package', this.resourcesPackage.id);
+        getEditExerciseRoute() {
+            return route('resources.edit', this.resource.id);
         },
-        getEditPatientPackageRoute() {
-            return route('patient_resources.edit', this.resourcesPackage.id);
+        getRejectExerciseRoute(){
+          return route('resources.reject', this.resource.id);
         },
-        getRejectPackageRoute(){
-          return route('resources.reject', this.resourcesPackage.id);
+        getCloneExerciseRoute() {
+            return route('resources.clone', this.resource.id);
         },
-        getClonePackageRoute() {
-            return route('resources_packages.clone_package', this.resourcesPackage.id);
-        },
-        getEditCarerPackageRoute() {
-            return route('carer_resources.edit', this.resourcesPackage.id);
-        },
-        getDeletePackageRoute() {
-            return route('resources_packages.destroy_package', this.resourcesPackage.id);
+        getDeleteExerciseRoute() {
+            return route('resources.destroy', this.resource.id);
         },
         resourceHasRating(rateIndex) {
             return this.totalRating >= rateIndex;
@@ -294,7 +240,7 @@ export default {
             this.resourceChildrenModalOpen = true;
         },
         computeTotalRating() {
-            const ratings = _.map(this.resourcesPackage.ratings, 'rating');
+            const ratings = _.map(this.resource.ratings, 'rating');
             const sum = ratings.reduce((a, b) => a + b, 0);
             this.totalRating = Math.round(sum / ratings.length) || 0;
         },
@@ -304,19 +250,19 @@ export default {
                 return;
             if (this.userLoggedIn()) {
                 this.get({
-                    url: route('resources-package.user-rating.get')
-                        + '?resources_package_id=' + this.resourcesPackage.id + '&user_id=' + this.user.id,
+                    url: route('resources.user-rating.get')
+                        + '?resources_exercise_id=' + this.resource.id + '&user_id=' + this.user.id,
                     urlRelative: false
                 }).then(response => {
                     this.userRating = response.data.rating;
                 });
             }
         },
-        rejectPackage(){
+        rejectExercise(){
             this.post({
-                url: this.getRejectPackageRoute(),
+                url: this.getRejectExerciseRoute(),
                 data:{
-                    id: this.resourcesPackage.id,
+                    id: this.resource.id,
                     rejection_message: this.rejectionMessage
                 },
                 urlRelative: false
@@ -325,17 +271,17 @@ export default {
             });
         },
 
-        showPackageRejectionModal() {
-            this.packageRejectionModalOpen = true;
+        showExerciseRejectionModal() {
+            this.exerciseRejectionModalOpen = true;
 
         },
-        getApprovePackageRoute(){
-            return route('resources.approve', this.resourcesPackage.id);
+        getApproveExerciseRoute(){
+            return route('resources.approve', this.resource.id);
         },
 
-        approvePackage(){
+        approveExercise(){
             this.post({
-                url: this.getApprovePackageRoute(),
+                url: this.getApproveExerciseRoute(),
                 urlRelative: false
              }).then(response => {
                 console.log(response);
@@ -349,33 +295,33 @@ export default {
         },
         getRateTitleForUser() {
             if (this.userRating)
-                this.rateTitleKey = 'rate_package_modal_body_text_update_rating';
+                this.rateTitleKey = 'rate__modal_body_text_update_rating';
             return window.translate('messages.' + this.rateTitleKey);
         },
-        ratePackage(rateIndex) {
+        rateExercise(rateIndex) {
             this.post({
-                url: route('resources-package.user-rating.post'),
+                url: route('resources.user-rating.post'),
                 data: {
                     user_id: this.user.id,
-                    resources_package_id: this.resourcesPackage.id,
+                    resources_exercise_id: this.resource.id,
                     rating: rateIndex
                 },
                 urlRelative: false
             }).then(response => {
                 this.userRating = response.data.rating;
                 let found = false;
-                for (let i = 0; i < this.resourcesPackage.ratings.length; i++) {
-                    if (this.resourcesPackage.ratings[i].voter_user_id === this.user.id) {
-                        this.resourcesPackage.ratings[i].rating = response.data.rating;
+                for (let i = 0; i < this.resource.ratings.length; i++) {
+                    if (this.resource.ratings[i].voter_user_id === this.user.id) {
+                        this.resource.ratings[i].rating = response.data.rating;
                     }
                 }
                 if (!found)
-                    this.resourcesPackage.ratings.push(response.data);
+                    this.resource.ratings.push(response.data);
                 this.computeTotalRating();
             });
         },
         loggedInUserIsDifferentFromContentUser() {
-            return this.resourcesPackage.creator.id !== this.user.id;
+            return this.resource.creator.id !== this.user.id;
         },
         loggedInUserIsAdmin() {
             return this.isAdmin === '1';
@@ -386,15 +332,15 @@ export default {
         getLoginRoute() {
             return route('login');
         },
-        isPatientPackage() {
-            return this.packagesType === "COMMUNICATION";
+        isPatientExercise() {
+            return this.exercisesType !== "carer";
         },
-        isCarerPackage() {
-            return this.packagesType === "GAME";
+        isCarerExercise() {
+            return this.exercisesType === "carer";
         },
-        isAdminPageForPackageApproval(){
-            console.log(this.approvePackages )
-            return this.approvePackages === 1;
+        isAdminPageForExerciseApproval(){
+            console.log(this.approveExercises )
+            return this.approveExercises === 1;
         },
 
 
@@ -403,5 +349,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "resources/sass/resources-packages";
+@import "resources/sass/resources";
 </style>

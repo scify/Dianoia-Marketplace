@@ -26,8 +26,8 @@ Vue.prototype.trans = (string, args) => {
 };
 
 Vue.component('modal', require('./vue-components/common/ModalComponent').default);
-Vue.component('resources-packages-with-filters', require('./vue-components/resources/ResourcesPackagesWithFilters').default);
-Vue.component('resource-package', require('./vue-components/resources/ResourcesPackage').default);
+Vue.component('exercises-with-filters', require('./vue-components/resources/ExercisesWithFilters').default);
+Vue.component('exercise', require('./vue-components/resources/Exercise').default);
 
 
 const app = new Vue({

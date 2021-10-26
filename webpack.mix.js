@@ -36,7 +36,7 @@ mix.sass('resources/sass/main.scss', 'public/dist/css')
     .sass('resources/sass/homepage.scss', 'public/dist/css')
     .sass('resources/sass/profile-page.scss', 'public/dist/css')
     .sass('resources/sass/exercise-page.scss', 'public/dist/css')
-    .sass('resources/sass/resources-packages-index.scss', 'public/dist/css')
+    .sass('resources/sass/resources-index.scss', 'public/dist/css')
     .sass('resources/sass/create-edit.scss', 'public/dist/css')
     .sourceMaps()
     .webpackConfig({
