@@ -87,7 +87,7 @@ class ResourceFileManager
      */
     public  function savePdf($id, Request $request): ?string
     {
-        $contentPdf = $request->file('contents_file');
+        $contentPdf = $request->file('pdf');
         if (!$contentPdf) {
             throw(new FileNotFoundException('Pdf missing'));
         }

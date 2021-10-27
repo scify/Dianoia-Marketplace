@@ -36,7 +36,7 @@
                     <select class="form-select" aria-label="category_lang" name="lang">
                         @foreach ($viewModel->languages as $lang){
                         @if($viewModel->lang === $lang->code)
-                            <option selected> {{$lang->name}} </option>
+                            <option selected value="{{$lang->id}}"> {{$lang->name}} </option>
                         @else
                             <option value="{{$lang->id}}"> {{$lang->name}} </option>
                         @endif
@@ -101,15 +101,11 @@
                 <div class="alert alert-danger">{{$message}}</div>
                 @enderror
                 <div class="mb-3">
-                    <label for="contents_file" class="form-label">Upload Exercise (pdf/txt)<span
+                    <label for="pdf" class="form-label">Upload Exercise (pdf)<span
                             style="color:#ff0000">*</span></label>
-                    @if($viewModel->isEditMode())
-                        <input type="file" class="form-control" id="customFile" name="contents_file" />
-                    @else
-                        <input type="file" class="form-control" id="customFile" name="contents_file"/>
-                    @endif
+                    <input type="file" class="form-control" id="customFile" name="pdf"/>
                 </div>
-                @error('contents_file')
+                @error('pdf')
                 <div class="alert alert-danger">{{$message}}</div>
                 @enderror
             </div>
