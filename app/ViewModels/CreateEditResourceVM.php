@@ -17,20 +17,20 @@ class CreateEditResourceVM
     public Collection $difficulties;
     public Collection $types;
     public Resource $resource;
-    public int $lang_id;
+    public String $lang;
 
     public function __construct(Collection $languages,
                                 Collection $difficulties,
                                 Collection $types,
                                 Resource $resource,
-                                int $lang_id = -1
+                                String $lang
                 )
     {
         $this->languages = $languages;
         $this->difficulties = $difficulties;
         $this->types = $types;
         $this->resource = $resource;
-        $this->lang_id = $lang_id;
+        $this->lang = $lang;
 
     }
 

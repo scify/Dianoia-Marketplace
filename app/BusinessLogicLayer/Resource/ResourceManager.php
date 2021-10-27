@@ -37,26 +37,27 @@ class ResourceManager {
     }
 
 
-    public function getCreateResourcesViewModel(array $resource_params = []): CreateEditResourceVM {
+    public function getCreateResourcesViewModel(): CreateEditResourceVM {
         $contentLanguages = $this->getContentLanguagesForResources();
         $difficulties = $this->getDifficultiesForResources();
         $types = $this->getResourceTypes();
+        $lang = app()->getLocale();
         return new CreateEditResourceVM(
-            $contentLanguages, $difficulties, $types, new  Resource($resource_params), -1
+            $contentLanguages, $difficulties, $types, new  Resource(), $lang
         );
     }
 
     public function getDisplayResourcesViewModel(array $resource_params = []): CreateEditResourceVM {
         $contentLanguages = $this->getContentLanguagesForResources();
         $difficulties = $this->getDifficultiesForResources();
-
+        $lang = app()->getLocale();
         $type_ids = $this->getResourceTypes()->map(
             function($type_entry){
                 return $type_entry->id;
             }
         );
         return new CreateEditResourceVM(
-            $contentLanguages, $difficulties, $type_ids, new  Resource($resource_params), -1
+            $contentLanguages, $difficulties, $type_ids, new  Resource($resource_params), $lang
         );
     }
 

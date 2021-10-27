@@ -33,9 +33,9 @@
                 </div>
                 <div class="mb-3">
                     <label for="category_lang" class="form-label">{{trans("messages.language")}}</label>
-                    <select class="form-select"@if($viewModel->lang_id != -1) disabled @endif aria-label="category_lang" name="lang">
+                    <select class="form-select" aria-label="category_lang" name="lang">
                         @foreach ($viewModel->languages as $lang){
-                        @if($viewModel->lang_id === $lang->id)
+                        @if($viewModel->lang === $lang->code)
                             <option selected> {{$lang->name}} </option>
                         @else
                             <option value="{{$lang->id}}"> {{$lang->name}} </option>

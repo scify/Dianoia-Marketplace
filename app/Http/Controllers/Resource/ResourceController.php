@@ -4,20 +4,15 @@ namespace App\Http\Controllers\Resource;
 
 use App\BusinessLogicLayer\Resource\ResourceManager;
 use App\BusinessLogicLayer\User\UserManager;
-use App\Models\User;
 use App\Notifications\AdminNotice;
 use App\Repository\Resource\ResourceStatusesLkp;
-use App\Repository\Resource\ResourceTypeLkpRepository;
 use App\Repository\Resource\ResourceTypesLkp;
 use App\Http\Controllers\Controller;
-use App\ViewModels\CreateEditResourceVM;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use App\Repository\User\UserRepository;
 use Illuminate\Support\Facades\Notification;
 
 class ResourceController extends Controller
@@ -63,6 +58,7 @@ class ResourceController extends Controller
 //        $createResourceViewModel = $this->communicationResourceManager->getCreateResourceViewModel();
         $displayResourceViewModel = $this->resourceManager->getDisplayResourcesViewModel();
         $displayResourceViewModel->isAdmin = Auth::check() && $this->userManager->isAdmin(Auth::user());
+
         return view('exercise-page')->with(['viewModel' => $displayResourceViewModel,  'user' => Auth::user()]);
     }
 
@@ -72,13 +68,9 @@ class ResourceController extends Controller
      *
      * @return View
      */
-    public function create(Request $request): View
+    public function create(): View
     {
-        $createResourceViewModel = $this->resourceManager->getCreateResourcesViewModel(
-            [
-                "type_id" => $request->type_id,
-            ]
-        );
+        $createResourceViewModel = $this->resourceManager->getCreateResourcesViewModel();
         return view('form-new-exercise')->with(['viewModel' => $createResourceViewModel]);
     }
 
@@ -305,29 +297,8 @@ class ResourceController extends Controller
     public function clone_package($package_id){
 
         $package = $this->resourcesPackageManager->getResourcesPackage($package_id);
-        $coverResource = $this->resourceManager->cloneResource($package->card_id, null);
-        if ($package->type_id === ResourceTypesLkp::COMMUNICATION) {
-            $manager = $this->patientResourcesPackageManager;
-            $ret_route = "patient_resources.edit";
-        } else if ($package->type_id  === ResourceTypesLkp::SIMILAR_GAME) {
-            $manager = $this->similarityCarerResourcesPackageManager;
-            $ret_route = "carer_resources.edit";
-        } else if ($package->type_id  === ResourceTypesLkp::TIME_GAME) {
-            $manager = $this->timeCarerResourcesPackageManager;
-            $ret_route = "carer_resources.edit";
-        } else if ($package->type_id  === ResourceTypesLkp::RESPONSE_GAME) {
-            $manager = $this->responseCarerResourcesPackageManager;
-            $ret_route = "carer_resources.edit";
-        } else {
-            throw(new \ValueError("Type not supported"));
-        }
-
-        $newPackage = $manager->storeResourcePackage($coverResource, $package->lang_id);
-        $childrenWithParent = $manager->getChildrenCardsWithParent($package->card_id);
-        foreach($childrenWithParent as $child){
-            $this->resourceManager->cloneResource($child->id, $coverResource->id);
-        }
-        return redirect()->route($ret_route,$newPackage->id)->with('flash_message_success',  'Success! The resource package has been copied');
+        $resource = $this->resourceManager->cloneResource($package->card_id, null);
+        return redirect()->route("resources.edit",$resource->id)->with('flash_message_success',  'Success! The resource package has been copied');
     }
 
 

@@ -139,7 +139,7 @@
                            aria-label="Search" aria-describedby="search-addon" />
                     <button type="button" class="btn btn-outline-primary">Αναζήτηση</button>
                 </div>
-                <div> <a href="{{route('resources.create',['viewModel' => $viewModel])}}" class="btn btn--primary" target="_blank">Δημιούργησε νέα άσκηση</a>
+                <div> <a href="{{route('resources.create')}}" class="btn btn--primary" target="_blank">Δημιούργησε νέα άσκηση</a>
                 </div>
             </div>
 
