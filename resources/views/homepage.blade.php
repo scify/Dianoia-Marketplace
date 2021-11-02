@@ -20,7 +20,9 @@
             <div class="header__text-box row">
                 <div class="col-12">
                     <div class="header__text-box-1 row">
-                        <div class="col">Βοηθάς άνθρωπο με αρχόμενη άνοια;<br /><br />
+                        <div class="col">
+{{--                            {{__('messages.intro')}}--}}
+                            Βοηθάς άνθρωπο με αρχόμενη άνοια;<br /><br />
                             <ul>
                                 <li>- Βρες νοητικές ασκήσεις και δραστηριότητες που μπορείτε να απολαύσετε από κοινού
                                 </li>
@@ -36,8 +38,8 @@
                 <div class="col-12">
                     <div class="row">
                         <div class="header__text-box-2 col-md-6 col-sm-12">
-                            <a href="#">   <b><u> {{__('messages.create-content')}}</u></b></a>
-{{--                            Δημιούργησε     <a href="#">   <b><u>νέο περιεχόμενο</u></b></a>--}}
+{{--                            <a href="#">   <b><u> {{__('messages.create-content')}}</u></b></a>--}}
+                            Δημιούργησε     <a href="#">   <b><u>νέο περιεχόμενο</u></b></a>
                         </div>
                         <div class="header__text-box-3 col-md-6 col-sm-12">
                             <a href="#">{{__('messages.learn-more-mobile')}}</a>

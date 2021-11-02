@@ -3,34 +3,34 @@
 @import "common/mixins";
 @import "common/variables";
 
-// bootstrap
-@import "~bootstrap/scss/bootstrap";
-@import "~flickity/dist/flickity.min.css";
-// FontAwesome
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~@fortawesome/fontawesome-free/scss/brands';
+//// bootstrap
+//@import "~bootstrap/scss/bootstrap";
+//@import "~flickity/dist/flickity.min.css";
+//// FontAwesome
+//@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+//@import '~@fortawesome/fontawesome-free/scss/regular';
+//@import '~@fortawesome/fontawesome-free/scss/solid';
+//@import '~@fortawesome/fontawesome-free/scss/brands';
 
 .navbar {
-    background-color:  var(--color-grey-light);;
+    background-color:  var(--color-grey-light);
 
     .nav-link {
         font-weight: bold;
     }
 
     .navbar-item-dropdown {
-        background-color: $green;
-        border-color: $green;
+        background-color: transparent;
+        border-color:transparent;
         border-radius: 5px;
 
-        a.dropdown-toggle {
-            color: $white !important;
-        }
+        //a.dropdown-toggle {
+        //    color: var(--color-blue-dark) !important;
+        //}
 
         &:hover {
-            background-color: #71C6AC;
-            border-color: #71C6AC;
+            background-color: transparent;
+            border-color: transparent;
         }
     }
 }
@@ -45,11 +45,11 @@ h1 {
 }
 
 a {
-    color:  var(--color-green);;
+    color:  var(--color-blue-dark);;
     text-decoration: none;
 
     &:hover {
-        color: var(--color-green);
+        color: var(--color-blue-dark)  !important;;
     }
 }
 

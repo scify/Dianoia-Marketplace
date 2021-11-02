@@ -34,10 +34,10 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"
-                               href="#">{{__('messages.dianoia-marketplace')}}</a>
+                               href="#">{{__('messages.marketplace')}}</a>
                         </li>
                         <li><a class="dropdown-item"
-                               href="#">{{__('messages.dianoia-mobile')}}</a>
+                               href="#">{{__('messages.mobile-app')}}</a>
                         </li>
                         <li><a class="dropdown-item"
                                href="#">{{__('messages.patients')}}</a>
@@ -62,7 +62,7 @@
                 @guest()
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">
-                            {!! __('messages.sign_in_register') !!}
+                            {!! __('messages.sign-in')!!}/{!! __('messages.sign-up')!!}
                         </a>
                     </li>
                 @else
