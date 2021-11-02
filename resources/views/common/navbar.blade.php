@@ -1,16 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand" href="{{ route('homepage') }}" tabindex="-1">
-{{--            <img--}}
-{{--                loading="lazy"--}}
-{{--                src="{{ asset('img/dianoia_logo.jpg') }}" height="150px" alt="Marketplace logo">--}}
+            <img
+                loading="lazy"
+                src="{{ asset('img/dianoia_logo.jpg') }}" height="100px" alt="Marketplace logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-auto">
 {{--                <li class="nav-item dropdown navbar-item-dropdown">--}}
 {{--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"--}}
 {{--                       data-bs-toggle="dropdown" aria-expanded="false">--}}
@@ -30,7 +30,7 @@
 {{--                </li>--}}
                 <li class="nav-item dropdown navbar-item-dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">ΔιΆνοια
+                       data-bs-toggle="dropdown" aria-expanded="false"> διΆνοια
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"
@@ -50,7 +50,7 @@
                 <li class="nav-item">
                     <a class="nav-link {{ UrlMatchesMenuItem("resources.create-edit") }}"
                        href="#">
-                        διΆνοια mobile εφαρμογή
+                        {{__('messages.mobile-app')}}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -73,7 +73,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">
-                                    {!! __('messages.my_profile') !!}
+                                    {!! __('messages.user') !!}
                                 </a>
                             </li>
                             @can('manage-platform')

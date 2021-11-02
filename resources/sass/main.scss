@@ -3,20 +3,21 @@
 @import "common/mixins";
 @import "common/variables";
 
-//// bootstrap
-//@import "~bootstrap/scss/bootstrap";
-//@import "~flickity/dist/flickity.min.css";
+// bootstrap
+@import "~bootstrap/scss/bootstrap";
+@import "~flickity/dist/flickity.min.css";
 //// FontAwesome
-//@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-//@import '~@fortawesome/fontawesome-free/scss/regular';
-//@import '~@fortawesome/fontawesome-free/scss/solid';
-//@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
 
 .navbar {
     background-color:  var(--color-grey-light);
 
     .nav-link {
         font-weight: bold;
+        font-size: $default-font-size;
     }
 
     .navbar-item-dropdown {
