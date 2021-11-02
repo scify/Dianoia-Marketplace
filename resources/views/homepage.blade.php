@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="header__text-box-2 col-md-6 col-sm-12">
 {{--                            <a href="#">   <b><u> {{__('messages.create-content')}}</u></b></a>--}}
-                            Δημιούργησε     <a href="#">   <b><u>νέο περιεχόμενο</u></b></a>
+                            Δημιούργησε     <a href="{{route('resources.create')}}">   <b><u>νέο περιεχόμενο</u></b></a>
                         </div>
                         <div class="header__text-box-3 col-md-6 col-sm-12">
                             <a href="#">{{__('messages.learn-more-mobile')}}</a>

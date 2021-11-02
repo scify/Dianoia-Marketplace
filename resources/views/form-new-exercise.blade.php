@@ -72,7 +72,7 @@
                     <!--<input type="radio" class="form-control" id="category_lang"> -->
                 </div>
                 <div class="mb-3">
-                    <label for="upload_img" class="form-label"> {{trans("messages.upload_img")}} <span
+                    <label for="upload_img" class="form-label"> {{trans("messages.upload-image")}} <span
                             style="color:#ff0000">*</span></label>
                     <div class="file-field px-5">
                         <a class="btn-floating float-left">
@@ -90,7 +90,7 @@
                         <img src={{asset("storage/".$viewModel->resource->img_path)}} id="url" class="mt-3"
                              height="200px"/>
                     @else
-                        <img src={{asset('/audio/happiness.png')}} style="display:none" id="url"
+                        <img src={{asset('/img/happiness.png')}} style="display:none" id="url"
                              class="mt-3"
                              height="200px"/>
                     @endif
@@ -117,7 +117,7 @@
                     {{trans("messages.cancel")}}
                 </a>
 
-                <input  id="exerciseSubmitBtn" class="btn btn-primary ms-4" type="submit" value={{trans("messages.save_card")}}>
+                <input  id="exerciseSubmitBtn" class="btn btn-primary ms-4" type="submit" value={{trans("messages.finish-edit")}}>
             </div>
         </div>
     </form>
