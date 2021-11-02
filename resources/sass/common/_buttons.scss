@@ -1,55 +1,70 @@
 .btn {
-  &,
-  &:link,
-  &:visited {
-    padding: 0.5rem 1.5rem;
-    font-weight: 500;
-    border-radius: 0;
-    font-size: 1.8rem;
-    min-width: 16.8rem;
-  }
+    &,
+    &:link,
+    &:visited {
+        padding: 0.5rem 1.5rem;
+        font-weight: 500;
+        border-radius: 0;
+        font-size: 1.8rem;
+    }
 
-  &--primary {
-    background-color: var(--color-blue-light-1);
-    color: white;
-    border: none;
-    outline: 3px solid var(--color-blue-light-1);
-    &:hover {
-      color: white;
-      background-color: var(--color-blue);
+    &--primary,
+    &--secondary,
+    &--tertiary {
+        min-width: 16.8rem;
     }
-    &:focus {
-      outline: 1px solid var(--color-green);
-    }
-  }
 
-  &--secondary {
-    background-color: var(--color-offwhite);
-    color: var(--color-blue-light-1);
-    outline: 3px solid var(--color-blue-light-1);
-    &:hover {
-      color: var(--color-blue);
-      outline: 3px solid var(--color-blue);
+    &--primary {
+        background-color: var(--color-blue-light-1);
+        color: white;
+        border: none;
+        outline: 3px solid var(--color-blue-light-1);
+        &:hover {
+            color: white;
+            background-color: var(--color-blue);
+        }
+        &:focus {
+            outline: 1px solid var(--color-green);
+        }
     }
-    &:focus {
-      outline: 3px solid var(--color-green);
-    }
-  }
 
-  &--tertiary {
-    background-color: #ffffff;
-    color: var(--color-primary);
-    border: none;
-    &:hover {
-      background-color: var(--color-blue);
-    }
-    &:focus {
-      background-color: #ffffff;
-      outline: 3px solid var(--color-green);
-    }
-  }
+    &--secondary {
 
-  &--search {
-    border: 1px solid var(--color-grey);
-  }
+        color: var(--color-blue-light-1);
+        outline: 3px solid var(--color-blue-light-1);
+        &:hover {
+            color: var(--color-blue);
+            outline: 3px solid var(--color-blue);
+        }
+        &:focus {
+            outline: 3px solid var(--color-green);
+        }
+    }
+
+    &--tertiary {
+        background-color: #ffffff;
+        //color: var(--color-primary);
+        color: var(--color-orange);
+        border: none;
+        &:hover {
+            background-color: var(--color-blue);
+        }
+        &:focus {
+            background-color: #ffffff;
+            outline: 3px solid var(--color-green);
+        }
+    }
+
+    &--search {
+        border: 1px solid var(--color-grey);
+    }
+
+    &--edit {
+
+
+        &:focus {
+            outline: 3px solid var(--color-green);
+            box-shadow: none;
+        }
+    }
 }

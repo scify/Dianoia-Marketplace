@@ -12,12 +12,12 @@
 
 .rate-text {
     font-size: toRem(10);
-    color: $gray-600;
+    color: var(--color-grey);
 }
 
 .rate-link {
     text-decoration: underline;
-    color: $gray-600;
+    color:  var(--color-grey);
 
     &:hover:not(.disabled) {
         cursor: pointer;
@@ -26,7 +26,7 @@
 
 .fa-star {
     font-style: toRem(20);
-    color: $yellow;
+    color:  var(--color-yellow);
 }
 
 .dropdown-toggle::after {

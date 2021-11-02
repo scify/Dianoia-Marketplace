@@ -11,39 +11,52 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+{{--                <li class="nav-item dropdown navbar-item-dropdown">--}}
+{{--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"--}}
+{{--                       data-bs-toggle="dropdown" aria-expanded="false">--}}
+{{--                       Download DiAnoia <i class="ml-1 fas fa-download"></i>--}}
+{{--                    </a>--}}
+{{--                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">--}}
+{{--                        <li><a class="dropdown-item"--}}
+{{--                               href="https://go.scify.gr/talkandplaydownloadw">{!! __('messages.download_the_app_windows') !!} <i class="ml-1 fab fa-windows"></i></a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <hr class="dropdown-divider">--}}
+{{--                        </li>--}}
+{{--                        <li><a class="dropdown-item"--}}
+{{--                               href="https://go.scify.gr/talkandplaydownloadl">{!! __('messages.download_the_app_linux') !!} <i class="ml-1 fab fa-linux"></i></a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
                 <li class="nav-item dropdown navbar-item-dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                       Download DiAnoia <i class="ml-1 fas fa-download"></i>
+                       data-bs-toggle="dropdown" aria-expanded="false">ΔιΆνοια
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"
-                               href="https://go.scify.gr/talkandplaydownloadw">{!! __('messages.download_the_app_windows') !!} <i class="ml-1 fab fa-windows"></i></a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
+                               href="#">{{__('messages.dianoia-marketplace')}}</a>
                         </li>
                         <li><a class="dropdown-item"
-                               href="https://go.scify.gr/talkandplaydownloadl">{!! __('messages.download_the_app_linux') !!} <i class="ml-1 fab fa-linux"></i></a>
+                               href="#">{{__('messages.dianoia-mobile')}}</a>
+                        </li>
+                        <li><a class="dropdown-item"
+                               href="#">{{__('messages.patients')}}</a>
+                        </li>
+                        <li><a class="dropdown-item"
+                               href="#">{{__('messages.carers')}}</a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ UrlMatchesMenuItem("about") }}"
-                       href="{{route('about')}}">
-                       About
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link {{ UrlMatchesMenuItem("resources.create-edit") }}"
-                       href="{{route('resources.display')}}">
-                        Create Content
+                       href="#">
+                        διΆνοια mobile εφαρμογή
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ UrlMatchesMenuItem("resources.index") }}"
                        href="{{route('resources.index')}}">
-                        Browse Content
+                        Ασκήσεις
                     </a>
                 </li>
                 @guest()

@@ -47,6 +47,5 @@
         </div>
     </main>
 </body>
-</div>
 
 </html>

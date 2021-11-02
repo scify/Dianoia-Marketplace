@@ -13,7 +13,7 @@
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
 .navbar {
-    background-color: $navbar-light-bg-color;
+    background-color:  var(--color-grey-light);;
 
     .nav-link {
         font-weight: bold;
@@ -45,15 +45,15 @@ h1 {
 }
 
 a {
-    color: $green;
+    color:  var(--color-green);;
     text-decoration: none;
 
     &:hover {
-        color: $green-light;
+        color: var(--color-green);
     }
 }
 
 a.link-info {
-    color: $blue;
+    color: var(--color-blue-dark);
 }
 

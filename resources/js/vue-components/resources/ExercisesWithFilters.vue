@@ -188,7 +188,7 @@ export default {
 @import "resources/sass/common/variables";
 
 .btn.selected {
-    background-color: $blue;
+    background-color:  var(--color-blue);;
 }
 
 </style>

@@ -1,7 +1,12 @@
-
 @extends('layouts.app')
 @push('css')
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
     <link rel="stylesheet" href="{{mix('dist/css/homepage.css')}}">
+    <title>dianoia marketplace</title>
 @endpush
 
 @section('content')
@@ -30,8 +35,13 @@
                 </div>
                 <div class="col-12">
                     <div class="row">
-                        <div class="header__text-box-2 col-md-6 col-sm-12">Δημιούργησε νέο περιεχόμενο</div>
-                        <div class="header__text-box-3 col-md-6 col-sm-12">Μάθε περισσότερα για την “διΆνοια”mobile εφαρμογή .</div>
+                        <div class="header__text-box-2 col-md-6 col-sm-12">
+                            <a href="#">   <b><u> {{__('messages.create-content')}}</u></b></a>
+{{--                            Δημιούργησε     <a href="#">   <b><u>νέο περιεχόμενο</u></b></a>--}}
+                        </div>
+                        <div class="header__text-box-3 col-md-6 col-sm-12">
+                            <a href="#">{{__('messages.learn-more-mobile')}}</a>
+                        </div>
                     </div>
                 </div>
 
@@ -43,38 +53,26 @@
     <main>
         <div class="mobile-app d-flex align-items-center">
             <div class="mobile-app__text content">
-
-                <h1 class="mb-5">διΆνοια mobile εφαρμογή.</h1>
-                <p>Η ΔιΆνοια είναι μία εφαρμογή smartphone για φροντιστές ανθρώπων με ήπια γνωστική διαταραχή ή
-                    αρχόμενη
-                    άνοια που προσφέρεται δωρεάν.
+                <h1 class="mb-5"> {{__('messages.mobile-app')}} </h1>
+                <p>
+                    {{__('messages.app-description')}}
                 </p>
-                <p class="mb-5">Προσφέρει εκτυπώσιμες νοητικές ασκήσεις για τους ασθενείς έτοιμες για χρήση, για να
-                    τονώσουμε την
-                    αυτοπεποίθησή του ανθρώπου με άνοια, περάσουν χρόνο ευχάριστα. Καθώς και ευχάριστες ασκήσεις και
-                    συμβουλές χαλάρωσης για τους φροντιστές, ώστε να ενδυναμώσουν ψυχολογικά.</p>
+                <p class="mb-5">
+                    {{__('messages.app-description-2')}}
+                </p>
 
-                <a href="#" class="mt-5 btn btn--primary" target="_blank">Κατέβασε την εφαρμογή</a>
-
-
+                <a href="#" class="mt-5 btn btn--primary" target="_blank"> {{__('messages.download-app')}}</a>
             </div>
-
         </div>
 
         <div class="patient d-flex align-items-center">
             <div class="patient__text content">
-                <h1 class="mb-5">Φρόντισε τον ασθενή.</h1>
-                <p>Βοήθησε τους ανθρώπους με αρχόμενη άνοια να βελτιώσουν τις νοητικές τους λειτουργίες, τη διάθεση, τη
-                    λειτουργικότητα και την ποιότητα ζωής τους δίνοντάς τους γρίφους, ανατρέχοντας σε αναμνήσεις ακόμα
-                    και
-                    καθημερινές δουλειές ή ασχολίες που συνήθιζαν να λατρεύουν !
-                </p>
-                <p class="mb-5">Εδώ θα βρεις ασκήσεις σε κατηγορίες όπως: Ασκήσεις Μνήμης, Προσοχής, Σκέψης και Λόγου,
-                    Εκτελεστικών Λειτουργιών οι οποίες είναι διαθέσιμες σε 2 επίπεδα δυσκολίας.</p>
-                <p>Μπορείς επίσης να δημιουργήσεις τις δικές σου ασκήσεις και αν θέλεις να τις μοιραστείς με την
-                    κοινότητα.
-                </p>
-                <a href="#" class="mt-5 btn btn--tertiary" target="_blank">Δες τις ασκήσεις</a>
+                <h1 class="mb-5">{{__('messages.help-patient')}}</h1>
+                <p class="mb-5">{{__('messages.exercises-tutorial')}}</p>
+{{--                <p>Μπορείς επίσης να δημιουργήσεις τις δικές σου ασκήσεις και αν θέλεις να τις μοιραστείς με την--}}
+{{--                    κοινότητα.--}}
+{{--                </p>--}}
+                <a href="#" class="mt-5 btn btn--tertiary" target="_blank">{{__('messages.see-exercises')}}</a>
 
             </div>
 
@@ -83,16 +81,10 @@
             <!--     <img class="img-fluid" loading="lazy" src="/img/grandmother-flowers.png" alt="title-image"> -->
             <div class="carer__text content">
 
-                <h1 class="mb-5">Είσαι φροντιστής; Φρόντισε τον εαυτό σου!</h1>
-                <p class="mb-5">Έχεις μεγάλη διάθεση να βοηθήσεις τους ασθενείς σου, όμως αυτό σε αποδυναμώνει
-                    ψυχολογικά και ίσως θα ήθελες να ξεφύγεις ευχάριστα. Βοήθησε λοιπόν τον εαυτό σου να ενδυναμωθεί
-                    έτσι ώστε να επανέλθει δυναμικά. Χρησιμοποίησε τις δραστηριότητες για φροντιστές. Μπορείς ταυτόχρονα
-                    να ανατρέξεις στις πηγές που προσφέρουμε, με συμβουλές ειδικών και άφθονη βιβλιογραφία.</p>
-
-
-                <a href="#" class="mt-5 btn btn--tertiary" target="_blank">Δες τι σου προσφέρεται</a>
+                <h1 class="mb-5">{{__('messages.carer-teaser')}}</h1>
+                <p class="mb-5">{{__('messages.carer-motivation')}}</p>
+                <a href="#" class="mt-5 btn btn--tertiary" target="_blank">{{__('messages.see-what-is-offered')}}</a>
             </div>
-
         </div>
     </main>
 @endsection
