@@ -5,7 +5,7 @@
                 <div class="col-sm-6 col-md-3 item">
                     <h3>{!! __('messages.services') !!}</h3>
                     <ul>
-                        <li><a href="{{ route('resources.index') }}">Exercises</a></li>
+                        <li><a href="{{ route('resources.display') }}">Exercises</a></li>
                         <li><a href="#">{!! __('messages.content_guidelines') !!}</a></li>
                     </ul>
                 </div>
@@ -13,7 +13,7 @@
                     <h3>About</h3>
                     <ul>
                         <li><a href="https://www.scify.gr/site/en/">{!! __('messages.team') !!}</a></li>
-                        <li><a href="{{ config('app.url') }}">{!! __('messages.download') !!} Talk & Play</a></li>
+                        <li><a href="{{ config('app.url') }}">{!! __('messages.download') !!} DiAnoia App</a></li>
                         <li><a href="https://www.scify.gr/site/en/contact" target="_blank">{!! __('messages.contact_us') !!}</a></li>
                     </ul>
                 </div>

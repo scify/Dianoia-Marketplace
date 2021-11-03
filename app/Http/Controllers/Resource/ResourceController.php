@@ -96,11 +96,9 @@ class ResourceController extends Controller
         ]);
         try {
             $resource = $this->resourceManager->storeResource($request);
-            return  redirect()->back()->with('flash_message_success', 'The exercise has been successfully created');
-//            return redirect()->route('resources.update', $resource->id)
-//                ->with('flash_message_success', 'The exercise has been successfully created');
+            return redirect()->route('resources.display')->with('flash_message_success','The exercise has been successfully created');
         } catch (Exception $e) {
-            return redirect()->with('flash_message_failure', 'Failure - the exercise has not been added');
+            return redirect()->route('resources.display')->with('flash_message_failure','Failure - the exercise has not been created');
         }
 
 

@@ -1,6 +1,16 @@
 <?php
 
 return [
+    "services" => "Services",
+    "content_guidelines" => "Content guidelines",
+    "about" => "About",
+    "team" => "The team",
+    "download" => "Download",
+    "download_noun" => "Download",
+    "clone" => "Clone",
+    "how_it_works" => "How it works",
+    "contact_us" => "Contact us",
+    "watch_tutorials" => "Watch the following tutorials to learn more about Dianoia Marketplace",
     'mobile-app' => 'διΆνοια mobile εφαρμογή',
     'exercises' => 'Ασκήσεις',
     'marketplace' => 'διΆνοια Marketplace',
