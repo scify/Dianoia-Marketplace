@@ -31,6 +31,7 @@ mix.autoload({
 });
 
 mix.sass('resources/sass/main.scss', 'public/dist/css')
+    .sass('resources/sass/form-new-exercise.scss','public/dist/css')
     .sass('resources/sass/login-page.scss', 'public/dist/css')
     .sass('resources/sass/exercise-template.scss', 'public/dist/css')
     .sass('resources/sass/homepage.scss', 'public/dist/css')
