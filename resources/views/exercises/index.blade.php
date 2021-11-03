@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('css')
-    <link rel="stylesheet" href="{{ mix('dist/css/resources-packages-index.css') }}">
+    <link rel="stylesheet" href="{{ mix('dist/css/resources-index.css') }}">
 @endpush
 @section('content')
     <section id="intro" class="pt-5 mt-5">
@@ -166,7 +166,7 @@
             <div class="row mt-5">
                 <div class="col">
                     <resources-packages-with-filters
-                        :resources-packages-route="'{{ route('patient_resources.get') }}'"
+                        :resources-packages-route="'{{ route('resources.get') }}'"
                         :user='@json($user)'
                         :packages-type="'COMMUNICATION'"
                         :resources-packages-statuses='@json($viewModel->resourcesPackagesStatuses)'

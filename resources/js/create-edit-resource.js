@@ -145,6 +145,7 @@ import {Modal} from 'bootstrap';
 
 
     let listenForModalImageChanges = function () {
+
         $('#modal_upload_img').on("change", function ($event) {
             $('#modal_url').hide('fast');
             let url = document.getElementById('modal_url');
@@ -168,6 +169,40 @@ import {Modal} from 'bootstrap';
             $('#url').show('slow');
         });
     }
+
+    let scrollToMobileApp = function () {
+        $('#mobileAppDropdownItem').on("click", function () {
+            let mobileAppBtn = $("#downloadMobileAppBtn");
+            if (mobileAppBtn.length) {
+                $('html, body').animate({
+                    scrollTop: mobileAppBtn.offset().top
+                }, 500);
+            }
+        });
+    }
+
+    let scrollToPatients= function () {
+        $('#patientsDropdownItem').on("click", function () {
+            let patientsInfo = $("#patientsInfo");
+            if (patientsInfo.length) {
+                $('html, body').animate({
+                    scrollTop: patientsInfo.offset().top
+                }, 500);
+            }
+        });
+    }
+
+    let scrollToCarers= function () {
+        $('#carersDropdownItem').on("click", function () {
+            let carersInfo = $("#carersInfo");
+            if (carersInfo.length) {
+                $('html, body').animate({
+                    scrollTop: carersInfo.offset().top
+                }, 500);
+            }
+        });
+    }
+
 
     let scrollToButton = function () {
         let newCardButton = $("#newCardBtn");
@@ -207,6 +242,9 @@ import {Modal} from 'bootstrap';
         listenForNewCardClick();
         listenForDeleteCardClick();
         listenForSaveBundleClick();
+        scrollToMobileApp();
+        scrollToPatients();
+        scrollToCarers();
         // listenForExerciseSubmitClick();
         // downloadBundleXML()
     };

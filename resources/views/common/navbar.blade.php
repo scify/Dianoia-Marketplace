@@ -22,23 +22,22 @@
                         <li><a class="dropdown-item"
                                href="#">{{__('messages.mobile-app')}}</a>
                         </li>
-                        <li><a class="dropdown-item"
+                        <li><a class="dropdown-item" id="patientsDropdownItem"
                                href="#">{{__('messages.patients')}}</a>
                         </li>
-                        <li><a class="dropdown-item"
+                        <li><a class="dropdown-item" id="carersDropdownItem"
                                href="#">{{__('messages.carers')}}</a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ UrlMatchesMenuItem("resources.create-edit") }}"
-                       href="#">
+                    <a class="nav-link"  id="mobileAppDropdownItem" href="#">
                         {{__('messages.mobile-app')}}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ UrlMatchesMenuItem("resources.index") }}"
-                       href="{{route('resources.index')}}">
+                    <a class="nav-link {{ UrlMatchesMenuItem("resources.display") }}"
+                       href="{{route('resources.display')}}">
                         Ασκήσεις
                     </a>
                 </li>
@@ -135,3 +134,7 @@
         </div>
     </div>
 </nav>
+@push('scripts')
+    <script src="{{ mix('dist/js/create-edit-resource.js') }}"></script>
+@endpush
+
