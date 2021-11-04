@@ -6,9 +6,6 @@
 @section('content')
     <form id="md-form" enctype="multipart/form-data"  role="form" method="POST"
           action="{{ $viewModel->isEditMode() ? route('resources.update',$viewModel->resource->id) : route('resources.store') }}">
-    >
-{{--        ADD ROUTE-ACTION--}}
-
         @if($viewModel->isEditMode())
             @method('PUT')
         @endif

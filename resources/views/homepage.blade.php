@@ -46,7 +46,7 @@
             <div class="mobile-app__text content">
                 <h1 class="mb-5"> {{__('messages.mobile-app')}} </h1>
                 <p>
-                    {{__('messages.app-description')}}
+                    {!!__('messages.app-description')!!}
                 </p>
                 <a href="#"  class="mt-5 btn btn--primary" target="_blank">{{__('messages.download-app')}}</a>
             </div>
