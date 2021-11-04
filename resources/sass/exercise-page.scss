@@ -1,3 +1,5 @@
+@import "exercise-template";
+
 @mixin mainTitleSection {
     height: 95vh;
     background-size: cover;
@@ -11,7 +13,12 @@
 .exercise-options {
     @include mainTitleSection;
 
-    background-image:url(/img/title-image.png); // linear-gradient(rgba(72, 138, 255, 0.7)),
+    @media screen and (max-width: 500px) {
+        height: 100%;
+    }
+
+    background-image: linear-gradient(rgba(72, 138, 255, 0.7)), url(/img/title-image.png);
+
     &__text-box {
         background-color: var(--color-blue-light-1);
 
@@ -32,6 +39,13 @@
             background-image: url(/img/1.png);
             background-repeat: no-repeat;
             background-position: 2% 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .text-box-1,
+            .text-box-2 {
+                border: none;
+            }
         }
 
         .text-box-3 {
@@ -66,9 +80,20 @@
         border-top: 1px solid var(--color-grey);
         border-bottom: 1px solid var(--color-grey);
         height: 10vh;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        @media screen and (max-width: 768px) {
+            justify-content: center;
+            height: 18vh;
+        }
 
         .input-group {
             flex: 0 0 40%;
+            @media screen and (max-width: 768px) {
+                flex: 0 0 80%;
+                margin-bottom: 10px;
+            }
 
             ::placeholder {
                 font-style: italic;
@@ -88,4 +113,3 @@
         margin-top: 10rem;
     }
 }
-

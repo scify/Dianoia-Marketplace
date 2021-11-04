@@ -116,7 +116,12 @@ class ResourceManager {
 
         $resource = $this->resourceRepository->create($storeArr);
         $resourceFileManager = new ResourceFileManager();
-        $img_path = $resourceFileManager->saveImage($resource->id, $request);
+        try{
+            $img_path = $resourceFileManager->saveImage($resource->id, $request);
+        }
+        catch(FileNotFoundException $e){
+            $img_path = null;
+        }
         try{
             $pdf_path = $resourceFileManager->savePdf($resource->id, $request);
         }

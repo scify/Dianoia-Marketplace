@@ -27,7 +27,7 @@ class Resource extends Model
     protected $fillable = [
         'name',
         'lang_id', 'creator_user_id',
-        'admin_user_id', 'img_path', 'status_id', 'pdf_path', 'type_id', 'description'
+        'admin_user_id', 'img_path', 'status_id', 'pdf_path', 'type_id', 'description', 'difficulty_id'
     ];
 
     public function creator(): HasOne

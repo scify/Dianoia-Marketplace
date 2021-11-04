@@ -309,4 +309,17 @@ class ResourceController extends Controller
         return $this->resourceManager->getContentLanguagesForResources();
     }
 
+
+    public function getContentTypes()
+    {
+        $ret = $this->resourceManager->getResourceTypes();
+        return $ret;
+    }
+
+    public function getContentDifficulties()
+    {
+        $ret = $this->resourceManager->getDifficultiesForResources();
+        return $ret;
+    }
+
 }

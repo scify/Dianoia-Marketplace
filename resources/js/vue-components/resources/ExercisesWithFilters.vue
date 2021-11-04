@@ -1,78 +1,98 @@
 <template>
-    <div class="container-fluid p-0">
-        <div class="row justify-content-start mb-2">
-            <div class="col-md-8 col-sm-12">
-                <div class="container-fluid p-0">
-                    <div class="row">
-                        <div v-for="language in contentLanguages" class="col-md-3 col-sm-12">
-                            <button @click="setContentLanguage(language)"
-                                    class="w-100 btn btn-secondary"
-                                    v-bind:class="{ selected: language.id === selectedContentLanguage.id }">
-                                {{ language.name }}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-12">
-                <div class="search"><i class="fa fa-search"></i>
-                    <input
-                        @keyup.stop="search($event.target.value)"
-                        type="text" class="form-control"
-                        :placeholder="searchPlaceholder">
-                    <div v-if="searchLoading" class="spinner-border text-primary" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                </div>
-            </div>
+<!--    <div class="container-fluid p-0">-->
+<!--        <div class="row justify-content-start mb-2">-->
+<!--            <div class="col-md-8 col-sm-12">-->
+<!--                <div class="container-fluid p-0">-->
+<!--                    <div class="row">-->
+<!--                        <div v-for="language in contentLanguages" class="col-md-3 col-sm-12">-->
+<!--                            <button @click="setContentLanguage(language)"-->
+<!--                                    class="w-100 btn btn-secondary"-->
+<!--                                    v-bind:class="{ selected: language.id === selectedContentLanguage.id }">-->
+<!--                                {{ language.name }}-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-4 col-sm-12">-->
+<!--                <div class="search"><i class="fa fa-search"></i>-->
+<!--                    <input-->
+<!--                        @keyup.stop="search($event.target.value)"-->
+<!--                        type="text" class="form-control"-->
+<!--                        :placeholder="searchPlaceholder">-->
+<!--                    <div v-if="searchLoading" class="spinner-border text-primary" role="status">-->
+<!--                        <span class="sr-only">Loading...</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
-        </div>
-        <div class="row justify-content-start mb-3" id="types-checkboxes">
-            <div class="col-md-8">
-                <div class="form-check form-check-inline"
-                     v-for="(resourceType, index) in resourceTypes"
-                     :key="index">
-                    <input class="form-check-input" type="checkbox" :id="'checkbox_' + index"
-                           v-model="resourceType.checked"
-                           v-on:change="getResources">
-                    <label class="form-check-label" :for="'checkbox_' + index">
-                        {{ resourceType.name }}
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <p class="note">
-                    {{ trans('messages.patient_cards_note') }}
-                </p>
-            </div>
-        </div>
-        <div class="row mt-5" v-if="loadingResources">
-            <div class="col justify-content-center">
-                <div class="d-flex justify-content-center">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--        </div>-->
+<!--        <div class="row justify-content-start mb-3" id="types-checkboxes">-->
+<!--            <div class="col-md-8">-->
+<!--                <div class="form-check form-check-inline"-->
+<!--                     v-for="(resourceType, index) in resourceTypes"-->
+<!--                     :key="index">-->
+<!--                    <input class="form-check-input" type="checkbox" :id="'checkbox_' + index"-->
+<!--                           v-model="resourceType.checked"-->
+<!--                           v-on:change="getResources">-->
+<!--                    <label class="form-check-label" :for="'checkbox_' + index">-->
+<!--                        {{ resourceType.name }}-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col">-->
+<!--                <p class="note">-->
+<!--                    {{ trans('messages.patient_cards_note') }}-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row mt-5" v-if="loadingResources">-->
+<!--            <div class="col justify-content-center">-->
+<!--                <div class="d-flex justify-content-center">-->
+<!--                    <div class="spinner-border text-primary" role="status">-->
+<!--                        <span class="visually-hidden">Loading...</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row mt-5" v-if="filteredResources.length">-->
+<!--            <div class="col-lg-4 col-md-4 col-sm-12 mb-3" v-for="(resource, index) in filteredResources" :key="index">-->
+<!--                <exercise-->
+<!--                    :user="user ? user : {}"-->
+<!--                    :user-id-to-get-content="userIdToGetContent"-->
+<!--                    :resource="resource"-->
+<!--                    :is-admin="isAdmin"-->
+<!--                    :approve-resources="approveResources">-->
+<!--                </exercise>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row mt-5" v-if="!filteredResources.length && !loadingResources">-->
+<!--            <h5>{{ trans('messages.no_resource_packages_available') }}</h5>-->
+<!--        </div>-->
+<!--    </div>-->
+
         <div class="row mt-5" v-if="filteredResources.length">
-            <div class="col-lg-4 col-md-4 col-sm-12 mb-3" v-for="(resource, index) in filteredResources" :key="index">
+            <div v-for="(resource, index) in filteredResources" :key="index">
                 <exercise
                     :user="user ? user : {}"
                     :user-id-to-get-content="userIdToGetContent"
                     :resource="resource"
                     :is-admin="isAdmin"
-                    :approve-resources="approveResources">
+                    :approve-resources="approveResources"
+                    :languages="contentLanguages"
+                    :types="contentTypes"
+                    :difficulties="contentDifficulties">
                 </exercise>
+
 
             </div>
         </div>
-        <div class="row mt-5" v-if="!filteredResources.length && !loadingResources">
-            <h5>{{ trans('messages.no_resource_packages_available') }}</h5>
-        </div>
-    </div>
+
+
+
 </template>
 
 <script>
@@ -81,6 +101,8 @@ import {mapActions} from "vuex";
 export default {
     mounted() {
         this.getContentLanguages();
+        this.getContentTypes();
+        this.getContentDifficulties();
     },
     props: {
         user: {
@@ -111,6 +133,8 @@ export default {
         return {
             // resourcesRoute: '',
             contentLanguages: [],
+            contentTypes: [],
+            contentDifficulties: [],
             selectedContentLanguage: {},
             loadingResources: false,
             filteredResources: [],
@@ -136,6 +160,28 @@ export default {
                 this.contentLanguages = response.data;
                 this.selectedContentLanguage = this.contentLanguages[0];
                 this.getResources();
+            });
+        },
+        getContentTypes(){
+            console.log('types');
+            this.get({
+                url: route('content_types.get'),
+                urlRelative: false
+            }).then(response => {
+                this.contentTypes = response.data;
+                let types = _.map(this.contentTypes, 'name')
+                console.log(types);
+            });
+        },
+        getContentDifficulties(){
+            console.log('difficulties');
+            this.get({
+                url: route('content_difficulties.get'),
+                urlRelative: false
+            }).then(response => {
+                this.contentDifficulties = response.data;
+                let difficulties = _.map(this.contentDifficulties, 'name')
+                console.log(difficulties);
             });
         },
         getResources() {

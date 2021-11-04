@@ -1,11 +1,6 @@
 @extends('layouts.app')
 @push('css')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-    <link rel="stylesheet" href="{{mix('dist/css/main.css')}}">
     <link rel="stylesheet" href="{{mix('dist/css/exercise-page.css')}}">
     <link rel="stylesheet" href="{{mix('dist/css/exercise-template.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
@@ -194,6 +189,7 @@
                                 <p>Δώσε την δική σου βαθμολογία</p>
                             </div>
                             <div class="created-by">Δημιουργήθηκε από  Alzheimer Athens</div>
+                            <div class="level">Κανονικό επίπεδο</div>
                             <div class="language">Ελληνικά</div>
                             <div class="category">Ασκήσεις για φροντιστές</div>
 

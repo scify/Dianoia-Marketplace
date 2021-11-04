@@ -56,9 +56,6 @@
                         @endif
 
                     </div>
-                    @error('image')
-                    <div class="alert alert-danger">{{$message}}</div>
-                    @enderror
                     <p class="required-text">* Απαραίτητα στοιχεία</p>
 
                     <div class="col-md-6 ">

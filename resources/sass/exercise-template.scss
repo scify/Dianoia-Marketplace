@@ -1,6 +1,6 @@
 .exercise-template {
     padding: 0;
-
+    background-color: #ffff;
     .exercise-box {
         &#patient-template {
             border-top: 10px solid var(--color-blue-light-1);
@@ -19,9 +19,20 @@
                 padding: 1rem;
                 margin: 2rem;
             }
+
             .exercise-title-row,
-            .exercise-rating {
-                filter: grayscale(100%) opacity(40%);
+            .exercise-rating,
+            .btn,
+            .category {
+                color: grey;
+
+                .btn--secondary {
+                    outline: 3px solid grey;
+                }
+            }
+
+            .btn--primary {
+                color: #ffff;
             }
         }
 
@@ -29,10 +40,11 @@
 
         .exercise-title-row,
         .exercise-rating {
-                @media screen and (max-width: 600px) {
+            justify-content: space-between;
+            flex-wrap: wrap;
+            @media screen and (max-width: 600px) {
                 text-align: center;
                 justify-content: space-around;
-                flex-wrap: wrap;
             }
         }
 
@@ -42,7 +54,6 @@
                 .title {
                     font-weight: 600;
                     color: var(--color-primary);
-
                 }
             }
 
