@@ -110,7 +110,8 @@ class ResourceManager {
             'difficulty_id' => $request['difficulty_id'],
             'status_id' =>   ResourceStatusesLkp::CREATED_PENDING_APPROVAL,
             'creator_user_id' => Auth::id(),
-            'admin_user_id' => null
+            'admin_user_id' => null,
+            'description' => $request['description']
         ];
 
         $resource = $this->resourceRepository->create($storeArr);

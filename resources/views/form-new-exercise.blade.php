@@ -1,23 +1,25 @@
 @extends('layouts.app')
 @push('css')
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ mix('dist/css/main.css') }}">
     <link rel="stylesheet" href="{{ mix('dist/css/form-new-exercise.css') }}">
-    <title>dianoia marketplace</title>
 @endpush
 
 @section('content')
-    <form id="md-form" enctype="multipart/form-data"  role="form" method="POST" class="form form-new mt-5 mb-5 rounded">
-            @if($viewModel->isEditMode())
-                @method('PUT')
-            @endif
+    <form id="md-form" enctype="multipart/form-data"  role="form" method="POST"
+          action="{{ $viewModel->isEditMode() ? route('resources.update',$viewModel->resource->id) : route('resources.store') }}">
+    >
+{{--        ADD ROUTE-ACTION--}}
 
-            {{ csrf_field() }}
+        @if($viewModel->isEditMode())
+            @method('PUT')
+        @endif
+
+        {{ csrf_field() }}
+        <div class="form form-new mt-5 mb-5 rounded">
+
             <p class="form-new__title p-4">Νέα άσκηση</p>
             <hr>
             <div class="form-new__fields p-5">
-                <form class="row g-3">
+                <div class="row g-3">
 
                     <div class="col-12">
                         <label for="category_name" class="form-label">{{__('messages.name')}} <span>*</span></label>
@@ -25,18 +27,27 @@
                     </div>
                     <div class="col-12">
                         <label for="formGroupExampleInput2" class="form-label">Περιγραφή άσκησης <span>*</span></label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2">
+                        <input type="text" class="form-control" id="formGroupExampleInput2" name="description">
                     </div>
+                    @error('description')
+                    <div class="alert alert-danger">{{$message}}</div>
+                    @enderror
 
                     <div class="col-md-6">
                         <label for="upload_img" class="form-label">Ανέβασε εικόνα</label>
 {{--                        <div class="file btn rounded">--}}
 {{--                            <i class="fas fa-plus-circle"></i>--}}
-                            <input type="button" class="btn btn-third" id="loadFileXml" value="+"
-                                   onclick="document.getElementById('upload_img').click();"/>
-                            <input type="file" accept="image/*"
-                                   class="btn btn-third @error('image') is-invalid @enderror" style="display:none;"
-                                   name="image" id="upload_img">
+{{--                            <input type="button" class="btn btn-third" id="loadFileXml" value="+"--}}
+{{--                                   onclick="document.getElementById('upload_img').click();"/>--}}
+{{--                            <input type="file" accept="image/*"--}}
+{{--                                   class="btn btn-third @error('image') is-invalid @enderror" style="display:none;"--}}
+{{--                                   name="image" id="upload_img">--}}
+
+                            <div class="file btn rounded">
+                                <i class="fas fa-plus-circle"></i>
+                                <input id="upload_img" type="file" name="image" />
+                            </div>
+
 {{--                        </div>--}}
                         @if($viewModel->isEditMode())
                             <img src={{asset("storage/".$viewModel->resource->img_path)}} id="url" class="mt-3"
@@ -90,7 +101,7 @@
                             @endforeach
                         </select>
                     </div>
-                </form>
+                </div>
             </div>
 
             <div class="form-new__prototype-file text-center">
@@ -113,20 +124,25 @@
                     @enderror
                 </div>
 
-                <div class="uploaded-file p-2" style="visibility:hidden">
-                    No_name.pdf <button type="button" class="btn btn-outline-secondary reset" id="btnResetFile">X</button>
+                <div class="uploaded-file p-2" style="visibility:hidden" id="pdf-div">
+                    <span id="pdf-filename">
+                    </span>
+                    <button type="button" class="btn btn-outline-secondary reset" id="btnResetFile">X</button>
                 </div>
 
                 <div class="copyright-rules mb-5 mt-5 p-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value=none id="flexCheckDefault" name="terms">
                         <label class="form-check-label" for="flexCheckDefault">
                             Έχω διαβάσει τους <b><u>κανόνες περιεχομένου και πνευματικής ιδιοκτησίας</u></b>, καθώς και
                             τους όρους για
                             την
-                            δομή της άσκησής, όπως στο <b><u>παράδειγμα</u></b>.
+                            δομή της άσκησής, όπως στο <b><u>παράδειγμα</u></b>. <span>*</span>
                         </label>
                     </div>
+                    @error('terms')
+                    <div class="alert alert-danger">{{$message}}</div>
+                    @enderror
                 </div>
 
                 <div class="admin-message-options p-5">
@@ -147,7 +163,8 @@
                 </a>
                 <input  id="exerciseSubmitBtn" class="btn btn--primary mt-5 ms-4" type="submit" value={{trans("messages.finish-edit")}}>
             </div>
-        </form>
+    </div>
+    </form>
 @endsection
 @push('scripts')
     <script src="{{ mix('dist/js/create-edit-resource.js') }}"></script>

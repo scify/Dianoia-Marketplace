@@ -1,5 +1,7 @@
+@import 'common/variables';
 .form-control[type="text"] {
     min-height: 5.4rem;
+    font-size:$default-font-size;
 }
 
 .file {
@@ -43,6 +45,12 @@
     &__prototype-file,
     a {
         color: #ffffff;
+    }
+    .form-new__submmit-btn{
+        a{
+            color: var(--color-blue-light-1);
+            outline: 3px solid var(--color-blue-light-1);
+        }
     }
 
     &__prototype-file {
@@ -94,7 +102,7 @@
             border-bottom: 1px solid var(--color-grey);
         }
 
-    
+
         .admin-message-options {
             background-color: var(--color-orange);
             color: #ffffff;

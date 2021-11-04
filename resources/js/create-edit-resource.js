@@ -170,6 +170,25 @@ import {Modal} from 'bootstrap';
         });
     }
 
+    let listenForPdfChanges = function () {
+        $('#customFile').on("change", function ($event) {
+            let span = document.getElementById('pdf-filename');
+            let pdfname = $event.target.files[0]['name']
+            console.log(pdfname);
+            span.innerHTML = pdfname;
+            $('#pdf-div').css('visibility','visible');
+        });
+    }
+
+
+    let listenForPdfReset = function () {
+        $('#btnResetFile').on("click", function ($event) {
+            $('#pdf-div').css('visibility','hidden');
+            let span = document.getElementById('pdf-filename');
+            span.innerHTML = null;
+        });
+    }
+
     let scrollToMobileApp = function () {
         $('#mobileAppDropdownItem').on("click", function () {
             let mobileAppBtn = $("#downloadMobileAppBtn");
@@ -245,6 +264,8 @@ import {Modal} from 'bootstrap';
         scrollToMobileApp();
         scrollToPatients();
         scrollToCarers();
+        listenForPdfChanges();
+        listenForPdfReset();
         // listenForExerciseSubmitClick();
         // downloadBundleXML()
     };
