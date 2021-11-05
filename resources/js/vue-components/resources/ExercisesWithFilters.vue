@@ -63,10 +63,10 @@
                         Επίπεδο
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item" @click="sortDifficulty('descending')">Μεγαλύτερη βαθμολογία</a></li>
-                        <li><a class="dropdown-item" @click="sortDifficulty('ascending')">Χαμηλότερη βαθμολογία</a></li>
-                        <li><a class="dropdown-item" @click="sortDifficulty('bydate')">Νεότερες βαθμολογίες</a></li>
-                        <li><a class="dropdown-item" @click="sortDifficulty('reset')">Όλες οι βαθμολογίες</a></li>
+                        <li><a class="dropdown-item" @click="sortDifficulty('descending')">Μεγαλύτερη Δυσκολία</a></li>
+                        <li><a class="dropdown-item" @click="sortDifficulty('ascending')">Χαμηλότερη Δυσκολία</a></li>
+<!--                        <li><a class="dropdown-item" @click="sortDifficulty('bydate')">Νεότερες βαθμολογίες</a></li>-->
+                        <li><a class="dropdown-item" @click="sortDifficulty('reset')">Όλες οι δυσκολίες</a></li>
                     </ul>
                 </div>
 
@@ -77,10 +77,10 @@
                         Κατηγορία
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                        <li><a class="dropdown-item" href="#">Μεγαλύτερη βαθμολογία</a></li>
-                        <li><a class="dropdown-item" href="#">Χαμηλότερη βαθμολογία</a></li>
-                        <li><a class="dropdown-item" href="#">Νεότερες βαθμολογίες</a></li>
-                        <li><a class="dropdown-item" href="#">Όλες οι βαθμολογίες</a></li>
+                        <li><a class="dropdown-item" @click="sortDifficulty('descending')">Μεγαλύτερη Δυσκολία</a></li>
+                        <li><a class="dropdown-item" @click="sortDifficulty('ascending')">Χαμηλότερη Δυσκολία</a></li>
+                        <!--                        <li><a class="dropdown-item" @click="sortDifficulty('bydate')">Νεότερες βαθμολογίες</a></li>-->
+                        <li><a class="dropdown-item" @click="sortDifficulty('reset')">Όλες οι δυσκολίες</a></li>
                     </ul>
                 </div>
 
@@ -89,11 +89,11 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                         Βαθμολογία
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                        <li><a class="dropdown-item" href="#">Μεγαλύτερη βαθμολογία</a></li>
-                        <li><a class="dropdown-item" href="#">Χαμηλότερη βαθμολογία</a></li>
-                        <li><a class="dropdown-item" href="#">Νεότερες βαθμολογίες</a></li>
-                        <li><a class="dropdown-item" href="#">Όλες οι βαθμολογίες</a></li>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                        <li><a class="dropdown-item" @click="sortRating('descending')">Μεγαλύτερη Δυσκολία</a></li>
+                        <li><a class="dropdown-item" @click="sortRating('ascending')">Χαμηλότερη Δυσκολία</a></li>
+                        <li><a class="dropdown-item" @click="sortRating('bydate')">Νεότερες βαθμολογίες</a></li>
+                        <li><a class="dropdown-item" @click="sortRating('reset')">Όλες οι δυσκολίες</a></li>
                     </ul>
                 </div>
 
@@ -264,16 +264,26 @@ export default {
             this.getResources();
         },
         sortDifficulty(option){
-
-              this.getContentDifficulties();
-              this.contentDifficulties.sort(function (a , b) {
-                  if(option==="ascending") {
-                      return a.id - b.id;
-                  } else if(option === "descending"){
-                      return b.id - a.id;
-                  }
-              });
-            this.getResources();
+              if(option === "reset"){
+                  this.contentDifficulties=[];
+                  this.getResources();
+                  this.getContentDifficulties();
+              }
+              else {
+                  this.getContentDifficulties();
+                  this.contentDifficulties.sort(function (a, b) {
+                      if (option === "ascending") {
+                          return a.id - b.id;
+                      } else if (option === "descending") {
+                          return b.id - a.id;
+                      }
+                  });
+                  this.getResources();
+                  this.getContentDifficulties();
+              }
+        },
+        sortRating(option){
+          ;
         },
         getContentLanguages() {
             this.get({
