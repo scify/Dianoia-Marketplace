@@ -62,7 +62,7 @@
 
                         <label for="category_lang" class="form-label">{{trans("messages.language")}}</label>
                         <select class="form-select" aria-label="category_lang" name="lang">
-                            @foreach ($viewModel->languages as $lang){
+                            @foreach ($viewModel->languages as $lang)
                             @if($viewModel->lang === $lang->code)
                                 <option selected value="{{$lang->id}}"> {{$lang->name}} </option>
                             @else
