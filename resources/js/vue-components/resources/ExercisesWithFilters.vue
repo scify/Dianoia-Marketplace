@@ -57,17 +57,16 @@
                     </ul>
                 </div>
 
-
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton2"
                             data-bs-toggle="dropdown" aria-expanded="false">
                         Επίπεδο
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item" href="#">Μεγαλύτερη βαθμολογία</a></li>
-                        <li><a class="dropdown-item" href="#">Χαμηλότερη βαθμολογία</a></li>
-                        <li><a class="dropdown-item" href="#">Νεότερες βαθμολογίες</a></li>
-                        <li><a class="dropdown-item" href="#">Όλες οι βαθμολογίες</a></li>
+                        <li><a class="dropdown-item" @click="sortDifficulty('descending')">Μεγαλύτερη βαθμολογία</a></li>
+                        <li><a class="dropdown-item" @click="sortDifficulty('ascending')">Χαμηλότερη βαθμολογία</a></li>
+                        <li><a class="dropdown-item" @click="sortDifficulty('bydate')">Νεότερες βαθμολογίες</a></li>
+                        <li><a class="dropdown-item" @click="sortDifficulty('reset')">Όλες οι βαθμολογίες</a></li>
                     </ul>
                 </div>
 
@@ -264,6 +263,18 @@ export default {
             this.selectedContentLanguage = language;
             this.getResources();
         },
+        sortDifficulty(option){
+
+              this.getContentDifficulties();
+              this.contentDifficulties.sort(function (a , b) {
+                  if(option==="ascending") {
+                      return a.id - b.id;
+                  } else if(option === "descending"){
+                      return b.id - a.id;
+                  }
+              });
+            this.getResources();
+        },
         getContentLanguages() {
             this.get({
                 url: route('content_languages.get'),
@@ -321,7 +332,7 @@ export default {
             }
             url += '&status_ids=' + _.map(this.resourcesStatuses).join();
             url += '&is_admin=' + this.isAdmin;
-            console.log('get url')
+            url += '&difficulties=' + _.map(this.contentDifficulties,'id').join();
             console.log(url);
             this.get({
                 url: url,

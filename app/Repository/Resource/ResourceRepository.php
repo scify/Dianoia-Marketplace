@@ -31,7 +31,8 @@ class ResourceRepository extends Repository {
     public function getResources(
         int $user_id = null,
         int $lang_id = null,
-        array $status_ids = [ResourceStatusesLkp::APPROVED]
+        array $status_ids = null,
+        array $difficulties = null
     )
     {
         $whereArray = [];
@@ -39,11 +40,26 @@ class ResourceRepository extends Repository {
             $whereArray['lang_id'] = $lang_id;
         if ($user_id)
             $whereArray['creator_user_id'] = $user_id;
-        return Resource
-            ::where($whereArray)
-            ->whereIn('status_id', $status_ids)
-            ->with($this->defaultRelationships)
-            ->get();
+
+        $resources = Collection::empty();
+        if($difficulties != [""]){
+            foreach ($difficulties as $difficulty){
+                $whereArray['difficulty_id'] = intval($difficulty);
+                $part =   Resource::where($whereArray)
+                    ->whereIn('status_id', $status_ids)->with($this->defaultRelationships)
+                    ->get();
+                $resources = $resources->merge($part);
+            }
+        }
+        else{
+            $resources =  Resource::where($whereArray)
+                ->whereIn('status_id', $status_ids)->with($this->defaultRelationships)
+                ->get();
+        }
+        return $resources;
+
+
+
     }
 }
 
