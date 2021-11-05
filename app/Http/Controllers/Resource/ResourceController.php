@@ -322,4 +322,10 @@ class ResourceController extends Controller
         return $ret;
     }
 
+    public function getUsers()
+    {
+        $ret = $this->userManager->getUsers();
+        return $ret;
+    }
+
 }

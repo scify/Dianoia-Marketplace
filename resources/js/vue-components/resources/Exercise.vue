@@ -8,7 +8,7 @@
                         <p class="title"> {{resource.name}} </p>
                         <p>{{resource.description}}</p>
                     </div>
-                    <a href="#" class="btn btn--secondary" target="_blank">Δες την άσκηση</a>
+                    <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary" target="_blank">Δες την άσκηση</a>
                 </div>
                 <hr>
                 <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">
@@ -20,7 +20,11 @@
                         <span class="fa fa-star"></span>
                         <p>Δώσε την δική σου βαθμολογία</p>
                     </div>
-                    <div class="created-by">Δημιουργήθηκε από {{resource.creator_user_id}}</div>
+                    <i v-for="user in this.users">
+                        <div class="created-by" v-if="user.id===resource.creator_user_id">Δημιουργήθηκε από {{user.name}}</div>
+                    </i>
+
+
                     <i v-for="difficulty in this.difficulties">
 <!--                        <div class="level">{{resource.difficulty_id}}</div>-->
 <!--                        <div class="level">{{difficulty.name}}</div>-->
@@ -37,75 +41,6 @@
 <!--                     :alt="resource.name">-->
             </div>
         </div>
-
-<!--        <div class="card w-100" >-->
-<!--            <div class="dropdown-container">-->
-<!--                <div class="dropdown">-->
-<!--                    <button class="btn btn-outline-secondary dropdown-toggle actions-btn" type="button"-->
-<!--                            :id="'dropdownMenuButton_' + resource.id" data-bs-toggle="dropdown"-->
-<!--                            aria-expanded="false">-->
-<!--                        <i class="fas fa-ellipsis-v"></i>-->
-<!--                    </button>-->
-<!--                    <ul class="dropdown-menu" :aria-labelledby="'dropdownMenuButton_' + resource.id">-->
-
-
-<!--                        <li v-if="!isAdminPageForExerciseApproval()">-->
-<!--                            <a  class="dropdown-item" :href="getDownloadExerciseRoute()"><i-->
-<!--                                class="fas fa-file-download me-2"></i>Download</a>-->
-<!--                        </li>-->
-<!--                        <li v-if="!isAdminPageForExerciseApproval()">-->
-<!--                            <a class="dropdown-item"-->
-<!--                               :href="getCloneExerciseRoute()"><i-->
-<!--                                class="fas fa-clone me-2"></i>Clone</a>-->
-<!--                        </li>-->
-
-<!--                        <li v-if="(!loggedInUserIsDifferentFromContentUser() || loggedInUserIsAdmin()) && !isAdminPageForExerciseApproval()">-->
-<!--                            <a  class="dropdown-item" :href="getEditExerciseRoute()"><i-->
-<!--                                class="fas fa-edit me-2"></i>Edit</a>-->
-<!--                            <a class="dropdown-item" @click="showDeleteModal"><i-->
-<!--                                class="fas fa-trash-alt me-2"></i>Delete</a>-->
-<!--                        </li>-->
-<!--                        <li v-if="loggedInUserIsAdmin()">-->
-<!--                            <a class="dropdown-item" @click="approveExercise"><i-->
-<!--                                class="fas fa-check-circle me-2"></i>Approve</a>-->
-<!--                            <a class="dropdown-item" @click="showExerciseRejectionModal"><i-->
-<!--                                class="fas fa-angry me-2"></i>Reject</a>-->
-<!--                        </li>-->
-<!--                        <li v-else>-->
-<!--                            <a class="dropdown-item" @click="showRateModal"><i class="fas fa-star-half-alt me-2"></i>Rate</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <img :src="'/storage/'+resource.img_path" class="card-img-top"-->
-<!--                 :alt="resource.name">-->
-<!--            <div class="card-body">-->
-<!--                <p class="card-title"  style="margin-bottom: 0;">-->
-<!--                    {{ resource.name }}-->
-<!--                </p>-->
-<!--                <p class="card-subtitle mb-2 text-muted">-->
-<!--                    {{ trans('messages.made_by') }} {{ resource.creator.name }}-->
-<!--                </p>-->
-<!--                <button-->
-<!--                    @click="showChildrenResourcesModal"-->
-<!--                    class="btn btn-outline-primary my-2 w-100">-->
-<!--                    {{ trans('messages.see_cards_btn') }}-->
-<!--                </button>-->
-
-
-<!--                <div class="rating mb-1">-->
-<!--                    <i v-for="index in maxRating" class="fa-star"-->
-<!--                       v-bind:class="{ fas: resourceHasRating(index), far: !resourceHasRating(index) }"></i>-->
-<!--                </div>-->
-
-<!--                <p v-if="loggedInUserIsDifferentFromContentUser()" class="rate-text">-->
-<!--                    {{ trans('messages.give_rating') }} <a class="rate-link"-->
-<!--                                                           @click="showRateModal">-->
-<!--                    {{ trans('messages.rating') }}-->
-<!--                </a>-->
-<!--                </p>-->
-<!--            </div>-->
-<!--        </div>-->
     </div>
 </template>
 
@@ -131,6 +66,7 @@ export default {
         languages: Array,
         types:Array,
         difficulties:Array,
+        users:Array,
         resourcesRoute: String,
         userIdToGetContent: Number,
         exercisesType: String,
