@@ -5,6 +5,7 @@ import {Modal} from 'bootstrap';
         init();
     });
 
+
     let listenForNewCardClick = function () {
         $('#newCardBtn').on("click", function () {
 
@@ -180,6 +181,12 @@ import {Modal} from 'bootstrap';
         });
     }
 
+    let multiSelect = $(document).ready(function() {
+        $('#multiple-checkboxes').multiselect({
+            includeSelectAllOption: true,
+        });
+    });
+
 
     let listenForPdfReset = function () {
         $('#btnResetFile').on("click", function ($event) {
@@ -266,6 +273,7 @@ import {Modal} from 'bootstrap';
         scrollToCarers();
         listenForPdfChanges();
         listenForPdfReset();
+        multiSelect();
         // listenForExerciseSubmitClick();
         // downloadBundleXML()
     };

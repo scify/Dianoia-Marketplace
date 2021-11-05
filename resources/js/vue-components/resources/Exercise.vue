@@ -36,6 +36,8 @@
                     <i v-for="type in this.types">
                         <div class="category" v-if="type.id===resource.type_id">{{type.name}}</div>
                     </i>
+
+
                 </div>
 <!--                <img :src="'/storage/app/public/'+resource.img_path" class="card-img-top"-->
 <!--                     :alt="resource.name">-->

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @push('css')
+
     <link rel="stylesheet" href="{{mix('dist/css/exercise-page.css')}}">
 @endpush
 
 @section('content')
 
     <main>
-
         <div class="row mt-5">
             <div class="col">
                 <exercises-with-filters

@@ -82,6 +82,18 @@
                         <!--                        <li><a class="dropdown-item" @click="sortDifficulty('bydate')">Νεότερες βαθμολογίες</a></li>-->
                         <li><a class="dropdown-item" @click="sortDifficulty('reset')">Όλες οι δυσκολίες</a></li>
                     </ul>
+                    <div class="">
+                        <strong>Select Language:</strong>
+                        <select id="multiple-checkboxes" multiple="multiple">
+                            <option value="php">PHP</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="java">Java</option>
+                            <option value="sql">SQL</option>
+                            <option value="jquery">Jquery</option>
+                            <option value=".net">.Net</option>
+                        </select>
+                    </div>
+
                 </div>
 
                 <div class="dropdown">
@@ -376,6 +388,9 @@ export default {
 
 <style scoped lang="scss">
 @import "resources/sass/common/variables";
+@import "resources/sass/exercise-page";
+
+
 
 .btn.selected {
     background-color:  var(--color-blue);;
