@@ -78,9 +78,9 @@
                         Κατηγορία
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                        <li><a class="dropdown-item"  id="patientCategoriesList" @click="initializeTypes">Ασκήσεις για Ασθενείς</a></li>
-                        <li><a class="dropdown-item" id="carerCategoriesList" @click="initializeTypes">Ασκήσεις για Φροντιστές</a></li>
-                        <li><a class="dropdown-item" id="allCategoriesList" @click="initializeTypes">Όλες οι Κατηγορίες Ασκήσεων</a></li>
+                        <li><a class="dropdown-item"  id="patientCategoriesList" @click="initializeTypes(carer=false)">Ασκήσεις για Ασθενείς</a></li>
+                        <li><a class="dropdown-item" id="carerCategoriesList" @click="initializeTypes(carer=true)">Ασκήσεις για Φροντιστές</a></li>
+                        <li><a class="dropdown-item" id="allCategoriesList" @click="initializeTypes(carer=true)">Όλες οι Κατηγορίες Ασκήσεων</a></li>
                     </ul>
                 </div>
 
@@ -293,7 +293,7 @@ export default {
         },
 
         isPatientExercise(type){
-            return type.name !== 'carer';
+            return type.name !== 'Carer';
         },
 
         setContentLanguage(language) {
@@ -407,12 +407,18 @@ export default {
                 this.searchLoading = false;
             }, 500);
         },
-        initializeTypes(){
+        initializeTypes(carer=false){
             if(this.initExerciseTypes.length > 0){
                 this.selectedTypes = this.initExerciseTypes;
+                this.initExerciseTypes = [];
             }
             else{
-                this.selectedTypes = this.contentTypes.slice(0);//create copy
+                if(!carer){
+                    this.selectedTypes  =  this.contentTypes.filter(type => this.isPatientExercise(type));
+                }
+                else{
+                    this.selectedTypes  =  this.contentTypes.slice(0);
+                }
             }
             console.log(_.map(this.selectedTypes,'name'));
             for(let x in this.contentTypes){
@@ -425,6 +431,7 @@ export default {
                     $('#'+type.name).prop('checked','false');
                 }
             }
+            this.getResources();
         },
     }
 }
