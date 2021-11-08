@@ -84,7 +84,7 @@
                     </ul>
                 </div>
 
-                <div class="dropdown" id="patient-exercise-categories" style="visibility: hidden">
+                <div class="dropdown" id="patient-exercise-categories" style="display: none">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton4"
                             data-bs-toggle="dropdown" aria-expanded="false">
                         Τύποι Ασκήσεων για Ασθενείς

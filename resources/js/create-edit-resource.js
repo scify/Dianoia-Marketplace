@@ -257,19 +257,19 @@ import {Modal} from 'bootstrap';
     let showPatientCategoriesDropdown = function(){
         $('#patientCategoriesList').on("click", function () {
             console.log('patientCategories');
-            $('#patient-exercise-categories').css('visibility','visible');
+            $('#patient-exercise-categories').css('display','block');
         });
     }
 
     let showCarerCategoriesDropdown = function(){
         $('#carerCategoriesList').on("click", function () {
-            $('#patient-exercise-categories').css('visibility','hidden');
+            $('#patient-exercise-categories').css('display','none');
         });
     }
 
     let showAllCategoriesDropdown = function(){
         $('#allCategoriesList').on("click", function () {
-            $('#patient-exercise-categories').css('visibility','visible');
+            $('#patient-exercise-categories').css('display','block');
         });
     }
 
