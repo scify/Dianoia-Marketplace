@@ -72,36 +72,36 @@
 
 
                 <div class="dropdown">
+
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton3"
                             data-bs-toggle="dropdown" aria-expanded="false">
                         Κατηγορία
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                        <li><a class="dropdown-item" @click="sortDifficulty('descending')">Μεγαλύτερη Δυσκολία</a></li>
-                        <li><a class="dropdown-item" @click="sortDifficulty('ascending')">Χαμηλότερη Δυσκολία</a></li>
-                        <!--                        <li><a class="dropdown-item" @click="sortDifficulty('bydate')">Νεότερες βαθμολογίες</a></li>-->
-                        <li><a class="dropdown-item" @click="sortDifficulty('reset')">Όλες οι δυσκολίες</a></li>
+                        <li><a class="dropdown-item"  id="patientCategoriesList" @click="initializeTypes">Ασκήσεις για Ασθενείς</a></li>
+                        <li><a class="dropdown-item" id="carerCategoriesList" @click="initializeTypes">Ασκήσεις για Φροντιστές</a></li>
+                        <li><a class="dropdown-item" id="allCategoriesList" @click="initializeTypes">Όλες οι Κατηγορίες Ασκήσεων</a></li>
                     </ul>
-                    <div class="">
-                        <strong>Select Language:</strong>
-                        <select id="multiple-checkboxes" multiple="multiple">
-                            <option value="php">PHP</option>
-                            <option value="javascript">JavaScript</option>
-                            <option value="java">Java</option>
-                            <option value="sql">SQL</option>
-                            <option value="jquery">Jquery</option>
-                            <option value=".net">.Net</option>
-                        </select>
-                    </div>
+                </div>
 
+                <div class="dropdown" id="patient-exercise-categories" style="visibility: hidden">
+                    <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton4"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        Τύποι Ασκήσεων για Ασθενείς
+                    </button>
+                    <ul class="checkboxes" aria-labelledby="dropdownMenuButton4" >
+                        <i v-for="type in this.contentTypes">
+                            <div v-if="isPatientExercise(type)" ><input v-bind:id="type.name"  type="checkbox" @click="selectType(type)">{{type.name}}</div>
+                        </i>
+                    </ul>
                 </div>
 
                 <div class="dropdown">
-                    <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton4"
+                    <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton5"
                             data-bs-toggle="dropdown" aria-expanded="false">
                         Βαθμολογία
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
                         <li><a class="dropdown-item" @click="sortRating('descending')">Μεγαλύτερη Δυσκολία</a></li>
                         <li><a class="dropdown-item" @click="sortRating('ascending')">Χαμηλότερη Δυσκολία</a></li>
                         <li><a class="dropdown-item" @click="sortRating('bydate')">Νεότερες βαθμολογίες</a></li>
@@ -110,11 +110,11 @@
                 </div>
 
                 <div class="dropdown">
-                    <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton5"
+                    <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton6"
                             data-bs-toggle="dropdown" aria-expanded="false">
                         Χρήστης
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton6">
                         <li><a class="dropdown-item" href="#">Ιδιώτης Φροντιστής</a></li>
                         <li><a class="dropdown-item" href="#">Επαγγελματίας Φροντιστής</a></li>
                         <li><a class="dropdown-item" href="#">Οργανισμός</a></li>
@@ -136,65 +136,65 @@
 <!--                </div>-->
             </div>
 
-            <div class="search-section__results">
-                <div class="exercise-template shadow content mb-5 mt-5">
-                    <div class="exercise-box" id="patient-template">
-                        <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">
-                            <div>
-                                <p class="title">Σκίαση σχημάτων.</p>
-                                <p>Αντιγράψτε τα σχέδια, σκιάζοντας τα αντίστοιχα τετράγωνα.</p>
+<!--            <div class="search-section__results">-->
+<!--                <div class="exercise-template shadow content mb-5 mt-5">-->
+<!--                    <div class="exercise-box" id="patient-template">-->
+<!--                        <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">-->
+<!--                            <div>-->
+<!--                                <p class="title">Σκίαση σχημάτων.</p>-->
+<!--                                <p>Αντιγράψτε τα σχέδια, σκιάζοντας τα αντίστοιχα τετράγωνα.</p>-->
 
-                            </div>
-                            <a href="#" class="btn btn--secondary" target="_blank">Δες την άσκηση</a>
-                        </div>
-                        <hr>
-                        <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">
-                            <div class="rating">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <p>Δώσε την δική σου βαθμολογία</p>
-                            </div>
-                            <div class="created-by">Δημιουργήθηκε από Επαγγελματίας φροντιστής</div>
-                            <div class="level">Κανονικό επίπεδο</div>
-                            <div class="language">Ελληνικά</div>
-                            <div class="category">Ασκήσεις προσοχής</div>
+<!--                            </div>-->
+<!--                            <a href="#" class="btn btn&#45;&#45;secondary" target="_blank">Δες την άσκηση</a>-->
+<!--                        </div>-->
+<!--                        <hr>-->
+<!--                        <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">-->
+<!--                            <div class="rating">-->
+<!--                                <span class="fa fa-star checked"></span>-->
+<!--                                <span class="fa fa-star checked"></span>-->
+<!--                                <span class="fa fa-star checked"></span>-->
+<!--                                <span class="fa fa-star"></span>-->
+<!--                                <span class="fa fa-star"></span>-->
+<!--                                <p>Δώσε την δική σου βαθμολογία</p>-->
+<!--                            </div>-->
+<!--                            <div class="created-by">Δημιουργήθηκε από Επαγγελματίας φροντιστής</div>-->
+<!--                            <div class="level">Κανονικό επίπεδο</div>-->
+<!--                            <div class="language">Ελληνικά</div>-->
+<!--                            <div class="category">Ασκήσεις προσοχής</div>-->
 
-                        </div>
-                    </div>
-                </div>
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
-                <div class="exercise-template shadow content mb-5 mt-5">
-                    <div class="exercise-box" id="carer-template">
-                        <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">
-                            <div>
-                                <p class="title">Εβδομαδιαίο Πρόγραμμα Δραστηριοτήτων</p>
-                                <p>Δημιουργήστε το εβδομαδιαίο σας πρόγραμμα με τις δραστηριότητές σας.</p>
+<!--                <div class="exercise-template shadow content mb-5 mt-5">-->
+<!--                    <div class="exercise-box" id="carer-template">-->
+<!--                        <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">-->
+<!--                            <div>-->
+<!--                                <p class="title">Εβδομαδιαίο Πρόγραμμα Δραστηριοτήτων</p>-->
+<!--                                <p>Δημιουργήστε το εβδομαδιαίο σας πρόγραμμα με τις δραστηριότητές σας.</p>-->
 
-                            </div>
-                            <a href="#" class="btn btn--secondary" target="_blank">Δες την άσκηση</a>
-                        </div>
-                        <hr>
-                        <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">
-                            <div class="rating">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                <p>Δώσε την δική σου βαθμολογία</p>
-                            </div>
-                            <div class="created-by">Δημιουργήθηκε από  Alzheimer Athens</div>
-                            <div class="level">Κανονικό επίπεδο</div>
-                            <div class="language">Ελληνικά</div>
-                            <div class="category">Ασκήσεις για φροντιστές</div>
+<!--                            </div>-->
+<!--                            <a href="#" class="btn btn&#45;&#45;secondary" target="_blank">Δες την άσκηση</a>-->
+<!--                        </div>-->
+<!--                        <hr>-->
+<!--                        <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">-->
+<!--                            <div class="rating">-->
+<!--                                <span class="fa fa-star checked"></span>-->
+<!--                                <span class="fa fa-star checked"></span>-->
+<!--                                <span class="fa fa-star checked"></span>-->
+<!--                                <span class="fa fa-star"></span>-->
+<!--                                <span class="fa fa-star"></span>-->
+<!--                                <p>Δώσε την δική σου βαθμολογία</p>-->
+<!--                            </div>-->
+<!--                            <div class="created-by">Δημιουργήθηκε από  Alzheimer Athens</div>-->
+<!--                            <div class="level">Κανονικό επίπεδο</div>-->
+<!--                            <div class="language">Ελληνικά</div>-->
+<!--                            <div class="category">Ασκήσεις για φροντιστές</div>-->
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
 
         <div class="row mt-5" v-if="filteredResources.length">
@@ -248,7 +248,13 @@ export default {
         isAdmin: String,
         resourceType: String,
         approveResources: Number,
-        resourcesRoute: String
+        resourcesRoute: String,
+        initExerciseTypes: {
+            type: Array,
+            default: function () {
+                return [];
+            }
+        },
     },
     data: function () {
         return {
@@ -257,6 +263,7 @@ export default {
             contentTypes: [],
             contentDifficulties: [],
             users: [],
+            selectedTypes: [],
             selectedContentLanguage: {},
             loadingResources: false,
             filteredResources: [],
@@ -270,6 +277,25 @@ export default {
             'get',
             'handleError'
         ]),
+        selectType(type) {
+            let index =  this.selectedTypes.indexOf(type);
+            if (index >= 0) { //unselect object
+                this.selectedTypes.splice(index, 1);
+
+            }
+            else{ //select object
+                this.selectedTypes.push(type);
+            }
+            let types = _.map(this.selectedTypes, 'name')
+            console.log(type.name);
+            console.log(types);
+            this.getResources();
+        },
+
+        isPatientExercise(type){
+            return type.name !== 'carer';
+        },
+
         setContentLanguage(language) {
             console.log(language);
             this.selectedContentLanguage = language;
@@ -308,25 +334,26 @@ export default {
             });
         },
         getContentTypes(){
-            console.log('types');
+
             this.get({
                 url: route('content_types.get'),
                 urlRelative: false
             }).then(response => {
                 this.contentTypes = response.data;
                 let types = _.map(this.contentTypes, 'name')
-                console.log(types);
+                console.log('types:'+types);
             });
+
         },
         getContentDifficulties(){
-            console.log('difficulties');
+
             this.get({
                 url: route('content_difficulties.get'),
                 urlRelative: false
             }).then(response => {
                 this.contentDifficulties = response.data;
                 let difficulties = _.map(this.contentDifficulties, 'name')
-                console.log(difficulties);
+                console.log('difficulties:'+difficulties);
             });
         },
         getUsers(){
@@ -349,8 +376,8 @@ export default {
             if (this.userIdToGetContent) {
                 url += ('&user_id_to_get_content=' + this.userIdToGetContent);
             }
-            if (this.resourceTypes.length) {
-                url += '&type_ids=' + _.map(_.filter(this.resourceTypes, r => r.checked), 'id').join();
+            if (this.selectedTypes.length) {
+                url += '&type_ids=' + _.map(this.selectedTypes, 'id').join();
             }
             url += '&status_ids=' + _.map(this.resourcesStatuses).join();
             url += '&is_admin=' + this.isAdmin;
@@ -379,6 +406,25 @@ export default {
                 });
                 this.searchLoading = false;
             }, 500);
+        },
+        initializeTypes(){
+            if(this.initExerciseTypes.length > 0){
+                this.selectedTypes = this.initExerciseTypes;
+            }
+            else{
+                this.selectedTypes = this.contentTypes.slice(0);//create copy
+            }
+            console.log(_.map(this.selectedTypes,'name'));
+            for(let x in this.contentTypes){
+                let type = this.contentTypes[x];
+                if(jQuery.inArray(type,  this.selectedTypes) !== -1){
+                    console.log('check '+type.name)
+                    $("#"+type.name).prop('checked','true');
+                } else{
+                    console.log('uncheck '+type.name);
+                    $('#'+type.name).prop('checked','false');
+                }
+            }
         },
     }
 }

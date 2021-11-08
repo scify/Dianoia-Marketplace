@@ -243,12 +243,17 @@ class ResourceController extends Controller
             $user_id = intval($request->user_id_to_get_content);
         }
         $status_ids = explode(',', $request->status_ids);
+        $type_ids = null;
+        if($request->type_ids){
+            $type_ids = explode(',', $request->type_ids);
+        }
         $difficulties = explode(',', $request->difficulties);
         return $this->resourceManager->getResources(
             $request->lang_id,
             $user_id,
             $status_ids,
-            $difficulties
+            $difficulties,
+            $type_ids,
         );
     }
 
@@ -329,5 +334,7 @@ class ResourceController extends Controller
         $ret = $this->userManager->getUsers();
         return $ret;
     }
+
+
 
 }

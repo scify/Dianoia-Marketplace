@@ -181,11 +181,6 @@ import {Modal} from 'bootstrap';
         });
     }
 
-    let multiSelect = $(document).ready(function() {
-        $('#multiple-checkboxes').multiselect({
-            includeSelectAllOption: true,
-        });
-    });
 
 
     let listenForPdfReset = function () {
@@ -259,6 +254,26 @@ import {Modal} from 'bootstrap';
         });
     }
 
+    let showPatientCategoriesDropdown = function(){
+        $('#patientCategoriesList').on("click", function () {
+            console.log('patientCategories');
+            $('#patient-exercise-categories').css('visibility','visible');
+        });
+    }
+
+    let showCarerCategoriesDropdown = function(){
+        $('#carerCategoriesList').on("click", function () {
+            $('#patient-exercise-categories').css('visibility','hidden');
+        });
+    }
+
+    let showAllCategoriesDropdown = function(){
+        $('#allCategoriesList').on("click", function () {
+            $('#patient-exercise-categories').css('visibility','visible');
+        });
+    }
+
+
 
     let init = function () {
         listenForImageChanges();
@@ -273,9 +288,10 @@ import {Modal} from 'bootstrap';
         scrollToCarers();
         listenForPdfChanges();
         listenForPdfReset();
-        multiSelect();
-        // listenForExerciseSubmitClick();
-        // downloadBundleXML()
+        showPatientCategoriesDropdown();
+        showCarerCategoriesDropdown();
+        showAllCategoriesDropdown();
+
     };
 
 })();

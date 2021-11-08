@@ -32,7 +32,8 @@ class ResourceRepository extends Repository {
         int $user_id = null,
         int $lang_id = null,
         array $status_ids = null,
-        array $difficulties = null
+        array $difficulties = null,
+        array $type_ids = null
     )
     {
         $whereArray = [];
@@ -45,16 +46,31 @@ class ResourceRepository extends Repository {
         if($difficulties != [""]){
             foreach ($difficulties as $difficulty){
                 $whereArray['difficulty_id'] = intval($difficulty);
-                $part =   Resource::where($whereArray)
-                    ->whereIn('status_id', $status_ids)->with($this->defaultRelationships)
-                    ->get();
+                if($type_ids){
+                    $part =   Resource::where($whereArray)
+                        ->whereIn('status_id', $status_ids)
+                        ->whereIn('type_id',$type_ids)->with($this->defaultRelationships)
+                        ->get();
+                }
+                else{
+                    $part =   Resource::where($whereArray)
+                        ->whereIn('status_id', $status_ids)->with($this->defaultRelationships)
+                        ->get();
+                }
+
                 $resources = $resources->merge($part);
             }
         }
         else{
-            $resources =  Resource::where($whereArray)
-                ->whereIn('status_id', $status_ids)->with($this->defaultRelationships)
-                ->get();
+            if($type_ids) {
+                $resources = Resource::where($whereArray)
+                    ->whereIn('status_id', $status_ids)->whereIn('type_id',$type_ids)->with($this->defaultRelationships)
+                    ->get();
+            }else{
+                $resources =  Resource::where($whereArray)
+                    ->whereIn('status_id', $status_ids)->with($this->defaultRelationships)
+                    ->get();
+            }
         }
         return $resources;
 
