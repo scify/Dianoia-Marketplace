@@ -78,9 +78,9 @@
                         Κατηγορία
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                        <li><a class="dropdown-item"  id="patientCategoriesList" @click="initializeTypes(carer=false)">Ασκήσεις για Ασθενείς</a></li>
-                        <li><a class="dropdown-item" id="carerCategoriesList" @click="initializeTypes(carer=true)">Ασκήσεις για Φροντιστές</a></li>
-                        <li><a class="dropdown-item" id="allCategoriesList" @click="initializeTypes(carer=true)">Όλες οι Κατηγορίες Ασκήσεων</a></li>
+                        <li><a class="dropdown-item"  id="patientCategoriesList" @click="initializeTypes('patient')">Ασκήσεις για Ασθενείς</a></li>
+                        <li><a class="dropdown-item" id="carerCategoriesList" @click="initializeTypes('carer')">Ασκήσεις για Φροντιστές</a></li>
+                        <li><a class="dropdown-item" id="allCategoriesList" @click="initializeTypes('all')">Όλες οι Κατηγορίες Ασκήσεων</a></li>
                     </ul>
                 </div>
 
@@ -224,6 +224,8 @@ export default {
         this.getContentTypes();
         this.getContentDifficulties();
         this.getUsers();
+        this.setCarerExercises();
+        this.setPatientExercises();
     },
     props: {
         user: {
@@ -268,6 +270,8 @@ export default {
             loadingResources: false,
             filteredResources: [],
             maxRating: 5,
+            patientExercises: [],
+            carerExercises: [],
             searchPlaceholder: window.translate('messages.search_resources_package'),
             searchLoading: false
         }
@@ -291,10 +295,19 @@ export default {
             console.log(types);
             this.getResources();
         },
-
-        isPatientExercise(type){
-            return type.name !== 'Carer';
+        setPatientExercises(){
+            this.patientExercises = ["Attention","Memory","Executive","Reason"];
         },
+        setCarerExercises(){
+            this.carerExercises = ["Carer"];
+        },
+        isPatientExercise(type){
+            return this.patientExercises.includes(type.name);
+        },
+        isCarerExercise(type){
+            return this.carerExercises.includes(type.name);
+        },
+
 
         setContentLanguage(language) {
             console.log(language);
@@ -407,17 +420,20 @@ export default {
                 this.searchLoading = false;
             }, 500);
         },
-        initializeTypes(carer=false){
+        initializeTypes(mode){
             if(this.initExerciseTypes.length > 0){
                 this.selectedTypes = this.initExerciseTypes;
                 this.initExerciseTypes = [];
             }
             else{
-                if(!carer){
+                if(mode==="patient"){
                     this.selectedTypes  =  this.contentTypes.filter(type => this.isPatientExercise(type));
                 }
-                else{
+                else if (mode==="all"){
                     this.selectedTypes  =  this.contentTypes.slice(0);
+                }
+                else if(mode==="carer"){
+                    this.selectedTypes = this.contentTypes.filter(type => this.isCarerExercise(type));
                 }
             }
             console.log(_.map(this.selectedTypes,'name'));
