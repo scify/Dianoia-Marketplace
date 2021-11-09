@@ -19,6 +19,6 @@ class ResourcesRating extends Model {
      */
     protected $fillable = [
         'resources_id', 'voter_user_id',
-        'rating'
+        'rating', 'updated_at'
     ];
 }

@@ -8,15 +8,18 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
-class ResourceRatingController extends Controller {
+class ResourceRatingController extends Controller
+{
 
     protected ResourcesRatingManager $resourcesRatingManager;
 
-    public function __construct(ResourcesRatingManager $resourcesRatingManager) {
+    public function __construct(ResourcesRatingManager $resourcesRatingManager)
+    {
         $this->resourcesRatingManager = $resourcesRatingManager;
     }
 
-    public function getUserRatingForResource(Request $request) {
+    public function getUserRatingForResource(Request $request)
+    {
 
         $this->validate($request, [
             'user_id' => 'required|integer',
@@ -28,7 +31,8 @@ class ResourceRatingController extends Controller {
         );
     }
 
-    public function storeOrUpdateRating(Request $request) {
+    public function storeOrUpdateRating(Request $request)
+    {
 
         $this->validate($request, [
             'user_id' => 'required|integer',
@@ -36,7 +40,7 @@ class ResourceRatingController extends Controller {
             'rating' => 'required|integer|min:1|max:5'
         ]);
 
-        if(!Auth::check())
+        if (!Auth::check())
             abort(Response::HTTP_UNAUTHORIZED);
 
         return $this->resourcesRatingManager->storeOrUpdateRating(
@@ -46,4 +50,7 @@ class ResourceRatingController extends Controller {
         );
     }
 
+    public function getContentRatings(){
+        return $this->resourcesRatingManager->getRatings();
+    }
 }

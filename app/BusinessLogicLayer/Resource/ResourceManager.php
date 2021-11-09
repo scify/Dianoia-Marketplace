@@ -13,7 +13,6 @@ use App\Repository\Resource\ResourceTypeLkpRepository;
 use App\Repository\Resource\ResourceTypesLkp;
 use App\ViewModels\CreateEditResourceVM;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -88,8 +87,8 @@ class ResourceManager {
     }
 
 
-    public function getResources(int $lang_id, $user_id = null, array $status_ids=[ResourceStatusesLkp::APPROVED], array $difficulties=null, array $type_ids=null) {
-        $ret = $this->resourceRepository->getResources($user_id, $lang_id, $status_ids, $difficulties, $type_ids);
+    public function getResources(int $lang_id, $user_id = null, array $status_ids=[ResourceStatusesLkp::APPROVED], array $difficulties=null, array $type_ids=null, array $ratings=null) {
+        $ret = $this->resourceRepository->getResources($user_id, $lang_id, $status_ids, $difficulties, $type_ids, $ratings);
         return $ret;
     }
 

@@ -164,6 +164,7 @@ export default {
         this.getContentTypes();
         this.getContentDifficulties();
         this.getUsers();
+        this.getRatings();
         this.setCarerExercises();
         this.setPatientExercises();
     },
@@ -204,6 +205,7 @@ export default {
             contentLanguages: [],
             contentTypes: [],
             contentDifficulties: [],
+            contentRatings: [],
             users: [],
             selectedTypes: [],
             selectedContentLanguage: {},
@@ -270,11 +272,28 @@ export default {
                       }
                   });
                   this.getResources();
-                  this.getContentDifficulties();
+                  // this.getContentDifficulties();
               }
         },
         sortRating(option){
-          ;
+            console.log('sort ratings');
+            this.contentRatings.sort(function(a, b){
+                if (option === "ascending") {
+                    return a.rating - b.rating;
+                } else if (option === "descending") {
+                    return b.rating - a.rating;
+                }
+                else if (option === "bydata") {
+                    return b.updated_at - a.updated_at;
+                }
+            });
+            let resourcesOrder = _.map(this.contentRatings, 'resources_id')
+            console.log('sorted ratings:'+resourcesOrder);
+            this.filteredResources.sort(function(a,b){
+                return resourcesOrder.indexOf(a.id) - resourcesOrder.indexOf(b.id);
+            })
+            let resources = _.map(this.filteredResources, 'name')
+            console.log('sorted resources:'+resources);
         },
         getContentLanguages() {
             this.get({
@@ -335,6 +354,7 @@ export default {
             url += '&status_ids=' + _.map(this.resourcesStatuses).join();
             url += '&is_admin=' + this.isAdmin;
             url += '&difficulties=' + _.map(this.contentDifficulties,'id').join();
+            // url += '&ratings=' + _.map(this.contentRatings,'id').join();
             console.log(url);
             this.get({
                 url: url,
@@ -345,6 +365,16 @@ export default {
                 let names = _.map(this.filteredResources, 'id')
                 console.log(names);
                 this.loadingResources = false;
+            });
+        },
+        getRatings(){
+            this.get({
+                url: route('content_ratings.get'),
+                urlRelative: false
+            }).then(response => {
+                this.contentRatings = response.data;
+                let ratings = _.map(this.contentRatings, 'rating')
+                console.log('ratings:'+ratings);
             });
         },
         search(searchTerm) {

@@ -248,12 +248,14 @@ class ResourceController extends Controller
             $type_ids = explode(',', $request->type_ids);
         }
         $difficulties = explode(',', $request->difficulties);
+        $ratings = explode(',', $request->ratings);
         return $this->resourceManager->getResources(
             $request->lang_id,
             $user_id,
             $status_ids,
             $difficulties,
             $type_ids,
+            $ratings
         );
     }
 

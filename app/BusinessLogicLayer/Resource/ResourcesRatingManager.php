@@ -25,10 +25,15 @@ class ResourcesRatingManager {
     }
 
     public function getUserRatingForResource(int $user_id, int $resources_id) {
+
         return $this->resourcesRatingRepository->where([
             'voter_user_id' => $user_id,
             'resources_id' => $resources_id
         ]);
+    }
+
+    public function getRatings() {
+        return $this->resourcesRatingRepository->all();
     }
 
 }

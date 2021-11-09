@@ -33,7 +33,8 @@ class ResourceRepository extends Repository {
         int $lang_id = null,
         array $status_ids = null,
         array $difficulties = null,
-        array $type_ids = null
+        array $type_ids = null,
+        array $ratings = null
     )
     {
         $whereArray = [];
@@ -43,7 +44,7 @@ class ResourceRepository extends Repository {
             $whereArray['creator_user_id'] = $user_id;
 
         $resources = Collection::empty();
-        if($difficulties != [""]){
+        if($difficulties != [""]){ //sort by difficulty
             foreach ($difficulties as $difficulty){
                 $whereArray['difficulty_id'] = intval($difficulty);
                 if($type_ids){
