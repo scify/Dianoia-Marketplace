@@ -91,7 +91,7 @@
                     </button>
                     <ul class="checkboxes" aria-labelledby="dropdownMenuButton4" >
                         <i v-for="type in this.contentTypes">
-                            <div v-if="isPatientExercise(type)" ><input v-bind:id="type.name"  type="checkbox" @click="selectType(type)">{{type.name}}</div>
+                            <div v-if="isPatientExercise(type)" ><input v-bind:id="type.name" style="margin-right:0.5em" type="checkbox" @click="selectType(type)">{{type.name}}</div>
                         </i>
                     </ul>
                 </div>

@@ -2,7 +2,7 @@
     <div v-if="resource.id">
 
         <div class="exercise-template shadow content mb-5 mt-5">
-            <div v-bind:class="[isCarerExercise() ? 'exercise-box carer-template' :'exercise-box patient-template']">
+            <div class="exercise-box" v-bind:class="[isCarerExercise() ? 'carer-template' :'patient-template']">
                 <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">
                     <div>
                         <p class="title"> {{resource.name}} </p>
