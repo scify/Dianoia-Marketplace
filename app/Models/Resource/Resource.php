@@ -34,4 +34,16 @@ class Resource extends Model
     {
         return $this->hasOne(User::class, 'id', 'creator_user_id');
     }
+
+
+    public function ratings(): HasMany {
+        return $this->hasMany(
+            ResourcesRating::class,
+            'resources_id',
+            'id'
+        );
+    }
+
+
+
 }

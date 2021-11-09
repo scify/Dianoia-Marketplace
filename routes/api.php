@@ -1,9 +1,7 @@
 <?php
 
-use App\Http\Controllers\Resource\PatientResourceController;
-use App\Http\Controllers\Resource\CarerResourceController;
 use App\Http\Controllers\Resource\ResourceController;
-use App\Http\Controllers\Resource\ResourcePackageRatingController;
+use App\Http\Controllers\Resource\ResourceRatingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +20,8 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
     Route::get("/content-types", [ResourceController::class, 'getContentTypes'])->name('content_types.get');
     Route::get("/users", [ResourceController::class, 'getUsers'])->name('users.get');
     Route::get("/content-difficulties", [ResourceController::class, 'getContentDifficulties'])->name('content_difficulties.get');
-//    Route::get("/content-categories", [ResourceController::class, 'getContentCategories'])->name('content_categories.get');
     Route::get("/resources", [ResourceController::class, 'getResources'])->name('resources.get');
-//    Route::get("/resource/user-rating", [ResourcesRatingController::class, 'getUserRatingForResource'])->name('resources.user-rating.get');
+    Route::get("/resources/user-rating", [ResourceRatingController::class, 'getUserRatingForResource'])->name('resources.user-rating.get');
+    Route::post("/resources/user-rating", [ResourceRatingController::class, 'storeOrUpdateRating'])->name('resources.user-rating.post');
 
 });

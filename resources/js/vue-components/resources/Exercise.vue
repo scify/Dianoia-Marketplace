@@ -1,6 +1,5 @@
 <template>
     <div v-if="resource.id">
-
         <div class="exercise-template shadow content mb-5 mt-5">
             <div class="exercise-box" v-bind:class="[isCarerExercise() ? 'carer-template' :'patient-template']">
                 <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">
@@ -11,15 +10,17 @@
                     <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary" target="_blank">Δες την άσκηση</a>
                 </div>
                 <hr>
+
                 <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">
-                    <div class="rating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <p>Δώσε την δική σου βαθμολογία</p>
+                    <div class="rating mb-1">
+                        <i v-for="index in maxRating" class="fa-star"
+                           v-bind:class="{ fas: resourceHasRating(index), far: !resourceHasRating(index) }"></i>
                     </div>
+                    <p v-if="loggedInUserIsDifferentFromContentUser()" class="rate-text">
+                      Give Rating <a class="rate-link" @click="showRateModal">
+                        Rating
+                    </a>
+                    </p>
                     <i v-for="user in this.users">
                         <div class="created-by" v-if="user.id===resource.creator_user_id">Δημιουργήθηκε από {{user.name}}</div>
                     </i>
@@ -43,7 +44,49 @@
 <!--                     :alt="resource.name">-->
             </div>
         </div>
+        <modal
+            @canceled="rateModalOpen = false"
+            id="rate-modal"
+            class="modal"
+            :open="rateModalOpen"
+            :allow-close="true">
+            <template v-slot:header>
+                <h5 class="modal-title pl-2">Rate Package
+                    <b>{{ this.resource.name }}</b>
+                </h5>
+            </template>
+            <template v-slot:body>
+                <div class="container pt-3 pb-5">
+                    <div class="row mb-4">
+                        <div class="col">
+                            <h6 v-if="userLoggedIn()">{{ getRateTitleForUser() }}</h6>
+                            <h6 v-else>You need to sign in in order to rate this package.</h6>
+                        </div>
+                    </div>
+                    <div class="row" v-if="userLoggedIn()">
+                        <div v-for="index in maxRating"
+                             class="col-2"
+                             v-bind:class="{'offset-1': index === 1}">
+                            <button
+                                @click="rateExercise(index)"
+                                class="rate-btn btn btn btn-outline-light w-100 p-0">
+                                <i class="fa-star"
+                                   v-bind:class="{ fas: resourceHasRatingFromUser(index), far: !resourceHasRatingFromUser(index) }"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row" v-else>
+                        <div class="col text-center">
+                            <a :href="getLoginRoute()" class="btn btn-primary">{{
+                                    trans('messages.sign_in_register')
+                                }}</a>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </modal>
     </div>
+
 </template>
 
 <script>
@@ -137,18 +180,20 @@ export default {
             this.totalRating = Math.round(sum / ratings.length) || 0;
         },
         showRateModal() {
+            console.log('show rate modal for resource '+this.resource.id);
             this.rateModalOpen = true;
             if (this.userRating)
                 return;
             if (this.userLoggedIn()) {
                 this.get({
                     url: route('resources.user-rating.get')
-                        + '?resources_exercise_id=' + this.resource.id + '&user_id=' + this.user.id,
+                        + '?resources_id=' + this.resource.id + '&user_id=' + this.user.id,
                     urlRelative: false
                 }).then(response => {
                     this.userRating = response.data.rating;
                 });
             }
+            console.log(this.userRating)
         },
         rejectExercise(){
             this.post({
@@ -196,7 +241,7 @@ export default {
                 url: route('resources.user-rating.post'),
                 data: {
                     user_id: this.user.id,
-                    resources_exercise_id: this.resource.id,
+                    resources_id: this.resource.id,
                     rating: rateIndex
                 },
                 urlRelative: false
@@ -214,6 +259,8 @@ export default {
             });
         },
         loggedInUserIsDifferentFromContentUser() {
+            console.log('creator:'+this.user.id);
+            console.log('current:'+this.resource.creator.id);
             return this.resource.creator.id !== this.user.id;
         },
         loggedInUserIsAdmin() {

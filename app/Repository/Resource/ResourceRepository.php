@@ -15,7 +15,7 @@ use Illuminate\Support\Collection;
 
 class ResourceRepository extends Repository {
 
-    protected array $defaultRelationships = ['creator'];//, 'ratings']
+    protected array $defaultRelationships = ['creator', 'ratings'];
 
     /**
      * @inheritDoc

@@ -2,15 +2,15 @@
 
 namespace App\Repository\Resource;
 
-use App\Models\Resource\ResourcesPackageRating;
+use App\Models\Resource\ResourcesRating;
 use App\Repository\Repository;
 
-class ResourcesPackageRatingRepository extends Repository {
+class ResourcesRatingRepository extends Repository {
 
     /**
      * @inheritDoc
      */
     function getModelClassName() {
-        return ResourcesPackageRating::class;
+        return ResourcesRating::class;
     }
 }

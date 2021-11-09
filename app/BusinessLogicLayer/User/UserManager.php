@@ -35,13 +35,7 @@ class UserManager {
             'email' => $requestData["email"],
             'password' => $requestData["password"], #todo perform trim before hashing
         ]);
-        try{
-            $role = $requestData['role'];
-        }
-        catch(\Exception $e){
-            $role = "Platform Administrator";
-        }
-        $this->userRoleManager->assignRegisteredUserRoleTo($user, $role);
+        $this->userRoleManager->assignRegisteredUserRoleTo($user, 1);
         if (isset($requestData["admin"]) && $requestData["admin"])
             $this->userRoleManager->assignAdminUserRoleTo($user);
         return $user;

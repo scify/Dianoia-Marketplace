@@ -4,13 +4,13 @@ namespace App\Models\Resource;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ResourcesPackageRating extends Model {
+class ResourcesRating extends Model {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'resources_package_ratings';
+    protected $table = 'resources_ratings';
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +18,7 @@ class ResourcesPackageRating extends Model {
      * @var array
      */
     protected $fillable = [
-        'resources_package_id', 'voter_user_id',
+        'resource_id', 'voter_user_id',
         'rating'
     ];
 }

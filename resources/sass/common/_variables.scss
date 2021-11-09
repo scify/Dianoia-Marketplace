@@ -91,6 +91,10 @@
 
     --line: 1px solid var(--color-blue-light-1);
 }
+    @function toRem($value) {
+        $remValue: ($value / 16) + rem;
+        @return $remValue;
+    }
 
 
 // FONT
