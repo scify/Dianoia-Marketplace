@@ -1,14 +1,23 @@
 .exercise-template {
     padding: 0;
     background-color: #ffff;
-    .exercise-box {
-        &#patient-template {
-            border-top: 10px solid var(--color-blue-light-1);
-        }
+    .patient-template {
+        border-top: 10px solid var(--color-blue-light-1);
+    }
 
-        &#carer-template {
-            border-top: 10px solid var(--color-blue-light-2);
-        }
+    .carer-template {
+        border-top: 10px solid var(--color-blue-light-2);
+    }
+
+
+    .exercise-box {
+        //&#patient-template {
+        //    border-top: 10px solid var(--color-blue-light-1);
+        //}
+        //
+        //&#carer-template {
+        //    border-top: 10px solid var(--color-blue-light-2);
+        //}
 
         &#registered-template {
             border-top: 10px solid var(--color-grey-light-2);

@@ -2,7 +2,7 @@
     <div v-if="resource.id">
 
         <div class="exercise-template shadow content mb-5 mt-5">
-            <div class="exercise-box" :id="[(this.resource.type_id === 5) ?  'carer-template' : 'patient-template']">
+            <div v-bind:class="[isCarerExercise() ? 'exercise-box carer-template' :'exercise-box patient-template']">
                 <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">
                     <div>
                         <p class="title"> {{resource.name}} </p>
@@ -94,16 +94,16 @@ export default {
             'handleError'
         ]),
 
-        // isCarerExercise(){
-        //     console.log('check to see if carer exercise');
-        //     for(let x in this.types){
-        //         let type = this.types[x];
-        //
-        //         if (this.resource.type_id === type.id){
-        //             return type.name === 'Carer';
-        //         }
-        //     }
-        // },
+        isCarerExercise(){
+            console.log('check to see if carer exercise');
+            for(let x in this.types){
+                let type = this.types[x];
+
+                if (this.resource.type_id === type.id){
+                    return type.name === 'Carer';
+                }
+            }
+        },
         getFormValues () {
             this.output = this.$refs.message.value
         },
