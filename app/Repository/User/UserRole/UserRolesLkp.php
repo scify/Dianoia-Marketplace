@@ -6,5 +6,7 @@ namespace App\Repository\User\UserRole;
 abstract class UserRolesLkp {
     //ATTENTION: these values match with the db values defined in database\seeds\UsersRoleLkpTableSeeder.php
     const ADMIN = 1;
-    const CONTENT_CREATOR = 2;
+    const PRIVATE_CARER= 2;
+    const PROFESSIONAL_CARER=3;
+    const ORGANIZATION=4;
 }

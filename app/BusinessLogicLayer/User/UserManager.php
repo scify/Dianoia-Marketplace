@@ -33,12 +33,17 @@ class UserManager {
         $user = $this->userRepository->create([
             'name' => $requestData["name"],
             'email' => $requestData["email"],
-            'password' => $requestData["password"]#todo perform trim before hashing
+            'password' => $requestData["password"], #todo perform trim before hashing
         ]);
-        $this->userRoleManager->assignRegisteredUserRoleTo($user);
+        try{
+            $role = $requestData['role'];
+        }
+        catch(\Exception $e){
+            $role = "Platform Administrator";
+        }
+        $this->userRoleManager->assignRegisteredUserRoleTo($user, $role);
         if (isset($requestData["admin"]) && $requestData["admin"])
             $this->userRoleManager->assignAdminUserRoleTo($user);
-
         return $user;
     }
 
@@ -83,6 +88,11 @@ class UserManager {
             });
     }
 
+
+    function getUserRoles()
+    {
+        return $this->userRoleManager->getAllUserRoles();
+    }
 
     public function getUsers()
     {

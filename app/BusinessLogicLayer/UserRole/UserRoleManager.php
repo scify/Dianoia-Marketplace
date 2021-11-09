@@ -5,6 +5,7 @@ namespace App\BusinessLogicLayer\UserRole;
 
 use App\Models\User;
 use App\Models\UserRole\UserRole;
+use App\Repository\User\UserRole\UserRoleLkpRepository;
 use App\Repository\User\UserRole\UserRoleRepository;
 use App\Repository\User\UserRole\UserRolesLkp;
 use Illuminate\Support\Collection;
@@ -14,9 +15,11 @@ use Illuminate\Support\Facades\Gate;
 class UserRoleManager {
 
     private $userRoleRepository;
+    private $userRoleLkpRepository;
 
-    public function __construct(UserRoleRepository $userRoleRepository) {
+    public function __construct(UserRoleRepository $userRoleRepository, UserRoleLkpRepository $userRoleLkpRepository) {
         $this->userRoleRepository = $userRoleRepository;
+        $this->userRoleLkpRepository = $userRoleLkpRepository;
     }
 
     public function registerUserPolicies() {
@@ -25,8 +28,15 @@ class UserRoleManager {
         });
     }
 
-    public function assignRegisteredUserRoleTo(User $user) {
-        return $this->assignRoleTo($user, UserRolesLkp::CONTENT_CREATOR);
+    public function getAllUserRoles() {
+        return $this->userRoleLkpRepository->allWhere([
+            'id' != 1]);
+    }
+
+
+
+    public function assignRegisteredUserRoleTo(User $user, int $roleId) {
+        return $this->assignRoleTo($user, $roleId );
     }
 
     public function assignAdminUserRoleTo(User $user) {

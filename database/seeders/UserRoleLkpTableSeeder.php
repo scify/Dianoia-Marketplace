@@ -18,10 +18,11 @@ class UserRoleLkpTableSeeder extends Seeder
         echo "\nRunning User Role lkp Seeder...\n";
 
         $data = [
-            ['id'=> 1, 'name'=>'Platform Administrator'],
-            ['id'=> 2, 'name'=>'Transcriber']
+            ['id'=>     1,      'name'=>'Platform Administrator'],
+            ['id'=>     2,      'name'=>'Private Carer'],
+            ['id' =>    3,      'name'=>'Professional Carer'],
+            ['id' =>    4 ,     'name'=>'Organization']
         ];
-
         foreach ($data as $userRoleLkp) {
             $role = $this->userRoleLkpRepository->updateOrCreate(['id' => $userRoleLkp['id']], $userRoleLkp);
             echo "\nAdded User Role: " . $role->name . "\n";

@@ -102,8 +102,8 @@
                         Βαθμολογία
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
-                        <li><a class="dropdown-item" @click="sortRating('descending')">Μεγαλύτερη Δυσκολία</a></li>
-                        <li><a class="dropdown-item" @click="sortRating('ascending')">Χαμηλότερη Δυσκολία</a></li>
+                        <li><a class="dropdown-item" @click="sortRating('descending')">Μεγαλύτερη Βαθμολογία</a></li>
+                        <li><a class="dropdown-item" @click="sortRating('ascending')">Χαμηλότερη Βαθμολογία</a></li>
                         <li><a class="dropdown-item" @click="sortRating('bydate')">Νεότερες βαθμολογίες</a></li>
                         <li><a class="dropdown-item" @click="sortRating('reset')">Όλες οι δυσκολίες</a></li>
                     </ul>
@@ -135,66 +135,6 @@
 <!--                <div> <a :href="route('resources.create')" class="btn btn&#45;&#45;primary" target="_blank">Δημιούργησε νέα άσκηση</a>-->
 <!--                </div>-->
             </div>
-
-<!--            <div class="search-section__results">-->
-<!--                <div class="exercise-template shadow content mb-5 mt-5">-->
-<!--                    <div class="exercise-box" id="patient-template">-->
-<!--                        <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">-->
-<!--                            <div>-->
-<!--                                <p class="title">Σκίαση σχημάτων.</p>-->
-<!--                                <p>Αντιγράψτε τα σχέδια, σκιάζοντας τα αντίστοιχα τετράγωνα.</p>-->
-
-<!--                            </div>-->
-<!--                            <a href="#" class="btn btn&#45;&#45;secondary" target="_blank">Δες την άσκηση</a>-->
-<!--                        </div>-->
-<!--                        <hr>-->
-<!--                        <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">-->
-<!--                            <div class="rating">-->
-<!--                                <span class="fa fa-star checked"></span>-->
-<!--                                <span class="fa fa-star checked"></span>-->
-<!--                                <span class="fa fa-star checked"></span>-->
-<!--                                <span class="fa fa-star"></span>-->
-<!--                                <span class="fa fa-star"></span>-->
-<!--                                <p>Δώσε την δική σου βαθμολογία</p>-->
-<!--                            </div>-->
-<!--                            <div class="created-by">Δημιουργήθηκε από Επαγγελματίας φροντιστής</div>-->
-<!--                            <div class="level">Κανονικό επίπεδο</div>-->
-<!--                            <div class="language">Ελληνικά</div>-->
-<!--                            <div class="category">Ασκήσεις προσοχής</div>-->
-
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--                <div class="exercise-template shadow content mb-5 mt-5">-->
-<!--                    <div class="exercise-box" id="carer-template">-->
-<!--                        <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">-->
-<!--                            <div>-->
-<!--                                <p class="title">Εβδομαδιαίο Πρόγραμμα Δραστηριοτήτων</p>-->
-<!--                                <p>Δημιουργήστε το εβδομαδιαίο σας πρόγραμμα με τις δραστηριότητές σας.</p>-->
-
-<!--                            </div>-->
-<!--                            <a href="#" class="btn btn&#45;&#45;secondary" target="_blank">Δες την άσκηση</a>-->
-<!--                        </div>-->
-<!--                        <hr>-->
-<!--                        <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">-->
-<!--                            <div class="rating">-->
-<!--                                <span class="fa fa-star checked"></span>-->
-<!--                                <span class="fa fa-star checked"></span>-->
-<!--                                <span class="fa fa-star checked"></span>-->
-<!--                                <span class="fa fa-star"></span>-->
-<!--                                <span class="fa fa-star"></span>-->
-<!--                                <p>Δώσε την δική σου βαθμολογία</p>-->
-<!--                            </div>-->
-<!--                            <div class="created-by">Δημιουργήθηκε από  Alzheimer Athens</div>-->
-<!--                            <div class="level">Κανονικό επίπεδο</div>-->
-<!--                            <div class="language">Ελληνικά</div>-->
-<!--                            <div class="category">Ασκήσεις για φροντιστές</div>-->
-
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
 
         <div class="row mt-5" v-if="filteredResources.length">

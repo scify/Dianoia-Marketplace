@@ -2,7 +2,7 @@
     <div v-if="resource.id">
 
         <div class="exercise-template shadow content mb-5 mt-5">
-            <div class="exercise-box" id="patient-template">
+            <div class="exercise-box" :id="[(this.resource.type_id === 5) ?  'carer-template' : 'patient-template']">
                 <div class="exercise-title-row p-4 d-flex justify-content-between align-items-center">
                     <div>
                         <p class="title"> {{resource.name}} </p>
@@ -71,7 +71,6 @@ export default {
         users:Array,
         resourcesRoute: String,
         userIdToGetContent: Number,
-        exercisesType: String,
         isAdmin: String,
         approveExercises: Number,
     },
@@ -94,6 +93,17 @@ export default {
             'post',
             'handleError'
         ]),
+
+        // isCarerExercise(){
+        //     console.log('check to see if carer exercise');
+        //     for(let x in this.types){
+        //         let type = this.types[x];
+        //
+        //         if (this.resource.type_id === type.id){
+        //             return type.name === 'Carer';
+        //         }
+        //     }
+        // },
         getFormValues () {
             this.output = this.$refs.message.value
         },
@@ -171,6 +181,7 @@ export default {
             window.location.reload()
         },
 
+
         showDeleteModal() {
             console.log('delete')
             this.deleteModalOpen = true;
@@ -213,12 +224,6 @@ export default {
         },
         getLoginRoute() {
             return route('login');
-        },
-        isPatientExercise() {
-            return this.exercisesType !== "carer";
-        },
-        isCarerExercise() {
-            return this.exercisesType === "carer";
         },
         isAdminPageForExerciseApproval(){
             console.log(this.approveExercises )
