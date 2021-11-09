@@ -32,7 +32,7 @@ class ResourceRatingController extends Controller {
 
         $this->validate($request, [
             'user_id' => 'required|integer',
-            'resources_id' => 'required|integer|exists:resources_package,id',
+            'resources_id' => 'required|integer|exists:resources,id',
             'rating' => 'required|integer|min:1|max:5'
         ]);
 

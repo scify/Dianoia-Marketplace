@@ -52,7 +52,7 @@
             :allow-close="true">
             <template v-slot:header>
                 <h5 class="modal-title pl-2">Rate Package
-                    <b>{{ this.resource.name }}</b>
+                    <b>{{ resource.name }}</b>
                 </h5>
             </template>
             <template v-slot:body>
@@ -190,10 +190,10 @@ export default {
                         + '?resources_id=' + this.resource.id + '&user_id=' + this.user.id,
                     urlRelative: false
                 }).then(response => {
+                    console.log('rating:'+response.data.rating);
                     this.userRating = response.data.rating;
                 });
             }
-            console.log(this.userRating)
         },
         rejectExercise(){
             this.post({
