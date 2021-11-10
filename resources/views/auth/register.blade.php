@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@push('css')
+    <link rel="stylesheet" href="{{ mix('dist/css/form-new-exercise.css') }}">
+@endpush
 
 @section('content')
     <div class="container py-5">
@@ -62,6 +65,22 @@
                             </div>
 
 
+                            <div class="form-group row mb-4">
+                                <label for="user_role"  class="col-md-4 col-form-label text-md-right">User Role</label>
+                                <div class="col-md-6 ">
+
+                                    <select class="form-select" aria-label="user_role" name="role">
+                                        @foreach ($viewModel->roles as $role)
+                                            <option value="{{$role->id}}"> {{$role->name}} </option>
+                                        @endforeach
+                                    </select>
+                                    @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                              </div>
+                            </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
@@ -70,6 +89,7 @@
                                     </button>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -77,3 +97,6 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="{{ mix('dist/js/create-edit-resource.js') }}"></script>
+@endpush

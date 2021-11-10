@@ -33,9 +33,9 @@ class UserManager {
         $user = $this->userRepository->create([
             'name' => $requestData["name"],
             'email' => $requestData["email"],
-            'password' => $requestData["password"], #todo perform trim before hashing
+            'password' => $requestData["password"]
         ]);
-        $this->userRoleManager->assignRegisteredUserRoleTo($user, 1);
+        $this->userRoleManager->assignRegisteredUserRoleTo($user, $requestData['role']);
         if (isset($requestData["admin"]) && $requestData["admin"])
             $this->userRoleManager->assignAdminUserRoleTo($user);
         return $user;
@@ -87,6 +87,14 @@ class UserManager {
     {
         return $this->userRoleManager->getAllUserRoles();
     }
+
+
+    function getUserRolesMapping()
+    {
+        return $this->userRoleManager->getUserRoleMapping();
+    }
+
+
 
     public function getUsers()
     {

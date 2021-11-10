@@ -29,8 +29,7 @@ class UserRoleManager {
     }
 
     public function getAllUserRoles() {
-        return $this->userRoleLkpRepository->allWhere([
-            'id' != 1]);
+        return $this->userRoleLkpRepository->all()->where('id', '<>', 1);
     }
 
 
@@ -126,4 +125,11 @@ class UserRoleManager {
     private function getRoleCacheKey(int $userId, int $roleId) {
         return 'user_' . $userId . '_role_' . $roleId;
     }
+
+    function getUserRoleMapping()
+    {
+        $ret =  $this->userRoleRepository->all();
+        return $ret;
+    }
+
 }

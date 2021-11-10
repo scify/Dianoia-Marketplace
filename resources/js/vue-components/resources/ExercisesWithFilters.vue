@@ -114,12 +114,20 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
                         Χρήστης
                     </button>
+<!--                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton6">-->
+<!--                        <li><a class="dropdown-item" href="#">Ιδιώτης Φροντιστής</a></li>-->
+<!--                        <li><a class="dropdown-item" href="#">Επαγγελματίας Φροντιστής</a></li>-->
+<!--                        <li><a class="dropdown-item" href="#">Οργανισμός</a></li>-->
+<!--                       -->
+<!--                    </ul>-->
+
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton6">
-                        <li><a class="dropdown-item" href="#">Ιδιώτης Φροντιστής</a></li>
-                        <li><a class="dropdown-item" href="#">Επαγγελματίας Φροντιστής</a></li>
-                        <li><a class="dropdown-item" href="#">Οργανισμός</a></li>
-                        <li><a class="dropdown-item" href="#">Από όλους</a></li>
+                        <i v-for="role in this.userRoles">
+                            <li><a class="dropdown-item" @click="filterResourcesByUserRole(role.id)">{{role.name}}</a></li>
+                        </i>
+                        <li><a class="dropdown-item" @click="filterResourcesByUserRole()">Από όλους</a></li>
                     </ul>
+
                 </div>
             </div>
 
@@ -167,6 +175,8 @@ export default {
         this.getRatings();
         this.setCarerExercises();
         this.setPatientExercises();
+        this.getRoles();
+        this.getUserRoleMapping();
     },
     props: {
         user: {
@@ -206,6 +216,8 @@ export default {
             contentTypes: [],
             contentDifficulties: [],
             contentRatings: [],
+            userRoles: [],
+            userRoleMapping: [],
             users: [],
             selectedTypes: [],
             selectedContentLanguage: {},
@@ -240,6 +252,7 @@ export default {
         setPatientExercises(){
             this.patientExercises = ["Attention","Memory","Executive","Reason"];
         },
+
         setCarerExercises(){
             this.carerExercises = ["Carer"];
         },
@@ -249,7 +262,6 @@ export default {
         isCarerExercise(type){
             return this.carerExercises.includes(type.name);
         },
-
 
         setContentLanguage(language) {
             console.log(language);
@@ -295,6 +307,37 @@ export default {
             let resources = _.map(this.filteredResources, 'name')
             console.log('sorted resources:'+resources);
         },
+
+        getUserRoleMapping(){
+            this.get({
+                url: route('user_role_mapping.get'),
+                urlRelative: false
+            }).then(response => {
+                this.userRoleMapping = response.data;
+                let userIds = _.map(this.userRoleMapping, 'user_id')
+                console.log('userIds')
+                console.log(userIds);
+            });
+
+        },
+
+         filterResourcesByUserRole(roleId=null){
+             this.filteredResources = this.resources.slice(0);
+             console.log('Filter by role id '+roleId);
+            if(roleId === null){
+                return;
+            }
+            let usersWithRole = _.map(_.filter(this.userRoleMapping, function(map) {
+                    return map.role_id === roleId;
+            }),'user_id');
+            console.log('usersWithRole - ',usersWithRole);
+            let resources= _.map(this.filteredResources,'name');
+            console.log('PreFilter:'+resources);
+            this.filteredResources = this.filteredResources.filter(
+                item =>usersWithRole.includes(item.creator_user_id));
+            let resourceNames = _.map( this.filteredResources ,'name');
+            console.log(resourceNames);
+        },
         getContentLanguages() {
             this.get({
                 url: route('content_languages.get'),
@@ -316,6 +359,17 @@ export default {
                 console.log('types:'+types);
             });
 
+        },
+        getRoles(){
+            console.log('get roles');
+            this.get({
+                url: route('user_roles.get'),
+                urlRelative: false
+            }).then(response => {
+                this.userRoles = response.data;
+                let roles = _.map(this.userRoles, 'name')
+                console.log('roles:'+roles);
+            });
         },
         getContentDifficulties(){
 

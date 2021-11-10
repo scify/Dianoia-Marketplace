@@ -259,8 +259,6 @@ export default {
             });
         },
         loggedInUserIsDifferentFromContentUser() {
-            console.log('creator:'+this.user.id);
-            console.log('current:'+this.resource.creator.id);
             return this.resource.creator.id !== this.user.id;
         },
         loggedInUserIsAdmin() {
