@@ -14,6 +14,7 @@ use App\Repository\Resource\ResourceTypesLkp;
 use App\ViewModels\CreateEditResourceVM;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -58,7 +59,7 @@ class ResourceManager {
                 return $type_entry->id;
             }
         );
-        $preselect_types = null;
+        $preselect_types = Collection::empty();
         if($resource_params['preselect_type_name']){
             $preselect_type_name = $resource_params['preselect_type_name'];
             $preselect_types =$types->filter(
