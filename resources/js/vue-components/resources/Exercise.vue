@@ -12,15 +12,21 @@
                 <hr>
 
                 <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">
-                    <div class="rating mb-1">
-                        <i v-for="index in maxRating" class="fa-star"
-                           v-bind:class="{ fas: resourceHasRating(index), far: !resourceHasRating(index) }"></i>
+                    <div class="rating">
+                        <span v-for="index in maxRating" class="fa-star" v-bind:class="{ fas: resourceHasRating(index), far: !resourceHasRating(index) }"></span>
+                        <p  v-if="loggedInUserIsDifferentFromContentUser()" @click="showRateModal">Δώσε την δική σου βαθμολογία</p>
                     </div>
-                    <p v-if="loggedInUserIsDifferentFromContentUser()" class="rate-text">
-                        <a class="rate-link" @click="showRateModal">
-                        Rate this exercise
-                    </a>
-                    </p>
+
+<!--                    <div class="exercise-rating p-4 d-flex  align-items-center">-->
+<!--                        <div class="rating">-->
+<!--                            <span class="fa fa-star checked"></span>-->
+<!--                            <span class="fa fa-star checked"></span>-->
+<!--                            <span class="fa fa-star checked"></span>-->
+<!--                            <span class="fa fa-star"></span>-->
+<!--                            <span class="fa fa-star"></span>-->
+<!--                            <p>Δώσε την δική σου βαθμολογία</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <i v-for="user in this.users">
                         <div class="created-by" v-if="user.id===resource.creator_user_id">Δημιουργήθηκε από {{user.name}}</div>
                     </i>

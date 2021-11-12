@@ -50,7 +50,16 @@ class ResourceRepository extends Repository
         if ($type_ids) {
             $resourcesBuilder->whereIn('type_id', $type_ids);//maybe $resourcesBuilder = ...
         }
-        $resourcesBuilder->orderBy('difficulty_id', 'desc');
+        if($difficulties !== [""]){
+            if($difficulties[0] !== '1'){
+                $resourcesBuilder->orderBy('difficulty_id', 'desc');
+            }
+            else{
+                $resourcesBuilder->orderBy('difficulty_id', 'asc');
+            }
+        }
+
+
         return $resourcesBuilder->get();
     }
 }
