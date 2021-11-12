@@ -17,8 +17,8 @@
                            v-bind:class="{ fas: resourceHasRating(index), far: !resourceHasRating(index) }"></i>
                     </div>
                     <p v-if="loggedInUserIsDifferentFromContentUser()" class="rate-text">
-                      Give Rating <a class="rate-link" @click="showRateModal">
-                        Rating
+                        <a class="rate-link" @click="showRateModal">
+                        Rate this exercise
                     </a>
                     </p>
                     <i v-for="user in this.users">
@@ -51,7 +51,7 @@
             :open="rateModalOpen"
             :allow-close="true">
             <template v-slot:header>
-                <h5 class="modal-title pl-2">Rate Package
+                <h5 class="modal-title pl-2">Rate Exercise
                     <b>{{ resource.name }}</b>
                 </h5>
             </template>
@@ -60,7 +60,7 @@
                     <div class="row mb-4">
                         <div class="col">
                             <h6 v-if="userLoggedIn()">{{ getRateTitleForUser() }}</h6>
-                            <h6 v-else>You need to sign in in order to rate this package.</h6>
+                            <h6 v-else>You need to sign in in order to rate this exercise.</h6>
                         </div>
                     </div>
                     <div class="row" v-if="userLoggedIn()">

@@ -85,10 +85,10 @@
                 </div>
 
                 <div class="dropdown" id="patient-exercise-categories" style="display: none">
-                    <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton4"
+                    <a class="dropdown-toggle" type="text" id="dropdownMenuButton4"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                        Τύποι Ασκήσεων για Ασθενείς
-                    </button>
+                       <u>Τύποι Ασκήσεων για Ασθενείς</u>
+                    </a>
                     <ul class="checkboxes" aria-labelledby="dropdownMenuButton4" >
                         <i v-for="type in this.contentTypes">
                             <div v-if="isPatientExercise(type)" ><input v-bind:id="type.name" style="margin-right:0.5em" type="checkbox" @click="selectType(type)">{{type.name}}</div>
@@ -131,17 +131,29 @@
                 </div>
             </div>
 
+
             <div class="search-section__input mt-5 content mb-5 d-flex justify-content-between align-items-center">
-                <p><i class="fas fa-long-arrow-alt-down"></i> | <i class="fas fa-long-arrow-alt-up"></i> 2 συνολικές
+                <p><i class="fas fa-long-arrow-alt-down"></i> | <i class="fas fa-long-arrow-alt-up"></i> {{this.numExercises}} συνολικές
                     δραστηριότητες</p>
 
-                <div class="input-group">
-                    <input type="search" class="form-control rounded" placeholder="Αναζήτηση καταχωρήσεων"
-                           aria-label="Search" aria-describedby="search-addon" />
-                    <button type="button" class="btn btn-outline-primary">Αναζήτηση</button>
-                </div>
-<!--                <div> <a :href="route('resources.create')" class="btn btn&#45;&#45;primary" target="_blank">Δημιούργησε νέα άσκηση</a>-->
+<!--                <div class="input-group">-->
+<!--                    <input type="search" class="form-control rounded" placeholder="Αναζήτηση καταχωρήσεων"-->
+<!--                           aria-label="Search" aria-describedby="search-addon" />-->
+<!--                    <button type="button" class="btn btn-outline-primary" @click="search">Αναζήτηση</button>-->
 <!--                </div>-->
+                <div class="col-md-4 col-sm-12">
+                    <div class="input-group search"><i class="fa fa-search"></i>
+                        <input
+                            @keyup.stop="search($event.target.value)"
+                            type="text" class="form-control"
+                            :placeholder="searchPlaceholder">
+                        <div v-if="searchLoading" class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div> <a :href="this.creationRoute" class="btn btn--primary" target="_blank">Δημιούργησε νέα άσκηση</a>
+                </div>
             </div>
         </div>
 
@@ -202,6 +214,7 @@ export default {
         resourceType: String,
         approveResources: Number,
         resourcesRoute: String,
+        creationRoute: String,
         initExerciseTypes: {
             type: Array,
             default: function () {
@@ -226,8 +239,9 @@ export default {
             maxRating: 5,
             patientExercises: [],
             carerExercises: [],
-            searchPlaceholder: window.translate('messages.search_resources_package'),
-            searchLoading: false
+            searchPlaceholder: 'Αναζήτηση καταχωρήσεων',//,window.translate('messages.search_resources_package'),
+            searchLoading: false,
+            numExercises: 0,
         }
     },
     methods: {
@@ -417,9 +431,11 @@ export default {
                 this.resources = response.data;
                 this.filteredResources = this.resources;
                 let names = _.map(this.filteredResources, 'id')
+                this.numExercises = names.length;
                 console.log(names);
                 this.loadingResources = false;
             });
+
         },
         getRatings(){
             this.get({
@@ -433,6 +449,7 @@ export default {
         },
         search(searchTerm) {
             if (this.timer) {
+                console.log('searching...'+searchTerm);
                 clearTimeout(this.timer);
                 this.timer = null;
             }

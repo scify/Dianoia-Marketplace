@@ -87,7 +87,8 @@
 .search input {
     height: 60px;
     text-indent: 25px;
-    border: 2px solid #d6d4d4
+    border: 2px solid #d6d4d4;
+    font-size:$default-font-size;
 }
 
 .search input:focus {

@@ -11,6 +11,7 @@
             <div class="col">
                 <exercises-with-filters
                     :resources-route="'{{ route('resources.get') }}'"
+                    :creation-route="'{{route('resources.create')}}'"
                     :user='@json($user)'
                     :resources-statuses='@json($viewModel->types)'
                     :is-admin="'{{$viewModel->isAdmin}}'"
