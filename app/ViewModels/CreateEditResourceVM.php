@@ -16,12 +16,14 @@ class CreateEditResourceVM
     public Collection $languages;
     public Collection $difficulties;
     public Collection $types;
+    public Collection $preselect_types;
     public Resource $resource;
     public String $lang;
 
     public function __construct(Collection $languages,
                                 Collection $difficulties,
                                 Collection $types,
+                                Collection $preselectTypes,
                                 Resource $resource,
                                 String $lang
                 )
@@ -30,6 +32,7 @@ class CreateEditResourceVM
         $this->difficulties = $difficulties;
         $this->types = $types;
         $this->resource = $resource;
+        $this->preselect_types = $preselectTypes;
         $this->lang = $lang;
 
     }

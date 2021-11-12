@@ -189,6 +189,7 @@ export default {
         this.setPatientExercises();
         this.getRoles();
         this.getUserRoleMapping();
+        this.initializeTypes();
     },
     props: {
         user: {
@@ -216,9 +217,9 @@ export default {
         resourcesRoute: String,
         creationRoute: String,
         initExerciseTypes: {
-            type: Array,
+            type: Object,
             default: function () {
-                return [];
+                return {};
             }
         },
     },
@@ -463,7 +464,9 @@ export default {
         },
         initializeTypes(mode){
             if(this.initExerciseTypes.length > 0){
+                console.log('initialize types filter');
                 this.selectedTypes = this.initExerciseTypes;
+                $('#dropdownMenuButton3').click()
                 this.initExerciseTypes = [];
             }
             else{

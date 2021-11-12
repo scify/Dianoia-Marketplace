@@ -16,6 +16,7 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class ResourceManager {
 
     protected ResourceRepository $resourceRepository;
@@ -50,13 +51,32 @@ class ResourceManager {
         $contentLanguages = $this->getContentLanguagesForResources();
         $difficulties = $this->getDifficultiesForResources();
         $lang = app()->getLocale();
-        $type_ids = $this->getResourceTypes()->map(
-            function($type_entry){
+        $types =  $this->getResourceTypes();
+        $type_ids = $types->map(
+            function ($type_entry)
+            {
                 return $type_entry->id;
             }
         );
+        $preselect_types = null;
+        if($resource_params['preselect_type_name']){
+            $preselect_type_name = $resource_params['preselect_type_name'];
+            $preselect_types =$types->filter(
+                function ($type_entry) use ($preselect_type_name) {
+                    if($preselect_type_name === 'patient'){
+                        return $type_entry->name != 'Carer';
+                    }
+                    else{
+                        return $type_entry->name === 'Carer';
+                    }
+
+                }
+            );
+        }
+
+
         return new CreateEditResourceVM(
-            $contentLanguages, $difficulties, $type_ids, new  Resource($resource_params), $lang
+            $contentLanguages, $difficulties, $type_ids, $preselect_types, new  Resource($resource_params), $lang
         );
     }
 

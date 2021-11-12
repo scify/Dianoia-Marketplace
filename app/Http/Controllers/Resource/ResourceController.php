@@ -52,13 +52,14 @@ class ResourceController extends Controller
      *
      * @return View
      */
-    public function display(): View
+    public function display(Request $request): View
     {
-
 //        $createResourceViewModel = $this->communicationResourceManager->getCreateResourceViewModel();
-        $displayResourceViewModel = $this->resourceManager->getDisplayResourcesViewModel();
+        $preselectedType = $request->preselect_type_name ?: null;
+        $displayResourceViewModel = $this->resourceManager->getDisplayResourcesViewModel([
+            'preselect_type_name' => $preselectedType
+        ]);
         $displayResourceViewModel->isAdmin = Auth::check() && $this->userManager->isAdmin(Auth::user());
-
         return view('exercise-page')->with(['viewModel' => $displayResourceViewModel,  'user' => Auth::user()]);
     }
 

@@ -59,7 +59,7 @@
                     {{__('messages.app-description-2')}}
                 </p>
                 <p class="mb-5">{!!__('messages.exercises-tutorial')!!}</p>
-                <a href="#" class="mt-5 btn btn--tertiary" target="_blank"><b>{{__('messages.see-exercises')}}</b></a>
+                <a href="{{route('resources.display',['preselect_type_name' => 'patient'])}}" class="mt-5 btn btn--tertiary" target="_blank"><b>{{__('messages.see-exercises')}}</b></a>
 
             </div>
 
@@ -70,7 +70,7 @@
 
                 <h1 class="mb-5">{{__('messages.carer-teaser')}}</h1>
                 <p class="mb-5">{{__('messages.carer-motivation')}}</p>
-                <a href="#" class="mt-5 btn btn--tertiary" target="_blank"><b>{{__('messages.see-what-is-offered')}}</b></a>
+                <a href="{{route('resources.display',['preselect_type_name' => 'carer'])}}" class="mt-5 btn btn--tertiary" target="_blank"><b>{{__('messages.see-what-is-offered')}}</b></a>
             </div>
         </div>
     </main>
