@@ -17,8 +17,7 @@
         height: 100%;
     }
 
-    background-image: linear-gradient(rgba(72, 138, 255, 0.7)), url(/img/title-image.png);
-
+    background-image: url(/img/title-image.png);
     &__text-box {
         background-color: var(--color-blue-light-1);
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('css')
-
+    <link rel="stylesheet" href="{{mix('dist/css/exercise-template.css')}}">
     <link rel="stylesheet" href="{{mix('dist/css/exercise-page.css')}}">
 @endpush
 
