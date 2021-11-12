@@ -1,3 +1,4 @@
+@import "common/variables";
 .login-page {
     background-color: var(--color-grey-dark-2);
     height: 100vh;
@@ -20,7 +21,7 @@
         .form-control {
             min-height: 54px;
             background-color: var( --color-offwhite);
-
+            font-size: $default-font-size;
             &::placeholder {
                 font-style: italic;
                 font-size: 1.8rem;
