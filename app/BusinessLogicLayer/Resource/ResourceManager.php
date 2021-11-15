@@ -164,14 +164,17 @@ class ResourceManager {
 //            "lang_id" => $request['lang'],
             "img_path" => null,
             "pdf_path" => null,
-//            'type_id' => ResourceTypesLkp::COMMUNICATION,
-//            'status_id' => ResourceStatusesLkp::CREATED_PENDING_APPROVAL,
-//            'resource_parent_id' => $request->parentId ? intval($request->parentId) : null,
+            "description" => $request['description'],
+            "lang" => $request['lang'],
+            "type_id" => $request['type_id'],
+            "difficulty_id" => $request['difficulty_id'],
+            'status_id' => ResourceStatusesLkp::APPROVED,
             'creator_user_id' => Auth::id(),
             'admin_user_id' => null
         ];
         $old_resource = $this->resourceRepository->find($id);
         $storeArr['img_path'] = $old_resource['img_path'];
+        $storeArr['pdf_path'] = $old_resource['pdf_path'];
         $resource = $this->resourceRepository->update($storeArr, $id);
         $resourceFileManager = new ResourceFileManager();
         if (isset($request['image'])) {

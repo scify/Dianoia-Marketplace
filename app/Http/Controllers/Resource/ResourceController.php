@@ -135,13 +135,18 @@ class ResourceController extends Controller
         $this->validate($request, [
             'name' => 'string|max:100',
             'image' => 'mimes:jpg,png|file|between:3,1000|nullable',
-            'type_id' => 'required'
+            'pdf' => "mimes:pdf|max:10000",
+            'type_id' => "integer|gt:0",
+            'difficulty_id' =>  "integer|gt:0",
+            'lang' => "integer|gt:0",
+            'description' => "string|max:1000",
+            'terms' => "required"
         ]);
         try {
             $this->resourceManager->updateResource($request, $id);
-            return redirect()->route('resources.my_profile')->with('flash_message_success', 'The resource package has been successfully updated');
+            return redirect()->route('resources.my_profile')->with('flash_message_success', 'The exercise has been successfully updated');
         } catch (\Exception $e) {
-            return redirect()->route('resources.my_profile')->with('flash_message_failure', 'The resource package has not been updated');
+            return redirect()->route('resources.my_profile')->with('flash_message_failure', 'The exercise has not been updated');
         }
     }
 

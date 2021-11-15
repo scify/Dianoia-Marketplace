@@ -20,11 +20,11 @@
 
                     <div class="col-12">
                         <label for="category_name" class="form-label">{{__('messages.name')}} <span>*</span></label>
-                        <input type="text" class="form-control" id="category_name" name="name" required="true"  value="{{ old('name') ? old('name') : $viewModel->resource->name }}">
+                        <input type="text" class="form-control" id="category_name" name="name" required="true"  value="{{ old('name') ?: $viewModel->resource->name }}">
                     </div>
                     <div class="col-12">
                         <label for="formGroupExampleInput2" class="form-label">Περιγραφή άσκησης <span>*</span></label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" name="description">
+                        <input type="text" class="form-control" id="formGroupExampleInput2" name="description" value="{{ old('description') ?: $viewModel->resource->description }}">
                     </div>
                     @error('description')
                     <div class="alert alert-danger">{{$message}}</div>
@@ -61,7 +61,7 @@
                     <div class="col-md-6 ">
 
                         <label for="category_lang" class="form-label">{{trans("messages.language")}}</label>
-                        <select class="form-select" aria-label="category_lang" name="lang">
+                        <select class="form-select" aria-label="category_lang" name="lang"  value="{{ old('lang') ?: $viewModel->resource->lang_id }}">
                             @foreach ($viewModel->languages as $lang)
                             @if($viewModel->lang === $lang->code)
                                 <option selected value="{{$lang->id}}"> {{$lang->name}} </option>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="exercise_type" class="form-label">Κατηγορία</label>
-                        <select class="form-select" aria-label="category_lang" name="type_id">
+                        <select class="form-select" aria-label="category_lang" name="type_id"  value="{{ old('type_id') ?: $viewModel->resource->type_id }}">
                             @foreach ($viewModel->types as $type){
                             @if($viewModel->resource->type_id === $type->id)
                                 <option selected> {{$type->name}} </option>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="exercise_difficulty" class="form-label">Difficulty</label>
-                        <select class="form-select" aria-label="category_lang" name="difficulty_id">
+                        <select class="form-select" aria-label="category_lang" name="difficulty_id" value="{{ old('difficulty_id') ?: $viewModel->resource->difficulty_id }}" >
                             @foreach ($viewModel->difficulties as $difficulty){
                             @if($viewModel->resource->difficulty_id === $difficulty->id)
                                 <option selected> {{$difficulty->name}} </option>
@@ -126,7 +126,7 @@
 
                 <div class="copyright-rules mb-5 mt-5 p-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value=none id="flexCheckDefault" name="terms">
+                        <input class="form-check-input" type="checkbox" value=none id="flexCheckDefault" name="terms" value="{{ old('terms') ?: $viewModel->resource->terms }}">
                         <label class="form-check-label" for="flexCheckDefault">
                             Έχω διαβάσει τους <b><u>κανόνες περιεχομένου και πνευματικής ιδιοκτησίας</u></b>, καθώς και
                             τους όρους για
