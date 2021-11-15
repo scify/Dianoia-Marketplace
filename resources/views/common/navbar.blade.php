@@ -76,7 +76,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item"
-                                   href="{{route('resources_packages.my_packages')}}">{{__('messages.my_packages')}}</a>
+                                   href="{{route('resources.my_profile')}}">Το προφίλ μου</a>
                             </li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

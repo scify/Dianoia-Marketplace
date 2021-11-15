@@ -223,15 +223,17 @@ class ResourceController extends Controller
 
 
 
-    public function my_packages()
+    public function my_profile()
     {
         try {
-            $viewModel = $this->carerResourcesPackageManager->getCarerResourcesPackageIndexPageVM();
+            $viewModel = $this->resourceManager->getDisplayResourcesViewModel([
+                'preselect_type_name' => null
+            ]);
+            $viewModel->isAdmin = Auth::check() && $this->userManager->isAdmin(Auth::user());
             $viewModel->user_id_to_get_content = Auth::id();
             $viewModel->resourcesPackagesStatuses = [ResourceStatusesLkp::APPROVED];
             $viewModel->isAdmin = $this->userManager->isAdmin(Auth::user());
-            return view('resources_packages.my-packages')->with(
-                ['viewModel' => $viewModel, 'user' => Auth::user()]);
+            return view('profile-page')->with(['viewModel' => $viewModel,  'user' => Auth::user()]);
         } catch (ModelNotFoundException $e) {
             abort(404);
         }

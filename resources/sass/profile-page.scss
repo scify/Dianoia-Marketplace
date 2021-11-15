@@ -1,8 +1,11 @@
+@import "exercise-template";
+@import "common/modal";
+
 .back-color {
-    background-color: var(  --color-grey-light);
+    background-color: var(--color-grey-light);
 }
 
-/* #region Section with user card (user-info & excercises-tabs) */
+/* #region Section with user card (user-info & exercises-tabs) */
 
 .user-card {
     @media screen and (max-width: 768px) {
@@ -14,36 +17,38 @@
     }
 
     .user-info,
-    .excercises-tabs {
+    .exercises-tabs {
         margin: 0;
     }
 
-
     .user-info {
         padding: 40px 0 40px 55px;
+        background-color: #ffff;
 
         span {
             font-size: 1.8rem;
         }
 
         p {
-            color: var( --color-blue-light-1);
+            color: var(--color-blue-light-1);
+        }
+
+        .btn {
+            background-color: #ffff;
         }
     }
 
-    .excercises-tabs {
+    .exercises-tabs {
         background-color: var(--color-offwhite);
         padding-top: 2rem;
 
         .nav-tabs {
-       
-                justify-content: space-evenly;
-            
+            justify-content: space-evenly;
+
             .nav-item {
                 .nav-link {
                     color: var(--color-primary);
                     font-size: 2.6rem;
-               
                 }
 
                 .nav-link.active {
@@ -54,11 +59,9 @@
             }
         }
     }
-
 }
 
 /* #endregion */
-
 
 /* #region Section with results */
 
@@ -74,9 +77,9 @@
     &.row {
         margin: 0;
         align-items: center;
+        background-color: #ffff;
     }
     .input-group {
-        
         @media screen and (max-width: 768px) {
             margin-top: 2.5rem;
         }
@@ -96,7 +99,26 @@
 
 /* #endregion */
 
-
 .without-results {
     padding: 15rem;
+}
+
+.form-control[type="text"],
+.form-select,
+.form-control[type="password"] {
+    min-height: 5.4rem;
+    font-size: 1.8rem;
+    background-color: var(--color-offwhite);
+}
+
+#edit-profile {
+
+
+    .field-icon {
+        font-size: 2.5rem;
+        float: right;
+        margin-top: -36px;
+        position: relative;
+        z-index: 2;
+    }
 }

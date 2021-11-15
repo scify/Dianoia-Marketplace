@@ -44,7 +44,7 @@ class ResourceManager {
         $types = $this->getResourceTypes();
         $lang = app()->getLocale();
         return new CreateEditResourceVM(
-            $contentLanguages, $difficulties, $types, new  Resource(), $lang
+            $contentLanguages, $difficulties, $types, collect(), new  Resource(), $lang
         );
     }
 

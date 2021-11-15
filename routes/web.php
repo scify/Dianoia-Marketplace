@@ -46,12 +46,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('resources/approve_pending_packages', [ResourceController::class, 'approve_pending_packages'])->name('resources_packages.approve_pending_packages');
     Route::get("resources/download/{id}", [ResourceController::class, 'download'])->name('resources.download');
     Route::get("resources/clone/{id}", [ResourceController::class, 'clone'])->name('resources.clone');
-    Route::get("/my-packages", [ResourceController::class, 'my_packages'])->name('resources_packages.my_packages');
+    Route::get("/my-profile", [ResourceController::class, 'my_profile'])->name('resources.my_profile');
     Route::get("/resources/delete/package/{id}", [ResourceController::class, 'delete_package'])->name('resources_packages.destroy_package');
     Route::post("/resources/approve/{id}", [ResourceController::class, 'approve'])->name('resources.approve');
     Route::post("/resources/reject/{id}", [ResourceController::class, 'reject'])->name('resources.reject');
     Route::put("/resources/submit/{id}", [ResourceController::class, 'submit'])->name('resources.submit');
     Route::put("/resources/update_resource/{id}/{type_id}", [ResourceController::class, 'update_resource'])->name('resources.update_resource');
+
 });
 
 Route::get('js/translations.js', function () {
