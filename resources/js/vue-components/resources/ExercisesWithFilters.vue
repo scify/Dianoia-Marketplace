@@ -4,7 +4,7 @@
 
         <div class="search-section mt-5">
 
-            <div v-if="!isProfilePage" class="search-section__options content d-flex justify-content-between">
+            <div v-if="!isProfilePage()" class="search-section__options content d-flex justify-content-between">
 
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -215,8 +215,8 @@ export default {
                 this.selectedTypes.push(type);
             }
             let types = _.map(this.selectedTypes, 'name')
-            console.log(type.name);
-            console.log(types);
+
+
             this.getResources();
         },
         setPatientExercises(){
@@ -235,7 +235,7 @@ export default {
         },
 
         setContentLanguage(language) {
-            console.log(language);
+
             this.selectedContentLanguage = language;
             this.getResources();
         },
@@ -255,11 +255,10 @@ export default {
                       }
                   });
                   this.getResources();
-                  // this.getContentDifficulties();
               }
         },
         sortRating(option){
-            console.log('sort ratings');
+
             this.contentRatings.sort(function(a, b){
                 if (option === "ascending") {
                     return a.rating - b.rating;
@@ -271,12 +270,10 @@ export default {
                 }
             });
             let resourcesOrder = _.map(this.contentRatings, 'resources_id')
-            console.log('sorted ratings:'+resourcesOrder);
+
             this.filteredResources.sort(function(a,b){
                 return resourcesOrder.indexOf(a.id) - resourcesOrder.indexOf(b.id);
             })
-            let resources = _.map(this.filteredResources, 'name')
-            console.log('sorted resources:'+resources);
         },
 
         getUserRoleMapping(){
@@ -285,29 +282,19 @@ export default {
                 urlRelative: false
             }).then(response => {
                 this.userRoleMapping = response.data;
-                let userIds = _.map(this.userRoleMapping, 'user_id')
-                console.log('userIds')
-                console.log(userIds);
             });
 
         },
 
-         filterResourcesByUserRole(roleId=null){
-             this.filteredResources = this.resources.slice(0);
-             console.log('Filter by role id '+roleId);
+         filterResourcesByUserRole(roleId=null){this.filteredResources = this.resources.slice(0);
             if(roleId === null){
                 return;
             }
             let usersWithRole = _.map(_.filter(this.userRoleMapping, function(map) {
                     return map.role_id === roleId;
             }),'user_id');
-            console.log('usersWithRole - ',usersWithRole);
-            let resources= _.map(this.filteredResources,'name');
-            console.log('PreFilter:'+resources);
             this.filteredResources = this.filteredResources.filter(
                 item =>usersWithRole.includes(item.creator_user_id));
-            let resourceNames = _.map( this.filteredResources ,'name');
-            console.log(resourceNames);
         },
         getContentLanguages() {
             this.get({
@@ -326,20 +313,16 @@ export default {
                 urlRelative: false
             }).then(response => {
                 this.contentTypes = response.data;
-                let types = _.map(this.contentTypes, 'name')
-                console.log('types:'+types);
                 this.initializeTypes();
             });
         },
         getRoles(){
-            console.log('get roles');
+
             this.get({
                 url: route('user_roles.get'),
                 urlRelative: false
             }).then(response => {
                 this.userRoles = response.data;
-                let roles = _.map(this.userRoles, 'name')
-                console.log('roles:'+roles);
             });
         },
         getContentDifficulties(){
@@ -349,28 +332,29 @@ export default {
                 urlRelative: false
             }).then(response => {
                 this.contentDifficulties = response.data;
-                let difficulties = _.map(this.contentDifficulties, 'name')
-                console.log('difficulties:'+difficulties);
             });
         },
         getUsers(){
-            console.log('curr user: '+this.user['id']);
-            console.log('users');
+
+
             this.get({
                 url: route('users.get'),
                 urlRelative: false
             }).then(response => {
                 this.users = response.data;
-                let user_names = _.map(this.users, 'name')
-                console.log(user_names);
             });
         },
         getResources() {
             this.loadingResources = true;
             this.resources = [];
             this.filteredResources = [];
-
-            let url = this.resourcesRoute + '?lang_id=' + this.selectedContentLanguage.id;
+            let url = "";
+            if(this.selectedContentLanguage){
+                url += this.resourcesRoute + '?lang_id=' + this.selectedContentLanguage.id;
+            }
+            else{
+                url += this.resourcesRoute + '?lang_id=';
+            }
 
             if (this.userIdToGetContent) {
                 url += ('&user_id_to_get_content=' + this.userIdToGetContent);
@@ -382,7 +366,6 @@ export default {
             url += '&is_admin=' + this.isAdmin;
             url += '&difficulties=' + _.map(this.contentDifficulties,'id').join();
             // url += '&ratings=' + _.map(this.contentRatings,'id').join();
-            console.log(url);
             this.get({
                 url: url,
                 urlRelative: false
@@ -391,7 +374,7 @@ export default {
                 this.filteredResources = this.resources;
                 let names = _.map(this.filteredResources, 'id')
                 this.numExercises = names.length;
-                console.log(names);
+
                 this.loadingResources = false;
             });
 
@@ -402,13 +385,12 @@ export default {
                 urlRelative: false
             }).then(response => {
                 this.contentRatings = response.data;
-                let ratings = _.map(this.contentRatings, 'rating')
-                console.log('ratings:'+ratings);
+
             });
         },
         search(searchTerm) {
             if (this.timer) {
-                console.log('searching...'+searchTerm);
+
                 clearTimeout(this.timer);
                 this.timer = null;
             }
@@ -422,14 +404,13 @@ export default {
             }, 500);
         },
         initializeTypes(mode=null){
-            console.log('mode = '+mode);
+
             if(mode == null){
-                let typenames = _.map(this.selectedTypes,'name');
                 mode = this.initExerciseTypes;
-                $('#dropdownMenuButton3').click()
+                console.log('mode = '+mode);
+                $('#dropdownMenuButton3').click();
+                this.selectedContentLanguage = null;
             }
-
-
             if(mode==="patient"){
                 this.selectedTypes  =  this.contentTypes.filter(type => this.isPatientExercise(type));
             }
@@ -440,14 +421,14 @@ export default {
                 this.selectedTypes = this.contentTypes.filter(type => this.isCarerExercise(type));
             }
 
-            console.log('SELECTED TYPES ' +_.map(this.selectedTypes,'name'));
+
             for(let x in this.contentTypes){
                 let type = this.contentTypes[x];
                 if(jQuery.inArray(type,  this.selectedTypes) !== -1){
-                    console.log('check '+type.name)
+
                     $("#"+type.name).prop('checked','true');
                 } else{
-                    console.log('uncheck '+type.name);
+
                     $('#'+type.name).prop('checked','false');
                 }
             }
@@ -457,7 +438,7 @@ export default {
             return this.user['id'];
         },
         isProfilePage(){
-            return this.userIdToGetContent !== null;
+            return this.userIdToGetContent > 0;
         }
     }
 

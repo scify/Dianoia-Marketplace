@@ -95,11 +95,8 @@
                                     type="button" role="tab" aria-controls="carer" aria-selected="false">Ασκήσεις για
                                 φροντιστές</button>
                         </li>
-
                     </ul>
-
                 </div>
-
             </div>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="patients" role="tabpanel" aria-labelledby="patients-tab">
@@ -133,8 +130,6 @@
                             </exercises-with-filters>
                         </div>
                     </div>
-
-
                     <div class="exercise-template shadow content mb-5 mt-5">
                         <div class="exercise-box p-5" id="registered-template">
                             <div class="registered-message text-center">Η άσκησή σας έχει καταχωρηθεί. Για να γίνει
@@ -181,74 +176,6 @@
 
                 </div>
             </div>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="patients" role="tabpanel" aria-labelledby="patients-tab">
-                </div>
-                <div class="tab-pane fade" id="carer" role="tabpanel" aria-labelledby="carer-tab">
-                    <div class="exercise-template shadow content mb-5 mt-5">
-                        <div class="exercise-box p-5" id="registered-template">
-                            <div class="registered-message text-center">Η άσκησή σας έχει καταχωρηθεί. Για να γίνει
-                                διαθέσιμη στην
-                                εφαρμογή και να μπορείτε να την χρησιμοποιήσετε, πρέπει πρώτα να εγκριθεί από τον
-                                διαχειριστή. Θα ενημερωθείτε με email για την πορεία της έγκρισης.</div>
-                            <div class="exercise-title-row d-flex align-items-center justify-content-between">
-                                <div>
-                                    <p class="title">Εβδομαδιαίο Πρόγραμμα Δραστηριοτήτων</p>
-                                    <p>Δημιουργήστε το εβδομαδιαίο σας πρόγραμμα με τις δραστηριότητές σας.</p>
-
-                                </div>
-                                <div>
-                                    <!-- Modal button Αφού επεξεργαστείτε τα στοιχεία της άσκησης -->
-                                    <button type="submit" class="btn btn--edit" data-bs-toggle="modal"
-                                            data-bs-target="#editModal3"><i class="far fa-edit"></i></button>
-
-                                    <a href="#" class="btn btn--secondary" target="_blank">Δες
-                                        την άσκηση</a>
-                                </div>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="editModal3" tabindex="-1"
-                                     aria-labelledby="editModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body mb-5 d-flex justify-content-center">
-                                                <p class="text-center">Αφού επεξεργαστείτε τα στοιχεία της άσκησης,
-                                                    μια νέα ειδοποίηση
-                                                    θα
-                                                    σταλθεί στον διαχειριστή για να επεξεργαστεί τα καινούργια
-                                                    δεδομένα.</p>
-                                            </div>
-                                            <div
-                                                class="modal-footer text-center justify-content-center mb-5 flex-column">
-                                                <div>
-                                                    <p class="mb-5">Είστε σίγουροι ότι θέλετε να συνεχίσετε?</p>
-                                                </div>
-                                                <div>
-                                                    <button type="button" class="btn btn--secondary me-5"
-                                                            data-bs-dismiss="modal">Ακύρωση</button>
-                                                    <button type="button" class="btn btn--primary">Ναι</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-
-
-
-
         </div>
     </div>
 </main>

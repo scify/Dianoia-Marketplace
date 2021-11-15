@@ -104,7 +104,7 @@ class ResourceManager {
     }
 
 
-    public function getResources(int $lang_id, $user_id = null, array $status_ids=[ResourceStatusesLkp::APPROVED], array $difficulties=null, array $type_ids=null, array $ratings=null) {
+    public function getResources(int $lang_id = null, $user_id = null, array $status_ids=[ResourceStatusesLkp::APPROVED], array $difficulties=null, array $type_ids=null, array $ratings=null) {
         $ret = $this->resourceRepository->getResources($user_id, $lang_id, $status_ids, $difficulties, $type_ids, $ratings);
         return $ret;
     }

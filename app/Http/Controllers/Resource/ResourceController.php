@@ -236,6 +236,10 @@ class ResourceController extends Controller
 
     public function getResources(Request $request)
     {
+        $lang_id = null;
+        if($request->lang_id){
+            $lang_id = intval($request->lang_id);
+        }
         $user_id = null;
         if ($request->user_id_to_get_content) {
             $user_id = intval($request->user_id_to_get_content);
@@ -248,7 +252,7 @@ class ResourceController extends Controller
         $difficulties = explode(',', $request->difficulties);
         $ratings = explode(',', $request->ratings);
         return $this->resourceManager->getResources(
-            $request->lang_id,
+            $lang_id,
             $user_id,
             $status_ids,
             $difficulties,

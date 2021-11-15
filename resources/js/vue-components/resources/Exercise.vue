@@ -199,7 +199,7 @@ export default {
         ]),
 
         isCarerExercise(){
-            console.log('check to see if carer exercise');
+
             for(let x in this.types){
                 let type = this.types[x];
 
@@ -215,7 +215,7 @@ export default {
             return route('resources.download', this.resource.id);
         },
         getEditExerciseRoute() {
-            console.log('edit exercise')
+
             // return route('resources.edit', this.resource.id);
             window.location.href = route('resources.edit', this.resource.id);
         },
@@ -243,7 +243,7 @@ export default {
             this.totalRating = Math.round(sum / ratings.length) || 0;
         },
         showRateModal() {
-            console.log('show rate modal for resource '+this.resource.id);
+
             this.rateModalOpen = true;
             if (this.userRating)
                 return;
@@ -253,7 +253,7 @@ export default {
                         + '?resources_id=' + this.resource.id + '&user_id=' + this.user.id,
                     urlRelative: false
                 }).then(response => {
-                    console.log('rating:'+response.data.rating);
+
                     this.userRating = response.data.rating;
                 });
             }
@@ -284,14 +284,13 @@ export default {
                 url: this.getApproveExerciseRoute(),
                 urlRelative: false
              }).then(response => {
-                console.log(response);
             });
             window.location.reload()
         },
 
 
         showDeleteModal() {
-            console.log('delete')
+
             this.deleteModalOpen = true;
         },
         getRateTitleForUser() {
@@ -334,11 +333,11 @@ export default {
             return route('login');
         },
         isAdminPageForExerciseApproval(){
-            console.log(this.approveExercises )
+
             return this.approveExercises === 1;
         },
         isProfilePage(){
-            return this.userIdToGetContent != null;
+            return this.userIdToGetContent > 0;
         }
 
     }
