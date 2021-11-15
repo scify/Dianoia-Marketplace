@@ -217,9 +217,9 @@ export default {
         resourcesRoute: String,
         creationRoute: String,
         initExerciseTypes: {
-            type: Object,
+            type: Array,
             default: function () {
-                return {};
+                return [];
             }
         },
     },
@@ -463,11 +463,10 @@ export default {
             }, 500);
         },
         initializeTypes(mode){
-            if(this.initExerciseTypes.length > 0){
+            if( this.selectedTypes.length <= 0  && this.initExerciseTypes.length > 0){
                 console.log('initialize types filter');
                 this.selectedTypes = this.initExerciseTypes;
                 $('#dropdownMenuButton3').click()
-                this.initExerciseTypes = [];
             }
             else{
                 if(mode==="patient"){
@@ -491,7 +490,7 @@ export default {
                     $('#'+type.name).prop('checked','false');
                 }
             }
-            this.getResources();
+            // this.getResources();
         },
     }
 }

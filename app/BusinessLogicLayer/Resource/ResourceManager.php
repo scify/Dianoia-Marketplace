@@ -77,7 +77,7 @@ class ResourceManager {
 
 
         return new CreateEditResourceVM(
-            $contentLanguages, $difficulties, $type_ids, $preselect_types, new  Resource($resource_params), $lang
+            $contentLanguages, $difficulties, $type_ids, collect($preselect_types->values()->all()), new  Resource($resource_params), $lang
         );
     }
 
