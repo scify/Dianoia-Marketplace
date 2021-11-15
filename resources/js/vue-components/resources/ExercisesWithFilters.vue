@@ -4,95 +4,6 @@
 
         <div class="search-section mt-5">
 
-            <div class="search-section__options content d-flex justify-content-between">
-
-                <div class="dropdown">
-                    <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        Γλώσσα
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <i v-for="language in this.contentLanguages">
-                            <li><a class="dropdown-item" @click="setContentLanguage(language)">{{language.name}}</a></li>
-                        </i>
-                    </ul>
-                </div>
-
-                <div class="dropdown">
-                    <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton2"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        Επίπεδο
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item" @click="sortDifficulty('descending')">Μεγαλύτερη Δυσκολία</a></li>
-                        <li><a class="dropdown-item" @click="sortDifficulty('ascending')">Χαμηλότερη Δυσκολία</a></li>
-<!--                        <li><a class="dropdown-item" @click="sortDifficulty('bydate')">Νεότερες βαθμολογίες</a></li>-->
-                        <li><a class="dropdown-item" @click="sortDifficulty('reset')">Όλες οι δυσκολίες</a></li>
-                    </ul>
-                </div>
-
-
-                <div class="dropdown">
-
-                    <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton3"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        Κατηγορία
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                        <li><a class="dropdown-item"  id="patientCategoriesList" @click="initializeTypes('patient')">Ασκήσεις για Ασθενείς</a></li>
-                        <li><a class="dropdown-item" id="carerCategoriesList" @click="initializeTypes('carer')">Ασκήσεις για Φροντιστές</a></li>
-                        <li><a class="dropdown-item" id="allCategoriesList" @click="initializeTypes('all')">Όλες οι Κατηγορίες Ασκήσεων</a></li>
-                    </ul>
-                </div>
-
-                <div class="dropdown" id="patient-exercise-categories" style="display: none">
-                    <a class="dropdown-toggle" type="text" id="dropdownMenuButton4"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                       <u>Τύποι Ασκήσεων για Ασθενείς</u>
-                    </a>
-                    <ul class="checkboxes" aria-labelledby="dropdownMenuButton4" >
-                        <i v-for="type in this.contentTypes">
-                            <div v-if="isPatientExercise(type)" ><input v-bind:id="type.name" style="margin-right:0.5em" type="checkbox" @click="selectType(type)">{{type.name}}</div>
-                        </i>
-                    </ul>
-                </div>
-
-                <div class="dropdown">
-                    <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton5"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        Βαθμολογία
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
-                        <li><a class="dropdown-item" @click="sortRating('descending')">Μεγαλύτερη Βαθμολογία</a></li>
-                        <li><a class="dropdown-item" @click="sortRating('ascending')">Χαμηλότερη Βαθμολογία</a></li>
-                        <li><a class="dropdown-item" @click="sortRating('bydate')">Νεότερες βαθμολογίες</a></li>
-                        <li><a class="dropdown-item" @click="sortRating('reset')">Όλες οι δυσκολίες</a></li>
-                    </ul>
-                </div>
-
-                <div class="dropdown">
-                    <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton6"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        Χρήστης
-                    </button>
-<!--                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton6">-->
-<!--                        <li><a class="dropdown-item" href="#">Ιδιώτης Φροντιστής</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Επαγγελματίας Φροντιστής</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Οργανισμός</a></li>-->
-<!--                       -->
-<!--                    </ul>-->
-
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton6">
-                        <i v-for="role in this.userRoles">
-                            <li><a class="dropdown-item" @click="filterResourcesByUserRole(role.id)">{{role.name}}</a></li>
-                        </i>
-                        <li><a class="dropdown-item" @click="filterResourcesByUserRole()">Από όλους</a></li>
-                    </ul>
-
-                </div>
-            </div>
-
-
             <div class="search-section__input mt-5 content mb-5 d-flex justify-content-between align-items-center">
                 <p><i class="fas fa-long-arrow-alt-down"></i> | <i class="fas fa-long-arrow-alt-up"></i> {{this.numExercises}} συνολικές
                     δραστηριότητες</p>
@@ -132,8 +43,6 @@
                               :users="users">
                     </exercise>
                 </div>
-
-            </div>
         </div>
     </div>
 </template>
@@ -152,7 +61,6 @@ export default {
         this.setPatientExercises();
         this.getRoles();
         this.getUserRoleMapping();
-        this.initializeTypes();
     },
     props: {
         user: {
@@ -179,12 +87,7 @@ export default {
         approveResources: Number,
         resourcesRoute: String,
         creationRoute: String,
-        initExerciseTypes: {
-            type: Array,
-            default: function () {
-                return [];
-            }
-        },
+        initExerciseTypes: String,
     },
     data: function () {
         return {
@@ -235,6 +138,7 @@ export default {
             this.carerExercises = ["Carer"];
         },
         isPatientExercise(type){
+
             return this.patientExercises.includes(type.name);
         },
         isCarerExercise(type){
@@ -335,8 +239,8 @@ export default {
                 this.contentTypes = response.data;
                 let types = _.map(this.contentTypes, 'name')
                 console.log('types:'+types);
+                this.initializeTypes();
             });
-
         },
         getRoles(){
             console.log('get roles');
@@ -422,29 +326,32 @@ export default {
             this.timer = setTimeout(() => {
                 this.searchLoading = true;
                 this.filteredResources = _.filter(this.resources, function (p) {
-                    return p.name.toLowerCase().includes(searchTerm.toLowerCase());
+                    return p.name.toLowerCase().includes(searchTerm.toLowerCase())
+                        || p.description.toLowerCase().includes(searchTerm.toLowerCase());
                 });
                 this.searchLoading = false;
             }, 500);
         },
-        initializeTypes(mode){
-            if( this.selectedTypes.length <= 0  && this.initExerciseTypes.length > 0){
-                console.log('initialize types filter');
-                this.selectedTypes = this.initExerciseTypes;
+        initializeTypes(mode=null){
+            console.log('mode = '+mode);
+            if(mode == null){
+                let typenames = _.map(this.selectedTypes,'name');
+                mode = this.initExerciseTypes;
                 $('#dropdownMenuButton3').click()
             }
-            else{
-                if(mode==="patient"){
-                    this.selectedTypes  =  this.contentTypes.filter(type => this.isPatientExercise(type));
-                }
-                else if (mode==="all"){
-                    this.selectedTypes  =  this.contentTypes.slice(0);
-                }
-                else if(mode==="carer"){
-                    this.selectedTypes = this.contentTypes.filter(type => this.isCarerExercise(type));
-                }
+
+
+            if(mode==="patient"){
+                this.selectedTypes  =  this.contentTypes.filter(type => this.isPatientExercise(type));
             }
-            console.log(_.map(this.selectedTypes,'name'));
+            else if (mode==="all"){
+                this.selectedTypes  =  this.contentTypes.slice(0);
+            }
+            else if(mode==="carer"){
+                this.selectedTypes = this.contentTypes.filter(type => this.isCarerExercise(type));
+            }
+
+            console.log('SELECTED TYPES ' +_.map(this.selectedTypes,'name'));
             for(let x in this.contentTypes){
                 let type = this.contentTypes[x];
                 if(jQuery.inArray(type,  this.selectedTypes) !== -1){
@@ -455,7 +362,7 @@ export default {
                     $('#'+type.name).prop('checked','false');
                 }
             }
-            // this.getResources();
+            this.getResources();
         },
         getCurrentUserId(){
             return this.user['id'];

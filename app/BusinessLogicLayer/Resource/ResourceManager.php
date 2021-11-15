@@ -59,25 +59,9 @@ class ResourceManager {
                 return $type_entry->id;
             }
         );
-        $preselect_types = Collection::empty();
-        if($resource_params['preselect_type_name']){
-            $preselect_type_name = $resource_params['preselect_type_name'];
-            $preselect_types =$types->filter(
-                function ($type_entry) use ($preselect_type_name) {
-                    if($preselect_type_name === 'patient'){
-                        return $type_entry->name != 'Carer';
-                    }
-                    else{
-                        return $type_entry->name === 'Carer';
-                    }
-
-                }
-            );
-        }
-
-
+        $preselect_types = $resource_params['preselect_type_name'] ?: 'all';
         return new CreateEditResourceVM(
-            $contentLanguages, $difficulties, $type_ids, collect($preselect_types->values()->all()), new  Resource($resource_params), $lang
+            $contentLanguages, $difficulties, $type_ids, $preselect_types, new  Resource($resource_params), $lang
         );
     }
 
@@ -86,7 +70,8 @@ class ResourceManager {
 
     public function getResourceTypes()
     {
-        return $this->resourceTypeLkpRepository->all();
+        $ret =  $this->resourceTypeLkpRepository->all();
+        return $ret;
     }
 
 

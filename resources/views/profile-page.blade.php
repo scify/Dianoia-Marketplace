@@ -12,8 +12,8 @@
 
                 <div class="row user-info ">
                     <div class="col-xl-9 col-md-7 col-xs-12 ">
-                        <h1>Paul Miller <span>(paulmiller@hotmail.com)</span> </h1>
-                        <p>Ιδιώτης Φροντιστής</p>
+                        <h1>{{$user->name}} <span>({{$user->email}})</span> </h1>
+                        <p>{{$user->type}}</p>
                     </div>
 
                     <div class="col-xl-3 col-md-5 col-xs-12">
@@ -35,14 +35,13 @@
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label">Όνομα</label>
                                             <input type="text" class="form-control" id="formGroupExampleInput"
-                                                   placeholder="Paul">
+                                                   placeholder="{{$user->name}}">
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="formGroupExampleInput2" class="form-label">Επώνυμο</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput2"
-                                                   placeholder="Miller">
-                                        </div>
-
+{{--                                        <div class="mb-3">--}}
+{{--                                            <label for="formGroupExampleInput2" class="form-label">Επώνυμο</label>--}}
+{{--                                            <input type="text" class="form-control" id="formGroupExampleInput2"--}}
+{{--                                                   placeholder="{{$user->name}}">--}}
+{{--                                        </div>--}}
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput2" class="form-label">Χρήστης</label>
                                             <select class="form-select" aria-label="Default select example">
@@ -119,22 +118,87 @@
 
             </div>
             <div class="tab-content" id="myTabContent">
-
                 <div class="tab-pane fade show active" id="patients" role="tabpanel" aria-labelledby="patients-tab">
-                <div class="row mt-5">
-                    <div class="col">
-                        <exercises-with-filters
-                            :resources-route="'{{ route('resources.get') }}'"
-                            :creation-route="'{{route('resources.create')}}'"
-                            :user='@json($user)'
-                            :resources-statuses='@json($viewModel->types)'
-                            :is-admin="'{{$viewModel->isAdmin}}'"
-                            :approve-resources="{{0}}"
-                            :init-exercise-types='@json($viewModel->preselect_types)'
-                            :user-id-to-get-content='{{$user->id}}'>
-                        </exercises-with-filters>
-                    </div>
+                    <div class="row mt-5">
+                        <div class="col">
+                            <exercises-with-filters
+                                :resources-route="'{{ route('resources.get') }}'"
+                                :creation-route="'{{route('resources.create')}}'"
+                                :user='@json($user)'
+                                :resources-statuses='@json($viewModel->types)'
+                                :is-admin="'{{$viewModel->isAdmin}}'"
+                                :approve-resources="{{0}}"
+                                :init-exercise-types=" 'patient' "
+                                :user-id-to-get-content='{{$user->id}}'>
+                            </exercises-with-filters>
+                        </div>
+                     </div>
                 </div>
+                <div class="tab-pane fade" id="carer" role="tabpanel" aria-labelledby="carer-tab">
+                    <div class="row mt-5">
+                        <div class="col">
+                            <exercises-with-filters
+                                :resources-route="'{{ route('resources.get') }}'"
+                                :creation-route="'{{route('resources.create')}}'"
+                                :user='@json($user)'
+                                :resources-statuses='@json($viewModel->types)'
+                                :is-admin="'{{$viewModel->isAdmin}}'"
+                                :approve-resources="{{0}}"
+                                :init-exercise-types=" 'carer' "
+                                :user-id-to-get-content='{{$user->id}}'>
+                            </exercises-with-filters>
+                        </div>
+                    </div>
+
+
+                    <div class="exercise-template shadow content mb-5 mt-5">
+                        <div class="exercise-box p-5" id="registered-template">
+                            <div class="registered-message text-center">Η άσκησή σας έχει καταχωρηθεί. Για να γίνει
+                                διαθέσιμη στην
+                                εφαρμογή και να μπορείτε να την χρησιμοποιήσετε, πρέπει πρώτα να εγκριθεί από τον
+                                διαχειριστή. Θα ενημερωθείτε με email για την πορεία της έγκρισης.</div>
+
+                            <div class="exercise-title-row d-flex align-items-center justify-content-between">
+                                <div>
+                                    <p class="title">Εβδομαδιαίο Πρόγραμμα Δραστηριοτήτων</p>
+                                    <p>Δημιουργήστε το εβδομαδιαίο σας πρόγραμμα με τις δραστηριότητές σας.</p>
+
+                                </div>
+                                <div>
+                                    <!-- Modal button Αφού επεξεργαστείτε τα στοιχεία της άσκησης -->
+                                    <button type="submit" class="btn btn--edit" data-bs-toggle="modal"
+                                            data-bs-target="#editModal3"><i class="far fa-edit"></i></button>
+
+                                    <a href="#" class="btn btn--secondary" target="_blank">Δες
+                                        την άσκηση</a>
+                                </div>
+
+
+                            </div>
+                            <hr>
+                            <div class="exercise-rating d-flex justify-content-between">
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <div class="created-by">Δημιουργήθηκε από Επαγγελματίας φροντιστής</div>
+                                <div class="level">Κανονικό επίπεδο</div>
+                                <div class="language">Ελληνικά</div>
+                                <div class="category">Ασκήσεις για φροντιστές</div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="patients" role="tabpanel" aria-labelledby="patients-tab">
 
                     <div class="exercise-template shadow content mb-5 mt-5 ">
                         <div class="exercise-box p-5" id="patient-template">
@@ -209,7 +273,6 @@
 
 
                 </div>
-
                 <div class="tab-pane fade" id="carer" role="tabpanel" aria-labelledby="carer-tab">
 
 
@@ -356,10 +419,7 @@
                     </div>
 
                 </div>
-
-
             </div>
-
 
 
 

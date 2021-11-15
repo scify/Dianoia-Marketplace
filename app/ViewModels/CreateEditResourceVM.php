@@ -16,14 +16,14 @@ class CreateEditResourceVM
     public Collection $languages;
     public Collection $difficulties;
     public Collection $types;
-    public Collection $preselect_types;
+    public String $preselect_types;
     public Resource $resource;
     public String $lang;
 
     public function __construct(Collection $languages,
                                 Collection $difficulties,
                                 Collection $types,
-                                Collection $preselectTypes,
+                                String $preselectTypes,
                                 Resource $resource,
                                 String $lang
                 )

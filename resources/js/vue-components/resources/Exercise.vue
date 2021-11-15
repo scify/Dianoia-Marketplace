@@ -115,6 +115,36 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="editModal3" tabindex="-1"
+             aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body mb-5 d-flex justify-content-center">
+                        <p class="text-center">Αφού επεξεργαστείτε τα στοιχεία της άσκησης,
+                            μια νέα ειδοποίηση
+                            θα
+                            σταλθεί στον διαχειριστή για να επεξεργαστεί τα καινούργια
+                            δεδομένα.</p>
+                    </div>
+                    <div
+                        class="modal-footer text-center justify-content-center mb-5 flex-column">
+                        <div>
+                            <p class="mb-5">Είστε σίγουροι ότι θέλετε να συνεχίσετε?</p>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn--secondary me-5"
+                                    data-bs-dismiss="modal">Ακύρωση</button>
+                            <button type="button" class="btn btn--primary">Ναι</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </template>
