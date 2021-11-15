@@ -8,7 +8,7 @@
                         <p>{{resource.description}}</p>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn--edit"  data-bs-toggle="modal"
+                        <button   v-if="isProfilePage()" type="submit" class="btn btn--edit"  data-bs-toggle="modal"
                                 data-bs-target="#editModal"><i class="far fa-edit"></i></button>
                         <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary" target="_blank">Δες την άσκηση</a>
                     </div>
@@ -109,7 +109,7 @@
                         <div>
                             <button type="button" class="btn btn--secondary me-5"
                                     data-bs-dismiss="modal">Ακύρωση</button>
-                            <button type="button" class="btn btn--primary">Ναι</button>
+                            <button v-on:click="getEditExerciseRoute()" type="button" class="btn btn--primary">Ναι</button>
                         </div>
                     </div>
                 </div>
@@ -140,6 +140,7 @@
                             <button type="button" class="btn btn--secondary me-5"
                                     data-bs-dismiss="modal">Ακύρωση</button>
                             <button type="button" class="btn btn--primary">Ναι</button>
+
                         </div>
                     </div>
                 </div>
@@ -214,7 +215,9 @@ export default {
             return route('resources.download', this.resource.id);
         },
         getEditExerciseRoute() {
-            return route('resources.edit', this.resource.id);
+            console.log('edit exercise')
+            // return route('resources.edit', this.resource.id);
+            window.location.href = route('resources.edit', this.resource.id);
         },
         getRejectExerciseRoute(){
           return route('resources.reject', this.resource.id);
@@ -334,7 +337,9 @@ export default {
             console.log(this.approveExercises )
             return this.approveExercises === 1;
         },
-
+        isProfilePage(){
+            return this.userIdToGetContent != null;
+        }
 
     }
 }

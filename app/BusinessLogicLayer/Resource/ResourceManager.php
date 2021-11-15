@@ -13,6 +13,7 @@ use App\Repository\Resource\ResourceTypeLkpRepository;
 use App\Repository\Resource\ResourceTypesLkp;
 use App\ViewModels\CreateEditResourceVM;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +63,16 @@ class ResourceManager {
         $preselect_types = $resource_params['preselect_type_name'] ?: 'all';
         return new CreateEditResourceVM(
             $contentLanguages, $difficulties, $type_ids, $preselect_types, new  Resource($resource_params), $lang
+        );
+    }
+
+    public function getEditResourcesViewModel(Resource $resource): CreateEditResourceVM {
+        $contentLanguages = $this->getContentLanguagesForResources();
+        $difficulties = $this->getDifficultiesForResources();
+        $types = $this->getResourceTypes();
+        $lang = app()->getLocale();
+        return new CreateEditResourceVM(
+            $contentLanguages, $difficulties, $types, collect(), $resource, $lang
         );
     }
 
@@ -143,6 +154,9 @@ class ResourceManager {
     }
 
 
+    /**
+     * @throws FileNotFoundException
+     */
     public function updateResource($request, $id)
     {
         $storeArr = [
@@ -167,7 +181,13 @@ class ResourceManager {
                 'img_path' => $img_path],
                 $resource->id);
         }
-
+        if (isset($request['pdf'])) {
+            $resourceFileManager->deleteResourceImage($old_resource);
+            $pdf_path = $resourceFileManager->savePdf($resource->id, $request);
+            $resource = $this->resourceRepository->update([
+                'pdf_path' => $pdf_path],
+                $resource->id);
+        }
         return $resource;
 
 

@@ -52,6 +52,20 @@ class ResourceController extends Controller
      *
      * @return View
      */
+    public function edit(int $resource_id): View
+    {
+        $resource = $this->resourceManager->getResource($resource_id);
+        $editResourceViewModel = $this->resourceManager->getEditResourcesViewModel($resource);
+        return view('form-new-exercise')->with(['viewModel' => $editResourceViewModel]);
+    }
+
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return View
+     */
     public function display(Request $request): View
     {
 //        $createResourceViewModel = $this->communicationResourceManager->getCreateResourceViewModel();
@@ -123,30 +137,11 @@ class ResourceController extends Controller
             'image' => 'mimes:jpg,png|file|between:3,1000|nullable',
             'type_id' => 'required'
         ]);
-
-
-//        $id = intval($request->id);
-        $type_id = intval($request->type_id);
-        if ($type_id === ResourceTypesLkp::COMMUNICATION) {
-            $this->validate($request, ['sound' => 'mimes:mp3|file|between:10,2000|nullable']);
-            $ret_route = "patient_resources.edit";
-        } else if (in_array($type_id, [
-            ResourceTypesLkp::SIMILAR_GAME,
-            ResourceTypesLkp::TIME_GAME,
-            ResourceTypesLkp::RESPONSE_GAME
-        ])) {
-            $ret_route = "carer_resources.edit";
-        } else {
-            throw(new \ValueError("Type not supported"));
-        }
         try {
-            $ret = $this->resourceManager->updateResource($request, $id);
-            #$redirect_id = $ret['resource_parent_id'] ?: $ret->id;
-            #$resourcePackage = $this->resourcesPackageManager->getResourcesPackage ();
-            #return redirect()->route($ret_route, $resourcePackage->id)->with('flash_message_success', 'The resource package has been successfully updated');
-            return redirect()->back()->with('flash_message_success', 'The resource package has been successfully updated');
+            $this->resourceManager->updateResource($request, $id);
+            return redirect()->route('resources.my_profile')->with('flash_message_success', 'The resource package has been successfully updated');
         } catch (\Exception $e) {
-            return redirect()->back()->with('flash_message_failure', 'The resource package has not been updated');
+            return redirect()->route('resources.my_profile')->with('flash_message_failure', 'The resource package has not been updated');
         }
     }
 
