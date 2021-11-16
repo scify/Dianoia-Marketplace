@@ -40,7 +40,7 @@ class UserController extends Controller {
      */
     public function store(Request $request): RedirectResponse {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:users,name',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
             'role' => 'required|integer|gt:1'
@@ -66,8 +66,19 @@ class UserController extends Controller {
         $request->validate([
             'name' => 'required',
             'password' => 'required',
-            'email' => 'required|email|unique:users,email,' . $user->id
+            'email' => 'required|email'
         ]);
+        if($user->email !== $request->email){
+            $request->validate([
+                'email' => 'unique:users,email,' . $user->id
+            ]);
+        }
+        if($user->name !== $request->name){
+            $request->validate([
+                'name' => 'unique:users,name,' . $user->id
+            ]);
+        }
+
         try {
             $this->userManager->update($user->id, $request->all());
             session()->flash('flash_message_success', "User successfuly updated");
