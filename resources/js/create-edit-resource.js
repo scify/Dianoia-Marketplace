@@ -183,6 +183,7 @@ import {Modal} from 'bootstrap';
 
 
 
+
     let listenForPdfReset = function () {
         $('#btnResetFile').on("click", function ($event) {
             $('#pdf-div').css('visibility','hidden');

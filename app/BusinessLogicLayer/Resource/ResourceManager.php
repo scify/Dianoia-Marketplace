@@ -185,7 +185,7 @@ class ResourceManager {
                 $resource->id);
         }
         if (isset($request['pdf'])) {
-            $resourceFileManager->deleteResourceImage($old_resource);
+            $resourceFileManager->deleteResourcePdf($old_resource);
             $pdf_path = $resourceFileManager->savePdf($resource->id, $request);
             $resource = $this->resourceRepository->update([
                 'pdf_path' => $pdf_path],

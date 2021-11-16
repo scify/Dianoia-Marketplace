@@ -109,6 +109,8 @@
                 <div class="pdf-file d-flex align-items-center mb-5 mt-5">
                     <label for="pdf" class="form-label">Upload Exercise (pdf)<span
                             style="color:#ff0000">*</span></label>
+
+
                     <div class="file btn circle d-flex align-items-center ms-3">
                         <i class="fas fa-paperclip"></i>
                         <input type="file" class="form-control" id="customFile" name="pdf"/>
@@ -118,11 +120,14 @@
                     @enderror
                 </div>
 
-                <div class="uploaded-file p-2" style="visibility:hidden" id="pdf-div">
-                    <span id="pdf-filename">
-                    </span>
-                    <button type="button" class="btn btn-outline-secondary reset" id="btnResetFile">X</button>
-                </div>
+                    <div class="uploaded-file p-2" style="visibility:hidden" id="pdf-div">
+                        <span id="pdf-filename">
+                            @if($viewModel->isEditMode())
+                                {{asset("storage/".$viewModel->resource->pdf_path)}}
+                            @endif
+                        </span>
+                        <button type="button" class="btn btn-outline-secondary reset" id="btnResetFile">X</button>
+                    </div>
 
                 <div class="copyright-rules mb-5 mt-5 p-4">
                     <div class="form-check">
@@ -161,5 +166,15 @@
     </form>
 @endsection
 @push('scripts')
+    <script>
+        $( document ).ready(function() {
+            let span = document.getElementById('pdf-filename');
+            if (span.innerHTML){
+                $('#pdf-div').css('visibility','visible');
+            }
+        });
+    </script>
+
+
     <script src="{{ mix('dist/js/create-edit-resource.js') }}"></script>
 @endpush

@@ -31,6 +31,11 @@ class ResourceFileManager
         Storage::disk('public')->delete($resource->img_path);
     }
 
+    public function deleteResourcePdf(Resource $resource){
+        Storage::disk('public')->delete($resource->pdf_path);
+    }
+
+
     public function deleteResourceAudio(Resource $resource){
         echo $resource->audio_path;
         Storage::disk('public')->delete($resource->audio_path);
