@@ -192,8 +192,6 @@ class ResourceManager {
                 $resource->id);
         }
         return $resource;
-
-
     }
 
 

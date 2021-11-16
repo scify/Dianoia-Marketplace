@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(function () {
             'create', 'edit', 'show'
         ]);
     });
+    Route::put("/resources/update", [UserController::class, 'update'])->name('users.update');
+
     Route::resource('resources', ResourceController::class)
         ->except([//ONLY
             'index', 'show'

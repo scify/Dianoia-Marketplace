@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @push('css')
     <link rel="stylesheet" href="{{mix('dist/css/profile-page.css')}}">
+
 @endpush
 
 @section('content')
@@ -31,49 +32,53 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body mb-5">
-                                        <h2 class="text-center mb-5">Επεξεργασία στοιχείων προφίλ χρήστη</h2>
-                                        <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Όνομα</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput"
-                                                   placeholder="{{$user->name}}">
-                                        </div>
-{{--                                        <div class="mb-3">--}}
-{{--                                            <label for="formGroupExampleInput2" class="form-label">Επώνυμο</label>--}}
-{{--                                            <input type="text" class="form-control" id="formGroupExampleInput2"--}}
-{{--                                                   placeholder="{{$user->name}}">--}}
-{{--                                        </div>--}}
-                                        <div class="mb-3">
-                                            <label for="formGroupExampleInput2" class="form-label">Χρήστης</label>
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option selected>Ιδιώτης Φροντιστής</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                        </div>
+                                        <form id="form" enctype="multipart/form-data"  role="form" method="POST"
+                                              action="{{ route('users.update', $user) }}">
+                                            @if(true)
+                                                @method('PUT')
+                                            @endif
+                                            {{ csrf_field() }}
+                                            <div class="form form-new mt-5 mb-5 rounded">
+                                                <p class="form-new__title p-4">
+                                                    Επεξεργασία στοιχείων προφίλ χρήστη</p>
+                                                <hr>
+                                            </div>
+                                            <div class="form-new__fields p-5">
+                                                <div class="col-12">
+                                                    <label for="username" class="form-label">{{__('messages.name')}} <span>*</span></label>
+                                                    <input type="text" class="form-control" id="username" name="name" value="{{$user->name}}">
+                                                </div>
+                                                <div class="col-12">
+                                                    <input id="email" type="email" class="form-control" name="email" value="{{ $user->email}}" required autocomplete="email">
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="password" class="form-label">Κωδικός <span>*</span></label>
+                                                    <input id="password-field" type="password" class="form-control"
+                                                           name="password" value="{{$user->password}}">
+                                                    <span toggle="#password-field"
+                                                          class="fa fa-fw fa-eye field-icon toggle-password me-3"></span>
+                                                </div>
 
-                                        <div class="mt-5 mb-3">
-                                            <label for="formGroupExampleInput2" class="form-label">Κωδικός</label>
-
-
-                                            <input id="password-field" type="password" class="form-control"
-                                                   name="password" value="secret">
-                                            <span toggle="#password-field"
-                                                  class="fa fa-fw fa-eye field-icon toggle-password me-3"></span>
-                                        </div>
-
-
-                                    </div>
-                                    <div class="modal-footer text-center justify-content-center mb-5 flex-column">
-                                        <div>
-                                            <p class="mb-5">Είστε σίγουροι ότι θέλετε να συνεχίσετε?</p>
-                                        </div>
-                                        <div>
-                                            <button type="button" class="btn btn--secondary me-5"
-                                                    data-bs-dismiss="modal">Ακύρωση</button>
-                                            <button type="button" class="btn btn--primary">Καταχώρηση
-                                                στοιχείων</button>
-                                        </div>
+                                                <div class="col-12">
+                                                    <label for="formGroupExampleInput2" class="form-label">Χρήστης</label>
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option value="2"> Private Carer </option>
+                                                        <option value="3"> Professional Carer</option>
+                                                        <option value="4"> Organization </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-new__submmit-btn d-flex justify-content-end p-5">
+                                                <div>
+                                                    <p class="mb-5">Είστε σίγουροι ότι θέλετε να συνεχίσετε?</p>
+                                                </div>
+                                                <a class="btn btn--secondary mt-5" href="{{route('resources.my_profile')}}">
+                                                    {{trans("messages.cancel")}}
+                                                </a>
+                                                <input  id="userEditBtrn" class="btn btn--primary mt-5 ms-4" type="submit" value="Καταχώρηση
+                                                στοιχείων">
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
