@@ -61,7 +61,7 @@
                     <div class="col-md-6 ">
 
                         <label for="category_lang" class="form-label">{{trans("messages.language")}}</label>
-                        <select class="form-select" aria-label="category_lang" name="lang"  value="{{ old('lang') ?: $viewModel->resource->lang_id }}">
+                        <select class="form-select" aria-label="category_lang" name="lang">
                             @foreach ($viewModel->languages as $lang)
                             @if($viewModel->lang === $lang->code)
                                 <option selected value="{{$lang->id}}"> {{$lang->name}} </option>
@@ -73,10 +73,10 @@
                     </div>
                     <div class="col-md-6">
                         <label for="exercise_type" class="form-label">Κατηγορία</label>
-                        <select class="form-select" aria-label="category_lang" name="type_id"  value="{{ old('type_id') ?: $viewModel->resource->type_id }}">
+                        <select class="form-select" aria-label="category_lang" name="type_id">
                             @foreach ($viewModel->types as $type){
                             @if($viewModel->resource->type_id === $type->id)
-                                <option selected> {{$type->name}} </option>
+                                <option value="{{$type->id}}" selected> {{$type->name}} </option>
                             @else
                                 <option value="{{$type->id}}"> {{$type->name}} </option>
                             @endif
@@ -85,10 +85,10 @@
                     </div>
                     <div class="col-md-6">
                         <label for="exercise_difficulty" class="form-label">Difficulty</label>
-                        <select class="form-select" aria-label="category_lang" name="difficulty_id" value="{{ old('difficulty_id') ?: $viewModel->resource->difficulty_id }}" >
+                        <select class="form-select" aria-label="category_lang" name="difficulty_id" >
                             @foreach ($viewModel->difficulties as $difficulty){
                             @if($viewModel->resource->difficulty_id === $difficulty->id)
-                                <option selected> {{$difficulty->name}} </option>
+                                <option value="{{$difficulty->id}}" selected> {{$difficulty->name}} </option>
                             @else
                                 <option value="{{$difficulty->id}}"> {{$difficulty->name}} </option>
                             @endif

@@ -165,7 +165,7 @@ class ResourceManager {
             "img_path" => null,
             "pdf_path" => null,
             "description" => $request['description'],
-            "lang" => $request['lang'],
+            "lang_id" => $request['lang'],
             "type_id" => $request['type_id'],
             "difficulty_id" => $request['difficulty_id'],
             'status_id' => ResourceStatusesLkp::APPROVED,
