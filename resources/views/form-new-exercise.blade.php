@@ -170,6 +170,7 @@
         $( document ).ready(function() {
             let span = document.getElementById('pdf-filename');
             if (span.innerHTML){
+                span.innerHTML = span.innerHTML.split("/").at(-1)
                 $('#pdf-div').css('visibility','visible');
             }
         });
