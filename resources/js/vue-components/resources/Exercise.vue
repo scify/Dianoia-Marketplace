@@ -8,8 +8,7 @@
                         <p>{{resource.description}}</p>
                     </div>
                     <div>
-                        <button   v-if="isProfilePage()" type="submit" class="btn btn--edit"  data-bs-toggle="modal"
-                                data-bs-target="#editModal"><i class="far fa-edit"></i></button>
+                        <button   v-if="isProfilePage()" type="submit" class="btn btn--edit"  @click="showEditModal"><i class="far fa-edit"></i></button>
                         <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary" target="_blank">Δες την άσκηση</a>
                     </div>
 
@@ -86,68 +85,31 @@
                 </div>
             </template>
         </modal>
-        <div class="modal fade" id="editModal" tabindex="-1"
-             aria-labelledby="editModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body mb-5 d-flex justify-content-center">
-                        <p class="text-center">Αφού επεξεργαστείτε τα στοιχεία της άσκησης,
-                            μια νέα ειδοποίηση
-                            θα
-                            σταλθεί στον διαχειριστή για να επεξεργαστεί τα καινούργια
-                            δεδομένα.</p>
-                    </div>
-                    <div
-                        class="modal-footer text-center justify-content-center mb-5 flex-column">
-                        <div>
-                            <p class="mb-5">Είστε σίγουροι ότι θέλετε να συνεχίσετε?</p>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn--secondary me-5"
-                                    data-bs-dismiss="modal">Ακύρωση</button>
-                            <button v-on:click="getEditExerciseRoute()" type="button" class="btn btn--primary">Ναι</button>
-                        </div>
-                    </div>
+        <modal
+             @canceled="editModalOpen = false"
+             id="editModal"
+             class="modal"
+            :open="editModalOpen"
+            :allow-close="true">
+            <template v-slot:body>
+                <p class="text-center">Αφού επεξεργαστείτε τα στοιχεία της άσκησης,
+                    μια νέα ειδοποίηση
+                    θα
+                    σταλθεί στον διαχειριστή για να επεξεργαστεί τα καινούργια
+                    δεδομένα.</p>
+            </template>
+            <template v-slot:footer>
+                <div>
+                    <p class="mb-5">Είστε σίγουροι ότι θέλετε να συνεχίσετε?</p>
                 </div>
-            </div>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="editModal3" tabindex="-1"
-             aria-labelledby="editModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body mb-5 d-flex justify-content-center">
-                        <p class="text-center">Αφού επεξεργαστείτε τα στοιχεία της άσκησης,
-                            μια νέα ειδοποίηση
-                            θα
-                            σταλθεί στον διαχειριστή για να επεξεργαστεί τα καινούργια
-                            δεδομένα.</p>
-                    </div>
-                    <div
-                        class="modal-footer text-center justify-content-center mb-5 flex-column">
-                        <div>
-                            <p class="mb-5">Είστε σίγουροι ότι θέλετε να συνεχίσετε?</p>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn--secondary me-5"
-                                    data-bs-dismiss="modal">Ακύρωση</button>
-                            <button type="button" class="btn btn--primary">Ναι</button>
+                <div>
+                    <button type="button" class="btn btn--secondary me-5" @click="closeEditModal">Ακύρωση</button>
+                    <button v-on:click="getEditExerciseRoute()" type="button" class="btn btn--primary">Ναι</button>
+                </div>
+            </template>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </modal>
     </div>
-
 </template>
 
 <script>
@@ -186,6 +148,7 @@ export default {
             rejectionMessage: "this exercise violates the platform rules of conduct",
             resourceChildrenModalOpen: false,
             rateModalOpen: false,
+            editModalOpen: false,
             deleteModalOpen: false,
             exerciseRejectionModalOpen: false,
             rateTitleKey: 'rate_exercise_modal_body_text_no_rating'
@@ -257,6 +220,12 @@ export default {
                     this.userRating = response.data.rating;
                 });
             }
+        },
+        showEditModal() {
+            this.editModalOpen = true;
+        },
+        closeEditModal() {
+            this.editModalOpen = false;
         },
         rejectExercise(){
             this.post({

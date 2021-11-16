@@ -6,14 +6,14 @@
                     <div class="modal-dialog modal-lg modal-dialog-scrollable" :class="classes">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <slot name="header"></slot>
+                                <slot v-if="hasSlot('header')" name="header"></slot>
                                 <button v-if="allowClose" type="button" class="btn-close"
                                         @click="cancel" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body p-0">
+                            <div class="modal-body mb-5 d-flex justify-content-center">
                                 <slot name="body"></slot>
                             </div>
-                            <div v-if="hasSlot('footer')" class="modal-footer">
+                            <div v-if="hasSlot('footer')" class="modal-footer text-center justify-content-center mb-5 flex-column">
                                 <slot name="footer"></slot>
                             </div>
                         </div>
