@@ -70,7 +70,7 @@ class UserRoleManager {
         $this->removeRoleFromUser($user, UserRolesLkp::ADMIN);
     }
 
-    protected function removeRoleFromUser(User $user, $roleId) {
+    public function removeRoleFromUser(User $user, $roleId) {
         if ($this->userHasRole($user, $roleId)) {
             $userRole = $this->userRoleRepository->where(['user_id' => $user->id, 'role_id' => $roleId]);
             $this->userRoleRepository->delete($userRole->id);

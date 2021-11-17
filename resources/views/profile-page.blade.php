@@ -14,7 +14,7 @@
                 <div class="row user-info ">
                     <div class="col-xl-9 col-md-7 col-xs-12 ">
                         <h1>{{$user->name}} <span>({{$user->email}})</span> </h1>
-                        <p>{{$user->type}}</p>
+                        <p>{{$user->type->name}}</p>
                     </div>
 
                     <div class="col-xl-3 col-md-5 col-xs-12">
@@ -48,6 +48,9 @@
                                                     <label for="username" class="form-label">{{__('messages.name')}} <span>*</span></label>
                                                     <input type="text" class="form-control" id="username" name="name" value="{{$user->name}}">
                                                 </div>
+                                                <input style="display:none" type="text" class="form-control" name="prev_type_id" value="{{ $user->type->id}}">
+
+                                                <p style="display:none">{{$user->type->name}}</p>
                                                 <div class="col-12">
                                                     <input id="email" type="email" class="form-control" name="email" value="{{ $user->email}}" required autocomplete="email">
                                                 </div>
