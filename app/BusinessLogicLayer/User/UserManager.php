@@ -59,6 +59,8 @@ class UserManager {
             'name' => trim($requestData["name"]),
             'email' => trim($requestData["email"])
         ], $id);
+
+        $this->userRoleManager->assignRegisteredUserRoleTo($user, $requestData['type_id']);
         if (isset($requestData["admin"]) && $requestData["admin"])
             $this->userRoleManager->assignAdminUserRoleTo($user);
         else

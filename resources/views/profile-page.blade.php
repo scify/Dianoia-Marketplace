@@ -54,14 +54,14 @@
                                                 <div class="col-12">
                                                     <label for="password" class="form-label">Κωδικός <span>*</span></label>
                                                     <input id="password-field" type="password" class="form-control"
-                                                           name="password" value="{{$user->password}}">
+                                                           name="password" value="">
                                                     <span toggle="#password-field"
                                                           class="fa fa-fw fa-eye field-icon toggle-password me-3"></span>
                                                 </div>
 
                                                 <div class="col-12">
                                                     <label for="formGroupExampleInput2" class="form-label">Χρήστης</label>
-                                                    <select class="form-select" aria-label="Default select example">
+                                                    <select class="form-select" aria-label="Default select example"  name="type_id">
                                                         <option value="2"> Private Carer </option>
                                                         <option value="3"> Professional Carer</option>
                                                         <option value="4"> Organization </option>
