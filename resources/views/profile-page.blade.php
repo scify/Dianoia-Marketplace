@@ -20,7 +20,7 @@
                     <div class="col-xl-3 col-md-5 col-xs-12">
                         <!-- Modal button -->
                         <button type="submit" class="btn btn--secondary" data-bs-toggle="modal"
-                                data-bs-target="#edit-profile">Επεξεργασία προφίλ</button>
+                                data-bs-target="#edit-profile">{{__('messages.edit-profile')}}</button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="edit-profile" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -40,7 +40,7 @@
                                             {{ csrf_field() }}
                                             <div class="form form-new mt-5 mb-5 rounded">
                                                 <p class="form-new__title p-4">
-                                                    Επεξεργασία στοιχείων προφίλ χρήστη</p>
+                                                    {{__('messages.edit-profile-info')}}</p>
                                                 <hr>
                                             </div>
                                             <div class="form-new__fields p-5">
@@ -55,7 +55,7 @@
                                                     <input id="email" type="email" class="form-control" name="email" value="{{ $user->email}}" required autocomplete="email">
                                                 </div>
                                                 <div class="col-12">
-                                                    <label for="password" class="form-label">Κωδικός <span>*</span></label>
+                                                    <label for="password" class="form-label">{{__('messages.password')}} <span>*</span></label>
                                                     <input id="password-field" type="password" class="form-control"
                                                            name="password" placeholder="********">
                                                     <span toggle="#password-field"
@@ -79,11 +79,11 @@
                                             </div>
                                             <div class="form-new__submmit-btn d-flex justify-content-end p-5">
                                                 <div>
-                                                    <p class="mb-5">Είστε σίγουροι ότι θέλετε να συνεχίσετε?</p>
+                                                    <p class="mb-5">{{__('messages.continue-confirm')}}</p>
                                                     <a class="btn btn--secondary mt-1" href="{{route('resources.my_profile')}}">
                                                         {{trans("messages.cancel")}}
                                                     </a>
-                                                    <input  id="userEditBtrn" class="btn btn--primary mt-1 ms-4" type="submit" value="Καταχώρηση στοιχείων">
+                                                    <input  id="userEditBtrn" class="btn btn--primary mt-1 ms-4" type="submit" value="{{__('messages.submit-info')}}">
                                                 </div>
 
                                             </div>
@@ -101,13 +101,11 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="patients-tab" data-bs-toggle="tab"
                                     data-bs-target="#patients" type="button" role="tab" aria-controls="patients"
-                                    aria-selected="true">Ασκήσεις για
-                                ασθενείς</button>
+                                    aria-selected="true">{{__('messages.patient-exercises')}}</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="carer-tab" data-bs-toggle="tab" data-bs-target="#carer"
-                                    type="button" role="tab" aria-controls="carer" aria-selected="false">Ασκήσεις για
-                                φροντιστές</button>
+                                    type="button" role="tab" aria-controls="carer" aria-selected="false">{{__('messages.carer-exercises')}}</button>
                         </li>
                     </ul>
                 </div>
@@ -146,10 +144,7 @@
                     </div>
                     <div class="exercise-template shadow content mb-5 mt-5">
                         <div class="exercise-box p-5" id="registered-template">
-                            <div class="registered-message text-center">Η άσκησή σας έχει καταχωρηθεί. Για να γίνει
-                                διαθέσιμη στην
-                                εφαρμογή και να μπορείτε να την χρησιμοποιήσετε, πρέπει πρώτα να εγκριθεί από τον
-                                διαχειριστή. Θα ενημερωθείτε με email για την πορεία της έγκρισης.</div>
+                            <div class="registered-message text-center">{{__('messages.exercise-submitted')}}</div>
 
                             <div class="exercise-title-row d-flex align-items-center justify-content-between">
                                 <div>

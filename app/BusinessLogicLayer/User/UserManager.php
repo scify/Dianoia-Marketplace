@@ -61,7 +61,7 @@ class UserManager {
         ], $id);
         if($requestData['password']){
             $user = $this->userRepository->update([
-                'password' => $requestData["password"]
+                'password' =>  Hash::make($requestData["password"])
             ], $id);
         }
 
