@@ -27,20 +27,19 @@
     <main>
         <div class="form-page">
             <form class="content">
-                <h2 class="text-center mb-5">Σύνδεση</h2>
+                <h2 class="text-center mb-5">{{__('messages.sign-in')}}</h2>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
                     <input type="email" class="form-control" placeholder="Πληκτρολογήστε το mail σας"
                         id="exampleInputEmail1" aria-describedby="emailHelp">
 
                 </div>
                 <div class="mb-5">
-                    <label for="exampleInputPassword1" class="form-label">Κωδικός πρόσβασης</label>
+                    <label for="exampleInputPassword1" class="form-label">{{__('messages.password')}}</label>
                     <input type="password" class="form-control" placeholder="Πληκτρολογήστε τον κωδικό πρόσβασής σας"
                         id="exampleInputPassword1">
                 </div>
-                <p class="text-center mt-5 ">Με την σύνδεσής σας αποδέχεστε τους <a href="#">όρους χρήσης</a>.</p>
-                <button type="submit" class="btn btn-primary mb-5 mt-3">Σύνδεση</button>
+                <button type="submit" class="btn btn-primary mb-5 mt-3">{{__('messages.sign-in')}}</button>
                 <hr class="mt-5">
                 <p class="text-center"> Δεν έχετε λογαριασμό; <a href="#">Κάντε εγγραφή εδώ.</a></p>
             </form>

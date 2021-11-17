@@ -119,13 +119,22 @@
                                 Ελληνικά
                             </a>
                         </li>
-                        <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'de') }}">
+                        <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'it') }}">
+                                <img
+                                    loading="lazy"
+                                    class="mr-2"
+                                    src="{{ asset('img/lang/it.png') }}"
+                                    height="20px" alt="Italian">
+                                Italian
+                            </a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'sp') }}">
                                 <img
                                     loading="lazy"
                                     class="mr-2"
                                     src="{{ asset('img/lang/sp.png') }}"
-                                    height="20px" alt="German">
-                                Deutsch
+                                    height="20px" alt="Italian">
+                                Spanish
                             </a>
                         </li>
                     </ul>

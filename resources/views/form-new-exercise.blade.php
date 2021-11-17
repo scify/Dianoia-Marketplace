@@ -13,7 +13,7 @@
         {{ csrf_field() }}
         <div class="form form-new mt-5 mb-5 rounded">
 
-            <p class="form-new__title p-4">Νέα άσκηση</p>
+            <p class="form-new__title p-4">{{__('messages.new-exercise')}}</p>
             <hr>
             <div class="form-new__fields p-5">
                 <div class="row g-3">
@@ -23,7 +23,7 @@
                         <input type="text" class="form-control" id="category_name" name="name" required="true"  value="{{ old('name') ?: $viewModel->resource->name }}">
                     </div>
                     <div class="col-12">
-                        <label for="formGroupExampleInput2" class="form-label">Περιγραφή άσκησης <span>*</span></label>
+                        <label for="formGroupExampleInput2" class="form-label">{{__('messages.exercise-description')}} <span>*</span></label>
                         <input type="text" class="form-control" id="formGroupExampleInput2" name="description" value="{{ old('description') ?: $viewModel->resource->description }}">
                     </div>
                     @error('description')
@@ -31,7 +31,7 @@
                     @enderror
 
                     <div class="col-md-6">
-                        <label for="upload_img" class="form-label">Ανέβασε εικόνα</label>
+                        <label for="upload_img" class="form-label">{{__('messages.upload-image')}}</label>
 {{--                        <div class="file btn rounded">--}}
 {{--                            <i class="fas fa-plus-circle"></i>--}}
 {{--                            <input type="button" class="btn btn-third" id="loadFileXml" value="+"--}}
@@ -56,7 +56,7 @@
                         @endif
 
                     </div>
-                    <p class="required-text">* Απαραίτητα στοιχεία</p>
+                    <p class="required-text">* {!!__('messages.necessary-info')!!}</p>
 
                     <div class="col-md-6 ">
 
@@ -99,15 +99,13 @@
             </div>
 
             <div class="form-new__prototype-file text-center">
-                <em> Οι ασκήσεις που θα ανεβάσεις στην πλατφόρμα πρέπει να έχουν περιεχόμενο σύμφωνο με την δομή του
-                    πρωτότυπου εγγράφου <a href="">εδώ</a>.</em>
-
+                <em> {!!__('messages.exercise-upload-rules')!!}</em>
             </div>
 
             <div class="form-new__submit-exercise-file p-5">
 
                 <div class="pdf-file d-flex align-items-center mb-5 mt-5">
-                    <label for="pdf" class="form-label">Upload Exercise (pdf)<span
+                    <label for="pdf" class="form-label">{!!__('messages.upload-pdf')!!}<span
                             style="color:#ff0000">*</span></label>
 
 
@@ -133,10 +131,7 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value=none id="flexCheckDefault" name="terms" value="{{ old('terms') ?: $viewModel->resource->terms }}">
                         <label class="form-check-label" for="flexCheckDefault">
-                            Έχω διαβάσει τους <b><u>κανόνες περιεχομένου και πνευματικής ιδιοκτησίας</u></b>, καθώς και
-                            τους όρους για
-                            την
-                            δομή της άσκησής, όπως στο <b><u>παράδειγμα</u></b>. <span>*</span>
+                            {!!__('messages.accept-rules-of-conduct')!!}
                         </label>
                     </div>
                     @error('terms')
@@ -145,9 +140,7 @@
                 </div>
 
                 <div class="admin-message-options p-5">
-                    Σε περίπτωση που γίνει δεκτή η άσκηση που θα δημιουργήσεις, η διαχειριστική ομάδα της SciFY θα
-                    επιλέξει αν η άσκηση θα είναι διαθέσιμη μόνο από το marketplace για κατέβασμα σαν .pdf, ή και από τη
-                    mobile εφαρμογή
+                    {!!__('messages.submission-tutorial')!!}
                 </div>
 
 
