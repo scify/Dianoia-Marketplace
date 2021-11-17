@@ -80,12 +80,12 @@
                                             <div class="form-new__submmit-btn d-flex justify-content-end p-5">
                                                 <div>
                                                     <p class="mb-5">Είστε σίγουροι ότι θέλετε να συνεχίσετε?</p>
+                                                    <a class="btn btn--secondary mt-1" href="{{route('resources.my_profile')}}">
+                                                        {{trans("messages.cancel")}}
+                                                    </a>
+                                                    <input  id="userEditBtrn" class="btn btn--primary mt-1 ms-4" type="submit" value="Καταχώρηση στοιχείων">
                                                 </div>
-                                                <a class="btn btn--secondary mt-5" href="{{route('resources.my_profile')}}">
-                                                    {{trans("messages.cancel")}}
-                                                </a>
-                                                <input  id="userEditBtrn" class="btn btn--primary mt-5 ms-4" type="submit" value="Καταχώρηση
-                                                στοιχείων">
+
                                             </div>
                                         </form>
                                     </div>

@@ -38,6 +38,13 @@
         }
     }
 
+    .btn--primary{
+        background-color: var(--color-blue-light-1) !important;
+        color: white;
+        border: none;
+        outline: 3px solid var(--color-blue-light-1);
+    }
+
     .exercises-tabs {
         background-color: var(--color-offwhite);
         padding-top: 2rem;

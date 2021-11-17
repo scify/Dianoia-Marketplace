@@ -57,12 +57,20 @@ class UserManager {
     public function update(int $id, array $requestData): User {
         $user = $this->userRepository->update([
             'name' => trim($requestData["name"]),
-            'email' => trim($requestData["email"])
+            'email' => trim($requestData["email"]),
         ], $id);
+        if($requestData['password']){
+            $user = $this->userRepository->update([
+                'password' => $requestData["password"]
+            ], $id);
+        }
 
 
-        $this->userRoleManager->assignRegisteredUserRoleTo($user, $requestData['type_id']);
-        $this->userRoleManager->removeRoleFromUser($user, $requestData['prev_type_id']);
+        if($requestData['type_id'] !== $requestData['prev_type_id']){
+            $this->userRoleManager->assignRegisteredUserRoleTo($user, $requestData['type_id']);
+            $this->userRoleManager->removeRoleFromUser($user, $requestData['prev_type_id']);
+
+        }
 
         if (isset($requestData["admin"]) && $requestData["admin"])
             $this->userRoleManager->assignAdminUserRoleTo($user);
