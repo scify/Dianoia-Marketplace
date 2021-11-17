@@ -60,8 +60,9 @@ class UserManager {
             'email' => trim($requestData["email"])
         ], $id);
 
-        $this->userRoleManager->removeRoleFromUser($user, $requestData['prev_type_id']);
+
         $this->userRoleManager->assignRegisteredUserRoleTo($user, $requestData['type_id']);
+        $this->userRoleManager->removeRoleFromUser($user, $requestData['prev_type_id']);
 
         if (isset($requestData["admin"]) && $requestData["admin"])
             $this->userRoleManager->assignAdminUserRoleTo($user);

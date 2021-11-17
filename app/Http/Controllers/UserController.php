@@ -63,9 +63,13 @@ class UserController extends Controller {
      * @return RedirectResponse
      */
     public function update(Request $request, User $user): RedirectResponse {
+        if($request['password']){
+            $request->validate([
+                'password' => 'min:8'
+            ]);
+        }
         $request->validate([
             'name' => 'required',
-            'password' => 'required',
             'email' => 'unique:users,email,' . $user->id
         ]);
         try {
