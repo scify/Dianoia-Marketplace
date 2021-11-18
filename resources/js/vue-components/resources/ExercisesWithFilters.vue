@@ -9,11 +9,11 @@
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                        Γλώσσα
+                        {{trans('messages.language')}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <i v-for="language in this.contentLanguages">
-                            <li><a class="dropdown-item" @click="setContentLanguage(language)">{{language.name}}</a></li>
+                            <li><a class="dropdown-item" @click="setContentLanguage(language)">{{trans('messages.'+language.name)}}</a></li>
                         </i>
                     </ul>
                 </div>
@@ -21,7 +21,7 @@
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton2"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                        Επίπεδο
+                        {{trans('messages.level')}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                         <li><a class="dropdown-item" @click="sortDifficulty('descending')">Μεγαλύτερη Δυσκολία</a></li>
@@ -36,11 +36,11 @@
 
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton3"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                        Κατηγορία
+                        {{trans('messages.category')}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                        <li><a class="dropdown-item"  id="patientCategoriesList" @click="initializeTypes('patient')">{{trans('messages.carer-exercises')}}</a></li>
-                        <li><a class="dropdown-item" id="carerCategoriesList" @click="initializeTypes('carer')">{{trans('messages.patient-exercises')}}</a></li>
+                        <li><a class="dropdown-item"  id="patientCategoriesList" @click="initializeTypes('patient')">{{trans('messages.patient-exercises')}}</a></li>
+                        <li><a class="dropdown-item" id="carerCategoriesList" @click="initializeTypes('carer')">{{trans('messages.Carer')}}</a></li>
                         <li><a class="dropdown-item" id="allCategoriesList" @click="initializeTypes('all')">Όλες οι Κατηγορίες Ασκήσεων</a></li>
                     </ul>
                 </div>
@@ -48,11 +48,11 @@
                 <div class="dropdown" id="patient-exercise-categories" style="display: none">
                     <a class="dropdown-toggle" type="text" id="dropdownMenuButton4"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                       <u>Τύποι Ασκήσεων για Ασθενείς</u>
+                       <u> {{trans('messages.patient-exercises')}}</u>
                     </a>
                     <ul class="checkboxes" aria-labelledby="dropdownMenuButton4" >
                         <i v-for="type in this.contentTypes">
-                            <div v-if="isPatientExercise(type)" ><input v-bind:id="type.name" style="margin-right:0.5em" type="checkbox" @click="selectType(type)">{{type.name}}</div>
+                            <div v-if="isPatientExercise(type)" ><input v-bind:id="type.name" style="margin-right:0.5em" type="checkbox" @click="selectType(type)">{{trans('messages.'+type.name)}}</div>
                         </i>
                     </ul>
                 </div>
@@ -60,7 +60,7 @@
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton5"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                        Βαθμολογία
+                        {{trans('messages.rating')}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
                         <li><a class="dropdown-item" @click="sortRating('descending')">{{trans('messages.higher-rating')}}</a></li>
@@ -73,7 +73,7 @@
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton6"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                        Χρήστης
+                        {{trans('messages.user')}}
                     </button>
 <!--                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton6">-->
 <!--                        <li><a class="dropdown-item" href="#">Ιδιώτης Φροντιστής</a></li>-->

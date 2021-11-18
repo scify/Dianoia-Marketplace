@@ -29,10 +29,10 @@
                     <i v-for="difficulty in this.difficulties">
 <!--                        <div class="level">{{resource.difficulty_id}}</div>-->
 <!--                        <div class="level">{{difficulty.name}}</div>-->
-                        <div class="level" v-if="difficulty.id===resource.difficulty_id">{{difficulty.name}}</div>
+                        <div class="level" v-if="difficulty.id===resource.difficulty_id">{{trans('messages.'+difficulty.name)}}</div>
                     </i>
                     <i v-for="language in this.languages">
-                        <div class="language" v-if="language.id===resource.lang_id">{{language.name}}</div>
+                        <div class="language" v-if="language.id===resource.lang_id">{{trans('messages.'+language.name)}}</div>
                     </i>
                     <i v-for="type in this.types">
                         <div class="category" v-if="type.id===resource.type_id">{{trans('messages.'+type.name)}}</div>

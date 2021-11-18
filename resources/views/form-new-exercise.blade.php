@@ -64,33 +64,33 @@
                         <select class="form-select" aria-label="category_lang" name="lang">
                             @foreach ($viewModel->languages as $lang)
                             @if($viewModel->lang === $lang->code)
-                                <option selected value="{{$lang->id}}"> {{$lang->name}} </option>
+                                <option selected value="{{$lang->id}}"> {{trans('messages.'.$lang->name)}} </option>
                             @else
-                                <option value="{{$lang->id}}"> {{$lang->name}} </option>
+                                <option value="{{$lang->id}}"> {{trans('messages.'.$lang->name)}} </option>
                             @endif
                             @endforeach
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="exercise_type" class="form-label">Κατηγορία</label>
+                        <label for="exercise_type" class="form-label">{{trans('messages.category')}}</label>
                         <select class="form-select" aria-label="category_lang" name="type_id">
                             @foreach ($viewModel->types as $type){
                             @if($viewModel->resource->type_id === $type->id)
-                                <option value="{{$type->id}}" selected> {{$type->name}} </option>
+                                <option value="{{$type->id}}" selected> {{trans('messages.'.$type->name)}} </option>
                             @else
-                                <option value="{{$type->id}}"> {{$type->name}} </option>
+                                <option value="{{$type->id}}"> {{trans('messages.'.$type->name)}}  </option>
                             @endif
                             @endforeach
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="exercise_difficulty" class="form-label">Difficulty</label>
+                        <label for="exercise_difficulty" class="form-label">{{trans('messages.level')}}</label>
                         <select class="form-select" aria-label="category_lang" name="difficulty_id" >
                             @foreach ($viewModel->difficulties as $difficulty){
                             @if($viewModel->resource->difficulty_id === $difficulty->id)
-                                <option value="{{$difficulty->id}}" selected> {{$difficulty->name}} </option>
+                                <option value="{{$difficulty->id}}" selected> {{trans('messages.'.$difficulty->name)}} </option>
                             @else
-                                <option value="{{$difficulty->id}}"> {{$difficulty->name}} </option>
+                                <option value="{{$difficulty->id}}"> {{trans('messages.'.$difficulty->name)}} </option>
                             @endif
                             @endforeach
                         </select>

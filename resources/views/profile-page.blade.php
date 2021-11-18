@@ -14,7 +14,7 @@
                 <div class="row user-info ">
                     <div class="col-xl-9 col-md-7 col-xs-12 ">
                         <h1>{{$user->name}} <span>({{$user->email}})</span> </h1>
-                        <p>{{$user->type->name}}</p>
+                        <p>{{trans('messages.'.$user->type->name)}}</p>
                     </div>
 
                     <div class="col-xl-3 col-md-5 col-xs-12">
@@ -48,9 +48,9 @@
                                                     <label for="username" class="form-label">{{__('messages.name')}} <span>*</span></label>
                                                     <input type="text" class="form-control" id="username" name="name" value="{{$user->name}}">
                                                 </div>
-                                                <input style="display:none" type="text" class="form-control" name="prev_type_id" value="{{ $user->type->id}}">
+                                                <input style="display:none" type="text" class="form-control" name="prev_type_id" value="{{$user->type->id}}">
 
-                                                <p style="display:none">{{$user->type->name}}</p>
+                                                <p style="display:none">{{trans('messages.'.$user->type->name)}}</p>
                                                 <div class="col-12">
                                                     <input id="email" type="email" class="form-control" name="email" value="{{ $user->email}}" required autocomplete="email">
                                                 </div>
@@ -64,14 +64,14 @@
                                                 </div>
 
                                                 <div class="col-12">
-                                                    <label for="formGroupExampleInput2" class="form-label">Χρήστης</label>
+                                                    <label for="formGroupExampleInput2" class="form-label">{{__('messages.user')}}</label>
 
                                                     <select class="form-select" aria-label="Default select example"  name="type_id">
                                                         @foreach(['Private Carer', 'Professional Carer', 'Organization'] as $i=>$type)
                                                             @if($type === $user->type->name)
-                                                                <option value="{{$user->type->id}}" selected> {{ $user->type->name}} </option>
+                                                                <option value="{{$user->type->id}}" selected> {{trans('messages.'.$user->type->name)}}</option>
                                                             @else
-                                                                <option value="{{$i+1}}"> {{ $type}} </option>
+                                                                <option value="{{$i+1}}">{{trans('messages.'.$type)}} </option>
                                                             @endif
                                                         @endforeach
                                                     </select>
@@ -105,7 +105,7 @@
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="carer-tab" data-bs-toggle="tab" data-bs-target="#carer"
-                                    type="button" role="tab" aria-controls="carer" aria-selected="false">{{__('messages.carer-exercises')}}</button>
+                                    type="button" role="tab" aria-controls="carer" aria-selected="false">{{__('messages.Carer')}}</button>
                         </li>
                     </ul>
                 </div>
@@ -157,8 +157,7 @@
                                     <button type="submit" class="btn btn--edit" data-bs-toggle="modal"
                                             data-bs-target="#editModal3"><i class="far fa-edit"></i></button>
 
-                                    <a href="#" class="btn btn--secondary" target="_blank">Δες
-                                        την άσκηση</a>
+                                    <a href="#" class="btn btn--secondary" target="_blank">{{trans('messages.see-exercise')}}</a>
                                 </div>
 
 

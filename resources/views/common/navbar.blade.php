@@ -38,7 +38,7 @@
                 <li class="nav-item">
                     <a class="nav-link {{ UrlMatchesMenuItem("resources.display") }}"
                        href="{{route('resources.display')}}">
-                        Ασκήσεις
+                        {{__('messages.exercises')}}
                     </a>
                 </li>
                 @guest()
@@ -76,7 +76,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item"
-                                   href="{{route('resources.my_profile')}}">Το προφίλ μου</a>
+                                   href="{{route('resources.my_profile')}}">   {!! __('messages.edit-profile') !!}</a>
                             </li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -107,7 +107,7 @@
                                     class="mr-2"
                                     src="{{ asset('img/lang/en.png') }}"
                                     height="20px" alt="English">
-                                English
+                                {{__('messages.english')}}
                             </a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'el') }}">
@@ -116,7 +116,7 @@
                                     class="mr-2"
                                     src="{{ asset('img/lang/el.png') }}"
                                     height="20px" alt="Greek">
-                                Ελληνικά
+                            {{__('messages.greek')}}
                             </a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'it') }}">
@@ -125,7 +125,7 @@
                                     class="mr-2"
                                     src="{{ asset('img/lang/it.png') }}"
                                     height="20px" alt="Italian">
-                                Italian
+                                {{__('messages.italian')}}
                             </a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'sp') }}">
@@ -134,7 +134,7 @@
                                     class="mr-2"
                                     src="{{ asset('img/lang/sp.png') }}"
                                     height="20px" alt="Italian">
-                                Spanish
+                                {{__('messages.spanish')}}
                             </a>
                         </li>
                     </ul>
