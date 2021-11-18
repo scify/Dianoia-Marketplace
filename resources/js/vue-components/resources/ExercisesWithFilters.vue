@@ -39,8 +39,8 @@
                         Κατηγορία
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                        <li><a class="dropdown-item"  id="patientCategoriesList" @click="initializeTypes('patient')">Ασκήσεις για Ασθενείς</a></li>
-                        <li><a class="dropdown-item" id="carerCategoriesList" @click="initializeTypes('carer')">Ασκήσεις για Φροντιστές</a></li>
+                        <li><a class="dropdown-item"  id="patientCategoriesList" @click="initializeTypes('patient')">{{trans('messages.carer-exercises')}}</a></li>
+                        <li><a class="dropdown-item" id="carerCategoriesList" @click="initializeTypes('carer')">{{trans('messages.patient-exercises')}}</a></li>
                         <li><a class="dropdown-item" id="allCategoriesList" @click="initializeTypes('all')">Όλες οι Κατηγορίες Ασκήσεων</a></li>
                     </ul>
                 </div>
@@ -63,10 +63,10 @@
                         Βαθμολογία
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
-                        <li><a class="dropdown-item" @click="sortRating('descending')">Μεγαλύτερη Βαθμολογία</a></li>
-                        <li><a class="dropdown-item" @click="sortRating('ascending')">Χαμηλότερη Βαθμολογία</a></li>
-                        <li><a class="dropdown-item" @click="sortRating('bydate')">Νεότερες βαθμολογίες</a></li>
-                        <li><a class="dropdown-item" @click="sortRating('reset')">Όλες οι δυσκολίες</a></li>
+                        <li><a class="dropdown-item" @click="sortRating('descending')">{{trans('messages.higher-rating')}}</a></li>
+                        <li><a class="dropdown-item" @click="sortRating('ascending')">{{trans('messages.lower-rating')}}</a></li>
+                        <li><a class="dropdown-item" @click="sortRating('bydate')">{{trans('messages.new-ratings')}}</a></li>
+                        <li><a class="dropdown-item" @click="sortRating('reset')">{{trans('messages.all-ratings')}}</a></li>
                     </ul>
                 </div>
 
@@ -84,9 +84,9 @@
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton6">
                         <i v-for="role in this.userRoles">
-                            <li><a class="dropdown-item" @click="filterResourcesByUserRole(role.id)">{{role.name}}</a></li>
+                            <li><a class="dropdown-item" @click="filterResourcesByUserRole(role.id)">{{trans('messages.'+role.name)}}</a></li>
                         </i>
-                        <li><a class="dropdown-item" @click="filterResourcesByUserRole()">Από όλους</a></li>
+                        <li><a class="dropdown-item" @click="filterResourcesByUserRole()">{{trans('messages.from-everyone')}}</a></li>
                     </ul>
 
                 </div>
@@ -94,8 +94,7 @@
 
 
             <div class="search-section__input mt-5 content mb-5 d-flex justify-content-between align-items-center">
-                <p><i class="fas fa-long-arrow-alt-down"></i> | <i class="fas fa-long-arrow-alt-up"></i> {{this.numExercises}} συνολικές
-                    δραστηριότητες</p>
+                <p><i class="fas fa-long-arrow-alt-down"></i> | <i class="fas fa-long-arrow-alt-up"></i> {{this.numExercises}}{{' ' +trans('messages.total-activities')}}</p>
 
 <!--                <div class="input-group">-->
 <!--                    <input type="search" class="form-control rounded" placeholder="Αναζήτηση καταχωρήσεων"-->
@@ -113,7 +112,7 @@
                         </div>
                     </div>
                 </div>
-                <div> <a :href="this.creationRoute" class="btn btn--primary" target="_blank">Δημιούργησε νέα άσκηση</a>
+                <div> <a :href="this.creationRoute" class="btn btn--primary" target="_blank">{{trans('messages.exercise-creation')}}</a>
                 </div>
             </div>
         </div>
@@ -138,6 +137,7 @@
 
 <script>
 import {mapActions} from "vuex";
+import Vue from "vue";
 
 export default {
     mounted() {
@@ -195,7 +195,7 @@ export default {
             maxRating: 5,
             patientExercises: [],
             carerExercises: [],
-            searchPlaceholder: 'Αναζήτηση καταχωρήσεων',//,window.translate('messages.search_resources_package'),
+            searchPlaceholder: window.translate('messages.search-submissions'),
             searchLoading: false,
             numExercises: 0,
         }
@@ -408,17 +408,18 @@ export default {
             if(mode == null){
                 mode = this.initExerciseTypes;
                 console.log('mode = '+mode);
-                $('#dropdownMenuButton3').click();
                 this.selectedContentLanguage = null;
             }
             if(mode==="patient"){
                 this.selectedTypes  =  this.contentTypes.filter(type => this.isPatientExercise(type));
+                $('#dropdownMenuButton3').click();
             }
             else if (mode==="all"){
                 this.selectedTypes  =  this.contentTypes.slice(0);
             }
             else if(mode==="carer"){
                 this.selectedTypes = this.contentTypes.filter(type => this.isCarerExercise(type));
+                $('#dropdownMenuButton3').click();
             }
 
 

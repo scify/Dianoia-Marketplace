@@ -9,7 +9,7 @@
                     </div>
                     <div>
                         <button   v-if="isProfilePage()" type="submit" class="btn btn--edit"  @click="showEditModal"><i class="far fa-edit"></i></button>
-                        <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary" target="_blank">Δες την άσκηση</a>
+                        <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary" target="_blank">{{   trans('messages.see-exercise') }}</a>
                     </div>
 
                 </div>
@@ -18,11 +18,11 @@
                 <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">
                     <div class="rating">
                         <span v-for="index in maxRating" class="fa-star" v-bind:class="{ fas: resourceHasRating(index), far: !resourceHasRating(index) }"></span>
-                        <p  v-if="loggedInUserIsDifferentFromContentUser()" @click="showRateModal">Δώσε την δική σου βαθμολογία</p>
+                        <p  v-if="loggedInUserIsDifferentFromContentUser()" @click="showRateModal">{{   trans('messages.give-rating') }}</p>
                     </div>
 
                     <i v-for="user in this.users">
-                        <div class="created-by" v-if="user.id===resource.creator_user_id">Δημιουργήθηκε από {{user.name}}</div>
+                        <div class="created-by" v-if="user.id===resource.creator_user_id">{{   trans('messages.created-by') }}{{user.name}}</div>
                     </i>
 
 
@@ -35,7 +35,7 @@
                         <div class="language" v-if="language.id===resource.lang_id">{{language.name}}</div>
                     </i>
                     <i v-for="type in this.types">
-                        <div class="category" v-if="type.id===resource.type_id">{{type.name}}</div>
+                        <div class="category" v-if="type.id===resource.type_id">{{trans('messages.'+type.name)}}</div>
                     </i>
 
 
@@ -51,7 +51,7 @@
             :open="rateModalOpen"
             :allow-close="true">
             <template v-slot:header>
-                <h5 class="modal-title pl-2">Rate Exercise
+                <h5 class="modal-title pl-2">{{   trans('messages.give-rating') }}
                     <b>{{ resource.name }}</b>
                 </h5>
             </template>
@@ -92,19 +92,15 @@
             :open="editModalOpen"
             :allow-close="true">
             <template v-slot:body>
-                <p class="text-center">Αφού επεξεργαστείτε τα στοιχεία της άσκησης,
-                    μια νέα ειδοποίηση
-                    θα
-                    σταλθεί στον διαχειριστή για να επεξεργαστεί τα καινούργια
-                    δεδομένα.</p>
+                <p class="text-center">{{trans('messages.exercise-edit-tutorial')}}</p>
             </template>
             <template v-slot:footer>
                 <div>
-                    <p class="mb-5">Είστε σίγουροι ότι θέλετε να συνεχίσετε?</p>
+                    <p class="mb-5">{{trans('messages.continue_confirm')}}</p>
                 </div>
                 <div>
-                    <button type="button" class="btn btn--secondary me-5" @click="closeEditModal">Ακύρωση</button>
-                    <button v-on:click="getEditExerciseRoute()" type="button" class="btn btn--primary">Ναι</button>
+                    <button type="button" class="btn btn--secondary me-5" @click="closeEditModal">{{trans('messages.cancel')}}</button>
+                    <button v-on:click="getEditExerciseRoute()" type="button" class="btn btn--primary">{{trans('messages.yes')}}</button>
                 </div>
             </template>
 

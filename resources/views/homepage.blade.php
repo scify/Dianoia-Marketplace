@@ -74,6 +74,7 @@
             </div>
         </div>
     </main>
+
 @endsection
 @push('scripts')
     <script src="{{ mix('dist/js/create-edit-resource.js') }}"></script>

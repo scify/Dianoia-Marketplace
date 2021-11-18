@@ -80,10 +80,8 @@ a {
 }
 
 /// FOOTER
-.footer {
-    background-color: var(--color-blue-dark);
-    font-size: 1.4rem;
+.footer-dark {
+    background-color: var(--color-blue-light-1);
     color: #ffffff;
-    text-align: center;
-    padding: 30px;
+    padding:50px
 }
