@@ -3,18 +3,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-3 item">
-                    <h3>{!! __('messages.services') !!}</h3>
+{{--                    <h3>{!! __('messages.services') !!}</h3>--}}
+                    <h3>Services</h3>
                     <ul>
-                        <li><a href="{{ route('resources.display') }}">Exercises</a></li>
-                        <li><a href="#">{!! __('messages.content_guidelines') !!}</a></li>
+                        <li><a href="{{ route('resources.display') }}">{!! __('messages.exercises') !!}</a></li>
+{{--                        <li><a href="#">{!! __('messages.content_guidelines') !!}</a></li>--}}
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-3 item">
                     <h3>About</h3>
                     <ul>
-                        <li><a href="https://www.scify.gr/site/en/">{!! __('messages.team') !!}</a></li>
-                        <li><a href="{{ config('app.url') }}">{!! __('messages.download') !!} DiAnoia App</a></li>
-                        <li><a href="https://www.scify.gr/site/en/contact" target="_blank">{!! __('messages.contact_us') !!}</a></li>
+                        <li><a href="https://www.scify.gr/site/en/">The Team</a></li>
+                        <li><a href="{{ config('app.url') }}">{!! __('messages.download-app') !!} DiAnoia</a></li>
+                        <li><a href="https://www.scify.gr/site/en/contact" target="_blank">Contact us</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6 item text">
