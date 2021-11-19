@@ -17,13 +17,13 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"
-                               href="#">{{__('messages.marketplace')}}</a>
+                               href="{{route('homepage')}}">{{__('messages.marketplace')}}</a>
                         </li>
                         <li><a class="dropdown-item"
-                               href="#">{{__('messages.mobile-app')}}</a>
+                            href="{{ !Request::is('home') ? route('homepage') : '' }}#downloadMobileAppBtn">{{__('messages.mobile-app')}}</a>
                         </li>
                         <li><a class="dropdown-item" id="patientsDropdownItem"
-                               href="#">{{__('messages.patients')}}</a>
+                               href="{{ !Request::is('home') ? route('homepage') : '' }}#patientsInfo">{{__('messages.patients')}}</a>
                         </li>
                         <li><a class="dropdown-item" id="carersDropdownItem"
                                href="{{ !Request::is('home') ? route('homepage') : '' }}#carersInfo">{{__('messages.carers')}}</a>
@@ -31,7 +31,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  id="mobileAppDropdownItem" href="#">
+                    <a class="nav-link"  id="mobileAppDropdownItem" href="{{ !Request::is('home') ? route('homepage') : '' }}#downloadMobileAppBtn">
                         {{__('messages.mobile-app')}}
                     </a>
                 </li>
