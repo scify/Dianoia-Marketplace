@@ -28,7 +28,10 @@ return [
     'password' => 'La contraseña proporcionada es incorrecta.',
     'throttle' => 'Demasiados intentos para inciar sesión. Vuelve a intentarlo en algunos segundos.',
     'logout' => 'Cerrar sesión',
-    'no_account' => 'No tengo una cuenta',
+    'no_account' => '¿No tienes una cuenta?',
+    'register_here' => 'Registrar aquí',
+    'type_mail' => 'Introduce tu correo electrónico',
+    'type_password' => 'Ingresa tu contraseña',
     'already_account' => 'Ya tengo una cuenta',
-    'sign_in' => 'Acceder'
+    'sign_in' => 'Acceder',
 ];

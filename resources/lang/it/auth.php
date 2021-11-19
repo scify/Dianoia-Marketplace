@@ -28,7 +28,10 @@ return [
     'password' => 'La password fornita non è corretta.',
     'throttle' => 'Troppi tentativi di connessione. Riprova tra qualche secondo.',
     'logout' => 'Logout',
-    'no_account' => 'Non ho un account',
+    'no_account' => 'Non hai un account?',
+    'register_here' => 'Registrati qui',
+    'type_mail' => 'Inserisci la tua email',
+    'type_password' => 'Inserisci la tua password',
     'already_account' => 'Ho già un account',
     'sign_in' => 'Login'
 ];

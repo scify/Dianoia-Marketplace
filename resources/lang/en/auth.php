@@ -28,7 +28,10 @@ return [
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'logout' => 'Logout',
-    'no_account' => 'I Don\'t have an account',
+    'no_account' => 'Don\'t have an account?',
+    'register_here' => ' Register here',
+    'type_mail' => 'Τype your mail',
+    'type_password' => 'Type your password',
     'already_account' => 'I already have an account',
     'sign_in' => 'Sign in'
 ];
