@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+
     'email_label' => 'E-Mail Address',
     'password_label' => 'Password',
     'confirm_password_label' => 'Confirm Password',
@@ -26,5 +27,8 @@ return [
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'logout' => 'Logout'
+    'logout' => 'Logout',
+    'no_account' => 'I Don\'t have an account',
+    'already_account' => 'I already have an account',
+    'sign_in' => 'Sign in'
 ];

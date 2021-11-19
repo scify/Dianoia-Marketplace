@@ -12,19 +12,23 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'email_label' => 'Διεύθυνση email',
-    'password_label' => 'Κωδικός',
-    'confirm_password_label' => 'Επιβεβαίωση κωδικού',
-    'remember_me_label' => 'Να με θυμάσαι',
-    'login_btn' => 'Είσοδος',
-    'forgot_password_link' => 'Ξεχάσατε τον κωδικό σας;',
-    'register_btn' => 'Εγγραφή',
-    'name_label' => 'Όνομα',
-    'reset_password' => 'Επαναφορά κωδικού',
-    'reset_password_btn' => 'Επαναφορά κωδικού',
-    'send_password_reset_link' => 'Αποστολή email επαναφοράς κωδικού',
-    'failed' => 'Αυτά τα στοιχεία δεν αντιστοιχούν σε χρήστη.',
-    'password' => 'Ο κωδικός που δώσατε είναι λανθασμένος.',
-    'throttle' => 'Πολλές προσπάθειες εισόδου. Παρακαλούμε προσπαθήστε πάλι σε :seconds δευτερόλεπτα.',
-    'logout' => 'Αποσύνδεση'
+
+    'email_label' => 'Indirizzo E-Mail',
+    'password_label' => 'Password',
+    'confirm_password_label' => 'Conferma Password',
+    'remember_me_label' => 'Ricordati di me',
+    'login_btn' => 'Login',
+    'forgot_password_link' => 'Hai dimenticato la tua password?',
+    'register_btn' => 'Registrazione',
+    'name_label' => 'Nome',
+    'reset_password' => 'Ripristina Password',
+    'reset_password_btn' => 'Ripristina Password',
+    'send_password_reset_link' => 'Invia Link di Ripristino Password',
+    'failed' => 'Queste credenziali non corrispondono alle nostre informazioni.',
+    'password' => 'La password fornita non è corretta.',
+    'throttle' => 'Troppi tentativi di connessione. Riprova tra qualche secondo.',
+    'logout' => 'Logout',
+    'no_account' => 'Non ho un account',
+    'already_account' => 'Ho già un account',
+    'sign_in' => 'Login'
 ];

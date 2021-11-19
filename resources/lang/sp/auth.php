@@ -12,19 +12,23 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'email_label' => 'Διεύθυνση email',
-    'password_label' => 'Κωδικός',
-    'confirm_password_label' => 'Επιβεβαίωση κωδικού',
-    'remember_me_label' => 'Να με θυμάσαι',
-    'login_btn' => 'Είσοδος',
-    'forgot_password_link' => 'Ξεχάσατε τον κωδικό σας;',
-    'register_btn' => 'Εγγραφή',
-    'name_label' => 'Όνομα',
-    'reset_password' => 'Επαναφορά κωδικού',
-    'reset_password_btn' => 'Επαναφορά κωδικού',
-    'send_password_reset_link' => 'Αποστολή email επαναφοράς κωδικού',
-    'failed' => 'Αυτά τα στοιχεία δεν αντιστοιχούν σε χρήστη.',
-    'password' => 'Ο κωδικός που δώσατε είναι λανθασμένος.',
-    'throttle' => 'Πολλές προσπάθειες εισόδου. Παρακαλούμε προσπαθήστε πάλι σε :seconds δευτερόλεπτα.',
-    'logout' => 'Αποσύνδεση'
+
+    'email_label' => 'Dirección de correo electrónico',
+    'password_label' => 'Contraseña',
+    'confirm_password_label' => 'Confirmar Contraseña',
+    'remember_me_label' => 'Recuérdame',
+    'login_btn' => 'Acceder',
+    'forgot_password_link' => '¿Olvidaste tu contraseña?',
+    'register_btn' => 'Registrarse',
+    'name_label' => 'Nombre',
+    'reset_password' => 'Restablecer La Constraseña',
+    'reset_password_btn' => 'Restablecer La Constraseña',
+    'send_password_reset_link' => 'Enviar enlace de restablecimiento de contraseña',
+    'failed' => 'Estas credenciales no coinciden con nuestro registro.',
+    'password' => 'La contraseña proporcionada es incorrecta.',
+    'throttle' => 'Demasiados intentos para inciar sesión. Vuelve a intentarlo en algunos segundos.',
+    'logout' => 'Cerrar sesión',
+    'no_account' => 'No tengo una cuenta',
+    'already_account' => 'Ya tengo una cuenta',
+    'sign_in' => 'Acceder'
 ];
