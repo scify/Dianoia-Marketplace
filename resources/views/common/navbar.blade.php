@@ -107,7 +107,7 @@
                                     class="mr-2"
                                     src="{{ asset('img/lang/en.png') }}"
                                     height="20px" alt="English">
-                                {{__('messages.english')}}
+                                {{__('messages.English')}}
                             </a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'el') }}">
@@ -116,7 +116,7 @@
                                     class="mr-2"
                                     src="{{ asset('img/lang/el.png') }}"
                                     height="20px" alt="Greek">
-                            {{__('messages.greek')}}
+                            {{__('messages.Ελληνικά')}}
                             </a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'it') }}">
@@ -125,7 +125,7 @@
                                     class="mr-2"
                                     src="{{ asset('img/lang/it.png') }}"
                                     height="20px" alt="Italian">
-                                {{__('messages.italian')}}
+                                {{__('messages.Italian')}}
                             </a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'sp') }}">
@@ -134,7 +134,7 @@
                                     class="mr-2"
                                     src="{{ asset('img/lang/sp.png') }}"
                                     height="20px" alt="Italian">
-                                {{__('messages.spanish')}}
+                                {{__('messages.Spanish')}}
                             </a>
                         </li>
                     </ul>
