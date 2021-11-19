@@ -58,7 +58,7 @@ return [
     'exercises-rejected' => 'Ασκήσεις που έχουν απορριφθεί',
     'exercises-accepted' => 'Ασκήσεις που έχουν εγκριθεί',
     'new-updates' => 'νέες συνολικές προσθήκες',
-    'created-by' => 'Δημιουργήθηκε από τον',
+    'created-by' => 'Δημιουργήθηκε από τον ',
     'all-acceptances' => 'συνολικές εγκρίσεις',
     'all-rejections' => 'συνολικές απορρίψεις',
     'exercise-rejection' => 'Απόρριψη άσκησης',
