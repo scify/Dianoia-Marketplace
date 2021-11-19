@@ -32,7 +32,7 @@ You can also create your own exercises and if you wish to, you can share them wi
     'Εύκολης Δυσκολίας' => 'Easy level',
     'Μέτριας Δυσκολίας' => 'Normal level',
     'Μεγάλης Δυσκολίας' => 'Δύσκολο επίπεδο',
-    'category' => 'Κατηγορία',
+    'category' => 'Category',
     'Attention' => 'Attention exercises',
     'Memory' => 'Memory exercises',
     'Reason' => 'Thought and Speech exercises',
