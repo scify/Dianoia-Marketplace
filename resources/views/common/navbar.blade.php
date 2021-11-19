@@ -26,7 +26,7 @@
                                href="#">{{__('messages.patients')}}</a>
                         </li>
                         <li><a class="dropdown-item" id="carersDropdownItem"
-                               href="#">{{__('messages.carers')}}</a>
+                               href="{{ !Request::is('home') ? route('homepage') : '' }}#carersInfo">{{__('messages.carers')}}</a>
                         </li>
                     </ul>
                 </li>
