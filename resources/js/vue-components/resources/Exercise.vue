@@ -3,7 +3,7 @@
         <div class="exercise-template shadow content mb-5 mt-5">
             <div class="exercise-box" v-bind:class="[isCarerExercise() ? 'carer-template' :'patient-template']">
                 <div class="exercise-title-row d-flex justify-content-between align-items-center">
-                    <div>
+                    <div style="padding-left:15px;padding-top:15px;">
                         <p class="title"> {{resource.name}} </p>
                         <p>{{resource.description}}</p>
                     </div>
