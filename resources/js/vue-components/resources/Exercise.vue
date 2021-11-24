@@ -8,7 +8,8 @@
                         <p>{{resource.description}}</p>
                     </div>
                     <div style="padding-right:15px">
-                        <button   v-if="isProfilePage()" type="submit" class="btn btn--edit" @click="showEditModal"><i class="far fa-edit"></i></button>
+                        <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showDeleteModal()"><i class="fa fa-trash" style="font-size:20px;color:var(--color-blue)"></i></button>
+                        <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showEditModal"><i class="far fa-edit"></i></button>
                         <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary"   target="_blank">{{   trans('messages.see-exercise') }}</a>
                     </div>
 
@@ -104,6 +105,32 @@
                 </div>
             </template>
 
+        </modal>
+        <modal
+            @canceled="deleteModalOpen = false"
+            id="delete-package-modal"
+            class="modal"
+            :open="deleteModalOpen"
+            :allow-close="true">
+            <template v-slot:header>
+                <h5 class="modal-title pl-2">{{ trans('messages.delete_exercise') }}
+                    <b>{{ resource.name }}</b>
+                </h5>
+            </template>
+            <template v-slot:body>
+                <div class="container pt-3 pb-5">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div>
+                                <h4>{{trans('messages.warning_deletion')}}</h4>
+                            </div>
+                            <a :href="getDeleteExerciseRoute()" class="btn btn-danger">
+                                {{trans('messages.delete')}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </template>
         </modal>
     </div>
 </template>

@@ -1,6 +1,10 @@
 <?php
 
 return [
+    "delete_exercise" => "Διαγραφή Άσκησης",
+    "warning_deletion" => "Προσοχή! Αυτή η ενέργεια είναι μη αναστρέψιμη",
+    "cancel" => "Ακύρωση",
+    "delete" => "Διαγραφή",
     'dianoia' => 'διΆνοια',
     'mobile-app' => 'διΆνοια mobile εφαρμογή',
     'exercises' => 'Ασκήσεις',
