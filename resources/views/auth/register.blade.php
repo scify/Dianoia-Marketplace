@@ -71,7 +71,7 @@
 
                                     <select class="form-select" aria-label="user_role" name="role">
                                         @foreach ($viewModel->roles as $role)
-                                            <option value="{{$role->id}}"> {{$role->name}} </option>
+                                            <option value="{{$role->id}}"> {{trans('messages.'.$role->name)}}</option>
                                         @endforeach
                                     </select>
                                     @error('role')

@@ -31,6 +31,8 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'Μέτριας Δυσκολίας' => 'Livello normale',
     'Μεγάλης Δυσκολίας' => 'Livello difficile',
     'category' => 'Categoria',
+    'all-categories' => 'Tutte le categorie',
+    'all-levels' => 'Tutti i livelli',
     'Attention' => 'Esercizi di Attenzione',
     'Memory' => 'Esercizi di Memoria',
     'Reason' => 'Esercizi di Pensiero e di Parola',

@@ -24,10 +24,9 @@
                         {{trans('messages.level')}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                        <li><a class="dropdown-item" @click="sortDifficulty('descending')">Μεγαλύτερη Δυσκολία</a></li>
-                        <li><a class="dropdown-item" @click="sortDifficulty('ascending')">Χαμηλότερη Δυσκολία</a></li>
-<!--                        <li><a class="dropdown-item" @click="sortDifficulty('bydate')">Νεότερες βαθμολογίες</a></li>-->
-                        <li><a class="dropdown-item" @click="sortDifficulty('reset')">Όλες οι δυσκολίες</a></li>
+                        <li><a class="dropdown-item" @click="sortDifficulty('descending')"> {{trans('messages.Μεγάλης Δυσκολίας')}} &#8680; {{trans('messages.Εύκολης Δυσκολίας')}}</a></li>
+                        <li><a class="dropdown-item" @click="sortDifficulty('ascending')">{{trans('messages.Εύκολης Δυσκολίας')}} &#8680; {{trans('messages.Μεγάλης Δυσκολίας')}}</a></li>
+                        <li><a class="dropdown-item" @click="sortDifficulty('reset')">{{trans('messages.all-levels')}}</a></li>
                     </ul>
                 </div>
 
@@ -41,7 +40,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
                         <li><a class="dropdown-item"  id="patientCategoriesList" @click="initializeTypes('patient')">{{trans('messages.patient-exercises')}}</a></li>
                         <li><a class="dropdown-item" id="carerCategoriesList" @click="initializeTypes('carer')">{{trans('messages.Carer')}}</a></li>
-                        <li><a class="dropdown-item" id="allCategoriesList" @click="initializeTypes('all')">Όλες οι Κατηγορίες Ασκήσεων</a></li>
+                        <li><a class="dropdown-item" id="allCategoriesList" @click="initializeTypes('all')">{{trans('messages.all-categories')}}</a></li>
                     </ul>
                 </div>
 
