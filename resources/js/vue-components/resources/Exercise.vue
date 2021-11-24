@@ -7,9 +7,9 @@
                         <p class="title"> {{resource.name}} </p>
                         <p>{{resource.description}}</p>
                     </div>
-                    <div>
-                        <button   v-if="isProfilePage()" type="submit" class="btn btn--edit"  @click="showEditModal"><i class="far fa-edit"></i></button>
-                        <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary" target="_blank">{{   trans('messages.see-exercise') }}</a>
+                    <div style="padding-right:15px">
+                        <button   v-if="isProfilePage()" type="submit" class="btn btn--edit" @click="showEditModal"><i class="far fa-edit"></i></button>
+                        <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary"   target="_blank">{{   trans('messages.see-exercise') }}</a>
                     </div>
 
                 </div>
