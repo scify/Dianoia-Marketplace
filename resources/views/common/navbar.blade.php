@@ -13,7 +13,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown navbar-item-dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false"> διΆνοια
+                       data-bs-toggle="dropdown" aria-expanded="false"> {{__('messages.dianoia')}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item"

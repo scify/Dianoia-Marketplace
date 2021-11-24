@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'dianoia' => 'διΆνοια',
     'mobile-app' => 'διΆνοια mobile εφαρμογή',
     'exercises' => 'Ασκήσεις',
     'marketplace' => 'διΆνοια Marketplace',

@@ -1,9 +1,10 @@
 <?php
 
 return [
-    'mobile-app' => 'DiAnia mobile application',
+    'dianoia' => 'Dianoia',
+    'mobile-app' => 'Dianoia mobile application',
     'exercises' => 'Exercises',
-    'marketplace' => 'DiAnia Marketplace',
+    'marketplace' => 'Dianoia Marketplace',
     'patients' => 'Patients',
     'carers' => 'Care-takers',
     'intro' => 'Are you helping a person with incipient dementia?<br><br>
@@ -14,8 +15,8 @@ return [
                                 <li>- Find tips to take care of... you, the care-taker!</li>
                             </ul>',
     'create-content' => 'Create content',
-    'learn-more-mobile' => 'Learn more about the DiAnia mobile application',
-    'app-description' => 'DiAnia is a mobile application for care-takers of people of mild cognitive disorder or incipient dementia that is available for free. It offers printable mental exercises for the patients ready to use, to boost the self-confidence of the person with dementia and so that they have a good time. As well as pleasant exercises and relaxation tips for the care-takers, so that they\'re psychologically reinforced.',
+    'learn-more-mobile' => 'Learn more about the Dianoia mobile application',
+    'app-description' => 'Dianoia is a mobile application for care-takers of people of mild cognitive disorder or incipient dementia that is available for free. It offers printable mental exercises for the patients ready to use, to boost the self-confidence of the person with dementia and so that they have a good time. As well as pleasant exercises and relaxation tips for the care-takers, so that they\'re psychologically reinforced.',
     'download-app' => 'Download the application',
     'app-description-2' => 'Help the people with incipient dementia to improve their mental functions, their mood, their functionality and quality of life by giving them riddles, looking back at memories, even doing daily chores or activities they used to love!
 ',

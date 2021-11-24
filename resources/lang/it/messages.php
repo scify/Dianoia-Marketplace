@@ -1,9 +1,10 @@
 <?php
 
 return [
-    'mobile-app' => 'DiAnia applicazione mobile',
+    'dianoia' => 'Dianoia',
+    'mobile-app' => 'Dianoia applicazione mobile',
     'exercises' => 'Esercizi',
-    'marketplace' => 'DiAnia Marketplace',
+    'marketplace' => 'Dianoia Marketplace',
     'patients' => 'Pazienti',
     'carers' => 'Accompagnatori',
     'intro' => 'Stai aiutando una persona con demenza incipiente?<br><br>
@@ -13,8 +14,8 @@ return [
                                 <li>- Trova consigli per prenderti cura di... te, l\'accompagnatore!</li>
                             </ul>',
     'create-content' => 'Crea contenuto',
-    'learn-more-mobile' => 'Scopri di più riguardo l\'applicazione mobile DiAnia',
-    'app-description' => 'DiAnia è un\'applicazione mobile disponibile gratuitamente per accompagnatori di persone con disturbi cognitivi lievi o demenza incipiente. Offre esercizi mentali stampabili, pronti all\'uso, per I pazienti, per aumentare l\'autostima della persona con demenza e per farla divertire. Così come piacevoli esercizi e consigli di rilassamento per gli accompagnatori, in modo che si rinforzino psicologicamente.',
+    'learn-more-mobile' => 'Scopri di più riguardo l\'applicazione mobile Dianoia',
+    'app-description' => 'Dianoia è un\'applicazione mobile disponibile gratuitamente per accompagnatori di persone con disturbi cognitivi lievi o demenza incipiente. Offre esercizi mentali stampabili, pronti all\'uso, per I pazienti, per aumentare l\'autostima della persona con demenza e per farla divertire. Così come piacevoli esercizi e consigli di rilassamento per gli accompagnatori, in modo che si rinforzino psicologicamente.',
     'download-app' => 'Scarica l\'applicazione',
     'app-description-2' => 'Aiuta le persone con demenza incipiente a migliorare le loro funzioni mentali, il loro umore, la loro funzionalità e la qualità della vita dando loro indovinelli, ricordando vecchi ricordi, ma anche eseguendo le faccende quotidiane o le attività che amavano!',
     'exercises-tutorial' => 'Qui troverai esercizi in categorie come: Memoria, Attenzione, Pensiero e Parola, Esercizi di Funzioni Esecutive, disponibili in 2 livelli di difficoltà.

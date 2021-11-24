@@ -1,9 +1,10 @@
 <?php
 
 return [
-    'mobile-app' => 'Aplicación de móvil DiAnia',
+    'dianoia' => 'Dianoia',
+    'mobile-app' => 'Aplicación de móvil Dianoia',
     'exercises' => 'Ejercicios',
-    'marketplace' => 'DiAnia Marketplace',
+    'marketplace' => 'Dianoia Marketplace',
     'patients' => 'Pacientes',
     'carers' => 'Cuidadores/as',
     'intro' => '¿Estás ayudando a una persona con demencia incipiente?<br><br>
@@ -13,8 +14,8 @@ return [
                                 <li>- ¡Encuentra consejos para cuidarte a ti mismo...los/las cuidadores/as también necesitan cuidarse!</li>
                             </ul>',
     'create-content' => 'Crea contenido',
-    'learn-more-mobile' => 'Aprender más sobre la aplicación de móvil "DiAnia"',
-    'app-description' => '"DiAnia" es una aplicación gratuita para smartphone para los/las cuidadores/as de personas con trastorno cognitivo leve o demencia incipiente. Ofrece ejercicios mentales imprimibles y listos para usar con el objetivo de aumentar la autoestima de las personas con demencia haciendo ejercicios divertidos. Además hay ejercicios y consejos de relajación y fortalecimiento psicológico para sus cuidadores/as.',
+    'learn-more-mobile' => 'Aprender más sobre la aplicación de móvil "Dianoia"',
+    'app-description' => '"Dianoia" es una aplicación gratuita para smartphone para los/las cuidadores/as de personas con trastorno cognitivo leve o demencia incipiente. Ofrece ejercicios mentales imprimibles y listos para usar con el objetivo de aumentar la autoestima de las personas con demencia haciendo ejercicios divertidos. Además hay ejercicios y consejos de relajación y fortalecimiento psicológico para sus cuidadores/as.',
     'download-app' => 'Descargar la aplicación',
     'app-description-2' => 'Ayuda a las personas con demencia incipiente a mejorar sus funciones mentales, su estado de ánimo,  su funcionalidad y su calidad de vida, dándoles acertijos, recurriendo a sus memorias, incluso asignándoles tareas o actividades diarias que les encanta hacer.',
     'exercises-tutorial' => 'Aquí encontrarás ejercicios en categorias como: Ejercicios de Memoria, de Atención, de Pensamiento y Lenguaje, de Funciones ejecutivas que están disponibles en 2 niveles de dificultad.
