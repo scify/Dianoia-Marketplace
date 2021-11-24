@@ -1,9 +1,9 @@
 <?php
 
 return [
-    "warning_deletion" => "Warning! This action is irreversible!",
-    "delete_exercise" => "Delete Exercise",
-    "delete" => "Delete",
+    "warning_deletion" => "Avvertimento! Questa azione è irreversibile!",
+    "delete_exercise" => "Eliminazione dell'Esercizio",
+    "delete" => "Cancellazione",
     'dianoia' => 'Dianoia',
     'mobile-app' => 'Dianoia applicazione mobile',
     'exercises' => 'Esercizi',

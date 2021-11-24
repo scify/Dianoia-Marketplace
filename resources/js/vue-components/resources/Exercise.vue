@@ -12,7 +12,6 @@
                         <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showEditModal"><i class="far fa-edit"></i></button>
                         <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary"   target="_blank">{{   trans('messages.see-exercise') }}</a>
                     </div>
-
                 </div>
                 <hr>
 
@@ -212,7 +211,7 @@ export default {
             return route('resources.clone', this.resource.id);
         },
         getDeleteExerciseRoute() {
-            return route('resources.destroy', this.resource.id);
+            return route('resources.delete_exercise', this.resource.id);
         },
         resourceHasRating(rateIndex) {
             return this.totalRating >= rateIndex;

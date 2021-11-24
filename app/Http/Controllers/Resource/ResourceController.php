@@ -154,7 +154,7 @@ class ResourceController extends Controller
      * @param int $id
      */
 
-    public function destroy(Request $request, int $id): \Illuminate\Http\RedirectResponse
+    public function delete_exercise(Request $request, int $id): \Illuminate\Http\RedirectResponse
     {
         try {
             $this->resourceManager->destroyResource($id);
