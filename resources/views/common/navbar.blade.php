@@ -44,7 +44,7 @@
                 @guest()
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">
-                            {!! __('messages.sign-in')!!}/{!! __('messages.sign-up')!!}
+                            {!! __('auth.login_btn')!!}/{!! __('auth.register_btn')!!}
                         </a>
                     </li>
                 @else
