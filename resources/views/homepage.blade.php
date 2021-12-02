@@ -15,7 +15,7 @@
     <header class="header">
         <div class="header__title content">
             <h1 class="mb-3">
-                διΆνοια Marketplace.
+                {!!__('messages.marketplace')!!}
             </h1>
             <div class="header__text-box row">
                 <div class="col-12">
