@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\Resource\PatientResourceController;
-use App\Http\Controllers\Resource\CarerResourceController;
+
 use App\Http\Controllers\Resource\ResourceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Cache;

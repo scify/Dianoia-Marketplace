@@ -103,8 +103,8 @@ class ResourceController extends Controller
 
         $this->validate($request, [
             'name' => 'required|string|max:100',
-            'image' => 'mimes:jpg,png,jpeg|file|between:3,1000|nullable',
-            'pdf' => "required|mimes:pdf|max:10000",
+            'image' => 'mimes:jpg,png,jpeg|file|between:3,10000|nullable',
+            'pdf' => "required|mimes:pdf|max:50000",
             'type_id' => "required|integer|gt:0",
             'difficulty_id' =>  "required|integer|gt:0",
             'lang' => "required|integer|gt:0",
