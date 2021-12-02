@@ -264,7 +264,7 @@ export default {
                 } else if (option === "descending") {
                     return b.rating - a.rating;
                 }
-                else if (option === "bydata") {
+                else if (option === "bydate") {
                     return b.updated_at - a.updated_at;
                 }
             });
