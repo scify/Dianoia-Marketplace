@@ -71,7 +71,7 @@
                                                             @if($type === $user->type->name)
                                                                 <option value="{{$user->type->id}}" selected> {{trans('messages.'.$user->type->name)}}</option>
                                                             @else
-                                                                <option value="{{$i+1}}">{{trans('messages.'.$type)}} </option>
+                                                                <option value="{{$i+2}}">{{trans('messages.'.$type)}} </option>
                                                             @endif
                                                         @endforeach
                                                     </select>
