@@ -5,8 +5,7 @@ namespace App\Repository\Resource;
 
 
 use App\Models\Resource\Resource;
-use App\Models\Resource\ResourcesPackage;
-use App\Models\Resource\ResourcesPackageRating;
+use App\Models\Resource\ResourcesRating;
 use App\Models\User;
 use App\Repository\Repository;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -47,6 +46,8 @@ class ResourceRepository extends Repository
             $whereArray['creator_user_id'] = $user_id;
 
         $resourcesBuilder = Resource::where($whereArray)->whereIn('status_id', $status_ids)->with($this->defaultRelationships);
+
+
         if ($type_ids) {
             $resourcesBuilder->whereIn('type_id', $type_ids);//maybe $resourcesBuilder = ...
         }
@@ -59,57 +60,20 @@ class ResourceRepository extends Repository
             }
         }
 
+        $ret =  $resourcesBuilder->get();
 
-        return $resourcesBuilder->get();
+        if($ratings  !== [""]){
+
+                $sorted = $ret->sortBy(function($model) use ($ratings){
+                    return array_search(intval($model->id), $ratings);
+                });
+                return $sorted->values();
+
+         }
+        return $ret;
     }
 }
 
-
-
-//        $resources = Collection::empty();
-//        if($difficulties != [""]){ //sort by difficulty
-////            foreach ($difficulties as $difficulty){
-////                $whereArray['difficulty_id'] = intval($difficulty);
-////                if($type_ids){
-////                    $part =   Resource::where($whereArray)
-////                        ->whereIn('status_id', $status_ids)
-////                        ->whereIn('type_id',$type_ids)->with($this->defaultRelationships)
-////                        ->get();
-////                }
-////                else{
-////                    $part =   Resource::where($whereArray)
-////                        ->whereIn('status_id', $status_ids)->with($this->defaultRelationships)
-////                        ->get();
-////                }
-////
-////                $resources = $resources->merge($part);
-////            }
-//            if($type_ids) {
-//                $resources = Resource::where($whereArray)
-//                    ->whereIn('status_id', $status_ids)->whereIn('type_id',$type_ids)->with($this->defaultRelationships)
-//                    ->orderBy('difficulty_id','desc')
-//                    ->get();
-//            }else{
-//                $resources =  Resource::where($whereArray)
-//                    ->whereIn('status_id', $status_ids)->with($this->defaultRelationships)
-//                    ->orderBy('difficulty_id','desc')
-//                    ->get();
-//            }
-////
-//        }
-//        else{
-//            if($type_ids) {
-//                $resources = Resource::where($whereArray)
-//                    ->whereIn('status_id', $status_ids)->whereIn('type_id',$type_ids)->with($this->defaultRelationships)
-//                    ->get();
-//            }else{
-//                $resources =  Resource::where($whereArray)
-//                    ->whereIn('status_id', $status_ids)->with($this->defaultRelationships)
-//                    ->get();
-//            }
-//        }
-//        return $resources;
-//    }
 
 
 

@@ -268,11 +268,7 @@ export default {
                     return b.updated_at - a.updated_at;
                 }
             });
-            let resourcesOrder = _.map(this.contentRatings, 'resources_id')
-
-            this.filteredResources.sort(function(a,b){
-                return resourcesOrder.indexOf(a.id) - resourcesOrder.indexOf(b.id);
-            })
+            this.getResources();
         },
 
         getUserRoleMapping(){
@@ -364,7 +360,7 @@ export default {
             url += '&status_ids=' + _.map(this.resourcesStatuses).join();
             url += '&is_admin=' + this.isAdmin;
             url += '&difficulties=' + _.map(this.contentDifficulties,'id').join();
-            // url += '&ratings=' + _.map(this.contentRatings,'id').join();
+            url += '&ratings=' + _.map(this.contentRatings,'resources_id').join();
             this.get({
                 url: url,
                 urlRelative: false
