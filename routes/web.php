@@ -22,6 +22,7 @@ Route::view('/about', 'about')->name('about');
 Route::get('/lang/{lang}', [UserController::class, 'setLangLocaleCookie'])->name('set-lang-locale');
 Route::get('/exercises', [ResourceController::class, 'index'])->name('resources.index');
 //TODO new route for resources with only methods ->only([]) without aliases
+Route::get('resources/display_exercises', [ResourceController::class, 'display'])->name('resources.display');
 
 #Auth::routes(['verify' => true]);
 Route::middleware(['auth'])->group(function () {
@@ -43,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
             'update' => 'resources.update',
             'destroy' => 'resources.destroy'
         ]);
-    Route::get('resources/display_exercises', [ResourceController::class, 'display'])->name('resources.display');
+
     Route::get('resources/approve_pending_packages', [ResourceController::class, 'approve_pending_packages'])->name('resources_packages.approve_pending_packages');
     Route::get("resources/download/{id}", [ResourceController::class, 'download'])->name('resources.download');
     Route::get("resources/clone/{id}", [ResourceController::class, 'clone'])->name('resources.clone');
