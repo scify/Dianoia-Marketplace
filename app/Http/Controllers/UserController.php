@@ -42,6 +42,7 @@ class UserController extends Controller {
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
+            //'email' => 'required|email:rfc,dns|unique:users,email',
             'password' => 'required|min:8',
             'role' => 'required|integer|gt:1'
         ]);
@@ -71,6 +72,7 @@ class UserController extends Controller {
         $request->validate([
             'name' => 'required',
             'email' => 'unique:users,email,' . $user->id
+            //'email' => 'unique:users,email:rfc, dns,' . $user->id
         ]);
         try {
             $this->userManager->update($user->id, $request->all());
