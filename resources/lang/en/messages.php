@@ -1,6 +1,7 @@
 <?php
 
 return [
+    "Dianoia admin" => "DiAnoia Platform Administrator",
     "warning_deletion" => "Warning! This action is irreversible!",
     "delete_exercise" => "Delete Exercise",
     "delete" => "Delete",

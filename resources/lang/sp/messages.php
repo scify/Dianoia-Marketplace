@@ -1,6 +1,7 @@
 <?php
 
 return [
+    "Dianoia admin" => "Administrador(a) de la plataforma DiAnoia",
     "warning_deletion" => "¡Advertencia! ¡Esta energía es irreversible!",
     "delete_exercise" => "Eliminación de Ejercicio",
     "delete" => "Supresión",

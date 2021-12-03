@@ -230,7 +230,6 @@ class ResourceController extends Controller
             $viewModel->isAdmin = Auth::check() && $this->userManager->isAdmin(Auth::user());
             $viewModel->user_id_to_get_content = Auth::id();
             $viewModel->resourcesPackagesStatuses = [ResourceStatusesLkp::APPROVED];
-            $viewModel->isAdmin = $this->userManager->isAdmin(Auth::user());
             $user = Auth::user();
             $userRoleMap = $this->userManager->getUserRolesMapping()->filter(
                 function ($entry) use ($user) {
@@ -238,11 +237,20 @@ class ResourceController extends Controller
                 }
             );
             $userRoleId = $userRoleMap->first()->role_id;
-            $user->type = $this->userManager->getUserRoles()->filter(
-                function ($entry) use ($userRoleId) {
-                    return $entry->id=== $userRoleId;
-                }
-            )->first();
+            if($viewModel->isAdmin ){
+                $user->type = $this->userManager->get_admin_users()->filter(
+                    function ($entry) use ($userRoleId) {
+                        return $entry->id=== $userRoleId;
+                    }
+                )->first();
+            }
+            else{
+                $user->type = $this->userManager->getUserRoles()->filter(
+                    function ($entry) use ($userRoleId) {
+                        return $entry->id=== $userRoleId;
+                    }
+                )->first();
+            }
             return view('profile-page')->with(['viewModel' => $viewModel,  'user' => $user]);
         } catch (ModelNotFoundException $e) {
             abort(404);
