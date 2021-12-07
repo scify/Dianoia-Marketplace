@@ -128,7 +128,7 @@
                     </div>
 
                 <div class="copyright-rules mb-5 mt-5 p-4">
-                    <div class="form-check">
+                    <div class="example">
                         <input class="form-check-input" type="checkbox" value=none id="flexCheckDefault" name="terms" value="{{ old('terms') ?: $viewModel->resource->terms }}">
                         <label class="form-check-label" for="flexCheckDefault">
                             {!!__('messages.accept-rules-of-conduct')!!}

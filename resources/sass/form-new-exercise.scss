@@ -58,8 +58,24 @@
 
     &__prototype-file,
     a {
-        color: #ffffff;
+        color: var(--color-grey);
+        &:link {
+            color: #ffffff !important;
+        }
+
     }
+
+    .example{
+        a {
+            color: var(--color-blue-dark);
+            &:link {
+                color: #ffffff !important;
+            }
+
+        }
+
+    }
+
     .form-new__submmit-btn{
         a{
             color: var(--color-blue-light-1);

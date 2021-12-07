@@ -48,7 +48,7 @@
                 <p>
                     {!!__('messages.app-description')!!}
                 </p>
-                <a href="#"  class="mt-5 btn btn--primary" target="_blank">{{__('messages.download-app')}}</a>
+                <a href="https://www.scify.gr/site/el/impact-areas/assistive-technologies/dianoia#download"  class="mt-5 btn btn--primary" target="_blank">{{__('messages.download-app')}}</a>
             </div>
         </div>
 
