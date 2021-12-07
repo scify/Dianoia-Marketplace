@@ -5,7 +5,7 @@
                 <div class="exercise-title-row d-flex justify-content-between align-items-center">
                     <div style="padding-left:15px;padding-top:15px;">
                         <p class="title"> {{resource.name}} </p>
-                        <p style="max-width:500px">{{resource.description}}</p>
+                        <p style="max-width:800px">{{resource.description}}</p>
                     </div>
                     <div style="padding-right:15px">
                         <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showDeleteModal()"><i class="fa fa-trash" style="font-size:20px;color:var(--color-blue)"></i></button>
