@@ -62,16 +62,18 @@
         &:link {
             color: #ffffff !important;
         }
+        &:hover {
+            color: #ffffff !important;
+        }
 
     }
 
     .example{
         a {
-            color: var(--color-blue-dark);
-            &:link {
-                color: #ffffff !important;
+            color: var(--color-blue-dark) !important;
+            &:hover {
+                color:  var(--color-blue-light-1)  !important;
             }
-
         }
 
     }

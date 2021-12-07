@@ -76,7 +76,7 @@ You can also create your own exercises and if you wish to, you can share them wi
     'upload-image'=>'Upload an image',
     'necessary-info' => 'Necessary elements',
     'upload-pdf' => 'Upload the .pdf file with the exercise',
-    'accept-rules-of-conduct' => 'I have read the <b><u>content and copyright rules</u></b> as well as the conditions for the structure of the exercise  like in the <b><u>example</u></b>. <span>*</span>',
+    'accept-rules-of-conduct' => 'I have read the <b><u>content and copyright rules</u></b> as well as the conditions for the structure of the exercise  like in the <b><u><a href="/storage/resources/pdf/Template - English.pdf">example</a></u></b>. <span>*</span>',
     'cancel' => 'Cancel',
     'exercise-creation' => 'Create an exercise',
     'submission-tutorial'=> 'In case the exercise you have created is approved, the managerial team of SciFY will choose if the exercise will be available only from the marketplace to download, or from the mobile application as well.',
