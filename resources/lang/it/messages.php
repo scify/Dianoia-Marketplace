@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'dianoia-web-version' => 'Dianoia versione web',
     "Dianoia admin" => "Amministratore/a della piattaforma DiAnoia",
     "warning_deletion" => "Avvertimento! Questa azione è irreversibile!",
     "delete_exercise" => "Eliminazione dell'Esercizio",
