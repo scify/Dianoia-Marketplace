@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'contact-us' => 'Contacto',
+    'footer-scify' => "SciFY</a> is a not-for-profit organization, that develops cutting-edge information technology systems and freely offers them to all, including the design, the implementation details, and the support needed, in order to solve real-life problems.</p>",
+    'team' => 'El Equipo',
     'dianoia-web-version' => 'Versión web de Dianoia',
     "Dianoia admin" => "Administrador(a) de la plataforma DiAnoia",
     "warning_deletion" => "¡Advertencia! ¡Esta energía es irreversible!",
