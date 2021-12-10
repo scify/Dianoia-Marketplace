@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     'exercise-create-success' => 'Successo! L\' esercizio è stato  creato',
     'exercise-create-failure' => 'Avvertimento! L\' esercizio non è stato creato',
     'exercise-update-success' => 'Successo! L\' esercizio è stato  aggiornato',
