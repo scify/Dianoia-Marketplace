@@ -44,8 +44,11 @@ class ResourceRepository extends Repository
             $whereArray['lang_id'] = $lang_id;
         if ($user_id)
             $whereArray['creator_user_id'] = $user_id;
+        if($status_ids)
+            $resourcesBuilder = Resource::where($whereArray)->whereIn('status_id', $status_ids)->with($this->defaultRelationships);
+        else
+            $resourcesBuilder = Resource::where($whereArray)->with($this->defaultRelationships);
 
-        $resourcesBuilder = Resource::where($whereArray)->whereIn('status_id', $status_ids)->with($this->defaultRelationships);
 
 
         if ($type_ids) {

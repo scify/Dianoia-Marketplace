@@ -230,6 +230,17 @@ class ResourceController extends Controller
         }
     }
 
+    public function show(Request $request):\Illuminate\Http\RedirectResponse{
+        $data = $request->all();
+        $resource = $this->resourceManager->getResource($data['id']);try {
+            $this->resourceManager->showResource($data['id']);
+            return redirect()->back()->with('flash_message_success', 'Success! The resource package has been published');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('flash_message_failure', 'Warning! The resource package has not been published');
+        }
+    }
+
+
 
 
     public function my_profile()
@@ -278,7 +289,10 @@ class ResourceController extends Controller
         if ($request->user_id_to_get_content) {
             $user_id = intval($request->user_id_to_get_content);
         }
-        $status_ids = explode(',', $request->status_ids);
+        $status_ids = [];
+        if($request->status_ids){
+            $status_ids = explode(',', $request->status_ids);
+        }
         $type_ids = null;
         if($request->type_ids){
             $type_ids = explode(',', $request->type_ids);

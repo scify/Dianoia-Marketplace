@@ -210,6 +210,9 @@ export default {
         getHideExerciseRoute(){
             return route('resources.hide', this.resource.id);
         },
+        getShowExerciseRoute(){
+            return route('resources.show', this.resource.id);
+        },
         getCloneExerciseRoute() {
             return route('resources.clone', this.resource.id);
         },
@@ -268,6 +271,17 @@ export default {
         hideExercise(){
             this.post({
                 url: this.getHideExerciseRoute(),
+                data:{
+                    id: this.resource.id,
+                },
+                urlRelative: false
+            }).then(_ => {
+                window.location.reload()
+            });
+        },
+        showExercise(){
+            this.post({
+                url: this.getShowExerciseRoute(),
                 data:{
                     id: this.resource.id,
                 },

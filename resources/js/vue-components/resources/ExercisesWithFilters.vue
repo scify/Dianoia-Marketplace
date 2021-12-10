@@ -357,7 +357,9 @@ export default {
             if (this.selectedTypes.length) {
                 url += '&type_ids=' + _.map(this.selectedTypes, 'id').join();
             }
-            url += '&status_ids=' + _.map(this.resourcesStatuses).join();
+            if (this.isAdmin){
+                url += '&status_ids=' + _.map(this.resourcesStatuses).join();
+            }
             url += '&is_admin=' + this.isAdmin;
             url += '&difficulties=' + _.map(this.contentDifficulties,'id').join();
             url += '&ratings=' + _.map(this.contentRatings,'resources_id').join();
