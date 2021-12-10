@@ -52,7 +52,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/resources/delete/exercise/{id}", [ResourceController::class, 'delete_exercise'])->name('resources.delete_exercise');
     Route::post("/resources/approve/{id}", [ResourceController::class, 'approve'])->name('resources.approve');
     Route::post("/resources/reject/{id}", [ResourceController::class, 'reject'])->name('resources.reject');
+    Route::post("/resources/hide/{id}", [ResourceController::class, 'hide'])->name('resources.hide');
     Route::put("/resources/submit/{id}", [ResourceController::class, 'submit'])->name('resources.submit');
+    Route::put("/resources/update/{id}", [ResourceController::class, 'update'])->name('resources.update');
     Route::put("/resources/update_resource/{id}/{type_id}", [ResourceController::class, 'update_resource'])->name('resources.update_resource');
 
 });

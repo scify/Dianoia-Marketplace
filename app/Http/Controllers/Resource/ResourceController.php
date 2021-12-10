@@ -220,6 +220,17 @@ class ResourceController extends Controller
     }
 
 
+    public function hide(Request $request):\Illuminate\Http\RedirectResponse{
+        $data = $request->all();
+        $resource = $this->resourceManager->getResource($data['id']);try {
+            $this->resourceManager->hideResource($data['id']);
+            return redirect()->back()->with('flash_message_success', 'Success! The resource package has been hidden');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('flash_message_failure', 'Warning! The resource package has not been hidden');
+        }
+    }
+
+
 
     public function my_profile()
     {

@@ -8,8 +8,10 @@
                         <p style="max-width:800px">{{resource.description}}</p>
                     </div>
                     <div style="padding-right:15px">
-                        <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showDeleteModal()"><i class="fa fa-trash" style="font-size:20px;color:var(--color-blue)"></i></button>
+                        <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showDeleteModal()"><i class="fa fa-trash" style="font-size:25px;color:var(--color-blue)"></i></button>
                         <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showEditModal"><i class="far fa-edit"></i></button>
+                        <button   v-if="loggedInUserIsAdmin()  && isPublished()" type="submit" class="btn btn--edit" @click="hideExercise"><i class="fas fa-glasses"  style="font-size:30px;color:var(--color-green)"></i></button>
+                        <button   v-else-if="loggedInUserIsAdmin() && !isPublished()" type="submit" class="btn btn--edit" @click="showExercise"><i class="fas fa-glasses"  style="font-size:30px;color:var(--color-grey)"></i></button>
                         <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary"   target="_blank">{{   trans('messages.see-exercise') }}</a>
                     </div>
                 </div>
@@ -27,8 +29,6 @@
 
 
                     <i v-for="difficulty in this.difficulties">
-<!--                        <div class="level">{{resource.difficulty_id}}</div>-->
-<!--                        <div class="level">{{difficulty.name}}</div>-->
                         <div class="level" v-if="difficulty.id===resource.difficulty_id">{{trans('messages.'+difficulty.name)}}</div>
                     </i>
                     <i v-for="language in this.languages">
@@ -207,6 +207,9 @@ export default {
         getRejectExerciseRoute(){
           return route('resources.reject', this.resource.id);
         },
+        getHideExerciseRoute(){
+            return route('resources.hide', this.resource.id);
+        },
         getCloneExerciseRoute() {
             return route('resources.clone', this.resource.id);
         },
@@ -246,6 +249,7 @@ export default {
         showEditModal() {
             this.editModalOpen = true;
         },
+
         closeEditModal() {
             this.editModalOpen = false;
         },
@@ -261,7 +265,17 @@ export default {
                 window.location.reload()
             });
         },
-
+        hideExercise(){
+            this.post({
+                url: this.getHideExerciseRoute(),
+                data:{
+                    id: this.resource.id,
+                },
+                urlRelative: false
+            }).then(_ => {
+                window.location.reload()
+            });
+        },
         showExerciseRejectionModal() {
             this.exerciseRejectionModalOpen = true;
 
@@ -329,6 +343,10 @@ export default {
         },
         isProfilePage(){
             return this.userIdToGetContent > 0;
+        },
+        isPublished(){
+            console.log(this.resource.status_id);
+            return this.resource.status_id !== 3;
         }
 
     }
