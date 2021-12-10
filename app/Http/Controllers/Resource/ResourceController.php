@@ -113,9 +113,9 @@ class ResourceController extends Controller
         ]);
         try {
             $resource = $this->resourceManager->storeResource($request);
-            return redirect()->route('resources.display')->with('flash_message_success','The exercise has been successfully created');
+            return redirect()->route('resources.display')->with('flash_message_success',__('messages.exercise-create-success'));
         } catch (Exception $e) {
-            return redirect()->route('resources.display')->with('flash_message_failure','Failure - the exercise has not been created');
+            return redirect()->route('resources.display')->with('flash_message_failure',__('messages.exercise-create-failure'));
         }
 
 
@@ -142,9 +142,9 @@ class ResourceController extends Controller
         ]);
         try {
             $this->resourceManager->updateResource($request, $id);
-            return redirect()->route('resources.my_profile')->with('flash_message_success', 'The exercise has been successfully updated');
+            return redirect()->route('resources.my_profile')->with('flash_message_success', __('messages.exercise-update-success'));
         } catch (\Exception $e) {
-            return redirect()->route('resources.my_profile')->with('flash_message_failure', 'The exercise has not been updated');
+            return redirect()->route('resources.my_profile')->with('flash_message_failure', __('messages.exercise-update-failure'));
         }
     }
 
@@ -158,9 +158,9 @@ class ResourceController extends Controller
     {
         try {
             $this->resourceManager->destroyResource($id);
-            return redirect()->back()->with('flash_message_success', 'Success! The resource has been deleted');
+            return redirect()->back()->with('flash_message_success',  __('messages.exercise-delete-success'));
         } catch (\Exception $e) {
-            return redirect()->back()->with('flash_message_failure', 'Warning! The resource has not been deleted');
+            return redirect()->back()->with('flash_message_failure',  __('messages.exercise-delete-failure'));
         }
 
         //
@@ -180,10 +180,10 @@ class ResourceController extends Controller
 
         try {
             $this->resourcesPackageManager->submitResourcesPackage($id);
-            return redirect()->route($redirect_route)->with('flash_message_success', 'Success! The resource package has been submitted');
+            return redirect()->route($redirect_route)->with('flash_message_success',  __('messages.exercise-submit-success'));
 
         } catch (\Exception $e) {
-            return redirect()->back()->with('flash_message_failure', 'Warning! The resource package has not been submitted');
+            return redirect()->back()->with('flash_message_failure', __('messages.exercise-submit-failure'));
         }
 
         //
@@ -197,10 +197,10 @@ class ResourceController extends Controller
         $redirect_route = $package->type_id===ResourceTypesLkp::COMMUNICATION ? 'patient_resources.index' : 'carer_resources.index';
         try {
             $this->resourcesPackageManager->approveResourcesPackage($id);
-            return redirect()->route($redirect_route)->with('flash_message_success', 'Success! The resource package has been approved');
+            return redirect()->route($redirect_route)->with('flash_message_success', __('messages.exercise-approve-success'));
 
         } catch (\Exception $e) {
-            return redirect()->back()->with('flash_message_failure', 'Warning! The resource package has not been approved');
+            return redirect()->back()->with('flash_message_failure', __('messages.exercise-approve-failure'));
         }
     }
 
@@ -212,10 +212,10 @@ class ResourceController extends Controller
 
         try {
             $this->resourcesPackageManager->rejectResourcesPackage($data['id']);
-            return redirect()->route($redirect_route)->with('flash_message_success', 'Success! The resource package has been rejected');
+            return redirect()->route($redirect_route)->with('flash_message_success',__('messages.exercise-reject-success'));
 
         } catch (\Exception $e) {
-            return redirect()->back()->with('flash_message_failure', 'Warning! The resource package has not been rejected');
+            return redirect()->back()->with('flash_message_failure', __('messages.exercise-reject-failure'));
         }
     }
 
@@ -224,9 +224,9 @@ class ResourceController extends Controller
         $data = $request->all();
         $resource = $this->resourceManager->getResource($data['id']);try {
             $this->resourceManager->hideResource($data['id']);
-            return redirect()->back()->with('flash_message_success', 'Success! The resource package has been hidden');
+            return redirect()->back()->with('flash_message_success',__('messages.exercise-hide-success'));
         } catch (\Exception $e) {
-            return redirect()->back()->with('flash_message_failure', 'Warning! The resource package has not been hidden');
+            return redirect()->back()->with('flash_message_failure', __('messages.exercise-hide-failure'));
         }
     }
 
@@ -234,9 +234,9 @@ class ResourceController extends Controller
         $data = $request->all();
         $resource = $this->resourceManager->getResource($data['id']);try {
             $this->resourceManager->showResource($data['id']);
-            return redirect()->back()->with('flash_message_success', 'Success! The resource package has been published');
+            return redirect()->back()->with('flash_message_success', __('messages.exercise-show-success'));
         } catch (\Exception $e) {
-            return redirect()->back()->with('flash_message_failure', 'Warning! The resource package has not been published');
+            return redirect()->back()->with('flash_message_failure', __('messages.exercise-show-failure'));
         }
     }
 
