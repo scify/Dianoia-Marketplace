@@ -19,7 +19,7 @@ return [
     'people' => 'Le persone',
     'useful-links' => 'Link utili',
     'contact-us' => 'Contatto',
-    'footer-scify' => "SciFY</a> è un\'organizzazione senza scopo di lucro che sviluppa sistemi informatici all\'avanguardia e li offre gratuitamente a tutti, inclusi il design, i dettagli di implementazione e il supporto necessario per risolvere i problemi della vita reale.</p>",
+    'footer-scify' => "SciFY</a> è un organizzazione senza scopo di lucro che sviluppa sistemi informatici all avanguardia e li offre gratuitamente a tutti, inclusi il design, i dettagli di implementazione e il supporto necessario per risolvere i problemi della vita reale.</p>",
     'team' => 'Il Gruppo',
     'dianoia-web-version' => 'Dianoia versione web',
     "Dianoia admin" => "Amministratore/a della piattaforma DiAnoia",
