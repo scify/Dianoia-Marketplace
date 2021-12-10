@@ -1,6 +1,20 @@
 <?php
 
 return [
+    'exercise-create-success' => 'Success! The exercise has been created',
+    'exercise-create-failure' => 'Warning! The exercise has not been created',
+    'exercise-update-success' => 'Success! The exercise has been updated',
+    'exercise-update-failure' => 'Warning! The exercise has not been updated',
+    'exercise-delete-success' => 'Success! The exercise has been deleted',
+    'exercise-delete-failure' => 'Warning! The exercise has not been deleted',
+    'exercise-clone-success' => 'Success! The exercise has been cloned',
+    'exercise-clone-failure' => 'Warning! The exercise has not been cloned',
+    'exercise-submit-success' => 'Success! The exercise has been submitted for approval by the platform\'s administrators',
+    'exercise-submit-failure' => 'Warning! The exercise has not been submitted',
+    'exercise-reject-success' => 'Success! The exercise has been rejected',
+    'exercise-reject-failure' => 'Warning! The exercise has not been rejected',
+    'exercise-approve-success' => 'Success! The exercise has been approved',
+    'exercise-approve-failure' => 'Warning! The exercise has not been approved',
     'people' => 'People',
     'useful-links' => 'Useful links',
     'contact-us' => 'Contact us',

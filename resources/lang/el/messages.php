@@ -1,6 +1,20 @@
 <?php
 
 return [
+    'exercise-create-success' => 'Επιτυχία! Η άσκηση έχει δημιουργηθεί',
+    'exercise-create-failure' => 'Προσοχή! Η άσκηση δεν έχει δημιουργηθεί',
+    'exercise-update-success' => 'Επιτυχία! Η άσκηση έχει ανανεωθεί',
+    'exercise-update-failure' => 'Προσοχή! Η άσκηση δεν έχει ανανεωθεί',
+    'exercise-delete-success' => 'Επιτυχία! Η άσκηση έχει διαγραφεί',
+    'exercise-delete-failure' => 'Προσοχή! Η άσκηση δεν έχει διαγραφεί',
+    'exercise-clone-success' => 'Επιτυχία! Η άσκηση έχει κλωνοποιηθεί',
+    'exercise-clone-failure' => 'Προσοχή! Η άσκηση δεν έχει κλωνοποιηθεί',
+    'exercise-submit-success' => 'Επιτυχία! Η άσκηση έχει υποβληθεί πρός έγκριση από τους διαχειριστές της πλατφόρμας',
+    'exercise-submit-failure' => 'Προσοχή! Η άσκηση δεν έχει υποβληθεί',
+    'exercise-reject-success' => 'Επιτυχία! Η άσκηση έχει απορριφθεί',
+    'exercise-reject-failure' => 'Προσοχή! Η άσκηση δεν έχει απορριφθεί',
+    'exercise-approve-success' => 'Επιτυχία! Η άσκηση έχει εγκριθεί',
+    'exercise-approve-failure' => 'Προσοχή! Η άσκηση δεν έχει εγκριθεί',
     'people' => 'Άνθρωποι',
     'useful-links' => 'Χρήσιμοι σύνδεσμοι',
     'contact-us' => 'Επικοινώνησε μαζί μας',
