@@ -65,7 +65,7 @@
 
 
                             <div class="form-group row mb-4">
-                                <label for="user_role"  class="col-md-4 col-form-label text-md-right">User Role</label>
+                                <label for="user_role"  class="col-md-4 col-form-label text-md-right">{{ __('messages.user') }}</label>
                                 <div class="col-md-6 ">
 
                                     <select class="form-select" aria-label="user_role" name="role">

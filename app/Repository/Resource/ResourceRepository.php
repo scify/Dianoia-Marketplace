@@ -54,8 +54,10 @@ class ResourceRepository extends Repository
         if ($type_ids) {
             $resourcesBuilder->whereIn('type_id', $type_ids);//maybe $resourcesBuilder = ...
         }
-        if($difficulties !== [""]){
-            if($difficulties[0] !== '1'){
+        $sortByDifficulties = false;
+        if($difficulties && count($difficulties) > 1){
+            $sortByDifficulties = true;
+            if(intval($difficulties[0]) > intval($difficulties[1])){
                 $resourcesBuilder->orderBy('difficulty_id', 'desc');
             }
             else{
@@ -65,7 +67,7 @@ class ResourceRepository extends Repository
 
         $ret =  $resourcesBuilder->get();
 
-        if($ratings  !== [""]){
+        if(!$sortByDifficulties && $ratings  && count($ratings) > 1){
 
                 $sorted = $ret->sortBy(function($model) use ($ratings){
                     return array_search(intval($model->id), $ratings);

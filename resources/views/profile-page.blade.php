@@ -52,6 +52,7 @@
 
                                                 <p style="display:none">{{trans('messages.'.$user->type->name)}}</p>
                                                 <div class="col-12">
+                                                    <label for="email" class="form-label">Email <span>*</span></label>
                                                     <input id="email" type="email" class="form-control" name="email" value="{{ $user->email}}" required autocomplete="email">
                                                 </div>
                                                 <div class="col-12">

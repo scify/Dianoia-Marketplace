@@ -239,22 +239,24 @@ export default {
             this.getResources();
         },
         sortDifficulty(option){
-              if(option === "reset"){
-                  this.contentDifficulties=[];
-                  this.getResources();
-                  this.getContentDifficulties();
-              }
-              else {
-                  this.getContentDifficulties();
-                  this.contentDifficulties.sort(function (a, b) {
-                      if (option === "ascending") {
-                          return a.id - b.id;
-                      } else if (option === "descending") {
-                          return b.id - a.id;
-                      }
-                  });
-                  this.getResources();
-              }
+           this.getContentDifficulties();
+           if(option !== "reset"){
+               this.contentDifficulties.sort(function (a, b) {
+                  if (option === "ascending") {
+                      return a.id - b.id;
+                  } else if (option === "descending") {
+                      return b.id - a.id;
+                  }
+              });
+               this.getResources(true);
+               this.getContentDifficulties();
+           }
+           else{
+               this.contentDifficulties = [];
+               this.getResources();
+               this.getContentDifficulties();
+
+           }
         },
         sortRating(option){
 
@@ -268,6 +270,7 @@ export default {
                     return b.updated_at - a.updated_at;
                 }
             });
+
             this.getResources();
         },
 
@@ -339,7 +342,7 @@ export default {
                 this.users = response.data;
             });
         },
-        getResources() {
+        getResources(sort_difficulty=false) {
             this.loadingResources = true;
             this.resources = [];
             this.filteredResources = [];
@@ -361,8 +364,14 @@ export default {
                 url += '&status_ids=' + _.map(this.resourcesStatuses).join();
             }
             url += '&is_admin=' + this.isAdmin;
-            url += '&difficulties=' + _.map(this.contentDifficulties,'id').join();
-            url += '&ratings=' + _.map(this.contentRatings,'resources_id').join();
+            console.log('difficulty? '+sort_difficulty);
+            if(sort_difficulty) {
+                url += '&difficulties=' + _.map(this.contentDifficulties, 'id').join();
+            }
+            else{
+                url += '&ratings=' + _.map(this.contentRatings, 'resources_id').join();
+            }
+            console.log(url);
             this.get({
                 url: url,
                 urlRelative: false

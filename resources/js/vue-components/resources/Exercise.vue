@@ -275,9 +275,8 @@ export default {
                     id: this.resource.id,
                 },
                 urlRelative: false
-            }).then(_ => {
-                window.location.reload()
-            });
+            }).then(_ => {});
+            window.location.reload();
         },
         showExercise(){
             this.post({
@@ -286,9 +285,8 @@ export default {
                     id: this.resource.id,
                 },
                 urlRelative: false
-            }).then(_ => {
-                window.location.reload()
-            });
+            }).then(_ => {});
+            window.location.reload()
         },
         showExerciseRejectionModal() {
             this.exerciseRejectionModalOpen = true;
