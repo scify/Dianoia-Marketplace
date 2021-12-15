@@ -67,15 +67,14 @@ class ResourceRepository extends Repository
 
         $ret =  $resourcesBuilder->get();
 
+        $i = count($ret);
         if(!$sortByDifficulties && $ratings  && count($ratings) > 1){
-                $n = count($ret);
-                $sorted = $ret->sortBy(function($model) use ($n, $ratings){
-                    $ret = array_search(intval($model->id), $ratings);
-                    if($ret === false ){
-                        $n++;
-                        return $n-1;
+                $sorted = $ret->sortBy(function($model) use ($i, $ratings){
+                    $ret =  array_search(intval($model->id), $ratings);
+                    if($ret === false){
+                        $i++;
+                        return $i-1;
                     }
-
                 });
                 return $sorted->values();
 

@@ -262,9 +262,6 @@ export default {
 
             this.contentRatings.sort(function(a, b){
                 console.log(a.rating+" - "+b.rating);
-                if (!a.rating) return -1;
-                else if(!b.rating) return 1;
-                else ;
                 if (option === "ascending") {
                     return a.rating - b.rating;
                 } else if (option === "descending") {
