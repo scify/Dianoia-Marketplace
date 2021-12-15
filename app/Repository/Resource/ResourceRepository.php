@@ -71,7 +71,7 @@ class ResourceRepository extends Repository
                 $n = count($ret);
                 $sorted = $ret->sortBy(function($model) use ($n, $ratings){
                     $ret = array_search(intval($model->id), $ratings);
-                    if(!$ret ){
+                    if($ret === false ){
                         $n++;
                         return $n-1;
                     }
