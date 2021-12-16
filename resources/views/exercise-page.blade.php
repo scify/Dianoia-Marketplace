@@ -8,7 +8,7 @@
     <div class="exercise-options ">
         <div class="exercise-options__title content">
             <h1 class="mb-3">
-                Ασκήσεις
+                {!!__('messages.exercises')!!}
             </h1>
             <div class="exercise-options__text-box row">
 

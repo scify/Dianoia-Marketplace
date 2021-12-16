@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder {
     public function run() {
         echo "\nRunning User Seeder...\n";
         echo env('DEFAULT_ADMIN_USER_PASSWORD_FOR_SEED')."\n";
+
         $data = [
             [
                 'id' => 1,
