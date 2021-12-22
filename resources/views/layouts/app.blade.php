@@ -32,7 +32,7 @@
     @include('common.staging-indication')
     @include('common.navbar')
     @include('common.alerts')
-    <main class="pb-5 mb-5">
+    <main class="mb-5">
         <div id="main-content">
             @yield('content')
         </div>
