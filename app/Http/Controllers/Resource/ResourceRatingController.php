@@ -52,7 +52,7 @@ class ResourceRatingController extends Controller
             $request->rating
         );
     }
-    public function updateAverageResourceRating(Request $request){
+    public function storeOrUpdateAverageResourceRating(Request $request){
         $this->validate($request, [
             'resources_id' => 'required|integer|exists:resources,id',
             'avg_rating' => 'required|integer|min:0|max:5',

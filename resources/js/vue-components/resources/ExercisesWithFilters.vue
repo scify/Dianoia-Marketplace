@@ -293,14 +293,18 @@ export default {
                 item =>usersWithRole.includes(item.creator_user_id));
         },
         getContentLanguages() {
+            console.log('retrieving languages');
             this.get({
                 url: route('content_languages.get'),
                 urlRelative: false
             }).then(response => {
+                console.log('retrieving resources');
                 this.contentLanguages = response.data;
                 this.selectedContentLanguage = this.contentLanguages[0];
+
                 this.getResources();
             });
+
         },
         getContentTypes(){
 

@@ -137,9 +137,7 @@
 <script>
 import {mapActions} from "vuex";
 export default {
-    created() {
-        this.computeTotalRating();
-    },
+
     props: {
         resource: {
             type: Object,
@@ -165,7 +163,6 @@ export default {
     data: function () {
         return {
             userRating: 0,
-            totalRating: 0,
             maxRating: 5,
             rejectionMessage: "this exercise violates the platform rules of conduct",
             resourceChildrenModalOpen: false,
@@ -220,7 +217,7 @@ export default {
             return route('resources.delete_exercise', this.resource.id);
         },
         resourceHasRating() {
-            return this.resource.avg_rating >= 0
+            return this.resource.avg_rating && this.resource.avg_rating > 0
         },
         resourceHasRatingFromUser(rateIndex) {
             return this.userRating >= rateIndex;
@@ -260,7 +257,7 @@ export default {
             }
         },
         getUpdateExerciseRatingRoute(){
-            return route('resources.update_rating', this.resource.id);
+            return route('resources.update_resource_rating', this.resource.id);
         },
         showEditModal() {
             this.editModalOpen = true;
@@ -334,8 +331,7 @@ export default {
                 data: {
                     user_id: this.user.id,
                     resources_id: this.resource.id,
-                    rating: rateIndex,
-                    avg_rating: this.getAverageResourceRating()
+                    rating: rateIndex
                 },
                 urlRelative: false
             }).then(response => {
