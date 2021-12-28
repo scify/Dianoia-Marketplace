@@ -53,18 +53,20 @@ class ResourceRatingController extends Controller
         );
     }
     public function storeOrUpdateAverageResourceRating(Request $request){
-        $this->validate($request, [
-            'resources_id' => 'required|integer|exists:resources,id',
-            'avg_rating' => 'required|integer|min:0|max:5',
-        ]);
+        $data = $request->all();
 
         if (!Auth::check())
             abort(Response::HTTP_UNAUTHORIZED);
 
-        $this->resourceManager->storeOrUpdateAverageResourceRating(
-            $request->resources_id,
-            $request->avg_rating
-        );
+        try{
+            $this->resourceManager->storeOrUpdateAverageResourceRating(
+                $data['id'],
+                $data['avg_rating']
+            );
+            return redirect()->back()->with('flash_message_success', __('messages.exercise-update-success'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('flash_message_failure', __('messages.exercise-update-failure'));
+        }
     }
 
     public function getContentRatings(){

@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
@@ -386,6 +387,8 @@ class ResourceController extends Controller
         $ret = $this->userManager->getUsers();
         return $ret;
     }
+
+
 
 
 

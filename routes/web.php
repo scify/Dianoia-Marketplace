@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Resource\ResourceController;
+use App\Http\Controllers\Resource\ResourceRatingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +58,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put("/resources/submit/{id}", [ResourceController::class, 'submit'])->name('resources.submit');
     Route::put("/resources/update/{id}", [ResourceController::class, 'update'])->name('resources.update');
     Route::put("/resources/update_resource/{id}/{type_id}", [ResourceController::class, 'update_resource'])->name('resources.update_resource');
+
 });
 
 Route::get('js/translations.js', function () {

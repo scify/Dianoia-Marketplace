@@ -216,8 +216,10 @@ export default {
         getDeleteExerciseRoute() {
             return route('resources.delete_exercise', this.resource.id);
         },
-        resourceHasRating() {
-            return this.resource.avg_rating && this.resource.avg_rating > 0
+        resourceHasRating(rateIndex) {
+            console.log('avg_rating:'+this.resource.avg_rating.toString());
+            return this.resource.avg_rating
+
         },
         resourceHasRatingFromUser(rateIndex) {
             return this.userRating >= rateIndex;
@@ -257,7 +259,7 @@ export default {
             }
         },
         getUpdateExerciseRatingRoute(){
-            return route('resources.update_resource_rating', this.resource.id);
+            return route('resources.update_resource_rating.post', this.resource.id);
         },
         showEditModal() {
             this.editModalOpen = true;
