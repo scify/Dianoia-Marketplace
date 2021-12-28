@@ -13,7 +13,7 @@ class ResourcesRatingManager {
     }
 
 
-    public function storeOrUpdateRating(int $user_id, int $resources_id, int $rating, int $avg_rating) {
+    public function storeOrUpdateRating(int $user_id, int $resources_id, int $rating) {
         $data = [
             'voter_user_id' => $user_id,
             'resources_id' => $resources_id,
@@ -23,6 +23,9 @@ class ResourcesRatingManager {
             array_merge($data, ['rating' => $rating])
         );
     }
+
+
+
 
     public function getUserRatingForResource(int $user_id, int $resources_id) {
 

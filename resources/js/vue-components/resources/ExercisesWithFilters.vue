@@ -259,20 +259,17 @@ export default {
            }
         },
         sortRating(option){
-
-            this.contentRatings.sort(function(a, b){
-                console.log(a.rating+" - "+b.rating);
+            this.filteredResources.sort(function(a, b){
+                console.log(a.avg_rating+" - "+b.avg_rating);
                 if (option === "ascending") {
-                    return a.rating - b.rating;
+                    return a.avg_rating - b.avg_rating;
                 } else if (option === "descending") {
-                    return b.rating - a.rating;
+                    return b.avg_rating - a.avg_rating;
                 }
                 else if (option === "bydate") {
                     return b.updated_at - a.updated_at;
                 }
             });
-
-            this.getResources();
         },
 
         getUserRoleMapping(){
@@ -369,9 +366,6 @@ export default {
             if(sort_difficulty) {
                 url += '&difficulties=' + _.map(this.contentDifficulties, 'id').join();
             }
-            else{
-                url += '&ratings=' + _.map(this.contentRatings, 'resources_id').join();
-            }
             console.log(url);
             this.get({
                 url: url,
@@ -381,7 +375,6 @@ export default {
                 this.filteredResources = this.resources;
                 let names = _.map(this.filteredResources, 'id')
                 this.numExercises = names.length;
-
                 this.loadingResources = false;
             });
 

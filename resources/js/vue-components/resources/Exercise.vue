@@ -219,8 +219,8 @@ export default {
         getDeleteExerciseRoute() {
             return route('resources.delete_exercise', this.resource.id);
         },
-        resourceHasRating(rateIndex) {
-            return this.totalRating >= rateIndex;
+        resourceHasRating() {
+            return this.resource.avg_rating >= 0
         },
         resourceHasRatingFromUser(rateIndex) {
             return this.userRating >= rateIndex;
@@ -240,6 +240,7 @@ export default {
                 },
                 urlRelative: false
             }).then(_ => {
+                console.log('Stored avg rating = '+avg_rating.toString() + 'for resource = '+this.resource.id.toString())
             });
         },
         showRateModal() {

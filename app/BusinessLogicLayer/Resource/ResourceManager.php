@@ -225,4 +225,10 @@ class ResourceManager {
         return $this->resourceRepository->create($storeArr);
     }
 
+    public function storeOrUpdateAverageResourceRating($id, $avg_rating){
+        return $this->resourceRepository->update([
+            'avg_rating' => $avg_rating],
+            $id);
+    }
+
 }
