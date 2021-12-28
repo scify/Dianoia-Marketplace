@@ -67,7 +67,7 @@
             </div>
 
         </div>
-        <div class="carer mt-5 d-flex align-items-center" id="carersInfo">
+        <div class="carer d-flex align-items-center" id="carersInfo">
             <!--     <img class="img-fluid" loading="lazy" src="/img/grandmother-flowers.png" alt="title-image"> -->
             <div class="carer__text content">
 
