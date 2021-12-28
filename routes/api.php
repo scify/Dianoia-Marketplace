@@ -27,4 +27,5 @@ Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
     Route::get("/content-ratings", [ResourceRatingController::class, 'getContentRatings'])->name('content_ratings.get');
     Route::get("/resources/user-rating", [ResourceRatingController::class, 'getUserRatingForResource'])->name('resources.user-rating.get');
     Route::post("/resources/user-rating", [ResourceRatingController::class, 'storeOrUpdateRating'])->name('resources.user-rating.post');
+    Route::put("/resources/update_resource_rating/{id}", [ResourceRatingController::class, 'update_rating'])->name('resources.update_rating');
 });

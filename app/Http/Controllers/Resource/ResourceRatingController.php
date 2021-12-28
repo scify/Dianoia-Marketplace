@@ -37,7 +37,8 @@ class ResourceRatingController extends Controller
         $this->validate($request, [
             'user_id' => 'required|integer',
             'resources_id' => 'required|integer|exists:resources,id',
-            'rating' => 'required|integer|min:1|max:5'
+            'rating' => 'required|integer|min:1|max:5',
+            'avg_rating' => 'required|integer|integer|min:-1|max:5'
         ]);
 
         if (!Auth::check())
@@ -46,7 +47,8 @@ class ResourceRatingController extends Controller
         return $this->resourcesRatingManager->storeOrUpdateRating(
             $request->user_id,
             $request->resources_id,
-            $request->rating
+            $request->rating,
+            $request->avg_rating
         );
     }
 

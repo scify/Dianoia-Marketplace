@@ -228,10 +228,19 @@ export default {
         showChildrenResourcesModal() {
             this.resourceChildrenModalOpen = true;
         },
-        computeTotalRating() {
+        updateAverageResourceRating() {
             const ratings = _.map(this.resource.ratings, 'rating');
             const sum = ratings.reduce((a, b) => a + b, 0);
-            this.totalRating = Math.round(sum / ratings.length) || 0;
+            let avg_rating = Math.round(sum / ratings.length) || 0;
+            this.post({
+                url: this.getUpdateExerciseRatingRoute(),
+                data: {
+                    id: this.resource.id,
+                    avg_rating: avg_rating
+                },
+                urlRelative: false
+            }).then(_ => {
+            });
         },
         showRateModal() {
 
@@ -248,6 +257,9 @@ export default {
                     this.userRating = response.data.rating;
                 });
             }
+        },
+        getUpdateExerciseRatingRoute(){
+            return route('resources.update_rating', this.resource.id);
         },
         showEditModal() {
             this.editModalOpen = true;
@@ -321,7 +333,8 @@ export default {
                 data: {
                     user_id: this.user.id,
                     resources_id: this.resource.id,
-                    rating: rateIndex
+                    rating: rateIndex,
+                    avg_rating: this.getAverageResourceRating()
                 },
                 urlRelative: false
             }).then(response => {
@@ -334,7 +347,8 @@ export default {
                 }
                 if (!found)
                     this.resource.ratings.push(response.data);
-                this.computeTotalRating();
+                this.updateAverageResourceRating();
+
             });
         },
         loggedInUserIsDifferentFromContentUser() {

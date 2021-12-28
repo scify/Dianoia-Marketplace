@@ -13,10 +13,10 @@ class ResourcesRatingManager {
     }
 
 
-    public function storeOrUpdateRating(int $user_id, int $resources_id, int $rating) {
+    public function storeOrUpdateRating(int $user_id, int $resources_id, int $rating, int $avg_rating) {
         $data = [
             'voter_user_id' => $user_id,
-            'resources_id' => $resources_id
+            'resources_id' => $resources_id,
         ];
         return $this->resourcesRatingRepository->updateOrCreate(
             $data,
