@@ -429,7 +429,6 @@ export default {
                 this.filteredResources = this.resources;
                 let names = _.map(this.filteredResources, 'name')
                 this.numExercises = names.length;
-                this.loadingResources = false;
             });
 
         },
