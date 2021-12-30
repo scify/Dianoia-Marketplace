@@ -40,7 +40,6 @@
                     :resources-route="'{{ route('resources.get') }}'"
                     :creation-route="'{{route('resources.create')}}'"
                     :user='@json($user)'
-                    :resources-statuses='@json($viewModel->types)'
                     :is-admin="'{{$viewModel->isAdmin}}'"
                     :init-exercise-types="'{{$viewModel->preselect_types}}'">
                 </exercises-with-filters>

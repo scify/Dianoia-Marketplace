@@ -119,7 +119,6 @@
                                 :resources-route="'{{ route('resources.get') }}'"
                                 :creation-route="'{{route('resources.create')}}'"
                                 :user='@json($user)'
-                                :resources-statuses='@json($viewModel->types)'
                                 :is-admin="'{{$viewModel->isAdmin}}'"
                                 :init-exercise-types=" 'patient' "
                                 :user-id-to-get-content='{{$user->id}}'>
@@ -134,7 +133,6 @@
                                 :resources-route="'{{ route('resources.get') }}'"
                                 :creation-route="'{{route('resources.create')}}'"
                                 :user='@json($user)'
-                                :resources-statuses='@json($viewModel->types)'
                                 :is-admin="'{{$viewModel->isAdmin}}'"
                                 :init-exercise-types=" 'carer' "
                                 :user-id-to-get-content='{{$user->id}}'>

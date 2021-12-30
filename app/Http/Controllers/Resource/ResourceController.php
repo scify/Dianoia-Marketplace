@@ -289,7 +289,12 @@ class ResourceController extends Controller
             ]);
             $viewModel->isAdmin = Auth::check() && $this->userManager->isAdmin(Auth::user());
             $viewModel->user_id_to_get_content = Auth::id();
-            $viewModel->resourcesPackagesStatuses = [ResourceStatusesLkp::APPROVED];
+            $viewModel->resourceStatuses = array(
+                'accepted' => ResourceStatusesLkp::APPROVED,
+                'pending' => ResourceStatusesLkp::CREATED_PENDING_APPROVAL,
+                'rejected' => ResourceStatusesLkp::REJECTED,
+            );
+
             $user = Auth::user();
             $userRoleMap = $this->userManager->getUserRolesMapping()->filter(
                 function ($entry) use ($user) {
@@ -390,14 +395,6 @@ class ResourceController extends Controller
             return redirect()->back()->with('flash_message_failure', 'Warning! The resource package has not been deleted');
         }
         return redirect()->back()->with('flash_message_success',  'Success! The resource package has been deleted');
-    }
-
-
-    public function clone_package($package_id){
-
-        $package = $this->resourcesPackageManager->getResourcesPackage($package_id);
-        $resource = $this->resourceManager->cloneResource($package->card_id, null);
-        return redirect()->route("resources.edit",$resource->id)->with('flash_message_success',  'Success! The resource package has been copied');
     }
 
 

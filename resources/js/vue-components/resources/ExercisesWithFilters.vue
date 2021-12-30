@@ -169,7 +169,7 @@ export default {
     },
     data: function () {
         return {
-            // resourcesRoute: '',
+
             contentLanguages: [],
             contentTypes: [],
             contentDifficulties: [],
@@ -413,6 +413,7 @@ export default {
                 url += '&type_ids=' + _.map(this.selectedTypes, 'id').join();
             }
             if (this.isAdmin){
+                console.log(_.map(this.resourcesStatuses).join());
                 url += '&status_ids=' + _.map(this.resourcesStatuses).join();
             }
             url += '&is_admin=' + this.isAdmin;

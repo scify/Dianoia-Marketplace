@@ -123,10 +123,9 @@
                                 :resources-route="'{{ route('resources.get') }}'"
                                 :creation-route="'{{route('resources.create')}}'"
                                 :user='@json($user)'
-                                :resources-statuses='@json($viewModel->types)'
+                                :resources-statuses='@json([$viewModel->resourceStatuses['pending']])'
                                 :is-admin="'{{$viewModel->isAdmin}}'"
                                 :approve-resources="{{0}}"
-                                :init-exercise-types=" 'patient' "
                                 :user-id-to-get-content='{{$user->id}}'>
                             </exercises-with-filters>
                         </div>
@@ -139,10 +138,8 @@
                                 :resources-route="'{{ route('resources.get') }}'"
                                 :creation-route="'{{route('resources.create')}}'"
                                 :user='@json($user)'
-                                :resources-statuses='@json($viewModel->types)'
+                                :resources-statuses='@json([$viewModel->resourceStatuses['accepted']])'
                                 :is-admin="'{{$viewModel->isAdmin}}'"
-                                :approve-resources="{{0}}"
-                                :init-exercise-types=" 'carer' "
                                 :user-id-to-get-content='{{$user->id}}'>
                             </exercises-with-filters>
                         </div>
@@ -155,10 +152,8 @@
                                 :resources-route="'{{ route('resources.get') }}'"
                                 :creation-route="'{{route('resources.create')}}'"
                                 :user='@json($user)'
-                                :resources-statuses='@json($viewModel->types)'
+                                :resources-statuses='@json([$viewModel->resourceStatuses['rejected']])'
                                 :is-admin="'{{$viewModel->isAdmin}}'"
-                                :approve-resources="{{0}}"
-                                :init-exercise-types=" 'carer' "
                                 :user-id-to-get-content='{{$user->id}}'>
                             </exercises-with-filters>
                         </div>
