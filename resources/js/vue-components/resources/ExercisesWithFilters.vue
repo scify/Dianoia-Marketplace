@@ -224,6 +224,7 @@ export default {
             this.contentRatings = ratings;
             this.userRoles= roles;
             this.userRoleMapping = role_mapping;
+            this.initializeTypes();
         },
 
 
@@ -238,7 +239,7 @@ export default {
                 this.selectedTypes.push(type);
             }
             let types = _.map(this.selectedTypes, 'name')
-
+            console.log('selected types'+types);
 
             this.getResources();
         },
@@ -345,10 +346,9 @@ export default {
                     urlRelative: false
                 }).then(response => {
                     instance.contentTypes = response.data;
-                    instance.initializeTypes();
                     console.log('retrieved types');
                     console.log(_.map(instance.contentTypes,'name'));
-                    resolve(instance.selectedContentLanguage );
+                    resolve(instance.contentTypes );
                 }).catch(e => reject(e));
             });
         },
@@ -479,7 +479,6 @@ export default {
                 this.selectedTypes = this.contentTypes.filter(type => this.isCarerExercise(type));
                 $('#dropdownMenuButton3').click();
             }
-
 
             for(let x in this.contentTypes){
                 let type = this.contentTypes[x];

@@ -368,7 +368,6 @@ export default {
             return this.userIdToGetContent > 0;
         },
         isPublished(){
-            console.log(this.resource.status_id);
             return this.resource.status_id !== 3;
         }
 
