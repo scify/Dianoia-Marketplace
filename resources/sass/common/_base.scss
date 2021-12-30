@@ -83,5 +83,14 @@ a {
 .footer-dark {
     background-color: var(--color-blue-light-1);
     color: #ffffff;
-    padding:50px
+    /* unvisited link */
+    a:link, a:visited, a:active, p{
+        color:  var(--color-grey)!important;
+    }
+    /* mouse over link */
+    a:hover {
+        color: #ffffff !important;
+    }
+
+    padding:50px;
 }

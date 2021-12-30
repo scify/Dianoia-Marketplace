@@ -29,5 +29,6 @@
                 <h3>version <b>{{ config('app.version') }}</b></h3>
             </div>
         </div>
+        </div>
     </footer>
 </div>

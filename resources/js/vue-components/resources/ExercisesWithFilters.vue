@@ -260,9 +260,6 @@ export default {
         },
         sortRating(option){
             this.filteredResources.sort(function(a, b){
-                console.log(a.avg_rating+" - "+b.avg_rating);
-
-
                 if (option === "ascending") {
                     if(a.avg_rating === 0)//place empty ratings at the bottom
                         return true;
@@ -271,7 +268,10 @@ export default {
                     return b.avg_rating - a.avg_rating;
                 }
                 else if (option === "bydate") {
-                    return b.updated_at - a.updated_at;
+                    console.log(a.updated_at);
+                    console.log(b.updated_at);
+                    console.log(new Date(b.updated_at) - new Date(a.updated_at));
+                    return new Date(b.updated_at) - new Date(a.updated_at);
                 }
             });
         },

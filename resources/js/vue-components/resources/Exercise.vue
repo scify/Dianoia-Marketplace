@@ -217,7 +217,6 @@ export default {
             return route('resources.delete_exercise', this.resource.id);
         },
         resourceHasRating(rateIndex) {
-            console.log('avg_rating:'+this.resource.avg_rating.toString());
             return rateIndex <= this.resource.avg_rating
         },
         resourceHasRatingFromUser(rateIndex) {
