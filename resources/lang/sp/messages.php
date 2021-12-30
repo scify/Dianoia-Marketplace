@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'please_sign_in' => 'Debes iniciar sesión para calificar este ejercicio.',
     'exercise-create-success' => '¡Éxito! El ejercicio ha sido creado',
     'exercise-create-failure' => '¡Advertencia! El ejercicio no ha sido creado',
     'exercise-update-success' => '¡Éxito! El ejercicio ha sido actualizado',

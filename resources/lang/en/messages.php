@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'please_sign_in' => 'You need to sign-in in order to rate this exercise',
     'exercise-create-success' => 'Success! The exercise has been created',
     'exercise-create-failure' => 'Warning! The exercise has not been created',
     'exercise-update-success' => 'Success! The exercise has been updated',

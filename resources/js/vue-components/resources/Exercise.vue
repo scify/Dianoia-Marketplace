@@ -60,7 +60,7 @@
                     <div class="row mb-4">
                         <div class="col">
                             <h6 v-if="userLoggedIn()">{{ getRateTitleForUser() }}</h6>
-                            <h6 v-else>You need to sign in in order to rate this exercise.</h6>
+                            <h6 v-else>{{trans('messages.please_sign_in')}}</h6>
                         </div>
                     </div>
                     <div class="row" v-if="userLoggedIn()">
@@ -77,9 +77,9 @@
                     </div>
                     <div class="row" v-else>
                         <div class="col text-center">
-                            <a :href="getLoginRoute()" class="btn btn-primary">{{
-                                    trans('messages.sign_in_register')
-                                }}</a>
+                            <a :href="getLoginRoute()" class="btn btn-primary">
+                                {{trans('messages.sign-in')}}
+                            </a>
                         </div>
                     </div>
                 </div>
