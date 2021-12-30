@@ -198,6 +198,7 @@ export default {
         ]),
 
         getExerciseMetadataAndContents() {
+            this.loadingResources = true;
             this.setCarerExercises();
             this.setPatientExercises();
             Promise.all([
@@ -213,6 +214,7 @@ export default {
                 this.initResources(results[0], results[1], results[2], results[3], results[4], results[5], results[6])
                 console.log('initialized metadata');
                 this.getResources();
+                this.loadingResources = false;
             });
         },
 
@@ -396,7 +398,6 @@ export default {
             });
         },
         getResources(sort_difficulty=false) {
-            this.loadingResources = true;
             this.resources = [];
             this.filteredResources = [];
             let url = "";
