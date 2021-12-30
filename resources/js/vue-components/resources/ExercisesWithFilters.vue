@@ -197,7 +197,7 @@ export default {
             'handleError'
         ]),
 
-        getExerciseMetadataAndContents(){
+        getExerciseMetadataAndContents() {
             this.setCarerExercises();
             this.setPatientExercises();
             Promise.all([
@@ -208,10 +208,25 @@ export default {
                 this.getRatings(),
                 this.getRoles(),
                 this.getUserRoleMapping(),
-            ]).then(_ => {
+            ]).then(results => {
+                console.log('initialize metadata');
+                this.initResources(results[0], results[1], results[2], results[3], results[4], results[5], results[6])
+                console.log('initialized metadata');
                 this.getResources();
             });
         },
+
+        initResources(languages, types, difficulties, users, ratings, roles, role_mapping) {
+            this.contentLanguages = languages;
+            this.contentTypes = types;
+            this.contentDifficulties = difficulties;
+            this.users  = users;
+            this.contentRatings = ratings;
+            this.userRoles= roles;
+            this.userRoleMapping = role_mapping;
+        },
+
+
 
         selectType(type) {
             let index =  this.selectedTypes.indexOf(type);
@@ -283,13 +298,14 @@ export default {
         },
 
         getUserRoleMapping(){
+            const instance = this;
             return new Promise(function callback(resolve, reject) {
-                this.get({
+                instance.get({
                     url: route('user_role_mapping.get'),
                     urlRelative: false
                 }).then(response => {
-                    this.userRoleMapping = response.data;
-                    resolve(this.userRoleMapping );
+                    instance.userRoleMapping = response.data;
+                    resolve(instance.userRoleMapping );
                 }).catch(e => reject(e));
             });
         },
@@ -306,59 +322,78 @@ export default {
         },
         getContentLanguages() {
             console.log('retrieving languages');
+            const instance = this;
             return new Promise(function callback(resolve, reject) {
-                this.get({
+                instance.get({
                     url: route('content_languages.get'),
                     urlRelative: false
                 }).then(response => {
-                    console.log('retrieving resources');
-                    this.contentLanguages = response.data;
-                    this.selectedContentLanguage = this.contentLanguages[0];
-                    resolve(this.selectedContentLanguage );
+                    instance.contentLanguages = response.data;
+                    // instance.selectedContentLanguage = instance.contentLanguages[0];
+                    console.log('retrieved languages');
+                    console.log(_.map(instance.contentLanguages,'name'));
+                    resolve(instance.contentLanguages );
                 }).catch(e => reject(e));
             });
         },
         getContentTypes(){
+            console.log('retrieving types');
+            const instance = this;
             return new Promise(function callback(resolve, reject) {
-                this.get({
+                instance.get({
                     url: route('content_types.get'),
                     urlRelative: false
                 }).then(response => {
-                    this.contentTypes = response.data;
-                    this.initializeTypes();
-                    resolve(this.selectedContentLanguage );
+                    instance.contentTypes = response.data;
+                    instance.initializeTypes();
+                    console.log('retrieved types');
+                    console.log(_.map(instance.contentTypes,'name'));
+                    resolve(instance.selectedContentLanguage );
                 }).catch(e => reject(e));
             });
         },
         getRoles(){
+            console.log('retrieving roles');
+            const instance = this;
             return new Promise(function callback(resolve, reject) {
-                this.get({
+                instance.get({
                     url: route('user_roles.get'),
                     urlRelative: false
                 }).then(response => {
-                    this.userRoles = response.data;
-                    resolve(this.userRoles );
+                    instance.userRoles = response.data;
+                    console.log('retrieved roles');
+                    console.log(_.map(instance.userRoles,'name'));
+                    resolve(instance.userRoles );
                 }).catch(e => reject(e));
             })
         },
         getContentDifficulties(){
+            console.log('retrieving difficulties');
+            const instance = this;
             return new Promise(function callback(resolve, reject) {
-                this.get({
+                instance.get({
                     url: route('content_difficulties.get'),
                     urlRelative: false
                 }).then(response => {
-                    this.contentDifficulties = response.data;
-                    resolve(this.contentDifficulties );
+                    instance.contentDifficulties = response.data;
+                    console.log('retrieved difficulties');
+                    console.log(_.map(instance.contentDifficulties,'name'));
+                    resolve(instance.contentDifficulties );
                 }).catch(e => reject(e));
             });
         },
         getUsers(){
+            console.log('retrieving users');
+            const instance = this;
             return new Promise(function callback(resolve, reject) {
-                this.get({
+                instance.get({
                     url: route('users.get'),
                     urlRelative: false
                 }).then(response => {
-                    this.users = response.data;
+                    instance.users = response.data;
+                    console.log('retrieved users');
+                    console.log(_.map(instance.users,'name'));
+                    resolve(instance.users );
                 }).catch(e => reject(e));
             });
         },
@@ -393,20 +428,24 @@ export default {
             }).then(response => {
                 this.resources = response.data;
                 this.filteredResources = this.resources;
-                let names = _.map(this.filteredResources, 'id')
+                let names = _.map(this.filteredResources, 'name')
                 this.numExercises = names.length;
                 this.loadingResources = false;
             });
 
         },
         getRatings(){
+            const instance = this;
+            console.log('retrieve ratings');
             return new Promise(function callback(resolve, reject) {
-                this.get({
+                instance.get({
                     url: route('content_ratings.get'),
                     urlRelative: false
                 }).then(response => {
-                    this.contentRatings = response.data;
-                    resolve(this.contentRatings );
+                    instance.contentRatings = response.data;
+                    console.log('retrieved ratings');
+                    console.log(_.map(instance.contentRatings,'id'));
+                    resolve(instance.contentRatings );
                 }).catch(e => reject(e));
             });
         },
