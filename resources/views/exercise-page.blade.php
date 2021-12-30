@@ -42,7 +42,6 @@
                     :user='@json($user)'
                     :resources-statuses='@json($viewModel->types)'
                     :is-admin="'{{$viewModel->isAdmin}}'"
-                    :approve-resources="{{0}}"
                     :init-exercise-types="'{{$viewModel->preselect_types}}'">
                 </exercises-with-filters>
             </div>

@@ -157,8 +157,7 @@ export default {
         users:Array,
         resourcesRoute: String,
         userIdToGetContent: Number,
-        isAdmin: String,
-        approveExercises: Number,
+        isAdmin: String
     },
     data: function () {
         return {
@@ -359,10 +358,6 @@ export default {
         },
         getLoginRoute() {
             return route('login');
-        },
-        isAdminPageForExerciseApproval(){
-
-            return this.approveExercises === 1;
         },
         isProfilePage(){
             return this.userIdToGetContent > 0;

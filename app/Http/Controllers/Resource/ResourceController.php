@@ -280,6 +280,44 @@ class ResourceController extends Controller
         }
     }
 
+
+    public function manage_exercises()
+    {
+        try {
+            $viewModel = $this->resourceManager->getDisplayResourcesViewModel([
+                'preselect_type_name' => null
+            ]);
+            $viewModel->isAdmin = Auth::check() && $this->userManager->isAdmin(Auth::user());
+            $viewModel->user_id_to_get_content = Auth::id();
+            $viewModel->resourcesPackagesStatuses = [ResourceStatusesLkp::APPROVED];
+            $user = Auth::user();
+            $userRoleMap = $this->userManager->getUserRolesMapping()->filter(
+                function ($entry) use ($user) {
+                    return $entry->user_id === $user->id;
+                }
+            );
+            $userRoleId = $userRoleMap->first()->role_id;
+            if($viewModel->isAdmin ){
+                $user->type = $this->userManager->get_admin_users()->filter(
+                    function ($entry) use ($userRoleId) {
+                        return $entry->id=== $userRoleId;
+                    }
+                )->first();
+            }
+            else{
+                $user->type = $this->userManager->getUserRoles()->filter(
+                    function ($entry) use ($userRoleId) {
+                        return $entry->id=== $userRoleId;
+                    }
+                )->first();
+            }
+            return view('admin.admin-page')->with(['viewModel' => $viewModel,  'user' => $user]);
+        } catch (ModelNotFoundException $e) {
+            abort(404);
+        }
+    }
+
+
     public function getResources(Request $request)
     {
         $lang_id = null;

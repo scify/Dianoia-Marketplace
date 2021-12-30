@@ -123,7 +123,6 @@
                               :user-id-to-get-content="userIdToGetContent"
                               :resource="resource"
                               :is-admin="isAdmin"
-                              :approve-resources="approveResources"
                               :languages="contentLanguages"
                               :types="contentTypes"
                               :difficulties="contentDifficulties"
@@ -164,7 +163,6 @@ export default {
         },
         isAdmin: String,
         resourceType: String,
-        approveResources: Number,
         resourcesRoute: String,
         creationRoute: String,
         initExerciseTypes: String,

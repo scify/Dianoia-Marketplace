@@ -100,19 +100,23 @@
                 <div class="exercises-tabs">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="patients-tab" data-bs-toggle="tab"
-                                    data-bs-target="#patients" type="button" role="tab" aria-controls="patients"
-                                    aria-selected="true">{{__('messages.patient-exercises')}}</button>
+                            <button class="nav-link active" id="pending-exercises-tab" data-bs-toggle="tab"
+                                    data-bs-target="#pending" type="button" role="tab" aria-controls="pending"
+                                    aria-selected="true">Pending Exercises</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="carer-tab" data-bs-toggle="tab" data-bs-target="#carer"
-                                    type="button" role="tab" aria-controls="carer" aria-selected="false">{{__('messages.Carer')}}</button>
+                            <button class="nav-link" id="accepted-exercises-tab" data-bs-toggle="tab" data-bs-target="#accepted"
+                                    type="button" role="tab" aria-controls="accepted" aria-selected="false">Accepted Exercises</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="rejected-exercises-tab" data-bs-toggle="tab" data-bs-target="#rejected"
+                                    type="button" role="tab" aria-controls="rejected" aria-selected="false">Rejected Exercises</button>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="patients" role="tabpanel" aria-labelledby="patients-tab">
+                <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-exercises-tab">
                     <div class="row">
                         <div class="col">
                             <exercises-with-filters
@@ -121,13 +125,14 @@
                                 :user='@json($user)'
                                 :resources-statuses='@json($viewModel->types)'
                                 :is-admin="'{{$viewModel->isAdmin}}'"
+                                :approve-resources="{{0}}"
                                 :init-exercise-types=" 'patient' "
                                 :user-id-to-get-content='{{$user->id}}'>
                             </exercises-with-filters>
                         </div>
                      </div>
                 </div>
-                <div class="tab-pane fade" id="carer" role="tabpanel" aria-labelledby="carer-tab">
+                <div class="tab-pane fade" id="accepted" role="tabpanel" aria-labelledby="accepted-exercises-tab">
                     <div class="row mt-5">
                         <div class="col">
                             <exercises-with-filters
@@ -136,51 +141,28 @@
                                 :user='@json($user)'
                                 :resources-statuses='@json($viewModel->types)'
                                 :is-admin="'{{$viewModel->isAdmin}}'"
+                                :approve-resources="{{0}}"
                                 :init-exercise-types=" 'carer' "
                                 :user-id-to-get-content='{{$user->id}}'>
                             </exercises-with-filters>
                         </div>
                     </div>
-                    <div class="exercise-template shadow content mb-5 mt-5">
-                        <div class="exercise-box p-5" id="registered-template">
-                            <div class="registered-message text-center">{{__('messages.exercise-submitted')}}</div>
-
-                            <div class="exercise-title-row d-flex align-items-center justify-content-between">
-                                <div>
-                                    <p class="title">Εβδομαδιαίο Πρόγραμμα Δραστηριοτήτων</p>
-                                    <p>Δημιουργήστε το εβδομαδιαίο σας πρόγραμμα με τις δραστηριότητές σας.</p>
-
-                                </div>
-                                <div>
-                                    <!-- Modal button Αφού επεξεργαστείτε τα στοιχεία της άσκησης -->
-                                    <button type="submit" class="btn btn--edit" data-bs-toggle="modal"
-                                            data-bs-target="#editModal3"><i class="far fa-edit"></i></button>
-
-                                    <a href="#" class="btn btn--secondary" target="_blank">{{trans('messages.see-exercise')}}</a>
-                                </div>
-
-
-                            </div>
-                            <hr>
-                            <div class="exercise-rating d-flex justify-content-between">
-                                <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <div class="created-by">Δημιουργήθηκε από Επαγγελματίας φροντιστής</div>
-                                <div class="level">Κανονικό επίπεδο</div>
-                                <div class="language">Ελληνικά</div>
-                                <div class="category">Ασκήσεις για φροντιστές</div>
-
-                            </div>
+                </div>
+                <div class="tab-pane fade" id="rejected" role="tabpanel" aria-labelledby="rejected-exercises-tab">
+                    <div class="row mt-5">
+                        <div class="col">
+                            <exercises-with-filters
+                                :resources-route="'{{ route('resources.get') }}'"
+                                :creation-route="'{{route('resources.create')}}'"
+                                :user='@json($user)'
+                                :resources-statuses='@json($viewModel->types)'
+                                :is-admin="'{{$viewModel->isAdmin}}'"
+                                :approve-resources="{{0}}"
+                                :init-exercise-types=" 'carer' "
+                                :user-id-to-get-content='{{$user->id}}'>
+                            </exercises-with-filters>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
         </div>

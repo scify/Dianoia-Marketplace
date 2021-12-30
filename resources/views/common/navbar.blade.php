@@ -62,13 +62,13 @@
                                 <li>
                                     <a class="dropdown-item {{ UrlMatchesMenuItem("administration.users.index")}}"
                                        href="{{ route('administration.users.index') }}">
-                                        {!! __('messages.user_management') !!}
+                                        User Management
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item {{ UrlMatchesMenuItem("administration.users.index")}}"
-                                       href="{{ route('resources_packages.approve_pending_packages') }}">
-                                        {!! __('messages.approve_packages') !!}
+                                    <a class="dropdown-item {{ UrlMatchesMenuItem("administration.exercises_management")}}"
+                                       href="{{ route('administration.exercises_management') }}">
+                                        Exercises Management
                                     </a>
                                 </li>
                             @endcan

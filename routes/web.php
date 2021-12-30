@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('users', UserController::class)->except([
             'create', 'edit', 'show'
         ]);
+        Route::get("/admin/exercise-management", [ResourceController::class, 'manage_exercises'])->name('exercises_management');
+
     });
     Route::put("/users/update/{user}", [UserController::class, 'update'])->name('users.update');
 
