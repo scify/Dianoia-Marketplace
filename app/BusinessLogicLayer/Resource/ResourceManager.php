@@ -54,6 +54,7 @@ class ResourceManager {
         $difficulties = $this->getDifficultiesForResources();
         $lang = app()->getLocale();
         $types =  $this->getResourceTypes();
+
         $type_ids = $types->map(
             function ($type_entry)
             {

@@ -75,6 +75,9 @@ class ResourceController extends Controller
             'preselect_type_name' => $preselectedType
         ]);
         $displayResourceViewModel->isAdmin = Auth::check() && $this->userManager->isAdmin(Auth::user());
+        $displayResourceViewModel->resourceStatuses = array(
+            'accepted' => ResourceStatusesLkp::APPROVED
+        );
         return view('exercise-page')->with(['viewModel' => $displayResourceViewModel,  'user' => Auth::user()]);
     }
 
