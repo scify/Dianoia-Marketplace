@@ -124,9 +124,7 @@
                                 :creation-route="'{{route('resources.create')}}'"
                                 :user='@json($user)'
                                 :resources-statuses='@json([$viewModel->resourceStatuses['pending']])'
-                                :is-admin="'{{$viewModel->isAdmin}}'"
-                                :approve-resources="{{0}}"
-                                :user-id-to-get-content='{{$user->id}}'>
+                                :is-admin="'{{$viewModel->isAdmin}}'">
                             </exercises-with-filters>
                         </div>
                      </div>
@@ -139,8 +137,7 @@
                                 :creation-route="'{{route('resources.create')}}'"
                                 :user='@json($user)'
                                 :resources-statuses='@json([$viewModel->resourceStatuses['accepted']])'
-                                :is-admin="'{{$viewModel->isAdmin}}'"
-                                :user-id-to-get-content='{{$user->id}}'>
+                                :is-admin="'{{$viewModel->isAdmin}}'">
                             </exercises-with-filters>
                         </div>
                     </div>
@@ -153,8 +150,7 @@
                                 :creation-route="'{{route('resources.create')}}'"
                                 :user='@json($user)'
                                 :resources-statuses='@json([$viewModel->resourceStatuses['rejected']])'
-                                :is-admin="'{{$viewModel->isAdmin}}'"
-                                :user-id-to-get-content='{{$user->id}}'>
+                                :is-admin="'{{$viewModel->isAdmin}}'">
                             </exercises-with-filters>
                         </div>
                     </div>
