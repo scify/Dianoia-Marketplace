@@ -85,10 +85,12 @@ a {
     color: #ffffff;
     /* unvisited link */
     a:link, a:visited, a:active, p{
-        color:  var(--color-grey)!important;
+        opacity:65% ;
+        color:var(--bs-white) !important;
     }
     /* mouse over link */
     a:hover {
+        opacity:100% ;
         color: #ffffff !important;
     }
 
