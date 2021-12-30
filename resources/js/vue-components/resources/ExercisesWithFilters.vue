@@ -38,9 +38,9 @@
                         {{trans('messages.category')}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                        <li><a class="dropdown-item"  id="patientCategoriesList" @click="initializeTypes('patient')">{{trans('messages.patient-exercises')}}</a></li>
-                        <li><a class="dropdown-item" id="carerCategoriesList" @click="initializeTypes('carer')">{{trans('messages.Carer')}}</a></li>
-                        <li><a class="dropdown-item" id="allCategoriesList" @click="initializeTypes('all')">{{trans('messages.all-categories')}}</a></li>
+                        <li><a class="dropdown-item"  id="patientCategoriesList" @click="selectExerciseCategory('patient')">{{trans('messages.patient-exercises')}}</a></li>
+                        <li><a class="dropdown-item" id="carerCategoriesList" @click="selectExerciseCategory('carer')">{{trans('messages.Carer')}}</a></li>
+                        <li><a class="dropdown-item" id="allCategoriesList" @click="selectExerciseCategory('all')">{{trans('messages.all-categories')}}</a></li>
                     </ul>
                 </div>
 
@@ -233,14 +233,12 @@ export default {
             let index =  this.selectedTypes.indexOf(type);
             if (index >= 0) { //unselect object
                 this.selectedTypes.splice(index, 1);
-
             }
             else{ //select object
                 this.selectedTypes.push(type);
             }
             let types = _.map(this.selectedTypes, 'name')
-            console.log('selected types'+types);
-
+            console.log('selected types: '+types);
             this.getResources();
         },
         setPatientExercises(){
@@ -463,34 +461,46 @@ export default {
                 this.searchLoading = false;
             }, 500);
         },
-        initializeTypes(mode=null){
 
-            if(mode == null){
-                this.selectedContentLanguage = null;
-            }
-            if(mode==="patient"){
+
+        filterTypesByExerciseCategory(category){
+            if(category==="patient"){
                 this.selectedTypes  =  this.contentTypes.filter(type => this.isPatientExercise(type));
                 $('#dropdownMenuButton3').click();
             }
-            else if (mode==="all"){
-                this.selectedTypes  =  this.contentTypes.slice(0);
-            }
-            else if(mode==="carer"){
+            else if(category==="carer"){
                 this.selectedTypes = this.contentTypes.filter(type => this.isCarerExercise(type));
                 $('#dropdownMenuButton3').click();
             }
+            else if (category==="all"){
+                this.selectedTypes  =  this.contentTypes.slice(0);
+            }
+        },
 
+        selectExerciseCategory(category){
+            this.filterTypesByExerciseCategory(category);
+            this.showTypeDropdownMenu();
+            this.getResources();
+        },
+
+        initializeTypes(){
+            this.selectedContentLanguage = null;
+            this.filterTypesByExerciseCategory(this.initExerciseTypes);
+            this.showTypeDropdownMenu();
+        },
+
+
+        showTypeDropdownMenu(){
             for(let x in this.contentTypes){
                 let type = this.contentTypes[x];
                 if(jQuery.inArray(type,  this.selectedTypes) !== -1){
-
                     $("#"+type.name).prop('checked','true');
                 } else{
-
                     $('#'+type.name).prop('checked','false');
                 }
             }
         },
+
         getCurrentUserId(){
             return this.user['id'];
         },
