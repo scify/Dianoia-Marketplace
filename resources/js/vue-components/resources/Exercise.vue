@@ -218,8 +218,7 @@ export default {
         },
         resourceHasRating(rateIndex) {
             console.log('avg_rating:'+this.resource.avg_rating.toString());
-            return this.resource.avg_rating
-
+            return rateIndex <= this.resource.avg_rating
         },
         resourceHasRatingFromUser(rateIndex) {
             return this.userRating >= rateIndex;

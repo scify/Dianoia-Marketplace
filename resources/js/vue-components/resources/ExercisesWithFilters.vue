@@ -261,7 +261,11 @@ export default {
         sortRating(option){
             this.filteredResources.sort(function(a, b){
                 console.log(a.avg_rating+" - "+b.avg_rating);
+
+
                 if (option === "ascending") {
+                    if(a.avg_rating === 0)//place empty ratings at the bottom
+                        return true;
                     return a.avg_rating - b.avg_rating;
                 } else if (option === "descending") {
                     return b.avg_rating - a.avg_rating;
