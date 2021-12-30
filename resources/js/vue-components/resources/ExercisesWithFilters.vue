@@ -136,19 +136,11 @@
 
 <script>
 import {mapActions} from "vuex";
-import Vue from "vue";
+import Promise from "lodash/_Promise";
 
 export default {
     mounted() {
-        this.getContentLanguages();
-        this.getContentTypes();
-        this.getContentDifficulties();
-        this.getUsers();
-        this.getRatings();
-        this.setCarerExercises();
-        this.setPatientExercises();
-        this.getRoles();
-        this.getUserRoleMapping();
+        this.getExerciseMetadataAndContents();
     },
     props: {
         user: {
@@ -204,6 +196,23 @@ export default {
             'get',
             'handleError'
         ]),
+
+        getExerciseMetadataAndContents(){
+            this.setCarerExercises();
+            this.setPatientExercises();
+            Promise.all([
+                this.getContentLanguages(),
+                this.getContentTypes(),
+                this.getContentDifficulties(),
+                this.getUsers(),
+                this.getRatings(),
+                this.getRoles(),
+                this.getUserRoleMapping(),
+            ]).then(_ => {
+                this.getResources();
+            });
+        },
+
         selectType(type) {
             let index =  this.selectedTypes.indexOf(type);
             if (index >= 0) { //unselect object
@@ -267,23 +276,22 @@ export default {
                 } else if (option === "descending") {
                     return b.avg_rating - a.avg_rating;
                 }
-                else if (option === "bydate") {
-                    console.log(a.updated_at);
-                    console.log(b.updated_at);
-                    console.log(new Date(b.updated_at) - new Date(a.updated_at));
+                else if (option === "bydate") {//show newest ratings at the top
                     return new Date(b.updated_at) - new Date(a.updated_at);
                 }
             });
         },
 
         getUserRoleMapping(){
-            this.get({
-                url: route('user_role_mapping.get'),
-                urlRelative: false
-            }).then(response => {
-                this.userRoleMapping = response.data;
+            return new Promise(function callback(resolve, reject) {
+                this.get({
+                    url: route('user_role_mapping.get'),
+                    urlRelative: false
+                }).then(response => {
+                    this.userRoleMapping = response.data;
+                    resolve(this.userRoleMapping );
+                }).catch(e => reject(e));
             });
-
         },
 
          filterResourcesByUserRole(roleId=null){this.filteredResources = this.resources.slice(0);
@@ -298,54 +306,60 @@ export default {
         },
         getContentLanguages() {
             console.log('retrieving languages');
-            this.get({
-                url: route('content_languages.get'),
-                urlRelative: false
-            }).then(response => {
-                console.log('retrieving resources');
-                this.contentLanguages = response.data;
-                this.selectedContentLanguage = this.contentLanguages[0];
-
-                this.getResources();
+            return new Promise(function callback(resolve, reject) {
+                this.get({
+                    url: route('content_languages.get'),
+                    urlRelative: false
+                }).then(response => {
+                    console.log('retrieving resources');
+                    this.contentLanguages = response.data;
+                    this.selectedContentLanguage = this.contentLanguages[0];
+                    resolve(this.selectedContentLanguage );
+                }).catch(e => reject(e));
             });
-
         },
         getContentTypes(){
-
-            this.get({
-                url: route('content_types.get'),
-                urlRelative: false
-            }).then(response => {
-                this.contentTypes = response.data;
-                this.initializeTypes();
+            return new Promise(function callback(resolve, reject) {
+                this.get({
+                    url: route('content_types.get'),
+                    urlRelative: false
+                }).then(response => {
+                    this.contentTypes = response.data;
+                    this.initializeTypes();
+                    resolve(this.selectedContentLanguage );
+                }).catch(e => reject(e));
             });
         },
         getRoles(){
-
-            this.get({
-                url: route('user_roles.get'),
-                urlRelative: false
-            }).then(response => {
-                this.userRoles = response.data;
-            });
+            return new Promise(function callback(resolve, reject) {
+                this.get({
+                    url: route('user_roles.get'),
+                    urlRelative: false
+                }).then(response => {
+                    this.userRoles = response.data;
+                    resolve(this.userRoles );
+                }).catch(e => reject(e));
+            })
         },
         getContentDifficulties(){
-
-            this.get({
-                url: route('content_difficulties.get'),
-                urlRelative: false
-            }).then(response => {
-                this.contentDifficulties = response.data;
+            return new Promise(function callback(resolve, reject) {
+                this.get({
+                    url: route('content_difficulties.get'),
+                    urlRelative: false
+                }).then(response => {
+                    this.contentDifficulties = response.data;
+                    resolve(this.contentDifficulties );
+                }).catch(e => reject(e));
             });
         },
         getUsers(){
-
-
-            this.get({
-                url: route('users.get'),
-                urlRelative: false
-            }).then(response => {
-                this.users = response.data;
+            return new Promise(function callback(resolve, reject) {
+                this.get({
+                    url: route('users.get'),
+                    urlRelative: false
+                }).then(response => {
+                    this.users = response.data;
+                }).catch(e => reject(e));
             });
         },
         getResources(sort_difficulty=false) {
@@ -370,11 +384,9 @@ export default {
                 url += '&status_ids=' + _.map(this.resourcesStatuses).join();
             }
             url += '&is_admin=' + this.isAdmin;
-            console.log('difficulty? '+sort_difficulty);
             if(sort_difficulty) {
                 url += '&difficulties=' + _.map(this.contentDifficulties, 'id').join();
             }
-            console.log(url);
             this.get({
                 url: url,
                 urlRelative: false
@@ -388,17 +400,18 @@ export default {
 
         },
         getRatings(){
-            this.get({
-                url: route('content_ratings.get'),
-                urlRelative: false
-            }).then(response => {
-                this.contentRatings = response.data;
-
+            return new Promise(function callback(resolve, reject) {
+                this.get({
+                    url: route('content_ratings.get'),
+                    urlRelative: false
+                }).then(response => {
+                    this.contentRatings = response.data;
+                    resolve(this.contentRatings );
+                }).catch(e => reject(e));
             });
         },
         search(searchTerm) {
             if (this.timer) {
-
                 clearTimeout(this.timer);
                 this.timer = null;
             }
@@ -414,8 +427,6 @@ export default {
         initializeTypes(mode=null){
 
             if(mode == null){
-                mode = this.initExerciseTypes;
-                console.log('mode = '+mode);
                 this.selectedContentLanguage = null;
             }
             if(mode==="patient"){
@@ -441,7 +452,6 @@ export default {
                     $('#'+type.name).prop('checked','false');
                 }
             }
-            this.getResources();
         },
         getCurrentUserId(){
             return this.user['id'];
