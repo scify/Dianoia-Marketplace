@@ -369,7 +369,7 @@ export default {
             return this.userIdToGetContent > 0;
         },
         isPublished(){
-            return this.resource.status_id !== 3;
+            return this.resource.status_id == 2;
         }
 
     }
