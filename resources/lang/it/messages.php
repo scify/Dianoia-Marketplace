@@ -72,7 +72,7 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'search' => 'Ricerca',
     'total-activities' => 'Tutte le attività',
     'new-exercise' => 'Nuovo esercizio',
-    'exercise-upload-rules' => 'Gli esercizi che carichi sulla piattaforma devono avere contenuti coerenti con la struttura del file originale che vedi qui.',
+    'exercise-upload-rules' => 'Gli esercizi che carichi sulla piattaforma devono avere contenuti coerenti con la struttura del file originale che vedi  <a target="_blank" href="/coming-soon">  qui. </a>',
     'give-rating' => 'Dai il tuo punteggio',
     'Ελληνικά' => 'Greco',
     'Spanish' => 'Spagnolo',

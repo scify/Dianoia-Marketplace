@@ -24,6 +24,7 @@ Route::get('/lang/{lang}', [UserController::class, 'setLangLocaleCookie'])->name
 Route::get('/exercises', [ResourceController::class, 'index'])->name('resources.index');
 //TODO new route for resources with only methods ->only([]) without aliases
 Route::get('resources/display_exercises', [ResourceController::class, 'display'])->name('resources.display');
+Route::get("/coming-soon", [ResourceController::class, 'coming_soon'])->name('resources.coming-soon');
 
 #Auth::routes(['verify' => true]);
 Route::middleware(['auth'])->group(function () {

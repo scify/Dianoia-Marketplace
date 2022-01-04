@@ -402,7 +402,10 @@ class ResourceController extends Controller
         return $ret;
     }
 
-
+    public function coming_soon(): View
+    {
+        return view('coming-soon');
+    }
 
 
 
