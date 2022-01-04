@@ -117,9 +117,10 @@ class ResourceController extends Controller
         ]);
         try {
             $resource = $this->resourceManager->storeResource($request);
-            return redirect()->route('resources.display')->with('flash_message_success',__('messages.exercise-create-success'));
+            $this->submit($resource);//todo comment to pause exercise submission notifications
+            return redirect()->route('resources.my_profile')->with('flash_message_success',__('messages.exercise-submit-success'));
         } catch (Exception $e) {
-            return redirect()->route('resources.display')->with('flash_message_failure',__('messages.exercise-create-failure'));
+            return redirect()->route('resources.my_profile')->with('flash_message_failure',__('messages.exercise-submit-failure'));
         }
 
 
@@ -176,12 +177,11 @@ class ResourceController extends Controller
     }
 
 
-    public function submit(int $id): \Illuminate\Http\RedirectResponse
+    public function submit($resource): \Illuminate\Http\RedirectResponse
     {
 //        return $this->approve($id); //TODO: uncomment to enable pending package approval by admin
         $admins = $this->userManager->get_admin_users();
-        $resource = $this->resourceManager->getResource($id);
-        Notification::send($admins, new AdminNotice($resource, $resource->name));
+        Notification::send($admins, new AdminNotice($resource));
         try {
             return redirect()->route('resources.index')->with('flash_message_success',  __('messages.exercise-submit-success'));
 

@@ -41,8 +41,8 @@ class AdminNotice extends Notification implements ShouldQueue
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
-    {
+    public function toMail($notifiable){
+
         $url = Route('administration.exercises_management');
         return (new MailMessage)
             ->greeting('Submitted Exercise Details')
@@ -52,7 +52,7 @@ class AdminNotice extends Notification implements ShouldQueue
             ->line("User Name:\t".$notifiable->name)
             ->line("User Email:\t".$notifiable->email)
             ->line("User ID:\t".$this->resource->creator_user_id)
-            ->action('View Submitted Packages', $url);
+            ->action('View Submitted Exercises', $url);
     }
 
     /**
