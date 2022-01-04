@@ -49,7 +49,7 @@ class RejectionNotice extends Notification implements ShouldQueue
         $url = Route('resources.my_profile');
         return (new MailMessage)
             ->greeting('Greetings '.$this->username.'! Thank you for using our platform to support people fighting with dementia.')
-            ->subject('DiAnoia Marketplace: Exercise Rejection')
+            ->subject('DiAnoia Marketplace: Your submitted exercise was rejected')
             ->line('We regret to inform you that your submitted exercise titled "'.$this->resource->name.'" was rejected by an administrator')
             ->line('Reason for rejection: "'.$this->rejectionMessage.'"')
             ->line("Exercise ID:\t".$this->resource->id)

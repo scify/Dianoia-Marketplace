@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Resource;
 
 use App\BusinessLogicLayer\Resource\ResourceManager;
 use App\BusinessLogicLayer\User\UserManager;
+use App\Notifications\AcceptanceNotice;
 use App\Notifications\AdminNotice;
 use App\Notifications\RejectionNotice;
 use App\Repository\Resource\ResourceStatusesLkp;
@@ -213,6 +214,7 @@ class ResourceController extends Controller
         $data = $request->all();
         $resource = $this->resourceManager->getResource($data['id']);try {
             $this->resourceManager->approveResource($data['id']);
+            Notification::send( Auth::user(), new AcceptanceNotice($resource,Auth::user()->name));
             return redirect()->back()->with('flash_message_success', __('messages.exercise-approve-success'));
         } catch (\Exception $e) {
             return redirect()->back()->with('flash_message_failure', __('messages.exercise-approve-failure'));

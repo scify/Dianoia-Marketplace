@@ -6,22 +6,23 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use App\BusinessLogicLayer\Resource\ResourcesPackageManager;
+use App\Models\Resource\Resource;
 
-class AdminNotice extends Notification implements ShouldQueue
+class AcceptanceNotice extends Notification implements ShouldQueue
 {
     use Queueable;
-    protected $resource;
+    protected Resource $resource;
+    protected String $username;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($resource)
+    public function __construct($resource, $username)
     {
         $this->afterCommit = true;
         $this->resource = $resource;
-
+        $this->username = $username;
     }
 
     /**
@@ -43,16 +44,11 @@ class AdminNotice extends Notification implements ShouldQueue
      */
     public function toMail($notifiable){
 
-        $url = Route('administration.exercises_management').'#pending';
+        $url = Route('resources.my_profile').'#approved';
         return (new MailMessage)
-            ->greeting('Greetings Admin! Please review the submitted exercise below and approve or reject it. Press the button below to view the submitted exercise on the marketplace')
-            ->subject('DiAnoia Marketplace Administration: Confirm New Exercise Submission / '.$this->resource->name)
-            ->line("Exercise ID:\t".$this->resource->id)
-            ->line("Exercise Name:\t".$this->resource->name)
-            ->line("User Name:\t".$notifiable->name)
-            ->line("User Email:\t".$notifiable->email)
-            ->line("User ID:\t".$this->resource->creator_user_id)
-            ->action('Manage Submitted Exercises', $url);
+            ->greeting('Greetings '.$this->username.'! Thank you for using our platform to support people fighting with dementia.')
+            ->subject('DiAnoia Marketplace: Your submitted exercise titled "'. $this->resource->name.'" was approved!')
+            ->action('See your approved exercises', $url);
     }
 
     /**
