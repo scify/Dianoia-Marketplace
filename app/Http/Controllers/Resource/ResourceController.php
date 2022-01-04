@@ -94,13 +94,13 @@ class ResourceController extends Controller
     }
 
 
-
     /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function store(Request $request)
     {
@@ -121,6 +121,9 @@ class ResourceController extends Controller
         } catch (Exception $e) {
             return redirect()->route('resources.display')->with('flash_message_failure',__('messages.exercise-create-failure'));
         }
+
+
+
 
 
     }
@@ -175,16 +178,12 @@ class ResourceController extends Controller
 
     public function submit(int $id): \Illuminate\Http\RedirectResponse
     {
-        return $this->approve($id); //TODO: uncomment to enable pending package approval by admin
-        $package = $this->resourcesPackageManager->getResourcesPackage($id);
-        $redirect_route = $package->type_id===ResourceTypesLkp::COMMUNICATION ? 'patient_resources.index' : 'carer_resources.index';
+//        return $this->approve($id); //TODO: uncomment to enable pending package approval by admin
         $admins = $this->userManager->get_admin_users();
-        $coverResourceCardName = $this->resourceManager->getResource($package->card_id)->name;
-        Notification::send($admins, new AdminNotice($package, $coverResourceCardName));
-
+        $resource = $this->resourceManager->getResource($id);
+        Notification::send($admins, new AdminNotice($resource, $resource->name));
         try {
-            $this->resourcesPackageManager->submitResourcesPackage($id);
-            return redirect()->route($redirect_route)->with('flash_message_success',  __('messages.exercise-submit-success'));
+            return redirect()->route('resources.index')->with('flash_message_success',  __('messages.exercise-submit-success'));
 
         } catch (\Exception $e) {
             return redirect()->back()->with('flash_message_failure', __('messages.exercise-submit-failure'));

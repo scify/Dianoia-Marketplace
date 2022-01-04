@@ -11,18 +11,16 @@ use App\BusinessLogicLayer\Resource\ResourcesPackageManager;
 class AdminNotice extends Notification implements ShouldQueue
 {
     use Queueable;
-    protected $package;
-    protected $coverResourceCardName;
+    protected $resource;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($package, $coverResourceCardName)
+    public function __construct($resource)
     {
         $this->afterCommit = true;
-        $this->package = $package;
-        $this->coverResourceCardName = $coverResourceCardName;
+        $this->resource = $resource;
 
     }
 
@@ -45,16 +43,15 @@ class AdminNotice extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-
-        $url = Route('resources_packages.my_packages');
+        $url = Route('administration.exercises_management');
         return (new MailMessage)
-            ->greeting('Submitted Package Details')
-            ->subject('TnP: Confirm New Package Submission / '.$this->coverResourceCardName)
-            ->line("Package ID:\t".$this->package->id)
-            ->line("Package Name:\t".$this->coverResourceCardName)
+            ->greeting('Submitted Exercise Details')
+            ->subject('DiAnoia Marketplace: Confirm New Exercise Submission / '.$this->resource->name)
+            ->line("Exercise ID:\t".$this->resource->id)
+            ->line("Exercise Name:\t".$this->resource->name)
             ->line("User Name:\t".$notifiable->name)
             ->line("User Email:\t".$notifiable->email)
-            ->line("User ID:\t".$this->package->creator_user_id)
+            ->line("User ID:\t".$this->resource->creator_user_id)
             ->action('View Submitted Packages', $url);
     }
 
