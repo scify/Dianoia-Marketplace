@@ -12,15 +12,18 @@
 
         {{ csrf_field() }}
         <div class="form form-new mt-5 mb-5 rounded">
-
-            <p class="form-new__title p-4">{{__('messages.new-exercise')}}</p>
-            <hr>
+           <hr>
             <div class="form-new__fields p-5">
+                <p class="form-new__title p-4">{{__('messages.new-exercise')}}  </p>
+
+
                 <div class="row g-3">
 
                     <div class="col-12">
                         <label for="category_name" class="form-label">{{__('messages.name')}} <span>*</span></label>
                         <input type="text" class="form-control" id="category_name" name="name" required="true"  value="{{ old('name') ?: $viewModel->resource->name }}">
+                        <p class="required-text">* {!!__('messages.necessary-info')!!}</p>
+
                     </div>
                     <div class="col-12">
                         <label for="formGroupExampleInput2" class="form-label">{{__('messages.exercise-description')}} <span>*</span></label>
@@ -56,7 +59,6 @@
                         @endif
 
                     </div>
-                    <p class="required-text">* {!!__('messages.necessary-info')!!}</p>
 
                     <div class="col-md-6 ">
 
@@ -129,8 +131,8 @@
 
                 <div class="copyright-rules mb-5 mt-5 p-4">
                     <div class="example">
-                        <input class="form-check-input" type="checkbox" value=none id="flexCheckDefault" name="terms" value="{{ old('terms') ?: $viewModel->resource->terms }}">
                         <label class="form-check-label" for="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="terms" value="{{ old('terms') ?: $viewModel->resource->terms }}">
                             {!!__('messages.accept-rules-of-conduct')!!}
                         </label>
                     </div>
