@@ -183,7 +183,7 @@ class ResourceController extends Controller
     {
 //        return $this->approve($id); //TODO: uncomment to enable pending package approval by admin
         $admins = $this->userManager->get_admin_users();
-        Notification::send($admins, new AdminNotice($resource));
+//        Notification::send($admins, new AdminNotice($resource));//Todo when dianoia email for admin has been setup
         try {
             return redirect()->route('resources.index')->with('flash_message_success',  __('messages.exercise-submit-success'));
 
