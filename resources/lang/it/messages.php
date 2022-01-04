@@ -99,7 +99,7 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'upload-image'=>'Carica un\'immagine',
     'necessary-info' => 'Elementi necessari',
     'upload-pdf' => 'Carica il file .pdf con l\'esercizio',
-    'accept-rules-of-conduct' => 'Ho letto il contenuto e <b><u> il contenuto  e le regole sul copyright</u></b>, nonché le condizioni per la struttura dell\'esercizio,  come <b><u><a href="/storage/resources/pdf/Template - Italian.pdf">nell\'esempio.</a></u></b>. <span>*</span>',
+    'accept-rules-of-conduct' => 'Ho letto il contenuto e <b><u> il contenuto  e le regole sul copyright</u></b>, nonché le condizioni per la struttura dell\'esercizio,  come <b><u><a target="_blank" href="/coming-soon"> nell\'esempio.</a></u></b>. <span>*</span>',
     'cancel' => 'Cancella',
     'exercise-creation' => 'Crea un esercizio',
     'submission-tutorial'=> 'Nel caso in cui l\'esercizio che hai creato venga approvato, il team manageriale di SciFY sceglierà se l\'esercizio sarà disponibile per il download solo dal marketplace, o anche dall\'applicazione mobile.',
