@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Resource;
 use App\BusinessLogicLayer\Resource\ResourceManager;
 use App\BusinessLogicLayer\User\UserManager;
 use App\Notifications\AdminNotice;
+use App\Notifications\RejectionNotice;
 use App\Repository\Resource\ResourceStatusesLkp;
 use App\Repository\Resource\ResourceTypesLkp;
 use App\Http\Controllers\Controller;
@@ -200,10 +201,12 @@ class ResourceController extends Controller
         $rejectionMessage = $data['rejection_message'];
         $resource = $this->resourceManager->getResource($data['id']);try {
             $this->resourceManager->rejectResource($data['id']);
+            Notification::send( Auth::user(), new RejectionNotice($resource, $rejectionMessage,Auth::user()->name));
             return redirect()->back()->with('flash_message_success',__('messages.exercise-reject-success'));
         } catch (\Exception $e) {
             return redirect()->back()->with('flash_message_failure', __('messages.exercise-reject-failure'));
         }
+
     }
 
     public function approve(Request $request):\Illuminate\Http\RedirectResponse{
