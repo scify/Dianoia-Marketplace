@@ -56,7 +56,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post("/resources/approve/{id}", [ResourceController::class, 'approve'])->name('resources.approve');
     Route::post("/resources/reject/{id}", [ResourceController::class, 'reject'])->name('resources.reject');
     Route::post("/resources/hide/{id}", [ResourceController::class, 'hide'])->name('resources.hide');
-    Route::post("/resources/show/{id}", [ResourceController::class, 'show'])->name('resources.show');
     Route::post("/resources/submit", [ResourceController::class, 'submit'])->name('resources.submit');
     Route::put("/resources/update/{id}", [ResourceController::class, 'update'])->name('resources.update');
     Route::put("/resources/update_resource/{id}/{type_id}", [ResourceController::class, 'update_resource'])->name('resources.update_resource');

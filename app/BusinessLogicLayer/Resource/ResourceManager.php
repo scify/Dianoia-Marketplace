@@ -112,11 +112,11 @@ class ResourceManager {
         return $ret;
     }
 
-    public function hideResource($id){
+    public function rejectResource($id){
         return $this->resourceRepository->update(['status_id' => ResourceStatusesLkp::REJECTED], $id);
     }
 
-    public function showResource($id){
+    public function approveResource($id){
         return $this->resourceRepository->update(['status_id' => ResourceStatusesLkp::APPROVED], $id);
     }
 

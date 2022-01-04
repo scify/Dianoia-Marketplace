@@ -10,8 +10,8 @@
                     <div style="padding-right:15px">
                         <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showDeleteModal()"><i class="fa fa-trash" style="font-size:25px;color:var(--color-blue)"></i></button>
                         <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showEditModal"><i class="far fa-edit"></i></button>
-                        <button   v-if="loggedInUserIsAdmin()  && isPublished()" type="submit" class="btn btn--edit" @click="hideExercise"><i class="fas fa-glasses"  style="font-size:30px;color:var(--color-green)"></i></button>
-                        <button   v-else-if="loggedInUserIsAdmin() && !isPublished()" type="submit" class="btn btn--edit" @click="showExercise"><i class="fas fa-glasses"  style="font-size:30px;color:var(--color-grey)"></i></button>
+                        <button   v-if="loggedInUserIsAdmin()  && isPublished()" type="submit" class="btn btn--edit" @click="showExerciseRejectionModal"><i class="fas fa-glasses"  style="font-size:30px;color:var(--color-green)"></i></button>
+                        <button   v-else-if="loggedInUserIsAdmin() && !isPublished()" type="submit" class="btn btn--edit" @click="approveExercise"><i class="fas fa-glasses"  style="font-size:30px;color:var(--color-grey)"></i></button>
                         <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary"   target="_blank">{{   trans('messages.see-exercise') }}</a>
                     </div>
                 </div>
@@ -131,6 +131,35 @@
                 </div>
             </template>
         </modal>
+        <modal
+            @canceled="exerciseRejectionModalOpen = false"
+            id="exercise-rejection-modal"
+            class="modal"
+            :open="exerciseRejectionModalOpen"
+            :allow-close="true">
+
+            <template v-slot:header>
+                <h5 class="modal-title pl-2">  {{trans('messages.exercise-rejection')}}
+                    <b>{{ resource.name }}</b>
+                </h5>
+            </template>
+            <template v-slot:body>
+                <div class="container pt-3 pb-5">
+                    <div class="row">
+                        <span>{{trans('messages.see-rejection')}}</span>
+                        <p style="white-space: pre-line;">{{  }}</p>
+                        <br>
+                        <div id="rejectForm">
+                            <textarea rows="4" cols="50" v-model="rejectionMessage"></textarea>
+                            <p>{{trans('messages.warning_rejection')}}</p>
+                            <button @click="rejectExercise" class="btn btn-danger">
+                                {{trans('messages.exercise-rejection')}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </modal>
     </div>
 </template>
 
@@ -206,9 +235,6 @@ export default {
         getHideExerciseRoute(){
             return route('resources.hide', this.resource.id);
         },
-        getShowExerciseRoute(){
-            return route('resources.show', this.resource.id);
-        },
         getCloneExerciseRoute() {
             return route('resources.clone', this.resource.id);
         },
@@ -277,19 +303,9 @@ export default {
                 window.location.reload()
             });
         },
-        hideExercise(){
+        approveExercise(){
             this.post({
-                url: this.getHideExerciseRoute(),
-                data:{
-                    id: this.resource.id,
-                },
-                urlRelative: false
-            }).then(_ => {});
-            window.location.reload();
-        },
-        showExercise(){
-            this.post({
-                url: this.getShowExerciseRoute(),
+                url: this.getApproveExerciseRoute(),
                 data:{
                     id: this.resource.id,
                 },
@@ -304,16 +320,6 @@ export default {
         getApproveExerciseRoute(){
             return route('resources.approve', this.resource.id);
         },
-
-        approveExercise(){
-            this.post({
-                url: this.getApproveExerciseRoute(),
-                urlRelative: false
-             }).then(response => {
-            });
-            window.location.reload()
-        },
-
 
         showDeleteModal() {
 

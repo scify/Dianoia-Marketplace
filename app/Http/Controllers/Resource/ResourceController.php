@@ -195,54 +195,26 @@ class ResourceController extends Controller
     }
 
 
-    public function approve(int $id):\Illuminate\Http\RedirectResponse{
-        $package = $this->resourcesPackageManager->getResourcesPackage($id);
-        $redirect_route = $package->type_id===ResourceTypesLkp::COMMUNICATION ? 'patient_resources.index' : 'carer_resources.index';
-        try {
-            $this->resourcesPackageManager->approveResourcesPackage($id);
-            return redirect()->route($redirect_route)->with('flash_message_success', __('messages.exercise-approve-success'));
-
-        } catch (\Exception $e) {
-            return redirect()->back()->with('flash_message_failure', __('messages.exercise-approve-failure'));
-        }
-    }
-
     public function reject(Request $request):\Illuminate\Http\RedirectResponse{
         $data = $request->all();
-        $package = $this->resourcesPackageManager->getResourcesPackage($data['id']);
         $rejectionMessage = $data['rejection_message'];
-        $redirect_route = $package->type_id===ResourceTypesLkp::COMMUNICATION ? 'patient_resources.index' : 'carer_resources.index';
-
-        try {
-            $this->resourcesPackageManager->rejectResourcesPackage($data['id']);
-            return redirect()->route($redirect_route)->with('flash_message_success',__('messages.exercise-reject-success'));
-
+        $resource = $this->resourceManager->getResource($data['id']);try {
+            $this->resourceManager->rejectResource($data['id']);
+            return redirect()->back()->with('flash_message_success',__('messages.exercise-reject-success'));
         } catch (\Exception $e) {
             return redirect()->back()->with('flash_message_failure', __('messages.exercise-reject-failure'));
         }
     }
 
-
-    public function hide(Request $request):\Illuminate\Http\RedirectResponse{
+    public function approve(Request $request):\Illuminate\Http\RedirectResponse{
         $data = $request->all();
         $resource = $this->resourceManager->getResource($data['id']);try {
-            $this->resourceManager->hideResource($data['id']);
-            return redirect()->back()->with('flash_message_success',__('messages.exercise-hide-success'));
+            $this->resourceManager->approveResource($data['id']);
+            return redirect()->back()->with('flash_message_success', __('messages.exercise-approve-success'));
         } catch (\Exception $e) {
-            return redirect()->back()->with('flash_message_failure', __('messages.exercise-hide-failure'));
+            return redirect()->back()->with('flash_message_failure', __('messages.exercise-approve-failure'));
         }
     }
-
-    public function show(Request $request):\Illuminate\Http\RedirectResponse{
-        $data = $request->all();
-        $resource = $this->resourceManager->getResource($data['id']);try {
-            $this->resourceManager->showResource($data['id']);
-            return redirect()->back()->with('flash_message_success', __('messages.exercise-show-success'));
-        } catch (\Exception $e) {
-            return redirect()->back()->with('flash_message_failure', __('messages.exercise-show-failure'));
-        }
-    }
-
 
 
 

@@ -61,7 +61,7 @@ import {Modal} from 'bootstrap';
             let exercise_id = $("#exercise_id").attr('value');
             let type_id = $("#type_id").attr('value');
             // const route = window.route('resources.update_resource,[\'id\' => '.concat(card_id).concat(', \'type_id\' => ').concat(type_id).concat(']'));
-            let route = window.route('resources.update', exercise_id);//todo changed to resources.submit
+            let route = window.route('resources.update', exercise_id);
             let lastChar = route.substr(-1); // Selects the last character
             if (lastChar === '/') {         // If the last character is a slash
                 route = route.slice(0,-1);
