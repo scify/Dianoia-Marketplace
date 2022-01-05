@@ -7,9 +7,9 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/scify)
 
-Laravel 8 Web Application for Creating content for the Talk & Play application
+Laravel 8 Web Application for Creating content for the Dianoia mobile app
 
-[Project URL](https://crowdsourcing.scify.org/)
+[Project URL](https://dianoia.scify.org/)
 
 # Installation Instructions:
 
@@ -92,4 +92,3 @@ sudo nano /etc/hosts
 - Install and configure Xdebug on your machine
 - At Chrome install [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc?utm_source=chrome-app-launcher-info-dialog)
 - At PhpStorm/IntelliJ click the "Start listening for PHP debug connections"
-# Dianoia-Marketplace
