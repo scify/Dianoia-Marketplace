@@ -234,20 +234,22 @@ class ResourceManager {
 
     public function getTransformExercisesForMobileApp($paginated)
     {
-        return $paginated->transform(function ($exercise) {
-            return [
-                'slug' => Str::slug($exercise->name, '_') . '_'. $exercise->id,
-                'title' => $exercise->name,
-                'description' => $exercise->description,
-                'full_text' => "",
-                'video_url' => "",
-                'image_url' =>  $exercise->img_path == null ? "" : $exercise->img_path,
-                'instructions' => ["Κάντε click στο σύνδεσμο για να δείτε το έγγραφο"],
-                'link' => env("APP_URL").'/storage/'.$exercise->pdf_path,
-                'difficulty_level' => 'difficulty_level_'.($exercise->difficulty_id+1)
-            ];
+        return $paginated->through(function ($exercise) {
+                $keys =  array_keys($exercise->toArray());
+                $exercise['slug'] = Str::slug($exercise->name, '_') . '_'. $exercise->id;
+                $exercise['title'] = $exercise->name;
+                $exercise['description'] = $exercise->description;
+                $exercise['full_text'] = "";
+                $exercise['video_url'] = "";
+                $exercise['image_url'] = $exercise->img_path == null ? "" : $exercise->img_path;
+                $exercise['instructions'] = ["Κάντε click στο σύνδεσμο για να δείτε το έγγραφο"];
+                $exercise['link'] = env("APP_URL").'/storage/'.$exercise->pdf_path;
+                $exercise['difficulty_level'] = 'difficulty_level_'.($exercise->difficulty_id+1);
+                foreach($keys as $key){
+                    unset($exercise[$key]);
+                }
+                return $exercise;
         });
-
     }
 
 
