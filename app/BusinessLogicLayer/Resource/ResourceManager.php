@@ -3,7 +3,7 @@
 
 namespace App\BusinessLogicLayer\Resource;
 
-
+use Illuminate\Support\Str;
 use App\Models\Resource\Resource;
 use App\Repository\ContentLanguageLkpRepository;
 use App\Repository\DifficultiesLkpRepository;
@@ -231,5 +231,24 @@ class ResourceManager {
             'avg_rating' => $avg_rating],
             $id);
     }
+
+    public function getTransformExercisesForMobileApp($paginated)
+    {
+        return $paginated->transform(function ($exercise) {
+            return [
+                'slug' => Str::slug($exercise->name, '_') . '_'. $exercise->id,
+                'title' => $exercise->name,
+                'description' => $exercise->description,
+                'full_text' => "",
+                'video_url' => "",
+                'image_url' =>  $exercise->img_path == null ? "" : $exercise->img_path,
+                'instructions' => ["Κάντε click στο σύνδεσμο για να δείτε το έγγραφο"],
+                'link' => env("APP_URL").'/storage/'.$exercise->pdf_path,
+                'difficulty_level' => 'difficulty_level_'.($exercise->difficulty_id+1)
+            ];
+        });
+
+    }
+
 
 }

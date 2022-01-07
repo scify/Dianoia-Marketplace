@@ -19,7 +19,8 @@
         "laravel/fortify": "^1.7",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
-        "sentry/sentry-laravel": "^2.8"
+        "sentry/sentry-laravel": "^2.8",
+      "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -64,7 +65,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

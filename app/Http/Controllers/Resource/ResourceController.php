@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Resource;
 
 use App\BusinessLogicLayer\Resource\ResourceManager;
 use App\BusinessLogicLayer\User\UserManager;
+use App\Models\Resource\Resource;
 use App\Notifications\AcceptanceNotice;
 use App\Notifications\AdminNotice;
 use App\Notifications\RejectionNotice;
@@ -124,12 +125,10 @@ class ResourceController extends Controller
         } catch (Exception $e) {
             return redirect()->route('resources.my_profile')->with('flash_message_failure',__('messages.exercise-submit-failure'));
         }
-
-
-
-
-
     }
+
+
+
 
 
     /**
@@ -408,5 +407,15 @@ class ResourceController extends Controller
     }
 
 
+    public function getTransformAllExercisesForMobileApp(Request $request){
+        try {
+            $paginated = Resource::simplePaginate(2);
+            return $this->resourceManager->getTransformExercisesForMobileApp($paginated);
+
+        }
+        catch (\Exception $e) {
+            return redirect()->back()->with('flash_message_failure', 'Warning! Failed to form JSON output');
+        }
+    }
 
 }

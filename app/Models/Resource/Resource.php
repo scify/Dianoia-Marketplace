@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Support\Jsonable;
 
-class Resource extends Model
+class Resource extends Model implements  Jsonable
 {
     use SoftDeletes;
 
@@ -30,6 +31,7 @@ class Resource extends Model
         'admin_user_id', 'img_path', 'status_id', 'pdf_path', 'type_id', 'description', 'difficulty_id',
         'avg_rating'
     ];
+
 
     public function creator(): HasOne
     {
