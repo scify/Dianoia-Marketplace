@@ -257,7 +257,7 @@ class ResourceManager {
     }
 
     public function getPaginatedResourcesForMobile($requestLanguage=null){
-        $paginated = Resource::simplePaginate(2);
+        $paginated = Resource::simplePaginate(25);
         if($requestLanguage){
             $collection = $paginated->getCollection();
             $contentLanguages = $this->getContentLanguagesForResources();
