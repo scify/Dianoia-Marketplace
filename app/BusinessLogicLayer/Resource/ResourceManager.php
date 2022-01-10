@@ -253,7 +253,7 @@ class ResourceManager {
                     }
                 }
                 return $exercise;
-        });
+        })->toArray();
     }
 
     public function getPaginatedResourcesForMobile($requestLanguage=null){
@@ -272,7 +272,6 @@ class ResourceManager {
             $paginated->setCollection($filteredCollection);
             $paginated->appends(['lang' => $requestLanguage])->links();
         }
-
         return $this->getTransformExercisesForMobileApp($paginated);
     }
 
