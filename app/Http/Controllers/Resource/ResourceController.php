@@ -18,6 +18,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
 
 class ResourceController extends Controller
 {
@@ -120,6 +121,9 @@ class ResourceController extends Controller
         ]);
         try {
             $resource = $this->resourceManager->storeResource($request);
+            $request->slug = Str::slug($request->name, '_') . '_'. $resource->id;
+            $this->resourceManager->updateResource($request, $resource->id);
+
             $this->submit($resource);//todo comment to pause exercise submission notifications
             return redirect()->route('resources.my_profile')->with('flash_message_success',__('messages.exercise-submit-success'));
         } catch (Exception $e) {
@@ -150,13 +154,13 @@ class ResourceController extends Controller
             'type_id' => "required"
         ]);
         try {
+            $request->slug = Str::slug($request->name, '_') . '_'. $id;
             $this->resourceManager->updateResource($request, $id);
             return redirect()->route('resources.my_profile')->with('flash_message_success', __('messages.exercise-update-success'));
         } catch (\Exception $e) {
             return redirect()->route('resources.my_profile')->with('flash_message_failure', __('messages.exercise-update-failure'));
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -409,7 +413,7 @@ class ResourceController extends Controller
 
     public function getTransformAllExercisesForMobileApp(Request $request){
         try {
-            $paginated = Resource::simplePaginate(2);
+            $paginated = Resource::simplePaginate(25);
             return $this->resourceManager->getTransformExercisesForMobileApp($paginated);
 
         }

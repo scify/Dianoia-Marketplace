@@ -127,6 +127,7 @@ class ResourceManager {
     {
         $storeArr = [
             'name' => $request['name'],
+            'slug' => null,
             'lang_id' =>  $request['lang'],
             'img_path' => null,
             'pdf_path' => null,
@@ -169,6 +170,7 @@ class ResourceManager {
     {
         $storeArr = [
             "name" => $request['name'],
+            "slug" => $request['slug'],
 //            "lang_id" => $request['lang'],
             "img_path" => null,
             "pdf_path" => null,
@@ -236,7 +238,7 @@ class ResourceManager {
     {
         return $paginated->through(function ($exercise) {
                 $keys =  array_keys($exercise->toArray());
-                $exercise['slug'] = Str::slug($exercise->name, '_') . '_'. $exercise->id;
+                $exercise['slug'] = $exercise->slug;
                 $exercise['title'] = $exercise->name;
                 $exercise['description'] = $exercise->description;
                 $exercise['full_text'] = "";

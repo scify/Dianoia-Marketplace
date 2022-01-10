@@ -27,6 +27,7 @@ class Resource extends Model implements  Jsonable
      */
     protected $fillable = [
         'name',
+        'slug',
         'lang_id', 'creator_user_id',
         'admin_user_id', 'img_path', 'status_id', 'pdf_path', 'type_id', 'description', 'difficulty_id',
         'avg_rating'
