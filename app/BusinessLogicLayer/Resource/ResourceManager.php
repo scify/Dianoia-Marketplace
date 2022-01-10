@@ -257,7 +257,7 @@ class ResourceManager {
     }
 
     public function getPaginatedResourcesForMobile($requestLanguage=null){
-        $paginated = Resource::simplePaginate(25);
+        $paginated = Resource::simplePaginate(2);
         if($requestLanguage){
             $collection = $paginated->getCollection();
             $contentLanguages = $this->getContentLanguagesForResources();
@@ -270,7 +270,9 @@ class ResourceManager {
                 return $resource->lang_id == $langId;
             });
             $paginated->setCollection($filteredCollection);
+            $paginated->appends(['lang' => $requestLanguage])->links();
         }
+
         return $this->getTransformExercisesForMobileApp($paginated);
     }
 
