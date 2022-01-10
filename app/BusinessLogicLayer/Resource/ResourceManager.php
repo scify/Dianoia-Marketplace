@@ -254,5 +254,23 @@ class ResourceManager {
         });
     }
 
+    public function getPaginatedResourcesForMobile($requestLanguage=null){
+        $paginated = Resource::simplePaginate(25);
+        if($requestLanguage){
+            $collection = $paginated->getCollection();
+            $contentLanguages = $this->getContentLanguagesForResources();
+            $languageMap = [];
+            foreach($contentLanguages as $lang){
+                $languageMap[$lang->code] = $lang->id;
+            }
+            $langId = $languageMap[$requestLanguage];
+            $filteredCollection = $collection->filter(function($resource) use ($langId) {
+                return $resource->lang_id == $langId;
+            });
+            $paginated->setCollection($filteredCollection);
+        }
+        return $this->getTransformExercisesForMobileApp($paginated);
+    }
+
 
 }

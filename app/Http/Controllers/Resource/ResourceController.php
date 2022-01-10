@@ -413,9 +413,7 @@ class ResourceController extends Controller
 
     public function getTransformAllExercisesForMobileApp(Request $request){
         try {
-            $paginated = Resource::simplePaginate(25);
-            return $this->resourceManager->getTransformExercisesForMobileApp($paginated);
-
+            return $this->resourceManager->getPaginatedResourcesForMobile($request->lang);
         }
         catch (\Exception $e) {
             return redirect()->back()->with('flash_message_failure', 'Warning! Failed to form JSON output');
