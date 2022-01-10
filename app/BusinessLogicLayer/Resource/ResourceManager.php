@@ -248,7 +248,9 @@ class ResourceManager {
                 $exercise['link'] = env("APP_URL").'/storage/'.$exercise->pdf_path;
                 $exercise['difficulty_level'] = 'difficulty_level_'.($exercise->difficulty_id+1);
                 foreach($keys as $key){
-                    unset($exercise[$key]);
+                    if($key != 'slug'){
+                        unset($exercise[$key]);
+                    }
                 }
                 return $exercise;
         });
