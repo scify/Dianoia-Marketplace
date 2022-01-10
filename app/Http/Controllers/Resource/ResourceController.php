@@ -121,8 +121,8 @@ class ResourceController extends Controller
         ]);
         try {
             $resource = $this->resourceManager->storeResource($request);
-            $request->slug = Str::slug($request->name, '_') . '_'. $resource->id;
-            $this->resourceManager->updateResource($request, $resource->id);
+            $request['slug'] = Str::slug($request['name'], '_') . '_'. $resource->id;
+            $this->resourceManager->updateResource($request, $resource['id']);
 
             $this->submit($resource);//todo comment to pause exercise submission notifications
             return redirect()->route('resources.my_profile')->with('flash_message_success',__('messages.exercise-submit-success'));
@@ -154,7 +154,7 @@ class ResourceController extends Controller
             'type_id' => "required"
         ]);
         try {
-            $request->slug = Str::slug($request->name, '_') . '_'. $id;
+            $request['slug'] = Str::slug($request['name'], '_') . '_'. $id;
             $this->resourceManager->updateResource($request, $id);
             return redirect()->route('resources.my_profile')->with('flash_message_success', __('messages.exercise-update-success'));
         } catch (\Exception $e) {
