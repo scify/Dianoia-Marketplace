@@ -114,4 +114,9 @@ class UserManager {
         return $this->userRepository->all();
     }
 
+    public function getUser($id)
+    {
+        return $this->userRepository->find($id);
+    }
+
 }

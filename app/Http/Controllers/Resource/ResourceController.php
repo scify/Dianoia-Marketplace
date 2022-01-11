@@ -120,6 +120,7 @@ class ResourceController extends Controller
             'terms' => "required"
         ]);
         try {
+            $request['status_id'] = ResourceStatusesLkp::CREATED_PENDING_APPROVAL;
             $resource = $this->resourceManager->storeResource($request);
             $request['slug'] = Str::slug($request['name'], '_') . '_'. $resource->id;
             $this->resourceManager->updateResource($request, $resource['id']);
@@ -186,7 +187,7 @@ class ResourceController extends Controller
     {
 //        return $this->approve($id); //TODO: uncomment to enable pending package approval by admin
         $admins = $this->userManager->get_admin_users();
-//        Notification::send($admins, new AdminNotice($resource));//Todo when dianoia email for admin has been setup
+        Notification::send($admins, new AdminNotice($resource));//Todo when dianoia email for admin has been setup
         try {
             return redirect()->route('resources.index')->with('flash_message_success',  __('messages.exercise-submit-success'));
 
@@ -204,8 +205,9 @@ class ResourceController extends Controller
         $data = $request->all();
         $rejectionMessage = $data['rejection_message'];
         $resource = $this->resourceManager->getResource($data['id']);try {
+            $creator = $this->userManager->getUser($resource['creator_user_id']);
             $this->resourceManager->rejectResource($data['id']);
-            Notification::send( Auth::user(), new RejectionNotice($resource, $rejectionMessage,Auth::user()->name));
+            Notification::send( $creator, new RejectionNotice($resource, $rejectionMessage,$creator->name));
             return redirect()->back()->with('flash_message_success',__('messages.exercise-reject-success'));
         } catch (\Exception $e) {
             return redirect()->back()->with('flash_message_failure', __('messages.exercise-reject-failure'));
