@@ -232,7 +232,11 @@ class ResourceController extends Controller
             ]);
             $viewModel->isAdmin = Auth::check() && $this->userManager->isAdmin(Auth::user());
             $viewModel->user_id_to_get_content = Auth::id();
-            $viewModel->resourcesPackagesStatuses = [ResourceStatusesLkp::APPROVED];
+            $viewModel->resourceStatuses = array(
+                'accepted' => ResourceStatusesLkp::APPROVED,
+                'pending' => ResourceStatusesLkp::CREATED_PENDING_APPROVAL,
+                'rejected' => ResourceStatusesLkp::REJECTED,
+            );
             $user = Auth::user();
             $userRoleMap = $this->userManager->getUserRolesMapping()->filter(
                 function ($entry) use ($user) {

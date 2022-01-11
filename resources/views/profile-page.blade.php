@@ -120,11 +120,25 @@
                                 :creation-route="'{{route('resources.create')}}'"
                                 :user='@json($user)'
                                 :is-admin="'{{$viewModel->isAdmin}}'"
+                                :resources-statuses='@json([$viewModel->resourceStatuses['accepted']])'
                                 :init-exercise-types=" 'patient' "
                                 :user-id-to-get-content='{{$user->id}}'>
                             </exercises-with-filters>
                         </div>
                      </div>
+                    <div class="exercise-template shadow content mb-5 mt-5">
+                        <div class="exercise-box p-5" id="registered-template">
+                            <exercises-with-filters
+                                :resources-route="'{{ route('resources.get') }}'"
+                                :creation-route="'{{route('resources.create')}}'"
+                                :user='@json($user)'
+                                :is-admin="'{{$viewModel->isAdmin}}'"
+                                :init-exercise-types=" 'patient' "
+                                :resources-statuses='@json([$viewModel->resourceStatuses['pending']])'
+                                :user-id-to-get-content='{{$user->id}}'>
+                            </exercises-with-filters>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="carer" role="tabpanel" aria-labelledby="carer-tab">
                     <div class="row mt-5">
@@ -135,48 +149,24 @@
                                 :user='@json($user)'
                                 :is-admin="'{{$viewModel->isAdmin}}'"
                                 :init-exercise-types=" 'carer' "
+                                :resources-statuses='@json([$viewModel->resourceStatuses['accepted']])'
                                 :user-id-to-get-content='{{$user->id}}'>
                             </exercises-with-filters>
                         </div>
                     </div>
+
                     <div class="exercise-template shadow content mb-5 mt-5">
                         <div class="exercise-box p-5" id="registered-template">
-                            <div class="registered-message text-center">{{__('messages.exercise-submitted')}}</div>
-
-                            <div class="exercise-title-row d-flex align-items-center justify-content-between">
-                                <div>
-                                    <p class="title">Εβδομαδιαίο Πρόγραμμα Δραστηριοτήτων</p>
-                                    <p>Δημιουργήστε το εβδομαδιαίο σας πρόγραμμα με τις δραστηριότητές σας.</p>
-
-                                </div>
-                                <div>
-                                    <!-- Modal button Αφού επεξεργαστείτε τα στοιχεία της άσκησης -->
-                                    <button type="submit" class="btn btn--edit" data-bs-toggle="modal"
-                                            data-bs-target="#editModal3"><i class="far fa-edit"></i></button>
-
-                                    <a href="#" class="btn btn--secondary" target="_blank">{{trans('messages.see-exercise')}}</a>
-                                </div>
-
-
-                            </div>
-                            <hr>
-                            <div class="exercise-rating d-flex justify-content-between">
-                                <div class="rating">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                                <div class="created-by">Δημιουργήθηκε από Επαγγελματίας φροντιστής</div>
-                                <div class="level">Κανονικό επίπεδο</div>
-                                <div class="language">Ελληνικά</div>
-                                <div class="category">Ασκήσεις για φροντιστές</div>
-
-                            </div>
+                            <exercises-with-filters
+                                :resources-route="'{{ route('resources.get') }}'"
+                                :creation-route="'{{route('resources.create')}}'"
+                                :user='@json($user)'
+                                :is-admin="'{{$viewModel->isAdmin}}'"
+                                :init-exercise-types=" 'carer' "
+                                :resources-statuses='@json([$viewModel->resourceStatuses['pending']])'
+                                :user-id-to-get-content='{{$user->id}}'>
+                            </exercises-with-filters>
                         </div>
-
-
                     </div>
 
                 </div>

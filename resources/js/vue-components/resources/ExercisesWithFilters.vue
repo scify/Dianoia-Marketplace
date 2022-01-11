@@ -2,9 +2,9 @@
     <div>
 
 
-        <div class="search-section mt-5">
+        <div v-if="!isProfilePage()" class="search-section mt-5">
 
-            <div v-if="!isProfilePage()" class="search-section__options content d-flex justify-content-between">
+            <div  class="search-section__options content d-flex justify-content-between">
 
                 <div class="dropdown">
                     <button class="btn btn--search dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -412,7 +412,7 @@ export default {
             if (this.selectedTypes.length) {
                 url += '&type_ids=' + _.map(this.selectedTypes, 'id').join();
             }
-            if (this.isAdmin){
+            if (this.resourcesStatuses){
                 console.log(_.map(this.resourcesStatuses).join());
                 url += '&status_ids=' + _.map(this.resourcesStatuses).join();
             }

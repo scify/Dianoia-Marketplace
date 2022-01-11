@@ -2,16 +2,19 @@
     <div v-if="resource.id">
         <div class="exercise-template shadow content mb-5 mt-5">
             <div class="exercise-box" v-bind:class="[isCarerExercise() ? 'carer-template' :'patient-template']">
+                <div v-if="isPending()" class="registered-message text-center">{{trans('messages.exercise-submitted')}}</div>
                 <div class="exercise-title-row d-flex justify-content-between align-items-center">
                     <div style="padding-left:15px;padding-top:15px;">
                         <p class="title"> {{resource.name}} </p>
                         <p style="max-width:800px">{{resource.description}}</p>
                     </div>
                     <div style="padding-right:15px">
-                        <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showDeleteModal()"><i class="fa fa-trash" style="font-size:25px;color:var(--color-blue)"></i></button>
+                        <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showDeleteModal()"><i class="fa fa-trash" style="font-size:25px;color:red"></i></button>
                         <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showEditModal"><i class="far fa-edit"></i></button>
-                        <button   v-if="loggedInUserIsAdmin()  && isPublished()" type="submit" class="btn btn--edit" @click="showExerciseRejectionModal"><i class="fas fa-glasses"  style="font-size:30px;color:var(--color-green)"></i></button>
-                        <button   v-else-if="loggedInUserIsAdmin() && !isPublished()" type="submit" class="btn btn--edit" @click="approveExercise"><i class="fas fa-glasses"  style="font-size:30px;color:var(--color-grey)"></i></button>
+                        <button   v-if="loggedInUserIsAdmin()  && isApproved()" type="submit" class="btn btn--edit" @click="showExerciseRejectionModal"><i class="fas fa-thumbs-down" style="font-size:30px;color:red"></i></button>
+                        <button   v-else-if="loggedInUserIsAdmin() && isRejected()" type="submit" class="btn btn--edit" @click="approveExercise"><i class="fas fa-thumbs-up" style="font-size:30px;color:var(--color-green)"></i></button>
+                        <button   v-else-if="loggedInUserIsAdmin() && isPending()" type="submit" class="btn btn--edit" @click="approveExercise"><i class="fas fa-thumbs-up" style="font-size:30px;color:var(--color-green)"></i></button>
+                        <button   v-if="loggedInUserIsAdmin() && isPending()" type="submit" class="btn btn--edit" @click="showExerciseRejectionModal"><i class="fas fa-thumbs-down" style="font-size:30px;color:red"></i></button>
                         <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary"   target="_blank">{{   trans('messages.see-exercise') }}</a>
                     </div>
                 </div>
@@ -378,8 +381,14 @@ export default {
         isProfilePage(){
             return this.userIdToGetContent > 0;
         },
-        isPublished(){
+        isApproved(){
             return this.resource.status_id === 2;
+        },
+        isPending(){
+            return this.resource.status_id === 1;
+        },
+        isRejected(){
+            return this.resource.status_id === 3;
         }
 
     }

@@ -134,7 +134,7 @@ You can also create your own exercises and if you wish to, you can share them wi
     'finish-edit' => 'Completion of editing',
     'upload-different-file' => 'Upload a different .pdf file with the exercise',
     'yes' => 'Yes',
-    'exercise-submitted' => 'The exercise has been registered. In order for it to become available on the application so you can use it, it first has to be approved by the administrator. You will be notified via eail for the progress of its approval.',
+    'exercise-submitted' => 'The exercise has been registered. In order for it to become available on the application so you can use it, it first has to be approved by the administrator. You will be notified via email for the progress of its approval.',
     'exercise-edit-tutorial' => 'After editing the details of the exercise, a new notification will be send to the administrator in order to edit the new data.',
     'edit-success' => 'The editing of the exercise was successful!',
     'email-decision' => 'You will be informed for the final decision with a relevant email by the administrator. ',
