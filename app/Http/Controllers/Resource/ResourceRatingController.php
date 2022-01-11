@@ -42,10 +42,6 @@ class ResourceRatingController extends Controller
             'resources_id' => 'required|integer|exists:resources,id',
             'rating' => 'required|integer|min:1|max:5',
         ]);
-
-        if (!Auth::check())
-            abort(Response::HTTP_UNAUTHORIZED);
-
         return $this->resourcesRatingManager->storeOrUpdateRating(
             $request->user_id,
             $request->resources_id,
@@ -54,10 +50,6 @@ class ResourceRatingController extends Controller
     }
     public function storeOrUpdateAverageResourceRating(Request $request){
         $data = $request->all();
-
-        if (!Auth::check())
-            abort(Response::HTTP_UNAUTHORIZED);
-
         try{
             $this->resourceManager->storeOrUpdateAverageResourceRating(
                 $data['id'],

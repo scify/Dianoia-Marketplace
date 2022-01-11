@@ -338,52 +338,6 @@ class ResourceController extends Controller
         );
     }
 
-
-    public function approve_pending_packages()
-    {
-        try {
-            $userId = Auth::id();
-            $adminIds = $this->userManager->get_admin_users()->map(
-                function($admin){
-                    return $admin->id;
-                }
-            );
-
-            if(!$adminIds->contains($userId)){
-                return response('Unauthorized.', 401);
-            }
-
-
-            $viewModel = $this->carerResourcesPackageManager->getCarerResourcesPackageIndexPageVM();
-
-            $viewModel->resourcesPackagesStatuses = [ResourceStatusesLkp::CREATED_PENDING_APPROVAL];
-            $viewModel->user_id_to_get_content = null;
-
-            $viewModel->isAdmin = $this->userManager->isAdmin(Auth::user());
-            return view('resources_packages.approve-pending-packages')->with(
-                ['viewModel' => $viewModel, 'user' => Auth::user()]);
-        } catch (ModelNotFoundException $e) {
-            abort(404);
-        }
-    }
-
-
-    public function delete_package($package_id)
-    {
-        try {
-            $this->resourcesPackageManager->destroyResourcesPackage($package_id);
-        }
-        catch (ModelNotFoundException $e) {
-            abort(404);
-        }
-        catch (\Exception $e) {
-            return redirect()->back()->with('flash_message_failure', 'Warning! The resource package has not been deleted');
-        }
-        return redirect()->back()->with('flash_message_success',  'Success! The resource package has been deleted');
-    }
-
-
-
     public function getContentLanguages()
     {
         return $this->resourceManager->getContentLanguagesForResources();
