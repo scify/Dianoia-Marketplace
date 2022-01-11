@@ -107,7 +107,7 @@ class ResourceManager {
     //TODO: remove pending as a default value after admin approval has been implemented
     public function getResources(int $lang_id = null, $user_id = null, array $status_ids=[], array $difficulties=null, array $type_ids=null, array $ratings=null) {
         if($status_ids == [])
-            $status_ids=[ResourceStatusesLkp::APPROVED, ResourceStatusesLkp::CREATED_PENDING_APPROVAL];
+            $status_ids=[ResourceStatusesLkp::APPROVED];
         $ret = $this->resourceRepository->getResources($user_id, $lang_id, $status_ids, $difficulties, $type_ids, $ratings);
         return $ret;
     }

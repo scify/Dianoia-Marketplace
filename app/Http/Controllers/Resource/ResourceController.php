@@ -215,7 +215,8 @@ class ResourceController extends Controller
         $data = $request->all();
         $resource = $this->resourceManager->getResource($data['id']);try {
             $this->resourceManager->approveResource($data['id']);
-            Notification::send( Auth::user(), new AcceptanceNotice($resource,Auth::user()->name));
+            $creator = $this->userManager->getUser($resource['creator_user_id']);
+            Notification::send( $creator, new AcceptanceNotice($resource,$creator->name));
             return redirect()->back()->with('flash_message_success', __('messages.exercise-approve-success'));
         } catch (\Exception $e) {
             return redirect()->back()->with('flash_message_failure', __('messages.exercise-approve-failure'));
