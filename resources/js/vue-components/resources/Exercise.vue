@@ -146,10 +146,18 @@
             <template v-slot:body>
                 <div class="container pt-3 pb-5">
                     <div class="row">
-                        <span>{{trans('messages.see-rejection')}}</span>
+                        <select v-model="rejectionReason">
+                            <option disabled value="">{{trans('messages.see-rejection')}}</option>
+                            <option> Αυτή η άσκηση παραβιάζει τους όρους χρήσης της πλατφορμας</option>
+                            <option> Αυτή η άσκηση περιέχει ακατάλληλο περιεχόμενο</option>
+                            <option> Aυτή η άσκηση παραβιάζει τους κανονισμούς περί πνευματικής ιδιοκτησίας</option>
+                            <option> Το περιεχόμενο της άσκησης δεν είναι ευκρινές / ευανάγνωστο</option>
+                            <option> Άλλο </option>
+                        </select>
                         <p style="white-space: pre-line;">{{  }}</p>
                         <br>
                         <div id="rejectForm">
+                            <p>Optionally include some comments below</p>
                             <textarea rows="4" cols="50" v-model="rejectionMessage"></textarea>
                             <p>{{trans('messages.warning_rejection')}}</p>
                             <button @click="rejectExercise" class="btn btn-danger">
@@ -193,6 +201,7 @@ export default {
             userRating: 0,
             maxRating: 5,
             rejectionMessage: "this exercise violates the platform rules of conduct",
+            rejectionReason: "",
             resourceChildrenModalOpen: false,
             rateModalOpen: false,
             editModalOpen: false,
@@ -296,6 +305,7 @@ export default {
                 url: this.getRejectExerciseRoute(),
                 data:{
                     id: this.resource.id,
+                    rejection_reason: this.rejectionReason,
                     rejection_message: this.rejectionMessage
                 },
                 urlRelative: false
@@ -369,7 +379,7 @@ export default {
             return this.userIdToGetContent > 0;
         },
         isPublished(){
-            return this.resource.status_id == 2;
+            return this.resource.status_id === 2;
         }
 
     }

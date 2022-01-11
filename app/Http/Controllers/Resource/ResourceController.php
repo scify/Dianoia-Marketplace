@@ -185,7 +185,6 @@ class ResourceController extends Controller
 
     public function submit($resource): \Illuminate\Http\RedirectResponse
     {
-//        return $this->approve($id); //TODO: uncomment to enable pending package approval by admin
         $admins = $this->userManager->get_admin_users();
         Notification::send($admins, new AdminNotice($resource));//Todo when dianoia email for admin has been setup
         try {
@@ -194,20 +193,17 @@ class ResourceController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('flash_message_failure', __('messages.exercise-submit-failure'));
         }
-
-        //
-        #Manager get id of card
-        #Manager calls repository
     }
 
 
     public function reject(Request $request):\Illuminate\Http\RedirectResponse{
         $data = $request->all();
         $rejectionMessage = $data['rejection_message'];
+        $rejectionReason = $data['rejection_reason'];
         $resource = $this->resourceManager->getResource($data['id']);try {
             $creator = $this->userManager->getUser($resource['creator_user_id']);
             $this->resourceManager->rejectResource($data['id']);
-            Notification::send( $creator, new RejectionNotice($resource, $rejectionMessage,$creator->name));
+            Notification::send( $creator, new RejectionNotice($resource, $rejectionMessage, $rejectionReason, $creator->name));
             return redirect()->back()->with('flash_message_success',__('messages.exercise-reject-success'));
         } catch (\Exception $e) {
             return redirect()->back()->with('flash_message_failure', __('messages.exercise-reject-failure'));
