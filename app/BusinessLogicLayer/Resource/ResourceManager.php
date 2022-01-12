@@ -5,6 +5,7 @@ namespace App\BusinessLogicLayer\Resource;
 
 use Illuminate\Support\Str;
 use App\Models\Resource\Resource;
+use App\Models\User;
 use App\Repository\ContentLanguageLkpRepository;
 use App\Repository\DifficultiesLkpRepository;
 use App\Repository\Resource\ResourceRepository;
@@ -118,6 +119,10 @@ class ResourceManager {
 
     public function approveResource($id){
         return $this->resourceRepository->update(['status_id' => ResourceStatusesLkp::APPROVED], $id);
+    }
+
+    public function reportResource(int $id, User $reporter){
+        ;
     }
 
     /**

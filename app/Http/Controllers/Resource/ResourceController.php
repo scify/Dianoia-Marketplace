@@ -6,6 +6,7 @@ use App\BusinessLogicLayer\Resource\ResourceManager;
 use App\BusinessLogicLayer\User\UserManager;
 use App\Models\Resource\Resource;
 use App\Notifications\AcceptanceNotice;
+use App\Notifications\ReportNotice;
 use App\Notifications\AdminNotice;
 use App\Notifications\RejectionNotice;
 use App\Repository\Resource\ResourceStatusesLkp;
@@ -211,6 +212,7 @@ class ResourceController extends Controller
 
     }
 
+
     public function approve(Request $request):\Illuminate\Http\RedirectResponse{
         $data = $request->all();
         $resource = $this->resourceManager->getResource($data['id']);try {
@@ -222,6 +224,24 @@ class ResourceController extends Controller
             return redirect()->back()->with('flash_message_failure', __('messages.exercise-approve-failure'));
         }
     }
+
+    public function report(Request $request):\Illuminate\Http\RedirectResponse{
+        $data = $request->all();
+        $reportComment = $data['report_comment'];
+        $reportReason= $data['report_reason'];
+        $resource = $this->resourceManager->getResource($data['id']);try {
+            $creator = $this->userManager->getUser($resource->creator_user_id);
+            $reporter = Auth::user();
+            $admins = $this->userManager->get_admin_users();
+            $this->resourceManager->reportResource($data['id'], $reporter);
+            Notification::send( $admins, new ReportNotice($resource, $reportComment, $reportReason, $creator, $reporter));
+            return redirect()->back()->with('flash_message_success','Reported successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('flash_message_failure', __('Failed to report'));
+        }
+
+    }
+
 
 
 

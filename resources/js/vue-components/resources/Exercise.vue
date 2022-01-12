@@ -9,12 +9,14 @@
                         <p style="max-width:800px">{{resource.description}}</p>
                     </div>
                     <div style="padding-right:15px">
-                        <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showDeleteModal()"><i class="fa fa-trash" style="font-size:25px;color:red"></i></button>
-                        <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showEditModal"><i class="far fa-edit"></i></button>
-                        <button   v-if="loggedInUserIsAdmin()  && isApproved()" type="submit" class="btn btn--edit" @click="showExerciseRejectionModal"><i class="fas fa-thumbs-down" style="font-size:30px;color:red"></i></button>
-                        <button   v-else-if="loggedInUserIsAdmin() && isRejected()" type="submit" class="btn btn--edit" @click="approveExercise"><i class="fas fa-thumbs-up" style="font-size:30px;color:var(--color-green)"></i></button>
-                        <button   v-else-if="loggedInUserIsAdmin() && isPending()" type="submit" class="btn btn--edit" @click="approveExercise"><i class="fas fa-thumbs-up" style="font-size:30px;color:var(--color-green)"></i></button>
-                        <button   v-if="loggedInUserIsAdmin() && isPending()" type="submit" class="btn btn--edit" @click="showExerciseRejectionModal"><i class="fas fa-thumbs-down" style="font-size:30px;color:red"></i></button>
+                        <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showDeleteModal()"><i class="fa fa-trash" title="Delete" style="font-size:25px;color:red"></i></button>
+                        <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showEditModal"><i class="far fa-edit" title="Edit"></i></button>
+                        <button   v-if="loggedInUserIsAdmin()  && isApproved()" type="submit" class="btn btn--edit" @click="showExerciseRejectionModal"><i class="fas fa-thumbs-down" title="Reject" style="font-size:30px;color:red"></i></button>
+                        <button   v-else-if="loggedInUserIsAdmin() && isRejected()" type="submit" class="btn btn--edit" @click="approveExercise"><i class="fas fa-thumbs-up" title="Approve" style="font-size:30px;color:var(--color-green)"></i></button>
+                        <button   v-else-if="loggedInUserIsAdmin() && isPending()" type="submit" class="btn btn--edit" @click="approveExercise"><i class="fas fa-thumbs-up" title="Approve" style="font-size:30px;color:var(--color-green)"></i></button>
+                        <button   v-if="loggedInUserIsAdmin() && isPending()" type="submit" class="btn btn--edit" @click="showExerciseRejectionModal"><i class="fas fa-thumbs-down" title="Reject" style="font-size:30px;color:red"></i></button>
+                        <button type="submit" class="btn btn--report" @click="showExerciseReportModal"><i class="fas fa-exclamation-triangle hover-red "  title="Report" style="font-size:20px;color:rgba(255,0,0,0.1);padding-right:15px;"></i></button>
+
                         <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary"   target="_blank">{{   trans('messages.see-exercise') }}</a>
                     </div>
                 </div>
@@ -171,6 +173,43 @@
                 </div>
             </template>
         </modal>
+        <modal
+            @canceled="exerciseReportModalOpen = false"
+            id="exercise-report-modal"
+            class="modal"
+            :open="exerciseReportModalOpen"
+            :allow-close="true">
+
+            <template v-slot:header>
+                <h5 class="modal-title pl-2"> Report exercise
+                    <b>{{ resource.name }}</b>
+                </h5>
+            </template>
+            <template v-slot:body>
+                <div class="container pt-3 pb-5">
+                    <div class="row">
+                        <select v-model="rejectionReason">
+                            <option disabled value="">{{trans('messages.see-rejection')}}</option>
+                            <option> Αυτή η άσκηση παραβιάζει τους όρους χρήσης της πλατφορμας</option>
+                            <option> Αυτή η άσκηση περιέχει ακατάλληλο περιεχόμενο</option>
+                            <option> Aυτή η άσκηση παραβιάζει τους κανονισμούς περί πνευματικής ιδιοκτησίας</option>
+                            <option> Το περιεχόμενο της άσκησης δεν είναι ευκρινές / ευανάγνωστο</option>
+                            <option> Άλλο </option>
+                        </select>
+                        <p style="white-space: pre-line;">{{  }}</p>
+                        <br>
+                        <div id="reportForm">
+                            <p>Optionally include some comments below</p>
+                            <textarea rows="4" cols="50" v-model="rejectionMessage"></textarea>
+                            <p>{{trans('messages.warning_rejection')}}</p>
+                            <button @click="rejectExercise" class="btn btn-danger">
+                                Report
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </modal>
     </div>
 </template>
 
@@ -210,6 +249,7 @@ export default {
             editModalOpen: false,
             deleteModalOpen: false,
             exerciseRejectionModalOpen: false,
+            exerciseReportModalOpen: false,
             rateTitleKey: 'rate_exercise_modal_body_text_no_rating'
         }
     },
@@ -328,6 +368,10 @@ export default {
         },
         showExerciseRejectionModal() {
             this.exerciseRejectionModalOpen = true;
+
+        },
+        showExerciseReportModal() {
+            this.exerciseReportModalOpen = true;
 
         },
         getApproveExerciseRoute(){
