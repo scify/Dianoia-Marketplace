@@ -57,12 +57,12 @@ class ReportNotice extends Notification implements ShouldQueue
             ->subject('DiAnoia Marketplace Administration: Exercise REPORTED /  ' . $this->resource->name)
             ->line("Exercise ID:\t" . $this->resource->id)
             ->line("Exercise Name:\t" . $this->resource->name)
-            ->line("Creator Name:\t" . $notifiable->name)
-            ->line("Creator Email:\t" . $notifiable->email)
+            ->line("Creator Name:\t" . $this->creator->name)
+            ->line("Creator Email:\t" . $this->creator->email)
             ->line("Creator ID:\t" . $this->resource->creator_user_id)
             ->line("")
-            ->line("Reporter Name:\t" . $notifiable->reporter->name)
-            ->line("Reporter Email:\t" . $notifiable->reporter->email)
+            ->line("Reporter Name:\t" . $this->reporter->name)
+            ->line("Reporter Email:\t" . $this->reporter->email)
             ->line("Reporter ID:\t" . $this->reporter->id)
             ->action('Manage Submitted Exercises', $url);
     }

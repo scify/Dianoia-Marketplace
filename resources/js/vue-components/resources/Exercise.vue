@@ -163,7 +163,7 @@
                         <br>
                         <div id="rejectForm">
                             <p>Optionally include some comments below</p>
-                            <textarea rows="4" cols="50" v-model="rejectionMessage"></textarea>
+                            <textarea rows="4" cols="50" v-model="rejectionComment"></textarea>
                             <p>{{trans('messages.warning_rejection')}}</p>
                             <button @click="rejectExercise" class="btn btn-danger">
                                 {{trans('messages.exercise-rejection')}}
@@ -187,9 +187,9 @@
             </template>
             <template v-slot:body>
                 <div class="container pt-3 pb-5">
-                    <div class="row">
-                        <select v-model="rejectionReason">
-                            <option disabled value="">{{trans('messages.see-rejection')}}</option>
+                    <div v-if="userLoggedIn()" class="row">
+                        <select v-model="reportReason">
+                            <option disabled value="">Choose your reason for reporting</option>
                             <option> Αυτή η άσκηση παραβιάζει τους όρους χρήσης της πλατφορμας</option>
                             <option> Αυτή η άσκηση περιέχει ακατάλληλο περιεχόμενο</option>
                             <option> Aυτή η άσκηση παραβιάζει τους κανονισμούς περί πνευματικής ιδιοκτησίας</option>
@@ -200,11 +200,18 @@
                         <br>
                         <div id="reportForm">
                             <p>Optionally include some comments below</p>
-                            <textarea rows="4" cols="50" v-model="rejectionMessage"></textarea>
+                            <textarea rows="4" cols="50" v-model="reportComment"></textarea>
                             <p>{{trans('messages.warning_rejection')}}</p>
-                            <button @click="rejectExercise" class="btn btn-danger">
+                            <button @click="reportExercise" class="btn btn-danger">
                                 Report
                             </button>
+                        </div>
+                    </div>
+                    <div class="row" v-else>
+                        <div class="col text-center">
+                            <a :href="getLoginRoute()" class="btn btn-primary">
+                                {{trans('messages.sign-in')}}
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -242,8 +249,10 @@ export default {
         return {
             userRating: 0,
             maxRating: 5,
-            rejectionMessage: "this exercise violates the platform rules of conduct",
+            rejectionComment: "this exercise violates the platform rules of conduct",
             rejectionReason: "",
+            reportComment: "this exercise violates the platform rules of conduct",
+            reportReason: "",
             resourceChildrenModalOpen: false,
             rateModalOpen: false,
             editModalOpen: false,
@@ -283,6 +292,9 @@ export default {
         },
         getRejectExerciseRoute(){
           return route('resources.reject', this.resource.id);
+        },
+        getReportExerciseRoute(){
+            return route('resources.report', this.resource.id);
         },
         getHideExerciseRoute(){
             return route('resources.hide', this.resource.id);
@@ -349,7 +361,21 @@ export default {
                 data:{
                     id: this.resource.id,
                     rejection_reason: this.rejectionReason,
-                    rejection_message: this.rejectionMessage
+                    rejection_comment: this.rejectionComment
+                },
+                urlRelative: false
+            }).then(_ => {
+                window.location.reload()
+            });
+        },
+        reportExercise(){
+            console.log('report exercise');
+            this.post({
+                url: this.getReportExerciseRoute(),
+                data:{
+                    id: this.resource.id,
+                    report_reason: this.reportReason,
+                    report_comment: this.reportComment
                 },
                 urlRelative: false
             }).then(_ => {
@@ -370,9 +396,9 @@ export default {
             this.exerciseRejectionModalOpen = true;
 
         },
+
         showExerciseReportModal() {
             this.exerciseReportModalOpen = true;
-
         },
         getApproveExerciseRoute(){
             return route('resources.approve', this.resource.id);
