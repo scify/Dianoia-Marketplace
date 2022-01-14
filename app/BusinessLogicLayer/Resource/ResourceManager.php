@@ -8,6 +8,7 @@ use App\Models\Resource\Resource;
 use App\Models\User;
 use App\Repository\ContentLanguageLkpRepository;
 use App\Repository\DifficultiesLkpRepository;
+use App\Repository\ReportsRepository;
 use App\Repository\Resource\ResourceRepository;
 use App\Repository\Resource\ResourceStatusesLkp;
 use App\Repository\Resource\ResourceTypeLkpRepository;
@@ -27,16 +28,19 @@ class ResourceManager {
     protected DifficultiesLkpRepository $difficultiesLkpRepository;
     protected ResourceTypesLkp $resourceTypesLkp;
     protected ResourceTypeLkpRepository $resourceTypeLkpRepository;
+    protected ReportsRepository $reportsRepository;
 
     public function __construct(ResourceRepository $resourceRepository,
                                 ContentLanguageLkpRepository  $contentLanguageLkpRepository,
                                 DifficultiesLkpRepository $difficultiesLkpRepository,
-                                ResourceTypeLkpRepository $resourceTypeLkpRepository
+                                ResourceTypeLkpRepository $resourceTypeLkpRepository,
+                                ReportsRepository $reportsRepository
     ) {
         $this->resourceRepository = $resourceRepository;
         $this->contentLanguageLkpRepository = $contentLanguageLkpRepository;
         $this->difficultiesLkpRepository = $difficultiesLkpRepository;
         $this->resourceTypeLkpRepository = $resourceTypeLkpRepository;
+        $this->reportsRepository = $reportsRepository;
     }
 
 
@@ -121,9 +125,6 @@ class ResourceManager {
         return $this->resourceRepository->update(['status_id' => ResourceStatusesLkp::APPROVED], $id);
     }
 
-    public function reportResource(int $id, User $reporter){
-        ;
-    }
 
     /**
      * @throws FileNotFoundException
@@ -210,6 +211,18 @@ class ResourceManager {
     }
 
 
+    public function reportResource($id, $reporting_user_id, $reportReason, $reportComment)
+    {
+        $storeArr = [
+            'resource_id' => $id,
+            'reporting_user_id' => $reporting_user_id,
+            'reason' =>  $reportReason,
+            'comment' => $reportComment,
+        ];
+        $resource = $this->reportsRepository->create($storeArr);
+    }
+
+
     public function destroyResource($id)
     {
         $resource = $this->resourceRepository->find($id);
@@ -218,6 +231,7 @@ class ResourceManager {
         $resourceFileManager->deleteResourceImage($resource);
         $this->resourceRepository->delete($id);
     }
+
 
     public function cloneResource($id, $newParentId){
         $resource = $this->resourceRepository->find($id);
