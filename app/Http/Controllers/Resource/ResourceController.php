@@ -234,7 +234,7 @@ class ResourceController extends Controller
             $creator = $this->userManager->getUser($resource->creator_user_id);
             $reporter = Auth::user();
             $admins = $this->userManager->get_admin_users();
-            $this->resourceManager->reportResource($data['id'], $reporter, $reportReason, $reportComment);
+            $this->resourceManager->reportResource($data['id'], $reporter['id'], $reportReason, $reportComment);
             Notification::send( $admins, new ReportNotice($resource, $reportComment, $reportReason, $creator, $reporter));
             return redirect()->back()->with('flash_message_success','Reported successfully');
         } catch (\Exception $e) {

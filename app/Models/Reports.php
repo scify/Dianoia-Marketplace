@@ -24,7 +24,7 @@ class Reports extends Authenticatable# implements MustVerifyEmail #added impleme
     protected $fillable = [
         'id',
         'reporting_user_id',
-        'resources_id',
+        'resource_id',
         'reason',
         'comment',
     ];

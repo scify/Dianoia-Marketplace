@@ -219,7 +219,7 @@ class ResourceManager {
             'reason' =>  $reportReason,
             'comment' => $reportComment,
         ];
-        $resource = $this->reportsRepository->create($storeArr);
+        $reports = $this->reportsRepository->create($storeArr);
     }
 
 
