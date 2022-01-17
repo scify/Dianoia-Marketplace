@@ -3,6 +3,7 @@
 
 namespace App\BusinessLogicLayer\Resource;
 
+use App\Models\Reports;
 use Illuminate\Support\Str;
 use App\Models\Resource\Resource;
 use App\Models\User;
@@ -292,6 +293,20 @@ class ResourceManager {
             $paginated->appends(['lang' => $requestLanguage])->links();
         }
         return $this->getTransformExercisesForMobileApp($paginated);
+    }
+
+    public function getReportedExercises(){
+
+        $reports =  $this->reportsRepository->all();
+        $resourcesWithReportInfo = Collection::empty();
+        foreach($reports as $report){
+            $resource = $this->resourceRepository->find($report->resource_id);
+            $resource->reportData = $report;
+            $resource->creator = $report->creator;
+            $resourcesWithReportInfo->push($resource);
+
+        }
+        return $resourcesWithReportInfo;
     }
 
 

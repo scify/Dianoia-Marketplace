@@ -109,9 +109,14 @@
                                     type="button" role="tab" aria-controls="accepted" aria-selected="false">Accepted Exercises</button>
                         </li>
                         <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="reported-exercises-tab" data-bs-toggle="tab" data-bs-target="#reported"
+                                    type="button" role="tab" aria-controls="reported" aria-selected="false">Reported Exercises</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
                             <button class="nav-link" id="rejected-exercises-tab" data-bs-toggle="tab" data-bs-target="#rejected"
                                     type="button" role="tab" aria-controls="rejected" aria-selected="false">Rejected Exercises</button>
                         </li>
+
                     </ul>
                 </div>
             </div>
@@ -150,6 +155,20 @@
                                 :creation-route="'{{route('resources.create')}}'"
                                 :user='@json($user)'
                                 :resources-statuses='@json([$viewModel->resourceStatuses['rejected']])'
+                                :is-admin="'{{$viewModel->isAdmin}}'">
+                            </exercises-with-filters>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="reported" role="tabpanel" aria-labelledby="reported-exercises-tab">
+                    <div class="row mt-5">
+                        <div class="col">
+                            <exercises-with-filters
+                                :resources-route="'{{ route('resources.get') }}'"
+                                :creation-route="'{{route('resources.create')}}'"
+                                :user='@json($user)'
+                                :reports-route="'{{ route('resources.user-reports.get') }}'"
+                                :resources-statuses='@json([])'
                                 :is-admin="'{{$viewModel->isAdmin}}'">
                             </exercises-with-filters>
                         </div>

@@ -136,6 +136,7 @@
 <script>
 import {mapActions} from "vuex";
 import Promise from "lodash/_Promise";
+import _ from "lodash";
 
 export default {
     mounted() {
@@ -164,12 +165,12 @@ export default {
         isAdmin: String,
         resourceType: String,
         resourcesRoute: String,
+        reportsRoute: String,
         creationRoute: String,
         initExerciseTypes: String,
     },
     data: function () {
         return {
-
             contentLanguages: [],
             contentTypes: [],
             contentDifficulties: [],
@@ -399,18 +400,23 @@ export default {
             this.resources = [];
             this.filteredResources = [];
             let url = "";
+            if(this.showReports()){
+                url = this.reportsRoute;
+            }
+            else {
+                url = this.resourcesRoute;
+            }
             if(this.selectedContentLanguage){
-                url += this.resourcesRoute + '?lang_id=' + this.selectedContentLanguage.id;
+                url += '?lang_id=' + this.selectedContentLanguage.id;
             }
             else{
-                url += this.resourcesRoute + '?lang_id=';
-            }
-
-            if (this.userIdToGetContent) {
-                url += ('&user_id_to_get_content=' + this.userIdToGetContent);
+                url += '?lang_id=';
             }
             if (this.selectedTypes.length) {
                 url += '&type_ids=' + _.map(this.selectedTypes, 'id').join();
+            }
+            if (this.userIdToGetContent) {
+                url += ('&user_id_to_get_content=' + this.userIdToGetContent);
             }
             if (this.resourcesStatuses){
                 console.log(_.map(this.resourcesStatuses).join());
@@ -429,7 +435,6 @@ export default {
                 let names = _.map(this.filteredResources, 'name')
                 this.numExercises = names.length;
             });
-
         },
         getRatings(){
             const instance = this;
@@ -505,6 +510,11 @@ export default {
         },
         isProfilePage(){
             return this.userIdToGetContent > 0;
+        },
+        showReports(){
+            console.log('reports route');
+            console.log(this.reportsRoute);
+            return this.reportsRoute && this.reportsRoute.length > 0;
         }
     }
 

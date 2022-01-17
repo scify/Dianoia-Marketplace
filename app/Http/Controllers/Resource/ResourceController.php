@@ -157,6 +157,7 @@ class ResourceController extends Controller
         ]);
         try {
             $request['slug'] = Str::slug($request['name'], '_') . '_'. $id;
+            $request['status_id'] = ResourceStatusesLkp::CREATED_PENDING_APPROVAL;
             $this->resourceManager->updateResource($request, $id);
             return redirect()->route('resources.my_profile')->with('flash_message_success', __('messages.exercise-update-success'));
         } catch (\Exception $e) {
@@ -199,7 +200,7 @@ class ResourceController extends Controller
 
     public function reject(Request $request):\Illuminate\Http\RedirectResponse{
         $data = $request->all();
-        $rejectionMessage = $data['rejection_message'];
+        $rejectionMessage = $data['rejection_comment'];
         $rejectionReason = $data['rejection_reason'];
         $resource = $this->resourceManager->getResource($data['id']);try {
             $creator = $this->userManager->getUser($resource['creator_user_id']);
@@ -358,6 +359,16 @@ class ResourceController extends Controller
             $ratings
         );
     }
+
+
+    public function getReports(Request $request)
+    {
+        $reportedResourcesWithMetadata = $this->resourceManager->getReportedExercises();
+        return $reportedResourcesWithMetadata;
+
+    }
+
+
 
     public function getContentLanguages()
     {

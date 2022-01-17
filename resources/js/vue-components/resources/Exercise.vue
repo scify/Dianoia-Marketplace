@@ -8,6 +8,7 @@
                         <p class="title"> {{resource.name}} </p>
                         <p style="max-width:800px">{{resource.description}}</p>
                     </div>
+
                     <div style="padding-right:15px">
                         <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showDeleteModal()"><i class="fa fa-trash" title="Delete" style="font-size:25px;color:red"></i></button>
                         <button   v-if="isProfilePage() || loggedInUserIsAdmin()" type="submit" class="btn btn--edit" @click="showEditModal"><i class="far fa-edit" title="Edit"></i></button>
@@ -19,6 +20,16 @@
 
                         <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary"   target="_blank">{{   trans('messages.see-exercise') }}</a>
                     </div>
+
+                </div>
+
+                <div style="padding-left:15px;padding-top:15px; border-top:1px solid red; box-shadow: 1px 1px red; align-items:center;" v-if="resource.reportData">
+                    <i v-for="user in this.users" >
+                        <div class="reported-by"  v-if="user.id===resource.reportData.reporting_user_id"><a style="color:red"><u>Reported by {{user.name}}</u></a></div>
+                    </i>
+                    <i class="fas fa-envelope fa-3x" title="Respond to reporting user" style="color:var(--color-green)"> <span style="color:var(--color-green)!important; font-size: large!important; padding-top:10px; padding-bottom: 10px"> Respond </span></i>
+                    <p>Reason for Report:    <span style="color:red; font-size: medium; font-style:italic">{{resource.reportData.reason}}</span></p>
+                    <p>Reporter Comments:    <span style="color:red; font-size:medium; font-style:italic">{{resource.reportData.comment}}</span></p>
                 </div>
                 <hr>
 
