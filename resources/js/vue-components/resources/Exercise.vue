@@ -27,7 +27,7 @@
                     <i v-for="user in this.users" >
                         <div class="reported-by"  v-if="user.id===resource.reportData.reporting_user_id"><a style="color:red"><u>Reported by {{user.name}}</u></a></div>
                     </i>
-                    <i class="fas fa-envelope fa-3x" title="Respond to reporting user" style="color:var(--color-green)"> <span style="color:var(--color-green)!important; font-size: large!important; padding-top:10px; padding-bottom: 10px"> Respond </span></i>
+                    <i class="fas fa-envelope fa-3x" @click="showResponseModal" title="Respond to reporting user" style="color:var(--color-green)"> <span  @click="showResponseModal" style="color:var(--color-green); font-size: large; padding-top:10px; padding-bottom: 10px"> Respond </span></i>
                     <p>Reason for Report:    <span style="color:red; font-size: medium; font-style:italic">{{resource.reportData.reason}}</span></p>
                     <p>Reporter Comments:    <span style="color:red; font-size:medium; font-style:italic">{{resource.reportData.comment}}</span></p>
                 </div>
@@ -228,6 +228,41 @@
                 </div>
             </template>
         </modal>
+        <modal
+            @canceled="responseModalOpen = false"
+            id="response-modal"
+            class="modal"
+            :open="responseModalOpen"
+            :allow-close="true">
+
+            <template v-slot:header>
+                <h5 class="modal-title pl-2"> Send response to user
+                    <b>{{ resource.reportData.reporting_user_id }}</b>
+                </h5>
+            </template>
+            <template v-slot:body>
+                <div class="container pt-3 pb-5">
+                    <div v-if="userLoggedIn()" class="row">
+                        <p style="white-space: pre-line;">{{  }}</p>
+                        <br>
+                        <div id="responseForm">
+                            <p>Write response below</p>
+                            <textarea rows="4" cols="50" v-model="response"></textarea>
+                            <button @click="respond" class="btn btn-danger">
+                                Respond
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row" v-else>
+                        <div class="col text-center">
+                            <a :href="getLoginRoute()" class="btn btn-primary">
+                                {{trans('messages.sign-in')}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </modal>
     </div>
 </template>
 
@@ -264,12 +299,14 @@ export default {
             rejectionReason: "",
             reportComment: "this exercise violates the platform rules of conduct",
             reportReason: "",
+            response: "",
             resourceChildrenModalOpen: false,
             rateModalOpen: false,
             editModalOpen: false,
             deleteModalOpen: false,
             exerciseRejectionModalOpen: false,
             exerciseReportModalOpen: false,
+            responseModalOpen: false,
             rateTitleKey: 'rate_exercise_modal_body_text_no_rating'
         }
     },
@@ -306,6 +343,9 @@ export default {
         },
         getReportExerciseRoute(){
             return route('resources.report', this.resource.id);
+        },
+         getResponseRoute(){
+            return route('resources.respond.post');
         },
         getHideExerciseRoute(){
             return route('resources.hide', this.resource.id);
@@ -403,9 +443,23 @@ export default {
             }).then(_ => {});
             window.location.reload()
         },
+        respond(){
+            this.post({
+                url: this.getResponseRoute(),
+                data:{
+                    response: this.response,
+                    resource_name: this.resource.name,
+                    reporting_user_id: this.resource.reportData.reporting_user_id
+                },
+                urlRelative: false
+            }).then(_ => {});
+            window.location.reload()
+        },
         showExerciseRejectionModal() {
             this.exerciseRejectionModalOpen = true;
-
+        },
+        showResponseModal() {
+            this.responseModalOpen = true;
         },
 
         showExerciseReportModal() {

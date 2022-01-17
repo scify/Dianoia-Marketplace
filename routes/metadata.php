@@ -29,5 +29,6 @@ Route::middleware(['throttle:metadata'])->group(function () {
     Route::post("/resources/user-rating", [ResourceRatingController::class, 'storeOrUpdateRating'])->name('resources.user-rating.post');
     Route::post("/resources/update-resource-avg-rating", [ResourceRatingController::class, 'storeOrUpdateAverageResourceRating'])->name('resources.update_resource_rating.post');
     Route::get("/resources/user-reports", [ResourceController::class, 'getReports'])->name('resources.user-reports.get');
+    Route::post("/resources/respond", [ResourceController::class, 'respond'])->name('resources.respond.post');
 
 });

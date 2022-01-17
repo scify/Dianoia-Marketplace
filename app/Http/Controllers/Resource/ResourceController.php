@@ -9,6 +9,7 @@ use App\Notifications\AcceptanceNotice;
 use App\Notifications\ReportNotice;
 use App\Notifications\AdminNotice;
 use App\Notifications\RejectionNotice;
+use App\Notifications\ReportResponseNotice;
 use App\Repository\Resource\ResourceStatusesLkp;
 use App\Repository\Resource\ResourceTypesLkp;
 use App\Http\Controllers\Controller;
@@ -243,6 +244,22 @@ class ResourceController extends Controller
         }
 
     }
+
+    public function respond(Request $request):\Illuminate\Http\RedirectResponse{
+        $data = $request->all();
+        $response = $data['response'];
+        $resource_name = $data['resource_name'];
+        $reporting_user_id = $data['reporting_user_id'];
+        try {
+            $reporter = $this->userManager->getUser($reporting_user_id);
+            Notification::send( $reporter, new ReportResponseNotice($resource_name, $response, $reporter->name));
+            return redirect()->back()->with('flash_message_success','Responded successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('flash_message_failure', __('Failed to report'));
+        }
+
+    }
+
 
 
 
