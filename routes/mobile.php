@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\Analytics\AnalyticsEventController;
 use App\Http\Controllers\Resource\ResourceController;
-use App\Http\Controllers\Resource\ResourceRatingController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['throttle:mobile'])->group(function () {
     Route::get("/exercises-json", [ResourceController::class, 'getTransformAllExercisesForMobileApp'])->name('resources.get-exercises-json.get');
+    Route::post("/analytics/store", [AnalyticsEventController::class, 'store'])->name('analytics.store');
 });
