@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['throttle:metadata'])->group(function () {
+Route::middleware(['metadata'])->group(function () {
     Route::get("/content-languages", [ResourceController::class, 'getContentLanguages'])->name('content_languages.get');
     Route::get("/content-types", [ResourceController::class, 'getContentTypes'])->name('content_types.get');
     Route::get("/users", [ResourceController::class, 'getUsers'])->name('users.get');

@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Cors;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel {
@@ -46,6 +47,7 @@ class Kernel extends HttpKernel {
         'mobile' => [
             'throttle:mobile',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            Cors::class
         ],
     ];
 

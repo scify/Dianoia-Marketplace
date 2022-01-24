@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::middleware(['throttle:mobile'])->group(function () {
+Route::middleware(['mobile'])->group(function () {
     Route::get("/exercises-json", [ResourceController::class, 'getTransformAllExercisesForMobileApp'])->name('resources.get-exercises-json.get');
     Route::post("/analytics/store", [AnalyticsEventController::class, 'store'])->name('analytics.store');
 });
