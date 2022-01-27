@@ -35,20 +35,10 @@
 
                     <div class="col-md-6">
                         <label for="upload_img" class="form-label">{{__('messages.upload-image')}}</label>
-{{--                        <div class="file btn rounded">--}}
-{{--                            <i class="fas fa-plus-circle"></i>--}}
-{{--                            <input type="button" class="btn btn-third" id="loadFileXml" value="+"--}}
-{{--                                   onclick="document.getElementById('upload_img').click();"/>--}}
-{{--                            <input type="file" accept="image/*"--}}
-{{--                                   class="btn btn-third @error('image') is-invalid @enderror" style="display:none;"--}}
-{{--                                   name="image" id="upload_img">--}}
-
-                            <div class="file btn rounded">
-                                <i class="fas fa-plus-circle"></i>
-                                <input id="upload_img" type="file" name="image" />
-                            </div>
-
-{{--                        </div>--}}
+                        <div class="file btn rounded">
+                            <i class="fas fa-plus-circle"></i>
+                            <input id="upload_img" type="file" name="image" />
+                        </div>
                         @if($viewModel->isEditMode())
                             <img src={{asset("storage/".$viewModel->resource->img_path)}} id="url" class="mt-3"
                                  height="200px"/>
@@ -61,7 +51,6 @@
                     </div>
 
                     <div class="col-md-6 ">
-
                         <label for="category_lang" class="form-label">{{trans("messages.language")}}</label>
                         <select class="form-select" aria-label="category_lang" name="lang">
                             @foreach ($viewModel->languages as $lang)
@@ -145,9 +134,6 @@
                 <div class="admin-message-options p-5">
                     {!!__('messages.submission-tutorial')!!}
                 </div>
-
-
-
             </div>
 
             <hr>
@@ -157,7 +143,7 @@
                     {{trans("messages.cancel")}}
                 </a>
                 <input  id="exerciseSubmitBtn" class="btn btn--primary mt-5 ms-4" type="submit" value={{trans("messages.finish-edit")}}>
-            </div>
+            </div
     </div>
     </form>
 @endsection

@@ -72,7 +72,7 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'search' => 'Ricerca',
     'total-activities' => 'Tutte le attività',
     'new-exercise' => 'Nuovo esercizio',
-    'exercise-upload-rules' => 'Gli esercizi che carichi sulla piattaforma devono avere contenuti coerenti con la struttura del file originale che vedi  <a target="_blank" href="/coming-soon">  qui. </a>',
+    'exercise-upload-rules' => 'Gli esercizi che carichi sulla piattaforma devono avere contenuti coerenti con la struttura del file originale che vedi  <a target="_blank" href="/storage/resources/content-guidelines/Dianoia%20Marketplace%20-%20Content%20Guidelines%20-%20ES.pdf">  qui. </a>',
     'give-rating' => 'Dai il tuo punteggio',
     'Ελληνικά' => 'Greco',
     'Spanish' => 'Spagnolo',

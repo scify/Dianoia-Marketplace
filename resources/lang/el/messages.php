@@ -74,7 +74,7 @@ return [
     'search' => 'Αναζήτηση',
     'total-activities' => 'συνολικές δραστηριότητες',
     'new-exercise' => 'Νέα άσκηση',
-    'exercise-upload-rules' => 'Οι ασκήσεις που θα ανεβάσεις στην πλατφόρμα πρέπει να έχουν περιεχόμενο σύμφωνο με την δομή του πρωτότυπου εγγράφου <a target="_blank" href="/coming-soon">εδώ</a>. ',
+    'exercise-upload-rules' => 'Οι ασκήσεις που θα ανεβάσεις στην πλατφόρμα πρέπει να έχουν περιεχόμενο σύμφωνο με την δομή του πρωτότυπου εγγράφου <a target="_blank" href="/storage/resources/content-guidelines/Dianoia%20Marketplace%20-%20Content%20Guidelines%20-%20GR.pdf">εδώ</a>. ',
     'give-rating' => 'Δώσε την δική σου βαθμολογία',
     'Ελληνικά' => 'Ελληνικά',
     'Spanish' => 'Ισπανικά',
