@@ -8,7 +8,7 @@
     <div class="login-page d-flex align-items-center">
         <form method="POST" action="{{ route('login') }}" class="content">
             @csrf
-            <h2 class="text-center mb-5">{{  __('auth.login_btn')}}</h2>
+            <h2 class="text-center mb-5 mt-5">{{  __('auth.login_btn')}}</h2>
             <div class="mb-3">
                 <label for="email" class="form-label">{{ __('auth.email_label') }}</label>
                 <input type="email" name='email' class="form-control @error('email') is-invalid @enderror" placeholder="{{  __('auth.type_mail')}}"
@@ -32,6 +32,16 @@
             </div>
 {{--            <p class="text-center mt-5 ">Με την σύνδεσής σας αποδέχεστε τους <a href="#">όρους χρήσης</a>.</p>--}}
             <button type="submit" class="btn btn-primary mb-5 mt-3"> {{ __('auth.login_btn') }}</button>
+
+            <div>
+                <a class="btn btn-link" href="{{ route('shapes.login') }}">
+                    Login with SHAPES
+                </a>
+                <img alt="Shapes Logo" title="" src="img/shapes_logo.png" style="width:70px">
+            </div>
+
+
+
             @if (Route::has('password.request'))
                 <a class="btn btn-link" href="{{ route('password.request') }}">
                     {{ __('auth.forgot_password_link') }}

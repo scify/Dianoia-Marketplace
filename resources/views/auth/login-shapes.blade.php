@@ -5,7 +5,6 @@
 
 @section('content')
     <main>
-
         <div class="login-page-shapes d-flex " style="text-align:center" >
             <form method="POST" action="{{ route('login') }}" class="content mt-5">
                 <img loading="lazy" src="{{ asset('img/shapes_logo.png') }}" height="120px" alt="Shapes logo">

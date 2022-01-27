@@ -2,7 +2,7 @@
 
 
 use App\Http\Controllers\Resource\ResourceController;
-use App\Http\Controllers\Resource\ResourceRatingController;
+use App\Http\Controllers\ShapesIntegrationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +25,7 @@ Route::get('/exercises', [ResourceController::class, 'index'])->name('resources.
 //TODO new route for resources with only methods ->only([]) without aliases
 Route::get('resources/display_exercises', [ResourceController::class, 'display'])->name('resources.display');
 Route::get("/coming-soon", [ResourceController::class, 'coming_soon'])->name('resources.coming-soon');
-
+Route::get("/login-shapes/", [ShapesIntegrationController::class, 'login'])->name('shapes.login');
 #Auth::routes(['verify' => true]);
 Route::middleware(['auth'])->group(function () {
     Route::prefix('administration')->middleware("can:manage-platform")->name('administration.')->group(function () {
