@@ -261,6 +261,27 @@ class ResourceManager {
                 $exercise['slug'] = $exercise->slug;
                 $exercise['title'] = $exercise->name;
                 $exercise['description'] = $exercise->description;
+
+                switch ($exercise->type_id){
+                    case ResourceTypesLkp::ATTENTION:
+                        $exercise['category']  = "focus_activities";
+                        break;
+                    case ResourceTypesLkp::MEMORY:
+                        $exercise['category']  = "memory_activities";
+                        break;
+                    case ResourceTypesLkp::REASON:
+                        $exercise['category']  = "think_activities";
+                        break;
+                    case ResourceTypesLkp::EXECUTIVE:
+                        $exercise['category']  = "executive_activities";
+                        break;
+                    case ResourceTypesLkp::CARER:
+                        $exercise['category'] = "carer_activities";
+                        break;
+                    default:
+                        $exercise['category'] = "";
+                }
+
                 $exercise['full_text'] = "";
                 $exercise['video_url'] = "";
                 $exercise['image_url'] = $exercise->img_path == null ? "" : $exercise->img_path;
