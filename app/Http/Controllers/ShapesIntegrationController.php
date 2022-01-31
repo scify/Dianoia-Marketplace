@@ -6,6 +6,7 @@ use App\BusinessLogicLayer\User\UserManager;
 use App\BusinessLogicLayer\UserRole\UserRoleManager;
 use App\BusinessLogicLayer\ViewModelProviders\AdministrationVMProvider;
 use App\Models\User;
+use App\ViewModels\RegistrationFormVM;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -32,6 +33,11 @@ class ShapesIntegrationController extends Controller
      */
     public function login(): View {
         return view("auth.login-shapes");
+    }
+
+    public function register(): View {
+        $registrationFormVM = new RegistrationFormVM($this->userRoleManager);
+        return view('auth.register-shapes')->with(['viewModel'=>$registrationFormVM]);
     }
 
 }

@@ -38,8 +38,9 @@
                         {{ __('auth.forgot_password_link') }}
                     </a>
                 @endif
-                <hr class="mt-5">
-                <p class="text-center shapes-message">  {{ __('auth.no_account') }}<a href="{{ route('register') }} ">{{ __('auth.register_here') }}</a></p>
+                <hr class="mt-1">
+{{--                <p class="text-center shapes-message">  {{ __('auth.no_account') }}<a href="{{ route('register') }} ">{{ __('auth.register_here') }}</a></p>--}}
+                <p class="text-center">  {{ __('auth.no_account') }}<a href="{{ route('shapes.register-shapes') }} ">{{ __('auth.register_btn')}} with SHAPES</a></p>
             </form>
         </div>
     </main>

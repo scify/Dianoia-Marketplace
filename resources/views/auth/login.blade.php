@@ -19,7 +19,7 @@
                     </span>
                 @enderror
             </div>
-            <div class="mb-5">
+            <div class="mb-3">
                 <label for="password" class="form-label">{{ __('auth.password_label') }}</label>
                 <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{  __('auth.type_password')}}"
                        id="password" required autocomplete="current-password" name="password">
@@ -31,25 +31,28 @@
                 @enderror
             </div>
 {{--            <p class="text-center mt-5 ">Με την σύνδεσής σας αποδέχεστε τους <a href="#">όρους χρήσης</a>.</p>--}}
-            <button type="submit" class="btn btn-primary mb-5 mt-3"> {{ __('auth.login_btn') }}</button>
+            <button type="submit" class="btn btn-primary mb-1 mt-3"> {{ __('auth.login_btn') }}</button>
 
-            <div>
-                <a class="btn btn-link" href="{{ route('shapes.login') }}">
-                    Login with SHAPES
+
+            @if (Route::has('password.request'))
+                <a class="btn btn-link" style="font-size: small;" href="{{ route('password.request') }}">
+                    {{ __('auth.forgot_password_link') }}
                 </a>
+            @endif
+            <p class="text-left mt-5" >  {{ __('auth.no_account') }}<a href="{{ route('register') }} ">{{ __('auth.register_here') }}</a></p>
+
+
+            <hr class="mt-5">
+            <div style="text-align: left">
+                <a class="btn btn-link" href="{{ route('shapes.login') }}">Login/Register with a SHAPES account</a>
                 <img alt="Shapes Logo" title="" src="img/shapes_logo.png" style="width:70px">
+                <p style="font-size: xx-small; font-style: italic">Create an account shared across all SHAPES - powered platforms</p>
             </div>
 
 
 
-            @if (Route::has('password.request'))
-                <a class="btn btn-link" href="{{ route('password.request') }}">
-                    {{ __('auth.forgot_password_link') }}
-                </a>
-            @endif
-            <hr class="mt-5">
-            <p class="text-center">  {{ __('auth.no_account') }}<a href="{{ route('register') }} ">{{ __('auth.register_here') }}</a></p>
-        </form>
+
+          </form>
     </div>
 </main>
 @endsection

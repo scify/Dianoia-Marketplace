@@ -26,6 +26,8 @@ Route::get('/exercises', [ResourceController::class, 'index'])->name('resources.
 Route::get('resources/display_exercises', [ResourceController::class, 'display'])->name('resources.display');
 Route::get("/coming-soon", [ResourceController::class, 'coming_soon'])->name('resources.coming-soon');
 Route::get("/login-shapes/", [ShapesIntegrationController::class, 'login'])->name('shapes.login');
+Route::get("/register-shapes/", [ShapesIntegrationController::class, 'register'])->name('shapes.register-shapes');
+
 #Auth::routes(['verify' => true]);
 Route::middleware(['auth'])->group(function () {
     Route::prefix('administration')->middleware("can:manage-platform")->name('administration.')->group(function () {
