@@ -45,5 +45,8 @@ class UserRepository extends Repository {
         return parent::delete($id);
     }
 
+    function getLastId(){
+        return $this->getModelClassName()::latest()->first()->id;
+    }
 
 }

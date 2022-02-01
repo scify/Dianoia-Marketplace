@@ -8,7 +8,10 @@ use App\BusinessLogicLayer\UserRole\UserRoleManager;
 use App\Models\User;
 use App\Repository\User\UserRepository;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Validation\UnauthorizedException;
 
 class UserManager {
 
@@ -118,5 +121,42 @@ class UserManager {
     {
         return $this->userRepository->find($id);
     }
+
+
+    public function createShapes(Request $request)
+    {
+
+        $response = Http::withHeaders([
+            'X-Shapes-Key' => '7Msbb3w^SjVG%j',
+            'Accept' => "application/json"
+        ])->post('https://kubernetes.pasiphae.eu/shapes/asapa/auth/register', [
+            'email' => $request['email'],
+            'password' => $request['password'],
+            'first_name' => 'Tester',
+            'last_name' => 'Test',
+        ]);
+        $requestData = $request->all();
+        $requestData['name']  = 'Dianoia_user_' . $this->userRepository->getLastId();
+        $this->create($requestData);
+    }
+
+    public function loginShapes(Request $request)
+    {
+
+        $response = Http::withHeaders([
+            'X-Shapes-Key' => '7Msbb3w^SjVG%j',
+            'Accept' => "application/json"
+        ])->post('https://kubernetes.pasiphae.eu/shapes/asapa/auth/login', [
+            'email' => $request['email'],
+            'password' => $request['password'],
+        ]);
+        if(!$response->ok()){
+            abort(404);
+        }
+        return $response;
+
+    }
+
+
 
 }

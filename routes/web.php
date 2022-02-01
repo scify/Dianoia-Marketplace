@@ -27,6 +27,9 @@ Route::get('resources/display_exercises', [ResourceController::class, 'display']
 Route::get("/coming-soon", [ResourceController::class, 'coming_soon'])->name('resources.coming-soon');
 Route::get("/login-shapes/", [ShapesIntegrationController::class, 'login'])->name('shapes.login');
 Route::get("/register-shapes/", [ShapesIntegrationController::class, 'register'])->name('shapes.register-shapes');
+Route::post("/request-shapes-user-creation/", [ShapesIntegrationController::class, 'request_create_user'])->name('shapes.request-create-user');
+Route::post("/request-shapes-user-login_token/", [ShapesIntegrationController::class, 'request_login_token'])->name('shapes.request-login-token');
+
 
 #Auth::routes(['verify' => true]);
 Route::middleware(['auth'])->group(function () {

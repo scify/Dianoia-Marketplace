@@ -12,7 +12,7 @@
                     <div class="card-header">{{ __('auth.register_btn') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('shapes.request-create-user') }}">
                             @csrf
                             <div class="form-group row mb-4">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('auth.email_label') }}</label>

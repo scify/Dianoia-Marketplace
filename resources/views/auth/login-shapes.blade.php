@@ -6,7 +6,7 @@
 @section('content')
     <main>
         <div class="login-page-shapes d-flex " style="text-align:center" >
-            <form method="POST" action="{{ route('login') }}" class="content mt-5">
+            <form method="POST" action="{{ route('shapes.request-login-token') }}" class="content mt-5">
                 <img loading="lazy" src="{{ asset('img/shapes_logo.png') }}" height="120px" alt="Shapes logo">
                 @csrf
                 <h2 class="text-center mb-5 mt-5 shapes-message">{{  __('auth.login_btn')}}</h2>
