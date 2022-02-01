@@ -14,19 +14,28 @@
 .shapes-btn{
     background-color:var(--color-shapes-green);
     color: #ffff;
+    border-color: var(--color-shapes-green)!important;
+    &:hover{
+        background-color:var(--color-shapes-dark-green)!important;
+    }
 }
 
 a{
     color: var(--color-shapes-brown);
+    &:hover{
+        color:var(--color-shapes-dark-grey)!important;
+    }
 }
 .shapes-message{
-    color: var(--color-shapes-dark-green);
+    color: var(--color-shapes-green);
+    &:hover{
+        color:var(--color-shapes-dark-green)!important;
+    }
 }
 
 .login-page-shapes {
     background-color: var(--color-shapes-light-brown);
     height: 155vh;
-
 
     form {
         background-color: #ffff;
