@@ -84,7 +84,11 @@
                                                     <a class="btn btn--secondary mt-1" href="{{route('resources.my_profile')}}">
                                                         {{trans("messages.cancel")}}
                                                     </a>
-                                                    <input  id="userEditBtrn" class="btn btn--primary mt-1 ms-4" type="submit" value="{{__('messages.submit-info')}}">
+                                                    @if ($user->type->id == \App\Repository\User\UserRole\UserRolesLkp::SHAPES_USER)
+                                                        <input  id="userEditBtrn" class="disabled btn btn--primary mt-1 ms-4" type="submit" value="{{__('messages.submit-info')}}">
+                                                    @else
+                                                        <input  id="userEditBtrn" class="btn btn--primary mt-1 ms-4" type="submit" value="{{__('messages.submit-info')}}">
+                                                    @endif
                                                 </div>
 
                                             </div>

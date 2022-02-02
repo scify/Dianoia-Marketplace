@@ -5,8 +5,12 @@ namespace App\BusinessLogicLayer\Shapes;
 
 
 use App\BusinessLogicLayer\UserRole\UserRoleManager;
+use App\Models\UserRole\UserRoleLkp;
+use App\Repository\Resource\ResourceTypesLkp;
 use App\Repository\Shapes\UserTokensRepository;
 use App\Repository\User\UserRepository;
+use App\Repository\User\UserRole\UserRoleLkpRepository;
+use App\Repository\User\UserRole\UserRolesLkp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -39,13 +43,14 @@ class ShapesIntegrationManager {
             'last_name' => 'Test',
         ]);
         $requestData = $request->all();
-        $requestData['name']  = 'Dianoia_user_' . $this->userRepository->getLastId();
-        $this->userRepository->create($requestData);
+        $requestData['name'] = 'Dianoia_user';
+        $user = $this->userRepository->create($requestData);
+        $this->userRepository->update(['name' => 'Dianoia_user_' . $user->id], $user->id);
+        $this->userRoleManager->assignRegisteredUserRoleTo($user, UserRolesLkp::SHAPES_USER);
     }
 
     public function loginShapes(Request $request)
     {
-
         $response = Http::withHeaders([
             'X-Shapes-Key' => '7Msbb3w^SjVG%j',
             'Accept' => "application/json"
@@ -56,7 +61,6 @@ class ShapesIntegrationManager {
         if(!$response->ok()){
             abort(404);
         }
-
         return $response->json();
     }
 

@@ -21,7 +21,8 @@ class UserRoleLkpTableSeeder extends Seeder
             ['id'=>     1,      'name'=>'Platform Administrator'],
             ['id'=>     2,      'name'=>'Private Carer'],
             ['id' =>    3,      'name'=>'Professional Carer'],
-            ['id' =>    4 ,     'name'=>'Organization']
+            ['id' =>    4 ,     'name'=>'Organization'],
+            ['id' =>    5 ,     'name'=>'Shapes User'],
         ];
         foreach ($data as $userRoleLkp) {
             $role = $this->userRoleLkpRepository->updateOrCreate(['id' => $userRoleLkp['id']], $userRoleLkp);

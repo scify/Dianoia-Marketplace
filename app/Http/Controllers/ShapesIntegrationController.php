@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 use App\BusinessLogicLayer\Shapes\ShapesIntegrationManager;
 use App\BusinessLogicLayer\UserRole\UserRoleManager;
+use App\Http\Middleware\Authenticate;
+use App\Providers\FortifyServiceProvider;
 use App\ViewModels\RegistrationFormVM;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Fortify\Fortify;
 
 
 class ShapesIntegrationController extends Controller
@@ -46,7 +51,8 @@ class ShapesIntegrationController extends Controller
         ]);
         try{
             $this->shapesIntegrationManager->createShapes($request);
-            $this->request_login_token($request);
+            $user = $this->shapesIntegrationManager->findUserByEmail($request['email']);
+            $this->request_login_token($user, $request);
             session()->flash('flash_message_success', "Shapes user successfully registered");
         } catch(\Exception $e){
             session()->flash('flash_message_failure', $e->getMessage());
@@ -56,14 +62,13 @@ class ShapesIntegrationController extends Controller
     }
 
 
-    public function request_login_token(Request $request): RedirectResponse
+    public function request_login_token(User $user, Request $request): RedirectResponse
     {
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
         try{
-            $user = $this->shapesIntegrationManager->findUserByEmail($request['email']);
             $response = $this->shapesIntegrationManager->loginShapes($request);
             $data =  $response['items'][0];
             $token = $data['token'];
@@ -72,7 +77,9 @@ class ShapesIntegrationController extends Controller
         } catch(\Exception $e){
             session()->flash('flash_message_failure', $e->getMessage());
         } finally {
+            Auth::login($user);
             return back();
         }
+
     }
 }
