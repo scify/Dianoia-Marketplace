@@ -69,7 +69,6 @@ class ShapesIntegrationController extends Controller
             $token = $data['token'];
             $this->shapesIntegrationManager->storeUserToken($user->id, $token);
             session()->flash('flash_message_success', "Shapes user successfully logged-in");
-
         } catch(\Exception $e){
             session()->flash('flash_message_failure', $e->getMessage());
         } finally {

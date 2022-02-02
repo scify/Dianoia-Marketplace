@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Fortify\PasswordValidationRules;
 use App\BusinessLogicLayer\User\UserManager;
 use App\BusinessLogicLayer\ViewModelProviders\AdministrationVMProvider;
 use App\Models\User;
@@ -14,7 +15,7 @@ use Illuminate\Http\Response;
 class UserController extends Controller {
     protected $administrationVMProvider;
     protected $userManager;
-
+    use PasswordValidationRules;
     public function __construct(AdministrationVMProvider $administrationVMProvider,
                                 UserManager $userManager) {
         $this->administrationVMProvider = $administrationVMProvider;
@@ -43,7 +44,7 @@ class UserController extends Controller {
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             //'email' => 'required|email:rfc,dns|unique:users,email',
-            'password' => 'required|min:8',
+            'password' => $this->passwordRules(),
             'role' => 'required|integer|gt:1'
         ]);
         try {
@@ -66,7 +67,7 @@ class UserController extends Controller {
     public function update(Request $request, User $user): RedirectResponse {
         if($request['password']){
             $request->validate([
-                'password' => 'min:8'
+                'password' => $this->passwordRules()
             ]);
         }
         $request->validate([

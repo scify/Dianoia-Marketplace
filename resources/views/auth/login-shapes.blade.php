@@ -34,7 +34,7 @@
                 {{--            <p class="text-center mt-5 ">Με την σύνδεσής σας αποδέχεστε τους <a href="#">όρους χρήσης</a>.</p>--}}
                 <button type="submit" class="btn btn-primary mb-5 mt-3 shapes-btn"> {{ __('auth.login_btn') }}</button>
                 @if (Route::has('password.request'))
-                    <a class="btn btn-link shapes-message" href="{{ route('password.request') }}">
+                    <a class="btn btn-link shapes-message" href="https://kubernetes.pasiphae.eu/shapes/asapa/auth/password/recovery">
                         {{ __('auth.forgot_password_link') }}
                     </a>
                 @endif

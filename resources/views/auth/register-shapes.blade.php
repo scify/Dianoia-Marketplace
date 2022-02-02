@@ -73,7 +73,11 @@
                                     </button>
                                 </div>
                             </div>
-
+                            @if (Route::has('password.request'))
+                                <a class="btn btn-link shapes-message" href="https://kubernetes.pasiphae.eu/shapes/asapa/auth/password/recovery">
+                                    {{ __('auth.forgot_password_link') }}
+                                </a>
+                            @endif
                         </form>
                     </div>
                 </div>
