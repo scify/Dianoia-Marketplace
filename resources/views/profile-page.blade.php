@@ -86,6 +86,8 @@
                                                     </a>
                                                     @if ($user->type->id == \App\Repository\User\UserRole\UserRolesLkp::SHAPES_USER)
                                                         <input  id="userEditBtrn" class="disabled btn btn--primary mt-1 ms-4" type="submit" value="{{__('messages.submit-info')}}">
+                                                        <p style="color:red; font-style: italic"> Editing SHAPES account info is not supported</p>
+
                                                     @else
                                                         <input  id="userEditBtrn" class="btn btn--primary mt-1 ms-4" type="submit" value="{{__('messages.submit-info')}}">
                                                     @endif
