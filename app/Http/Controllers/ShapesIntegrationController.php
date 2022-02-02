@@ -46,8 +46,8 @@ class ShapesIntegrationController extends Controller
         ]);
         try{
             $this->shapesIntegrationManager->createShapes($request);
+            $this->request_login_token($request);
             session()->flash('flash_message_success', "Shapes user successfully registered");
-
         } catch(\Exception $e){
             session()->flash('flash_message_failure', $e->getMessage());
         } finally {
@@ -76,5 +76,4 @@ class ShapesIntegrationController extends Controller
             return back();
         }
     }
-
 }

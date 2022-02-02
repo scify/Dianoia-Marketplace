@@ -15,8 +15,8 @@ use Illuminate\Validation\UnauthorizedException;
 
 class UserManager {
 
-    protected $userRepository;
-    protected $userRoleManager;
+    protected UserRepository $userRepository;
+    protected UserRoleManager $userRoleManager;
 
     public function __construct(UserRoleManager $userRoleManager, UserRepository $userRepository) {
         $this->userRoleManager = $userRoleManager;
@@ -32,11 +32,13 @@ class UserManager {
      * @return User the newly created user
      */
     public function create(array $requestData):User {
-
+        $email = $requestData['email'];
+        $hashed_email = Hash::make($email);
         $user = $this->userRepository->create([
             'name' => $requestData["name"],
-            'email' => $requestData["email"],
-            'password' => $requestData["password"]
+            'email' => $email,
+            'password' => $requestData["password"],
+            'hashed_email' => $hashed_email
         ]);
         $this->userRoleManager->assignRegisteredUserRoleTo($user, $requestData['role']);
         if (isset($requestData["admin"]) && $requestData["admin"])

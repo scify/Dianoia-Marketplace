@@ -13,7 +13,7 @@ class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
 
-    protected $userManager;
+    protected UserManager $userManager;
 
     public function __construct(UserManager $userManager) {
         $this->userManager = $userManager;

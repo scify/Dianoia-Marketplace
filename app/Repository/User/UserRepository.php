@@ -18,11 +18,16 @@ class UserRepository extends Repository {
     }
 
     public function create(array $data) {
-        return parent::create([
-            'name' => $data["name"],
-            'email' => $data["email"],
-            'password' => Hash::make($data["password"]),
-        ]);
+
+        $storeArr = array(
+            "name" => $data["name"],
+            "email" => $data["email"],
+            "password" => Hash::make($data["password"])
+        );
+        if (array_key_exists('hashed_email', $data)){
+            $storeArr['hashed_email'] = $data['hashed_email'];
+        }
+        return parent::create($storeArr);
     }
 
     public function getUsersWithAdminRoleStatus(int $userIdToExclude): Collection {
