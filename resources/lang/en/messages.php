@@ -83,6 +83,7 @@ You can also create your own exercises and if you wish to, you can share them wi
     'see-exercise' => 'See the exercise',
     'edit-profile' => 'Edit profile',
     'Carer' => 'Exercises for care-takers',
+    'Shapes User' => 'Χρήστης Πλατφόρμας Shapes',
     'patient-exercises' => 'Exercises for patients',
     'all-updates' => 'All the additions',
     'search-submissions' => 'Search all entries',

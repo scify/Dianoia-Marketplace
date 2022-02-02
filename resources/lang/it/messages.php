@@ -81,6 +81,7 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'see-exercise' => 'Visualizza l\'esercizio',
     'edit-profile' => 'Modifica profilo',
     'Carer' => 'Esercizi per accompagnatori',
+    'Shapes User' => 'Χρήστης Πλατφόρμας Shapes',
     'patient-exercises' => 'Esercizi per pazienti',
     'all-updates' => 'Tutte le aggiunte',
     'search-submissions' => 'Cerca tutte le voci',

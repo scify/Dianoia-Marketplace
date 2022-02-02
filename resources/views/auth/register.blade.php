@@ -70,7 +70,9 @@
 
                                     <select class="form-select" aria-label="user_role" name="role">
                                         @foreach ($viewModel->roles as $role)
-                                            <option value="{{$role->id}}"> {{trans('messages.'.$role->name)}}</option>
+                                            @if($role->id != \App\Repository\User\UserRole\UserRolesLkp::SHAPES_USER)
+                                                <option value="{{$role->id}}"> {{trans('messages.'.$role->name)}}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     @error('role')

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('css')
-{{--    <link rel="stylesheet" href="{{ mix('dist/css/form-new-exercise.css') }}">--}}
+    <link rel="stylesheet" href="{{ mix('dist/css/form-new-exercise.css') }}">
     <link rel="stylesheet" href="{{ mix('dist/css/login-page-shapes.css') }}">
 @endpush
 
@@ -55,7 +55,9 @@
 
                                     <select class="form-select" aria-label="user_role" name="role">
                                         @foreach ($viewModel->roles as $role)
-                                            <option value="{{$role->id}}"> {{trans('messages.'.$role->name)}}</option>
+                                            @if($role->id == \App\Repository\User\UserRole\UserRolesLkp::SHAPES_USER)
+                                                <option selected disabled value="{{$role->id}}"> {{trans('messages.'.$role->name)}}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     @error('role')
