@@ -36,16 +36,17 @@ a{
 .login-page-shapes {
     background-color: var(--color-shapes-light-brown);
     height: 155vh;
+    //@media (min-width: 768px) {
+    //    width: 100vh;
+    //}
 
     form {
+        width: 65%;
         @media (max-width: 768px) {
             width: 85%;
         }
-        @media (max-width: 1200px) {
-            width: 65%;
-        }
         background-color: #ffff;
-        width: 65%;
+
         height: 55%;
         padding: 30px;
 
