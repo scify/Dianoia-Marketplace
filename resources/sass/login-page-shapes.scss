@@ -38,8 +38,14 @@ a{
     height: 155vh;
 
     form {
+        @media (max-width: 768px) {
+            width: 85%;
+        }
+        @media (max-width: 1200px) {
+            width: 65%;
+        }
         background-color: #ffff;
-        width: 45%;
+        width: 65%;
         height: 55%;
         padding: 30px;
 
