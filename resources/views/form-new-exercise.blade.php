@@ -143,7 +143,7 @@
                     {{trans("messages.cancel")}}
                 </a>
                 <input  id="exerciseSubmitBtn" class="btn btn--primary mt-5 ms-4" type="submit" value={{trans("messages.finish-edit")}}>
-            </div
+            </div>
     </div>
     </form>
 @endsection

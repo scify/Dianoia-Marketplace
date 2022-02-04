@@ -13,7 +13,7 @@
                         {{--                        <li><a href="#">{!! __('messages.content_guidelines') !!}</a></li>--}}
                     </ul>
                 </div>
-                <div class="col-sm-6 col-md-3 item">
+                <div class="col-md-3 col-sm-6 item">
                     <h3>{!! __('messages.people') !!}</h3>
                     <ul>
                         <li><a href="https://www.scify.gr/site/en/">{!! __('messages.team') !!} </a></li>
