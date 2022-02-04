@@ -42,17 +42,16 @@ class ShapesIntegrationController extends Controller
         return view('auth.register-shapes')->with(['viewModel' => $registrationFormVM]);
     }
 
+
     public function request_create_user(Request $request): RedirectResponse
     {
         $request->validate([
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8',
-            'role' => 'required|integer|gt:1'
+            'password' => 'required|min:8'
         ]);
         try{
             $this->shapesIntegrationManager->createShapes($request);
-            $user = $this->shapesIntegrationManager->findUserByEmail($request['email']);
-            $this->request_login_token($user, $request);
+            $this->request_login_token($request);
             session()->flash('flash_message_success', "Shapes user successfully registered");
         } catch(\Exception $e){
             session()->flash('flash_message_failure', $e->getMessage());
@@ -62,24 +61,30 @@ class ShapesIntegrationController extends Controller
     }
 
 
-    public function request_login_token(User $user, Request $request): RedirectResponse
+
+    public function request_login_token(Request $request): RedirectResponse
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8'
         ]);
         try{
             $response = $this->shapesIntegrationManager->loginShapes($request);
+            try{
+                $user = $this->shapesIntegrationManager->findUserByEmail($request['email']);
+            }catch(\Exception $e){
+                $user = $this->shapesIntegrationManager->storeShapesUserLocally($request);
+
+            }
             $data =  $response['items'][0];
             $token = $data['token'];
             $this->shapesIntegrationManager->storeUserToken($user->id, $token);
             session()->flash('flash_message_success', "Shapes user successfully logged-in");
+            Auth::login($user);
         } catch(\Exception $e){
             session()->flash('flash_message_failure', $e->getMessage());
         } finally {
-            Auth::login($user);
             return back();
         }
-
     }
 }

@@ -10,11 +10,11 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Http\Response;
+
 
 class UserController extends Controller {
-    protected $administrationVMProvider;
-    protected $userManager;
+    protected AdministrationVMProvider $administrationVMProvider;
+    protected UserManager $userManager;
     use PasswordValidationRules;
     public function __construct(AdministrationVMProvider $administrationVMProvider,
                                 UserManager $userManager) {
