@@ -31,6 +31,11 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link"  href="{{ route('about')}}">
+                        About
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link"  id="mobileAppDropdownItem" href="{{ !Request::is('home') ? route('homepage') : '' }}#downloadMobileAppBtn">
                         {{__('messages.mobile-app')}}
                     </a>

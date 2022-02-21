@@ -7,6 +7,7 @@
                     <h3>{!! __('messages.useful-links') !!}</h3>
                     <ul>
                         <li><a href="{{ route('resources.display') }}">{!! __('messages.exercises') !!}</a></li>
+                        <li><a href="{{ route('about') }}"> About </a></li>
                         <li><a href="https://www.scify.gr/site/el/impact-areas/assistive-technologies/dianoia#download"   target="_blank">{{__('messages.download-app')}}</a></li>
                         <li><a href="https://dianoia-app.scify.org/"  target="_blank">{{__('messages.dianoia-web-version')}}</a></li>
 
