@@ -40,7 +40,7 @@ mix.sass('resources/sass/main.scss', 'public/dist/css')
     .sass('resources/sass/exercise-page.scss', 'public/dist/css')
     .sass('resources/sass/resources-index.scss', 'public/dist/css')
     .sass('resources/sass/create-edit.scss', 'public/dist/css')
-
+    .sass('resources/sass/content-guidelines.scss', 'public/dist/css')
     .sourceMaps()
     .webpackConfig({
         devtool: 'source-map'

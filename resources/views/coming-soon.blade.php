@@ -14,7 +14,7 @@
             <row>
                 <em>You may close this tab if you wish.</em>
             </row>
-
+        </div>
     </header>
     </div>
 

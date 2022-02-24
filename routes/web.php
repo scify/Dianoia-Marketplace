@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'homepage')->name('homepage');
 Route::view('/about', 'about')->name('about');
+Route::view('/content-guidelines', 'content-guidelines')->name('content-guidelines');
 Route::get('/lang/{lang}', [UserController::class, 'setLangLocaleCookie'])->name('set-lang-locale');
 Route::get('/exercises', [ResourceController::class, 'index'])->name('resources.index');
 //TODO new route for resources with only methods ->only([]) without aliases
@@ -29,6 +30,7 @@ Route::get("/login-shapes/", [ShapesIntegrationController::class, 'login'])->nam
 Route::get("/register-shapes/", [ShapesIntegrationController::class, 'register'])->name('shapes.register-shapes');
 Route::post("/request-shapes-user-creation/", [ShapesIntegrationController::class, 'request_create_user'])->name('shapes.request-create-user');
 Route::post("/request-shapes-user-login_token/", [ShapesIntegrationController::class, 'request_login_token'])->name('shapes.request-login-token');
+
 
 
 #Auth::routes(['verify' => true]);
