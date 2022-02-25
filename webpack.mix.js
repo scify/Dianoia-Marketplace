@@ -15,7 +15,7 @@ mix.js('resources/js/app.js', 'public/dist/js')
     .js('resources/js/admin/user-management.js', 'public/dist/js')
     .js('resources/js/home.js', 'public/dist/js')
     .js('resources/js/create-edit-resource.js', 'public/dist/js')
-
+    .js('resources/js/content-guidelines.js','public/dist/js')
     .extract([
         'jquery', 'bootstrap'
     ])

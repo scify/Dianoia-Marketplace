@@ -27,6 +27,7 @@
         "@popperjs/core": "^2.9.2",
         "bootstrap": "^5.0.0",
         "flickity": "^2.2.2",
-        "jquery": "^3.6.0"
+        "jquery": "^3.6.0",
+        "jquery.ui.widget": "^1.10.3"
     }
 }
