@@ -2,6 +2,7 @@
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('title_prefix', config('app.name')) @yield('title_postfix', '')</title>
     <meta name="description" content="{{ __('messages.meta_tags_description') }}">
@@ -20,11 +21,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
         @include('common.favicons')
     <link rel="stylesheet" href="{{ mix('dist/css/main.css') }}">
+    <link
+        href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css"
+        rel="stylesheet"
+    />
     @stack('css')
             <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
     <![endif]-->
 </head>
 <body class="hold-transition background-page @yield('body_class')">
