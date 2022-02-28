@@ -99,10 +99,10 @@
                                                         <div class="card-body">
                                                             <p class="card-title">Category "Thought and Speech Exercises"</p>
                                                             <p class="card-text">In this category, there are exercises aiming at exercising and improving the patient’s speech ability, as well as the connection between their speech and thought. Examples of exercises:</p>
-                                                            <p style="bottom: 40pt; position:absolute">
+                                                            <p style="bottom: 50pt; position:absolute">
                                                                 <a  href="https://drive.google.com/file/d/1vz_KLGHC3KU7cS4ggVtbeCpfk2fYVvTy/view" target="_blank">Find the word </a>
                                                             </p>
-                                                            <p style="bottom: 10pt; position:absolute">
+                                                            <p style="bottom: 5pt; position:absolute">
                                                                 <a  href="https://drive.google.com/file/d/1_ZpddHjEQrPLo2daZGj4iz1zadmTDIKV/view" target="_blank">Color and Think - Double work exercise</a>
                                                             </p>
                                                         </div>
