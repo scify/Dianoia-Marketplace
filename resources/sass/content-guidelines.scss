@@ -21,6 +21,13 @@
     color: var(--primary);
 }
 
+#btn-back-to-top{
+    color: var(--primary);
+    position: fixed;
+    bottom: 342px;
+    right: 202px;
+    display: none;
+}
 .container{
     outline: 0;
 }

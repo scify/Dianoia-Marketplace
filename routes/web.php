@@ -3,7 +3,9 @@
 
 use App\Http\Controllers\Resource\ResourceController;
 use App\Http\Controllers\ShapesIntegrationController;
+use App\Http\Controllers\TermsPrivacyController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,30 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'homepage')->name('homepage');
 Route::view('/about', 'about')->name('about');
 Route::view('/content-guidelines', 'content-guidelines')->name('content-guidelines');
+//Route::view('/privacy-policy', 'privacy-policy')->name('privacy-policy');
+
+
+$regexForLocalParameter= config("app.regex_for_validating_locale_at_routes");
+$localeInfo = [ 'prefix' => '{lang}',
+                'where' => ['lang' => $regexForLocalParameter],
+                'middleware' => 'set.locale'
+];
+Route::group($localeInfo, function () {
+    Route::get('/privacy-policy', [TermsPrivacyController::class, 'showPrivacyPolicyPage'])->name('privacy-policy');
+    Route::get('/terms-of-use',  [TermsPrivacyController::class, 'showTermsOfUse'])->name('terms-of-use');
+
+});
+
+Route::get('/privacy-policy', function () {
+    return redirect(app()->getLocale() ."/privacy-policy");
+});
+
+
+Route::group(['prefix' => '{locale}', 'middleware' => 'locale'], function() {
+    Route::view('/privacy-policy', 'privacy-policy/'.\Illuminate\Support\Facades\App::getLocale())->name('privacy-policy');
+});
+
+
 Route::get('/lang/{lang}', [UserController::class, 'setLangLocaleCookie'])->name('set-lang-locale');
 Route::get('/exercises', [ResourceController::class, 'index'])->name('resources.index');
 //TODO new route for resources with only methods ->only([]) without aliases

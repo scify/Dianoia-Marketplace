@@ -33,13 +33,14 @@
                 <div class="col-md-10" >
                     <div id="my_accordion" class="accordion">
                         <div class="accordion-item my-3">
-                            <h2 class="accordion-header">
-                                <button id="section_1" class="accordion-button guidelines-button" type="button" data-bs-toggle="collapse"
+                            <h2 id="header-1" class="accordion-header">
+                                <button id="section_one" class="accordion-button guidelines-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                     <span class="section-title">  Content creation - Content for people with onset dementia</span>
                                 </button>
                             </h2>
-                            <div style=" background-color:  var(--page-background-color);" id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
                                 <div class="accordion-body guidelines-accordion-body">
                                     <p>
                                         The goal of the content uploaded on <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> is to help people with onset dementia improve their mental functions, their mood, their functionality, and quality of life, by giving them riddles, helping them look back on memories, or even on daily chores or activities they loved.
@@ -133,15 +134,14 @@
                             </div>
                         </div>
                         <div class="accordion-item my-3">
-                            <h2 class="accordion-header" >
+                            <h2 id="header-2" class="accordion-header" >
                                 <button id="section_two" class="accordion-button guidelines-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseTwo" aria-expanded="false"
                                         aria-controls="collapseTwo">
                                     <span class="section-title"> Content creation - Content for caregivers of people with onset dementia </span>
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse"
-                                 aria-labelledby="headingTwo">
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
                                 <div class="accordion-body guidelines-accordion-body">
                                     <p>
                                         Other than the exercises and the activities for people with onset dementia, the <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> platform also aims to create and deliver content to the caregivers of these people.
@@ -161,15 +161,14 @@
                             </div>
                         </div>
                         <div class="accordion-item my-3">
-                            <h2 class="accordion-header">
+                            <h2 id="header-3" class="accordion-header">
                                 <button id="section_three" class="accordion-button guidelines-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
                                     <span class="section-title"> Notes for the finding, editing, and uploading content for the exercises and activities</span>
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse"
-                                 aria-labelledby="headingThree">
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
                                 <div class="accordion-body guidelines-accordion-body">
                                     <p><b>0.1 Images</b></p>
                                     <p>The image that accompanies an exercise/activity must show in the clearest way possible the content of the exercise, to cover the patient’s need. For example, in a “Name-Animal-Object-Plant” exercise, we must select an image that meets all the following criteria:</p>
@@ -221,6 +220,8 @@
                 </div>
             </div>
         </div>
+        <!-- Back to top button -->
+        <button  type="button"  class="btn btn-floating btn-lg"  id="btn-back-to-top"> <i class="fas fa-arrow-up" style="font-size:20pt"></i></button>
     </section>
 @endsection
 @push('scripts')

@@ -28,6 +28,8 @@
         "bootstrap": "^5.0.0",
         "flickity": "^2.2.2",
         "jquery": "^3.6.0",
+        "jquery-ui": "^1.13.1",
+        "jquery-ui-dist": "^1.13.1",
         "jquery.ui.widget": "^1.10.3"
     }
 }
