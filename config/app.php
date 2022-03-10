@@ -81,7 +81,7 @@ return [
     */
 
     'locale' => 'en',
-    'regex_for_validating_locale_at_routes' => 'en|el|et|pt|bg|hu|nl|fr|de|sr',
+    'regex_for_validating_locale_at_routes' => 'en|el|es|it',
 
     /*
     |--------------------------------------------------------------------------
