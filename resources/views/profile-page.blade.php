@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @push('css')
     <link rel="stylesheet" href="{{mix('dist/css/profile-page.css')}}">
-
 @endpush
 
 @section('content')
@@ -187,7 +186,7 @@
     $(".toggle-password").click(function () {
 
         $(this).toggleClass("fa-eye fa-eye-slash");
-        var input = $($(this).attr("toggle"));
+        let input = $($(this).attr("toggle"));
         if (input.attr("type") == "password") {
             input.attr("type", "text");
         } else {

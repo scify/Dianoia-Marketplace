@@ -1,6 +1,21 @@
 <?php
 
 return [
+    'term-of-use-11' => 'Ad eccezione dei termini del paragrafo precedente relativi ai dati personali, <a href="http://www.scify.org/" target="_blank">  SciFY </a> si riserva il diritto di modificare I Termini e le Condizioni d\'Uso, se necessitano di aggiornamento e completamento, in qualsiasi momento e senza preavviso, quindi l\'utente deve essere informato di eventuali modifiche prima di ogni utilizzo dell\'applicazione.',
+    'term-of-use-10' => '<a href="http://www.scify.org/" target="_blank">  SciFY </a> utilizza I dati personali che ogni utente inserisce solo nel contesto del progetto <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>, a fini statistici e per contattare l\'utente se necessario. Le informazioni personali non vengono divulgate a terzi senza il permesso dell\'utente.',
+    'term-of-use-9' => 'Ogni creatore di contenuti permette ad un altro creatore di contenuti di basarsi sul suo contenuto e arricchirlo o creare nuovi contenuti.',
+    'term-of-use-8' => 'Ogni creatore di contenuti non compete con altri creatori di contenuti, riconosce il loro contributo e collabora con loro per migliorare e arricchire il contenuto di <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>.',
+    'term-of-use-7' => '<a href="http://www.scify.org/" target="_blank">  SciFY </a> non è in grado di garantire l\'idoneità del contenuto di altri sviluppatori di giochi su <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>. Tuttavia, si riserva il diritto di chiedere correzioni al creatore o addirittura di cancellare il contenuto se qualcosa di inaccettabile viene alla sua attenzione. Gli utenti sono incoraggiati a informare <a href="http://www.scify.org/" target="_blank">  SciFY </a> dei contenuti inaccettabili.',
+    'term-of-use-6' => 'Ogni creatore di contenuti non deve violare il copyright o altri diritti di terzi. Il contenuto caricato (immagini, suoni, testi) deve essere opera dell\'autore o avere una licenza per il suo utilizzo o deve essere utilizzato materiale privo di copyright secondo le istruzioni dell\'autore.',
+    'term-of-use-5' => 'Ogni creatore di contenuti è il solo ed esclusivo responsabile dei contenuti che carica. Il contenuto deve essere appropriato per gli utenti finali, e non deve violare la loro privacy o I loro diritti. Non sono ammessi contenuti che violano leggi, regole o regolamenti. Per esempio, non sono ammessi contenuti offensivi, fuorvianti, abusivi, minacciosi, volgari, violenti, osceni, indecenti, di proselitismo, razzisti, diffamatori, calunniosi, omofobi, sessisti, pubblicitari o contenuti che riguardano I dati personali.',
+    'term-of-use-4' => '<a href="http://www.scify.org/" target="_blank">  SciFY </a> non è responsabile della qualità/appropriatezza del contenuto o del contenuto che viene caricato nell\'applicazione, della sua correttezza o qualità, ma è responsabile solo del contenuto caricato da <a href="http://www.scify.org/" target="_blank">  SciFY </a> come autore.',
+    'term-of-use-3' => 'L\'app <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> si rivolge alle istituzioni e agli scienziati coinvolti nella cura e nella riabilitazione delle persone appartenenti ai gruppi sopra descritti, così come alle persone che forniscono una relativa assistenza a domicilio.',
+    'term-of-use-2' => 'Il contenuto di <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> è rivolto principalmente alle persone che si occupano di persone/pazienti con demenza incipiente e/o malattia di Alzheimer.',
+    'term-of-use-1' => '<a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> è un\'applicazione web implementata e resa disponibile gratuitamente dalla società no-profit <a href="http://www.scify.org/" target="_blank">  SciFY </a>, in modo che chiunque possa creare e condividere contenuti gratuiti per l\'applicazione Dianoia.',
+    'terms-of-use-prologue' => 'Utilizzando la piattaforma <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> comprendo, sono d\'accordo e accetto I seguenti:',
+    'last-amendment' => 'Ultima Modifica',
+    'terms-of-use' => 'Termini e condizioni d\'uso',
+
     'please_sign_in' => 'Devi effettuare l\'accesso per valutare questo esercizio',
     'exercise-create-success' => 'Successo! L\' esercizio è stato  creato',
     'exercise-create-failure' => 'Avvertimento! L\' esercizio non è stato creato',
@@ -72,7 +87,7 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'search' => 'Ricerca',
     'total-activities' => 'Tutte le attività',
     'new-exercise' => 'Nuovo esercizio',
-    'exercise-upload-rules' => 'Gli esercizi che carichi sulla piattaforma devono avere contenuti coerenti con la struttura del file originale che vedi  <a target="_blank" href="/storage/resources/content-guidelines/Dianoia%20Marketplace%20-%20Content%20Guidelines%20-%20ES.pdf">  qui. </a>',
+    'exercise-upload-rules' => 'Gli esercizi che carichi sulla piattaforma devono avere contenuti coerenti con la struttura del file originale che vedi  <a target="_blank" href="/storage/resources/content-guidelines/Dianoia%20Marketplace%20-%20Content%20Guidelines%20-%20IT.pdf">  qui. </a>',
     'give-rating' => 'Dai il tuo punteggio',
     'Ελληνικά' => 'Greco',
     'Spanish' => 'Spagnolo',

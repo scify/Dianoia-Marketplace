@@ -5,7 +5,6 @@ use App\Http\Controllers\Resource\ResourceController;
 use App\Http\Controllers\ShapesIntegrationController;
 use App\Http\Controllers\TermsPrivacyController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'homepage')->name('homepage');
 Route::view('/about', 'about')->name('about');
 Route::view('/content-guidelines', 'content-guidelines')->name('content-guidelines');
+Route::view('/terms-of-use', 'terms-of-use')->name('terms-of-use');
 //Route::view('/privacy-policy', 'privacy-policy')->name('privacy-policy');
 
 
