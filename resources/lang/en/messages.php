@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'meta_tags_description' => 'Dianoia Marketplace is an online application implemented and available for free by the non-profit  SciFY so that everyone can create and share their own free content for the Dianoia application. The content of Dianoia Marketplace is mainly aimed at people that take care of people/patients with onset dementia or/and Alzheimer’s. People with onset dementia, due to the progressive decline of their mental abilities, have the need for appropriate care at every stage. The caregivers feel that they have a great responsibility for their care.',
     'term-of-use-11' => 'Except for the conditions of the previous paragraph regarding personal data, <a href="http://www.scify.org/" target="_blank">  SciFY </a> maintains the right to change the Terms and Conditions, if they need to be updated or completed, at any time and without notice, therefore the user must be informed of any changes before each use of the application.',
     'term-of-use-10' => '<a href="http://www.scify.org/" target="_blank">  SciFY </a> uses the personal data that each user enters only in the context of the <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> project, for statistical purposes and for coming in touch with them, if need be. Personal data is not made public to third parties without the user’s permission.',
     'term-of-use-9' => 'Each content creator may allow other creators to build on their content and enrich it, or to create something new.',
@@ -14,7 +15,7 @@ return [
     'term-of-use-1' => '<a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> is an online application implemented and provided for free by the Non-Profit Organization <a href="http://www.scify.org/" target="_blank">  SciFY </a>, so that anyone can create and share with others free content for the <a href=https://play.google.com/store/apps/details?id=org.scify.dianoia.app" target="_blank"> Dianoia application </a>.',
     'terms-of-use-prologue' => 'Using the <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> platform, I understand, agree and accept that:',
     'last-amendment' => 'Last Amendment',
-    'terms-of-use' => 'TERMS OF USE',
+    'terms-of-use' => 'Terms of use',
     'please_sign_in' => 'You need to sign-in in order to rate this exercise',
     'exercise-create-success' => 'Success! The exercise has been created',
     'exercise-create-failure' => 'Warning! The exercise has not been created',
