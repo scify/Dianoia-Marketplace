@@ -28,7 +28,7 @@
                         <li><a href="https://www.scify.gr/site/en/">{!! __('messages.team') !!} </a></li>
                         <li><a href="https://www.scify.gr/site/en/contact" target="_blank">{!! __('messages.contact-us') !!} </a></li>
                         <li><a href="{{'/terms-of-use' }}">{!! __('messages.terms-of-use') !!}</a></li>
-                        <li><a href="{{app()->getLocale() .'/privacy-policy'}}"  target="_blank">{!! __('messages.privacy-policy') !!}</a></li>
+                        <li><a href="{{route('privacy-policy')}}"  target="_blank">{!! __('messages.privacy-policy') !!}</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6 item text">
