@@ -170,5 +170,6 @@ Puedes también crear tus propios ejercicios y compartirlos con la comunidad.',
     'rejection-success' => '¡El rechazo del ejercicio se completó con éxito!',
     'notify-user-by-email' => 'El usuario se notificará sobre la decisión por correo electrónico.',
     'exercise-success-accepted' => '¡La aprobación del ejercicio se completó con éxito!',
-    'exercise-accept-walkthrough' => 'El ejercicio se aprobará antes de aparecer en marketplace y un mensaje pertinente se enviará al usuario por correo electrónico. '
+    'exercise-accept-walkthrough' => 'El ejercicio se aprobará antes de aparecer en marketplace y un mensaje pertinente se enviará al usuario por correo electrónico. ',
+    'about_development_text' => 'La aplicación "Dianoia" fue creada por la empresa sin fines de lucro <a href="https://www.scify.org/">SciFY</a> en el marco del programa "Puntos de apoyo" cofinanciado por la Fundación Caritativa “TIMA”, la Fundación Caritativa “Ioannis S. Latsis”, la Organización Benéfica Hellenic Hope y la Fundación Bodossaki. <br><br> La versión inicial de la aplicación "Dianoia" se desarrolló con la supervisión científica y la cooperación de la <a href="https://alzheimerathens.gr/" target="_blank">Alzheimer Athens</a>. <br> <br> Más información sobre el proyecto <a href="https://www.scify.gr/site/el/impact-areas/assistive-technologies/dianoia">en este enlace.</a>'
 ];

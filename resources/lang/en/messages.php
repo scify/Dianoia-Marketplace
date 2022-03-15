@@ -172,5 +172,6 @@ You can also create your own exercises and if you wish to, you can share them wi
     'rejection-success' => 'The rejection of the exercise was successfully completed!',
     'notify-user-by-email' => 'The user will be notified for the decision via email.',
     'exercise-success-accepted' => 'The approval of the exercise was successfully completed!',
-    'exercise-accept-walkthrough' => 'The exercise will be approved for usage in marketplace and the user will receive a relevant message via email.'
+    'exercise-accept-walkthrough' => 'The exercise will be approved for usage in marketplace and the user will receive a relevant message via email.',
+    'about_development_text' => 'The "Dianoia" app was created by <a target="_blank" href="https://www.scify.org/en">The not-for-profit company SciFY</a> in the framework of the “Σημεία Στήριξης” program that is co-funded by the TIMA Foundation, the Latsis Foundation, the Hellenic Hope charity trust and the Bossodaki Foundation. <br><br> The initial version of the "Dianoia" app was developed with the scientific supervision and in cooperation with <a href="https://alzheimerathens.gr/" target="_blank">Alzheimer Athens</a>. <br> <br> More info can be found <a target="_blank" href="https://www.scify.gr/site/en/impact-areas-en/assistive-technologies/dianoia-en">here.</a>'
 ];
