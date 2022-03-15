@@ -31,20 +31,23 @@ $localeInfo = [ 'prefix' => '{lang}',
                 'where' => ['lang' => $regexForLocalParameter],
                 'middleware' => 'set.locale'
 ];
-Route::group($localeInfo, function () {
-    Route::get('/privacy-policy', [TermsPrivacyController::class, 'showPrivacyPolicyPage'])->name('privacy-policy');
-    Route::get('/terms-of-use',  [TermsPrivacyController::class, 'showTermsOfUse'])->name('terms-of-use');
+//Route::group($localeInfo, function () {
+//    Route::get('/privacy-policy', [TermsPrivacyController::class, 'showPrivacyPolicyPage'])->name('privacy-policy');
+//    Route::get('/terms-of-use',  [TermsPrivacyController::class, 'showTermsOfUse'])->name('terms-of-use');
+//});
 
-});
-
-Route::get('/privacy-policy', function () {
-    return redirect(app()->getLocale() ."/privacy-policy");
-});
+Route::get('/privacy-policy', [TermsPrivacyController::class, 'showPrivacyPolicyPage'])->name('privacy-policy');
+Route::get('/terms-of-use',  [TermsPrivacyController::class, 'showTermsOfUse'])->name('terms-of-use');
 
 
-Route::group(['prefix' => '{locale}', 'middleware' => 'locale'], function() {
-    Route::view('/privacy-policy', 'privacy-policy/'.\Illuminate\Support\Facades\App::getLocale())->name('privacy-policy');
-});
+//Route::get('/privacy-policy', function () {
+//    return redirect(app()->getLocale() ."/privacy-policy");
+//});
+
+//
+//Route::group(['prefix' => '{locale}', 'middleware' => 'locale'], function() {
+//    Route::view('/privacy-policy', 'privacy-policy/'.\Illuminate\Support\Facades\App::getLocale())->name('privacy-policy');
+//});
 
 
 Route::get('/lang/{lang}', [UserController::class, 'setLangLocaleCookie'])->name('set-lang-locale');
