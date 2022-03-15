@@ -4,6 +4,7 @@
 namespace App\BusinessLogicLayer\Resource;
 
 use App\Models\Reports;
+use http\Exception\InvalidArgumentException;
 use Illuminate\Support\Str;
 use App\Models\Resource\Resource;
 use App\Models\User;
@@ -254,9 +255,12 @@ class ResourceManager {
             $id);
     }
 
-    public function getTransformExercisesForMobileApp($paginated)
+    public function getTransformExercisesForMobileApp($paginated,  $filter_by_category_id)
     {
-        return $paginated->through(function ($exercise) {
+        $transformed =  $paginated->through(function ($exercise) use ($filter_by_category_id) {
+                if($filter_by_category_id and $exercise->type_id !== $filter_by_category_id){
+                    return null;
+                }
                 $keys =  array_keys($exercise->toArray());
                 $exercise['slug'] = $exercise->slug;
                 $exercise['title'] = $exercise->name;
@@ -294,10 +298,14 @@ class ResourceManager {
                     }
                 }
                 return $exercise;
-        })->toArray();
+        }
+
+        )->toArray();
+        $transformed['data'] = array_filter($transformed['data']);
+        return $transformed;
     }
 
-    public function getPaginatedResourcesForMobile($requestLanguage=null){
+    public function getPaginatedResourcesForMobile($requestLanguage=null, $requestCategory=null){
         $paginated = Resource::simplePaginate(25);
         if($requestLanguage){
             $collection = $paginated->getCollection();
@@ -313,7 +321,32 @@ class ResourceManager {
             $paginated->setCollection($filteredCollection);
             $paginated->appends(['lang' => $requestLanguage])->links();
         }
-        return $this->getTransformExercisesForMobileApp($paginated);
+        $filter_by_category_id = null;
+        if($requestCategory) {
+            switch ($requestCategory) {
+                case "focus_activities":
+                    $filter_by_category_id = ResourceTypesLkp::ATTENTION;
+                    break;
+                case "memory_activities":
+                    $filter_by_category_id = ResourceTypesLkp::MEMORY;
+                    break;
+                case "think_activities":
+                    $filter_by_category_id = ResourceTypesLkp::REASON;
+                    break;
+                case "executive_activities":
+                    $filter_by_category_id = ResourceTypesLkp::EXECUTIVE;
+                    break;
+                case "carer_activities":
+                    $filter_by_category_id = ResourceTypesLkp::CARER;
+                    break;
+                default:
+                    throw new InvalidArgumentException('Requested Category Does not Exist');
+            }
+            $paginated->appends(['category' => $requestCategory])->links();
+
+        }
+
+        return $this->getTransformExercisesForMobileApp($paginated, $filter_by_category_id);
     }
 
     public function getReportedExercises(){
