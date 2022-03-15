@@ -10,9 +10,7 @@
                         <li><a href="{{ route('about') }}"> About </a></li>
                         <li><a href="https://www.scify.gr/site/el/impact-areas/assistive-technologies/dianoia#download"   target="_blank">{{__('messages.download-app')}}</a></li>
                         <li><a href="https://dianoia-app.scify.org/"  target="_blank">{{__('messages.dianoia-web-version')}}</a></li>
-                        <li>
-                            <a href="{{route('content-guidelines')}}"> {{__('messages.content-guidelines')}} </a>
-                        </li>
+                        <li><a href="{{route('content-guidelines')}}"> {{__('messages.content-guidelines')}} </a></li>
 
                         {{--                        <li><a href="#">{!! __('messages.content_guidelines') !!}</a></li>--}}
                     </ul>

@@ -6,58 +6,102 @@
 
 @section('content')
 
-    <header class="mt-5 mb-5" style="text-align: center">
-        <h1 style="font-style:oblique;text-decoration:underline; color:var(--color-blue-light-1)">About {{__('messages.dianoia')}}</h1>
-    </header>
-    <main>
-    <div class="container" style="margin-bottom: 100px; margin-top: 60px">
-        <h2 style="font-style: oblique; text-decoration: underline"><b>διΆνοια mobile εφαρμογή</b></h2>
-        <p >
-            Η ΔιΆνοια είναι μία εφαρμογή smartphone για φροντιστές ανθρώπων με ήπια γνωστική διαταραχή ή αρχόμενη άνοια που προσφέρεται δωρεάν. Προσφέρει εκτυπώσιμες νοητικές ασκήσεις για τους ασθενείς έτοιμες για χρήση, για να τονώσουμε την αυτοπεποίθησή του ανθρώπου με άνοια, περάσουν χρόνο ευχάριστα. Καθώς και ευχάριστες ασκήσεις και συμβουλές χαλάρωσης για τους φροντιστές, ώστε να ενδυναμώσουν ψυχολογικά.
-        </p>
+<header class="mt-5 mb-5" style="text-align: center">
+    <h1 style="text-decoration:underline;">{{__('messages.marketplace')}} </h1>
+</header>
+<main>
+<div class="container" style="margin-bottom: 100px; margin-top: 60px">
+    <p>
+        DiAnoia is an application developed by SciFY aiming to support people with incipient dementia as well as their carers without using pharmaceutical means.
+    </p>
+    <p>
+        DiAnoia Marketplace is an online platform that is complementary to the application and offered for free in four languages: The Marketplace allows private and professional caregivers to view and share useful mental exercises for their patients or themselves. Registered users can post their own exercises to the platform that others can view and rate.
+    </p>
+</div>
+
+
+    <div class="container">
+        <div class="row align-items-center mb-5" >
+
+            <hr>
+
+
+            <div class="col-6">
+                <iframe height="315" width="560" src="https://www.youtube.com/embed/hNHfDPX5jDM" title="Dianoia Marketplace"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="col-6">
+                <h2  style="text-align: center"> <u>Walkthrough</u></h2>
+                <p>
+                    Dianoia Marketplace is an online application implemented and available for free by the non-profit SciFY so that everyone can create and share their own free content for the Dianoia application.  The content of Dianoia Marketplace is mainly aimed at people that take care of people/patients with onset dementia or/and Alzheimer’s.  People with onset dementia, due to the progressive decline of their mental abilities, have the need for appropriate care at every stage. The caregivers feel that they have a great responsibility for their care.
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="row align-items-center mt-5"  >
+
+
+            <div class="col-6">
+                <img src={{asset("img/points-of-support.jpg")}} class="mt-3"  height="150px" alt="points-of-support image">
+            </div>
+
+            <div class="col-6">
+                <h2 style="text-align: center"><u>Funding</u></h2>
+                <p>
+                    The project "DiAnoia" was implemented under the "Points of Support" program, which is co-funded by TIMA Charitable Foundation, John S. Latsis Public Benefit Foundation, Hellenic Hope charity and Bodossakis Foundation.
+                </p>
+            </div>
+        </div>
+        <div class="row align-items-center mt-1"  >
+            <div class="col-3">
+                <img alt="EU Logo" title="" src="img/eu_logo.jpg" style="width:auto;height:60px ; display: block; float: right ; padding-right:75pt ">
+            </div>
+            <div class="col-3">
+                <img alt="Shapes Logo" title="" src="img/shapes_logo.png" style="width:auto;height:60px;  float: left; padding-right:75pt;  display: block; background: white;">
+            </div>
+            <div class="col-6">
+                <p>
+                    This project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No. 857159.
+                </p>
+            </div>
+        </div>
+
+
+        <hr>
+        <div class="row align-items-center mt-5 " style="text-align: center" >
+            <h2 class="mb-5"><u>Learn More</u></h2>
+            <div class="col-4">
+                <ul>
+                    <li><a href="{{route('content-guidelines')}}"> {{__('messages.content-guidelines')}} </a></li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <ul>
+                    <li><a href="{{app()->getLocale() .'/privacy-policy'}}"  target="_blank">{!! __('messages.privacy-policy') !!}</a></li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <ul>
+                    <li><a href="{{'/terms-of-use' }}">{!! __('messages.terms-of-use') !!}</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+
     </div>
 
-
-    <div class="container" style="margin-bottom: 100px">
-        <h2 style="font-style: oblique; text-decoration: underline"><b>διΆνοια marketplace</b></h2>
-        <ul>
-            <li>
-            Επίλεξε ασκήσεις από τις παρακάτω κατηγορίες.
-            <ul>
-                <li>
-                    <a href="{{route('resources.display',['preselect_type_name' => 'patient'])}}" class="btn btn--tertiary" target="_blank">ασκήσεις για ασθενείς</a>
-                </li>
-                <li>
-                    <a href="{{route('resources.display',['preselect_type_name' => 'carer'])}}" class="btn btn--tertiary" target="_blank">ασκήσεις για φροντιστές</a>
-                </li>
-            </ul>
-            </li>
-
-
-            <li style="margin: 10px 0;">
-                Δες την άσκηση και κατέβασέ την. Τύπωσέ την ή στείλε την στον άνθρωπο που φροντίζεις. Κάθε άσκηση είναι διαθέσιμη και μέσω της mobile εφαρμογής.
-            </li>
-            <li style="margin: 10px 0;">
-                Δημιούργησε μια καινούργια άσκηση και βοήθήσε χιλιάδες συνανθρώπους σου που πάσχουν από αρχόμενη άνοια, πάτησε το κουμπί “Νέα άσκηση”.    Δες το έγγραφο-παράδειγμα στο πράσινο πλαίσιο παρακάτω.
-            </li>
-            <li>
-                Σε περίπτωση που γίνει δεκτή η άσκηση που θα δημιουργήσεις, η διαχειριστική ομάδα της SciFY θα επιλέξει αν η άσκηση θα είναι διαθέσιμη μόνο από το marketplace για κατέβασμα σαν .pdf, ή και από τη mobile εφαρμογή.
-            </li>
-        </ul>
-
-    </div>
-
+</main>
 
 
 {{--    [link για terms and conditions-privacy policy]--}}
-{{--    [link για content guidelines]--}}
-{{--    [link για gdpr]--}}
+    {{--    [link για content guidelines]--}}
+    {{--    [link για gdpr]--}}
 
-{{--    Κείμενο για χρηματοδότηση από “Σημεία Στήριξης” https://www.scify.gr/site/el/impact-areas/assistive-technologies/dianoia--}}
+    {{--    Κείμενο για χρηματοδότηση από “Σημεία Στήριξης” https://www.scify.gr/site/el/impact-areas/assistive-technologies/dianoia--}}
 
-{{--    Κείμενο για χρηματοδότηση από SHAPES--}}
-</main>
-
+    {{--    Κείμενο για χρηματοδότηση από SHAPES--}}
 
 @endsection
 @push('scripts')
