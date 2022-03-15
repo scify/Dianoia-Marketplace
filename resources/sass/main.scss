@@ -29,6 +29,12 @@
 
     }
 
+
+    position: fixed;
+    z-index: 999;
+    opacity:1;
+    width: 100%;
+
     .navbar-item-dropdown {
         background-color: transparent;
         border-color:transparent;
