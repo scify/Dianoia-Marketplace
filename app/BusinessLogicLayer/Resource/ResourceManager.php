@@ -286,7 +286,7 @@ class ResourceManager {
                 $exercise['video_url'] = "";
                 $exercise['image_url'] = $exercise->img_path == null ? "" : $exercise->img_path;
                 $exercise['instructions'] = ["Κάντε click στο σύνδεσμο για να δείτε το έγγραφο"];
-                $exercise['link'] = env("APP_URL").'/storage/'.$exercise->pdf_path;
+                $exercise['link'] = config("app.url") . '/storage/'.$exercise->pdf_path;
                 $exercise['difficulty_level'] = 'difficulty_level_'.($exercise->difficulty_id+1);
                 foreach($keys as $key){
                     if($key != 'slug'){
