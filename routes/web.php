@@ -37,7 +37,7 @@ $localeInfo = [ 'prefix' => '{lang}',
 //});
 
 Route::get('/privacy-policy', [TermsPrivacyController::class, 'showPrivacyPolicyPage'])->name('privacy-policy');
-Route::get('/terms-of-use',  [TermsPrivacyController::class, 'showTermsOfUse'])->name('terms-of-use');
+//Route::get('/terms-of-use',  [TermsPrivacyController::class, 'showTermsOfUse'])->name('terms-of-use');
 
 
 //Route::get('/privacy-policy', function () {
