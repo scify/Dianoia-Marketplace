@@ -31,7 +31,7 @@
                     <img src={{asset("img/shapes_logo.png")}} alt="Shapes-Logo" style="width:auto; height:40pt; margin-left:auto;margin-right:auto;display:block">
                 </div>
             </div>
-            <p style="font-size:10pt">
+            <p style="font-size:10pt; margin-top: 20pt">
                 This project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No. 857159.
             </p>
         </div>

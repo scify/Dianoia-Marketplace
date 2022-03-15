@@ -3,7 +3,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-3 item">
-{{--                    <h3>{!! __('messages.services') !!}</h3>--}}
                     <h3>{!! __('messages.useful-links') !!}</h3>
                     <ul>
                         <li><a href="{{ route('resources.display') }}">{!! __('messages.exercises') !!}</a></li>
@@ -11,17 +10,8 @@
                         <li><a href="https://www.scify.gr/site/el/impact-areas/assistive-technologies/dianoia#download"   target="_blank">{{__('messages.download-app')}}</a></li>
                         <li><a href="https://dianoia-app.scify.org/"  target="_blank">{{__('messages.dianoia-web-version')}}</a></li>
                         <li><a href="{{route('content-guidelines')}}"> {{__('messages.content-guidelines')}} </a></li>
-
-                        {{--                        <li><a href="#">{!! __('messages.content_guidelines') !!}</a></li>--}}
                     </ul>
                 </div>
-{{--                <div class="col-md-3 col-sm-6 item">--}}
-{{--                    <h3>{!! __('messages.people') !!}</h3>--}}
-{{--                    <ul>--}}
-{{--                        <li><a href="https://www.scify.gr/site/en/">{!! __('messages.team') !!} </a></li>--}}
-{{--                        <li><a href="https://www.scify.gr/site/en/contact" target="_blank">{!! __('messages.contact-us') !!} </a></li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
                 <div class="col-md-3 col-sm-6 item">
                     <h3>Dianoia Marketplace</h3>
                     <ul>
@@ -51,8 +41,8 @@
             <div class="col-md-6 col-sm-6 item text" style="margin-left: auto; margin-right: 0;">
 
                 <div>
-                    <img alt="EU Logo" title="" src="img/eu_logo.jpg" style="width:70px;height:50px; float: right ; display: block; margin-right:100px;">
-                    <img alt="Shapes Logo" title="" src="img/shapes_logo.png" style="width:70px;height:50px; float: right; display: block; background: white; margin-right:10px;">
+                    <img alt="EU Logo" title="" src="{{asset("img/eu_logo.jpg")}}" style="width:70px;height:50px;float:right;display:block;margin-right:100px">
+                    <img alt="Shapes Logo" title="" src="{{asset("img/shapes_logo.png")}}"  style="width:70px;height:50px; float: right; display: block; background: white; margin-right:10px;">
                 </div>
                 <p style="font-size: small; color:white!important">This project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No. 857159.</p>
             </div>
