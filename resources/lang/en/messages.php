@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'checkbox-terms-privacy-' => 'I have read and agree with the <a href="https://dianoia.scify.org/terms-of-use"> terms of use </a> and <a href="https://dianoia.scify.org/privacy-policy"> privacy policy </a> of the platform',
+    'checkbox-guidelines' => 'The content I will upload aligns with the <a href="https://dianoia.scify.org/content-guidelines"> content rules and guidelines </a>',
+
     'content-guidelines' => 'Content guidelines',
     'privacy-policy' => 'Privacy policy',
     'meta_tags_description' => 'Dianoia Marketplace is an online application implemented and available for free by the non-profit  SciFY so that everyone can create and share their own free content for the Dianoia application. The content of Dianoia Marketplace is mainly aimed at people that take care of people/patients with onset dementia or/and Alzheimer’s. People with onset dementia, due to the progressive decline of their mental abilities, have the need for appropriate care at every stage. The caregivers feel that they have a great responsibility for their care.',

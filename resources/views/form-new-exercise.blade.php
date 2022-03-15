@@ -120,17 +120,26 @@
 
                 <div class="copyright-rules mb-5 mt-5 p-4">
                     <div class="example">
-
                         <label class="form-check-label" for="flexCheckDefault">
-                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" value=none name="terms" value="{{ old('terms') ?: $viewModel->resource->terms }}">
-                            {!!__('messages.accept-rules-of-conduct')!!}
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" value=none name="accept-guideline-terms" style="margin-right: 10pt">
+                            {!!__('messages.checkbox-guidelines')!!}<span style="color:red">*</span>
                         </label>
                     </div>
-                    @error('terms')
+                    @error('accept-guideline-terms')
                     <div class="alert alert-danger">{{$message}}</div>
                     @enderror
                 </div>
-
+                <div class="copyright-rules mb-5 mt-5 p-4">
+                    <div class="example">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" value=none name="accept-privacy-terms" style="margin-right: 10pt">
+                            {!!__('messages.checkbox-terms-privacy-')!!}<span style="color:red">*</span>
+                        </label>
+                    </div>
+                    @error('accept-privacy-terms')
+                    <div class="alert alert-danger">{{$message}}</div>
+                    @enderror
+                </div>
                 <div class="admin-message-options p-5">
                     {!!__('messages.submission-tutorial')!!}
                 </div>

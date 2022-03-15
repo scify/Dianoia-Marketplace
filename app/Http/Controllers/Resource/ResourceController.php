@@ -119,7 +119,8 @@ class ResourceController extends Controller
             'difficulty_id' =>  "required|integer|gt:0",
             'lang' => "required|integer|gt:0",
             'description' => "required|string|max:1000",
-            'terms' => "required"
+            'accept-guideline-terms' => "required",
+            'accept-privacy-terms' => 'required'
         ]);
         try {
             $request['status_id'] = ResourceStatusesLkp::CREATED_PENDING_APPROVAL;

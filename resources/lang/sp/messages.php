@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'checkbox-terms-privacy-' => 'He leído y acepto  <a href="https://dianoia.scify.org/terms-of-use"> las condiciones de uso </a> y la <a href="https://dianoia.scify.org/privacy-policy"> política de privacidad  </a> de la plataforma',
+    'checkbox-guidelines' => 'El contenido que subiré se ajusta a las  <a href="https://dianoia.scify.org/content-guidelines"> normas y directrices de contenido   </a>',
+
     'content-guidelines' => 'Content guidelines',
     'privacy-policy' => 'Privacy policy',
     'meta_tags_description' => 'Dianoia Marketplace es una aplicación en línea implementada y proporcionada de forma gratuita por la compañía sin fines de lucro SciFY, para que todos puedan crear y compartir contenido gratuito para la aplicación Intellect. El contenido del Dianoia Marketplace está dirigido principalmente a las personas que cuidan de personas/pacientes con inicio de demencia y/o enfermedad de Alzheimer. La aplicación Dianoia Marketplace está dirigida a organizaciones y científicos involucrados en el cuidado y rehabilitación de personas pertenecientes a los grupos descritos anteriormente, así como a personas que brindan atención relevante en el hogar. ',
