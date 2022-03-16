@@ -298,10 +298,8 @@ class ResourceManager {
                     }
                 }
                 return $exercise;
-        }
-
-        )->toArray();
-        $transformed['data'] = array_filter($transformed['data']);
+        })->toArray();
+        $transformed['data'] = array_values(array_filter($transformed['data']));
         return $transformed;
     }
 
