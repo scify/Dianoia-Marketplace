@@ -6,8 +6,8 @@
 @section('content')
     <section id="intro" >
         <div class="container ">
-            <div style="margin-top:200px; text-align:left; top:357px; left: 255px; width:574px; height: 53px; font-size: 40px; color: black; font-family: 'Roboto Condensed Medium',sans-serif">
-                    Instructions for content creators.
+            <div style="margin-top:200px; text-align:left; top:357px; left: 255px; width:800px; height: 53px; font-size: 40px; color: black; font-family: 'Roboto Condensed Medium',sans-serif">
+                    {!! __('messages.guidelines-instructions-for-user-creators')!!}.
             </div>
             <div style="margin-top:25px; font-size: 18px; font-family: 'Roboto Condensed',serif;">
                 <p class="mb-1">
@@ -45,15 +45,11 @@
                                                 <div class="col-md-3" style="float:left">
                                                     <div class="card mb-2">
                                                         <div class="card-body">
-                                                            <p class="card-title">Category "Memory Exercises"</p>
-                                                            <p class="card-text">In this category, there are exercises aiming at exercising and improving the patient’s memory. Examples of exercises</p>
+                                                            <p class="card-title">{!! __('messages.category-memory') !!}</p>
+                                                            <p class="card-text"> {!! __('messages.guidelines-section-1-memory-category-card') !!}</p>
 
-                                                            <p style="bottom: 40pt; position:absolute">
-                                                                <a  href="https://drive.google.com/file/d/1ZTqNmydadRqn7DR0p-g39CkeS2Da-VfW/view" target="_blank">See Memorize word list </a>
-                                                            </p>
-                                                            <p style="bottom: 10pt; position:absolute">
-                                                                <a  href="https://drive.google.com/file/d/1eBv6cc3iU1DuTUXy-Br5mfVrPwO33xIv/view" target="_blank">See Word Categories</a>
-                                                            </p>
+                                                            <p style="bottom: 40pt; position:absolute"> {!! __('messages.exercise-remember-word-list') !!}</p>
+                                                            <p style="bottom: 10pt; position:absolute"> {!! __('messages.exercise-word-categories') !!}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -61,15 +57,10 @@
                                                 <div class="col-md-3" style="float:left">
                                                     <div class="card mb-2">
                                                         <div class="card-body">
-                                                            <p class="card-title">Category "Attention Exercises"</p>
-                                                            <p class="card-text">In this category, there are exercises aiming at exercising and improving the patient’s attention. Examples of exercises:</p>
-
-                                                            <p style="bottom: 40pt; position:absolute">
-                                                                <a  href="https://drive.google.com/file/d/1K6ozqJheub91goQ0jxWBmNccus89mw6h/view" target="_blank">Shading Shapes </a>
-                                                            </p>
-                                                            <p style="bottom: 10pt; position:absolute">
-                                                                <a  href="https://drive.google.com/file/d/1NpKILAmzk0dk6mXd77xDky4lWmgnQy7W/view" target="_blank">Copy correctly</a>
-                                                            </p>
+                                                            <p class="card-title">{!! __('messages.category-attention') !!}</p>
+                                                            <p class="card-text">{!! __('messages.guidelines-section-1-attention-category-card') !!}</p>
+                                                            <p style="bottom: 40pt; position:absolute"> {!! __('messages.exercise-shade-shapes') !!}</p>
+                                                            <p style="bottom: 10pt; position:absolute">{!! __('messages.exercise-copy-correctly') !!}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -77,14 +68,10 @@
                                                 <div class="col-md-3" style="float:left">
                                                     <div class="card mb-2">
                                                         <div class="card-body">
-                                                            <p class="card-title">Category "Thought and Speech Exercises"</p>
-                                                            <p class="card-text">In this category, there are exercises aiming at exercising and improving the patient’s speech ability, as well as the connection between their speech and thought. Examples of exercises:</p>
-                                                            <p style="bottom: 50pt; position:absolute">
-                                                                <a  href="https://drive.google.com/file/d/1vz_KLGHC3KU7cS4ggVtbeCpfk2fYVvTy/view" target="_blank">Find the word </a>
-                                                            </p>
-                                                            <p style="bottom: 5pt; position:absolute">
-                                                                <a  href="https://drive.google.com/file/d/1_ZpddHjEQrPLo2daZGj4iz1zadmTDIKV/view" target="_blank">Color and Think - Double work exercise</a>
-                                                            </p>
+                                                            <p class="card-title">{!! __('messages.category-though') !!}</p>
+                                                            <p class="card-text">{!! __('messages.guidelines-section-1-thought-category-card') !!}</p>
+                                                            <p style="bottom: 40pt; position:absolute"> {!! __('messages.exercise-name-animal') !!}</p>
+                                                            <p style="bottom: 10pt; position:absolute"> {!! __('messages.exercise-synonyms-opposites') !!}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -92,14 +79,10 @@
                                                 <div class="col-md-3" style="float:left">
                                                     <div class="card mb-2">
                                                         <div class="card-body">
-                                                            <p class="card-title">Category “Executive Functions”</p>
-                                                            <p class="card-text">In this category, there are exercises aiming at bringing the patient in contact with daily chores, as well as exercising on simple processes. Examples of exercises:</p>
-                                                            <p style="bottom: 40pt; position:absolute">
-                                                                <a  href="https://drive.google.com/file/d/1bxraGStL8uRhCuVnDt70_Ma7Ph8hSCMU/view" target="_blank">Relaxation techniques for stress relief</a>
-                                                            </p>
-                                                            <p style="bottom: 10pt; position:absolute">
-                                                                <a  href="https://drive.google.com/file/d/1DMTGkJGOAw2Wqhn_hZ-RdX1gp2TwaLgS/view" target="_blank">Use of Mindfulness Technique</a>
-                                                            </p>
+                                                            <p class="card-title">{!! __('messages.category-executive') !!}</p>
+                                                            <p class="card-text">{!! __('messages.guidelines-section-1-executive-category-card') !!}</p>
+                                                            <p style="bottom: 50pt; position:absolute"> {!! __('messages.exercise-find-word') !!} </p>
+                                                            <p style="bottom: 5pt; position:absolute"> {!! __('messages.exercise-double-work') !!}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -124,12 +107,8 @@
                                 <div class="accordion-body guidelines-accordion-body">
                                     {!! __('messages.guidelines-section-2') !!}
                                     <div style="margin-top:20pt">
-                                        <p>
-                                            <a href="https://drive.google.com/file/d/1bxraGStL8uRhCuVnDt70_Ma7Ph8hSCMU/view" target="_blank">  See Relaxation techniques for stress relief </a>
-                                        </p>
-                                        <p>
-                                            <a href="https://drive.google.com/file/d/1DMTGkJGOAw2Wqhn_hZ-RdX1gp2TwaLgS/view" target="_blank">  See Use of Mindfulness Technique </a>
-                                        </p>
+                                        <p> {!! __('messages.exercise-stress-relief') !!}</p>
+                                        <p> {!! __('messages.exercise-mindfulness') !!}</p>
                                     </div>
                                 </div>
                             </div>

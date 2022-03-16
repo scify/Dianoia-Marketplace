@@ -1,7 +1,26 @@
 <?php
 
 return [
-    'guidelines-section-3-subsection-2' => '
+        'category-executive' => 'Category "Executive Functions"',
+        'category-though' => 'Category "Thought and Speech Exercises"',
+        'category-attention' => 'Category "Attention Exercises"',
+        'category-memory' => 'Category "Memory Exercises"',
+        'exercise-mindfulness' => '<a  href="https://drive.google.com/file/d/1DMTGkJGOAw2Wqhn_hZ-RdX1gp2TwaLgS/view" target="_blank">Use of Mindfulness Technique</a>',
+        'exercise-stress-relief' => '<a  href="https://drive.google.com/file/d/1bxraGStL8uRhCuVnDt70_Ma7Ph8hSCMU/view" target="_blank">Relaxation techniques for stress relief</a>',
+        'exercise-double-work' => '<a  href="https://drive.google.com/file/d/1_ZpddHjEQrPLo2daZGj4iz1zadmTDIKV/view" target="_blank">Color and Think - Double work exercise</a>',
+        'exercise-find-word' => '<a  href="https://drive.google.com/file/d/1vz_KLGHC3KU7cS4ggVtbeCpfk2fYVvTy/view" target="_blank">Find the word </a>',
+        'exercise-synonyms-opposites' => '<a href="https://drive.google.com/file/d/1D7CqENsfpKF3Qr28SL23VlKplUKUHQRC/view" target="_blank" > Synonyms - Antonyms </a>',
+        'exercise-name-animal' => '<a href="https://drive.google.com/file/d/1MxwYwfVscBWJ5W0X4GUzlbCUx0qz02b4/view" target="_blank">Name-Animal-Object-Plant</a>',
+        'exercise-copy-correctly' => '<a  href="https://drive.google.com/file/d/1NpKILAmzk0dk6mXd77xDky4lWmgnQy7W/view" target="_blank">Copy correctly</a>',
+        'exercise-shade-shapes' => '<a  href="https://drive.google.com/file/d/1K6ozqJheub91goQ0jxWBmNccus89mw6h/view" target="_blank">Shading Shapes </a>',
+        'exercise-word-categories' => '<a  href="https://drive.google.com/file/d/1eBv6cc3iU1DuTUXy-Br5mfVrPwO33xIv/view" target="_blank">See Word Categories</a>' ,
+        'exercise-remember-word-list' => '<a  href="https://drive.google.com/file/d/1ZTqNmydadRqn7DR0p-g39CkeS2Da-VfW/view" target="_blank">See Memorize word list </a>',
+        'guidelines-section-1-executive-category-card' => 'In this category, there are exercises aiming at bringing the patient in contact with daily chores, as well as exercising on simple processes. Examples of exercises:',
+        'guidelines-section-1-thought-category-card' => 'In this category, there are exercises aiming at exercising and improving the patient’s speech ability, as well as the connection between their speech and thought. Examples of exercises:',
+        'guidelines-section-1-attention-category-card' => 'In this category, there are exercises aiming at exercising and improving the patient’s attention.  Examples of exercises:',
+        'guidelines-section-1-memory-category-card' => 'In this category, there are exercises aiming at exercising and improving the patient’s memory. Examples of exercises:',
+        'guidelines-instructions-for-user-creators' => 'Instructions for content creators',
+        'guidelines-section-3-subsection-2' => '
         <p>Every exercise/activity available in “Dianoia” is accompanied by a PDF file (.pdf file extension) containing the full exercise, with a description of its goal and its instructions. This makes things easier for the caregiver concerning the printing of the exercise so that it’s easier for the patient to do. Every file uploaded to the <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> platform must meet all the following criteria:</p>
         <p><span class="list-number">1</span> <span>It must include in a clear way the title of the exercise, its description, its goal, as well as its instructions.</span></p>
         <p><span class="list-number">2</span> <span>It must be complete as to the content of the exercise/activity.</span></p>
@@ -9,10 +28,12 @@ return [
         <p><span class="list-number">4</span> <span>It must be a <b>PDF</b> file</span></p>
         <p><span class="list-number">5</span> <span>It must be able to be used freely, with the appropriate copyright.</span></p>
         <p>
-            To crop, edit or change a file we have on our computer, our mobile phone or that we have downloaded from the Internet, we can use an online tool, such as Small Pdf.
+            To crop, edit or change a file we have on our computer, our mobile phone or that we have downloaded from the Internet, we can use an online tool, such as
+             <a href="https://smallpdf.com/edit-pdf" target="_blank"> Small Pdf </a>.
         </p>
         <p>
-            To create text documents on our computer, with copyright that allows their use, we can use the following applications: Libreoffic / Microsoft Office
+            To create text documents on our computer, with copyright that allows their use, we can use the following applications:
+             <a href="https://www.libreoffice.org/download/download/" target="_blank"> Libreoffice</a> / <a href="https://www.office.com/" target="_blank"> Microsoft Office </a>
         </p>',
     'guidelines-section-3-subsection-2-header' => 'Exercises/Activities\' Documents',
     'guidelines-section-3-subsection-1' => '

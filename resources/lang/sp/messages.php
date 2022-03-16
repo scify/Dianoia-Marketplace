@@ -1,9 +1,79 @@
 <?php
 
 return [
+
+    'category-executive' => 'Categoría "Funciones Ejecutivas"',
+    'category-though' => 'Categoría "Ejercicios de pensamiento y habla"',
+    'category-attention' => 'Categoría “Ejercicios de atención”',
+    'category-memory' => 'Categoría "Ejercicios de memoria"',
+    'exercise-mindfulness' => '<a  href="https://drive.google.com/file/d/1DMTGkJGOAw2Wqhn_hZ-RdX1gp2TwaLgS/view" target="_blank">Use of Mindfulness Technique</a>',
+    'exercise-stress-relief' => '<a  href="https://drive.google.com/file/d/1bxraGStL8uRhCuVnDt70_Ma7Ph8hSCMU/view" target="_blank">Relaxation techniques for stress relief</a>',
+    'exercise-double-work' => '<a  href="https://drive.google.com/file/d/1_ZpddHjEQrPLo2daZGj4iz1zadmTDIKV/view" target="_blank">Color and Think - Double work exercise</a>',
+    'exercise-find-word' => '<a  href="https://drive.google.com/file/d/1vz_KLGHC3KU7cS4ggVtbeCpfk2fYVvTy/view" target="_blank">Find the word </a>',
+    'exercise-synonyms-opposites' => '<a href="https://drive.google.com/file/d/1D7CqENsfpKF3Qr28SL23VlKplUKUHQRC/view" target="_blank" > Synonyms - Antonyms </a>',
+    'exercise-name-animal' => '<a href="https://drive.google.com/file/d/1MxwYwfVscBWJ5W0X4GUzlbCUx0qz02b4/view" target="_blank">Name-Animal-Object-Plant</a>',
+    'exercise-copy-correctly' => '<a  href="https://drive.google.com/file/d/1NpKILAmzk0dk6mXd77xDky4lWmgnQy7W/view" target="_blank">Copy correctly</a>',
+    'exercise-shade-shapes' => '<a  href="https://drive.google.com/file/d/1K6ozqJheub91goQ0jxWBmNccus89mw6h/view" target="_blank">Shading Shapes </a>',
+    'exercise-word-categories' => '<a  href="https://drive.google.com/file/d/1eBv6cc3iU1DuTUXy-Br5mfVrPwO33xIv/view" target="_blank">See Word Categories</a>' ,
+    'exercise-remember-word-list' => '<a  href="https://drive.google.com/file/d/1ZTqNmydadRqn7DR0p-g39CkeS2Da-VfW/view" target="_blank">See Memorize word list </a>',
+    'guidelines-section-1-executive-category-card' => 'In this category, there are exercises aiming at bringing the patient in contact with daily chores, as well as exercising on simple processes. Examples of exercises:',
+    'guidelines-section-1-thought-category-card' => 'In this category, there are exercises aiming at exercising and improving the patient’s speech ability, as well as the connection between their speech and thought. Examples of exercises:',
+    'guidelines-section-1-attention-category-card' => 'In this category, there are exercises aiming at exercising and improving the patient’s attention.  Examples of exercises:',
+    'guidelines-section-1-memory-category-card' => 'In this category, there are exercises aiming at exercising and improving the patient’s memory. Examples of exercises:',
+    'guidelines-instructions-for-user-creators' => 'Instrucciones para creadores de contenido',
+    'guidelines-section-3-subsection-2' => '
+        <p>Cada ejercicio/actividad disponible en "Dianoia" va acompañado de un archivo PDF (con extensión de archivo .pdf), que contiene el ejercicio completo, con una descripción de su propósito e instrucciones. Esto facilita que el cuidador del paciente imprima el ejercicio, para que sea más fácil para el paciente. Cada archivo cargado en la plataforma Dianoia Marketplace debe cumplir con todos los siguientes criterios: </p>
+        <p><span class="list-number">1</span> <span>Incluir de forma clara el título del ejercicio, su descripción, su finalidad, así como las instrucciones</span></p>
+        <p><span class="list-number">2</span> <span>Ser completo en cuanto al contenido del ejercicio/actividad</span></p>
+        <p><span class="list-number">3</span> <span >No tener un tamaño mayor a <b>2 megabytes.</b></span></p>
+        <p><span class="list-number">4</span> <span>Ser del tipo <b>PDF</b></span></p>
+        <p><span class="list-number">5</span> <span>Poder ser utilizado libremente, con los derechos de autor apropiados.</span></p>
+        <p>
+       Para recortar, editar y modificar un documento que tengamos en nuestro ordenador, en nuestro teléfono móvil, o descargado de Internet, podemos utilizar una herramienta online, como
+             <a href="https://smallpdf.com/edit-pdf" target="_blank"> Small Pdf </a>.
+        </p>
+        <p>
+          Para crear documentos de texto en nuestro ordenador, con derechos de autor que permitan su uso, podemos utilizar las siguientes aplicaciones:
+             <a href="https://www.libreoffice.org/download/download/" target="_blank"> Libreoffice</a> / <a href="https://www.office.com/" target="_blank"> Microsoft Office </a>
+        </p>',
+    'guidelines-section-3-subsection-2-header' => 'Documentos de ejercicios / actividades',
+    'guidelines-section-3-subsection-1' => '
+        <p> La imagen que acompaña a un ejercicio/actividad debe mostrar el contenido del ejercicio con la mayor claridad posible para satisfacer las necesidades del usuario. Por ejemplo, en un ejercicio "Nombrar Animal Cosa Planta", debemos elegir una imagen que cumpla con todos los siguientes criterios: </p>
+        <p><span class="list-number">1</span> <span >Mostrar la tabla del ejercicio o un ejemplo de animales/plantas, y no otros objetos que puedan confundir el usuario y su cuidador.</span></p>
+        <p><span class="list-number">2</span> <span>Tener un tamaño aproximado de  <b>600 por 400 píxeles.</b></span></p>
+        <p><span class="list-number">3</span> <span>No ser más de <b>2 megabytes.</b></span></p>
+        <p><span class="list-number">4</span> <span >Ser <b>.png, .jpg, o .jpeg<b/></span></p>
+        <p><span class="list-number">5</span> <span >Poder ser utilizado libremente, con los derechos de autor apropiados. </span></p>
+
+        <p>Para recortar, encoger o cambiar el tipo de imágenes que tenemos en nuestro ordenador o descargadas de Internet, podemos utilizar una herramienta online, como
+            <a href="https://image.online-convert.com/convert-to-jpg" target="_blank">Online Image Converter</a></p>
+        <p>To find images with copyright that allow their use, we can use the following websites (indicative): or download a tool such as
+                <a href="https://pixabay.com/" target="_blank">Pixabay</a> /
+                <a href="https://unsplash.com/explore" target="_blank">Unsplash</a> /
+                <a href="https://www.pexels.com/royalty-free-images/" target="_blank">Pexels</a> /
+                <a href="https://www.shutterstock.com/search/no+license" target="_blank">Shutterstock</a>
+        </p>
+
+        ',
+    'guidelines-section-3-subsection-header-1' => 'Imágenes',
+    'guidelines-section-2' => '
+        <p>Además de los ejercicios y actividades para personas con demencia, el objetivo de la plataforma Dianoia Marketplace es crear y distribuir contenido para los cuidadores de estas personas.  </p>
+        <p>Por ello, también existe la categoría “Ejercicios para cuidadores”, que incluye ejercicios y actividades para cuidadores. Ejemplos de actividades: </p>',
+    'guidelines-section-1' => '
+            <p>El objetivo del contenido que se sube en Dianoia Marketplace es ayudar a las personas con demencia, mejorar sus funciones mentales, estado de ánimo, funcionalidad y calidad de vida al proporcionarles rompecabezas, desencadenar recuerdos o incluso tareas diarias o pasatiempos que amaban. </p>
+            <p>Asimismo, el objetivo es que Dianoia Marketplace se convierta en un punto de referencia y nodo de contenido de ejercicios en categorías como: <b>Ejercicios de Memoria, Atención, Pensamiento y Habla, Funciones Ejecutivas </b>, que están disponibles en 2 niveles de dificultad (normal y difícil). </p>
+            <p>Los usuarios de Dianoia Marketplace deben cargar contenido en lenguaje sencillo, texto sin formato y fuentes e instrucciones fáciles de leer. A continuación se proporcionan instrucciones más detalladas para las diversas categorías de contenido para personas/pacientes con inicio de demencia: </p>',
+    'guidelines-header-3' => 'Notas sobre la búsqueda, edición y carga de contenido para ejercicios y actividades',
+    'guidelines-header-2' => 'Creación de contenido - Contenido para cuidadores de personas con demencia',
+    'guidelines-header-1' => 'Creación de contenido: contenido para personas con demencia incipiente',
+    'guidelines-prologue'=>'
+        <p>Dianoia Marketplace es una aplicación en línea que se implementó sin fines de lucro, SciFY para que cualquiera pueda crear y compartir con otros contenido gratuito para implementar Intellect.</p>
+        <p>El contenido del Dianoia Marketplace está dirigido principalmente a personas que cuidan de personas/pacientes con inicio de demencia y/o enfermedad de Alzheimer.</p>
+        <p>Las personas con demencia en desarrollo, debido al declive evolutivo de sus capacidades mentales, necesitan atención adecuada en cada etapa. Los cuidadores sienten que tienen una gran responsabilidad por su cuidado. Así que la demencia no solo afecta a la persona con demencia, sino también a quien la cuida.</p>',
+
+
     'checkbox-terms-privacy-' => 'He leído y acepto  <a href="https://dianoia.scify.org/terms-of-use"> las condiciones de uso </a> y la <a href="https://dianoia.scify.org/privacy-policy"> política de privacidad  </a> de la plataforma',
     'checkbox-guidelines' => 'El contenido que subiré se ajusta a las  <a href="https://dianoia.scify.org/content-guidelines"> normas y directrices de contenido   </a>',
-
     'content-guidelines' => 'Content guidelines',
     'privacy-policy' => 'Privacy policy',
     'meta_tags_description' => 'Dianoia Marketplace es una aplicación en línea implementada y proporcionada de forma gratuita por la compañía sin fines de lucro SciFY, para que todos puedan crear y compartir contenido gratuito para la aplicación Intellect. El contenido del Dianoia Marketplace está dirigido principalmente a las personas que cuidan de personas/pacientes con inicio de demencia y/o enfermedad de Alzheimer. La aplicación Dianoia Marketplace está dirigida a organizaciones y científicos involucrados en el cuidado y rehabilitación de personas pertenecientes a los grupos descritos anteriormente, así como a personas que brindan atención relevante en el hogar. ',
