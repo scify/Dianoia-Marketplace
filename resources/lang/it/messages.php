@@ -1,6 +1,76 @@
 <?php
 
 return [
+    'category-executive' => 'Categoria “Funzioni Esecutive”',
+    'category-though' => 'Categoria “Esercizi di Pensiero e Ragionamento”',
+    'category-attention' => 'Categoria “Esercizi di Attenzione”',
+    'category-memory' => 'Categoria “Esercizi di Memoria”',
+    'exercise-mindfulness' => '<a  href="https://drive.google.com/file/d/1cjrL-AoShIIMHuPP3XAahxjFEUhLZ8K_/view" target="_blank">Uso della tecnica Mindfulness</a>',
+    'exercise-stress-relief' => '<a  href="https://drive.google.com/file/d/1IDHEH6dlwH1_OtEP1TZnPO99b8Jya8ht/view" target="_blank">Tecniche di rilassamento per ridurre lo stress</a>',
+    'exercise-double-work' => '<a  href="https://drive.google.com/file/d/1CAJgy-HvWXCZm50472wfeMUNHK91nCYh/view" target="_blank">Esercizio a doppio compito - Coloro e penso</a>',
+    'exercise-find-word' => '<a  href="https://drive.google.com/file/d/1aW_xbVVix1iOGXEjdazoCWx_U1j3H4u6/view" target="_blank">Trova la parola</a>',
+    'exercise-synonyms-opposites' => '<a href="https://drive.google.com/file/d/1D7CqENsfpKF3Qr28SL23VlKplUKUHQRC/view" target="_blank" > Synonyms - Antonyms </a>',
+    'exercise-name-animal' => '<a href="https://drive.google.com/file/d/1pQ6i9jS5RpzjFmvWIiP16C8oJDy0koA8/view" target="_blank">Nome Animale Oggetto Pianta</a>',
+    'exercise-copy-correctly' => '<a  href="https://drive.google.com/file/d/1TlSq-sCGsbt3Z1WiFcWdhOjhxt1l2QlO/view" target="_blank">Copia correttamente</a>',
+    'exercise-shade-shapes' => '<a  href="https://drive.google.com/file/d/1vTuF_serHA6zg_QlpnhGgB6rswuzrb4T/view" target="_blank">Disegno di forme</a>',
+    'exercise-word-categories' => '<a  href="https://drive.google.com/file/d/1XmNEtAJCu6tokzGbSR3IXo05IR4Rxrvo/view" target="_blank">Categorie di parole</a>' ,
+    'exercise-remember-word-list' => '<a  href="https://drive.google.com/file/d/1T6cwIvJdMJCkEJNSeku9SmEw8H2ZHxlJ/view" target="_blank">Memorizza l\'elenco delle parole</a>',
+    'guidelines-section-1-executive-category-card' => 'Questa categoria comprende esercizi che mirano a coinvolgere il paziente nei compiti quotidiani e a praticare processi semplici. Esempi di esercizi:',
+    'guidelines-section-1-thought-category-card' => 'Questa categoria comprende esercizi che mirano a praticare e migliorare la capacità di parola del paziente, così come la connessione tra la parola e il pensiero. Esempi di esercizi:',
+    'guidelines-section-1-attention-category-card' => 'Questa categoria comprende esercizi che mirano ad allenare e migliorare l\'attenzione del paziente. Esempi di esercizi:',
+    'guidelines-section-1-memory-category-card' => 'Questa categoria comprende esercizi che mirano ad allenare e migliorare la memoria del paziente. Esempi di esercizi:',
+    'guidelines-instructions-for-user-creators' => 'Istruzioni per I creatori di contenuti',
+    'guidelines-section-3-subsection-2' => '
+        <p>Ogni esercizio/attività disponibile su "Dianoia" è accompagnato da un file PDF (con estensione .pdf), che contiene  l\'intero esercizio, con una descrizione dell\'obiettivo e le sue istruzioni. Questo rende più facile stampare l’esercizio da parte dell’accompagnatore, per eseguirlo in modo che sia più facile per il paziente. Ogni file caricato sulla piattaforma Dianoia Marketplace deve soddisfare tutti I seguenti criteri:</p>
+        <p><span class="list-number">1</span> <span>Deve includere chiaramente il titolo dell\'esercizio, la sua descrizione, il suo obiettivo e le sue istruzioni.</span></p>
+        <p><span class="list-number">2</span> <span>Deve essere completo in termini di contenuto dell\'esercizio/attività</span></p>
+        <p><span class="list-number">3</span> <span >Le sue dimensioni non devono essere più grandi di <b>2 megabytes.</b></span></p>
+        <p><span class="list-number">4</span> <span>Deve essere di tipo <b>PDF</b></span></p>
+        <p><span class="list-number">5</span> <span>Deve poter essere usato liberamente, con un copyright appropriato.</span></p>
+        <p>
+           Per tagliare, modificare e cambiare un documento che abbiamo sul nostro computer, sul nostro telefono cellulare o che abbiamo scaricato da Internet, possiamo usare uno strumento online come
+             <a href="https://smallpdf.com/edit-pdf" target="_blank"> Small Pdf </a>.
+        </p>
+        <p>
+            Per creare documenti di testo protetti da copyright sul nostro computer, possiamo utilizzare le seguenti applicazioni:
+            <a href="https://www.libreoffice.org/download/download/" target="_blank"> Libreoffice</a> / <a href="https://www.office.com/" target="_blank"> Microsoft Office </a>
+        </p>',
+    'guidelines-section-3-subsection-2-header' => 'Documenti di esercizi / attività',
+    'guidelines-section-3-subsection-1' => "
+        <p> L'immagine che accompagna un esercizio/attività dovrebbe mostrare il più chiaramente possibile il contenuto dell'esercizio per soddisfare il bisogno dell'utente. Per esempio, in un esercizio di \"Nome Animale Oggetto Pianta\", dobbiamo scegliere un'immagine che soddisfi tutti I seguenti criteri:  </p>
+        <p><span class=\"list-number\">1</span> <span >Deve mostrare la tabella dell’esercizio o un esempio di un animale/pianta, non altri oggetti che possono confondere l'utente e il suo accompagnatore.</span></p>
+        <p><span class=\"list-number\">2</span> <span>Le sue dimensioni devono essere approssimativamente <b>600 per 400 pixels.</b></span></p>
+        <p><span class=\"list-number\">3</span> <span>Le sue dimensioni non devono essere più grandi di <b>2 megabytes.</b></span></p>
+        <p><span class=\"list-number\">4</span> <span >Deve essere di tipo <b>.png, .jpg, o .jpeg</b></span></p>
+        <p><span class=\"list-number\">5</span> <span >Deve poter essere usata liberamente, con un copyright appropriato</span></p>
+
+        <p>Per ritagliare, rimpicciolire o cambiare il tipo delle immagini che abbiamo sul nostro computer o che abbiamo scaricato da Internet, possiamo usare uno strumento online come
+            <a href=\"https://image.online-convert.com/convert-to-jpg\" target=\"_blank\">Online Image Converter</a></p>
+        <p>Per trovare immagini protette da copyright che ne permettano l'uso, possiamo usare, per esempio, I seguenti siti web:
+                <a href=\"https://pixabay.com/\" target=\"_blank\">Pixabay</a> /
+                <a href=\"https://unsplash.com/explore\" target=\"_blank\">Unsplash</a> /
+                <a href=\"https://www.pexels.com/royalty-free-images/\" target=\"_blank\">Pexels</a> /
+                <a href=\"https://www.shutterstock.com/search/no+license\" target=\"_blank\">Shutterstock</a>
+        </p>
+        ",
+    'guidelines-section-3-subsection-header-1' => 'Immagini',
+    'guidelines-section-2' => "
+        <p>Oltre agli esercizi e alle attività per le persone con demenza incipiente, la piattaforma Dianoia Marketplace mira anche a creare e rendere disponibili contenuti per gli accompagnatori di queste persone. </p>
+        <p>Per questo motivo, esiste anche la categoria \"Esercizi per accompagnatori\", che include esercizi e attività per gli accompagnatori. Esempi di attività:</p>",
+    'guidelines-section-1' => "
+            <p>Lo scopo dei contenuti caricati su Dianoia Marketplace è quello di aiutare le persone con demenza incipiente a migliorare le loro funzioni cognitive, l'umore, la funzionalità e la qualità della vita dando loro dei puzzle, aiutandoli a ricordare vecchi ricordi o anche compiti quotidiani o attività che amavano.</p>
+            <p>Inoltre, l'obiettivo è quello di rendere Dianoia Marketplace un punto di riferimento e un hub di contenuti per esercizi in categorie come: <b>Esercizi di Memoria, Attenzione, Pensiero e Ragionamento, Funzioni Esecutive </b>, che saranno disponibili in 2 livelli di difficoltà (normale e difficile).</p>
+            <p>Gli utenti di Dianoia Marketplace devono caricare contenuti con un linguaggio semplice, un testo comprensibile e un carattere e istruzioni leggibili.
+Linee guida più dettagliate per le diverse categorie di contenuti per le persone/pazienti con demenza incipiente vengono riportate di seguito:</p>",
+    'guidelines-header-3' => 'Note su come trovare, modificare e caricare contenuti per esercizi e attività',
+    'guidelines-header-2' => 'Creazione di contenuti - Contenuti per accompagnatori di persone con demenza incipiente',
+    'guidelines-header-1' => 'Creazione di contenuti - Contenuti per persone con demenza incipiente',
+    'guidelines-prologue'=>"
+        <p>Dianoia Marketplace è un'applicazione web implementata e messa a disposizione gratuitamente dalla no-profit SciFY, in modo che chiunque possa creare e condividere con altre persone contenuti gratuiti per l'app Dianoia</p>
+        <p>Il contenuto di Dianoia Marketplace riguarda principalmente le persone che si occupano di persone/pazienti con demenza incipiente e/o malattia di Alzheimer.</p>
+        <p>Le persone con demenza incipiente, a causa del progressivo declino delle loro capacità cognitive, hanno bisogno di cure adeguate in ogni fase. Gli accompagnatori sentono di avere una grande responsabilità per le loro cure. La demenza colpisce quindi non solo la persona con demenza, ma anche chi la assiste.</p>",
+
+
     'checkbox-terms-privacy-' => 'Ho letto e sono d\'accordo con i <a href="https://dianoia.scify.org/terms-of-use"> termini di utilizzo </a> e l\' <a href="https://dianoia.scify.org/privacy-policy"> informativa sulla privacy   </a> della piattaforma',
     'checkbox-guidelines' => 'Il contenuto che caricherò si allinea con le  <a href="https://dianoia.scify.org/content-guidelines"> regole e le linee guida del contenuto   </a>',
 
