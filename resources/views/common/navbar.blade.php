@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg  fixed-top   navbar-light">
     <div class="container">
         <a class="navbar-brand" href="{{ route('homepage') }}" tabindex="-1">
             <img

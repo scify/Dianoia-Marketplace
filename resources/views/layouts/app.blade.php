@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="{{ asset('img/advertisement-poster.png') }}"/>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-        @include('common.favicons')
+    @include('common.favicons')
     <link rel="stylesheet" href="{{ mix('dist/css/main.css') }}">
     <link
         href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css"
@@ -34,11 +34,15 @@
 
     <![endif]-->
 </head>
+
+
+
 <body class="hold-transition background-page @yield('body_class')">
 <div id="app">
     @include('common.staging-indication')
     @include('common.navbar')
     @include('common.alerts')
+
     <main class="mb-5">
         <div id="main-content">
             @yield('content')

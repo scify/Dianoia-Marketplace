@@ -18,7 +18,15 @@
     padding-left: 0.8rem;
 }
 
-
+#app{
+   main{
+       //@media screen and (max-width: 500px) {
+       //    height: 100%;
+       //}
+        margin-top: 150px;
+        margin-bottom: 150px
+    }
+}
 .navbar {
     background-color:  var(--color-grey-light);
 
