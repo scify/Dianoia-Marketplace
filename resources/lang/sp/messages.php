@@ -6,23 +6,22 @@ return [
     'category-though' => 'Categoría "Ejercicios de pensamiento y habla"',
     'category-attention' => 'Categoría “Ejercicios de atención”',
     'category-memory' => 'Categoría "Ejercicios de memoria"',
-    'exercise-mindfulness' => '<a  href="https://drive.google.com/file/d/1DMTGkJGOAw2Wqhn_hZ-RdX1gp2TwaLgS/view" target="_blank">Use of Mindfulness Technique</a>',
-    'exercise-stress-relief' => '<a  href="https://drive.google.com/file/d/1bxraGStL8uRhCuVnDt70_Ma7Ph8hSCMU/view" target="_blank">Relaxation techniques for stress relief</a>',
-    'exercise-double-work' => '<a  href="https://drive.google.com/file/d/1_ZpddHjEQrPLo2daZGj4iz1zadmTDIKV/view" target="_blank">Color and Think - Double work exercise</a>',
-    'exercise-find-word' => '<a  href="https://drive.google.com/file/d/1vz_KLGHC3KU7cS4ggVtbeCpfk2fYVvTy/view" target="_blank">Find the word </a>',
-    'exercise-synonyms-opposites' => '<a href="https://drive.google.com/file/d/1D7CqENsfpKF3Qr28SL23VlKplUKUHQRC/view" target="_blank" > Synonyms - Antonyms </a>',
-    'exercise-name-animal' => '<a href="https://drive.google.com/file/d/1MxwYwfVscBWJ5W0X4GUzlbCUx0qz02b4/view" target="_blank">Name-Animal-Object-Plant</a>',
-    'exercise-copy-correctly' => '<a  href="https://drive.google.com/file/d/1NpKILAmzk0dk6mXd77xDky4lWmgnQy7W/view" target="_blank">Copy correctly</a>',
-    'exercise-shade-shapes' => '<a  href="https://drive.google.com/file/d/1K6ozqJheub91goQ0jxWBmNccus89mw6h/view" target="_blank">Shading Shapes </a>',
-    'exercise-word-categories' => '<a  href="https://drive.google.com/file/d/1eBv6cc3iU1DuTUXy-Br5mfVrPwO33xIv/view" target="_blank">See Word Categories</a>' ,
-    'exercise-remember-word-list' => '<a  href="https://drive.google.com/file/d/1ZTqNmydadRqn7DR0p-g39CkeS2Da-VfW/view" target="_blank">See Memorize word list </a>',
-    'guidelines-section-1-executive-category-card' => 'In this category, there are exercises aiming at bringing the patient in contact with daily chores, as well as exercising on simple processes. Examples of exercises:',
-    'guidelines-section-1-thought-category-card' => 'In this category, there are exercises aiming at exercising and improving the patient’s speech ability, as well as the connection between their speech and thought. Examples of exercises:',
-    'guidelines-section-1-attention-category-card' => 'In this category, there are exercises aiming at exercising and improving the patient’s attention.  Examples of exercises:',
-    'guidelines-section-1-memory-category-card' => 'In this category, there are exercises aiming at exercising and improving the patient’s memory. Examples of exercises:',
+    'exercise-mindfulness' => '<a  href="https://drive.google.com/file/d/1IVDvCoAgvi-lO4zGn7RJE-tJOzKH-xeQ/view" target="_blank">Utilización de la técnica Mindfulness</a>',
+    'exercise-stress-relief' => '<a  href="https://drive.google.com/file/d/1dprnAzwcHa_gBIW3BD0-UmBdbNbaUaDH/view" target="_blank">Técnicas de relajación para reducir el estrés</a>',
+    'exercise-double-work' => '<a  href="https://drive.google.com/file/d/10TjnE_AF87QnuvmJBkxJpU0wQKzL2CBb/view" target="_blank">Ejercicio de tarea dual - Colorear y pensar</a>',
+    'exercise-find-word' => '<a  href="https://drive.google.com/file/d/1KvwfUUpxdj1NfapT4ULfFG2ae5-of4G5/view" target="_blank">Encuentra la palabra</a>',
+    'exercise-synonyms-opposites' => '<a href="https://drive.google.com/file/d/1l0foP8rV6H82idAYpbPV8gAziorbayp7/view" target="_blank" >Sinónimos - Antónimos</a>',
+    'exercise-name-animal' => '<a href="https://drive.google.com/file/d/1SXKEoV3wDfC5ZF4jyYBqbHdULASS_RDc/view" target="_blank">Nombre Animal Cosa Planta</a>',
+    'exercise-copy-correctly' => '<a  href="https://drive.google.com/file/d/1NpKILAmzk0dk6mXd77xDky4lWmgnQy7W/view" target="_blank">Copiar correctamente</a>',
+    'exercise-shade-shapes' => '<a  href="https://drive.google.com/file/d/1K6ozqJheub91goQ0jxWBmNccus89mw6h/view" target="_blank">Sombrear formas</a>',
+    'exercise-word-categories' => '<a  href="https://drive.google.com/file/d/1EvUJNN28_JQGSEgZ3vKy2aeYdhv_ouhP/view" target="_blank">Categorías de palabras</a>' ,
+    'exercise-remember-word-list' => '<a  href="https://drive.google.com/file/d/1gAl3GZCTjUqlseNzdViR7QKvjDOJ1URr/view" target="_blank">Memorización de una lista de palabras</a>',
+    'guidelines-section-1-executive-category-card' => 'Esta categoría incluye ejercicios destinados a frotar al paciente con las tareas diarias, así como practicar procesos simples. Ejemplos de ejercicios:',
+    'guidelines-section-1-thought-category-card' => 'Esta categoría incluye ejercicios que tienen como objetivo practicar y mejorar la capacidad del habla del paciente, así como la conexión del habla con el pensamiento. Ejemplos de ejercicios:',
+    'guidelines-section-1-attention-category-card' => 'Esta categoría incluye ejercicios que tienen como objetivo practicar y mejorar la atención del paciente. Ejemplos de ejercicios:',
+    'guidelines-section-1-memory-category-card' => 'Esta categoría incluye ejercicios destinados a practicar y mejorar la memoria del paciente. Ejemplos de ejercicios:',
     'guidelines-instructions-for-user-creators' => 'Instrucciones para creadores de contenido',
-    'guidelines-section-3-subsection-2' => '
-        <p>Cada ejercicio/actividad disponible en "Dianoia" va acompañado de un archivo PDF (con extensión de archivo .pdf), que contiene el ejercicio completo, con una descripción de su propósito e instrucciones. Esto facilita que el cuidador del paciente imprima el ejercicio, para que sea más fácil para el paciente. Cada archivo cargado en la plataforma Dianoia Marketplace debe cumplir con todos los siguientes criterios: </p>
+    'guidelines-section-3-subsection-2' => '<p>Cada ejercicio/actividad disponible en "Dianoia" va acompañado de un archivo PDF (con extensión de archivo .pdf), que contiene el ejercicio completo, con una descripción de su propósito e instrucciones. Esto facilita que el cuidador del paciente imprima el ejercicio, para que sea más fácil para el paciente. Cada archivo cargado en la plataforma Dianoia Marketplace debe cumplir con todos los siguientes criterios: </p>
         <p><span class="list-number">1</span> <span>Incluir de forma clara el título del ejercicio, su descripción, su finalidad, así como las instrucciones</span></p>
         <p><span class="list-number">2</span> <span>Ser completo en cuanto al contenido del ejercicio/actividad</span></p>
         <p><span class="list-number">3</span> <span >No tener un tamaño mayor a <b>2 megabytes.</b></span></p>
@@ -42,19 +41,17 @@ return [
         <p><span class="list-number">1</span> <span >Mostrar la tabla del ejercicio o un ejemplo de animales/plantas, y no otros objetos que puedan confundir el usuario y su cuidador.</span></p>
         <p><span class="list-number">2</span> <span>Tener un tamaño aproximado de  <b>600 por 400 píxeles.</b></span></p>
         <p><span class="list-number">3</span> <span>No ser más de <b>2 megabytes.</b></span></p>
-        <p><span class="list-number">4</span> <span >Ser <b>.png, .jpg, o .jpeg<b/></span></p>
+        <p><span class="list-number">4</span> <span >Ser <b>.png, .jpg, o .jpeg</b></span></p>
         <p><span class="list-number">5</span> <span >Poder ser utilizado libremente, con los derechos de autor apropiados. </span></p>
 
         <p>Para recortar, encoger o cambiar el tipo de imágenes que tenemos en nuestro ordenador o descargadas de Internet, podemos utilizar una herramienta online, como
             <a href="https://image.online-convert.com/convert-to-jpg" target="_blank">Online Image Converter</a></p>
-        <p>To find images with copyright that allow their use, we can use the following websites (indicative): or download a tool such as
+        <p> Para encontrar imágenes con derechos de autor que nos permitan usarlas, podemos consultar sitios como los siguientes:
                 <a href="https://pixabay.com/" target="_blank">Pixabay</a> /
                 <a href="https://unsplash.com/explore" target="_blank">Unsplash</a> /
                 <a href="https://www.pexels.com/royalty-free-images/" target="_blank">Pexels</a> /
                 <a href="https://www.shutterstock.com/search/no+license" target="_blank">Shutterstock</a>
-        </p>
-
-        ',
+        </p>',
     'guidelines-section-3-subsection-header-1' => 'Imágenes',
     'guidelines-section-2' => '
         <p>Además de los ejercicios y actividades para personas con demencia, el objetivo de la plataforma Dianoia Marketplace es crear y distribuir contenido para los cuidadores de estas personas.  </p>
@@ -69,6 +66,7 @@ return [
     'guidelines-prologue'=>'
         <p>Dianoia Marketplace es una aplicación en línea que se implementó sin fines de lucro, SciFY para que cualquiera pueda crear y compartir con otros contenido gratuito para implementar Intellect.</p>
         <p>El contenido del Dianoia Marketplace está dirigido principalmente a personas que cuidan de personas/pacientes con inicio de demencia y/o enfermedad de Alzheimer.</p>
+
         <p>Las personas con demencia en desarrollo, debido al declive evolutivo de sus capacidades mentales, necesitan atención adecuada en cada etapa. Los cuidadores sienten que tienen una gran responsabilidad por su cuidado. Así que la demencia no solo afecta a la persona con demencia, sino también a quien la cuida.</p>',
 
 

@@ -133,7 +133,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col md-2 guidelines-sidebar">
+                <div class="col-md-2 guidelines-sidebar" style=" min-width: 0;">
                     <span class="sidebar-title">Content</span>
                     <hr>
                     <span id="linkToFirstSection" class="sidebar-content" type="button" style="color:var(--primary)"> {!! __('messages.guidelines-header-1') !!}</span>
