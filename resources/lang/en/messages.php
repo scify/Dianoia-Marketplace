@@ -1,6 +1,55 @@
 <?php
 
 return [
+    'guidelines-section-3-subsection-2' => '
+        <p>Every exercise/activity available in “Dianoia” is accompanied by a PDF file (.pdf file extension) containing the full exercise, with a description of its goal and its instructions. This makes things easier for the caregiver concerning the printing of the exercise so that it’s easier for the patient to do. Every file uploaded to the <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> platform must meet all the following criteria:</p>
+        <p><span class="list-number">1</span> <span>It must include in a clear way the title of the exercise, its description, its goal, as well as its instructions.</span></p>
+        <p><span class="list-number">2</span> <span>It must be complete as to the content of the exercise/activity.</span></p>
+        <p><span class="list-number">3</span> <span >It mustn’t be larger than <b>2 megabytes.</b></span></p>
+        <p><span class="list-number">4</span> <span>It must be a <b>PDF</b> file</span></p>
+        <p><span class="list-number">5</span> <span>It must be able to be used freely, with the appropriate copyright.</span></p>
+        <p>
+            To crop, edit or change a file we have on our computer, our mobile phone or that we have downloaded from the Internet, we can use an online tool, such as Small Pdf.
+        </p>
+        <p>
+            To create text documents on our computer, with copyright that allows their use, we can use the following applications: Libreoffic / Microsoft Office
+        </p>',
+    'guidelines-section-3-subsection-2-header' => 'Exercises/Activities\' Documents',
+    'guidelines-section-3-subsection-1' => '
+        <p> The image that accompanies an exercise/activity must show in the clearest way possible the content of the exercise, to cover the patient’s need. For example, in a “Name-Animal-Object-Plant” exercise, we must select an image that meets all the following criteria: </p>
+               <p><span class="list-number">1</span> <span >It must show the exercise’s table and an example for every category, but no other objects that may confuse the user and their caregiver.</span></p>
+        <p><span class="list-number">2</span> <span>Its dimensions must be approximately <b>600 by 400 pixels.</b></span></p>
+        <p><span class="list-number">3</span> <span>It mustn’t be larger than <b>2 megabytes.</b></span></p>
+        <p><span class="list-number">4</span> <span >It must be a .png, .jpg, or .jpeg file.</span></p>
+        <p><span class="list-number">5</span> <span >It must be able to be used freely, with the appropriate copyright.</span></p>
+
+        <p>To crop, reduce or change the type of images we have on our computer or that we have downloaded from the Internet, we can use an online tool, such as
+            <a href="https://image.online-convert.com/convert-to-jpg" target="_blank">Online Image Converter</a></p>
+        <p>To find images with copyright that allow their use, we can use the following websites (indicative): or download a tool such as
+                <a href="https://pixabay.com/" target="_blank">Pixabay</a> /
+                <a href="https://unsplash.com/explore" target="_blank">Unsplash</a> /
+                <a href="https://www.pexels.com/royalty-free-images/" target="_blank">Pexels</a> /
+                <a href="https://www.shutterstock.com/search/no+license" target="_blank">Shutterstock</a>
+        </p>
+
+        ',
+    'guidelines-section-3-subsection-header-1' => 'Images',
+    'guidelines-section-2' => '
+        <p> Other than the exercises and the activities for people with onset dementia, the Dianoia Marketplace platform also aims to create and deliver content to the caregivers of these people.</p>
+        <p> For that reason, there’s also the category “Exercises for the caregivers” which includes exercises and activities for the caregivers. Examples of exercises: </p>',
+    'guidelines-section-1' => '
+            <p> The goal of the content uploaded on Dianoia Marketplace is to help people with onset dementia improve their mental functions, their mood, their functionality, and quality of life, by giving them riddles, helping them look back on memories, or even on daily chores or activities they loved.   </p>
+            <p> Also, the goal is for Dianoia Marketplace to become a point of reference and content hub for exercises in categories like: <b> Memory exercises, Attention, Thought and Speech, Executive Functions </b>, which are available in 2 levels of difficulty (normal and hard). </p>
+            <p> The users of Dianoia Marketplace must upload content with simple language, comprehensible text, and legible font and instructions. More analytic instructions for the various content categories for people/patients with onset dementia are given below:  </p>',
+    'guidelines-header-3' => 'Notes for the finding, editing, and uploading content for the exercises and activities',
+    'guidelines-header-2' => 'Content creation - Content for caregivers of people with onset dementia',
+    'guidelines-header-1' => 'Content creation - Content for people with onset dementia',
+    'guidelines-prologue'=>'
+        <p> Dianoia Marketplace </a> is an online application implemented and available for free by the non-profit SciFY so that everyone can create and share their own free content for the Dianoia application. </p>
+        <p> The content of Dianoia Marketplace is mainly aimed at people that take care of people/patients with onset dementia or/and Alzheimer’s.</p>
+        <p>People with onset dementia, due to the progressive decline of their mental abilities, have the need for appropriate care at every stage. The caregivers feel that they have a great responsibility for their care.</p>',
+
+
     'checkbox-terms-privacy-' => 'I have read and agree with the <a href="https://dianoia.scify.org/terms-of-use"> terms of use </a> and <a href="https://dianoia.scify.org/privacy-policy"> privacy policy </a> of the platform',
     'checkbox-guidelines' => 'The content I will upload aligns with the <a href="https://dianoia.scify.org/content-guidelines"> content rules and guidelines </a>',
 
