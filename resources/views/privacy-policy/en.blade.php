@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container pt-4 mb-2" style="margin-top: 100px">
+    <div class="container pt-4 mb-2" style="margin-top: 100px;padding-bottom: 150px">
         <div class="mb-5">
             <div class="row">
                 <div class="col-12 mx-auto mb-3 text-center">

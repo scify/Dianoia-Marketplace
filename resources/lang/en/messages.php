@@ -164,7 +164,7 @@ You can also create your own exercises and if you wish to, you can share them wi
     'search' => 'Search',
     'total-activities' => 'All the activities',
     'new-exercise' => 'New exercise',
-    'exercise-upload-rules' => 'The exercises you upload to the platform must have content that is consistent with the structure of the original file  <a target="_blank" href="/storage/resources/content-guidelines/Dianoia%20Marketplace%20-%20Content%20Guidelines%20-%20EN.pdf"> here </a>.',
+    'exercise-upload-rules' => 'The exercises you upload to the platform must have content that is consistent with the structure of the original file  <a target="_blank" href="https://dianoia.scify.org/content-guidelines"> here </a>.',
     'give-rating' => 'Give your grading',
     'Ελληνικά' => 'Greek',
     'Spanish' => 'Spanish',

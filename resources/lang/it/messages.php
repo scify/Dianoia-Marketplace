@@ -77,7 +77,9 @@ Linee guida più dettagliate per le diverse categorie di contenuti per le person
     'content-guidelines' => 'Content guidelines',
     'privacy-policy' => 'Privacy policy',
     'meta_tags_description' => 'Dianoia Marketplace è un\'applicazione web implementata e resa disponibile gratuitamente dalla società no-profit SciFY, in modo che chiunque possa creare e condividere contenuti gratuiti per l\'applicazione Dianoia. Il contenuto di Dianoia Marketplace è rivolto principalmente alle persone che si occupano di persone/pazienti con demenza incipiente e/o malattia di Alzheimer. L\'app Dianoia Marketplace si rivolge alle istituzioni e agli scienziati coinvolti nella cura e nella riabilitazione delle persone appartenenti ai gruppi sopra descritti, così come alle persone che forniscono una relativa assistenza a domicilio.',
-    'term-of-use-11' => 'Ad eccezione dei termini del paragrafo precedente relativi ai dati personali, <a href="http://www.scify.org/" target="_blank">  SciFY </a> si riserva il diritto di modificare I Termini e le Condizioni d\'Uso, se necessitano di aggiornamento e completamento, in qualsiasi momento e senza preavviso, quindi l\'utente deve essere informato di eventuali modifiche prima di ogni utilizzo dell\'applicazione.',
+    'term-of-use-11' => 'Ad eccezione dei termini del paragrafo precedente relativi ai dati personali, <a href="http://www.scify.org/" target="_blank">  SciFY </a> si riserva il diritto di modificare I Termini e le Condizioni d\'Uso, se necessitano di aggiornamento e completamento, in qualsiasi momento e senza preavviso, qui
+
+ndi l\'utente deve essere informato di eventuali modifiche prima di ogni utilizzo dell\'applicazione.',
     'term-of-use-10' => '<a href="http://www.scify.org/" target="_blank">  SciFY </a> utilizza I dati personali che ogni utente inserisce solo nel contesto del progetto <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>, a fini statistici e per contattare l\'utente se necessario. Le informazioni personali non vengono divulgate a terzi senza il permesso dell\'utente.',
     'term-of-use-9' => 'Ogni creatore di contenuti permette ad un altro creatore di contenuti di basarsi sul suo contenuto e arricchirlo o creare nuovi contenuti.',
     'term-of-use-8' => 'Ogni creatore di contenuti non compete con altri creatori di contenuti, riconosce il loro contributo e collabora con loro per migliorare e arricchire il contenuto di <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>.',
@@ -162,7 +164,7 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'search' => 'Ricerca',
     'total-activities' => 'Tutte le attività',
     'new-exercise' => 'Nuovo esercizio',
-    'exercise-upload-rules' => 'Gli esercizi che carichi sulla piattaforma devono avere contenuti coerenti con la struttura del file originale che vedi  <a target="_blank" href="/storage/resources/content-guidelines/Dianoia%20Marketplace%20-%20Content%20Guidelines%20-%20IT.pdf">  qui. </a>',
+    'exercise-upload-rules' => 'Gli esercizi che carichi sulla piattaforma devono avere contenuti coerenti con la struttura del file originale che vedi  <a target="_blank" href="https://dianoia.scify.org/content-guidelines">  qui. </a>',
     'give-rating' => 'Dai il tuo punteggio',
     'Ελληνικά' => 'Greco',
     'Spanish' => 'Spagnolo',
