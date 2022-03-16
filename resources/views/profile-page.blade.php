@@ -4,7 +4,7 @@
 @endpush
 
 @section('content')
-<main>
+<main style="padding-bottom: 150px">
     <div class="back-color">
         <div class="content">
             <!-- Section with administration card (user-info & exercises-tabs)  -->
