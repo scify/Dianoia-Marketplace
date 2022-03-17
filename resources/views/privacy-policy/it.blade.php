@@ -451,8 +451,8 @@
                                             XSRF-TOKEN (Ensures visitor browsing-security by preventing cross-site
                                             request forgery. This cookie is essential for the security of the website
                                             and visitor. )
-                                            <br><br>
-                                            dianoia_marketplace_session (When the app needs to “remember” the logged in user while (s)he navigates to the Platform)
+{{--                                            <br><br>--}}
+{{--                                            dianoia_marketplace_session (When the app needs to “remember” the logged in user while (s)he navigates to the Platform)--}}
                                         </td>
                                         <td>1 year
                                             <br><br>
