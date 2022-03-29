@@ -255,12 +255,11 @@ class ResourceManager {
             $id);
     }
 
-    public function getTransformExercisesForMobileApp($paginated,  $filter_by_category_id)
+    public function getTransformExercisesForMobileApp($paginated)
     {
-        $transformed =  $paginated->through(function ($exercise) use ($filter_by_category_id) {
-                if($filter_by_category_id and $exercise->type_id !== $filter_by_category_id){
-                    return null;
-                }
+
+
+        $transformed =  $paginated->through(function ($exercise)  {
                 $keys =  array_keys($exercise->toArray());
                 $exercise['slug'] = $exercise->slug;
                 $exercise['title'] = $exercise->name;
@@ -292,8 +291,10 @@ class ResourceManager {
                 $exercise['instructions'] = ["Κάντε click στο σύνδεσμο για να δείτε το έγγραφο"];
                 $exercise['link'] = config("app.url") . '/storage/'.$exercise->pdf_path;
                 $exercise['difficulty_level'] = 'difficulty_level_'.($exercise->difficulty_id+1);
+                $exercise['created_by'] =  $this->resourceRepository->where(
+                        ['id'=>1], array('*'),'creator')->first()->creator->name;
                 foreach($keys as $key){
-                    if($key != 'slug'){
+                    if($key != 'slug' and $key != 'description'){
                         unset($exercise[$key]);
                     }
                 }
@@ -304,47 +305,51 @@ class ResourceManager {
     }
 
     public function getPaginatedResourcesForMobile($requestLanguage=null, $requestCategory=null){
-        $paginated = Resource::simplePaginate(25);
+
+        $whereArray = [
+            'lang_id' => null,
+            'type_id' => null
+        ];
+
         if($requestLanguage){
-            $collection = $paginated->getCollection();
             $contentLanguages = $this->getContentLanguagesForResources();
-            $languageMap = [];
-            foreach($contentLanguages as $lang){
-                $languageMap[$lang->code] = $lang->id;
+            foreach($contentLanguages as $lang) {
+                if ($lang->code == $requestLanguage) {
+                    $whereArray['lang_id'] = $lang->id;
+                    break;
+                }
             }
-            $langId = $languageMap[$requestLanguage];
-            $filteredCollection = $collection->filter(function($resource) use ($langId) {
-                return $resource->lang_id == $langId;
-            });
-            $paginated->setCollection($filteredCollection);
-            $paginated->appends(['lang' => $requestLanguage])->links();
         }
-        $filter_by_category_id = null;
         if($requestCategory) {
             switch ($requestCategory) {
                 case "focus_activities":
-                    $filter_by_category_id = ResourceTypesLkp::ATTENTION;
+                    $whereArray['type_id']  = [ResourceTypesLkp::ATTENTION];
                     break;
                 case "memory_activities":
-                    $filter_by_category_id = ResourceTypesLkp::MEMORY;
+                    $whereArray['type_id'] = [ResourceTypesLkp::MEMORY];
                     break;
                 case "think_activities":
-                    $filter_by_category_id = ResourceTypesLkp::REASON;
+                    $whereArray['type_id']  = [ResourceTypesLkp::REASON];
                     break;
                 case "executive_activities":
-                    $filter_by_category_id = ResourceTypesLkp::EXECUTIVE;
+                    $whereArray['type_id']  = [ResourceTypesLkp::EXECUTIVE];
                     break;
                 case "carer_activities":
-                    $filter_by_category_id = ResourceTypesLkp::CARER;
+                    $whereArray['type_id'] = [ResourceTypesLkp::CARER];
                     break;
                 default:
-                    throw new InvalidArgumentException('Requested Category Does not Exist');
+                    throw new InvalidArgumentException('Requested Category Does Not Exist');
             }
-            $paginated->appends(['category' => $requestCategory])->links();
 
         }
+        $paginated = $this->resourceRepository->getResources(
+            null, $whereArray['lang_id'], null, null, $whereArray['type_id'], null, 25);
 
-        return $this->getTransformExercisesForMobileApp($paginated, $filter_by_category_id);
+//        $paginated->setCollection($filteredExercises->get());
+        $paginated->appends(['lang' => $requestLanguage])->links();
+        $paginated->appends(['category' => $requestCategory])->links();
+
+        return $this->getTransformExercisesForMobileApp($paginated);
     }
 
     public function getReportedExercises(){

@@ -36,7 +36,8 @@ class ResourceRepository extends Repository
         array $status_ids = null,
         array $difficulties = null,
         array $type_ids = null,
-        array $ratings = null
+        array $ratings = null,
+        $paginate = null
     )
     {
         $whereArray = [];
@@ -65,7 +66,12 @@ class ResourceRepository extends Repository
             }
         }
 
-        $ret =  $resourcesBuilder->get();
+        if($paginate){
+            $ret = $resourcesBuilder->simplePaginate($paginate);
+        }
+        else{
+            $ret =  $resourcesBuilder->get();
+        }
 
         $i = count($ret);
         if(!$sortByDifficulties && $ratings  && count($ratings) > 1){
