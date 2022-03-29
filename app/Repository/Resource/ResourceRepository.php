@@ -37,7 +37,8 @@ class ResourceRepository extends Repository
         array $difficulties = null,
         array $type_ids = null,
         array $ratings = null,
-        $paginate = null
+        $paginate = null,
+        $api = False
     )
     {
         $whereArray = [];
@@ -45,6 +46,8 @@ class ResourceRepository extends Repository
             $whereArray['lang_id'] = $lang_id;
         if ($user_id)
             $whereArray['creator_user_id'] = $user_id;
+
+
         if($status_ids)
             $resourcesBuilder = Resource::where($whereArray)->whereIn('status_id', $status_ids)->with($this->defaultRelationships);
         else
@@ -54,6 +57,11 @@ class ResourceRepository extends Repository
 
         if ($type_ids) {
             $resourcesBuilder->whereIn('type_id', $type_ids);//maybe $resourcesBuilder = ...
+        }
+
+        if($api){
+            $resourcesBuilder->where('display_in_api', True);//maybe $resourcesBuilder = ...
+
         }
         $sortByDifficulties = false;
         if($difficulties && count($difficulties) > 1){

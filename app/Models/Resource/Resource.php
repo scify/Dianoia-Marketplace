@@ -30,7 +30,7 @@ class Resource extends Model implements  Jsonable
         'slug',
         'lang_id', 'creator_user_id',
         'admin_user_id', 'img_path', 'status_id', 'pdf_path', 'type_id', 'description', 'difficulty_id',
-        'avg_rating'
+        'avg_rating', 'display_in_api'
     ];
 
 
