@@ -292,7 +292,7 @@ class ResourceManager {
                 $exercise['link'] = config("app.url") . '/storage/'.$exercise->pdf_path;
                 $exercise['difficulty_level'] = 'difficulty_level_'.($exercise->difficulty_id+1);
                 $exercise['created_by'] =  $this->resourceRepository->where(
-                        ['id'=>1], array('*'),'creator')->first()->creator->name;
+                        ['id'=>$exercise->id], array('*'),'creator')->first()->creator->name;
                 foreach($keys as $key){
                     if($key != 'slug' and $key != 'description'){
                         unset($exercise[$key]);
