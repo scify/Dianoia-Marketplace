@@ -60,7 +60,6 @@ class ResourceRepository extends Repository
         }
 
         if($api){
-            echo('api');
             $resourcesBuilder->where('display_in_api', True);//maybe $resourcesBuilder = ...
         }
         $sortByDifficulties = false;
@@ -75,9 +74,7 @@ class ResourceRepository extends Repository
         }
 
         if($paginate){
-            echo('paginate');
             $ret = $resourcesBuilder->simplePaginate($paginate);
-            echo('done paginated');
         }
         else{
             $ret =  $resourcesBuilder->get();
