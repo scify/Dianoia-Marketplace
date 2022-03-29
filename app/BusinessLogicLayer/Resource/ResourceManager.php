@@ -293,6 +293,7 @@ class ResourceManager {
                 $exercise['difficulty_level'] = 'difficulty_level_'.($exercise->difficulty_id+1);
                 $exercise['created_by'] =  $this->resourceRepository->where(
                         ['id'=>$exercise->id], array('*'),'creator')->first()->creator->name;
+                $exercise['rating'] = $exercise->avg_rating;
                 foreach($keys as $key){
                     if($key != 'slug' and $key != 'description'){
                         unset($exercise[$key]);

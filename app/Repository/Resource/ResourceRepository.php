@@ -62,6 +62,9 @@ class ResourceRepository extends Repository
         if($api){
             $resourcesBuilder->where('display_in_api', True);//maybe $resourcesBuilder = ...
         }
+
+
+
         $sortByDifficulties = false;
         if($difficulties && count($difficulties) > 1){
             $sortByDifficulties = true;
@@ -72,6 +75,12 @@ class ResourceRepository extends Repository
                 $resourcesBuilder->orderBy('difficulty_id', 'asc');
             }
         }
+        else{
+            $resourcesBuilder->orderBy('avg_rating', 'desc');
+        }
+
+
+
 
         if($paginate){
             $ret = $resourcesBuilder->simplePaginate($paginate);
@@ -79,6 +88,8 @@ class ResourceRepository extends Repository
         else{
             $ret =  $resourcesBuilder->get();
         }
+
+
 
         $i = count($ret);
         if(!$sortByDifficulties && $ratings  && count($ratings) > 1){
