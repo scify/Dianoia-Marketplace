@@ -55,27 +55,25 @@
         {{--        <hr>--}}
 
 
-        {{--        <hr>--}}
-        {{--        <div class="row align-items-center mt-5 " style="text-align: center" >--}}
-        {{--            <h2 class="mb-5"><u>Learn More</u></h2>--}}
-        {{--            <div class="col-4">--}}
-        {{--                <ul>--}}
-        {{--                    <li><a href="{{route('content-guidelines')}}"> {{__('messages.content-guidelines')}} </a></li>--}}
-        {{--                </ul>--}}
-        {{--            </div>--}}
-        {{--            <div class="col-4">--}}
-        {{--                <ul>--}}
-        {{--                    <li><a href="{{app()->getLocale() .'/privacy-policy'}}"  target="_blank">{!! __('messages.privacy-policy') !!}</a></li>--}}
-        {{--                </ul>--}}
-        {{--            </div>--}}
-        {{--            <div class="col-4">--}}
-        {{--                <ul>--}}
-        {{--                    <li><a href="{{'/terms-of-use' }}">{!! __('messages.terms-of-use') !!}</a></li>--}}
-        {{--                </ul>--}}
-        {{--            </div>--}}
-
-
-        {{--        </div>--}}
+                <hr>
+                <div class="row align-items-center mt-5 " style="text-align: center" >
+                    <h2 class="mb-5"><u>Learn More</u></h2>
+                    <div class="col-4">
+                        <ul>
+                            <li><a href="{{route('content-guidelines')}}"> {{__('messages.content-guidelines')}} </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-4">
+                        <ul>
+                            <li><a href="{{app()->getLocale() .'/privacy-policy'}}"  target="_blank">{!! __('messages.privacy-policy') !!}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-4">
+                        <ul>
+                            <li><a href="{{'/terms-of-use' }}">{!! __('messages.terms-of-use') !!}</a></li>
+                        </ul>
+                    </div>
+                </div>
 
 
     </div>
