@@ -345,7 +345,7 @@ class ResourceManager {
         }
 
         $paginated = $this->resourceRepository->getResources(
-            null, $whereArray['lang_id'], null, null, $whereArray['type_id'], null, 10, False);
+            null, $whereArray['lang_id'], null, null, $whereArray['type_id'], null, 10, True);
 
 //        $paginated->setCollection($filteredExercises->get());
         $paginated->appends(['lang' => $requestLanguage])->links();
