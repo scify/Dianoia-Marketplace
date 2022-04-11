@@ -30,6 +30,18 @@
                                     </span>
                 @enderror
             </div>
+            <div class="form-group row mb-4">
+                <div class="col-md-6 offset-md-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="remember"
+                               id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                        <label class="form-check-label" for="remember">
+                            {{ __('auth.remember_me_label') }}
+                        </label>
+                    </div>
+                </div>
+            </div>
 {{--            <p class="text-center mt-5 ">Με την σύνδεσής σας αποδέχεστε τους <a href="#">όρους χρήσης</a>.</p>--}}
             <button type="submit" class="btn btn-primary mb-1 mt-3"> {{ __('auth.login_btn') }}</button>
 
