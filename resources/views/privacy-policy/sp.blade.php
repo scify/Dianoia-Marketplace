@@ -50,7 +50,7 @@
                                 Para que un Usuario cree voluntariamente una cuenta en la Plataforma, el Usuario debe completar los datos necesarios: su apodo, dirección de correo electrónico y una contraseña.
                                 <br><br>
                                 <b>3.1.2 Contenido enviado/cargado</b><br>
-                                La Plataforma recopila contenido (archivos de imagen/sonido y textos) a través de formularios web. Este contenido luego se utiliza como contenido adicional para la aplicación de asistencia a la que la plataforma actúa como acompañante. Se recomienda estrictamente al Usuario que cumpla con el "código de conducta para una participación exitosa" de la plataforma y evite publicar cualquier dato personal que no desee estar disponible públicamente en la Plataforma.
+                                La Plataforma recoge contenidos (archivos de imagen/sonido y textos) que son utilizados por la aplicación de asistencia complementaria. Estos contenidos se utilizan después como contenido adicional para la aplicación de asistencia de la que la plataforma actúa como acompañante. Se aconseja estrictamente al usuario que se ajuste al "código de conducta para una participación satisfactoria" de la plataforma y que evite publicar cualquier dato personal que no desee que esté disponible públicamente en la plataforma.
                                 <br><br>
                                 <b>3.1.3. La comunicación de la Plataforma por razones relacionadas con el uso permitido del Usuario de la Plataforma.</b>
                                 <br>

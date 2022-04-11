@@ -53,7 +53,7 @@
                                 Affinché un utente possa creare volontariamente un account nella Piattaforma, l'Utente deve inserire I dati necessari: il suo nickname, l'indirizzo e-mail e una password.
                                 <br><br>
                                 <b>3.1.2 Contenuto inviato/caricato</b><br>
-                                La Piattaforma raccoglie contenuti (file di immagini/suoni e testi) tramite moduli web. Questo contenuto viene poi utilizzato come contenuto aggiuntivo per l'applicazione assistiva a cui la piattaforma funge da compagno. L'utente è strettamente consigliato di conformarsi al "codice di condotta per una partecipazione di successo" della piattaforma e di evitare di pubblicare pubblicamente dati personali che non desidera siano disponibili pubblicamente sulla piattaforma.
+                                La Piattaforma raccoglie contenuti (file di immagini/suoni e testi) che vengono poi utilizzati dall'applicazione assistiva companion. Questi contenuti sono poi utilizzati come contenuti aggiuntivi per l'applicazione assistiva a cui la piattaforma fa da companion. L'utente è strettamente consigliato di conformarsi al "codice di condotta per una partecipazione di successo" della piattaforma e di evitare di pubblicare pubblicamente qualsiasi dato personale che non desidera sia disponibile pubblicamente sulla piattaforma.
                                 <br><br>
                                 <b>3.1.3. Comunicazione della Piattaforma per motivi legati all'uso consentito all'Utente della Piattaforma..</b>
                                 <br>

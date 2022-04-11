@@ -76,7 +76,7 @@
                                 fill in the necessary data: his nickname, email address, and password
                                 <br><br>
                                 <b>3.1.2 Submitted/ uploaded content</b><br>
-                                The Platform collects content (image/sound files and texts) via web forms. This content is then used as additional content for the assistive application the platform acts as a companion to. The User is strictly advised to conform the platform's "code of conduct for successful participation" and avoid posting publicly any personal data that do not wish to be publicly available on the Platform.
+                                The Platform collects content (image/sound files and texts) that are then used by the companion assistive app. This content is then used as additional content for the assistive application the platform acts as a companion to. The User is strictly advised to conform the platform's "code of conduct for successful participation" and avoid posting publicly any personal data that do not wish to be publicly available on the Platform.
                                 <br><br>
                                 <b>3.1.3. Platform's communication for reasons related to User's permitted use of the
                                     Platform.</b>
