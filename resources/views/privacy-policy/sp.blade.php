@@ -280,8 +280,8 @@
                                             XSRF-TOKEN (Garantiza la seguridad de la navegación de los visitantes evitando la falsificación de solicitudes entre sitios. Esta cookie es esencial para la seguridad del sitio web y del visitante).
 {{--                                            dianoia_marketplace_session (Cuando la aplicación necesita "recordar" al usuario conectado mientras navega a la Plataforma)--}}
 
-                                            {{--                                            <br><br>--}}
-{{--                                            remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d (When the app needs to “remember” the logged in user while (s)he navigates to the Platform)--}}
+                                            <br><br>
+                                            remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d (When the app needs to “remember” the logged in user while (s)he navigates to the Platform)
                                         </td>
                                         <td>1 año
                                             <br><br>
