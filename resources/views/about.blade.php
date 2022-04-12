@@ -13,7 +13,7 @@
         <div class="row align-items-center mt-5" style="text-align: center"  >
             <p style="text-align: left!important;" > {!! __('messages.about_development_text') !!}</p>
 
-            <div class="col-6">
+            <div class="col-4">
                 <div>
                     <img src={{asset("img/scify_logo_big.png")}} height="150px" alt="scify logo" style="margin-left:auto;margin-right:auto;display:block">
                 </div>
@@ -21,8 +21,12 @@
                     <img src={{asset("img/eu_logo.jpg")}}  alt="EU-logo"  style="width:auto; height:40pt; margin-left:auto;margin-right:auto;display:block">
                 </div>
             </div>
+            <div class="col-4">
+                <iframe height="315" width="560" src="{{__('messages.youtube_url')}}" title="Dianoia Marketplace"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
 
-            <div class="col-6">
+            <div class="col-4">
                 <div>
                     <img src={{asset("img/alzheimer_athens.png")}} height="150px" alt="Alzheimer Athens"  style="margin-left:auto;margin-right:auto;display:block">
                 </div>

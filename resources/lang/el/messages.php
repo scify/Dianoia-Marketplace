@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'youtube_url'=> 'https://www.youtube.com/embed/FV-t6kvqKRw',
     'category-executive' => 'Κατηγορία "Εκτελεστικές Λειρουργίες"',
     'category-though' => 'Κατηγορία "Ασκήσεις Σκέψης και Λόγου"',
     'category-attention' => 'Κατηγορία "Ασκήσεις Προσοχής"',
