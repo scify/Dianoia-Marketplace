@@ -14,7 +14,9 @@ class SoftDeleteEasyDifficulty extends Migration
     public function up()
     {
         DB::raw('UPDATE resources SET difficulty_id = 2 WHERE difficulty_id = 1');
-        \App\Models\DifficultiesLkp::where('code', 'EASY')->first()->delete();
+        $toDelete = \App\Models\DifficultiesLkp::where('code', 'EASY')->first();
+        if($toDelete)
+            $toDelete->delete();
     }
 
     /**
