@@ -83,3 +83,6 @@ a.link-info {
     color: var(--color-blue-dark);
 }
 
+.footer-dark a:active, .footer-dark a:link, .footer-dark a:visited, .footer-dark p {
+    opacity: 100%;
+}
