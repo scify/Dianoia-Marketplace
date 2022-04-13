@@ -1,4 +1,4 @@
-<div class="footer-dark py-5">
+<div class="footer-dark py-5" id="footer">
     <footer>
         <div class="container">
             <div class="row">
