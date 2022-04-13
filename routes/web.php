@@ -23,6 +23,7 @@ Route::view('/', 'homepage')->name('homepage');
 Route::view('/about', 'about')->name('about');
 Route::view('/content-guidelines', 'content-guidelines')->name('content-guidelines');
 Route::view('/terms-of-use', 'terms-of-use')->name('terms-of-use');
+Route::view('/tutorial', 'tutorial')->name('tutorial');
 //Route::view('/privacy-policy', 'privacy-policy')->name('privacy-policy');
 
 

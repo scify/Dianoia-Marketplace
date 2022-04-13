@@ -31,8 +31,13 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="{{ route('about')}}">
+                    <a class="nav-link {{ UrlMatchesMenuItem("about") }}"  href="{{ route('about')}}">
                         About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ UrlMatchesMenuItem("tutorial") }}"  href="{{ route('tutorial')}}">
+                        Tutorial
                     </a>
                 </li>
                 <li class="nav-item">
