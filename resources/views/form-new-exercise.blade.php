@@ -4,7 +4,7 @@
 @endpush
 
 @section('content')
-    <form id="md-form" enctype="multipart/form-data"  role="form" method="POST"
+    <form id="md-form" enctype="multipart/form-data" role="form" method="POST"
           action="{{ $viewModel->isEditMode() ? route('resources.update',$viewModel->resource->id) : route('resources.store') }}">
         @if($viewModel->isEditMode())
             @method('PUT')
@@ -21,13 +21,16 @@
 
                     <div class="col-12">
                         <label for="category_name" class="form-label">{{__('messages.name')}} <span>*</span></label>
-                        <input type="text" class="form-control" id="category_name" name="name" required="true"  value="{{ old('name') ?: $viewModel->resource->name }}">
+                        <input type="text" class="form-control" id="category_name" name="name" required="true"
+                               value="{{ old('name') ?: $viewModel->resource->name }}">
                         <p class="required-text">* {!!__('messages.necessary-info')!!}</p>
 
                     </div>
                     <div class="col-12">
-                        <label for="formGroupExampleInput2" class="form-label">{{__('messages.exercise-description')}} <span>*</span></label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" name="description" value="{{ old('description') ?: $viewModel->resource->description }}">
+                        <label for="formGroupExampleInput2" class="form-label">{{__('messages.exercise-description')}}
+                            <span>*</span></label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" name="description"
+                               value="{{ old('description') ?: $viewModel->resource->description }}">
                     </div>
                     @error('description')
                     <div class="alert alert-danger">{{$message}}</div>
@@ -37,7 +40,7 @@
                         <label for="upload_img" class="form-label">{{__('messages.upload-image')}}</label>
                         <div class="file btn rounded">
                             <i class="fas fa-plus-circle"></i>
-                            <input id="upload_img" type="file" name="image" />
+                            <input id="upload_img" type="file" name="image"/>
                         </div>
                         @if($viewModel->isEditMode())
                             <img src={{asset("storage/".$viewModel->resource->img_path)}} id="url" class="mt-3"
@@ -65,24 +68,28 @@
                     <div class="col-md-6">
                         <label for="exercise_type" class="form-label">{{trans('messages.category')}}</label>
                         <select class="form-select" aria-label="category_lang" name="type_id">
-                            @foreach ($viewModel->types as $type){
-                            @if($viewModel->resource->type_id === $type->id)
-                                <option value="{{$type->id}}" selected> {{trans('messages.'.$type->name)}} </option>
-                            @else
-                                <option value="{{$type->id}}"> {{trans('messages.'.$type->name)}}  </option>
-                            @endif
+                            @foreach ($viewModel->types as $type)
+                                {
+                                @if($viewModel->resource->type_id === $type->id)
+                                    <option value="{{$type->id}}" selected> {{trans('messages.'.$type->name)}} </option>
+                                @else
+                                    <option value="{{$type->id}}"> {{trans('messages.'.$type->name)}}  </option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="exercise_difficulty" class="form-label">{{trans('messages.level')}}</label>
-                        <select class="form-select" aria-label="category_lang" name="difficulty_id" >
-                            @foreach ($viewModel->difficulties as $difficulty){
-                            @if($viewModel->resource->difficulty_id === $difficulty->id)
-                                <option value="{{$difficulty->id}}" selected> {{trans('messages.'.$difficulty->name)}} </option>
-                            @else
-                                <option value="{{$difficulty->id}}"> {{trans('messages.'.$difficulty->name)}} </option>
-                            @endif
+                        <select class="form-select" aria-label="category_lang" name="difficulty_id">
+                            @foreach ($viewModel->difficulties as $difficulty)
+                                {
+                                @if($viewModel->resource->difficulty_id === $difficulty->id)
+                                    <option value="{{$difficulty->id}}"
+                                            selected> {{trans('messages.'.$difficulty->name)}} </option>
+                                @else
+                                    <option
+                                        value="{{$difficulty->id}}"> {{trans('messages.'.$difficulty->name)}} </option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -121,7 +128,8 @@
                 <div class="copyright-rules mb-5 mt-5 p-4">
                     <div class="example">
                         <label class="form-check-label" for="flexCheckDefault">
-                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" value=none name="accept-guideline-terms" style="margin-right: 10pt">
+                            <input required class="form-check-input" type="checkbox" id="flexCheckDefault" value=none
+                                   name="accept-guideline-terms" style="margin-right: 10pt">
                             {!!__('messages.checkbox-guidelines')!!}<span style="color:red">*</span>
                         </label>
                     </div>
@@ -132,7 +140,8 @@
                 <div class="copyright-rules mb-5 mt-5 p-4">
                     <div class="example">
                         <label class="form-check-label" for="flexCheckDefault">
-                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" value=none name="accept-privacy-terms" style="margin-right: 10pt">
+                            <input required class="form-check-input" type="checkbox" id="flexCheckDefault" value=none
+                                   name="accept-privacy-terms" style="margin-right: 10pt">
                             {!!__('messages.checkbox-terms-privacy-')!!}<span style="color:red">*</span>
                         </label>
                     </div>
@@ -151,7 +160,8 @@
                 <a class="btn btn--secondary mt-5" href="{{route('resources.display')}}">
                     {{trans("messages.cancel")}}
                 </a>
-                <input  id="exerciseSubmitBtn" class="btn btn--primary mt-5 ms-4" type="submit" value={{trans("messages.finish-edit")}}>
+                <input id="exerciseSubmitBtn" class="btn btn--primary mt-5 ms-4" type="submit"
+                       value={{trans("messages.finish-edit")}}>
             </div>
         </div>
     </form>
@@ -159,11 +169,11 @@
 @endsection
 @push('scripts')
     <script>
-        $( document ).ready(function() {
+        $(document).ready(function () {
             let span = document.getElementById('pdf-filename');
-            if (span.innerHTML){
+            if (span.innerHTML) {
                 span.innerHTML = span.innerHTML.split("/").at(-1)
-                $('#pdf-div').css('visibility','visible');
+                $('#pdf-div').css('visibility', 'visible');
             }
         });
     </script>
