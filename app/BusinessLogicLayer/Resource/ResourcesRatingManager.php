@@ -24,8 +24,10 @@ class ResourcesRatingManager {
     }
 
     public function storeRating(int $resources_id, int $rating) {
+        $resource = $this->resourcesRatingRepository->find($resources_id);
         return $this->resourcesRatingRepository->create([
             'resources_id' => $resources_id,
+            'slug' => $resource->slug,
             'rating' => $rating
         ]);
     }
@@ -47,6 +49,10 @@ class ResourcesRatingManager {
 
     public function getRatings() {
         return $this->resourcesRatingRepository->all();
+    }
+
+    public function getAverageRatingForResource(string $resources_slug) {
+        return $this->resourcesRatingRepository->allWhere(['resources_slug' => $resources_slug])->pluck('rating')->avg();
     }
 
 }

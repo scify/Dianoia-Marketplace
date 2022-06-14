@@ -31,6 +31,13 @@ class ResourceRatingController extends Controller {
         );
     }
 
+    public function getAverageRatingForResource(Request $request) {
+        $this->validate($request, [
+            'resources_slug' => 'required',
+        ]);
+        return $this->resourcesRatingManager->getAverageRatingForResource($request->resources_slug);
+    }
+
     public function storeOrUpdateRating(Request $request) {
 
         $this->validate($request, [
@@ -49,7 +56,7 @@ class ResourceRatingController extends Controller {
 
         $this->validate($request, [
             'resources_id' => 'required_without:slug|integer|exists:resources,id',
-            'slug' => 'required_without:resources_id|string',
+            'resources_slug' => 'required_without:resources_id|string',
             'rating' => 'required|integer|min:1|max:5'
         ]);
 
@@ -57,7 +64,7 @@ class ResourceRatingController extends Controller {
         if ($request->has('resources_id')) {
             return $this->resourcesRatingManager->storeRating($data['resources_id'], $data['rating']);
         } else {
-            return $this->resourcesRatingManager->storeRatingBySlug($data['slug'], $data['rating']);
+            return $this->resourcesRatingManager->storeRatingBySlug($data['resources_slug'], $data['rating']);
         }
     }
 
