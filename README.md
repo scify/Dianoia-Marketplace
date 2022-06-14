@@ -15,6 +15,20 @@ Laravel 8 Web Application for Creating content for the Dianoia mobile app
 
 # Installation Instructions:
 
+## Pre-initialization steps
+
+After cloning the project, create an .env file (should be a copy of .env.example),
+containing the information about your database name and credentials:
+
+```bash
+cp .env.example .env
+```
+
+Take a look at the `.env` file that was created. You may need to update the `DB_*` variables, in order to set up the DB connection.
+Also, make sure that the `APP_URL` is set to the correct domain and port that you will be using.
+
+<hr>
+
 ## First time install (setup database and install dependencies)
 
 0. Make sure php 7.4 (or newer) is installed.
@@ -31,12 +45,20 @@ composer install
 
 ```
 
-3. Install front-end dependencies
+3. Then, run the command to set the application unique key:
+
+```bash
+php artisan key:generate
+```
+
+If executed successfully, it will be set in the `APP_KEY` variable in the `.env` file.
+
+4. Install front-end dependencies
 ```
 npm install
 ```
 
-4. Create symbolic link for uploaded files.
+5. Create symbolic link for uploaded files.
 
 ```
 php artisan storage:link
