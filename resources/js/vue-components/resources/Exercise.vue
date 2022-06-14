@@ -6,7 +6,7 @@
                 <div class="exercise-title-row d-flex justify-content-between align-items-center">
                     <div style="padding-left:15px;padding-top:15px;">
                         <p class="title"> {{resource.name}} </p>
-                        <p style="max-width:800px">{{resource.description}}</p>
+                        <p style="max-width:700px">{{resource.description}}</p>
                     </div>
 
                     <div style="padding-right:15px">
