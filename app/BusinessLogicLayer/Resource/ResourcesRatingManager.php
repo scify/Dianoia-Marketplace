@@ -52,7 +52,7 @@ class ResourcesRatingManager {
     }
 
     public function getAverageRatingForResource(string $resources_slug) {
-        return $this->resourcesRatingRepository->allWhere(['resources_slug' => $resources_slug])->pluck('rating')->avg();
+        return $this->resourcesRatingRepository->allWhere(['resources_slug' => $resources_slug])->pluck('rating')->avg() || 0;
     }
 
 }
