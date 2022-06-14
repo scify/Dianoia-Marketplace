@@ -1,6 +1,8 @@
 # Dianoia Marketplace Web Application
 
-[![dependencies Status](https://david-dm.org/scify/Crowdsourcing-Platform/status.svg)](https://david-dm.org/scify/Crowdsourcing-Platform)
+[![GitHub Issues](https://img.shields.io/github/issues/scify/Dianoia-Marketplace)](https://img.shields.io/github/issues/scify/Dianoia-Marketplace)
+[![GitHub Stars](https://img.shields.io/github/stars/scify/Dianoia-Marketplace)](https://img.shields.io/github/stars/scify/Dianoia-Marketplace)
+[![GitHub forks](https://img.shields.io/github/forks/scify/Dianoia-Marketplace)](https://img.shields.io/github/forks/scify/Dianoia-Marketplace)
 [![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
