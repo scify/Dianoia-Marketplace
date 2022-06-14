@@ -15,6 +15,7 @@ use App\Repository\Resource\ResourceTypesLkp;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
@@ -37,26 +38,10 @@ class ResourceController extends Controller
     }
 
 
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return View
-     */
-    public function index(): View
-    {
-        $viewModel = Collection::empty();
-        $viewModel->resourcesPackagesStatuses = [ResourceStatusesLkp::APPROVED];
-        $viewModel->isAdmin = Auth::check() && $this->userManager->isAdmin(Auth::user());
-        return view('exercises.index')->with(
-            ['viewModel' =>$viewModel, 'user' => Auth::user()]);
-    }
-
-
-
     /**
      * Show the form for creating a new resource.
      *
+     * @param int $resource_id
      * @return View
      */
     public function edit(int $resource_id): View
@@ -67,15 +52,14 @@ class ResourceController extends Controller
     }
 
 
-
     /**
-     * Show the form for creating a new resource.
+     * Show the resources listing page.
      *
+     * @param Request $request
      * @return View
      */
     public function display(Request $request): View
     {
-//        $createResourceViewModel = $this->communicationResourceManager->getCreateResourceViewModel();
         $preselectedType = $request->preselect_type_name ?: null;
         $displayResourceViewModel = $this->resourceManager->getDisplayResourcesViewModel([
             'preselect_type_name' => $preselectedType
@@ -104,7 +88,7 @@ class ResourceController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
@@ -144,10 +128,10 @@ class ResourceController extends Controller
      *
      * @param Request $request
      * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
 
-    public function update(Request $request, int $id): \Illuminate\Http\RedirectResponse#after submit, (action-route submit button directs here)
+    public function update(Request $request, int $id): RedirectResponse#after submit, (action-route submit button directs here)
     {
         $this->validate($request, [
             'name' => 'string|max:100',
@@ -173,7 +157,7 @@ class ResourceController extends Controller
      * @param int $id
      */
 
-    public function delete_exercise(Request $request, int $id): \Illuminate\Http\RedirectResponse
+    public function delete_exercise(Request $request, int $id): RedirectResponse
     {
         try {
             $this->resourceManager->destroyResource($id);
@@ -188,12 +172,12 @@ class ResourceController extends Controller
     }
 
 
-    public function submit($resource): \Illuminate\Http\RedirectResponse
+    public function submit($resource): RedirectResponse
     {
         $admins = $this->userManager->get_admin_users();
         Notification::send($admins, new AdminNotice($resource));//Todo when dianoia email for admin has been setup
         try {
-            return redirect()->route('resources.index')->with('flash_message_success',  __('messages.exercise-submit-success'));
+            return redirect()->route('resources.display')->with('flash_message_success',  __('messages.exercise-submit-success'));
 
         } catch (\Exception $e) {
             return redirect()->back()->with('flash_message_failure', __('messages.exercise-submit-failure'));
@@ -201,7 +185,7 @@ class ResourceController extends Controller
     }
 
 
-    public function reject(Request $request):\Illuminate\Http\RedirectResponse{
+    public function reject(Request $request): RedirectResponse{
         $data = $request->all();
         $rejectionMessage = $data['rejection_comment'];
         $rejectionReason = $data['rejection_reason'];
@@ -217,7 +201,7 @@ class ResourceController extends Controller
     }
 
 
-    public function approve(Request $request):\Illuminate\Http\RedirectResponse{
+    public function approve(Request $request): RedirectResponse{
         $data = $request->all();
         $resource = $this->resourceManager->getResource($data['id']);try {
             $this->resourceManager->approveResource($data['id']);
@@ -229,7 +213,7 @@ class ResourceController extends Controller
         }
     }
 
-    public function report(Request $request):\Illuminate\Http\RedirectResponse{
+    public function report(Request $request): RedirectResponse{
         $data = $request->all();
         $reportComment = $data['report_comment'];
         $reportReason= $data['report_reason'];
@@ -247,7 +231,7 @@ class ResourceController extends Controller
 
     }
 
-    public function respond(Request $request):\Illuminate\Http\RedirectResponse{
+    public function respond(Request $request): RedirectResponse{
         $data = $request->all();
         $response = $data['response'];
         $resource_name = $data['resource_name'];

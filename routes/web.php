@@ -52,7 +52,6 @@ Route::get('/privacy-policy', [TermsPrivacyController::class, 'showPrivacyPolicy
 
 
 Route::get('/lang/{lang}', [UserController::class, 'setLangLocaleCookie'])->name('set-lang-locale');
-Route::get('/exercises', [ResourceController::class, 'index'])->name('resources.index');
 //TODO new route for resources with only methods ->only([]) without aliases
 Route::get('resources/display_exercises', [ResourceController::class, 'display'])->name('resources.display');
 Route::get("/coming-soon", [ResourceController::class, 'coming_soon'])->name('resources.coming-soon');
