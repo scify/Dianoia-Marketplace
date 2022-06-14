@@ -43,6 +43,7 @@ Also, make sure that the `APP_URL` is set to the correct domain and port that yo
 ```
 composer install
 
+composer dump-autoload
 ```
 
 3. Then, run the command to set the application unique key:
