@@ -53,9 +53,11 @@ php artisan key:generate
 
 If executed successfully, it will be set in the `APP_KEY` variable in the `.env` file.
 
-4. Install front-end dependencies
+4. Install and compile front-end dependencies
 ```
 npm install
+
+npm run dev
 ```
 
 5. Create symbolic link for uploaded files.
