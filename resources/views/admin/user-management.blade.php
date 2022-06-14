@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@push('css')
-    <link rel="stylesheet" href="{{ mix('dist/css/user-management-page.css') }}">
-@endpush
-
 @section('content')
     <div class="container" id="user-management-page">
         <!-- most popular tag section -->
