@@ -9,20 +9,17 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
-class ResourceRatingController extends Controller
-{
+class ResourceRatingController extends Controller {
 
     protected ResourcesRatingManager $resourcesRatingManager;
     protected ResourceManager $resourceManager;
 
-    public function __construct(ResourcesRatingManager $resourcesRatingManager, ResourceManager $resourceManager)
-    {
+    public function __construct(ResourcesRatingManager $resourcesRatingManager, ResourceManager $resourceManager) {
         $this->resourcesRatingManager = $resourcesRatingManager;
         $this->resourceManager = $resourceManager;
     }
 
-    public function getUserRatingForResource(Request $request)
-    {
+    public function getUserRatingForResource(Request $request) {
 
         $this->validate($request, [
             'user_id' => 'required|integer',
@@ -34,8 +31,7 @@ class ResourceRatingController extends Controller
         );
     }
 
-    public function storeOrUpdateRating(Request $request)
-    {
+    public function storeOrUpdateRating(Request $request) {
 
         $this->validate($request, [
             'user_id' => 'required|integer',
@@ -48,20 +44,37 @@ class ResourceRatingController extends Controller
             $request->rating
         );
     }
-    public function storeOrUpdateAverageResourceRating(Request $request){
+
+    public function storeOrUpdateMobileRating(Request $request) {
+
+        $this->validate($request, [
+            'resources_id' => 'required_without:slug|integer|exists:resources,id',
+            'slug' => 'required_without:resources_id|string',
+            'rating' => 'required|integer|min:1|max:5'
+        ]);
+
         $data = $request->all();
-        try{
-            $this->resourceManager->storeOrUpdateAverageResourceRating(
-                $data['id'],
-                $data['avg_rating']
-            );
-            return redirect()->back()->with('flash_message_success', __('messages.exercise-update-success'));
-        } catch (\Exception $e) {
-            return redirect()->back()->with('flash_message_failure', __('messages.exercise-update-failure'));
+        if ($request->has('resources_id')) {
+            return $this->resourcesRatingManager->storeRating($data['resources_id'], $data['rating']);
+        } else {
+            return $this->resourcesRatingManager->storeRating($data['slug'], $data['rating']);
         }
     }
 
-    public function getContentRatings(){
+    public function storeOrUpdateAverageResourceRating(Request $request) {
+        $this->validate($request, [
+            'id' => 'sometimes|required|integer|exists:resources,id',
+            'avg_rating' => 'required|numeric|min:1|max:5'
+        ]);
+        $data = $request->all();
+
+        return $this->resourceManager->storeOrUpdateAverageResourceRating(
+            $data['id'],
+            $data['avg_rating']
+        );
+    }
+
+    public function getContentRatings() {
         return $this->resourcesRatingManager->getRatings();
     }
 }

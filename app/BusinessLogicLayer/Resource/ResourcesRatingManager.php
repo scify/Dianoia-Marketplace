@@ -12,7 +12,6 @@ class ResourcesRatingManager {
         $this->resourcesRatingRepository = $resourcesRatingRepository;
     }
 
-
     public function storeOrUpdateRating(int $user_id, int $resources_id, int $rating) {
         $data = [
             'voter_user_id' => $user_id,
@@ -24,8 +23,19 @@ class ResourcesRatingManager {
         );
     }
 
+    public function storeRating(int $resources_id, int $rating) {
+        return $this->resourcesRatingRepository->create([
+            'resources_id' => $resources_id,
+            'rating' => $rating
+        ]);
+    }
 
-
+    public function storeRatingBySlug(string $resources_slug, int $rating) {
+        return $this->resourcesRatingRepository->create([
+            'resources_slug' => $resources_slug,
+            'rating' => $rating
+        ]);
+    }
 
     public function getUserRatingForResource(int $user_id, int $resources_id) {
 
