@@ -57,7 +57,7 @@ class ResourceRatingController extends Controller {
         if ($request->has('resources_id')) {
             return $this->resourcesRatingManager->storeRating($data['resources_id'], $data['rating']);
         } else {
-            return $this->resourcesRatingManager->storeRating($data['slug'], $data['rating']);
+            return $this->resourcesRatingManager->storeRatingBySlug($data['slug'], $data['rating']);
         }
     }
 
