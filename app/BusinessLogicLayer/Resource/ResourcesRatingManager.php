@@ -23,20 +23,26 @@ class ResourcesRatingManager {
         );
     }
 
-    public function storeRating(int $resources_id, int $rating) {
+    public function storeRating(int $resources_id, int $rating, bool $update) {
         $resource = $this->resourcesRatingRepository->find($resources_id);
-        return $this->resourcesRatingRepository->create([
+        $data = [
             'resources_id' => $resources_id,
-            'slug' => $resource->slug,
+            'resources_slug' => $resource->slug,
             'rating' => $rating
-        ]);
+        ];
+        if ($update)
+            return $this->resourcesRatingRepository->update(['resources_id' => $resource->id], $data);
+        return $this->resourcesRatingRepository->create($data);
     }
 
-    public function storeRatingBySlug(string $resources_slug, int $rating) {
-        return $this->resourcesRatingRepository->create([
+    public function storeRatingBySlug(string $resources_slug, int $rating, bool $update) {
+        $data = [
             'resources_slug' => $resources_slug,
             'rating' => $rating
-        ]);
+        ];
+        if ($update)
+            return $this->resourcesRatingRepository->update(['resources_slug' => $resources_slug], $data);
+        return $this->resourcesRatingRepository->create($data);
     }
 
     public function getUserRatingForResource(int $user_id, int $resources_id) {
