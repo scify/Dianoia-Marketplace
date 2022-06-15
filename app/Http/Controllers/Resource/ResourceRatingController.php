@@ -55,7 +55,7 @@ class ResourceRatingController extends Controller {
     public function storeOrUpdateMobileRating(Request $request): array {
 
         $this->validate($request, [
-            'resources_id' => 'required_without:slug|integer|exists:resources,id',
+            'resources_id' => 'required_without:resources_slug|integer|exists:resources,id',
             'resources_slug' => 'required_without:resources_id|string',
             'rating' => 'required|integer|min:1|max:5'
         ]);
