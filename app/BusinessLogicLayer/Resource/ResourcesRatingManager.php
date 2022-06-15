@@ -31,7 +31,7 @@ class ResourcesRatingManager {
             'rating' => $rating
         ];
         if ($update) {
-            $resourceRating = $this->resourcesRatingRepository->where(['resources_id' => $resource->id, 'previous_rating' => $previousRating]);
+            $resourceRating = $this->resourcesRatingRepository->where(['resources_id' => $resource->id, 'previous_rating' => $previousRating, 'voter_user_id' => null]);
             $resourceRating->rating = $rating;
             return $resourceRating->save();
         }
@@ -45,7 +45,7 @@ class ResourcesRatingManager {
             'rating' => $rating
         ];
         if ($update) {
-            $resourceRating = $this->resourcesRatingRepository->where(['resources_slug' => $resources_slug, 'previous_rating' => $previousRating]);
+            $resourceRating = $this->resourcesRatingRepository->where(['resources_slug' => $resources_slug, 'previous_rating' => $previousRating, 'voter_user_id' => null]);
             $resourceRating->rating = $rating;
             return $resourceRating->save();
         }
