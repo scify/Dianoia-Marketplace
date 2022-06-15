@@ -21,6 +21,5 @@ Route::middleware(['mobile'])->group(function () {
     Route::get("/exercises", [ResourceController::class, 'getTransformAllExercisesForMobileApp']);
     Route::post("/analytics/store", [AnalyticsEventController::class, 'store']);
     Route::post("/resources/user-rating", [ResourceRatingController::class, 'storeOrUpdateMobileRating']);
-    Route::post("/resources/update-resource-avg-rating", [ResourceRatingController::class, 'storeOrUpdateAverageResourceRating']);
     Route::get("/resource/avg-rating", [ResourceRatingController::class, 'getAverageRatingForResource']);
 });

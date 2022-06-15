@@ -52,7 +52,7 @@ class ResourceRatingController extends Controller {
         );
     }
 
-    public function storeOrUpdateMobileRating(Request $request) {
+    public function storeOrUpdateMobileRating(Request $request): array {
 
         $this->validate($request, [
             'resources_id' => 'required_without:slug|integer|exists:resources,id',
@@ -62,10 +62,18 @@ class ResourceRatingController extends Controller {
 
         $data = $request->all();
         if ($request->has('resources_id')) {
-            return $this->resourcesRatingManager->storeRating($data['resources_id'], $data['rating']);
+            $this->resourcesRatingManager->storeRating($data['resources_id'], $data['rating']);
         } else {
-            return $this->resourcesRatingManager->storeRatingBySlug($data['resources_slug'], $data['rating']);
+            $this->resourcesRatingManager->storeRatingBySlug($data['resources_slug'], $data['rating']);
         }
+        $currentAvg = $this->resourcesRatingManager->getAverageRatingForResource($data['resources_slug']);
+        $resource = $this->resourceManager->getResourceBySlug($data['resources_slug']);
+        if($resource)
+            $this->resourceManager->storeOrUpdateAverageResourceRating(
+                $resource->id,
+                $currentAvg['avg_rating']
+            );
+        return $currentAvg;
     }
 
     public function storeOrUpdateAverageResourceRating(Request $request) {

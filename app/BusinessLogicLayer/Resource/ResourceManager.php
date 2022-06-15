@@ -341,5 +341,9 @@ class ResourceManager {
         return $resourcesWithReportInfo;
     }
 
+    public function getResourceBySlug($resources_slug) {
+        return $this->resourceRepository->where(['slug' => $resources_slug]);
+    }
+
 
 }
