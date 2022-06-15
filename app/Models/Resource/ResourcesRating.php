@@ -18,7 +18,8 @@ class ResourcesRating extends Model {
      * @var array
      */
     protected $fillable = [
-        'resources_id', 'voter_user_id',
-        'rating', 'updated_at'
+        'resources_id', 'resources_slug',
+        'voter_user_id', 'rating',
+        'updated_at'
     ];
 }
