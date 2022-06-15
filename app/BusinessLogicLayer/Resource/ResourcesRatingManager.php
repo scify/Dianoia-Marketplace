@@ -23,25 +23,32 @@ class ResourcesRatingManager {
         );
     }
 
-    public function storeRating(int $resources_id, int $rating, bool $update) {
+    public function storeRating(int $resources_id, int $rating, bool $update, int $previousRating) {
         $resource = $this->resourcesRatingRepository->find($resources_id);
         $data = [
             'resources_id' => $resources_id,
             'resources_slug' => $resource->slug,
             'rating' => $rating
         ];
-        if ($update)
-            return $this->resourcesRatingRepository->update(['resources_id' => $resource->id], $data);
+        if ($update) {
+            $resourceRating = $this->resourcesRatingRepository->where(['resources_id' => $resource->id, 'previous_rating' => $previousRating]);
+            $resourceRating->rating = $rating;
+            return $resourceRating->save();
+        }
+
         return $this->resourcesRatingRepository->create($data);
     }
 
-    public function storeRatingBySlug(string $resources_slug, int $rating, bool $update) {
+    public function storeRatingBySlug(string $resources_slug, int $rating, bool $update, int $previousRating) {
         $data = [
             'resources_slug' => $resources_slug,
             'rating' => $rating
         ];
-        if ($update)
-            return $this->resourcesRatingRepository->update(['resources_slug' => $resources_slug], $data);
+        if ($update) {
+            $resourceRating = $this->resourcesRatingRepository->where(['resources_slug' => $resources_slug, 'previous_rating' => $previousRating]);
+            $resourceRating->rating = $rating;
+            return $resourceRating->save();
+        }
         return $this->resourcesRatingRepository->create($data);
     }
 

@@ -58,14 +58,15 @@ class ResourceRatingController extends Controller {
             'resources_id' => 'required_without:resources_slug|integer|exists:resources,id',
             'resources_slug' => 'required_without:resources_id|string',
             'rating' => 'required|integer|min:1|max:5',
-            'update' => 'required|boolean'
+            'update' => 'required|boolean',
+            'previous_rating' => 'integer|min:1|max:5'
         ]);
 
         $data = $request->all();
         if (isset($data['resources_id']) && $data['resources_id']) {
-            $this->resourcesRatingManager->storeRating($data['resources_id'], $data['rating'], $data['update']);
+            $this->resourcesRatingManager->storeRating($data['resources_id'], $data['rating'], $data['update'], $data['previous_rating']);
         } else {
-            $this->resourcesRatingManager->storeRatingBySlug($data['resources_slug'], $data['rating'], $data['update']);
+            $this->resourcesRatingManager->storeRatingBySlug($data['resources_slug'], $data['rating'], $data['update'], $data['previous_rating']);
         }
         $currentAvg = $this->resourcesRatingManager->getAverageRatingForResource($data['resources_slug']);
         $resource = $this->resourceManager->getResourceBySlug($data['resources_slug']);
