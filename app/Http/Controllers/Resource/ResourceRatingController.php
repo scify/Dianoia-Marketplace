@@ -61,7 +61,7 @@ class ResourceRatingController extends Controller {
         ]);
 
         $data = $request->all();
-        if ($request->has('resources_id')) {
+        if (isset($data['resources_id']) && $data['resources_id']) {
             $this->resourcesRatingManager->storeRating($data['resources_id'], $data['rating']);
         } else {
             $this->resourcesRatingManager->storeRatingBySlug($data['resources_slug'], $data['rating']);
