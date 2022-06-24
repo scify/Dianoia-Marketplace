@@ -1,7 +1,8 @@
 @import "common/variables";
 .login-page {
     background-color: var(--color-grey-dark-2);
-    height: 140vh;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
 
     form {
         background-color: #ffff;

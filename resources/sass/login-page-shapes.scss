@@ -11,34 +11,37 @@
     --color-shapes-darkest-grey: #44584a;
     --color-shapes-brown: #9c6c2c;
 }
-.shapes-btn{
-    background-color:var(--color-shapes-green);
+
+.shapes-btn {
+    background-color: var(--color-shapes-green);
     color: #ffff;
-    border-color: var(--color-shapes-green)!important;
-    &:hover{
-        background-color:var(--color-shapes-dark-green)!important;
+    border-color: var(--color-shapes-green) !important;
+
+    &:hover {
+        background-color: var(--color-shapes-dark-green) !important;
     }
 }
 
-a{
+a {
     color: var(--color-shapes-brown);
-    &:hover{
-        color:var(--color-shapes-dark-grey)!important;
+
+    &:hover {
+        color: var(--color-shapes-dark-grey) !important;
     }
 }
-.shapes-message{
+
+.shapes-message {
     color: var(--color-shapes-green);
-    &:hover{
-        color:var(--color-shapes-dark-green)!important;
+
+    &:hover {
+        color: var(--color-shapes-dark-green) !important;
     }
 }
 
 .login-page-shapes {
     background-color: var(--color-shapes-light-brown);
-    height: 155vh;
-    //@media (min-width: 768px) {
-    //    width: 100vh;
-    //}
+    padding-top: 10rem;
+    padding-bottom: 10rem;
 
     form {
         width: 65%;
@@ -61,8 +64,9 @@ a{
 
         .form-control {
             min-height: 54px;
-            background-color: var( --color-offwhite);
+            background-color: var(--color-offwhite);
             font-size: $default-font-size;
+
             &::placeholder {
                 font-style: italic;
                 font-size: 1.8rem;

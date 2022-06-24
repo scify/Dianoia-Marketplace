@@ -24,45 +24,21 @@ Route::view('/about', 'about')->name('about');
 Route::view('/content-guidelines', 'content-guidelines')->name('content-guidelines');
 Route::view('/terms-of-use', 'terms-of-use')->name('terms-of-use');
 Route::view('/tutorial', 'tutorial')->name('tutorial');
-//Route::view('/privacy-policy', 'privacy-policy')->name('privacy-policy');
-
-
-$regexForLocalParameter= config("app.regex_for_validating_locale_at_routes");
-$localeInfo = [ 'prefix' => '{lang}',
-                'where' => ['lang' => $regexForLocalParameter],
-                'middleware' => 'set.locale'
-];
-//Route::group($localeInfo, function () {
-//    Route::get('/privacy-policy', [TermsPrivacyController::class, 'showPrivacyPolicyPage'])->name('privacy-policy');
-//    Route::get('/terms-of-use',  [TermsPrivacyController::class, 'showTermsOfUse'])->name('terms-of-use');
-//});
 
 Route::get('/privacy-policy', [TermsPrivacyController::class, 'showPrivacyPolicyPage'])->name('privacy-policy');
-//Route::get('/terms-of-use',  [TermsPrivacyController::class, 'showTermsOfUse'])->name('terms-of-use');
-
-
-//Route::get('/privacy-policy', function () {
-//    return redirect(app()->getLocale() ."/privacy-policy");
-//});
-
-//
-//Route::group(['prefix' => '{locale}', 'middleware' => 'locale'], function() {
-//    Route::view('/privacy-policy', 'privacy-policy/'.\Illuminate\Support\Facades\App::getLocale())->name('privacy-policy');
-//});
 
 
 Route::get('/lang/{lang}', [UserController::class, 'setLangLocaleCookie'])->name('set-lang-locale');
-//TODO new route for resources with only methods ->only([]) without aliases
+
 Route::get('resources/display_exercises', [ResourceController::class, 'display'])->name('resources.display');
 Route::get("/coming-soon", [ResourceController::class, 'coming_soon'])->name('resources.coming-soon');
-Route::get("/login-shapes/", [ShapesIntegrationController::class, 'login'])->name('shapes.login');
-Route::get("/register-shapes/", [ShapesIntegrationController::class, 'register'])->name('shapes.register-shapes');
-Route::post("/request-shapes-user-creation/", [ShapesIntegrationController::class, 'request_create_user'])->name('shapes.request-create-user');
-Route::post("/request-shapes-user-login_token/", [ShapesIntegrationController::class, 'request_login_token'])->name('shapes.request-login-token');
+Route::middleware(['guest'])->group(function () {
+    Route::get("/login-shapes/", [ShapesIntegrationController::class, 'login'])->name('shapes.login');
+    Route::get("/register-shapes/", [ShapesIntegrationController::class, 'register'])->name('shapes.register-shapes');
+    Route::post("/request-shapes-user-creation/", [ShapesIntegrationController::class, 'request_create_user'])->name('shapes.request-create-user');
+    Route::post("/request-shapes-user-login_token/", [ShapesIntegrationController::class, 'request_login_token'])->name('shapes.request-login-token');
+});
 
-
-
-#Auth::routes(['verify' => true]);
 Route::middleware(['auth'])->group(function () {
     Route::prefix('administration')->middleware("can:manage-platform")->name('administration.')->group(function () {
         Route::resource('users', UserController::class)->except([

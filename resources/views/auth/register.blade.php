@@ -1,103 +1,75 @@
 @extends('layouts.app')
 @push('css')
-    <link rel="stylesheet" href="{{ mix('dist/css/form-new-exercise.css') }}">
+    <link rel="stylesheet" href="{{ mix('dist/css/login-page.css') }}">
 @endpush
 
 @section('content')
-    <div class="container py-5">
-        <div class="row justify-content-center py-5">
-            <div class="col-md-8 pt-5">
-                <div class="card">
-                    <div class="card-header">{{ __('auth.register_btn') }}</div>
+        <div class="login-page d-flex align-items-center">
+            <form method="POST" action="{{ route('register') }}" class="content">
+                @csrf
+                <h2 class="text-center mb-5 mt-5">{{  __('auth.register_btn')}}</h2>
+                <div class="mb-3">
+                    <label for="email" class="form-label">{{ __('auth.email_label') }}</label>
+                    <input type="email" name='email' class="form-control @error('email') is-invalid @enderror"
+                           placeholder="{{  __('auth.type_mail')}}"
+                           id="email" aria-describedby="emailHelp" required autocomplete="email" autofocus>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">{{ __('auth.password_label') }}</label>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror"
+                           placeholder="{{  __('auth.type_password')}}"
+                           id="password" required autocomplete="current-password" name="password">
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
-                            @csrf
-
-                            <div class="form-group row mb-2">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('auth.name_label') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                    @error('name')
-                                    <span class="invalid-feedback" role="alert">
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror
-                                </div>
-                            </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">{{ __('auth.confirm_password_label') }}</label>
+                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
+                           placeholder="{{  __('auth.confirm_password_label')}}"
+                           id="password-confirm" required autocomplete="password-confirmation" name="password_confirmation">
 
-                            <div class="form-group row mb-4">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('auth.email_label') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                    @error('password_confirmation')
+                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror
-                                </div>
-                            </div>
+                    @enderror
+                </div>
+                <div class="form-group row mb-4">
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="remember"
+                                   id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                            <div class="form-group row mb-4">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('auth.password_label') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('auth.confirm_password_label') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row mb-4">
-                                <label for="user_role"  class="col-md-4 col-form-label text-md-right">{{ __('messages.user') }}</label>
-                                <div class="col-md-6 ">
-
-                                    <select class="form-select" aria-label="user_role" name="role">
-                                        @foreach ($viewModel->roles as $role)
-                                            @if($role->id != \App\Repository\User\UserRole\UserRolesLkp::SHAPES_USER)
-                                                <option value="{{$role->id}}"> {{trans('messages.'.$role->name)}}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                    @error('role')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                              </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button id="register_btn" type="submit" class="btn btn-primary">
-                                        {{ __('auth.register_btn') }}
-                                    </button>
-                                </div>
-                            </div>
-
-                        </form>
+                            <label class="form-check-label" for="remember">
+                                {{ __('auth.remember_me_label') }}
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <button type="submit" class="btn btn-primary mb-1 mt-3"> {{ __('auth.register_btn') }}</button>
+
+                <p class="text-left mt-5">  {{ __('auth.already_account') }}: <a
+                        href="{{ route('login') }} ">{{ __('auth.login_btn') }}</a></p>
+
+
+                <hr class="mt-5">
+                <div style="text-align: center">
+                    <a class="btn btn-success" href="{{ route('shapes.login') }}">Login / Register with a SHAPES account</a>
+                    <img alt="Shapes Logo" title="" src="img/shapes_logo.png" style="width:70px">
+                    <p style="font-size:small; font-style: italic; margin-top: 1rem">Create an account shared across all SHAPES - powered
+                        platforms</p>
+                </div>
+
+
+            </form>
         </div>
-    </div>
 @endsection
-@push('scripts')
-    <script src="{{ mix('dist/js/create-edit-resource.js') }}"></script>
-@endpush

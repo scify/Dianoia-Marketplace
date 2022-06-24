@@ -4,14 +4,14 @@
 @endpush
 
 @section('content')
-<main>
     <div class="login-page d-flex align-items-center">
         <form method="POST" action="{{ route('login') }}" class="content">
             @csrf
             <h2 class="text-center mb-5 mt-5">{{  __('auth.login_btn')}}</h2>
             <div class="mb-3">
                 <label for="email" class="form-label">{{ __('auth.email_label') }}</label>
-                <input type="email" name='email' class="form-control @error('email') is-invalid @enderror" placeholder="{{  __('auth.type_mail')}}"
+                <input type="email" name='email' class="form-control @error('email') is-invalid @enderror"
+                       placeholder="{{  __('auth.type_mail')}}"
                        id="email" aria-describedby="emailHelp" required autocomplete="email" autofocus>
                 @error('email')
                 <span class="invalid-feedback" role="alert">
@@ -21,7 +21,8 @@
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">{{ __('auth.password_label') }}</label>
-                <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{  __('auth.type_password')}}"
+                <input type="password" class="form-control @error('password') is-invalid @enderror"
+                       placeholder="{{  __('auth.type_password')}}"
                        id="password" required autocomplete="current-password" name="password">
 
                 @error('password')
@@ -31,7 +32,7 @@
                 @enderror
             </div>
             <div class="form-group row mb-4">
-                <div class="col-md-6 offset-md-4">
+                <div class="col-md-6">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember"
                                id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -42,7 +43,7 @@
                     </div>
                 </div>
             </div>
-{{--            <p class="text-center mt-5 ">Με την σύνδεσής σας αποδέχεστε τους <a href="#">όρους χρήσης</a>.</p>--}}
+            {{--            <p class="text-center mt-5 ">Με την σύνδεσής σας αποδέχεστε τους <a href="#">όρους χρήσης</a>.</p>--}}
             <button type="submit" class="btn btn-primary mb-1 mt-3"> {{ __('auth.login_btn') }}</button>
 
 
@@ -51,22 +52,22 @@
                     {{ __('auth.forgot_password_link') }}
                 </a>
             @endif
-            <p class="text-left mt-5" >  {{ __('auth.no_account') }}<a href="{{ route('register') }} ">{{ __('auth.register_here') }}</a></p>
+            <p class="text-left mt-5">  {{ __('auth.no_account') }}<a
+                    href="{{ route('register') }} ">{{ __('auth.register_here') }}</a></p>
 
 
             <hr class="mt-5">
-            <div style="text-align: left">
-                <a class="btn btn-link" href="{{ route('shapes.login') }}">Login/Register with a SHAPES account</a>
+            <div style="text-align: center">
+                <a class="btn btn-success" href="{{ route('shapes.login') }}">Login / Register with a SHAPES account</a>
                 <img alt="Shapes Logo" title="" src="img/shapes_logo.png" style="width:70px">
-                <p style="font-size: xx-small; font-style: italic">Create an account shared across all SHAPES - powered platforms</p>
+                <p style="font-size:small; font-style: italic; margin-top: 1rem">Create an account shared across all
+                    SHAPES - powered
+                    platforms</p>
             </div>
 
 
-
-
-          </form>
+        </form>
     </div>
-</main>
 @endsection
 
 
