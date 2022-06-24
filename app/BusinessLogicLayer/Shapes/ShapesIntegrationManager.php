@@ -108,7 +108,7 @@ class ShapesIntegrationManager {
         }
         $response = $response->json();
         $new_token = $response['message'];
-        echo "\nUser: " . $user->id . "\t New token: " . $new_token . "\n";
+        // echo "\nUser: " . $user->id . "\t New token: " . $new_token . "\n";
         $this->userRepository->update(['shapes_auth_token' => $new_token],  $user->id);
     }
 
