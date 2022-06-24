@@ -69,7 +69,6 @@ class ShapesIntegrationController extends Controller {
                 $user = $this->shapesIntegrationManager->findUserByEmail($request['email']);
             } catch (\Exception $e) {
                 $user = $this->shapesIntegrationManager->storeShapesUserLocally($request);
-
             }
             $data = $response['items'][0];
             $token = $data['token'];
