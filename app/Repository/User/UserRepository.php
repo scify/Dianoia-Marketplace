@@ -54,4 +54,8 @@ class UserRepository extends Repository {
         return $this->getModelClassName()::latest()->first()->id;
     }
 
+    public function getAllShapesUsers(): Collection {
+        return User::whereNotNull('shapes_auth_token')->get();
+    }
+
 }

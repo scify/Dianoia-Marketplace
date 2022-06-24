@@ -82,7 +82,7 @@ abstract class Repository implements RepositoryInterface {
      * @param string $attribute
      * @return mixed
      */
-    public function update(array $data, $id, $attribute = "id") {
+    public function update(array $data, $id, string $attribute = "id") {
         $this->modelInstance->where($attribute, '=', $id)->update($this->onlyFillable($data));
         return $this->find($id);
     }
