@@ -30,7 +30,7 @@ return [
     'logout' => 'Logout',
     'no_account' => 'Don\'t have an account?',
     'register_here' => ' Register here',
-    'type_mail' => 'Τype your mail',
+    'type_mail' => 'Type your email',
     'type_password' => 'Type your password',
     'already_account' => 'I already have an account',
     'sign_in' => 'Sign in'

@@ -52,7 +52,7 @@
                     {{ __('auth.forgot_password_link') }}
                 </a>
             @endif
-            <p class="text-left mt-5">  {{ __('auth.no_account') }}<a
+            <p class="text-left mt-5">  {{ __('auth.no_account') }} <a
                     href="{{ route('register') }} ">{{ __('auth.register_here') }}</a></p>
 
 
