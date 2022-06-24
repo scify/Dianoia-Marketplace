@@ -12,35 +12,27 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
 
-class ResourceRepository extends Repository
-{
+class ResourceRepository extends Repository {
 
     protected array $defaultRelationships = ['creator', 'ratings'];
 
     /**
      * @inheritDoc
      */
-    function getModelClassName()
-    {
+    function getModelClassName() {
         return Resource::class;
     }
 
-    function getLastId()
-    {
-        return $this->getModelClassName()::latest()->first()->id;
-    }
-
     public function getResources(
-        int $user_id = null,
-        int $lang_id = null,
+        int   $user_id = null,
+        int   $lang_id = null,
         array $status_ids = null,
         array $difficulties = null,
         array $type_ids = null,
         array $ratings = null,
-        $paginate = null,
-        $api = False
-    )
-    {
+              $paginate = null,
+              $api = False
+    ) {
         $whereArray = [];
         if ($lang_id)
             $whereArray['lang_id'] = $lang_id;
@@ -48,61 +40,53 @@ class ResourceRepository extends Repository
             $whereArray['creator_user_id'] = $user_id;
 
 
-        if($status_ids)
+        if ($status_ids)
             $resourcesBuilder = Resource::where($whereArray)->whereIn('status_id', $status_ids)->with($this->defaultRelationships);
         else
             $resourcesBuilder = Resource::where($whereArray)->with($this->defaultRelationships);
-
 
 
         if ($type_ids) {
             $resourcesBuilder->whereIn('type_id', $type_ids);//maybe $resourcesBuilder = ...
         }
 
-        if($api){
+        if ($api) {
             $resourcesBuilder->where('display_in_api', True);//maybe $resourcesBuilder = ...
         }
 
 
-
         $sortByDifficulties = false;
-        if($difficulties && count($difficulties) > 1){
+        if ($difficulties && count($difficulties) > 1) {
             $sortByDifficulties = true;
-            if(intval($difficulties[0]) > intval($difficulties[1])){
+            if (intval($difficulties[0]) > intval($difficulties[1])) {
                 $resourcesBuilder->orderBy('difficulty_id', 'desc');
-            }
-            else{
+            } else {
                 $resourcesBuilder->orderBy('difficulty_id', 'asc');
             }
-        }
-        else{
+        } else {
             $resourcesBuilder->orderBy('avg_rating', 'desc');
         }
 
 
-
-
-        if($paginate){
+        if ($paginate) {
             $ret = $resourcesBuilder->simplePaginate($paginate);
+        } else {
+            $ret = $resourcesBuilder->get();
         }
-        else{
-            $ret =  $resourcesBuilder->get();
-        }
-
 
 
         $i = count($ret);
-        if(!$sortByDifficulties && $ratings  && count($ratings) > 1){
-                $sorted = $ret->sortBy(function($model) use ($i, $ratings){
-                    $ret =  array_search(intval($model->id), $ratings);
-                    if($ret === false){
-                        $i++;
-                        return $i-1;
-                    }
-                });
-                return $sorted->values();
+        if (!$sortByDifficulties && $ratings && count($ratings) > 1) {
+            $sorted = $ret->sortBy(function ($model) use ($i, $ratings) {
+                $ret = array_search(intval($model->id), $ratings);
+                if ($ret === false) {
+                    $i++;
+                    return $i - 1;
+                }
+            });
+            return $sorted->values();
 
-         }
+        }
         return $ret;
     }
 }
