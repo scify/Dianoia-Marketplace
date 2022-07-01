@@ -16,10 +16,16 @@ class ShapesIntegrationManager {
 
     protected UserRepository $userRepository;
     protected UserRoleManager $userRoleManager;
+    protected $defaultHeaders = [
+        'X-Shapes-Key' => null,
+        'Accept' => "application/json"
+    ];
+    protected $apiBaseUrl = 'https://kubernetes.pasiphae.eu/shapes/asapa/auth/';
 
     public function __construct(UserRoleManager $userRoleManager, UserRepository $userRepository) {
         $this->userRoleManager = $userRoleManager;
         $this->userRepository = $userRepository;
+        $this->defaultHeaders['X-Shapes-Key'] = config('app.shapes_key');
     }
 
 
@@ -28,10 +34,8 @@ class ShapesIntegrationManager {
      */
     public function createShapes(Request $request) {
 
-        $response = Http::withHeaders([
-            'X-Shapes-Key' => '7Msbb3w^SjVG%j',
-            'Accept' => "application/json"
-        ])->post('https://kubernetes.pasiphae.eu/shapes/asapa/auth/register', [
+        $response = Http::withHeaders($this->defaultHeaders)
+            ->post($this->apiBaseUrl . 'register', [
             'email' => $request['email'],
             'password' => $request['password'],
             'first_name' => 'Tester',
@@ -56,10 +60,8 @@ class ShapesIntegrationManager {
      * @throws Exception
      */
     public function loginShapes(Request $request) {
-        $response = Http::withHeaders([
-            'X-Shapes-Key' => '7Msbb3w^SjVG%j',
-            'Accept' => "application/json"
-        ])->post('https://kubernetes.pasiphae.eu/shapes/asapa/auth/login', [
+        $response = Http::withHeaders($this->defaultHeaders)
+            ->post($this->apiBaseUrl . 'login', [
             'email' => $request['email'],
             'password' => $request['password'],
         ]);
@@ -98,11 +100,9 @@ class ShapesIntegrationManager {
      * @throws Exception
      */
     public function updateSHAPESAuthTokenForUser(User $user) {
-        $response = Http::withHeaders([
-            'X-Shapes-Key' => '7Msbb3w^SjVG%j',
-            'Accept' => "application/json",
+        $response = Http::withHeaders(array_merge($this->defaultHeaders, [
             'X-Pasiphae-Auth' => $user->shapes_auth_token
-        ])->post('https://kubernetes.pasiphae.eu/shapes/asapa/auth/token/refresh');
+        ]))->post($this->apiBaseUrl . 'token/refresh');
         if (!$response->ok()) {
             throw new Exception(json_decode($response->body())->error);
         }
