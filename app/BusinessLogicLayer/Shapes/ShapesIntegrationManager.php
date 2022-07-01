@@ -8,9 +8,12 @@ use App\BusinessLogicLayer\UserRole\UserRoleManager;
 use App\Models\User;
 use App\Repository\User\UserRepository;
 use App\Repository\User\UserRole\UserRolesLkp;
+use Carbon\Carbon;
+use DateTime;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class ShapesIntegrationManager {
 
@@ -21,11 +24,17 @@ class ShapesIntegrationManager {
         'Accept' => "application/json"
     ];
     protected $apiBaseUrl = 'https://kubernetes.pasiphae.eu/shapes/asapa/auth/';
+    protected $datalakeAPIUrl;
 
     public function __construct(UserRoleManager $userRoleManager, UserRepository $userRepository) {
         $this->userRoleManager = $userRoleManager;
         $this->userRepository = $userRepository;
         $this->defaultHeaders['X-Shapes-Key'] = config('app.shapes_key');
+        $this->datalakeAPIUrl = config('app.shapes_datalake_api_url');
+    }
+
+    public static function isEnabled(): bool {
+        return config('app.shapes_datalake_api_url') !== null && config('app.shapes_datalake_api_url') !== "";
     }
 
 
@@ -36,11 +45,11 @@ class ShapesIntegrationManager {
 
         $response = Http::withHeaders($this->defaultHeaders)
             ->post($this->apiBaseUrl . 'register', [
-            'email' => $request['email'],
-            'password' => $request['password'],
-            'first_name' => 'Tester',
-            'last_name' => 'Test',
-        ]);
+                'email' => $request['email'],
+                'password' => $request['password'],
+                'first_name' => 'Tester',
+                'last_name' => 'Test',
+            ]);
         if (!$response->ok()) {
             throw new Exception(json_decode($response->body())->error);
         }
@@ -62,9 +71,9 @@ class ShapesIntegrationManager {
     public function loginShapes(Request $request) {
         $response = Http::withHeaders($this->defaultHeaders)
             ->post($this->apiBaseUrl . 'login', [
-            'email' => $request['email'],
-            'password' => $request['password'],
-        ]);
+                'email' => $request['email'],
+                'password' => $request['password'],
+            ]);
         if (!$response->ok()) {
             throw new Exception(json_decode($response->body())->error);
         }
@@ -109,7 +118,29 @@ class ShapesIntegrationManager {
         $response = $response->json();
         $new_token = $response['message'];
         // echo "\nUser: " . $user->id . "\t New token: " . $new_token . "\n";
-        $this->userRepository->update(['shapes_auth_token' => $new_token],  $user->id);
+        $this->userRepository->update(['shapes_auth_token' => $new_token], $user->id);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function sendUsageDataToDatalakeAPI(User $user, string $action, string $category) {
+        $response = Http::withHeaders([
+            'X-Authorisation' => $user->shapes_auth_token
+        ])
+            ->post($this->datalakeAPIUrl, [
+                'action' => $action,
+                'category' => $category,
+                'devId' => 'dianoia_marketplace',
+                'lang' => app()->getLocale(),
+                'source' => 'Dianoia-marketplace',
+                'time' => Carbon::now()->format(DateTime::ATOM),
+                'version' => config('app.version')
+            ]);
+        if (!$response->ok()) {
+            throw new Exception(json_decode($response->body())->message);
+        }
+        return json_encode($response->json());
     }
 
 }

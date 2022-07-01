@@ -3,6 +3,7 @@
 
 namespace App\BusinessLogicLayer\Resource;
 
+use App\BusinessLogicLayer\Shapes\ShapesIntegrationManager;
 use App\Models\Resource\Resource;
 use App\Repository\ContentLanguageLkpRepository;
 use App\Repository\DifficultiesLkpRepository;
@@ -11,6 +12,7 @@ use App\Repository\Resource\ResourceRepository;
 use App\Repository\Resource\ResourceStatusesLkp;
 use App\Repository\Resource\ResourceTypeLkpRepository;
 use App\Repository\Resource\ResourceTypesLkp;
+use App\Repository\User\UserRepository;
 use App\ViewModels\CreateEditResourceVM;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
@@ -26,18 +28,24 @@ class ResourceManager {
     protected DifficultiesLkpRepository $difficultiesLkpRepository;
     protected ResourceTypeLkpRepository $resourceTypeLkpRepository;
     protected ReportsRepository $reportsRepository;
+    protected UserRepository $userRepository;
+    protected ShapesIntegrationManager $shapesIntegrationManager;
 
     public function __construct(ResourceRepository           $resourceRepository,
                                 ContentLanguageLkpRepository $contentLanguageLkpRepository,
                                 DifficultiesLkpRepository    $difficultiesLkpRepository,
                                 ResourceTypeLkpRepository    $resourceTypeLkpRepository,
-                                ReportsRepository            $reportsRepository
+                                ReportsRepository            $reportsRepository,
+                                UserRepository               $userRepository,
+                                ShapesIntegrationManager     $shapesIntegrationManager
     ) {
         $this->resourceRepository = $resourceRepository;
         $this->contentLanguageLkpRepository = $contentLanguageLkpRepository;
         $this->difficultiesLkpRepository = $difficultiesLkpRepository;
         $this->resourceTypeLkpRepository = $resourceTypeLkpRepository;
         $this->reportsRepository = $reportsRepository;
+        $this->userRepository = $userRepository;
+        $this->shapesIntegrationManager = $shapesIntegrationManager;
     }
 
 
@@ -144,12 +152,16 @@ class ResourceManager {
             $pdf_path = null;
         }
 
+        $user = $this->userRepository->find(Auth::id());
+        if ($user->shapes_auth_token && ShapesIntegrationManager::isEnabled()) {
+            $resourceType = $this->resourceTypeLkpRepository->find($request['type_id']);
+            $this->shapesIntegrationManager->sendUsageDataToDatalakeAPI($user, "resource_created", $resourceType->name);
+        }
 
         return $this->resourceRepository->update([
             'img_path' => $img_path,
             'pdf_path' => $pdf_path],
             $resource->id);
-
     }
 
 
