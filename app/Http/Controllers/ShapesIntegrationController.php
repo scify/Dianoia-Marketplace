@@ -6,6 +6,8 @@ use App\BusinessLogicLayer\Shapes\ShapesIntegrationManager;
 use App\BusinessLogicLayer\UserRole\UserRoleManager;
 use App\Http\Middleware\Authenticate;
 use App\Providers\FortifyServiceProvider;
+use App\Repository\Resource\ResourceTypeLkpRepository;
+use App\Repository\User\UserRepository;
 use App\ViewModels\RegistrationFormVM;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\User;
@@ -19,10 +21,17 @@ class ShapesIntegrationController extends Controller {
 
     public ShapesIntegrationManager $shapesIntegrationManager;
     public UserRoleManager $userRoleManager;
+    public UserRepository $userRepository;
+    public ResourceTypeLkpRepository $resourceTypeLkpRepository;
 
-    public function __construct(UserRoleManager $userRoleManager, ShapesIntegrationManager $shapesIntegrationManager) {
+    public function __construct(UserRoleManager           $userRoleManager,
+                                ShapesIntegrationManager  $shapesIntegrationManager,
+                                UserRepository            $userRepository,
+                                ResourceTypeLkpRepository $resourceTypeLkpRepository) {
         $this->userRoleManager = $userRoleManager;
         $this->shapesIntegrationManager = $shapesIntegrationManager;
+        $this->userRepository = $userRepository;
+        $this->resourceTypeLkpRepository = $resourceTypeLkpRepository;
     }
 
     /**
@@ -73,6 +82,11 @@ class ShapesIntegrationController extends Controller {
             $data = $response['items'][0];
             $token = $data['token'];
             $this->shapesIntegrationManager->storeUserToken($user->id, $token);
+            $user = $this->userRepository->find($user->id);
+            if ($user->shapes_auth_token && ShapesIntegrationManager::isEnabled()) {
+                $resourceType = $this->resourceTypeLkpRepository->find(1);
+                $this->shapesIntegrationManager->sendUsageDataToDatalakeAPI($user, "resource_created", $resourceType->name);
+            }
             session()->flash('flash_message_success', "Shapes user successfully logged-in");
             Auth::login($user);
             return redirect()->route('home');
