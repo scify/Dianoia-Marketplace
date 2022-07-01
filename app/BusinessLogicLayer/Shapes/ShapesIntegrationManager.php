@@ -128,12 +128,12 @@ class ShapesIntegrationManager {
         $response = Http::withHeaders([
             'X-Authorisation' => $user->shapes_auth_token
         ])
-            ->post($this->datalakeAPIUrl, [
+            ->post($this->datalakeAPIUrl . '/marketplace', [
                 'action' => $action,
                 'category' => $category,
                 'devId' => 'dianoia_marketplace',
                 'lang' => app()->getLocale(),
-                'source' => 'Dianoia-marketplace',
+                'source' => 'Dianoia-marketplace-web',
                 'time' => Carbon::now()->format(DateTime::ATOM),
                 'version' => config('app.version')
             ]);
