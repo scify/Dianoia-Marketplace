@@ -140,6 +140,7 @@ class ShapesIntegrationManager {
         if (!$response->ok()) {
             throw new Exception(json_decode($response->body())->message);
         }
+        Log::info('SHAPES Datalake response: ' . json_encode($response->json()));
         return json_encode($response->json());
     }
 
