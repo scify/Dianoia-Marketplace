@@ -139,7 +139,7 @@ class ShapesIntegrationManager {
                 'version' => config('app.version')
             ]);
         if (!$response->ok()) {
-            throw new Exception(json_decode($response->json()));
+            throw new Exception(json_decode($response->body()));
         }
         Log::info('SHAPES Datalake response: ' . json_encode($response->json()));
         return json_encode($response->json());
@@ -162,8 +162,7 @@ class ShapesIntegrationManager {
                 'version' => $version
             ]);
         if (!$response->ok()) {
-            Log::error($response->body());
-            throw new Exception($response->json());
+            throw new Exception($response->body());
         }
         Log::info('SHAPES Mobile Datalake response: ' . json_encode($response->json()));
         return json_encode($response->json());
