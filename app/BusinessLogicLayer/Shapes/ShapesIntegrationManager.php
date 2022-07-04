@@ -126,7 +126,8 @@ class ShapesIntegrationManager {
      */
     public function sendUsageDataToDatalakeAPI(User $user, string $action, string $category) {
         $response = Http::withHeaders([
-            'X-Authorisation' => $user->shapes_auth_token
+            'X-Authorisation' => $user->shapes_auth_token,
+            'Accept' => "application/json"
         ])
             ->post($this->datalakeAPIUrl . '/marketplace', [
                 'action' => $action,
@@ -138,7 +139,7 @@ class ShapesIntegrationManager {
                 'version' => config('app.version')
             ]);
         if (!$response->ok()) {
-            throw new Exception(json_decode($response->body())->message);
+            throw new Exception(json_decode($response->json()));
         }
         Log::info('SHAPES Datalake response: ' . json_encode($response->json()));
         return json_encode($response->json());
@@ -149,7 +150,8 @@ class ShapesIntegrationManager {
      */
     public function sendMobileUsageDataToDatalakeAPI(string $token, string $action, string $lang, string $version, string $source) {
         $response = Http::withHeaders([
-            'X-Authorisation' => $token
+            'X-Authorisation' => $token,
+            'Accept' => "application/json"
         ])
             ->post($this->datalakeAPIUrl . '/mobile', [
                 'action' => $action,
@@ -160,8 +162,7 @@ class ShapesIntegrationManager {
                 'version' => $version
             ]);
         if (!$response->ok()) {
-            Log::error($response->json() . $response->body());
-            throw new Exception($response->body());
+            throw new Exception($response->json());
         }
         Log::info('SHAPES Mobile Datalake response: ' . json_encode($response->json()));
         return json_encode($response->json());
