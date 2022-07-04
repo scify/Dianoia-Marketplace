@@ -144,4 +144,26 @@ class ShapesIntegrationManager {
         return json_encode($response->json());
     }
 
+    /**
+     * @throws Exception
+     */
+    public function sendMobileUsageDataToDatalakeAPI(string $token, string $action, string $lang, string $version, string $source) {
+        $response = Http::withHeaders([
+            'X-Authorisation' => $token
+        ])
+            ->post($this->datalakeAPIUrl . '/mobile', [
+                'action' => $action,
+                'devId' => 'dianoia_mobile_' . $source,
+                'lang' => $lang,
+                'source' => $source,
+                'time' => Carbon::now()->format(DateTime::ATOM),
+                'version' => $version
+            ]);
+        if (!$response->ok()) {
+            throw new Exception(json_decode($response->body())->message);
+        }
+        Log::info('SHAPES Mobile Datalake response: ' . json_encode($response->json()));
+        return json_encode($response->json());
+    }
+
 }
