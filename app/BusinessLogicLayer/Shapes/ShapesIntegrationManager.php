@@ -162,6 +162,7 @@ class ShapesIntegrationManager {
                 'version' => $version
             ]);
         if (!$response->ok()) {
+            Log::error($response->body());
             throw new Exception($response->json());
         }
         Log::info('SHAPES Mobile Datalake response: ' . json_encode($response->json()));
