@@ -135,7 +135,7 @@ class ShapesIntegrationManager {
                 'devId' => 'dianoia_marketplace',
                 'lang' => app()->getLocale(),
                 'source' => 'Dianoia-marketplace-web',
-                'time' => Carbon::now()->format(DateTime::ATOM),
+                'time' => Carbon::now()->format(DateTime::RFC3339),
                 'version' => config('app.version')
             ]);
         if (!$response->ok()) {
@@ -158,7 +158,7 @@ class ShapesIntegrationManager {
                 'devId' => 'dianoia_mobile_' . $source,
                 'lang' => $lang,
                 'source' => $source,
-                'time' => Carbon::now()->format(DateTime::ATOM),
+                'time' => Carbon::now()->format(DateTime::RFC3339),
                 'version' => $version
             ]);
         if (!$response->ok()) {
