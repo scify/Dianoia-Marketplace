@@ -126,7 +126,7 @@ return [
     'exercises' => 'Exercises',
     'marketplace' => 'Dianoia Marketplace',
     'patients' => 'Patients',
-    'carers' => 'Care-takers',
+    'carers' => 'Caretakers',
     'intro' => 'Are you helping a person with incipient dementia?<br><br>
                             <ul>
                                 <li>- Find mental exercises and activities that you can enjoy together
@@ -136,7 +136,7 @@ return [
                             </ul>',
     'create-content' => 'Create content',
     'learn-more-mobile' => 'Learn more about the Dianoia mobile application',
-    'app-description' => 'Dianoia is a mobile application for care-takers of people of mild cognitive disorder or incipient dementia that is available for free. It offers printable mental exercises for the patients ready to use, to boost the self-confidence of the person with dementia and so that they have a good time. As well as pleasant exercises and relaxation tips for the care-takers, so that they\'re psychologically reinforced.',
+    'app-description' => 'Dianoia is a mobile application for caretakers of people with a mild cognitive disorder or incipient dementia that is available for free. It offers printable mental exercises for the patients ready to use, to boost the self-confidence of the person with dementia so that they have a good time. As well as pleasant exercises and relaxation tips for the caretakers, so that they are psychologically reinforced.',
     'download-app' => 'Download the application',
     'app-description-2' => 'Help the people with incipient dementia to improve their mental functions, their mood, their functionality and quality of life by giving them riddles, looking back at memories, even doing daily chores or activities they used to love!
 ',
@@ -144,7 +144,7 @@ return [
 
 You can also create your own exercises and if you wish to, you can share them with the community.',
     'see-exercises' => 'See the exercises',
-    'carer-motivation' => 'You\'re very willing to help your patients, but it drains you psychologically and you may want a pleasant get away. Help yourself recharge so that you come back strong. Use the activities for care-takers. At the sae time you can refer to the sources we provide, with advice from experts and lots of bibliography.',
+    'carer-motivation' => 'You\'re very willing to help your patients, but it drains you psychologically and you may want a pleasant get away. Help yourself recharge so that you come back strong. Use the activities for caretakers. At the same time you can refer to the sources we provide, with advice from experts and lots of bibliography.',
     'see-what-is-offered' => 'See what\'s offered',
     'exercise-tutorial' => 'Choose from the following exercises. See the exercise and download it. Print it or send it to the person you are taking care of. Every exercise is also available through the mobile application.',
     'exercise-tutorial-2' => 'Create a new exercise and help thousands of people that suffer from incipient dementia, press "New exercise". See the archive-example in the green box below.',
@@ -161,7 +161,7 @@ You can also create your own exercises and if you wish to, you can share them wi
     'Reason' => 'Thought and Speech exercises',
     'Executive' => 'Executive functions',
     'stories' => 'Stories',
-    'activities-for-carers' => 'Activities for care-takers',
+    'activities-for-carers' => 'Activities for caretakers',
     'search' => 'Search',
     'total-activities' => 'All the activities',
     'new-exercise' => 'New exercise',
@@ -173,7 +173,7 @@ You can also create your own exercises and if you wish to, you can share them wi
     'Italian' => 'Italian',
     'see-exercise' => 'See the exercise',
     'edit-profile' => 'Edit profile',
-    'Carer' => 'Exercises for care-takers',
+    'Carer' => 'Exercises for caretakers',
     'Shapes User' => 'Χρήστης Πλατφόρμας Shapes',
     'patient-exercises' => 'Exercises for patients',
     'all-updates' => 'All the additions',
