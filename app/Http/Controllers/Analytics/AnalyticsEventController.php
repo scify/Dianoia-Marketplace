@@ -23,13 +23,17 @@ class AnalyticsEventController extends Controller {
             'source' => 'required'
         ]);
         $data = $request->all();
+        $response = json_encode([]);
+        if (isset($data['token']) && strlen($data['token']) > 5 && ShapesIntegrationManager::isEnabled())
+            $response = $this->shapesIntegrationManager->sendMobileUsageDataToDatalakeAPI($data['token'], $data['name'], $data['lang'], $data['version'], $data['source']);
+
         $record = $this->analyticsEventRepository->create([
             'name' => $request->name,
             'source' => $request->source,
-            'payload' => json_encode($request->all())
+            'payload' => json_encode($request->all()),
+            'response' => $response
         ]);
-        if (isset($data['token']) && strlen($data['token']) > 5 && ShapesIntegrationManager::isEnabled())
-            $this->shapesIntegrationManager->sendMobileUsageDataToDatalakeAPI($data['token'], $data['name'], $data['lang'], $data['version'], $data['source']);
+
         return $record;
     }
 }

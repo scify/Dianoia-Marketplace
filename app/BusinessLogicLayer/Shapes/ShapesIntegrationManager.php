@@ -6,6 +6,7 @@ namespace App\BusinessLogicLayer\Shapes;
 
 use App\BusinessLogicLayer\UserRole\UserRoleManager;
 use App\Models\User;
+use App\Repository\Analytics\AnalyticsEventRepository;
 use App\Repository\User\UserRepository;
 use App\Repository\User\UserRole\UserRolesLkp;
 use Carbon\Carbon;
@@ -19,6 +20,7 @@ class ShapesIntegrationManager {
 
     protected UserRepository $userRepository;
     protected UserRoleManager $userRoleManager;
+    protected AnalyticsEventRepository $analyticsEventRepository;
     protected $defaultHeaders = [
         'X-Shapes-Key' => null,
         'Accept' => "application/json"
@@ -26,9 +28,10 @@ class ShapesIntegrationManager {
     protected $apiBaseUrl = 'https://kubernetes.pasiphae.eu/shapes/asapa/auth/';
     protected $datalakeAPIUrl;
 
-    public function __construct(UserRoleManager $userRoleManager, UserRepository $userRepository) {
+    public function __construct(UserRoleManager $userRoleManager, UserRepository $userRepository, AnalyticsEventRepository $analyticsEventRepository) {
         $this->userRoleManager = $userRoleManager;
         $this->userRepository = $userRepository;
+        $this->analyticsEventRepository = $analyticsEventRepository;
         $this->defaultHeaders['X-Shapes-Key'] = config('app.shapes_key');
         $this->datalakeAPIUrl = config('app.shapes_datalake_api_url');
     }
@@ -125,23 +128,30 @@ class ShapesIntegrationManager {
      * @throws Exception
      */
     public function sendUsageDataToDatalakeAPI(User $user, string $action, string $category) {
+        $data = [
+            'action' => $action,
+            'category' => $category,
+            'devId' => 'dianoia_marketplace',
+            'lang' => app()->getLocale(),
+            'source' => 'Dianoia-marketplace-web',
+            'time' => Carbon::now()->format(DateTime::RFC3339),
+            'version' => config('app.version')
+        ];
         $response = Http::withHeaders([
             'X-Authorisation' => $user->shapes_auth_token,
             'Accept' => "application/json"
         ])
-            ->post($this->datalakeAPIUrl . '/marketplace', [
-                'action' => $action,
-                'category' => $category,
-                'devId' => 'dianoia_marketplace',
-                'lang' => app()->getLocale(),
-                'source' => 'Dianoia-marketplace-web',
-                'time' => Carbon::now()->format(DateTime::RFC3339),
-                'version' => config('app.version')
-            ]);
+            ->post($this->datalakeAPIUrl . '/marketplace',);
         if (!$response->ok()) {
             throw new Exception(json_decode($response->body()));
         }
         Log::info('SHAPES Datalake response: ' . json_encode($response->json()));
+        $this->analyticsEventRepository->create([
+            'name' => $action,
+            'source' => 'Dianoia-marketplace-web',
+            'payload' => json_encode($data),
+            'response' => $response
+        ]);
         return json_encode($response->json());
     }
 
