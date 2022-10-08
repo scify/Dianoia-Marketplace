@@ -20,7 +20,7 @@
                                href="{{route('homepage')}}">{{__('messages.marketplace')}}</a>
                         </li>
                         <li><a class="dropdown-item"
-                            href="{{ !Request::is('home') ? route('homepage') : '' }}#downloadMobileAppBtn">{{__('messages.mobile-app')}}</a>
+                               href="{{ !Request::is('home') ? route('homepage') : '' }}#downloadMobileAppBtn">{{__('messages.mobile-app')}}</a>
                         </li>
                         <li><a class="dropdown-item" id="patientsDropdownItem"
                                href="{{ !Request::is('home') ? route('homepage') : '' }}#patientsInfo">{{__('messages.patients')}}</a>
@@ -31,17 +31,18 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ UrlMatchesMenuItem("about") }}"  href="{{ route('about')}}">
+                    <a class="nav-link {{ UrlMatchesMenuItem("about") }}" href="{{ route('about')}}">
                         About
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ UrlMatchesMenuItem("tutorial") }}"  href="{{ route('tutorial')}}">
+                    <a class="nav-link {{ UrlMatchesMenuItem("tutorial") }}" href="{{ route('tutorial')}}">
                         Tutorial
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  id="mobileAppDropdownItem" href="{{ !Request::is('home') ? route('homepage') : '' }}#downloadMobileAppBtn">
+                    <a class="nav-link" id="mobileAppDropdownItem"
+                       href="{{ !Request::is('home') ? route('homepage') : '' }}#downloadMobileAppBtn">
                         {{__('messages.mobile-app')}}
                     </a>
                 </li>
@@ -102,9 +103,12 @@
 
                     </li>
                 @endguest
-                <a href="{{route('content-guidelines')}}">
-                    <i class="fa fa-question-circle " title="Content Guidelines" aria-hidden="true" style="font-size:24px;color:#3F51B5;padding:7px"></i>
-                </a>
+                <li class="nav-item">
+                    <a href="{{route('content-guidelines')}}" class="nav-link">
+                        <i class="fa fa-question-circle " title="Content Guidelines" aria-hidden="true"
+                           style="font-size:24px;color:#3F51B5;padding:7px"></i>
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLangSelection" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
@@ -129,7 +133,7 @@
                                     class="mr-2"
                                     src="{{ asset('img/lang/el.png') }}"
                                     height="20px" alt="Greek">
-                            {{__('messages.Ελληνικά')}}
+                                {{__('messages.Ελληνικά')}}
                             </a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'it') }}">
