@@ -12,10 +12,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown navbar-item-dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownActions" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false"> {{__('messages.dianoia')}}
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownActions">
                         <li><a class="dropdown-item"
                                href="{{route('homepage')}}">{{__('messages.marketplace')}}</a>
                         </li>
@@ -59,11 +59,11 @@
                     </li>
                 @else
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdminActions" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
                             {{ Auth::user()->name }}
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdminActions">
                             <li><a class="dropdown-item" href="#">
                                     {!! __('messages.user') !!}
                                 </a>
@@ -106,14 +106,14 @@
                     <i class="fa fa-question-circle " title="Content Guidelines" aria-hidden="true" style="font-size:24px;color:#3F51B5;padding:7px"></i>
                 </a>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLangSelection" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         <img
                             loading="lazy"
                             src="{{ asset('img/lang/' . \Illuminate\Support\Facades\App::getLocale() . '.png') }}"
                             height="20px" alt="Language">
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownLangSelection">
                         <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'en') }}">
                                 <img
                                     loading="lazy"

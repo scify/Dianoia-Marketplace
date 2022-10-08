@@ -18,7 +18,7 @@
                         <button   v-if="loggedInUserIsAdmin() && isPending()" type="submit" class="btn btn--edit" @click="showExerciseRejectionModal"><i class="fas fa-thumbs-down" title="Reject" style="font-size:30px;color:red"></i></button>
                         <button type="submit" class="btn btn--report" @click="showExerciseReportModal"><i class="fas fa-exclamation-triangle hover-red "  title="Report" style="font-size:20px;color:rgba(255,0,0,0.1);padding-right:15px;"></i></button>
 
-                        <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary"   target="_blank">{{   trans('messages.see-exercise') }}</a>
+                        <a :href="'/storage/'+resource.pdf_path" class="btn btn--secondary"   target="_blank" rel="noopener noreferrer">{{   trans('messages.see-exercise') }}</a>
                     </div>
 
                 </div>

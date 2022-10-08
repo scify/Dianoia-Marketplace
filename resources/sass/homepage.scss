@@ -11,7 +11,7 @@
 .header {
     @include mainTitleSection;
 
-    background-image: url(/img/header-image.png);
+    background-image: url(/img/header-image-scaled.webp);
 
     a {
         text-decoration: none;
@@ -103,11 +103,11 @@
 }
 
 .patient {
-    background: var(--color-blue-light-1) url(/img/grandmother-flowers.png) right no-repeat;
+    background: var(--color-blue-light-1) url(/img/grandmother-flowers-scaled.webp) right no-repeat;
 }
 
 .carer {
-    background: var(--color-blue-light-2) url(/img/carer-help.png) left no-repeat;
+    background: var(--color-blue-light-2) url(/img/carer-help-scaled.webp) left no-repeat;
 
     &__text {
         margin-left: 45%;

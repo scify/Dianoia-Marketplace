@@ -6,23 +6,23 @@ return [
         'category-though' => 'Category "Thought and Speech Exercises"',
         'category-attention' => 'Category "Attention Exercises"',
         'category-memory' => 'Category "Memory Exercises"',
-        'exercise-mindfulness' => '<a  href="https://drive.google.com/file/d/1DMTGkJGOAw2Wqhn_hZ-RdX1gp2TwaLgS/view" target="_blank">Use of Mindfulness Technique</a>',
-        'exercise-stress-relief' => '<a  href="https://drive.google.com/file/d/1bxraGStL8uRhCuVnDt70_Ma7Ph8hSCMU/view" target="_blank">Relaxation techniques for stress relief</a>',
-        'exercise-double-work' => '<a  href="https://drive.google.com/file/d/1_ZpddHjEQrPLo2daZGj4iz1zadmTDIKV/view" target="_blank">Color and Think - Double work exercise</a>',
-        'exercise-find-word' => '<a  href="https://drive.google.com/file/d/1vz_KLGHC3KU7cS4ggVtbeCpfk2fYVvTy/view" target="_blank">Find the word </a>',
-        'exercise-synonyms-opposites' => '<a href="https://drive.google.com/file/d/1D7CqENsfpKF3Qr28SL23VlKplUKUHQRC/view" target="_blank" > Synonyms - Antonyms </a>',
-        'exercise-name-animal' => '<a href="https://drive.google.com/file/d/1MxwYwfVscBWJ5W0X4GUzlbCUx0qz02b4/view" target="_blank">Name-Animal-Object-Plant</a>',
-        'exercise-copy-correctly' => '<a  href="https://drive.google.com/file/d/1NpKILAmzk0dk6mXd77xDky4lWmgnQy7W/view" target="_blank">Copy correctly</a>',
-        'exercise-shade-shapes' => '<a  href="https://drive.google.com/file/d/1K6ozqJheub91goQ0jxWBmNccus89mw6h/view" target="_blank">Shading Shapes </a>',
-        'exercise-word-categories' => '<a  href="https://drive.google.com/file/d/1eBv6cc3iU1DuTUXy-Br5mfVrPwO33xIv/view" target="_blank">See Word Categories</a>' ,
-        'exercise-remember-word-list' => '<a  href="https://drive.google.com/file/d/1ZTqNmydadRqn7DR0p-g39CkeS2Da-VfW/view" target="_blank">See Memorize word list </a>',
+        'exercise-mindfulness' => '<a  href="https://drive.google.com/file/d/1DMTGkJGOAw2Wqhn_hZ-RdX1gp2TwaLgS/view" target="_blank" rel="noopener noreferrer">Use of Mindfulness Technique</a>',
+        'exercise-stress-relief' => '<a  href="https://drive.google.com/file/d/1bxraGStL8uRhCuVnDt70_Ma7Ph8hSCMU/view" target="_blank" rel="noopener noreferrer">Relaxation techniques for stress relief</a>',
+        'exercise-double-work' => '<a  href="https://drive.google.com/file/d/1_ZpddHjEQrPLo2daZGj4iz1zadmTDIKV/view" target="_blank" rel="noopener noreferrer">Color and Think - Double work exercise</a>',
+        'exercise-find-word' => '<a  href="https://drive.google.com/file/d/1vz_KLGHC3KU7cS4ggVtbeCpfk2fYVvTy/view" target="_blank" rel="noopener noreferrer">Find the word </a>',
+        'exercise-synonyms-opposites' => '<a href="https://drive.google.com/file/d/1D7CqENsfpKF3Qr28SL23VlKplUKUHQRC/view" target="_blank" rel="noopener noreferrer" > Synonyms - Antonyms </a>',
+        'exercise-name-animal' => '<a href="https://drive.google.com/file/d/1MxwYwfVscBWJ5W0X4GUzlbCUx0qz02b4/view" target="_blank" rel="noopener noreferrer">Name-Animal-Object-Plant</a>',
+        'exercise-copy-correctly' => '<a  href="https://drive.google.com/file/d/1NpKILAmzk0dk6mXd77xDky4lWmgnQy7W/view" target="_blank" rel="noopener noreferrer">Copy correctly</a>',
+        'exercise-shade-shapes' => '<a  href="https://drive.google.com/file/d/1K6ozqJheub91goQ0jxWBmNccus89mw6h/view" target="_blank" rel="noopener noreferrer">Shading Shapes </a>',
+        'exercise-word-categories' => '<a  href="https://drive.google.com/file/d/1eBv6cc3iU1DuTUXy-Br5mfVrPwO33xIv/view" target="_blank" rel="noopener noreferrer">See Word Categories</a>' ,
+        'exercise-remember-word-list' => '<a  href="https://drive.google.com/file/d/1ZTqNmydadRqn7DR0p-g39CkeS2Da-VfW/view" target="_blank" rel="noopener noreferrer">See Memorize word list </a>',
         'guidelines-section-1-executive-category-card' => 'In this category, there are exercises aiming at bringing the patient in contact with daily chores, as well as exercising on simple processes. Examples of exercises:',
         'guidelines-section-1-thought-category-card' => 'In this category, there are exercises aiming at exercising and improving the patient’s speech ability, as well as the connection between their speech and thought. Examples of exercises:',
         'guidelines-section-1-attention-category-card' => 'In this category, there are exercises aiming at exercising and improving the patient’s attention.  Examples of exercises:',
         'guidelines-section-1-memory-category-card' => 'In this category, there are exercises aiming at exercising and improving the patient’s memory. Examples of exercises:',
         'guidelines-instructions-for-user-creators' => 'Instructions for content creators',
         'guidelines-section-3-subsection-2' => '
-        <p>Every exercise/activity available in “Dianoia” is accompanied by a PDF file (.pdf file extension) containing the full exercise, with a description of its goal and its instructions. This makes things easier for the caregiver concerning the printing of the exercise so that it’s easier for the patient to do. Every file uploaded to the <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> platform must meet all the following criteria:</p>
+        <p>Every exercise/activity available in “Dianoia” is accompanied by a PDF file (.pdf file extension) containing the full exercise, with a description of its goal and its instructions. This makes things easier for the caregiver concerning the printing of the exercise so that it’s easier for the patient to do. Every file uploaded to the <a href="https://dianoia.scify.org/" target="_blank" rel="noopener noreferrer"> Dianoia Marketplace </a> platform must meet all the following criteria:</p>
         <p><span class="list-number">1</span> <span>It must include in a clear way the title of the exercise, its description, its goal, as well as its instructions.</span></p>
         <p><span class="list-number">2</span> <span>It must be complete as to the content of the exercise/activity.</span></p>
         <p><span class="list-number">3</span> <span >It mustn’t be larger than <b>2 megabytes.</b></span></p>
@@ -30,11 +30,11 @@ return [
         <p><span class="list-number">5</span> <span>It must be able to be used freely, with the appropriate copyright.</span></p>
         <p>
             To crop, edit or change a file we have on our computer, our mobile phone or that we have downloaded from the Internet, we can use an online tool, such as
-             <a href="https://smallpdf.com/edit-pdf" target="_blank"> Small Pdf </a>.
+             <a href="https://smallpdf.com/edit-pdf" target="_blank" rel="noopener noreferrer"> Small Pdf </a>.
         </p>
         <p>
             To create text documents on our computer, with copyright that allows their use, we can use the following applications:
-             <a href="https://www.libreoffice.org/download/download/" target="_blank"> Libreoffice</a> / <a href="https://www.office.com/" target="_blank"> Microsoft Office </a>
+             <a href="https://www.libreoffice.org/download/download/" target="_blank" rel="noopener noreferrer"> Libreoffice</a> / <a href="https://www.office.com/" target="_blank" rel="noopener noreferrer"> Microsoft Office </a>
         </p>',
     'guidelines-section-3-subsection-2-header' => 'Exercises/Activities\' Documents',
     'guidelines-section-3-subsection-1' => '
@@ -46,12 +46,12 @@ return [
         <p><span class="list-number">5</span> <span >It must be able to be used freely, with the appropriate copyright.</span></p>
 
         <p>To crop, reduce or change the type of images we have on our computer or that we have downloaded from the Internet, we can use an online tool, such as
-            <a href="https://image.online-convert.com/convert-to-jpg" target="_blank">Online Image Converter</a></p>
+            <a href="https://image.online-convert.com/convert-to-jpg" target="_blank" rel="noopener noreferrer">Online Image Converter</a></p>
         <p>To find images with copyright that allow their use, we can use the following websites (indicative): or download a tool such as
-                <a href="https://pixabay.com/" target="_blank">Pixabay</a> /
-                <a href="https://unsplash.com/explore" target="_blank">Unsplash</a> /
-                <a href="https://www.pexels.com/royalty-free-images/" target="_blank">Pexels</a> /
-                <a href="https://www.shutterstock.com/search/no+license" target="_blank">Shutterstock</a>
+                <a href="https://pixabay.com/" target="_blank" rel="noopener noreferrer">Pixabay</a> /
+                <a href="https://unsplash.com/explore" target="_blank" rel="noopener noreferrer">Unsplash</a> /
+                <a href="https://www.pexels.com/royalty-free-images/" target="_blank" rel="noopener noreferrer">Pexels</a> /
+                <a href="https://www.shutterstock.com/search/no+license" target="_blank" rel="noopener noreferrer">Shutterstock</a>
         </p>
 
         ',
@@ -78,14 +78,14 @@ return [
     'content-guidelines' => 'Content guidelines',
     'privacy-policy' => 'Privacy policy',
     'meta_tags_description' => 'Dianoia Marketplace is an online application implemented and available for free by the non-profit  SciFY so that everyone can create and share their own free content for the Dianoia application. The content of Dianoia Marketplace is mainly aimed at people that take care of people/patients with onset dementia or/and Alzheimer’s. People with onset dementia, due to the progressive decline of their mental abilities, have the need for appropriate care at every stage. The caregivers feel that they have a great responsibility for their care.',
-    'term-of-use-11' => 'Except for the conditions of the previous paragraph regarding personal data, <a href="http://www.scify.org/" target="_blank">  SciFY </a> maintains the right to change the Terms and Conditions, if they need to be updated or completed, at any time and without notice, therefore the user must be informed of any changes before each use of the application.',
-    'term-of-use-10' => '<a href="http://www.scify.org/" target="_blank">  SciFY </a> uses the personal data that each user enters only in the context of the <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> project, for statistical purposes and for coming in touch with them, if need be. Personal data is not made public to third parties without the user’s permission.',
+    'term-of-use-11' => 'Except for the conditions of the previous paragraph regarding personal data, <a href="http://www.scify.org/" target="_blank" rel="noopener noreferrer">  SciFY </a> maintains the right to change the Terms and Conditions, if they need to be updated or completed, at any time and without notice, therefore the user must be informed of any changes before each use of the application.',
+    'term-of-use-10' => '<a href="http://www.scify.org/" target="_blank" rel="noopener noreferrer">  SciFY </a> uses the personal data that each user enters only in the context of the <a href="https://dianoia.scify.org/" target="_blank" rel="noopener noreferrer"> Dianoia Marketplace </a> project, for statistical purposes and for coming in touch with them, if need be. Personal data is not made public to third parties without the user’s permission.',
     'term-of-use-9' => 'Each content creator may allow other creators to build on their content and enrich it, or to create something new.',
-    'term-of-use-8' => 'Each content creator does not compete with other content creators, they recognize their contribution and co-operate with them to improve and enrich the content of <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>.',
-    'term-of-use-7' => '<a href="http://www.scify.org/" target="_blank">  SciFY </a> cannot guarantee the appropriateness of the content of other game creators of <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>. However, it maintains the right to request that the creator makes corrections to or deletes the content, if something unacceptable comes to its attention. The users are encouraged to notify <a href="http://www.scify.org/" target="_blank">  SciFY </a> about non-acceptable content.',
+    'term-of-use-8' => 'Each content creator does not compete with other content creators, they recognize their contribution and co-operate with them to improve and enrich the content of <a href="https://dianoia.scify.org/" target="_blank" rel="noopener noreferrer"> Dianoia Marketplace </a>.',
+    'term-of-use-7' => '<a href="http://www.scify.org/" target="_blank" rel="noopener noreferrer">  SciFY </a> cannot guarantee the appropriateness of the content of other game creators of <a href="https://dianoia.scify.org/" target="_blank" rel="noopener noreferrer"> Dianoia Marketplace </a>. However, it maintains the right to request that the creator makes corrections to or deletes the content, if something unacceptable comes to its attention. The users are encouraged to notify <a href="http://www.scify.org/" target="_blank" rel="noopener noreferrer">  SciFY </a> about non-acceptable content.',
     'term-of-use-6' => 'Each content creator must not infringe / abuse intellectual or any other rights of a third party. The content they upload (images, audios, texts) must be their own, or they must have obtained permission to use it, or they must use free copyright material and according to the instructions of its original creator.',
     'term-of-use-5' => 'Each content creator is entirely and solely responsible for the content they upload. The content must be appropriate for the end-users, and should respect their personality and their rights. Content that violates the laws, rules or regulations is not allowed. Indicatively, offensive, misleading, abusive, threatening, vulgar, violent, obscene, proselytizing, racist, defamatory, homophobic, sexist, or advertising content or personal data content is not allowed.',
-    'term-of-use-4' => '<a href="http://www.scify.org/" target="_blank">  SciFY </a> is not responsible for the quality/appropriateness of the content or the content uploaded to the application, its correctness or its quality, but only for the content uploaded by <a href="http://www.scify.org/" target="_blank">  SciFY </a> itself as a creator.',
+    'term-of-use-4' => '<a href="http://www.scify.org/" target="_blank" rel="noopener noreferrer">  SciFY </a> is not responsible for the quality/appropriateness of the content or the content uploaded to the application, its correctness or its quality, but only for the content uploaded by <a href="http://www.scify.org/" target="_blank">  SciFY </a> itself as a creator.',
     'term-of-use-3' => 'The <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> application is addressed to services and scientists that deal with the care and rehabilitation of people that belong to the groups mentioned above, as well as people providing relevant care at home.',
     'term-of-use-2' => 'The content of <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> is mainly addressed to the caregivers of people/patients with onset dementia or/and Alzheimer’s.',
     'term-of-use-1' => '<a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> is an online application implemented and provided for free by the Non-Profit Organization <a href="http://www.scify.org/" target="_blank">  SciFY </a>, so that anyone can create and share with others free content for the <a href=https://play.google.com/store/apps/details?id=org.scify.dianoia.app" target="_blank"> Dianoia application </a>.',

@@ -6,16 +6,16 @@ return [
     'category-though' => 'Κατηγορία "Ασκήσεις Σκέψης και Λόγου"',
     'category-attention' => 'Κατηγορία "Ασκήσεις Προσοχής"',
     'category-memory' => 'Κατηγορία "Ασκήσεις Μνήμης"',
-    'exercise-mindfulness' => '<a href="https://drive.google.com/file/d/1dXG60y2xGFk1oQGsj6RLX_huUROeC3O_/view" target="_blank"> Χρήση της τεχνικής Mindfulness </a>',
-    'exercise-stress-relief' => '<a href="https://drive.google.com/file/d/1wtE7ejjupY6NPM37P4H-NPdW4cw07oZv/view" target="_blank"> Τεχνικές χαλάρωσης για μείωση του στρες </a>',
-    'exercise-double-work' => '<a  href="https://drive.google.com/file/d/0B6htunInH8hveVFMajY1bWMxSlU/view?resourcekey=0-o7QUyWFV7Pkj1JjKEijEFg" target="_blank"> Άσκηση διπλού έργου - Χρωματίζω και σκέφτομαι </a>',
-    'exercise-find-word' => '<a  href="https://drive.google.com/file/d/0B6htunInH8hvd0FOcFhuVTlhMlk/view?resourcekey=0-hBeBkjK7S6JPiWVLM0q9_g" target="_blank">Βρείτε τη λέξη</a>',
-    'exercise-synonyms-opposites' => '<a href="https://drive.google.com/file/d/0B6htunInH8hvQ0t1a2NUNlBSajA/view?resourcekey=0-fhSCCmC1nQwRpgfl3xC8ww" target="_blank"> Συνώνυμα - Αντίθετα </a>',
-    'exercise-name-animal' => '<a href="https://drive.google.com/file/d/0B6htunInH8hvQ1VNQ2p0NUJjUjA/view?resourcekey=0-mhjsyVstFswG3kDEG2K3sw" target="_blank"> Όνομα Ζώο Πράγμα Φυτό </a>',
-    'exercise-copy-correctly' => '<a href="https://drive.google.com/file/d/0B6htunInH8hvQ0RYMWYtRHEtdGs/view?resourcekey=0-KbOa2LiTR97Mc1PRBFk84w" target="_blank"> Αντιγράψτε σωστά </a>',
-    'exercise-shade-shapes' => '<a href="https://drive.google.com/file/d/0B6htunInH8hvbGlQaXJEbW1rRW8/view?resourcekey=0-M4eieaSQhrOHN6JB3cKcuA" target="_blank"> Σκίαση σχημάτων </a>',
-    'exercise-word-categories' => '<a href="https://drive.google.com/file/d/0B6htunInH8hvSzctQV90X0tXM2M/view?resourcekey=0-m13My4fHMjXcH3GbF0b6Pg" target="_blank"> Κατηγορίες Λέξεων </a>' ,
-    'exercise-remember-word-list' => ' <a href="https://drive.google.com/file/d/0B6htunInH8hvMkcxaU5iOWdIeTA/view?resourcekey=0-9lK6sU_mIjha5RR6FGEcWg" target="_blank"> Απομνημόνευση λίστας λέξεων </a>',
+    'exercise-mindfulness' => '<a href="https://drive.google.com/file/d/1dXG60y2xGFk1oQGsj6RLX_huUROeC3O_/view" target="_blank" rel="noopener noreferrer"> Χρήση της τεχνικής Mindfulness </a>',
+    'exercise-stress-relief' => '<a href="https://drive.google.com/file/d/1wtE7ejjupY6NPM37P4H-NPdW4cw07oZv/view" target="_blank" rel="noopener noreferrer"> Τεχνικές χαλάρωσης για μείωση του στρες </a>',
+    'exercise-double-work' => '<a  href="https://drive.google.com/file/d/0B6htunInH8hveVFMajY1bWMxSlU/view?resourcekey=0-o7QUyWFV7Pkj1JjKEijEFg" target="_blank" rel="noopener noreferrer"> Άσκηση διπλού έργου - Χρωματίζω και σκέφτομαι </a>',
+    'exercise-find-word' => '<a  href="https://drive.google.com/file/d/0B6htunInH8hvd0FOcFhuVTlhMlk/view?resourcekey=0-hBeBkjK7S6JPiWVLM0q9_g" target="_blank" rel="noopener noreferrer">Βρείτε τη λέξη</a>',
+    'exercise-synonyms-opposites' => '<a href="https://drive.google.com/file/d/0B6htunInH8hvQ0t1a2NUNlBSajA/view?resourcekey=0-fhSCCmC1nQwRpgfl3xC8ww" target="_blank" rel="noopener noreferrer"> Συνώνυμα - Αντίθετα </a>',
+    'exercise-name-animal' => '<a href="https://drive.google.com/file/d/0B6htunInH8hvQ1VNQ2p0NUJjUjA/view?resourcekey=0-mhjsyVstFswG3kDEG2K3sw" target="_blank" rel="noopener noreferrer"> Όνομα Ζώο Πράγμα Φυτό </a>',
+    'exercise-copy-correctly' => '<a href="https://drive.google.com/file/d/0B6htunInH8hvQ0RYMWYtRHEtdGs/view?resourcekey=0-KbOa2LiTR97Mc1PRBFk84w" target="_blank" rel="noopener noreferrer"> Αντιγράψτε σωστά </a>',
+    'exercise-shade-shapes' => '<a href="https://drive.google.com/file/d/0B6htunInH8hvbGlQaXJEbW1rRW8/view?resourcekey=0-M4eieaSQhrOHN6JB3cKcuA" target="_blank" rel="noopener noreferrer"> Σκίαση σχημάτων </a>',
+    'exercise-word-categories' => '<a href="https://drive.google.com/file/d/0B6htunInH8hvSzctQV90X0tXM2M/view?resourcekey=0-m13My4fHMjXcH3GbF0b6Pg" target="_blank" rel="noopener noreferrer"> Κατηγορίες Λέξεων </a>' ,
+    'exercise-remember-word-list' => ' <a href="https://drive.google.com/file/d/0B6htunInH8hvMkcxaU5iOWdIeTA/view?resourcekey=0-9lK6sU_mIjha5RR6FGEcWg" target="_blank" rel="noopener noreferrer"> Απομνημόνευση λίστας λέξεων </a>',
     'guidelines-section-1-executive-category-card' => 'Σε αυτήν την κατηγορία εντάσσονται ασκήσεις που έχουν ως στόχο την τριβή του ασθενή με καθημερινές εργασίες, καθώς και την εξάσκηση σε απλές διεργασίες. Παραδείγματα ασκήσεων:',
     'guidelines-section-1-thought-category-card' => 'Σε αυτήν την κατηγορία εντάσσονται ασκήσεις που έχουν ως στόχο την εξάσκηση και βελτίωση της ικανότητας λόγου του ασθενή, καθώς και τη σύνδεση του λόγου με τη σκέψη του. Παραδείγματα ασκήσεων:',
     'guidelines-section-1-attention-category-card' => 'Σε αυτήν την κατηγορία εντάσσονται ασκήσεις που έχουν ως στόχο την εξάσκηση και βελτίωση της προσοχής του ασθενή. Παραδείγματα ασκήσεων:',
@@ -28,7 +28,7 @@ return [
         <p><span class="list-number">4</span> <span>Να είναι τύπου <b>PDF</b> file</span></p>
         <p><span class="list-number">5</span> <span>Να μπορεί να χρησιμοποιηθεί ελεύθερα, με τα κατάλληλα πνευματικά δικαιώματα.</span></p>
         <p> Για να περικόψουμε, να επεξεργαστούμε και να αλλάξουμε ένα έγγραφο που έχουμε στον υπολογιστή μας, στο κινητό μας, ή έχουμε κατεβάσει από το Internet, μπορούμε να χρησιμοποιήσουμε κάποιο online εργαλείο, όπως το
-         <a href="https://smallpdf.com/edit-pdf" target="_blank"> Small Pdf </a>.
+         <a href="https://smallpdf.com/edit-pdf" target="_blank" rel="noopener noreferrer"> Small Pdf </a>.
         </p>
        ',
     'guidelines-section-3-subsection-2-header' => 'Έγγραφα ασκήσεων / δραστηριοτήτων',
@@ -41,12 +41,12 @@ return [
         <p><span class="list-number">5</span> <span >Να μπορεί να χρησιμοποιηθεί ελεύθερα, με τα κατάλληλα πνευματικά δικαιώματα.</span></p>
 
         <p> Για να περικόψουμε, να σμικρύνουμε ή και να αλλάξουμε τον τύπο εικόνων που έχουμε στον υπολογιστή μας ή έχουμε κατεβάσει από το Internet, μπορούμε να χρησιμοποιήσουμε κάποιο online εργαλείο, όπως το
-            <a href="https://image.online-convert.com/convert-to-jpg" target="_blank">Online Image Converter</a></p>
+            <a href="https://image.online-convert.com/convert-to-jpg" target="_blank" rel="noopener noreferrer">Online Image Converter</a></p>
         <p>Για να βρούμε εικόνες με πνευματικά δικαιώματα που επιτρέπουν τη χρήση τους, μπορούμε να χρησιμοποιήσουμε, ενδεικτικά, τους παρακάτω ιστότοπους:
-                <a href="https://pixabay.com/" target="_blank">Pixabay</a> /
-                <a href="https://unsplash.com/explore" target="_blank">Unsplash</a> /
-                <a href="https://www.pexels.com/royalty-free-images/" target="_blank">Pexels</a> /
-                <a href="https://www.shutterstock.com/search/no+license" target="_blank">Shutterstock</a></p>',
+                <a href="https://pixabay.com/" target="_blank" rel="noopener noreferrer">Pixabay</a> /
+                <a href="https://unsplash.com/explore" target="_blank" rel="noopener noreferrer">Unsplash</a> /
+                <a href="https://www.pexels.com/royalty-free-images/" target="_blank" rel="noopener noreferrer">Pexels</a> /
+                <a href="https://www.shutterstock.com/search/no+license" target="_blank" rel="noopener noreferrer">Shutterstock</a></p>',
     'guidelines-section-3-subsection-header-1' => 'Εικόνες',
     'guidelines-section-2' => '
         <p>Πέρα από τις ασκήσεις και τις δραστηριότητες για άτομα με αρχόμενη άνοια, στόχος της πλατφόρμας Διάνοια Marketplace είναι και η δημιουργία και διάθεση περιεχομένου για φροντιστές των ανθρώπων αυτών. </p>

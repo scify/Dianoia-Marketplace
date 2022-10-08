@@ -6,16 +6,16 @@ return [
     'category-though' => 'Categoria “Esercizi di Pensiero e Ragionamento”',
     'category-attention' => 'Categoria “Esercizi di Attenzione”',
     'category-memory' => 'Categoria “Esercizi di Memoria”',
-    'exercise-mindfulness' => '<a  href="https://drive.google.com/file/d/1cjrL-AoShIIMHuPP3XAahxjFEUhLZ8K_/view" target="_blank">Uso della tecnica Mindfulness</a>',
-    'exercise-stress-relief' => '<a  href="https://drive.google.com/file/d/1IDHEH6dlwH1_OtEP1TZnPO99b8Jya8ht/view" target="_blank">Tecniche di rilassamento per ridurre lo stress</a>',
-    'exercise-double-work' => '<a  href="https://drive.google.com/file/d/1CAJgy-HvWXCZm50472wfeMUNHK91nCYh/view" target="_blank">Esercizio a doppio compito - Coloro e penso</a>',
-    'exercise-find-word' => '<a  href="https://drive.google.com/file/d/1aW_xbVVix1iOGXEjdazoCWx_U1j3H4u6/view" target="_blank">Trova la parola</a>',
-    'exercise-synonyms-opposites' => '<a href="https://drive.google.com/file/d/1D7CqENsfpKF3Qr28SL23VlKplUKUHQRC/view" target="_blank" > Synonyms - Antonyms </a>',
-    'exercise-name-animal' => '<a href="https://drive.google.com/file/d/1pQ6i9jS5RpzjFmvWIiP16C8oJDy0koA8/view" target="_blank">Nome Animale Oggetto Pianta</a>',
-    'exercise-copy-correctly' => '<a  href="https://drive.google.com/file/d/1TlSq-sCGsbt3Z1WiFcWdhOjhxt1l2QlO/view" target="_blank">Copia correttamente</a>',
-    'exercise-shade-shapes' => '<a  href="https://drive.google.com/file/d/1vTuF_serHA6zg_QlpnhGgB6rswuzrb4T/view" target="_blank">Disegno di forme</a>',
-    'exercise-word-categories' => '<a  href="https://drive.google.com/file/d/1XmNEtAJCu6tokzGbSR3IXo05IR4Rxrvo/view" target="_blank">Categorie di parole</a>' ,
-    'exercise-remember-word-list' => '<a  href="https://drive.google.com/file/d/1T6cwIvJdMJCkEJNSeku9SmEw8H2ZHxlJ/view" target="_blank">Memorizza l\'elenco delle parole</a>',
+    'exercise-mindfulness' => '<a  href="https://drive.google.com/file/d/1cjrL-AoShIIMHuPP3XAahxjFEUhLZ8K_/view" target="_blank" rel="noopener noreferrer">Uso della tecnica Mindfulness</a>',
+    'exercise-stress-relief' => '<a  href="https://drive.google.com/file/d/1IDHEH6dlwH1_OtEP1TZnPO99b8Jya8ht/view" target="_blank" rel="noopener noreferrer">Tecniche di rilassamento per ridurre lo stress</a>',
+    'exercise-double-work' => '<a  href="https://drive.google.com/file/d/1CAJgy-HvWXCZm50472wfeMUNHK91nCYh/view" target="_blank" rel="noopener noreferrer">Esercizio a doppio compito - Coloro e penso</a>',
+    'exercise-find-word' => '<a  href="https://drive.google.com/file/d/1aW_xbVVix1iOGXEjdazoCWx_U1j3H4u6/view" target="_blank" rel="noopener noreferrer">Trova la parola</a>',
+    'exercise-synonyms-opposites' => '<a href="https://drive.google.com/file/d/1D7CqENsfpKF3Qr28SL23VlKplUKUHQRC/view" target="_blank" rel="noopener noreferrer" > Synonyms - Antonyms </a>',
+    'exercise-name-animal' => '<a href="https://drive.google.com/file/d/1pQ6i9jS5RpzjFmvWIiP16C8oJDy0koA8/view" target="_blank" rel="noopener noreferrer">Nome Animale Oggetto Pianta</a>',
+    'exercise-copy-correctly' => '<a  href="https://drive.google.com/file/d/1TlSq-sCGsbt3Z1WiFcWdhOjhxt1l2QlO/view" target="_blank" rel="noopener noreferrer">Copia correttamente</a>',
+    'exercise-shade-shapes' => '<a  href="https://drive.google.com/file/d/1vTuF_serHA6zg_QlpnhGgB6rswuzrb4T/view" target="_blank" rel="noopener noreferrer">Disegno di forme</a>',
+    'exercise-word-categories' => '<a  href="https://drive.google.com/file/d/1XmNEtAJCu6tokzGbSR3IXo05IR4Rxrvo/view" target="_blank" rel="noopener noreferrer">Categorie di parole</a>' ,
+    'exercise-remember-word-list' => '<a  href="https://drive.google.com/file/d/1T6cwIvJdMJCkEJNSeku9SmEw8H2ZHxlJ/view" target="_blank" rel="noopener noreferrer">Memorizza l\'elenco delle parole</a>',
     'guidelines-section-1-executive-category-card' => 'Questa categoria comprende esercizi che mirano a coinvolgere il paziente nei compiti quotidiani e a praticare processi semplici. Esempi di esercizi:',
     'guidelines-section-1-thought-category-card' => 'Questa categoria comprende esercizi che mirano a praticare e migliorare la capacità di parola del paziente, così come la connessione tra la parola e il pensiero. Esempi di esercizi:',
     'guidelines-section-1-attention-category-card' => 'Questa categoria comprende esercizi che mirano ad allenare e migliorare l\'attenzione del paziente. Esempi di esercizi:',
@@ -30,11 +30,11 @@ return [
         <p><span class="list-number">5</span> <span>Deve poter essere usato liberamente, con un copyright appropriato.</span></p>
         <p>
            Per tagliare, modificare e cambiare un documento che abbiamo sul nostro computer, sul nostro telefono cellulare o che abbiamo scaricato da Internet, possiamo usare uno strumento online come
-             <a href="https://smallpdf.com/edit-pdf" target="_blank"> Small Pdf </a>.
+             <a href="https://smallpdf.com/edit-pdf" target="_blank" rel="noopener noreferrer"> Small Pdf </a>.
         </p>
         <p>
             Per creare documenti di testo protetti da copyright sul nostro computer, possiamo utilizzare le seguenti applicazioni:
-            <a href="https://www.libreoffice.org/download/download/" target="_blank"> Libreoffice</a> / <a href="https://www.office.com/" target="_blank"> Microsoft Office </a>
+            <a href="https://www.libreoffice.org/download/download/" target="_blank" rel="noopener noreferrer"> Libreoffice</a> / <a href="https://www.office.com/" target="_blank" rel="noopener noreferrer"> Microsoft Office </a>
         </p>',
     'guidelines-section-3-subsection-2-header' => 'Documenti di esercizi / attività',
     'guidelines-section-3-subsection-1' => "
@@ -78,10 +78,10 @@ Linee guida più dettagliate per le diverse categorie di contenuti per le person
     'content-guidelines' => 'Content guidelines',
     'privacy-policy' => 'Privacy policy',
     'meta_tags_description' => 'Dianoia Marketplace è un\'applicazione web implementata e resa disponibile gratuitamente dalla società no-profit SciFY, in modo che chiunque possa creare e condividere contenuti gratuiti per l\'applicazione Dianoia. Il contenuto di Dianoia Marketplace è rivolto principalmente alle persone che si occupano di persone/pazienti con demenza incipiente e/o malattia di Alzheimer. L\'app Dianoia Marketplace si rivolge alle istituzioni e agli scienziati coinvolti nella cura e nella riabilitazione delle persone appartenenti ai gruppi sopra descritti, così come alle persone che forniscono una relativa assistenza a domicilio.',
-    'term-of-use-11' => 'Ad eccezione dei termini del paragrafo precedente relativi ai dati personali, <a href="http://www.scify.org/" target="_blank">  SciFY </a> si riserva il diritto di modificare I Termini e le Condizioni d\'Uso, se necessitano di aggiornamento e completamento, in qualsiasi momento e senza preavviso, qui
+    'term-of-use-11' => 'Ad eccezione dei termini del paragrafo precedente relativi ai dati personali, <a href="http://www.scify.org/" target="_blank" rel="noopener noreferrer">  SciFY </a> si riserva il diritto di modificare I Termini e le Condizioni d\'Uso, se necessitano di aggiornamento e completamento, in qualsiasi momento e senza preavviso, qui
 
 ndi l\'utente deve essere informato di eventuali modifiche prima di ogni utilizzo dell\'applicazione.',
-    'term-of-use-10' => '<a href="http://www.scify.org/" target="_blank">  SciFY </a> utilizza I dati personali che ogni utente inserisce solo nel contesto del progetto <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>, a fini statistici e per contattare l\'utente se necessario. Le informazioni personali non vengono divulgate a terzi senza il permesso dell\'utente.',
+    'term-of-use-10' => '<a href="http://www.scify.org/" target="_blank" rel="noopener noreferrer">  SciFY </a> utilizza I dati personali che ogni utente inserisce solo nel contesto del progetto <a href="https://dianoia.scify.org/" target="_blank" rel="noopener noreferrer"> Dianoia Marketplace </a>, a fini statistici e per contattare l\'utente se necessario. Le informazioni personali non vengono divulgate a terzi senza il permesso dell\'utente.',
     'term-of-use-9' => 'Ogni creatore di contenuti permette ad un altro creatore di contenuti di basarsi sul suo contenuto e arricchirlo o creare nuovi contenuti.',
     'term-of-use-8' => 'Ogni creatore di contenuti non compete con altri creatori di contenuti, riconosce il loro contributo e collabora con loro per migliorare e arricchire il contenuto di <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>.',
     'term-of-use-7' => '<a href="http://www.scify.org/" target="_blank">  SciFY </a> non è in grado di garantire l\'idoneità del contenuto di altri sviluppatori di giochi su <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>. Tuttavia, si riserva il diritto di chiedere correzioni al creatore o addirittura di cancellare il contenuto se qualcosa di inaccettabile viene alla sua attenzione. Gli utenti sono incoraggiati a informare <a href="http://www.scify.org/" target="_blank">  SciFY </a> dei contenuti inaccettabili.',
