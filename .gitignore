@@ -19,3 +19,4 @@ public/web.config
 public/fonts
 public/images
 resources/sass/*.css
+resources/sass/*.css.map
