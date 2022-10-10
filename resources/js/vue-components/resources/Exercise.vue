@@ -377,7 +377,8 @@ export default {
                 },
                 urlRelative: false
             }).then(_ => {
-                console.log('Stored avg rating = '+avg_rating.toString() + 'for resource = '+this.resource.id.toString())
+                console.log('Stored avg rating = '+avg_rating.toString() + ' for resource = '+this.resource.id.toString())
+                window.location.reload()
             });
         },
         showRateModal() {
@@ -498,7 +499,6 @@ export default {
                 if (!found)
                     this.resource.ratings.push(response.data);
                 this.updateAverageResourceRating();
-
             });
         },
         loggedInUserIsDifferentFromContentUser() {
