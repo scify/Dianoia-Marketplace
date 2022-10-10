@@ -20,5 +20,7 @@ class UserRolesTableSeeder extends Seeder {
         echo "\nRunning User Role Seeder...\n";
 
         $this->userRoleManager->assignAdminUserRoleTo($this->userRepository->find(1));
+        $this->userRoleManager->assignPrivateCarerUserRoleTo($this->userRepository->find(2));
+
     }
 }

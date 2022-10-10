@@ -42,6 +42,11 @@ class UserRoleManager {
         return $this->assignRoleTo($user, UserRolesLkp::ADMIN);
     }
 
+    public function assignPrivateCarerUserRoleTo(User $user) {
+        return $this->assignRoleTo($user, UserRolesLkp::PRIVATE_CARER);
+    }
+
+
     protected function assignRoleTo(User $user, int $roleId) {
         $arr = ['user_id' => $user->id, 'role_id' => $roleId];
         if ($this->userHasRole($user, $roleId))
