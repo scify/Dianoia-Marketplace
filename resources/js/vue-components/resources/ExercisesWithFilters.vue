@@ -243,7 +243,7 @@ export default {
             this.getResources();
         },
         setPatientExercises(){
-            this.patientExercises = ["Attention","Memory","Executive","Reason"];
+            this.patientExercises = ["Attention","Memory","Executive","Reason", "Stories"];
         },
 
         setCarerExercises(){

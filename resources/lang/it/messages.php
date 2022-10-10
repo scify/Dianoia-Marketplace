@@ -160,7 +160,7 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'Memory' => 'Esercizi di Memoria',
     'Reason' => 'Esercizi di Pensiero e di Parola',
     'Executive' => 'Funzioni esecutive',
-    'stories' => 'Storie',
+    'Stories' => 'Storie',
     'activities-for-carers' => 'Attività per accompagnatori',
     'search' => 'Ricerca',
     'total-activities' => 'Tutte le attività',

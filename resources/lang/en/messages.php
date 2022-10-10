@@ -160,7 +160,7 @@ You can also create your own exercises and if you wish to, you can share them wi
     'Memory' => 'Memory exercises',
     'Reason' => 'Thought and Speech exercises',
     'Executive' => 'Executive functions',
-    'stories' => 'Stories',
+    'Stories' => 'Stories',
     'activities-for-carers' => 'Activities for caretakers',
     'search' => 'Search',
     'total-activities' => 'All the activities',

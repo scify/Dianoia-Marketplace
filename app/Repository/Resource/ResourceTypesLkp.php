@@ -10,4 +10,5 @@ abstract class ResourceTypesLkp {
     const REASON = 3;
     const EXECUTIVE = 4;
     const CARER = 5;
+    const STORIES = 6;
 }

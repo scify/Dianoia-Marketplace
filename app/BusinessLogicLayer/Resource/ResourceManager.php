@@ -268,6 +268,9 @@ class ResourceManager {
                 case ResourceTypesLkp::CARER:
                     $exercise['category'] = "carer_activities";
                     break;
+                case ResourceTypesLkp::STORIES:
+                    $exercise['category'] = "stories";
+
                 default:
                     $exercise['category'] = "";
             }
@@ -325,6 +328,9 @@ class ResourceManager {
                 case "carer_activities":
                     $whereArray['type_id'] = [ResourceTypesLkp::CARER];
                     break;
+                case "stories":
+                   $whereArray['type_id'] = [ResourceTypesLkp::STORIES];
+                   break;
                 default:
                     throw new InvalidArgumentException('Requested Category Does Not Exist');
             }
