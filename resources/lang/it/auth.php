@@ -30,6 +30,7 @@ return [
     'logout' => 'Logout',
     'no_account' => 'Non hai un account?',
     'register_here' => 'Registrati qui',
+    'type_name' => 'Digitare il proprio nickname',
     'type_mail' => 'Inserisci la tua email',
     'type_password' => 'Inserisci la tua password',
     'already_account' => 'Ho già un account',

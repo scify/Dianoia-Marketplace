@@ -30,6 +30,7 @@ return [
     'logout' => 'Cerrar sesión',
     'no_account' => '¿No tienes una cuenta?',
     'register_here' => 'Registrar aquí',
+    'type_name' => 'Escribe tu apodo',
     'type_mail' => 'Introduce tu correo electrónico',
     'type_password' => 'Ingresa tu contraseña',
     'already_account' => 'Ya tengo una cuenta',

@@ -40,8 +40,7 @@ class ShapesIntegrationController extends Controller {
     }
 
     public function register(): View {
-        $registrationFormVM = new RegistrationFormVM($this->userRoleManager);
-        return view('auth.register-shapes')->with(['viewModel' => $registrationFormVM]);
+        return view('auth.register-shapes');
     }
 
 

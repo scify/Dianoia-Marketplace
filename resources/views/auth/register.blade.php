@@ -8,6 +8,20 @@
         <form method="POST" action="{{ route('register') }}" class="content">
             @csrf
             <h2 class="text-center mb-5 mt-5">{{  __('auth.register_btn')}}</h2>
+
+            <div class="mb-3">
+                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('auth.name_label') }}</label>
+                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                       placeholder="{{  __('auth.type_name')}}"
+                       name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+
+
             <div class="mb-3">
                 <label for="email" class="form-label">{{ __('auth.email_label') }}</label>
                 <input type="email" name='email' class="form-control @error('email') is-invalid @enderror"

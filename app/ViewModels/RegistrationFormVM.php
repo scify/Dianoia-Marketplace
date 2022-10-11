@@ -7,6 +7,6 @@ class RegistrationFormVM {
     protected UserRoleManager $userRoleManager;
     public $roles;
     public function __construct( UserRoleManager $userRoleManager) {
-        $this->roles =  $userRoleManager->getAllUserRoles();
+        $this->roles =  $userRoleManager->getNonShapesUserRoles();
     }
 }
