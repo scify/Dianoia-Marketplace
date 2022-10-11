@@ -106,7 +106,7 @@ class UserManager {
         return $this->userRoleManager->getNonShapesUserRoles();
     }
 
-    function getAllUserRoles()
+    function getUserRoles()
     {
         return $this->userRoleManager->getAllUserRoles();
     }
