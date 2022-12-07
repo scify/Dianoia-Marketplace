@@ -6,6 +6,7 @@ use App\BusinessLogicLayer\Shapes\ShapesIntegrationManager;
 use App\Http\Controllers\Controller;
 use App\Repository\Analytics\AnalyticsEventRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AnalyticsEventController extends Controller {
     protected $analyticsEventRepository;
@@ -18,6 +19,7 @@ class AnalyticsEventController extends Controller {
     }
 
     public function store(Request $request) {
+        Log::info("test");
         $request->validate([
             'name' => 'required',
             'source' => 'required'
