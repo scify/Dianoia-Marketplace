@@ -68,6 +68,16 @@ php artisan storage:link
 ```
 to link the `/public/storage` folder with the `/storage/app/public` directory
 
+## SEO - Generate Sitemap
+
+This application uses [Spatie - Laravel Sitemap](https://github.com/spatie/laravel-sitemap) plugin, in order to create
+the `public/sitemap.xml` file that will be crawled by the search engines.
+In order to run the generator for the current application installation, run the embedded Laravel command:
+
+```bash
+php artisan sitemap:generate
+```
+
 ## Apache configuration example:
 
 
