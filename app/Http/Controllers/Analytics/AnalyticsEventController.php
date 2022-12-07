@@ -19,7 +19,6 @@ class AnalyticsEventController extends Controller {
     }
 
     public function store(Request $request) {
-        Log::info("test");
         $request->validate([
             'name' => 'required',
             'source' => 'required'
