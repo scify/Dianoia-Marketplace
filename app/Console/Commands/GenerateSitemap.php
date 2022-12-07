@@ -46,6 +46,7 @@ class GenerateSitemap extends Command {
         $sitemapGenerator->add(Url::create('/terms-of-use')->setPriority(0.2)->addImage(asset('img/carer-help-scaled.webp'), 'Dianoia Marketplace image'));
         $sitemapGenerator->add(Url::create('/tutorial')->setPriority(0.9)->addImage(asset('img/grandmother-flowers-scaled.webp'), 'Dianoia Marketplace image'));
         $sitemapGenerator->add(Url::create('/privacy-policy')->setPriority(0.2)->addImage(asset('img/dianoia_logo.png'), 'Dianoia Marketplace image'));
+        $sitemapGenerator->add(Url::create('/resources/display_exercises')->setPriority(0.9)->addImage(asset('img/dianoia_logo.png'), 'Dianoia Marketplace image'));
         $sitemapGenerator->writeToFile(public_path('sitemap.xml'));
         return CommandAlias::SUCCESS;
     }
