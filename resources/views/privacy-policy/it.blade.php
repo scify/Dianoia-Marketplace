@@ -280,13 +280,14 @@
                                         <td>I cookie assolutamente necessari sono essenziali per il corretto funzionamento della Piattaforma. Questi cookie consentono all'Utente di navigare e utilizzare le funzioni della Piattaforma, come l'accesso alle aree sicure. Questi cookie non riconoscono l'identità individuale dell'Utente e senza di essi il buon funzionamento della Piattaforma non è possibile.
 
                                         </td>
-                                        <td>CookieConsent (memorizza lo stato di consenso dei cookie dell'utente per il dominio corrente )
+                                        <td>dianoia_marketplace_cookies_consent_selection, dianoia_marketplace_cookies_consent_targeting (memorizza lo stato di consenso dei cookie dell'utente per il dominio corrente )
 
                                             <br><br>
                                             XSRF-TOKEN (Assicura la sicurezza della navigazione del visitatore impedendo la falsificazione della richiesta cross-site. Questo cookie è essenziale per la sicurezza del sito web e del visitatore. )
                                             <br><br>
-                                            remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d (quando l'app ha bisogno di "ricordare" l'utente loggato mentre naviga nella piattaforma)
-
+                                            remember_web_*, dianoia_marketplace_session (quando l'app ha bisogno di "ricordare" l'utente loggato mentre naviga nella piattaforma)
+                                            <br><br>
+                                            lang (Memorizza la preferenza della lingua dell'utente)
                                         </td>
                                         <td>1 anno
                                             <br><br>
@@ -318,10 +319,10 @@
                                         <td>Cookie statistici/analitici</td>
                                         <td>Si tratta di cookie che valutano il modo in cui I visitatori utilizzano la Piattaforma (per esempio, quali pagine sono visitate più spesso e se ricevono messaggi di errore dalle pagine web). Questi cookie sono utilizzati a fini statistici e per migliorare le prestazioni di una Piattaforma.
                                         </td>
-                                        <td>_ga_4S9N5MK4VE, _gat,_ga, _gcl_au, _gid: I cookie di Google Analytics sono utilizzati per misurare il traffico sulla piattaforma. Una stringa di testo unica viene salvata per identificare il browser, il timestamp per le interazioni e il browser/pagina sorgente che ha portato l'utente alla Piattaforma. Nessuna informazione sensibile viene salvata.
+                                        <td>_ga_J481BLE1ZH, _ga_LXY37H72ZY, _ga_FERSCC5RD4, _gat,_ga, _gcl_au, _gid: I cookie di Google Analytics sono utilizzati per misurare il traffico sulla piattaforma. Una stringa di testo unica viene salvata per identificare il browser, il timestamp per le interazioni e il browser/pagina sorgente che ha portato l'utente alla Piattaforma. Nessuna informazione sensibile viene salvata.
 
                                         </td>
-                                        <td>_ga_4S9N5MK4VE: 2 anni
+                                        <td>_ga_J481BLE1ZH, _ga_LXY37H72ZY, _ga_FERSCC5RD4: 2 anni
                                             <br><br>
                                             _gat:1 minuto
                                             <br><br>

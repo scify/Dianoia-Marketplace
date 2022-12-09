@@ -278,10 +278,12 @@
 
                                             <br><br>
                                             XSRF-TOKEN (Garantiza la seguridad de la navegación de los visitantes evitando la falsificación de solicitudes entre sitios. Esta cookie es esencial para la seguridad del sitio web y del visitante).
-{{--                                            dianoia_marketplace_session (Cuando la aplicación necesita "recordar" al usuario conectado mientras navega a la Plataforma)--}}
-
+                                            <br>dianoia_marketplace_session (Cuando la aplicación necesita "recordar" al usuario conectado mientras navega a la Plataforma)<br>
+                                            dianoia_marketplace_cookies_consent_selection, dianoia_marketplace_cookies_consent_targeting (Almacena el estado de consentimiento de cookies del usuario para el dominio actual)
                                             <br><br>
-                                            remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d (When the app needs to “remember” the logged in user while (s)he navigates to the Platform)
+                                            remember_web_*, dianoia_marketplace_session (When the app needs to “remember” the logged in user while (s)he navigates to the Platform)
+                                            <br><br>
+                                            lang (Almacena la preferencia de idioma del usuario)
                                         </td>
                                         <td>1 año
                                             <br><br>
@@ -312,10 +314,10 @@
                                     <tr>
                                         <td>Cookies estadísticas/analíticas</td>
                                         <td>Son cookies que evalúan la forma en que los visitantes utilizan la Plataforma (por ejemplo, qué páginas se visitan con más frecuencia y si reciben mensajes de error de las páginas web). Estas cookies se utilizan con fines estadísticos y para mejorar el rendimiento de una Plataforma.</td>
-                                        <td>_ga_4S9N5MK4VE, _gat,_ga, _gcl_au, _gid: Las cookies de Google Analytics se utilizan para medir el tráfico en la Plataforma. Se guarda una cadena de texto única para identificar el navegador, la marca de tiempo para las interacciones y el navegador/fuente que llevó al usuario a la Plataforma. No se guarda información confidencial.
+                                        <td>_ga_J481BLE1ZH, _ga_LXY37H72ZY, _ga_FERSCC5RD4, _gat,_ga, _gcl_au, _gid: Las cookies de Google Analytics se utilizan para medir el tráfico en la Plataforma. Se guarda una cadena de texto única para identificar el navegador, la marca de tiempo para las interacciones y el navegador/fuente que llevó al usuario a la Plataforma. No se guarda información confidencial.
 
                                         </td>
-                                        <td>_ga_4S9N5MK4VE: 2 años
+                                        <td>_ga_J481BLE1ZH, _ga_LXY37H72ZY, _ga_FERSCC5RD4: 2 años
                                             <br><br>
                                             _gat:1 minuto
                                             <br><br>
