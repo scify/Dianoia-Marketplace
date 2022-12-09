@@ -6,15 +6,12 @@ use App\BusinessLogicLayer\Shapes\ShapesIntegrationManager;
 use App\BusinessLogicLayer\UserRole\UserRoleManager;
 use App\Repository\Resource\ResourceTypeLkpRepository;
 use App\Repository\User\UserRepository;
-use App\ViewModels\RegistrationFormVM;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
 class ShapesIntegrationController extends Controller {
-
     public ShapesIntegrationManager $shapesIntegrationManager;
     public UserRoleManager $userRoleManager;
     public UserRepository $userRepository;
@@ -36,36 +33,36 @@ class ShapesIntegrationController extends Controller {
      * @return View
      */
     public function login(): View {
-        return view("auth.login-shapes");
+        return view('auth.login-shapes');
     }
 
     public function register(): View {
         return view('auth.register-shapes');
     }
 
-
     public function request_create_user(Request $request): RedirectResponse {
         $request->validate([
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|min:8|confirmed',
         ]);
         try {
             $user = $this->shapesIntegrationManager->createShapes($request);
             $this->request_login_token($request);
             Auth::login($user);
-            session()->flash('flash_message_success', "Shapes user successfully registered");
+            session()->flash('flash_message_success', 'Shapes user successfully registered');
+
             return redirect()->route('home');
         } catch (\Exception $e) {
             session()->flash('flash_message_failure', $e->getMessage());
+
             return back();
         }
     }
 
-
     public function request_login_token(Request $request): RedirectResponse {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:8'
+            'password' => 'required|min:8',
         ]);
         try {
             $response = $this->shapesIntegrationManager->loginShapes($request);
@@ -79,13 +76,15 @@ class ShapesIntegrationController extends Controller {
             $this->shapesIntegrationManager->storeUserToken($user->id, $token);
             $user = $this->userRepository->find($user->id);
             if ($user->shapes_auth_token && ShapesIntegrationManager::isEnabled()) {
-                $this->shapesIntegrationManager->sendUsageDataToDatalakeAPI($user, "user_login", $user->email);
+                $this->shapesIntegrationManager->sendUsageDataToDatalakeAPI($user, 'user_login', $user->email);
             }
-            session()->flash('flash_message_success', "Shapes user successfully logged-in");
+            session()->flash('flash_message_success', 'Shapes user successfully logged-in');
             Auth::login($user);
+
             return redirect()->route('home');
         } catch (\Exception $e) {
             session()->flash('flash_message_failure', $e->getMessage());
+
             return back();
         }
     }

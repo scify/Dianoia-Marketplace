@@ -4,15 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class MakeNameBiggerInAnalyticsEventsTable extends Migration
-{
+class MakeNameBiggerInAnalyticsEventsTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::table('analytics_events', function (Blueprint $table) {
             $table->text('name')->change();
         });
@@ -23,8 +21,7 @@ class MakeNameBiggerInAnalyticsEventsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::table('analytics_events', function (Blueprint $table) {
             //
         });

@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['mobile'])->group(function () {
-    Route::get("/exercises", [ResourceController::class, 'getTransformAllExercisesForMobileApp']);
-    Route::post("/analytics/store", [AnalyticsEventController::class, 'store']);
-    Route::post("/resources/user-rating", [ResourceRatingController::class, 'storeOrUpdateMobileRating']);
-    Route::get("/resource/avg-rating", [ResourceRatingController::class, 'getAverageRatingForResource']);
+    Route::get('/exercises', [ResourceController::class, 'getTransformAllExercisesForMobileApp']);
+    Route::post('/analytics/store', [AnalyticsEventController::class, 'store']);
+    Route::post('/resources/user-rating', [ResourceRatingController::class, 'storeOrUpdateMobileRating']);
+    Route::get('/resource/avg-rating', [ResourceRatingController::class, 'getAverageRatingForResource']);
 });

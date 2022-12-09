@@ -4,17 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDisplayInApiFieldResourcesTable extends Migration
-{
+class AddDisplayInApiFieldResourcesTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::table('resources', function (Blueprint $table) {
-            $table->boolean('display_in_api')->default(False);
+            $table->boolean('display_in_api')->default(false);
             //
         });
     }
@@ -24,8 +22,7 @@ class AddDisplayInApiFieldResourcesTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::table('resources', function (Blueprint $table) {
             $table->dropColumn('display_in_api');
         });

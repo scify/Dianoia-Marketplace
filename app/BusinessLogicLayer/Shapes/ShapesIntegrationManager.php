@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\BusinessLogicLayer\Shapes;
-
 
 use App\BusinessLogicLayer\UserRole\UserRoleManager;
 use App\Models\User;
@@ -17,13 +15,12 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class ShapesIntegrationManager {
-
     protected UserRepository $userRepository;
     protected UserRoleManager $userRoleManager;
     protected AnalyticsEventRepository $analyticsEventRepository;
     protected $defaultHeaders = [
         'X-Shapes-Key' => null,
-        'Accept' => "application/json"
+        'Accept' => 'application/json',
     ];
     protected $apiBaseUrl = 'https://kubernetes.pasiphae.eu/shapes/asapa/auth/';
     protected $datalakeAPIUrl;
@@ -37,15 +34,13 @@ class ShapesIntegrationManager {
     }
 
     public static function isEnabled(): bool {
-        return config('app.shapes_datalake_api_url') !== null && config('app.shapes_datalake_api_url') !== "";
+        return config('app.shapes_datalake_api_url') !== null && config('app.shapes_datalake_api_url') !== '';
     }
-
 
     /**
      * @throws Exception
      */
     public function createShapes(Request $request) {
-
         $response = Http::withHeaders($this->defaultHeaders)
             ->post($this->apiBaseUrl . 'register', [
                 'email' => $request['email'],
@@ -56,6 +51,7 @@ class ShapesIntegrationManager {
         if (!$response->ok()) {
             throw new Exception(json_decode($response->body())->error);
         }
+
         return $this->storeShapesUserLocally($request);
     }
 
@@ -65,6 +61,7 @@ class ShapesIntegrationManager {
         $user = $this->userRepository->create($requestData);
         $this->userRepository->update(['name' => 'Dianoia_user_' . $user->id], $user->id);
         $this->userRoleManager->assignRegisteredUserRoleTo($user, UserRolesLkp::SHAPES_USER);
+
         return $this->userRepository->find($user->id);
     }
 
@@ -80,6 +77,7 @@ class ShapesIntegrationManager {
         if (!$response->ok()) {
             throw new Exception(json_decode($response->body())->error);
         }
+
         return $response->json();
     }
 
@@ -105,7 +103,6 @@ class ShapesIntegrationManager {
                 $this->userRepository->update(['logout' => true], $shapesUser->id);
             }
         }
-
     }
 
     /**
@@ -113,7 +110,7 @@ class ShapesIntegrationManager {
      */
     public function updateSHAPESAuthTokenForUser(User $user) {
         $response = Http::withHeaders(array_merge($this->defaultHeaders, [
-            'X-Pasiphae-Auth' => $user->shapes_auth_token
+            'X-Pasiphae-Auth' => $user->shapes_auth_token,
         ]))->post($this->apiBaseUrl . 'token/refresh');
         if (!$response->ok()) {
             throw new Exception(json_decode($response->body())->error);
@@ -135,13 +132,13 @@ class ShapesIntegrationManager {
             'lang' => app()->getLocale(),
             'source' => 'Dianoia-marketplace-web',
             'time' => Carbon::now()->format(DateTime::RFC3339),
-            'version' => config('app.version')
+            'version' => config('app.version'),
         ];
         $response = Http::withHeaders([
             'X-Authorisation' => $user->shapes_auth_token,
-            'Accept' => "application/json"
+            'Accept' => 'application/json',
         ])
-            ->post($this->datalakeAPIUrl . '/marketplace',);
+            ->post($this->datalakeAPIUrl . '/marketplace');
         if (!$response->ok()) {
             throw new Exception(json_decode($response->body()));
         }
@@ -150,8 +147,9 @@ class ShapesIntegrationManager {
             'name' => $action,
             'source' => 'Dianoia-marketplace-web',
             'payload' => json_encode($data),
-            'response' => $response
+            'response' => $response,
         ]);
+
         return json_encode($response->json());
     }
 
@@ -161,7 +159,7 @@ class ShapesIntegrationManager {
     public function sendMobileUsageDataToDatalakeAPI(string $token, string $action, string $lang, string $version, string $source) {
         $response = Http::withHeaders([
             'X-Authorisation' => $token,
-            'Accept' => "application/json"
+            'Accept' => 'application/json',
         ])
             ->post($this->datalakeAPIUrl . '/mobile', [
                 'action' => $action,
@@ -169,13 +167,13 @@ class ShapesIntegrationManager {
                 'lang' => $lang,
                 'source' => $source,
                 'time' => Carbon::now()->format(DateTime::RFC3339),
-                'version' => $version
+                'version' => $version,
             ]);
         if (!$response->ok()) {
             throw new Exception($response->body());
         }
         Log::info('SHAPES Mobile Datalake response: ' . json_encode($response->json()));
+
         return json_encode($response->json());
     }
-
 }

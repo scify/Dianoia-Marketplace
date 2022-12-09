@@ -4,15 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddResourcesSlugToResourcesRatingsTable extends Migration
-{
+class AddResourcesSlugToResourcesRatingsTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::table('resources_ratings', function (Blueprint $table) {
             $table->string('resources_slug')->nullable()->after('resources_id');
             $table->unsignedBigInteger('resources_id')->nullable()->change();
@@ -25,8 +23,7 @@ class AddResourcesSlugToResourcesRatingsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::table('resources_ratings', function (Blueprint $table) {
             //
         });

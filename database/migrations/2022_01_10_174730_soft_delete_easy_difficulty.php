@@ -1,22 +1,20 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
-class SoftDeleteEasyDifficulty extends Migration
-{
+
+class SoftDeleteEasyDifficulty extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         DB::raw('UPDATE resources SET difficulty_id = 2 WHERE difficulty_id = 1');
         $toDelete = \App\Models\DifficultiesLkp::where('code', 'EASY')->first();
-        if($toDelete)
+        if ($toDelete) {
             $toDelete->delete();
+        }
     }
 
     /**
@@ -24,11 +22,10 @@ class SoftDeleteEasyDifficulty extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         \App\Models\DifficultiesLkp::create([
-            'name' => "Εύκολης Δυσκολίας",
-            'code' => "EASY",
+            'name' => 'Εύκολης Δυσκολίας',
+            'code' => 'EASY',
         ]);
     }
 }

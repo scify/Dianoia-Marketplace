@@ -6,11 +6,10 @@ use App\Models\Resource\ResourcesRating;
 use App\Repository\Repository;
 
 class ResourcesRatingRepository extends Repository {
-
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    function getModelClassName() {
+    public function getModelClassName() {
         return ResourcesRating::class;
     }
 }

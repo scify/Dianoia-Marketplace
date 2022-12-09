@@ -2,29 +2,26 @@
 
 namespace App\Providers;
 
-use App\ViewModels\RegistrationFormVM;
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
+use App\BusinessLogicLayer\UserRole\UserRoleManager;
 use App\Models\User;
+use App\ViewModels\RegistrationFormVM;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
-use App\BusinessLogicLayer\UserRole\UserRoleManager;
-use Ramsey\Collection\Collection;
 
-class FortifyServiceProvider extends ServiceProvider
-{
+class FortifyServiceProvider extends ServiceProvider {
     /**
      * Register any application services.
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         //
     }
 
@@ -33,13 +30,13 @@ class FortifyServiceProvider extends ServiceProvider
      *
      * @return void
      */
-
     public UserRoleManager $userRoleManager;
-    public function boot(UserRoleManager $userRoleManager)
-    {
+
+    public function boot(UserRoleManager $userRoleManager) {
         $this->userRoleManager = $userRoleManager;
         Fortify::registerView(function () {
             $registrationFormVM = new RegistrationFormVM($this->userRoleManager);
+
             return view('auth.register')->with(['viewModel'=>$registrationFormVM]);
         });
 

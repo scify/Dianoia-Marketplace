@@ -3,16 +3,14 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
-class FixTypoReportsTable extends Migration
-{
+
+class FixTypoReportsTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::table('reports', function (Blueprint $table) {
             $table->dropForeign(['resources_id']);
             $table->dropColumn('resources_id');
@@ -26,8 +24,7 @@ class FixTypoReportsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::table('reports', function (Blueprint $table) {
             $table->dropForeign(['resource_id']);
             $table->dropColumn('resource_id');
@@ -35,5 +32,4 @@ class FixTypoReportsTable extends Migration
             $table->foreign('resources_id')->references('id')->on('resources');
         });
     }
-
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\BusinessLogicLayer\Resource;
 
 use App\BusinessLogicLayer\Shapes\ShapesIntegrationManager;
@@ -20,9 +19,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use InvalidArgumentException;
 
-
 class ResourceManager {
-
     protected ResourceRepository $resourceRepository;
     protected ContentLanguageLkpRepository $contentLanguageLkpRepository;
     protected DifficultiesLkpRepository $difficultiesLkpRepository;
@@ -48,12 +45,12 @@ class ResourceManager {
         $this->shapesIntegrationManager = $shapesIntegrationManager;
     }
 
-
     public function getCreateResourcesViewModel(): CreateEditResourceVM {
         $contentLanguages = $this->getContentLanguagesForResources();
         $difficulties = $this->getDifficultiesForResources();
         $types = $this->getResourceTypes();
         $lang = app()->getLocale();
+
         return new CreateEditResourceVM(
             $contentLanguages, $difficulties, $types, collect(), new  Resource(), $lang
         );
@@ -71,6 +68,7 @@ class ResourceManager {
             }
         );
         $preselect_types = $resource_params['preselect_type_name'] ?: 'all';
+
         return new CreateEditResourceVM(
             $contentLanguages, $difficulties, $type_ids, $preselect_types, new  Resource($resource_params), $lang
         );
@@ -81,35 +79,35 @@ class ResourceManager {
         $difficulties = $this->getDifficultiesForResources();
         $types = $this->getResourceTypes();
         $lang = app()->getLocale();
+
         return new CreateEditResourceVM(
             $contentLanguages, $difficulties, $types, collect(), $resource, $lang
         );
     }
 
-
     public function getResourceTypes() {
         $ret = $this->resourceTypeLkpRepository->all();
+
         return $ret;
     }
-
 
     public function getDifficultiesForResources() {
         return $this->difficultiesLkpRepository->all();
     }
 
-
     public function getContentLanguagesForResources() {
         return $this->contentLanguageLkpRepository->all();
     }
-
 
     public function getResource($id) {
         return $this->resourceRepository->find($id);
     }
 
     public function getResources(int $lang_id = null, $user_id = null, array $status_ids = [], array $difficulties = null, array $type_ids = null, array $ratings = null) {
-        if ($status_ids == [])
+        if ($status_ids == []) {
             $status_ids = [ResourceStatusesLkp::APPROVED];
+        }
+
         return $this->resourceRepository->getResources($user_id, $lang_id, $status_ids, $difficulties, $type_ids, $ratings);
     }
 
@@ -122,8 +120,6 @@ class ResourceManager {
     }
 
 
-    /**
-     */
     public function storeResource(Request $request) {
         $storeArr = [
             'name' => $request['name'],
@@ -136,7 +132,7 @@ class ResourceManager {
             'status_id' => ResourceStatusesLkp::CREATED_PENDING_APPROVAL,
             'creator_user_id' => Auth::id(),
             'admin_user_id' => null,
-            'description' => $request['description']
+            'description' => $request['description'],
         ];
 
         $resource = $this->resourceRepository->create($storeArr);
@@ -155,30 +151,29 @@ class ResourceManager {
         $user = $this->userRepository->find(Auth::id());
         if ($user->shapes_auth_token && ShapesIntegrationManager::isEnabled()) {
             $resourceType = $this->resourceTypeLkpRepository->find($request['type_id']);
-            $this->shapesIntegrationManager->sendUsageDataToDatalakeAPI($user, "resource_created", $resourceType->name);
+            $this->shapesIntegrationManager->sendUsageDataToDatalakeAPI($user, 'resource_created', $resourceType->name);
         }
 
         return $this->resourceRepository->update([
             'img_path' => $img_path,
-            'pdf_path' => $pdf_path],
+            'pdf_path' => $pdf_path, ],
             $resource->id);
     }
-
 
     /**
      * @throws FileNotFoundException
      */
     public function updateResource($request, $id) {
         $storeArr = [
-            "name" => $request['name'],
-            "slug" => $request['slug'],
-            "description" => $request['description'],
-            "lang_id" => $request['lang'],
-            "type_id" => $request['type_id'],
-            "difficulty_id" => $request['difficulty_id'],
+            'name' => $request['name'],
+            'slug' => $request['slug'],
+            'description' => $request['description'],
+            'lang_id' => $request['lang'],
+            'type_id' => $request['type_id'],
+            'difficulty_id' => $request['difficulty_id'],
             'status_id' => $request['status_id'],
             'creator_user_id' => Auth::id(),
-            'admin_user_id' => null
+            'admin_user_id' => null,
         ];
         $old_resource = $this->resourceRepository->find($id);
         $storeArr['img_path'] = $old_resource['img_path'];
@@ -189,19 +184,19 @@ class ResourceManager {
             $resourceFileManager->deleteResourceImage($old_resource);
             $img_path = $resourceFileManager->saveImage($resource->id, $request);
             $resource = $this->resourceRepository->update([
-                'img_path' => $img_path],
+                'img_path' => $img_path, ],
                 $resource->id);
         }
         if (isset($request['pdf'])) {
             $resourceFileManager->deleteResourcePdf($old_resource);
             $pdf_path = $resourceFileManager->savePdf($resource->id, $request);
             $resource = $this->resourceRepository->update([
-                'pdf_path' => $pdf_path],
+                'pdf_path' => $pdf_path, ],
                 $resource->id);
         }
+
         return $resource;
     }
-
 
     public function reportResource($id, $reporting_user_id, $reportReason, $reportComment) {
         $storeArr = [
@@ -210,9 +205,9 @@ class ResourceManager {
             'reason' => $reportReason,
             'comment' => $reportComment,
         ];
+
         return $this->reportsRepository->create($storeArr);
     }
-
 
     public function destroyResource($id) {
         $resource = $this->resourceRepository->find($id);
@@ -222,30 +217,28 @@ class ResourceManager {
         $this->resourceRepository->delete($id);
     }
 
-
     public function cloneResource($id, $newParentId) {
         $resource = $this->resourceRepository->find($id);
         $fileManager = new ResourceFileManager();
         $storeArr = [
-            "name" => $resource->name,
-            "img_path" => $fileManager->cloneResourceToDirectory(basename($resource->img_path), "image"),
-            "audio_path" => $resource->audio_path ? $fileManager->cloneResourceToDirectory(basename($resource->audio_path), "audio") : null,
+            'name' => $resource->name,
+            'img_path' => $fileManager->cloneResourceToDirectory(basename($resource->img_path), 'image'),
+            'audio_path' => $resource->audio_path ? $fileManager->cloneResourceToDirectory(basename($resource->audio_path), 'audio') : null,
             'resource_parent_id' => $newParentId ?: null,
             'creator_user_id' => Auth::id(),
             'admin_user_id' => null,
         ];
+
         return $this->resourceRepository->create($storeArr);
     }
 
     public function storeOrUpdateAverageResourceRating($id, $avg_rating) {
         return $this->resourceRepository->update([
-            'avg_rating' => $avg_rating],
+            'avg_rating' => $avg_rating, ],
             $id);
     }
 
     public function getTransformExercisesForMobileApp($paginated) {
-
-
         $transformed = $paginated->through(function ($exercise) {
             $keys = array_keys($exercise->toArray());
             $exercise['slug'] = $exercise->slug;
@@ -254,52 +247,53 @@ class ResourceManager {
 
             switch ($exercise->type_id) {
                 case ResourceTypesLkp::ATTENTION:
-                    $exercise['category'] = "focus_activities";
+                    $exercise['category'] = 'focus_activities';
                     break;
                 case ResourceTypesLkp::MEMORY:
-                    $exercise['category'] = "memory_activities";
+                    $exercise['category'] = 'memory_activities';
                     break;
                 case ResourceTypesLkp::REASON:
-                    $exercise['category'] = "think_activities";
+                    $exercise['category'] = 'think_activities';
                     break;
                 case ResourceTypesLkp::EXECUTIVE:
-                    $exercise['category'] = "executive_activities";
+                    $exercise['category'] = 'executive_activities';
                     break;
                 case ResourceTypesLkp::CARER:
-                    $exercise['category'] = "carer_activities";
+                    $exercise['category'] = 'carer_activities';
                     break;
                 case ResourceTypesLkp::STORIES:
-                    $exercise['category'] = "stories";
+                    $exercise['category'] = 'stories';
 
                 default:
-                    $exercise['category'] = "";
+                    $exercise['category'] = '';
             }
 
-            $exercise['full_text'] = "";
-            $exercise['video_url'] = "";
-            $exercise['image_url'] = $exercise->img_path == null ? "" : $exercise->img_path;
-            $exercise['instructions'] = ["Κάντε click στο σύνδεσμο για να δείτε το έγγραφο"];
-            $exercise['link'] = config("app.url") . '/storage/' . $exercise->pdf_path;
+            $exercise['full_text'] = '';
+            $exercise['video_url'] = '';
+            $exercise['image_url'] = $exercise->img_path == null ? '' : $exercise->img_path;
+            $exercise['instructions'] = ['Κάντε click στο σύνδεσμο για να δείτε το έγγραφο'];
+            $exercise['link'] = config('app.url') . '/storage/' . $exercise->pdf_path;
             $exercise['difficulty_level'] = 'difficulty_level_' . ($exercise->difficulty_id + 1);
             $exercise['created_by'] = $this->resourceRepository->where(
-                ['id' => $exercise->id], array('*'), ['creator'])->first()->creator->name;
+                ['id' => $exercise->id], ['*'], ['creator'])->first()->creator->name;
             $exercise['rating'] = $exercise->avg_rating;
             foreach ($keys as $key) {
                 if ($key != 'slug' and $key != 'description') {
                     unset($exercise[$key]);
                 }
             }
+
             return $exercise;
         })->toArray();
         $transformed['data'] = array_values(array_filter($transformed['data']));
+
         return $transformed;
     }
 
     public function getPaginatedResourcesForMobile($requestLanguage = null, $requestCategory = null) {
-
         $whereArray = [
             'lang_id' => null,
-            'type_id' => null
+            'type_id' => null,
         ];
 
         if ($requestLanguage) {
@@ -313,32 +307,31 @@ class ResourceManager {
         }
         if ($requestCategory) {
             switch ($requestCategory) {
-                case "focus_activities":
+                case 'focus_activities':
                     $whereArray['type_id'] = [ResourceTypesLkp::ATTENTION];
                     break;
-                case "memory_activities":
+                case 'memory_activities':
                     $whereArray['type_id'] = [ResourceTypesLkp::MEMORY];
                     break;
-                case "think_activities":
+                case 'think_activities':
                     $whereArray['type_id'] = [ResourceTypesLkp::REASON];
                     break;
-                case "executive_activities":
+                case 'executive_activities':
                     $whereArray['type_id'] = [ResourceTypesLkp::EXECUTIVE];
                     break;
-                case "carer_activities":
+                case 'carer_activities':
                     $whereArray['type_id'] = [ResourceTypesLkp::CARER];
                     break;
-                case "stories":
-                   $whereArray['type_id'] = [ResourceTypesLkp::STORIES];
-                   break;
+                case 'stories':
+                    $whereArray['type_id'] = [ResourceTypesLkp::STORIES];
+                    break;
                 default:
                     throw new InvalidArgumentException('Requested Category Does Not Exist');
             }
-
         }
 
         $paginated = $this->resourceRepository->getResources(
-            null, $whereArray['lang_id'], null, null, $whereArray['type_id'], null, 10, True);
+            null, $whereArray['lang_id'], null, null, $whereArray['type_id'], null, 10, true);
         $paginated->appends(['lang' => $requestLanguage])->links();
         $paginated->appends(['category' => $requestCategory])->links();
 
@@ -346,7 +339,6 @@ class ResourceManager {
     }
 
     public function getReportedExercises() {
-
         $reports = $this->reportsRepository->all();
         $resourcesWithReportInfo = Collection::empty();
         foreach ($reports as $report) {
@@ -354,14 +346,12 @@ class ResourceManager {
             $resource->reportData = $report;
             $resource->creator = $report->creator;
             $resourcesWithReportInfo->push($resource);
-
         }
+
         return $resourcesWithReportInfo;
     }
 
     public function getResourceBySlug($resources_slug) {
         return $this->resourceRepository->where(['slug' => $resources_slug]);
     }
-
-
 }

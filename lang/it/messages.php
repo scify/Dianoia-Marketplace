@@ -14,7 +14,7 @@ return [
     'exercise-name-animal' => '<a href="https://drive.google.com/file/d/1pQ6i9jS5RpzjFmvWIiP16C8oJDy0koA8/view" target="_blank" rel="noopener noreferrer">Nome Animale Oggetto Pianta</a>',
     'exercise-copy-correctly' => '<a  href="https://drive.google.com/file/d/1TlSq-sCGsbt3Z1WiFcWdhOjhxt1l2QlO/view" target="_blank" rel="noopener noreferrer">Copia correttamente</a>',
     'exercise-shade-shapes' => '<a  href="https://drive.google.com/file/d/1vTuF_serHA6zg_QlpnhGgB6rswuzrb4T/view" target="_blank" rel="noopener noreferrer">Disegno di forme</a>',
-    'exercise-word-categories' => '<a  href="https://drive.google.com/file/d/1XmNEtAJCu6tokzGbSR3IXo05IR4Rxrvo/view" target="_blank" rel="noopener noreferrer">Categorie di parole</a>' ,
+    'exercise-word-categories' => '<a  href="https://drive.google.com/file/d/1XmNEtAJCu6tokzGbSR3IXo05IR4Rxrvo/view" target="_blank" rel="noopener noreferrer">Categorie di parole</a>',
     'exercise-remember-word-list' => '<a  href="https://drive.google.com/file/d/1T6cwIvJdMJCkEJNSeku9SmEw8H2ZHxlJ/view" target="_blank" rel="noopener noreferrer">Memorizza l\'elenco delle parole</a>',
     'guidelines-section-1-executive-category-card' => 'Questa categoria comprende esercizi che mirano a coinvolgere il paziente nei compiti quotidiani e a praticare processi semplici. Esempi di esercizi:',
     'guidelines-section-1-thought-category-card' => 'Questa categoria comprende esercizi che mirano a praticare e migliorare la capacità di parola del paziente, così come la connessione tra la parola e il pensiero. Esempi di esercizi:',
@@ -55,9 +55,9 @@ return [
         </p>
         ",
     'guidelines-section-3-subsection-header-1' => 'Immagini',
-    'guidelines-section-2' => "
+    'guidelines-section-2' => '
         <p>Oltre agli esercizi e alle attività per le persone con demenza incipiente, la piattaforma Dianoia Marketplace mira anche a creare e rendere disponibili contenuti per gli accompagnatori di queste persone. </p>
-        <p>Per questo motivo, esiste anche la categoria \"Esercizi per accompagnatori\", che include esercizi e attività per gli accompagnatori. Esempi di attività:</p>",
+        <p>Per questo motivo, esiste anche la categoria "Esercizi per accompagnatori", che include esercizi e attività per gli accompagnatori. Esempi di attività:</p>',
     'guidelines-section-1' => "
             <p>Lo scopo dei contenuti caricati su Dianoia Marketplace è quello di aiutare le persone con demenza incipiente a migliorare le loro funzioni cognitive, l'umore, la funzionalità e la qualità della vita dando loro dei puzzle, aiutandoli a ricordare vecchi ricordi o anche compiti quotidiani o attività che amavano.</p>
             <p>Inoltre, l'obiettivo è quello di rendere Dianoia Marketplace un punto di riferimento e un hub di contenuti per esercizi in categorie come: <b>Esercizi di Memoria, Attenzione, Pensiero e Ragionamento, Funzioni Esecutive </b>, che saranno disponibili in 2 livelli di difficoltà (normale e difficile).</p>
@@ -116,13 +116,13 @@ ndi l\'utente deve essere informato di eventuali modifiche prima di ogni utilizz
     'people' => 'Le persone',
     'useful-links' => 'Link utili',
     'contact-us' => 'Contatto',
-    'footer-scify' => "SciFY</a> è un organizzazione senza scopo di lucro che sviluppa sistemi informatici all avanguardia e li offre gratuitamente a tutti, inclusi il design, i dettagli di implementazione e il supporto necessario per risolvere i problemi della vita reale.</p>",
+    'footer-scify' => 'SciFY</a> è un organizzazione senza scopo di lucro che sviluppa sistemi informatici all avanguardia e li offre gratuitamente a tutti, inclusi il design, i dettagli di implementazione e il supporto necessario per risolvere i problemi della vita reale.</p>',
     'team' => 'Il Gruppo',
     'dianoia-web-version' => 'Dianoia versione web',
-    "Dianoia admin" => "Amministratore/a della piattaforma DiAnoia",
-    "warning_deletion" => "Avvertimento! Questa azione è irreversibile!",
-    "delete_exercise" => "Eliminazione dell'Esercizio",
-    "delete" => "Cancellazione",
+    'Dianoia admin' => 'Amministratore/a della piattaforma DiAnoia',
+    'warning_deletion' => 'Avvertimento! Questa azione è irreversibile!',
+    'delete_exercise' => "Eliminazione dell'Esercizio",
+    'delete' => 'Cancellazione',
     'dianoia' => 'Dianoia',
     'mobile-app' => 'Dianoia applicazione mobile',
     'exercises' => 'Esercizi',
@@ -258,5 +258,5 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'tutorial_5' => '<b>3. Storie</b><br><br>Storie brevi e divertenti che dopo che il paziente ha letto la trama, ci sono piccoli esercizi separati per essa.',
     'tutorial_6' => 'Attraverso Dianoia, il caregiver può trovare una raccolta di attività e collegamenti utili con le fonti per scaricarsi, rilassarsi e potenziarsi psicologicamente, dopo una dura giornata di lavoro.<br><br>Dianoia Marketplace offre a tutti la possibilità di creare esercizi che saranno poi disponibili tramite l\'app mobile Dianoia:',
     'tutorial_7' => 'Nella schermata "Crea nuovo esercizio", dovremmo aggiungere un titolo descrittivo, una breve descrizione, un\'immagine opzionale, lingua, livello di difficoltà, nonché la categoria di appartenenza.<br><br>Successivamente, è necessario caricare il file pdf dell\'attività e selezionare le caselle di controllo che suggeriscono di aver letto le Condizioni d\'uso e l\'Informativa sulla privacy. Una volta creato l\'esercizio, il team amministrativo di Dianoia Marketplace esaminerà l\'esercizio e deciderà se l\'esercizio verrà pubblicato sull\'app mobile di Dianoia o solo su Dianoia Marketplace.',
-    'about' => 'Circa'
+    'about' => 'Circa',
 ];

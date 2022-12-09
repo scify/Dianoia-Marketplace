@@ -21,6 +21,5 @@ class CreatePersonalAccessTokensTable extends Migration {
      * @return void
      */
     public function down() {
-
     }
 }

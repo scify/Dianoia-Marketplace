@@ -7,7 +7,6 @@ use App\Repository\User\UserRepository;
 use Illuminate\Database\Seeder;
 
 class UserRolesTableSeeder extends Seeder {
-
     protected $userRepository;
     protected $userRoleManager;
 
@@ -21,6 +20,5 @@ class UserRolesTableSeeder extends Seeder {
 
         $this->userRoleManager->assignAdminUserRoleTo($this->userRepository->find(1));
         $this->userRoleManager->assignPrivateCarerUserRoleTo($this->userRepository->find(2));
-
     }
 }

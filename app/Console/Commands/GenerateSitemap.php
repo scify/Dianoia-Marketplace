@@ -48,6 +48,7 @@ class GenerateSitemap extends Command {
         $sitemapGenerator->add(Url::create('/privacy-policy')->setPriority(0.2)->addImage(asset('img/dianoia_logo.png'), 'Dianoia Marketplace image')->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY));
         $sitemapGenerator->add(Url::create('/resources/display_exercises')->setPriority(0.9)->addImage(asset('img/dianoia_logo.png'), 'Dianoia Marketplace image')->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY));
         $sitemapGenerator->writeToFile(public_path('sitemap.xml'));
+
         return CommandAlias::SUCCESS;
     }
 }

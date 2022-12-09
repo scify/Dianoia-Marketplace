@@ -34,5 +34,5 @@ return [
     'type_mail' => 'Inserisci la tua email',
     'type_password' => 'Inserisci la tua password',
     'already_account' => 'Ho già un account',
-    'sign_in' => 'Login'
+    'sign_in' => 'Login',
 ];

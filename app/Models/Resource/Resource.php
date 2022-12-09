@@ -3,14 +3,13 @@
 namespace App\Models\Resource;
 
 use App\Models\User;
+use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Contracts\Support\Jsonable;
 
-class Resource extends Model implements  Jsonable
-{
+class Resource extends Model implements Jsonable {
     use SoftDeletes;
 
     /**
@@ -30,15 +29,12 @@ class Resource extends Model implements  Jsonable
         'slug',
         'lang_id', 'creator_user_id',
         'admin_user_id', 'img_path', 'status_id', 'pdf_path', 'type_id', 'description', 'difficulty_id',
-        'avg_rating', 'display_in_api'
+        'avg_rating', 'display_in_api',
     ];
 
-
-    public function creator(): HasOne
-    {
+    public function creator(): HasOne {
         return $this->hasOne(User::class, 'id', 'creator_user_id');
     }
-
 
     public function ratings(): HasMany {
         return $this->hasMany(
@@ -47,7 +43,4 @@ class Resource extends Model implements  Jsonable
             'id'
         );
     }
-
-
-
 }

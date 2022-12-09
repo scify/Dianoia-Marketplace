@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DifficultiesLkp extends Model
-{
+class DifficultiesLkp extends Model {
     use SoftDeletes;
+
     /**
      * The table associated with the model.
      *
@@ -21,6 +21,6 @@ class DifficultiesLkp extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'code'
+        'name', 'code',
     ];
 }

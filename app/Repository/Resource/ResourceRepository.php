@@ -1,25 +1,17 @@
 <?php
 
-
 namespace App\Repository\Resource;
 
-
 use App\Models\Resource\Resource;
-use App\Models\Resource\ResourcesRating;
-use App\Models\User;
 use App\Repository\Repository;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Support\Collection;
 
 class ResourceRepository extends Repository {
-
     protected array $defaultRelationships = ['creator', 'ratings'];
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    function getModelClassName() {
+    public function getModelClassName() {
         return Resource::class;
     }
 
@@ -31,27 +23,30 @@ class ResourceRepository extends Repository {
         array $type_ids = null,
         array $ratings = null,
               $paginate = null,
-              $api = False
+              $api = false
     ) {
         $whereArray = [];
-        if ($lang_id)
+        if ($lang_id) {
             $whereArray['lang_id'] = $lang_id;
-        if ($user_id)
+        }
+        if ($user_id) {
             $whereArray['creator_user_id'] = $user_id;
+        }
 
 
-        if ($status_ids)
+        if ($status_ids) {
             $resourcesBuilder = Resource::where($whereArray)->whereIn('status_id', $status_ids)->with($this->defaultRelationships);
-        else
+        } else {
             $resourcesBuilder = Resource::where($whereArray)->with($this->defaultRelationships);
+        }
 
 
         if ($type_ids) {
-            $resourcesBuilder->whereIn('type_id', $type_ids);//maybe $resourcesBuilder = ...
+            $resourcesBuilder->whereIn('type_id', $type_ids); //maybe $resourcesBuilder = ...
         }
 
         if ($api) {
-            $resourcesBuilder->where('display_in_api', True);//maybe $resourcesBuilder = ...
+            $resourcesBuilder->where('display_in_api', true); //maybe $resourcesBuilder = ...
         }
 
 
@@ -81,16 +76,14 @@ class ResourceRepository extends Repository {
                 $ret = array_search(intval($model->id), $ratings);
                 if ($ret === false) {
                     $i++;
+
                     return $i - 1;
                 }
             });
-            return $sorted->values();
 
+            return $sorted->values();
         }
+
         return $ret;
     }
 }
-
-
-
-

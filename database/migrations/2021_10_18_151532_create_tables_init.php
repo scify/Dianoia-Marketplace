@@ -4,15 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTablesInit extends Migration
-{
+class CreateTablesInit extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -123,7 +121,6 @@ class CreateTablesInit extends Migration
             $table->integer('rating');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -131,8 +128,7 @@ class CreateTablesInit extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('resources_ratings');
         Schema::dropIfExists('resources');
         Schema::dropIfExists('resource_statuses_lkp');
@@ -145,6 +141,5 @@ class CreateTablesInit extends Migration
         Schema::dropIfExists('password_resets');
         Schema::dropIfExists('failed_jobs');
         Schema::dropIfExists('personal_access_tokens');
-
     }
 }

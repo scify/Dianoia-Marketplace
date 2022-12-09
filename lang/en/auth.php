@@ -34,5 +34,5 @@ return [
     'type_name' => 'Type your nickname',
     'type_password' => 'Type your password',
     'already_account' => 'I already have an account',
-    'sign_in' => 'Sign in'
+    'sign_in' => 'Sign in',
 ];

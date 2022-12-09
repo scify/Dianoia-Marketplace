@@ -4,13 +4,11 @@ namespace App\Actions\Fortify;
 
 use App\BusinessLogicLayer\User\UserManager;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
-class CreateNewUser implements CreatesNewUsers
-{
+class CreateNewUser implements CreatesNewUsers {
     use PasswordValidationRules;
 
     protected UserManager $userManager;
@@ -22,8 +20,9 @@ class CreateNewUser implements CreatesNewUsers
     /**
      * Validate and create a newly registered user.
      *
-     * @param array $input
+     * @param  array  $input
      * @return User
+     *
      * @throws \Illuminate\Validation\ValidationException
      */
     public function create(array $input): User {
@@ -37,14 +36,14 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
-            'role' => 'required|integer|gt:1'
+            'role' => 'required|integer|gt:1',
         ])->validate();
 
         return $this->userManager->create([
             'name' => trim($input['name']),
             'email' => trim($input['email']),
             'password' => trim($input['password']),
-            'role' => intval($input['role'])
+            'role' => intval($input['role']),
         ]);
     }
 }
