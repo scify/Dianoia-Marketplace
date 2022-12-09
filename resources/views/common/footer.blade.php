@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-md-6 col-sm-6 item text" style="margin-left: auto; margin-right: 0;">
 
-                    <div class="copyright" style="float:left!important">
+                    <div class="copyright">
                         <p class="m-0">Created by <a href="https://www.scify.gr/site/en/">SciFY</a> @ {{ now()->year }}
                         </p>
                         <p>version <b>{{ config('app.version') }}</b></p>

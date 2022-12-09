@@ -6,10 +6,10 @@
 @section('content')
     <section id="intro" >
         <div class="container ">
-            <div style="margin-top:200px; text-align:left; top:357px; left: 255px; width:800px; height: 53px; font-size: 40px; color: black; font-family: 'Roboto Condensed Medium',sans-serif">
+            <div style="margin-top:200px; text-align:left; top:357px; left: 255px; width:800px; height: 53px; font-size: 40px; color: black;">
                 {!! __('messages.guidelines-instructions-for-user-creators')!!}.
             </div>
-            <div style="margin-top:25px; font-size: 18px; font-family: 'Roboto Condensed',serif;">
+            <div style="margin-top:25px; font-size: 18px;">
                 <p class="mb-1">
                     {!! __('messages.guidelines-prologue') !!}
                 </p>
