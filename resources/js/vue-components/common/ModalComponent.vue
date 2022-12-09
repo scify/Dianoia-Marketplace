@@ -26,29 +26,38 @@
 <script>
 
 export default {
-    props: {
-        allowClose: Boolean,
-        open: false,
-        classes: ''
-    },
-    data: function () {
-        return {}
-    },
-    methods: {
-        cancel() {
-            this.$emit("canceled");
-        },
-        submit() {
-            this.$emit("submit");
-        },
-        hasSlot (name = 'default') {
-            return !!this.$slots[ name ] || !!this.$scopedSlots[ name ];
-        }
-    },
-    mounted() {
+	props: {
+		allowClose: {
+			type: Boolean,
+			default: false,
+		},
+		open: {
+			type: Boolean,
+			default: false,
+		},
+		classes: {
+			type: String,
+			default: "",
+		}
+	},
+	data: function () {
+		return {};
+	},
+	methods: {
+		cancel() {
+			this.$emit("canceled");
+		},
+		submit() {
+			this.$emit("submit");
+		},
+		hasSlot (name = "default") {
+			return !!this.$slots[ name ] || !!this.$slots[ name ];
+		}
+	},
+	mounted() {
 
-    }
-}
+	}
+};
 </script>
 <style scoped lang="scss">
 

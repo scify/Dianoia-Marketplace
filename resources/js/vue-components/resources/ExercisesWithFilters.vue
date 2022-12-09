@@ -12,7 +12,7 @@
                         {{trans('messages.language')}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <i v-for="language in this.contentLanguages">
+                        <i v-for="language in this.contentLanguages" :key="'lang_' + language.id">
                             <li><a class="dropdown-item" @click="setContentLanguage(language)">{{trans('messages.'+language.name)}}</a></li>
                         </i>
                     </ul>
@@ -50,7 +50,7 @@
                        <u> {{trans('messages.patient-exercises')}}</u>
                     </a>
                     <ul class="checkboxes" aria-labelledby="dropdownMenuButton4" >
-                        <i v-for="type in this.contentTypes">
+                        <i v-for="type in this.contentTypes" :key="'type_' + type.id">
                             <div v-if="isPatientExercise(type)" ><input v-bind:id="type.name" style="margin-right:0.5em" type="checkbox" @click="selectType(type)">{{trans('messages.'+type.name)}}</div>
                         </i>
                     </ul>
@@ -82,7 +82,7 @@
 <!--                    </ul>-->
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton6">
-                        <i v-for="role in this.userRoles">
+                        <i v-for="role in this.userRoles" :key="'role_' + role.id">
                             <li><a class="dropdown-item" @click="filterResourcesByUserRole(role.id)">{{trans('messages.'+role.name)}}</a></li>
                         </i>
                         <li><a class="dropdown-item" @click="filterResourcesByUserRole()">{{trans('messages.from-everyone')}}</a></li>
@@ -118,16 +118,16 @@
 
         <div class="row mt-5" v-if="filteredResources.length">
             <div v-for="(resource, index) in filteredResources" :key="index">
-                    <exercise
+                    <exercise-component
                               :user="user ? user : {}"
                               :user-id-to-get-content="userIdToGetContent"
-                              :resource="resource"
+                              :resource-data="resource"
                               :is-admin="isAdmin"
                               :languages="contentLanguages"
                               :types="contentTypes"
                               :difficulties="contentDifficulties"
                               :users="users">
-                    </exercise>
+                    </exercise-component>
                 </div>
         </div>
     </div>
@@ -139,387 +139,387 @@ import Promise from "lodash/_Promise";
 import _ from "lodash";
 
 export default {
-    mounted() {
-        this.getExerciseMetadataAndContents();
-    },
-    props: {
-        user: {
-            type: Object,
-            default: function () {
-                return {}
-            }
-        },
-        resourceTypes: {
-            type: Array,
-            default: function () {
-                return []
-            }
-        },
-        userIdToGetContent: Number,
-        resourcesStatuses: {
-            type: Array,
-            default: function () {
-                return []
-            }
-        },
-        isAdmin: String,
-        resourceType: String,
-        resourcesRoute: String,
-        reportsRoute: String,
-        creationRoute: String,
-        initExerciseTypes: String,
-    },
-    data: function () {
-        return {
-            contentLanguages: [],
-            contentTypes: [],
-            contentDifficulties: [],
-            contentRatings: [],
-            userRoles: [],
-            userRoleMapping: [],
-            users: [],
-            selectedTypes: [],
-            selectedContentLanguage: {},
-            loadingResources: false,
-            filteredResources: [],
-            maxRating: 5,
-            patientExercises: [],
-            carerExercises: [],
-            searchPlaceholder: window.translate('messages.search-submissions'),
-            searchLoading: false,
-            numExercises: 0,
-        }
-    },
-    methods: {
-        ...mapActions([
-            'get',
-            'handleError'
-        ]),
+	mounted() {
+		this.getExerciseMetadataAndContents();
+	},
+	props: {
+		user: {
+			type: Object,
+			default: function () {
+				return {};
+			}
+		},
+		resourceTypes: {
+			type: Array,
+			default: function () {
+				return [];
+			}
+		},
+		userIdToGetContent: Number,
+		resourcesStatuses: {
+			type: Array,
+			default: function () {
+				return [];
+			}
+		},
+		isAdmin: String,
+		resourceType: String,
+		resourcesRoute: String,
+		reportsRoute: String,
+		creationRoute: String,
+		initExerciseTypes: String,
+	},
+	data: function () {
+		return {
+			contentLanguages: [],
+			contentTypes: [],
+			contentDifficulties: [],
+			contentRatings: [],
+			userRoles: [],
+			userRoleMapping: [],
+			users: [],
+			selectedTypes: [],
+			selectedContentLanguage: {},
+			loadingResources: false,
+			filteredResources: [],
+			maxRating: 5,
+			patientExercises: [],
+			carerExercises: [],
+			searchPlaceholder: window.translate("messages.search-submissions"),
+			searchLoading: false,
+			numExercises: 0,
+		};
+	},
+	methods: {
+		...mapActions([
+			"get",
+			"handleError"
+		]),
 
-        getExerciseMetadataAndContents() {
-            this.loadingResources = true;
-            this.setCarerExercises();
-            this.setPatientExercises();
-            Promise.all([
-                this.getContentLanguages(),
-                this.getContentTypes(),
-                this.getContentDifficulties(),
-                this.getUsers(),
-                this.getRatings(),
-                this.getRoles(),
-                this.getUserRoleMapping(),
-            ]).then(results => {
-                console.log('initialize metadata');
-                this.initResources(results[0], results[1], results[2], results[3], results[4], results[5], results[6])
-                console.log('initialized metadata');
-                this.getResources();
-                this.loadingResources = false;
-            });
-        },
+		getExerciseMetadataAndContents() {
+			this.loadingResources = true;
+			this.setCarerExercises();
+			this.setPatientExercises();
+			Promise.all([
+				this.getContentLanguages(),
+				this.getContentTypes(),
+				this.getContentDifficulties(),
+				this.getUsers(),
+				this.getRatings(),
+				this.getRoles(),
+				this.getUserRoleMapping(),
+			]).then(results => {
+				console.log("initialize metadata");
+				this.initResources(results[0], results[1], results[2], results[3], results[4], results[5], results[6]);
+				console.log("initialized metadata");
+				this.getResources();
+				this.loadingResources = false;
+			});
+		},
 
-        initResources(languages, types, difficulties, users, ratings, roles, role_mapping) {
-            this.contentLanguages = languages;
-            this.contentTypes = types;
-            this.contentDifficulties = difficulties;
-            this.users  = users;
-            this.contentRatings = ratings;
-            this.userRoles= roles;
-            this.userRoleMapping = role_mapping;
-            this.initializeTypes();
-        },
+		initResources(languages, types, difficulties, users, ratings, roles, role_mapping) {
+			this.contentLanguages = languages;
+			this.contentTypes = types;
+			this.contentDifficulties = difficulties;
+			this.users  = users;
+			this.contentRatings = ratings;
+			this.userRoles= roles;
+			this.userRoleMapping = role_mapping;
+			this.initializeTypes();
+		},
 
 
 
-        selectType(type) {
-            let index =  this.selectedTypes.indexOf(type);
-            if (index >= 0) { //unselect object
-                this.selectedTypes.splice(index, 1);
-            }
-            else{ //select object
-                this.selectedTypes.push(type);
-            }
-            let types = _.map(this.selectedTypes, 'name')
-            console.log('selected types: '+types);
-            this.getResources();
-        },
-        setPatientExercises(){
-            this.patientExercises = ["Attention","Memory","Executive","Reason", "Stories"];
-        },
+		selectType(type) {
+			let index =  this.selectedTypes.indexOf(type);
+			if (index >= 0) { //unselect object
+				this.selectedTypes.splice(index, 1);
+			}
+			else{ //select object
+				this.selectedTypes.push(type);
+			}
+			let types = _.map(this.selectedTypes, "name");
+			console.log("selected types: "+types);
+			this.getResources();
+		},
+		setPatientExercises(){
+			this.patientExercises = ["Attention","Memory","Executive","Reason", "Stories"];
+		},
 
-        setCarerExercises(){
-            this.carerExercises = ["Carer"];
-        },
-        isPatientExercise(type){
+		setCarerExercises(){
+			this.carerExercises = ["Carer"];
+		},
+		isPatientExercise(type){
 
-            return this.patientExercises.includes(type.name);
-        },
-        isCarerExercise(type){
-            return this.carerExercises.includes(type.name);
-        },
+			return this.patientExercises.includes(type.name);
+		},
+		isCarerExercise(type){
+			return this.carerExercises.includes(type.name);
+		},
 
-        setContentLanguage(language) {
+		setContentLanguage(language) {
 
-            this.selectedContentLanguage = language;
-            this.getResources();
-        },
-        sortDifficulty(option){
-           this.getContentDifficulties();
-           if(option !== "reset"){
-               this.contentDifficulties.sort(function (a, b) {
-                  if (option === "ascending") {
-                      return a.id - b.id;
-                  } else if (option === "descending") {
-                      return b.id - a.id;
-                  }
-              });
-               this.getResources(true);
-               this.getContentDifficulties();
-           }
-           else{
-               this.contentDifficulties = [];
-               this.getResources();
-               this.getContentDifficulties();
+			this.selectedContentLanguage = language;
+			this.getResources();
+		},
+		sortDifficulty(option){
+			this.getContentDifficulties();
+			if(option !== "reset"){
+				this.contentDifficulties.sort(function (a, b) {
+					if (option === "ascending") {
+						return a.id - b.id;
+					} else if (option === "descending") {
+						return b.id - a.id;
+					}
+				});
+				this.getResources(true);
+				this.getContentDifficulties();
+			}
+			else{
+				this.contentDifficulties = [];
+				this.getResources();
+				this.getContentDifficulties();
 
-           }
-        },
-        sortRating(option){
-            this.filteredResources.sort(function(a, b){
-                if (option === "ascending") {
-                    if(a.avg_rating === 0)//place empty ratings at the bottom
-                        return true;
-                    return a.avg_rating - b.avg_rating;
-                } else if (option === "descending") {
-                    return b.avg_rating - a.avg_rating;
-                }
-                else if (option === "bydate") {//show newest ratings at the top
-                    return new Date(b.updated_at) - new Date(a.updated_at);
-                }
-            });
-        },
+			}
+		},
+		sortRating(option){
+			this.filteredResources.sort(function(a, b){
+				if (option === "ascending") {
+					if(a.avg_rating === 0)//place empty ratings at the bottom
+						return true;
+					return a.avg_rating - b.avg_rating;
+				} else if (option === "descending") {
+					return b.avg_rating - a.avg_rating;
+				}
+				else if (option === "bydate") {//show newest ratings at the top
+					return new Date(b.updated_at) - new Date(a.updated_at);
+				}
+			});
+		},
 
-        getUserRoleMapping(){
-            const instance = this;
-            return new Promise(function callback(resolve, reject) {
-                instance.get({
-                    url: route('user_role_mapping.get'),
-                    urlRelative: false
-                }).then(response => {
-                    instance.userRoleMapping = response.data;
-                    resolve(instance.userRoleMapping );
-                }).catch(e => reject(e));
-            });
-        },
+		getUserRoleMapping(){
+			const instance = this;
+			return new Promise(function callback(resolve, reject) {
+				instance.get({
+					url: window.route("user_role_mapping.get"),
+					urlRelative: false
+				}).then(response => {
+					instance.userRoleMapping = response.data;
+					resolve(instance.userRoleMapping );
+				}).catch(e => reject(e));
+			});
+		},
 
-         filterResourcesByUserRole(roleId=null){this.filteredResources = this.resources.slice(0);
-            if(roleId === null){
-                return;
-            }
-            let usersWithRole = _.map(_.filter(this.userRoleMapping, function(map) {
-                    return map.role_id === roleId;
-            }),'user_id');
-            this.filteredResources = this.filteredResources.filter(
-                item =>usersWithRole.includes(item.creator_user_id));
-        },
-        getContentLanguages() {
-            console.log('retrieving languages');
-            const instance = this;
-            return new Promise(function callback(resolve, reject) {
-                instance.get({
-                    url: route('content_languages.get'),
-                    urlRelative: false
-                }).then(response => {
-                    instance.contentLanguages = response.data;
-                    // instance.selectedContentLanguage = instance.contentLanguages[0];
-                    console.log('retrieved languages');
-                    console.log(_.map(instance.contentLanguages,'name'));
-                    resolve(instance.contentLanguages );
-                }).catch(e => reject(e));
-            });
-        },
-        getContentTypes(){
-            console.log('retrieving types');
-            const instance = this;
-            return new Promise(function callback(resolve, reject) {
-                instance.get({
-                    url: route('content_types.get'),
-                    urlRelative: false
-                }).then(response => {
-                    instance.contentTypes = response.data;
-                    console.log('retrieved types');
-                    console.log(_.map(instance.contentTypes,'name'));
-                    resolve(instance.contentTypes );
-                }).catch(e => reject(e));
-            });
-        },
-        getRoles(){
-            console.log('retrieving roles');
-            const instance = this;
-            return new Promise(function callback(resolve, reject) {
-                instance.get({
-                    url: route('user_roles.get'),
-                    urlRelative: false
-                }).then(response => {
-                    instance.userRoles = response.data;
-                    console.log('retrieved roles');
-                    console.log(_.map(instance.userRoles,'name'));
-                    resolve(instance.userRoles );
-                }).catch(e => reject(e));
-            })
-        },
-        getContentDifficulties(){
-            console.log('retrieving difficulties');
-            const instance = this;
-            return new Promise(function callback(resolve, reject) {
-                instance.get({
-                    url: route('content_difficulties.get'),
-                    urlRelative: false
-                }).then(response => {
-                    instance.contentDifficulties = response.data;
-                    console.log('retrieved difficulties');
-                    console.log(_.map(instance.contentDifficulties,'name'));
-                    resolve(instance.contentDifficulties );
-                }).catch(e => reject(e));
-            });
-        },
-        getUsers(){
-            console.log('retrieving users');
-            const instance = this;
-            return new Promise(function callback(resolve, reject) {
-                instance.get({
-                    url: route('users.get'),
-                    urlRelative: false
-                }).then(response => {
-                    instance.users = response.data;
-                    console.log('retrieved users');
-                    console.log(_.map(instance.users,'name'));
-                    resolve(instance.users );
-                }).catch(e => reject(e));
-            });
-        },
-        getResources(sort_difficulty=false) {
-            this.resources = [];
-            this.filteredResources = [];
-            let url = "";
-            if(this.showReports()){
-                url = this.reportsRoute;
-            }
-            else {
-                url = this.resourcesRoute;
-            }
-            if(this.selectedContentLanguage){
-                url += '?lang_id=' + this.selectedContentLanguage.id;
-            }
-            else{
-                url += '?lang_id=';
-            }
-            if (this.selectedTypes.length) {
-                url += '&type_ids=' + _.map(this.selectedTypes, 'id').join();
-            }
-            if (this.userIdToGetContent) {
-                url += ('&user_id_to_get_content=' + this.userIdToGetContent);
-            }
-            if (this.resourcesStatuses){
-                console.log(_.map(this.resourcesStatuses).join());
-                url += '&status_ids=' + _.map(this.resourcesStatuses).join();
-            }
-            url += '&is_admin=' + this.isAdmin;
-            if(sort_difficulty) {
-                url += '&difficulties=' + _.map(this.contentDifficulties, 'id').join();
-            }
-            this.get({
-                url: url,
-                urlRelative: false
-            }).then(response => {
-                this.resources = response.data;
-                this.filteredResources = this.resources;
-                let names = _.map(this.filteredResources, 'name')
-                this.numExercises = names.length;
-            });
-        },
-        getRatings(){
-            const instance = this;
-            console.log('retrieve ratings');
-            return new Promise(function callback(resolve, reject) {
-                instance.get({
-                    url: route('content_ratings.get'),
-                    urlRelative: false
-                }).then(response => {
-                    instance.contentRatings = response.data;
-                    console.log('retrieved ratings');
-                    console.log(_.map(instance.contentRatings,'id'));
-                    resolve(instance.contentRatings );
-                }).catch(e => reject(e));
-            });
-        },
-        search(searchTerm) {
-            if (this.timer) {
-                clearTimeout(this.timer);
-                this.timer = null;
-            }
-            this.timer = setTimeout(() => {
-                this.searchLoading = true;
-                this.filteredResources = _.filter(this.resources, function (p) {
-                    return p.name.toLowerCase().includes(searchTerm.toLowerCase())
+		filterResourcesByUserRole(roleId=null){this.filteredResources = this.resources.slice(0);
+			if(roleId === null){
+				return;
+			}
+			let usersWithRole = _.map(_.filter(this.userRoleMapping, function(map) {
+				return map.role_id === roleId;
+			}),"user_id");
+			this.filteredResources = this.filteredResources.filter(
+				item =>usersWithRole.includes(item.creator_user_id));
+		},
+		getContentLanguages() {
+			console.log("retrieving languages");
+			const instance = this;
+			return new Promise(function callback(resolve, reject) {
+				instance.get({
+					url: window.route("content_languages.get"),
+					urlRelative: false
+				}).then(response => {
+					instance.contentLanguages = response.data;
+					// instance.selectedContentLanguage = instance.contentLanguages[0];
+					console.log("retrieved languages");
+					console.log(_.map(instance.contentLanguages,"name"));
+					resolve(instance.contentLanguages );
+				}).catch(e => reject(e));
+			});
+		},
+		getContentTypes(){
+			console.log("retrieving types");
+			const instance = this;
+			return new Promise(function callback(resolve, reject) {
+				instance.get({
+					url: window.route("content_types.get"),
+					urlRelative: false
+				}).then(response => {
+					instance.contentTypes = response.data;
+					console.log("retrieved types");
+					console.log(_.map(instance.contentTypes,"name"));
+					resolve(instance.contentTypes );
+				}).catch(e => reject(e));
+			});
+		},
+		getRoles(){
+			console.log("retrieving roles");
+			const instance = this;
+			return new Promise(function callback(resolve, reject) {
+				instance.get({
+					url: window.route("user_roles.get"),
+					urlRelative: false
+				}).then(response => {
+					instance.userRoles = response.data;
+					console.log("retrieved roles");
+					console.log(_.map(instance.userRoles,"name"));
+					resolve(instance.userRoles );
+				}).catch(e => reject(e));
+			});
+		},
+		getContentDifficulties(){
+			console.log("retrieving difficulties");
+			const instance = this;
+			return new Promise(function callback(resolve, reject) {
+				instance.get({
+					url: window.route("content_difficulties.get"),
+					urlRelative: false
+				}).then(response => {
+					instance.contentDifficulties = response.data;
+					console.log("retrieved difficulties");
+					console.log(_.map(instance.contentDifficulties,"name"));
+					resolve(instance.contentDifficulties );
+				}).catch(e => reject(e));
+			});
+		},
+		getUsers(){
+			console.log("retrieving users");
+			const instance = this;
+			return new Promise(function callback(resolve, reject) {
+				instance.get({
+					url: window.route("users.get"),
+					urlRelative: false
+				}).then(response => {
+					instance.users = response.data;
+					console.log("retrieved users");
+					console.log(_.map(instance.users,"name"));
+					resolve(instance.users );
+				}).catch(e => reject(e));
+			});
+		},
+		getResources(sort_difficulty=false) {
+			this.resources = [];
+			this.filteredResources = [];
+			let url = "";
+			if(this.showReports()){
+				url = this.reportsRoute;
+			}
+			else {
+				url = this.resourcesRoute;
+			}
+			if(this.selectedContentLanguage){
+				url += "?lang_id=" + this.selectedContentLanguage.id;
+			}
+			else{
+				url += "?lang_id=";
+			}
+			if (this.selectedTypes.length) {
+				url += "&type_ids=" + _.map(this.selectedTypes, "id").join();
+			}
+			if (this.userIdToGetContent) {
+				url += ("&user_id_to_get_content=" + this.userIdToGetContent);
+			}
+			if (this.resourcesStatuses){
+				console.log(_.map(this.resourcesStatuses).join());
+				url += "&status_ids=" + _.map(this.resourcesStatuses).join();
+			}
+			url += "&is_admin=" + this.isAdmin;
+			if(sort_difficulty) {
+				url += "&difficulties=" + _.map(this.contentDifficulties, "id").join();
+			}
+			this.get({
+				url: url,
+				urlRelative: false
+			}).then(response => {
+				this.resources = response.data;
+				this.filteredResources = this.resources;
+				let names = _.map(this.filteredResources, "name");
+				this.numExercises = names.length;
+			});
+		},
+		getRatings(){
+			const instance = this;
+			console.log("retrieve ratings");
+			return new Promise(function callback(resolve, reject) {
+				instance.get({
+					url: window.route("content_ratings.get"),
+					urlRelative: false
+				}).then(response => {
+					instance.contentRatings = response.data;
+					console.log("retrieved ratings");
+					console.log(_.map(instance.contentRatings,"id"));
+					resolve(instance.contentRatings );
+				}).catch(e => reject(e));
+			});
+		},
+		search(searchTerm) {
+			if (this.timer) {
+				clearTimeout(this.timer);
+				this.timer = null;
+			}
+			this.timer = setTimeout(() => {
+				this.searchLoading = true;
+				this.filteredResources = _.filter(this.resources, function (p) {
+					return p.name.toLowerCase().includes(searchTerm.toLowerCase())
                         || p.description.toLowerCase().includes(searchTerm.toLowerCase());
-                });
-                this.searchLoading = false;
-            }, 500);
-        },
+				});
+				this.searchLoading = false;
+			}, 500);
+		},
 
 
-        filterTypesByExerciseCategory(category){
-            if(category==="patient"){
-                this.selectedTypes  =  this.contentTypes.filter(type => this.isPatientExercise(type));
-                $('#dropdownMenuButton3').click();
-            }
-            else if(category==="carer"){
-                this.selectedTypes = this.contentTypes.filter(type => this.isCarerExercise(type));
-                $('#dropdownMenuButton3').click();
-            }
-            else if (category==="all"){
-                this.selectedTypes  =  this.contentTypes.slice(0);
-            }
-        },
+		filterTypesByExerciseCategory(category){
+			if(category==="patient"){
+				this.selectedTypes  =  this.contentTypes.filter(type => this.isPatientExercise(type));
+				$("#dropdownMenuButton3").click();
+			}
+			else if(category==="carer"){
+				this.selectedTypes = this.contentTypes.filter(type => this.isCarerExercise(type));
+				$("#dropdownMenuButton3").click();
+			}
+			else if (category==="all"){
+				this.selectedTypes  =  this.contentTypes.slice(0);
+			}
+		},
 
-        selectExerciseCategory(category){
-            this.filterTypesByExerciseCategory(category);
-            this.showTypeDropdownMenu();
-            this.getResources();
-        },
+		selectExerciseCategory(category){
+			this.filterTypesByExerciseCategory(category);
+			this.showTypeDropdownMenu();
+			this.getResources();
+		},
 
-        initializeTypes(){
-            this.selectedContentLanguage = null;
-            this.filterTypesByExerciseCategory(this.initExerciseTypes);
-            this.showTypeDropdownMenu();
-        },
-
-
-        showTypeDropdownMenu(){
-            for(let x in this.contentTypes){
-                let type = this.contentTypes[x];
-                if(jQuery.inArray(type,  this.selectedTypes) !== -1){
-                    $("#"+type.name).prop('checked','true');
-                } else{
-                    $('#'+type.name).prop('checked','false');
-                }
-            }
-        },
-
-        getCurrentUserId(){
-            return this.user['id'];
-        },
-        isProfilePage(){
-            return this.userIdToGetContent > 0;
-        },
-        showReports(){
-            console.log('reports route');
-            console.log(this.reportsRoute);
-            return this.reportsRoute && this.reportsRoute.length > 0;
-        }
-    }
+		initializeTypes(){
+			this.selectedContentLanguage = null;
+			this.filterTypesByExerciseCategory(this.initExerciseTypes);
+			this.showTypeDropdownMenu();
+		},
 
 
-}
+		showTypeDropdownMenu(){
+			for(let x in this.contentTypes){
+				let type = this.contentTypes[x];
+				if(jQuery.inArray(type,  this.selectedTypes) !== -1){
+					$("#"+type.name).prop("checked","true");
+				} else{
+					$("#"+type.name).prop("checked","false");
+				}
+			}
+		},
+
+		getCurrentUserId(){
+			return this.user["id"];
+		},
+		isProfilePage(){
+			return this.userIdToGetContent > 0;
+		},
+		showReports(){
+			console.log("reports route");
+			console.log(this.reportsRoute);
+			return this.reportsRoute && this.reportsRoute.length > 0;
+		}
+	}
+
+
+};
 
 
 </script>

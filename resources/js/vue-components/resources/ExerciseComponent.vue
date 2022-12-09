@@ -24,7 +24,7 @@
                 </div>
 
                 <div style="padding-left:15px;padding-top:15px; border-top:1px solid red; box-shadow: 1px 1px red; align-items:center;" v-if="resource.reportData">
-                    <i v-for="user in this.users" >
+                    <i v-for="user in this.users" :key="user.id">
                         <div class="reported-by"  v-if="user.id===resource.reportData.reporting_user_id"><a style="color:red"><u>Reported by {{user.name}}</u></a></div>
                     </i>
                     <i class="fas fa-envelope fa-3x" @click="showResponseModal" title="Respond to reporting user" style="color:var(--color-green)"> <span  @click="showResponseModal" style="color:var(--color-green); font-size: large; padding-top:10px; padding-bottom: 10px"> Respond </span></i>
@@ -35,22 +35,22 @@
 
                 <div class="exercise-rating p-4 d-flex justify-content-between align-items-center">
                     <div class="rating">
-                        <span v-for="index in maxRating" class="fa-star" v-bind:class="{ fas: resourceHasRating(index), far: !resourceHasRating(index) }"></span>
+                        <span v-for="index in maxRating" :key="'rating_' + index" class="fa-star" v-bind:class="{ fas: resourceHasRating(index), far: !resourceHasRating(index) }"></span>
                         <p  v-if="loggedInUserIsDifferentFromContentUser()" @click="showRateModal">{{   trans('messages.give-rating') }}</p>
                     </div>
 
-                    <i v-for="user in this.users">
+                    <i v-for="user in this.users" :key="user.id">
                         <div class="created-by" v-if="user.id===resource.creator_user_id">{{   trans('messages.created-by') }}{{user.name}}</div>
                     </i>
 
 
-                    <i v-for="difficulty in this.difficulties">
+                    <i v-for="difficulty in this.difficulties" :key="'difficulty_' + difficulty.id">
                         <div class="level" v-if="difficulty.id===resource.difficulty_id">{{trans('messages.'+difficulty.name)}}</div>
                     </i>
-                    <i v-for="language in this.languages">
+                    <i v-for="language in this.languages" :key="'lang_' + language.id">
                         <div class="language" v-if="language.id===resource.lang_id">{{trans('messages.'+language.name)}}</div>
                     </i>
-                    <i v-for="type in this.types">
+                    <i v-for="type in this.types" :key="'type_' + type.id">
                         <div class="category" v-if="type.id===resource.type_id">{{trans('messages.'+type.name)}}</div>
                     </i>
 
@@ -60,7 +60,7 @@
 <!--                     :alt="resource.name">-->
             </div>
         </div>
-        <modal
+        <modal-component
             @canceled="rateModalOpen = false"
             id="rate-modal"
             class="modal"
@@ -81,6 +81,7 @@
                     </div>
                     <div class="row" v-if="userLoggedIn()">
                         <div v-for="index in maxRating"
+                             :key="'rating_' + index"
                              class="col-2"
                              v-bind:class="{'offset-1': index === 1}">
                             <button
@@ -100,8 +101,8 @@
                     </div>
                 </div>
             </template>
-        </modal>
-        <modal
+        </modal-component>
+        <modal-component
              @canceled="editModalOpen = false"
              id="editModal"
              class="modal"
@@ -120,8 +121,8 @@
                 </div>
             </template>
 
-        </modal>
-        <modal
+        </modal-component>
+        <modal-component
             @canceled="deleteModalOpen = false"
             id="delete-package-modal"
             class="modal"
@@ -146,8 +147,8 @@
                     </div>
                 </div>
             </template>
-        </modal>
-        <modal
+        </modal-component>
+        <modal-component
             @canceled="exerciseRejectionModalOpen = false"
             id="exercise-rejection-modal"
             class="modal"
@@ -183,8 +184,8 @@
                     </div>
                 </div>
             </template>
-        </modal>
-        <modal
+        </modal-component>
+        <modal-component
             @canceled="exerciseReportModalOpen = false"
             id="exercise-report-modal"
             class="modal"
@@ -227,8 +228,8 @@
                     </div>
                 </div>
             </template>
-        </modal>
-        <modal
+        </modal-component>
+        <modal-component
             @canceled="responseModalOpen = false"
             id="response-modal"
             class="modal"
@@ -262,7 +263,7 @@
                     </div>
                 </div>
             </template>
-        </modal>
+        </modal-component>
     </div>
 </template>
 
@@ -270,264 +271,268 @@
 import {mapActions} from "vuex";
 export default {
 
-    props: {
-        resource: {
-            type: Object,
-            default: function () {
-                return {}
-            }
-        },
-        user: {
-            type: Object,
-            default: function () {
-                return {}
-            }
-        },
-        languages: Array,
-        types:Array,
-        difficulties:Array,
-        users:Array,
-        resourcesRoute: String,
-        userIdToGetContent: Number,
-        isAdmin: String
-    },
-    data: function () {
-        return {
-            userRating: 0,
-            maxRating: 5,
-            rejectionComment: "this exercise violates the platform rules of conduct",
-            rejectionReason: "",
-            reportComment: "this exercise violates the platform rules of conduct",
-            reportReason: "",
-            response: "",
-            resourceChildrenModalOpen: false,
-            rateModalOpen: false,
-            editModalOpen: false,
-            deleteModalOpen: false,
-            exerciseRejectionModalOpen: false,
-            exerciseReportModalOpen: false,
-            responseModalOpen: false,
-            rateTitleKey: 'rate_exercise_modal_body_text_no_rating'
-        }
-    },
-    methods: {
-        ...mapActions([
-            'get',
-            'post',
-            'handleError'
-        ]),
+	props: {
+		resourceData: {
+			type: Object,
+			default: function () {
+				return {};
+			}
+		},
+		user: {
+			type: Object,
+			default: function () {
+				return {};
+			}
+		},
+		languages: Array,
+		types:Array,
+		difficulties:Array,
+		users:Array,
+		resourcesRoute: String,
+		userIdToGetContent: Number,
+		isAdmin: String
+	},
+	data: function () {
+		return {
+			userRating: 0,
+			maxRating: 5,
+			rejectionComment: "this exercise violates the platform rules of conduct",
+			rejectionReason: "",
+			reportComment: "this exercise violates the platform rules of conduct",
+			reportReason: "",
+			response: "",
+			resourceChildrenModalOpen: false,
+			rateModalOpen: false,
+			editModalOpen: false,
+			deleteModalOpen: false,
+			exerciseRejectionModalOpen: false,
+			exerciseReportModalOpen: false,
+			responseModalOpen: false,
+			rateTitleKey: "rate_exercise_modal_body_text_no_rating",
+			resource: {}
+		};
+	},
+	created() {
+		this.resource = this.resourceData;
+	},
+	methods: {
+		...mapActions([
+			"get",
+			"post",
+			"handleError"
+		]),
 
-        isCarerExercise(){
+		isCarerExercise(){
 
-            for(let x in this.types){
-                let type = this.types[x];
+			for(let x in this.types){
+				let type = this.types[x];
 
-                if (this.resource.type_id === type.id){
-                    return type.name === 'Carer';
-                }
-            }
-        },
-        getFormValues () {
-            this.output = this.$refs.message.value
-        },
-        getDownloadExerciseRoute() {
-            return route('resources.download', this.resource.id);
-        },
-        getEditExerciseRoute() {
+				if (this.resource.type_id === type.id){
+					return type.name === "Carer";
+				}
+			}
+		},
+		getFormValues () {
+			this.output = this.$refs.message.value;
+		},
+		getDownloadExerciseRoute() {
+			return window.route("resources.download", this.resource.id);
+		},
+		getEditExerciseRoute() {
 
-            // return route('resources.edit', this.resource.id);
-            window.location.href = route('resources.edit', this.resource.id);
-        },
-        getRejectExerciseRoute(){
-          return route('resources.reject', this.resource.id);
-        },
-        getReportExerciseRoute(){
-            return route('resources.report', this.resource.id);
-        },
-         getResponseRoute(){
-            return route('resources.respond.post');
-        },
-        getHideExerciseRoute(){
-            return route('resources.hide', this.resource.id);
-        },
-        getCloneExerciseRoute() {
-            return route('resources.clone', this.resource.id);
-        },
-        getDeleteExerciseRoute() {
-            return route('resources.delete_exercise', this.resource.id);
-        },
-        resourceHasRating(rateIndex) {
-            return rateIndex <= this.resource.avg_rating
-        },
-        resourceHasRatingFromUser(rateIndex) {
-            return this.userRating >= rateIndex;
-        },
-        showChildrenResourcesModal() {
-            this.resourceChildrenModalOpen = true;
-        },
-        updateAverageResourceRating() {
-            const ratings = _.map(this.resource.ratings, 'rating');
-            const sum = ratings.reduce((a, b) => a + b, 0);
-            let avg_rating = Math.round(sum / ratings.length) || 0;
-            this.post({
-                url: this.getUpdateExerciseRatingRoute(),
-                data: {
-                    id: this.resource.id,
-                    avg_rating: avg_rating
-                },
-                urlRelative: false
-            }).then(_ => {
-                console.log('Stored avg rating = '+avg_rating.toString() + ' for resource = '+this.resource.id.toString())
-                window.location.reload()
-            });
-        },
-        showRateModal() {
+			// return window.route('resources.edit', this.resource.id);
+			window.location.href = window.route("resources.edit", this.resource.id);
+		},
+		getRejectExerciseRoute(){
+			return window.route("resources.reject", this.resource.id);
+		},
+		getReportExerciseRoute(){
+			return window.route("resources.report", this.resource.id);
+		},
+		getResponseRoute(){
+			return window.route("resources.respond.post");
+		},
+		getHideExerciseRoute(){
+			return window.route("resources.hide", this.resource.id);
+		},
+		getCloneExerciseRoute() {
+			return window.route("resources.clone", this.resource.id);
+		},
+		getDeleteExerciseRoute() {
+			return window.route("resources.delete_exercise", this.resource.id);
+		},
+		resourceHasRating(rateIndex) {
+			return rateIndex <= this.resource.avg_rating;
+		},
+		resourceHasRatingFromUser(rateIndex) {
+			return this.userRating >= rateIndex;
+		},
+		showChildrenResourcesModal() {
+			this.resourceChildrenModalOpen = true;
+		},
+		updateAverageResourceRating() {
+			const ratings = _.map(this.resource.ratings, "rating");
+			const sum = ratings.reduce((a, b) => a + b, 0);
+			let avg_rating = Math.round(sum / ratings.length) || 0;
+			this.post({
+				url: this.getUpdateExerciseRatingRoute(),
+				data: {
+					id: this.resource.id,
+					avg_rating: avg_rating
+				},
+				urlRelative: false
+			}).then(() => {
+				console.log("Stored avg rating = "+avg_rating.toString() + " for resource = "+this.resource.id.toString());
+				window.location.reload();
+			});
+		},
+		showRateModal() {
 
-            this.rateModalOpen = true;
-            if (this.userRating)
-                return;
-            if (this.userLoggedIn()) {
-                this.get({
-                    url: route('resources.user-rating.get')
-                        + '?resources_id=' + this.resource.id + '&user_id=' + this.user.id,
-                    urlRelative: false
-                }).then(response => {
+			this.rateModalOpen = true;
+			if (this.userRating)
+				return;
+			if (this.userLoggedIn()) {
+				this.get({
+					url: window.route("resources.user-rating.get")
+                        + "?resources_id=" + this.resource.id + "&user_id=" + this.user.id,
+					urlRelative: false
+				}).then(response => {
 
-                    this.userRating = response.data.rating;
-                });
-            }
-        },
-        getUpdateExerciseRatingRoute(){
-            return route('resources.update_resource_rating.post', this.resource.id);
-        },
-        showEditModal() {
-            this.editModalOpen = true;
-        },
+					this.userRating = response.data.rating;
+				});
+			}
+		},
+		getUpdateExerciseRatingRoute(){
+			return window.route("resources.update_resource_rating.post", this.resource.id);
+		},
+		showEditModal() {
+			this.editModalOpen = true;
+		},
 
-        closeEditModal() {
-            this.editModalOpen = false;
-        },
-        rejectExercise(){
-            this.post({
-                url: this.getRejectExerciseRoute(),
-                data:{
-                    id: this.resource.id,
-                    rejection_reason: this.rejectionReason,
-                    rejection_comment: this.rejectionComment
-                },
-                urlRelative: false
-            }).then(_ => {
-                window.location.reload()
-            });
-        },
-        reportExercise(){
-            console.log('report exercise');
-            this.post({
-                url: this.getReportExerciseRoute(),
-                data:{
-                    id: this.resource.id,
-                    report_reason: this.reportReason,
-                    report_comment: this.reportComment
-                },
-                urlRelative: false
-            }).then(_ => {
-                window.location.reload()
-            });
-        },
-        approveExercise(){
-            this.post({
-                url: this.getApproveExerciseRoute(),
-                data:{
-                    id: this.resource.id,
-                },
-                urlRelative: false
-            }).then(_ => {});
-            window.location.reload()
-        },
-        respond(){
-            this.post({
-                url: this.getResponseRoute(),
-                data:{
-                    response: this.response,
-                    resource_name: this.resource.name,
-                    reporting_user_id: this.resource.reportData.reporting_user_id
-                },
-                urlRelative: false
-            }).then(_ => {});
-            window.location.reload()
-        },
-        showExerciseRejectionModal() {
-            this.exerciseRejectionModalOpen = true;
-        },
-        showResponseModal() {
-            this.responseModalOpen = true;
-        },
+		closeEditModal() {
+			this.editModalOpen = false;
+		},
+		rejectExercise(){
+			this.post({
+				url: this.getRejectExerciseRoute(),
+				data:{
+					id: this.resource.id,
+					rejection_reason: this.rejectionReason,
+					rejection_comment: this.rejectionComment
+				},
+				urlRelative: false
+			}).then(() => {
+				window.location.reload();
+			});
+		},
+		reportExercise(){
+			console.log("report exercise");
+			this.post({
+				url: this.getReportExerciseRoute(),
+				data:{
+					id: this.resource.id,
+					report_reason: this.reportReason,
+					report_comment: this.reportComment
+				},
+				urlRelative: false
+			}).then(() => {
+				window.location.reload();
+			});
+		},
+		approveExercise(){
+			this.post({
+				url: this.getApproveExerciseRoute(),
+				data:{
+					id: this.resource.id,
+				},
+				urlRelative: false
+			}).then(() => {});
+			window.location.reload();
+		},
+		respond(){
+			this.post({
+				url: this.getResponseRoute(),
+				data:{
+					response: this.response,
+					resource_name: this.resource.name,
+					reporting_user_id: this.resource.reportData.reporting_user_id
+				},
+				urlRelative: false
+			}).then(() => {});
+			window.location.reload();
+		},
+		showExerciseRejectionModal() {
+			this.exerciseRejectionModalOpen = true;
+		},
+		showResponseModal() {
+			this.responseModalOpen = true;
+		},
 
-        showExerciseReportModal() {
-            this.exerciseReportModalOpen = true;
-        },
-        getApproveExerciseRoute(){
-            return route('resources.approve', this.resource.id);
-        },
+		showExerciseReportModal() {
+			this.exerciseReportModalOpen = true;
+		},
+		getApproveExerciseRoute(){
+			return window.route("resources.approve", this.resource.id);
+		},
 
-        showDeleteModal() {
+		showDeleteModal() {
 
-            this.deleteModalOpen = true;
-        },
-        getRateTitleForUser() {
-            if (this.userRating)
-                this.rateTitleKey = 'rate__modal_body_text_update_rating';
-            return window.translate('messages.' + this.rateTitleKey);
-        },
-        rateExercise(rateIndex) {
-            this.post({
-                url: route('resources.user-rating.post'),
-                data: {
-                    user_id: this.user.id,
-                    resources_id: this.resource.id,
-                    rating: rateIndex
-                },
-                urlRelative: false
-            }).then(response => {
-                this.userRating = response.data.rating;
-                let found = false;
-                for (let i = 0; i < this.resource.ratings.length; i++) {
-                    if (this.resource.ratings[i].voter_user_id === this.user.id) {
-                        this.resource.ratings[i].rating = response.data.rating;
-                    }
-                }
-                if (!found)
-                    this.resource.ratings.push(response.data);
-                this.updateAverageResourceRating();
-            });
-        },
-        loggedInUserIsDifferentFromContentUser() {
-            return this.resource.creator.id !== this.user.id;
-        },
-        loggedInUserIsAdmin() {
-            return this.isAdmin === '1';
-        },
-        userLoggedIn() {
-            return this.user && this.user.id;
-        },
-        getLoginRoute() {
-            return route('login');
-        },
-        isProfilePage(){
-            return this.userIdToGetContent > 0;
-        },
-        isApproved(){
-            return this.resource.status_id === 2;
-        },
-        isPending(){
-            return this.resource.status_id === 1;
-        },
-        isRejected(){
-            return this.resource.status_id === 3;
-        }
+			this.deleteModalOpen = true;
+		},
+		getRateTitleForUser() {
+			if (this.userRating)
+				this.rateTitleKey = "rate__modal_body_text_update_rating";
+			return window.translate("messages." + this.rateTitleKey);
+		},
+		rateExercise(rateIndex) {
+			this.post({
+				url: window.route("resources.user-rating.post"),
+				data: {
+					user_id: this.user.id,
+					resources_id: this.resource.id,
+					rating: rateIndex
+				},
+				urlRelative: false
+			}).then(response => {
+				this.userRating = response.data.rating;
+				let found = false;
+				for (let i = 0; i < this.resource.ratings.length; i++) {
+					if (this.resource.ratings[i].voter_user_id === this.user.id) {
+						this.resource.ratings[i].rating = response.data.rating;
+					}
+				}
+				if (!found)
+					this.resource.ratings.push(response.data);
+				this.updateAverageResourceRating();
+			});
+		},
+		loggedInUserIsDifferentFromContentUser() {
+			return this.resource.creator.id !== this.user.id;
+		},
+		loggedInUserIsAdmin() {
+			return this.isAdmin === "1";
+		},
+		userLoggedIn() {
+			return this.user && this.user.id;
+		},
+		getLoginRoute() {
+			return window.route("login");
+		},
+		isProfilePage(){
+			return this.userIdToGetContent > 0;
+		},
+		isApproved(){
+			return this.resource.status_id === 2;
+		},
+		isPending(){
+			return this.resource.status_id === 1;
+		},
+		isRejected(){
+			return this.resource.status_id === 3;
+		}
 
-    }
-}
+	}
+};
 </script>
 
 <style lang="scss">

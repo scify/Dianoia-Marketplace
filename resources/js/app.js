@@ -1,11 +1,12 @@
-import 'bootstrap';
-import $ from 'jquery';
-import Vue from 'vue';
+import "bootstrap";
+import $ from "jquery";
+import Vue from "vue";
 
-require('./bootstrap');
+require("./bootstrap");
 window.$ = window.jQuery = $;
-window.route = require('./backend-route');
-import store from './store/store';
+import route from "./backend-route";
+window.route = route;
+import store from "./store/store";
 
 import getLodash from "lodash/get";
 import eachRightLodash from "lodash/eachRight";
@@ -13,45 +14,45 @@ import replaceLodash from "lodash/replace";
 
 
 window.translate = function (string, args) {
-    let value = getLodash(window.i18n, string);
+	let value = getLodash(window.i18n, string);
 
-    eachRightLodash(args, (paramVal, paramKey) => {
-        value = replaceLodash(value, `:${paramKey}`, paramVal);
-    });
-    return value;
-}
-
-Vue.prototype.trans = (string, args) => {
-    return window.translate(string, args);
+	eachRightLodash(args, (paramVal, paramKey) => {
+		value = replaceLodash(value, `:${paramKey}`, paramVal);
+	});
+	return value;
 };
 
-Vue.component('modal', require('./vue-components/common/ModalComponent').default);
-Vue.component('exercises-with-filters', require('./vue-components/resources/ExercisesWithFilters').default);
-Vue.component('exercise', require('./vue-components/resources/Exercise').default);
+Vue.prototype.trans = (string, args) => {
+	return window.translate(string, args);
+};
+
+Vue.component("modal-component", require("./vue-components/common/ModalComponent").default);
+Vue.component("exercises-with-filters", require("./vue-components/resources/ExercisesWithFilters").default);
+Vue.component("exercise-component", require("./vue-components/resources/ExerciseComponent").default);
 
 
-const app = new Vue({
-    el: '#app',
-    store: store
+new Vue({
+	el: "#app",
+	store: store
 });
 (function ($) {
 
-    let init = function () {
-        closeDismissableAlerts();
-    };
+	let init = function () {
+		closeDismissableAlerts();
+	};
 
-    let closeDismissableAlerts = function () {
-        setTimeout(function () {
-            /*Close any flash message after some time*/
-            $(".alert-dismissible").fadeTo(4000, 500).slideUp(500);
-        }, 3000);
-    };
+	let closeDismissableAlerts = function () {
+		setTimeout(function () {
+			/*Close any flash message after some time*/
+			$(".alert-dismissible").fadeTo(4000, 500).slideUp(500);
+		}, 3000);
+	};
 
-    $(function () {
-        $(document).ready(function () {
-            init();
-        })
-    });
+	$(function () {
+		$(document).ready(function () {
+			init();
+		});
+	});
 
 })(window.jQuery);
 

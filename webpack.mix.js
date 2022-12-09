@@ -1,5 +1,14 @@
 const mix = require('laravel-mix');
+const ESLintPlugin = require('eslint-webpack-plugin');
+
 mix.disableSuccessNotifications();
+
+mix.webpackConfig({
+    plugins: [new ESLintPlugin({
+        fix: true,
+        extensions: ['js', 'vue'],
+    })],
+});
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
