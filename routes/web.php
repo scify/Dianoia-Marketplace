@@ -5,7 +5,12 @@ use App\Http\Controllers\Resource\ResourceController;
 use App\Http\Controllers\ShapesIntegrationController;
 use App\Http\Controllers\TermsPrivacyController;
 use App\Http\Controllers\UserController;
+use App\Models\Resource\Resource;
+use App\Models\User;
+use App\Notifications\AdminNotice;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +50,11 @@ Route::middleware(['auth'])->group(function () {
             'create', 'edit', 'show',
         ]);
         Route::get('/admin/exercise-management', [ResourceController::class, 'manage_exercises'])->name('exercises_management');
+
+        Route::get('test-email/{email}', function (Request $request) {
+            Notification::send([User::where(['email' => $request->email])->first()], new AdminNotice(Resource::find(1)));
+            return "Email sent to: " . $request->email;
+        });
     });
     Route::put('/users/update/{user}', [UserController::class, 'update'])->name('users.update');
 
@@ -94,3 +104,4 @@ Route::get('js/translations.js', function () {
     echo 'window.i18n = ' . json_encode($strings) . ';';
     exit();
 })->name('translations');
+

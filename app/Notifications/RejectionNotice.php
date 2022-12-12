@@ -50,15 +50,13 @@ class RejectionNotice extends Notification implements ShouldQueue {
 
         return (new MailMessage)
             ->greeting('Greetings ' . $this->username . '! Thank you for using our platform to support people fighting with dementia.')
-            ->subject('DiAnoia Marketplace: Your submitted exercise was rejected')
+            ->subject('Dianoia Marketplace: Your submitted exercise was rejected')
             ->line('We regret to inform you that your submitted exercise titled "' . $this->resource->name . '" was rejected by a moderator')
             ->line('Reason for rejection: "' . $this->rejectionReason . '"')
             ->line('Moderator comments: "' . $this->rejectionMessage . '"')
-//            ->line("Exercise ID:\t".$this->resource->id)
             ->line("Exercise Name:\t" . $this->resource->name)
             ->line("User Name:\t" . $notifiable->name)
             ->line("User Email:\t" . $notifiable->email)
-//            ->line("User ID:\t".$this->resource->creator_user_id)
             ->action('View Submitted Exercises', $url);
     }
 

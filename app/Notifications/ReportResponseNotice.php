@@ -47,7 +47,7 @@ class ReportResponseNotice extends Notification implements ShouldQueue {
 
         return (new MailMessage)
             ->greeting('Greetings ' . $this->reporter_name . '! Thank you for using our platform to support people fighting with dementia.')
-            ->subject('DiAnoia Marketplace: Exercise Report: ' . $this->resource_name)
+            ->subject('Dianoia Marketplace: Exercise Report: ' . $this->resource_name)
             ->line('Your feedback is valuable. A moderator responded with the following:')
             ->line($this->response)
             ->action('View Submitted Exercises', $url);

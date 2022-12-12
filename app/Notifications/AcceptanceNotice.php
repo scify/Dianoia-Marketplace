@@ -46,7 +46,7 @@ class AcceptanceNotice extends Notification implements ShouldQueue {
 
         return (new MailMessage)
             ->greeting('Greetings ' . $this->username . '! Thank you for using our platform to support people fighting with dementia.')
-            ->subject('DiAnoia Marketplace: Your submitted exercise titled "' . $this->resource->name . '" was approved!')
+            ->subject('Dianoia Marketplace: Your submitted exercise titled "' . $this->resource->name . '" was approved!')
             ->action('See your approved exercises', $url);
     }
 

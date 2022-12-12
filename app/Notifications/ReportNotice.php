@@ -53,7 +53,7 @@ class ReportNotice extends Notification implements ShouldQueue {
 
         return (new MailMessage)
             ->greeting('Greetings Admin! Please review the reported exercise')
-            ->subject('DiAnoia Marketplace Administration: Exercise REPORTED /  ' . $this->resource->name)
+            ->subject('Dianoia Marketplace Administration: Exercise REPORTED /  ' . $this->resource->name)
             ->line("Exercise ID:\t" . $this->resource->id)
             ->line("Exercise Name:\t" . $this->resource->name)
             ->line("Creator Name:\t" . $this->creator->name)
