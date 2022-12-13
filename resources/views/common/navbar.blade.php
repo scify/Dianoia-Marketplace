@@ -121,7 +121,7 @@
                         <img
                             loading="lazy"
                             src="{{ asset('img/lang/' . App::getLocale() . '.webp') }}"
-                            height="20px" alt="Language">
+                            height="20px" width="33.3px" alt="Language">
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownLangSelection">
                         <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'en') }}">
