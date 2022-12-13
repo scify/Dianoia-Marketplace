@@ -111,10 +111,12 @@
 
                     </li>
                 @endguest
-                <a aria-label="Content Guidelines" href="{{route('content-guidelines')}}">
-                    <i class="fa fa-question-circle " title="Content Guidelines" aria-hidden="true"
-                       style="font-size:24px;color:#3F51B5;padding:7px"></i>
-                </a>
+                <li class="nav-item">
+                    <a aria-label="Content Guidelines" href="{{route('content-guidelines')}}">
+                        <i class="fa fa-question-circle " title="Content Guidelines" aria-hidden="true"
+                           style="font-size:24px;color:#3F51B5;padding:7px"></i>
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLangSelection" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
