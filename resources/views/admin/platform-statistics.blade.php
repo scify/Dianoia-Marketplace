@@ -53,7 +53,7 @@
         </div>
         <div class="row mb-5">
             <div class="col">
-                <h2 class="mb-3">Top Exercise Creators</h2>
+                <h2 class="mb-3">Top Resource Creators</h2>
                 @foreach($viewModel->resourcesPerUserStatistics as $resourcesPerUserStats)
                     <li class="list-group-item">
                         <div class="container-fluid">
