@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/exercise-management', [ResourceController::class, 'manage_exercises'])->name('exercises_management');
 
         Route::get('test-email/{email}', function (Request $request) {
-            Notification::send([User::where(['email' => $request->email])->first()], new AdminNotice(Resource::find(1)));
+            Notification::send([User::where(['email' => $request->email])->first()], new AdminNotice(Resource::first()));
             return "Email sent to: " . $request->email;
         });
     });
