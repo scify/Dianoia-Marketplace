@@ -51,6 +51,7 @@ mix.sass('resources/sass/main.scss', 'public/dist/css')
     .sass('resources/sass/create-edit.scss', 'public/dist/css')
     .sass('resources/sass/content-guidelines.scss', 'public/dist/css')
     .sass('resources/sass/terms-of-use.scss', 'public/dist/css')
+    .sass('resources/sass/user-management.scss', 'public/dist/css')
     .sourceMaps()
     .webpackConfig({
         devtool: 'source-map'
