@@ -59,6 +59,7 @@ return [
     'shapes_key' => env('SHAPES_KEY'),
     'shapes_datalake_api_url' => env('SHAPES_DATALAKE_API_URL'),
     'google_tag_manager_id' => env('GOOGLE_TAG_MANAGER_ID'),
+    'userway_id' => env('USERWAY_ID'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
