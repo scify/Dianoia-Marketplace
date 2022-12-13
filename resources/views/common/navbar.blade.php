@@ -120,7 +120,7 @@
                        data-bs-toggle="dropdown" aria-expanded="false">
                         <img
                             loading="lazy"
-                            src="{{ asset('img/lang/' . App::getLocale() . '.png') }}"
+                            src="{{ asset('img/lang/' . App::getLocale() . '.webp') }}"
                             height="20px" alt="Language">
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownLangSelection">
