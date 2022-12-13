@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\PlatformStatisticsController;
 use App\Http\Controllers\Resource\ResourceController;
 use App\Http\Controllers\ShapesIntegrationController;
 use App\Http\Controllers\TermsPrivacyController;
@@ -55,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
             Notification::send([User::where(['email' => $request->email])->first()], new AdminNotice(Resource::first()));
             return "Email sent to: " . $request->email;
         });
+        Route::get('/platform-statistics', [PlatformStatisticsController::class, 'show_platform_statistics'])->name('platform_statistics');
     });
     Route::put('/users/update/{user}', [UserController::class, 'update'])->name('users.update');
 

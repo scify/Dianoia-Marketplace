@@ -31,17 +31,18 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ UrlMatchesMenuItem("about") }}"  href="{{ route('about')}}">
+                    <a class="nav-link {{ UrlMatchesMenuItem("about") }}" href="{{ route('about')}}">
                         About
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ UrlMatchesMenuItem("tutorial") }}"  href="{{ route('tutorial')}}">
+                    <a class="nav-link {{ UrlMatchesMenuItem("tutorial") }}" href="{{ route('tutorial')}}">
                         Tutorial
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  id="mobileAppDropdownItem" href="{{ !Request::is('home') ? route('homepage') : '' }}#downloadMobileAppBtn">
+                    <a class="nav-link" id="mobileAppDropdownItem"
+                       href="{{ !Request::is('home') ? route('homepage') : '' }}#downloadMobileAppBtn">
                         {{__('messages.mobile-app')}}
                     </a>
                 </li>
@@ -81,6 +82,12 @@
                                         Exercises Management
                                     </a>
                                 </li>
+                                <li>
+                                    <a class="dropdown-item {{ UrlMatchesMenuItem("administration.platform_statistics")}}"
+                                       href="{{ route('administration.platform_statistics') }}">
+                                        Platform Statistics
+                                    </a>
+                                </li>
                             @endcan
                             <li>
                                 <hr class="dropdown-divider">
@@ -103,7 +110,8 @@
                     </li>
                 @endguest
                 <a href="{{route('content-guidelines')}}">
-                    <i class="fa fa-question-circle " title="Content Guidelines" aria-hidden="true" style="font-size:24px;color:#3F51B5;padding:7px"></i>
+                    <i class="fa fa-question-circle " title="Content Guidelines" aria-hidden="true"
+                       style="font-size:24px;color:#3F51B5;padding:7px"></i>
                 </a>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLangSelection" role="button"
@@ -129,7 +137,7 @@
                                     class="mr-2"
                                     src="{{ asset('img/lang/el.png') }}"
                                     height="20px" alt="Greek">
-                            {{__('messages.Ελληνικά')}}
+                                {{__('messages.Ελληνικά')}}
                             </a>
                         </li>
                         <li><a class="dropdown-item" href="{{ route('set-lang-locale', 'it') }}">
