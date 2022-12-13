@@ -1,9 +1,10 @@
+@php use Illuminate\Support\Facades\App; @endphp
 <nav class="navbar navbar-expand-lg  fixed-top   navbar-light">
     <div class="container">
         <a class="navbar-brand" href="{{ route('homepage') }}" tabindex="-1">
             <img
                 loading="lazy"
-                src="{{ asset('img/dianoia_logo.png') }}" height="100px" alt="Marketplace logo">
+                src="{{ asset('img/dianoia_logo.png') }}" height="100px" width="100px" alt="Marketplace logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +13,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown navbar-item-dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownActions" role="button"
+                    <a aria-label="Actions" class="nav-link dropdown-toggle" href="#" id="navbarDropdownActions"
+                       role="button"
                        data-bs-toggle="dropdown" aria-expanded="false"> {{__('messages.dianoia')}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownActions">
@@ -65,7 +67,7 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdminActions">
-                            <li><a class="dropdown-item" href="#">
+                            <li><a class="dropdown-item" href="#" aria-label="User actions">
                                     {!! __('messages.user') !!}
                                 </a>
                             </li>
@@ -92,10 +94,10 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item"
+                            <li><a aria-label="User profile" class="dropdown-item"
                                    href="{{route('resources.my_profile')}}">   {!! __('messages.edit-profile') !!}</a>
                             </li>
-                            <li><a class="dropdown-item" href="{{ route('logout') }}"
+                            <li><a aria-label="Logout" class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('auth.logout') }}
@@ -109,7 +111,7 @@
 
                     </li>
                 @endguest
-                <a href="{{route('content-guidelines')}}">
+                <a aria-label="Content Guidelines" href="{{route('content-guidelines')}}">
                     <i class="fa fa-question-circle " title="Content Guidelines" aria-hidden="true"
                        style="font-size:24px;color:#3F51B5;padding:7px"></i>
                 </a>
@@ -118,7 +120,7 @@
                        data-bs-toggle="dropdown" aria-expanded="false">
                         <img
                             loading="lazy"
-                            src="{{ asset('img/lang/' . \Illuminate\Support\Facades\App::getLocale() . '.png') }}"
+                            src="{{ asset('img/lang/' . App::getLocale() . '.png') }}"
                             height="20px" alt="Language">
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownLangSelection">
@@ -126,8 +128,8 @@
                                 <img
                                     loading="lazy"
                                     class="mr-2"
-                                    src="{{ asset('img/lang/en.png') }}"
-                                    height="20px" alt="English">
+                                    src="{{ asset('img/lang/en.webp') }}"
+                                    height="20px" width="33.3px" alt="English">
                                 {{__('messages.English')}}
                             </a>
                         </li>
@@ -135,8 +137,8 @@
                                 <img
                                     loading="lazy"
                                     class="mr-2"
-                                    src="{{ asset('img/lang/el.png') }}"
-                                    height="20px" alt="Greek">
+                                    src="{{ asset('img/lang/el.webp') }}"
+                                    height="20px" width="33.3px" alt="Greek">
                                 {{__('messages.Ελληνικά')}}
                             </a>
                         </li>
@@ -144,8 +146,8 @@
                                 <img
                                     loading="lazy"
                                     class="mr-2"
-                                    src="{{ asset('img/lang/it.png') }}"
-                                    height="20px" alt="Italian">
+                                    src="{{ asset('img/lang/it.webp') }}"
+                                    height="20px" width="33.3px" alt="Italian">
                                 {{__('messages.Italian')}}
                             </a>
                         </li>
@@ -153,8 +155,8 @@
                                 <img
                                     loading="lazy"
                                     class="mr-2"
-                                    src="{{ asset('img/lang/sp.png') }}"
-                                    height="20px" alt="Italian">
+                                    src="{{ asset('img/lang/sp.webp') }}"
+                                    height="20px" width="33.3px" alt="Spanish">
                                 {{__('messages.Spanish')}}
                             </a>
                         </li>
