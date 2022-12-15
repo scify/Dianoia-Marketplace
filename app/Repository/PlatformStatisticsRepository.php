@@ -62,6 +62,7 @@ class PlatformStatisticsRepository {
             and res.deleted_at is null
 
             group by users.id, users.name
+            order by resources_num desc
             limit 10
         '));
     }
