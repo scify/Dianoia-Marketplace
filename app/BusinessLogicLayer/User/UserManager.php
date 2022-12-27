@@ -60,14 +60,14 @@ class UserManager {
             'name' => trim($requestData['name']),
             'email' => trim($requestData['email']),
         ], $id);
-        if ($requestData['password']) {
+        if (isset($requestData['password']) &&  $requestData['password']) {
             $user = $this->userRepository->update([
                 'password' =>  Hash::make($requestData['password']),
             ], $id);
         }
 
 
-        if ($requestData['type_id'] !== $requestData['prev_type_id']) {
+        if (isset($requestData['type_id']) && $requestData['type_id'] !== $requestData['prev_type_id']) {
             $this->userRoleManager->assignRegisteredUserRoleTo($user, $requestData['type_id']);
             $this->userRoleManager->removeRoleFromUser($user, $requestData['prev_type_id']);
         }
