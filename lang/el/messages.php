@@ -166,6 +166,7 @@ return [
     'Italian' => 'Ιταλικά',
     'see-exercise' => 'Δες την άσκηση',
     'edit-profile' => 'Επεξεργασία προφίλ',
+    'my-profile' => 'Το Προφίλ μου',
     'Carer' => 'Ασκήσεις για φροντιστές',
     'Shapes User' => 'Χρήστης Πλατφόρμας Shapes',
     'patient-exercises' => 'Ασκήσεις για ασθενείς',

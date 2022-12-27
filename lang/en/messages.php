@@ -173,6 +173,7 @@ You can also create your own exercises and if you wish to, you can share them wi
     'Italian' => 'Italian',
     'see-exercise' => 'See the exercise',
     'edit-profile' => 'Edit profile',
+    'my-profile' => 'My Profile',
     'Carer' => 'Exercises for caretakers',
     'Shapes User' => 'Χρήστης Πλατφόρμας Shapes',
     'patient-exercises' => 'Exercises for patients',
