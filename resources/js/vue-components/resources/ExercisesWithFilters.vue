@@ -116,8 +116,17 @@
             </div>
         </div>
 
+<!--        <div class="row mt-5" v-if="loadingResources">-->
+<!--            <div class="col justify-content-center">-->
+<!--                <div class="d-flex justify-content-center">-->
+<!--                    <div class="spinner-border text-primary" role="status">-->
+<!--                        <span class="visually-hidden">Loading...</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="row mt-5" v-if="filteredResources.length">
-            <div v-for="(resource, index) in filteredResources" :key="index">
+            <div v-for="resource in filteredResources" :key="'resource_'+resource.id">
                     <exercise-component
                               :user="user ? user : {}"
                               :user-id-to-get-content="userIdToGetContent"
@@ -283,7 +292,9 @@ export default {
 			}
 		},
 		sortRating(option){
-			this.filteredResources.sort(function(a, b){
+			console.log("clicked sort ",option);
+
+			this.filteredResources = this.filteredResources.slice().sort(function(a, b){
 				if (option === "ascending") {
 					if(a.avg_rating === 0)//place empty ratings at the bottom
 						return true;
@@ -291,10 +302,15 @@ export default {
 				} else if (option === "descending") {
 					return b.avg_rating - a.avg_rating;
 				}
-				else if (option === "bydate") {//show newest ratings at the top
+				else if (option === "bydate") {//show the newest ratings at the top
 					return new Date(b.updated_at) - new Date(a.updated_at);
 				}
 			});
+
+			// this.filteredResources.push(
+			// 	this.filteredResources.at(0)
+			// );
+			console.log(_.map(this.filteredResources,"name"));
 		},
 
 		getUserRoleMapping(){
@@ -310,7 +326,8 @@ export default {
 			});
 		},
 
-		filterResourcesByUserRole(roleId=null){this.filteredResources = this.resources.slice(0);
+		filterResourcesByUserRole(roleId=null){
+			this.filteredResources = this.resources.slice(0);
 			if(roleId === null){
 				return;
 			}
