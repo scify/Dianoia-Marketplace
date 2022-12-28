@@ -507,7 +507,7 @@ export default {
 			});
 		},
 		loggedInUserIsDifferentFromContentUser() {
-			return this.resource.creator.id !== this.user.id;
+			return this.resource.creator && this.resource.creator.id !== this.user.id;
 		},
 		loggedInUserIsAdmin() {
 			return this.isAdmin === "1";
