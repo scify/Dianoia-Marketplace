@@ -255,4 +255,12 @@ Puedes también crear tus propios ejercicios y compartirlos con la comunidad.',
     'tutorial_6' => 'Εn la aplicación Dianoia, el cuidador puede también encontrar una serie de actividades y enlaces de diferentes fuentes que le servirán para desconectar de su trabajo tan exigente y para su fortalecimiento psicológico.<br><br>Dianoia Marketplace da a todos los usuarios la posibilidad de crear nuevas actividades que estarán disponibles a través de la aplicación Dianoia.',
     'tutorial_7' => 'Εn la pantalla de creación de nuevas actividades hay que usar un título descriptivo, una breve descripción de la actividad, una imagen opcional, la lengua, el nivel de dificultad y una categoría.<br><br>A continuación, se debe cargar un archivo pdf con la actividad y marcar la casilla que indica que hemos leído y aceptado los términos y condiciones de uso de la plataforma.<br><br>Al crear la actividad un miembro del grupo de administración del Dianoia Marketplace va a revisarla y decidir si se puede publicar en Marketplace o en la aplicación móvil.',
     'about' => 'Sobre',
+    'rejection_terms_of_use' => 'Este ejercicio infringe las condiciones de uso de la plataforma',
+    'rejection_inappropriate_content' => 'Este ejercicio contiene contenido inapropiado',
+    'rejection_ip_rights' => 'Este ejercicio infringe la normativa sobre propiedad intelectual',
+    'rejection_illegible_content' => 'Este ejercicio infringe la normativa sobre derechos de autor',
+    'rejection_other' => 'Otros',
+    'choose_reporting_reason' => 'Elija el motivo de la notificación',
+    'optionally_include_comments' => 'Si lo desea, incluya algunos comentarios a continuación'
+
 ];

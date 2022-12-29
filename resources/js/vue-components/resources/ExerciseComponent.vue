@@ -165,16 +165,16 @@
                     <div class="row">
                         <select v-model="rejectionReason">
                             <option disabled value="">{{trans('messages.see-rejection')}}</option>
-                            <option> Αυτή η άσκηση παραβιάζει τους όρους χρήσης της πλατφορμας</option>
-                            <option> Αυτή η άσκηση περιέχει ακατάλληλο περιεχόμενο</option>
-                            <option> Aυτή η άσκηση παραβιάζει τους κανονισμούς περί πνευματικής ιδιοκτησίας</option>
-                            <option> Το περιεχόμενο της άσκησης δεν είναι ευκρινές / ευανάγνωστο</option>
-                            <option> Άλλο </option>
+                            <option> {{trans('messages.rejection_terms_of_use')}}</option>
+                            <option> {{trans('messages.rejection_inappropriate_content')}}</option>
+                            <option> {{trans('messages.rejection_ip_rights')}} </option>
+                            <option> {{trans('messages.rejection_illegible_content')}}</option>
+                            <option> {{trans('messages.rejection_other')}}  </option>
                         </select>
                         <p style="white-space: pre-line;">{{  }}</p>
                         <br>
                         <div id="rejectForm">
-                            <p>Optionally include some comments below</p>
+                            <p>{{ trans('messages.optionally_include_comments') }}</p>
                             <textarea rows="4" cols="50" v-model="rejectionComment"></textarea>
                             <p>{{trans('messages.warning_rejection')}}</p>
                             <button @click="rejectExercise" class="btn btn-danger">
@@ -201,17 +201,17 @@
                 <div class="container pt-3 pb-5">
                     <div v-if="userLoggedIn()" class="row">
                         <select v-model="reportReason">
-                            <option disabled value="">Choose your reason for reporting</option>
-                            <option> Αυτή η άσκηση παραβιάζει τους όρους χρήσης της πλατφορμας</option>
-                            <option> Αυτή η άσκηση περιέχει ακατάλληλο περιεχόμενο</option>
-                            <option> Aυτή η άσκηση παραβιάζει τους κανονισμούς περί πνευματικής ιδιοκτησίας</option>
-                            <option> Το περιεχόμενο της άσκησης δεν είναι ευκρινές / ευανάγνωστο</option>
-                            <option> Άλλο </option>
+                            <option disabled value="">{{trans('messages.choose_reporting_reason')}}</option>
+                            <option> {{trans('messages.rejection_terms_of_use')}}</option>
+                            <option> {{trans('messages.rejection_inappropriate_content')}}</option>
+                            <option> {{trans('messages.rejection_ip_rights')}} </option>
+                            <option> {{trans('messages.rejection_illegible_content')}}</option>
+                            <option> {{trans('messages.rejection_other')}}  </option>
                         </select>
                         <p style="white-space: pre-line;">{{  }}</p>
                         <br>
                         <div id="reportForm">
-                            <p>Optionally include some comments below</p>
+                            <p>{{ trans('messages.optionally_include_comments') }}</p>
                             <textarea rows="4" cols="50" v-model="reportComment"></textarea>
                             <p>{{trans('messages.warning_rejection')}}</p>
                             <button @click="reportExercise" class="btn btn-danger">

@@ -260,4 +260,13 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'tutorial_6' => 'Attraverso Dianoia, il caregiver può trovare una raccolta di attività e collegamenti utili con le fonti per scaricarsi, rilassarsi e potenziarsi psicologicamente, dopo una dura giornata di lavoro.<br><br>Dianoia Marketplace offre a tutti la possibilità di creare esercizi che saranno poi disponibili tramite l\'app mobile Dianoia:',
     'tutorial_7' => 'Nella schermata "Crea nuovo esercizio", dovremmo aggiungere un titolo descrittivo, una breve descrizione, un\'immagine opzionale, lingua, livello di difficoltà, nonché la categoria di appartenenza.<br><br>Successivamente, è necessario caricare il file pdf dell\'attività e selezionare le caselle di controllo che suggeriscono di aver letto le Condizioni d\'uso e l\'Informativa sulla privacy. Una volta creato l\'esercizio, il team amministrativo di Dianoia Marketplace esaminerà l\'esercizio e deciderà se l\'esercizio verrà pubblicato sull\'app mobile di Dianoia o solo su Dianoia Marketplace.',
     'about' => 'Circa',
+    'rejection_terms_of_use' => 'Questo esercizio viola le condizioni di utilizzo della piattaforma.',
+    'rejection_inappropriate_content' => 'Questo esercizio contiene contenuti inappropriati',
+    'rejection_ip_rights' => 'Questo esercizio viola le norme sulla proprietà intellettuale',
+    'rejection_illegible_content' => 'Questo esercizio viola le norme sul copyright',
+    'rejection_other' => 'Altro',
+    'choose_reporting_reason' => 'Scegliete il motivo della segnalazione',
+    'optionally_include_comments' => 'È possibile includere alcuni commenti qui di seguito'
+
+
 ];

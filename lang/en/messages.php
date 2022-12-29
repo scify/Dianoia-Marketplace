@@ -260,4 +260,13 @@ You can also create your own exercises and if you wish to, you can share them wi
     'tutorial_6' => 'Through Dianoia, the carer can find a collection of activities and helpful links with sources in order to discharge, relax, and psychologically empower themselves, after a hard day’s work.<br><br>Dianoia Marketplace gives everyone the ability to create exercises that will then be available through the Dianoia mobile app:',
     'tutorial_7' => 'When in the “Create new exercise” screen, we should add a descriptive title, a short description, an optional image, language, difficulty level, as well as the belonging category. After that, we need to upload the pdf file of the activity, and check the checkboxes that suggest that we have read the Terms Of Use and the Privacy Policy.<br><br>Once we have created the exercise, the administrative team of Dianoia Marketplace with review the exercise, and will decide if the exercise will be published on the Dianoia mobile app, or only on the Dianoia Marketplace.',
     'about' => 'About',
+    'rejection_terms_of_use' => 'This exercise violates the terms of use of the platform',
+    'rejection_inappropriate_content' => 'This exercise contains inappropriate content',
+    'rejection_ip_rights' => 'This exercise violates intellectual property regulations',
+    'rejection_illegible_content' => 'This exercise violates the copyright regulations',
+    'rejection_other' => 'Other',
+    'choose_reporting_reason' => 'Choose your reason for reporting',
+    'optionally_include_comments' => 'Optionally include some comments below'
+
+
 ];
