@@ -175,7 +175,7 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'edit-profile' => 'Il mio profilo',
     'my-profile' => 'Το Προφίλ μου',
     'Carer' => 'Esercizi per accompagnatori',
-    'Shapes User' => 'Χρήστης Πλατφόρμας Shapes',
+    'Shapes User' => 'Utente della piattaforma Shapes',
     'patient-exercises' => 'Esercizi per pazienti',
     'all-updates' => 'Tutte le aggiunte',
     'search-submissions' => 'Cerca tutte le voci',

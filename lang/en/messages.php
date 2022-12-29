@@ -175,7 +175,7 @@ You can also create your own exercises and if you wish to, you can share them wi
     'edit-profile' => 'Edit profile',
     'my-profile' => 'My Profile',
     'Carer' => 'Exercises for caretakers',
-    'Shapes User' => 'Χρήστης Πλατφόρμας Shapes',
+    'Shapes User' => 'Shapes Platform User',
     'patient-exercises' => 'Exercises for patients',
     'all-updates' => 'All the additions',
     'search-submissions' => 'Search all entries',
