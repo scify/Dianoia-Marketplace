@@ -93,6 +93,7 @@
                                        class="form-control w-50" id="newUserPassword" type="password"
                                        name="password" placeholder="" required/>
                             </div>
+
                             <div class="mb-3">
                                 <input form="new-user-form"
                                        type="checkbox" name="admin" class="form-check-input mr-2"

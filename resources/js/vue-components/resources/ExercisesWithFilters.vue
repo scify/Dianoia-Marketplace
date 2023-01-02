@@ -62,8 +62,8 @@
                         {{trans('messages.rating')}}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
-                        <li><a class="dropdown-item" @click="sortRating('descending')">{{trans('messages.higher-rating')}}</a></li>
-                        <li><a class="dropdown-item" @click="sortRating('ascending')">{{trans('messages.lower-rating')}}</a></li>
+                        <li><a class="dropdown-item" @click="sortRating('descending')">{{trans('messages.higher-rating')}} &#8680; {{trans('messages.lower-rating')}} </a></li>
+                        <li><a class="dropdown-item" @click="sortRating('ascending')">{{trans('messages.lower-rating')}}  &#8680; {{trans('messages.higher-rating')}}</a></li>
                         <li><a class="dropdown-item" @click="sortRating('bydate')">{{trans('messages.new-ratings')}}</a></li>
                         <li><a class="dropdown-item" @click="sortRating('reset')">{{trans('messages.all-ratings')}}</a></li>
                     </ul>
@@ -116,8 +116,17 @@
             </div>
         </div>
 
+        <div class="row mt-5" v-if="loadingResources">
+            <div class="col justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row mt-5" v-if="filteredResources.length">
-            <div v-for="(resource, index) in filteredResources" :key="index">
+            <div v-for="resource in filteredResources" :key="'resource_'+resource.id">
                     <exercise-component
                               :user="user ? user : {}"
                               :user-id-to-get-content="userIdToGetContent"
@@ -209,9 +218,9 @@ export default {
 				this.getRoles(),
 				this.getUserRoleMapping(),
 			]).then(results => {
-				console.log("initialize metadata");
+				// console.log("initialize metadata");
 				this.initResources(results[0], results[1], results[2], results[3], results[4], results[5], results[6]);
-				console.log("initialized metadata");
+				// console.log("initialized metadata");
 				this.getResources();
 				this.loadingResources = false;
 			});
@@ -238,8 +247,8 @@ export default {
 			else{ //select object
 				this.selectedTypes.push(type);
 			}
-			let types = _.map(this.selectedTypes, "name");
-			console.log("selected types: "+types);
+			// let types = _.map(this.selectedTypes, "name");
+			// console.log("selected types: "+types);
 			this.getResources();
 		},
 		setPatientExercises(){
@@ -283,7 +292,9 @@ export default {
 			}
 		},
 		sortRating(option){
-			this.filteredResources.sort(function(a, b){
+			// console.log("clicked sort ",option);
+
+			this.filteredResources = this.filteredResources.slice().sort(function(a, b){
 				if (option === "ascending") {
 					if(a.avg_rating === 0)//place empty ratings at the bottom
 						return true;
@@ -291,10 +302,11 @@ export default {
 				} else if (option === "descending") {
 					return b.avg_rating - a.avg_rating;
 				}
-				else if (option === "bydate") {//show newest ratings at the top
+				else if (option === "bydate") {//show the newest ratings at the top
 					return new Date(b.updated_at) - new Date(a.updated_at);
 				}
 			});
+			// console.log(_.map(this.filteredResources,"name"));
 		},
 
 		getUserRoleMapping(){
@@ -310,7 +322,8 @@ export default {
 			});
 		},
 
-		filterResourcesByUserRole(roleId=null){this.filteredResources = this.resources.slice(0);
+		filterResourcesByUserRole(roleId=null){
+			this.filteredResources = this.resources.slice(0);
 			if(roleId === null){
 				return;
 			}
@@ -321,7 +334,7 @@ export default {
 				item =>usersWithRole.includes(item.creator_user_id));
 		},
 		getContentLanguages() {
-			console.log("retrieving languages");
+			// console.log("retrieving languages");
 			const instance = this;
 			return new Promise(function callback(resolve, reject) {
 				instance.get({
@@ -330,14 +343,14 @@ export default {
 				}).then(response => {
 					instance.contentLanguages = response.data;
 					// instance.selectedContentLanguage = instance.contentLanguages[0];
-					console.log("retrieved languages");
-					console.log(_.map(instance.contentLanguages,"name"));
+					// console.log("retrieved languages");
+					// console.log(_.map(instance.contentLanguages,"name"));
 					resolve(instance.contentLanguages );
 				}).catch(e => reject(e));
 			});
 		},
 		getContentTypes(){
-			console.log("retrieving types");
+			// console.log("retrieving types");
 			const instance = this;
 			return new Promise(function callback(resolve, reject) {
 				instance.get({
@@ -345,14 +358,14 @@ export default {
 					urlRelative: false
 				}).then(response => {
 					instance.contentTypes = response.data;
-					console.log("retrieved types");
-					console.log(_.map(instance.contentTypes,"name"));
+					// console.log("retrieved types");
+					// console.log(_.map(instance.contentTypes,"name"));
 					resolve(instance.contentTypes );
 				}).catch(e => reject(e));
 			});
 		},
 		getRoles(){
-			console.log("retrieving roles");
+			// console.log("retrieving roles");
 			const instance = this;
 			return new Promise(function callback(resolve, reject) {
 				instance.get({
@@ -360,14 +373,14 @@ export default {
 					urlRelative: false
 				}).then(response => {
 					instance.userRoles = response.data;
-					console.log("retrieved roles");
-					console.log(_.map(instance.userRoles,"name"));
+					// console.log("retrieved roles");
+					// console.log(_.map(instance.userRoles,"name"));
 					resolve(instance.userRoles );
 				}).catch(e => reject(e));
 			});
 		},
 		getContentDifficulties(){
-			console.log("retrieving difficulties");
+			// console.log("retrieving difficulties");
 			const instance = this;
 			return new Promise(function callback(resolve, reject) {
 				instance.get({
@@ -375,14 +388,14 @@ export default {
 					urlRelative: false
 				}).then(response => {
 					instance.contentDifficulties = response.data;
-					console.log("retrieved difficulties");
-					console.log(_.map(instance.contentDifficulties,"name"));
+					// console.log("retrieved difficulties");
+					// console.log(_.map(instance.contentDifficulties,"name"));
 					resolve(instance.contentDifficulties );
 				}).catch(e => reject(e));
 			});
 		},
 		getUsers(){
-			console.log("retrieving users");
+			// console.log("retrieving users");
 			const instance = this;
 			return new Promise(function callback(resolve, reject) {
 				instance.get({
@@ -390,8 +403,8 @@ export default {
 					urlRelative: false
 				}).then(response => {
 					instance.users = response.data;
-					console.log("retrieved users");
-					console.log(_.map(instance.users,"name"));
+					// console.log("retrieved users");
+					// console.log(_.map(instance.users,"name"));
 					resolve(instance.users );
 				}).catch(e => reject(e));
 			});
@@ -419,7 +432,7 @@ export default {
 				url += ("&user_id_to_get_content=" + this.userIdToGetContent);
 			}
 			if (this.resourcesStatuses){
-				console.log(_.map(this.resourcesStatuses).join());
+				// console.log(_.map(this.resourcesStatuses).join());
 				url += "&status_ids=" + _.map(this.resourcesStatuses).join();
 			}
 			url += "&is_admin=" + this.isAdmin;
@@ -438,15 +451,15 @@ export default {
 		},
 		getRatings(){
 			const instance = this;
-			console.log("retrieve ratings");
+			// console.log("retrieve ratings");
 			return new Promise(function callback(resolve, reject) {
 				instance.get({
 					url: window.route("content_ratings.get"),
 					urlRelative: false
 				}).then(response => {
 					instance.contentRatings = response.data;
-					console.log("retrieved ratings");
-					console.log(_.map(instance.contentRatings,"id"));
+					// console.log("retrieved ratings");
+					// console.log(_.map(instance.contentRatings,"id"));
 					resolve(instance.contentRatings );
 				}).catch(e => reject(e));
 			});
@@ -512,8 +525,8 @@ export default {
 			return this.userIdToGetContent > 0;
 		},
 		showReports(){
-			console.log("reports route");
-			console.log(this.reportsRoute);
+			// console.log("reports route");
+			// console.log(this.reportsRoute);
 			return this.reportsRoute && this.reportsRoute.length > 0;
 		}
 	}

@@ -67,10 +67,10 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdminActions">
-                            <li><a class="dropdown-item" href="#" aria-label="User actions">
-                                    {!! __('messages.user') !!}
-                                </a>
-                            </li>
+{{--                            <li><a class="dropdown-item" href="#" aria-label="User actions">--}}
+{{--                                    {!! __('messages.user') !!}--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                             @can('manage-platform')
                                 <li>
                                     <a class="dropdown-item {{ UrlMatchesMenuItem("administration.users.index")}}"
@@ -90,12 +90,13 @@
                                         Platform Statistics
                                     </a>
                                 </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                             @endcan
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+
                             <li><a aria-label="User profile" class="dropdown-item"
-                                   href="{{route('resources.my_profile')}}">   {!! __('messages.edit-profile') !!}</a>
+                                   href="{{route('resources.my_profile')}}">   {!! __('messages.my-profile') !!}</a>
                             </li>
                             <li><a aria-label="Logout" class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
