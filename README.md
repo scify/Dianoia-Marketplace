@@ -31,7 +31,7 @@ Also, make sure that the `APP_URL` is set to the correct domain and port that yo
 
 ## First time install (setup database and install dependencies)
 
-0. Make sure php 7.4 (or newer) is installed.
+0. Make sure php 8.0 (or newer) is installed.
 
 
 1. After cloning the project, create an .env file (should be a copy of .env.example),
@@ -54,7 +54,14 @@ php artisan key:generate
 
 If executed successfully, it will be set in the `APP_KEY` variable in the `.env` file.
 
-4. Install and compile front-end dependencies
+If you are using `nvm`, run this command in order to sync to the correct NodeJS version for the project:
+
+```bash
+nvm use
+```
+
+Install and compile the front-end dependencies:
+
 ```
 npm install
 
