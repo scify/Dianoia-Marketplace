@@ -140,6 +140,7 @@ class ShapesIntegrationManager {
         ])
             ->post($this->datalakeAPIUrl . '/marketplace');
         Log::info($data);
+        Log::info($response);
         if (!$response->ok()) {
             throw new Exception(json_decode($response->body()));
         }
