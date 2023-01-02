@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ShapesIntegrationController extends Controller {
     public ShapesIntegrationManager $shapesIntegrationManager;
@@ -76,7 +77,11 @@ class ShapesIntegrationController extends Controller {
             $this->shapesIntegrationManager->storeUserToken($user->id, $token);
             $user = $this->userRepository->find($user->id);
             if ($user->shapes_auth_token && ShapesIntegrationManager::isEnabled()) {
-                $this->shapesIntegrationManager->sendUsageDataToDatalakeAPI($user, 'user_login', $user->email);
+                try {
+                    $this->shapesIntegrationManager->sendUsageDataToDatalakeAPI($user, 'user_login', $user->email);
+                } catch (\Exception $e) {
+                    Log::error($e);
+                }
             }
             session()->flash('flash_message_success', 'Shapes user successfully logged-in');
             Auth::login($user);

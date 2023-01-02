@@ -17,6 +17,7 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use InvalidArgumentException;
 
 class ResourceManager {
@@ -151,7 +152,11 @@ class ResourceManager {
         $user = $this->userRepository->find(Auth::id());
         if ($user->shapes_auth_token && ShapesIntegrationManager::isEnabled()) {
             $resourceType = $this->resourceTypeLkpRepository->find($request['type_id']);
-            $this->shapesIntegrationManager->sendUsageDataToDatalakeAPI($user, 'resource_created', $resourceType->name);
+            try {
+                $this->shapesIntegrationManager->sendUsageDataToDatalakeAPI($user, 'resource_created', $resourceType->name);
+            } catch (\Exception $e) {
+                Log::error($e);
+            }
         }
 
         return $this->resourceRepository->update([
