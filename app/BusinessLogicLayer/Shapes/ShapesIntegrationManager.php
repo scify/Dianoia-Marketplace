@@ -138,11 +138,9 @@ class ShapesIntegrationManager {
             'X-Authorisation' => $user->shapes_auth_token,
             'Accept' => 'application/json',
         ])
-            ->post($this->datalakeAPIUrl . '/marketplace');
-        Log::info($data);
-        Log::info($response);
+            ->post($this->datalakeAPIUrl . '/marketplace', $data);
         if (!$response->ok()) {
-            throw new Exception(json_decode($response->body()));
+            throw new Exception(json_decode($response));
         }
         Log::info('SHAPES Datalake response: ' . json_encode($response->json()));
         $this->analyticsEventRepository->create([
