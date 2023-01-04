@@ -40,39 +40,32 @@ Also, make sure that the `APP_URL` is set to the correct domain and port that yo
    ```php artisan db:seed``` in order to insert the starter data to the DB
 
 2. Install laravel/back-end dependencies
-```
-composer install
-
-composer dump-autoload
-```
-
-3. Then, run the command to set the application unique key:
-
 ```bash
-php artisan key:generate
+composer install
 ```
 
-If executed successfully, it will be set in the `APP_KEY` variable in the `.env` file.
+3. Front-end dependencies
 
-If you are using `nvm`, run this command in order to sync to the correct NodeJS version for the project:
+If you are using [`nvm`](https://github.com/nvm-sh/nvm), run this command in order to sync to the correct NodeJS version for the project:
 
 ```bash
 nvm use
 ```
 
-Install and compile the front-end dependencies:
+Then, install and compile the front-end dependencies:
 
-```
+```bash
 npm install
 
 npm run dev
 ```
 
-5. Create symbolic link for uploaded files.
+4. Create the symbolic link for user-uploaded files.
 
-```
+```bash
 php artisan storage:link
 ```
+
 to link the `/public/storage` folder with the `/storage/app/public` directory
 
 ## SEO - Generate Sitemap
@@ -91,15 +84,12 @@ This application uses [Laravel Pint](https://laravel.com/docs/9.x/pint) in order
 In order to run the styler, run :
 
 ```bash
-
 ./vendor/bin/pint --test -v # the --test will not do any changes, it will just output the changes needed
 
 ./vendor/bin/pint -v # this command will actually perform the code style changes 
-
 ```
 
 ## Apache configuration example:
-
 
 ```
 % sudo touch /etc/apache2/sites-available/dianoiamarketplace.conf
@@ -128,7 +118,7 @@ Enable mod_rewrite, mod_ssl and restart apache:
 % sudo a2enmod rewrite && sudo a2enmod ssl && sudo service apache2 restart
 ```
 Fix permissions for storage directory:
-```
+```bash
 sudo chown -R user:www-data storage
 chmod 775 storage
 cd storage/
