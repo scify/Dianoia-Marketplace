@@ -42,6 +42,8 @@ Also, make sure that the `APP_URL` is set to the correct domain and port that yo
 2. Install laravel/back-end dependencies
 ```bash
 composer install
+
+composer dump-autoload
 ```
 
 3. Front-end dependencies
@@ -59,7 +61,7 @@ Then, install and compile the front-end dependencies:
 ```bash
 npm install
 
-npm run dev
+npm run dev #(use prod if in production)
 ```
 
 4. Create the symbolic link for user-uploaded files.
@@ -133,8 +135,8 @@ Or run the `set-file-permissions.sh` script.
 Change hosts file so dev.dianoiamarketplace points to to localhost
 ```$xslt
 sudo nano /etc/hosts
-127.0.0.1       dev.dianoiamarketplace
 
+127.0.0.1       dev.dianoiamarketplace
 ```
 
 ## How to debug
