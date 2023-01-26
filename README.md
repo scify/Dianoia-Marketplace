@@ -121,18 +121,28 @@ Enable mod_rewrite, mod_ssl and restart apache:
 ```
 % sudo a2enmod rewrite && sudo a2enmod ssl && sudo service apache2 restart
 ```
+
 Fix permissions for storage directory:
+
 ```bash
-sudo chown -R user:www-data storage
+sudo chown -R ${USER}:www-data storage
+
 chmod 775 storage
+
 cd storage/
+
 find . -type f -exec chmod 664 {} \;
+
 find . -type d -exec chmod 775 {} \;
 ```
 
-Or run the `set-file-permissions.sh` script.
+Or run the `set-file-permissions.sh` script (needs sudo):
 
-Change hosts file so dev.dianoiamarketplace points to to localhost
+```bash
+sudo ./set-file-permissions.sh www-data {{app_user}} .
+```
+
+Change hosts file so dev.dianoiamarketplace points to localhost
 ```$xslt
 sudo nano /etc/hosts
 
