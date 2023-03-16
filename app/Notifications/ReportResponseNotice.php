@@ -11,7 +11,9 @@ class ReportResponseNotice extends Notification implements ShouldQueue {
     use Queueable;
 
     protected String $resource_name;
+
     protected String $response;
+
     protected String $reporter_name;
 
     /**

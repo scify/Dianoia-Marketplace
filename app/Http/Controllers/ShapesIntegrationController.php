@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Log;
 
 class ShapesIntegrationController extends Controller {
     public ShapesIntegrationManager $shapesIntegrationManager;
+
     public UserRoleManager $userRoleManager;
+
     public UserRepository $userRepository;
+
     public ResourceTypeLkpRepository $resourceTypeLkpRepository;
 
     public function __construct(UserRoleManager $userRoleManager,

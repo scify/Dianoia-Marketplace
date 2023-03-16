@@ -7,10 +7,15 @@ use Illuminate\Support\Collection;
 
 class CreateEditResourceVM {
     public Collection $languages;
+
     public Collection $difficulties;
+
     public Collection $types;
+
     public String $preselect_types;
+
     public Resource $resource;
+
     public String $lang;
 
     public function __construct(Collection $languages,

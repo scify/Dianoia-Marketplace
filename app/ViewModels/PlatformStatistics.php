@@ -6,7 +6,9 @@ use Illuminate\Support\Collection;
 
 class PlatformStatistics {
     public Collection $generalPlatformStatistics;
+
     public Collection $resourcesPerTypeStatistics;
+
     public Collection $resourcesPerUserStatistics;
 
     /**

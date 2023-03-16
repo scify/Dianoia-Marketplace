@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserManager {
     protected UserRepository $userRepository;
+
     protected UserRoleManager $userRoleManager;
 
     public function __construct(UserRoleManager $userRoleManager, UserRepository $userRepository) {

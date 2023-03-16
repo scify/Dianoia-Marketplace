@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class AnalyticsEventController extends Controller {
     protected $analyticsEventRepository;
+
     protected $shapesIntegrationManager;
 
     public function __construct(AnalyticsEventRepository $analyticsEventRepository,

@@ -11,10 +11,15 @@ use ZipArchive;
 
 class ResourceFileManager {
     private $IMG_FOLDER;
+
     private $AUDIO_FOLDER;
+
     private $PDF_FOLDER;
+
     private $RESOURCE_PREFIX_FOLDER;
+
     private array $SUPPORTED_FILE_TYPES = ['audio', 'image', 'pdf'];
+
     protected ResourceRepository $resourceRepository;
 
     public function __construct() {

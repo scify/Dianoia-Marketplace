@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class ResourceRatingController extends Controller {
     protected ResourcesRatingManager $resourcesRatingManager;
+
     protected ResourceManager $resourceManager;
 
     public function __construct(ResourcesRatingManager $resourcesRatingManager, ResourceManager $resourceManager) {

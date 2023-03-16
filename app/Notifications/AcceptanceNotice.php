@@ -12,6 +12,7 @@ class AcceptanceNotice extends Notification implements ShouldQueue {
     use Queueable;
 
     protected Resource $resource;
+
     protected String $username;
 
     /**

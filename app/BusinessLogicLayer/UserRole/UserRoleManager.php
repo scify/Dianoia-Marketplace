@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Gate;
 
 class UserRoleManager {
     private $userRoleRepository;
+
     private $userRoleLkpRepository;
 
     public function __construct(UserRoleRepository $userRoleRepository, UserRoleLkpRepository $userRoleLkpRepository) {

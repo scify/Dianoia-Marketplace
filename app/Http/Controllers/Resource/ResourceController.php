@@ -22,6 +22,7 @@ use Illuminate\Support\Str;
 
 class ResourceController extends Controller {
     protected ResourceManager $resourceManager;
+
     protected UserManager $userManager;
 
     public function __construct(

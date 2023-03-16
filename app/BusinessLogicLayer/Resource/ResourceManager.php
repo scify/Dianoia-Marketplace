@@ -22,11 +22,17 @@ use InvalidArgumentException;
 
 class ResourceManager {
     protected ResourceRepository $resourceRepository;
+
     protected ContentLanguageLkpRepository $contentLanguageLkpRepository;
+
     protected DifficultiesLkpRepository $difficultiesLkpRepository;
+
     protected ResourceTypeLkpRepository $resourceTypeLkpRepository;
+
     protected ReportsRepository $reportsRepository;
+
     protected UserRepository $userRepository;
+
     protected ShapesIntegrationManager $shapesIntegrationManager;
 
     public function __construct(ResourceRepository $resourceRepository,
