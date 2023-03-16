@@ -18,9 +18,9 @@ class ShapesIntegrationController extends Controller {
     public UserRepository $userRepository;
     public ResourceTypeLkpRepository $resourceTypeLkpRepository;
 
-    public function __construct(UserRoleManager           $userRoleManager,
-                                ShapesIntegrationManager  $shapesIntegrationManager,
-                                UserRepository            $userRepository,
+    public function __construct(UserRoleManager $userRoleManager,
+                                ShapesIntegrationManager $shapesIntegrationManager,
+                                UserRepository $userRepository,
                                 ResourceTypeLkpRepository $resourceTypeLkpRepository) {
         $this->userRoleManager = $userRoleManager;
         $this->shapesIntegrationManager = $shapesIntegrationManager;

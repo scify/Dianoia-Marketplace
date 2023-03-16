@@ -266,7 +266,7 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'rejection_illegible_content' => 'Questo esercizio viola le norme sul copyright',
     'rejection_other' => 'Altro',
     'choose_reporting_reason' => 'Scegliete il motivo della segnalazione',
-    'optionally_include_comments' => 'È possibile includere alcuni commenti qui di seguito'
+    'optionally_include_comments' => 'È possibile includere alcuni commenti qui di seguito',
 
 
 ];

@@ -29,13 +29,13 @@ class ResourceManager {
     protected UserRepository $userRepository;
     protected ShapesIntegrationManager $shapesIntegrationManager;
 
-    public function __construct(ResourceRepository           $resourceRepository,
+    public function __construct(ResourceRepository $resourceRepository,
                                 ContentLanguageLkpRepository $contentLanguageLkpRepository,
-                                DifficultiesLkpRepository    $difficultiesLkpRepository,
-                                ResourceTypeLkpRepository    $resourceTypeLkpRepository,
-                                ReportsRepository            $reportsRepository,
-                                UserRepository               $userRepository,
-                                ShapesIntegrationManager     $shapesIntegrationManager
+                                DifficultiesLkpRepository $difficultiesLkpRepository,
+                                ResourceTypeLkpRepository $resourceTypeLkpRepository,
+                                ReportsRepository $reportsRepository,
+                                UserRepository $userRepository,
+                                ShapesIntegrationManager $shapesIntegrationManager
     ) {
         $this->resourceRepository = $resourceRepository;
         $this->contentLanguageLkpRepository = $contentLanguageLkpRepository;
@@ -119,7 +119,6 @@ class ResourceManager {
     public function approveResource($id) {
         return $this->resourceRepository->update(['status_id' => ResourceStatusesLkp::APPROVED], $id);
     }
-
 
     public function storeResource(Request $request) {
         $storeArr = [

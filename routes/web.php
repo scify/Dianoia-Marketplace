@@ -54,7 +54,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('test-email/{email}', function (Request $request) {
             Notification::send([User::where(['email' => $request->email])->first()], new AdminNotice(Resource::first()));
-            return "Email sent to: " . $request->email;
+
+            return 'Email sent to: ' . $request->email;
         });
         Route::get('/platform-statistics', [PlatformStatisticsController::class, 'show_platform_statistics'])->name('platform_statistics');
     });
@@ -106,4 +107,3 @@ Route::get('js/translations.js', function () {
     echo 'window.i18n = ' . json_encode($strings) . ';';
     exit();
 })->name('translations');
-

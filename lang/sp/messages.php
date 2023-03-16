@@ -261,6 +261,6 @@ Puedes también crear tus propios ejercicios y compartirlos con la comunidad.',
     'rejection_illegible_content' => 'Este ejercicio infringe la normativa sobre derechos de autor',
     'rejection_other' => 'Otros',
     'choose_reporting_reason' => 'Elija el motivo de la notificación',
-    'optionally_include_comments' => 'Si lo desea, incluya algunos comentarios a continuación'
+    'optionally_include_comments' => 'Si lo desea, incluya algunos comentarios a continuación',
 
 ];

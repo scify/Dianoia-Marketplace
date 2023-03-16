@@ -16,8 +16,8 @@ class ResourceRepository extends Repository {
     }
 
     public function getResources(
-        int   $user_id = null,
-        int   $lang_id = null,
+        int $user_id = null,
+        int $lang_id = null,
         array $status_ids = null,
         array $difficulties = null,
         array $type_ids = null,

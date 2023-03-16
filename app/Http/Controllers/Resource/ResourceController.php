@@ -26,7 +26,7 @@ class ResourceController extends Controller {
 
     public function __construct(
         ResourceManager $resourceManager,
-        UserManager  $userManager) {
+        UserManager $userManager) {
         $this->resourceManager = $resourceManager;
         $this->userManager = $userManager;
     }

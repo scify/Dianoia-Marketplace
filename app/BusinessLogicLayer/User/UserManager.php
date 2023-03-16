@@ -60,7 +60,7 @@ class UserManager {
             'name' => trim($requestData['name']),
             'email' => trim($requestData['email']),
         ], $id);
-        if (isset($requestData['password']) &&  $requestData['password']) {
+        if (isset($requestData['password']) && $requestData['password']) {
             $user = $this->userRepository->update([
                 'password' =>  Hash::make($requestData['password']),
             ], $id);
