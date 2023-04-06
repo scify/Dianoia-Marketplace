@@ -25,6 +25,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.3",
         "@popperjs/core": "^2.9.2",
+        "@sentry/browser": "^7.40.0",
         "bootstrap": "^5.0.0",
         "eslint": "^8.29.0",
         "eslint-plugin-vue": "^9.8.0",
