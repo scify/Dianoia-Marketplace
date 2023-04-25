@@ -14,9 +14,9 @@ import eachRightLodash from "lodash/eachRight";
 import replaceLodash from "lodash/replace";
 import * as Sentry from "@sentry/browser";
 
-if (import.meta.env.VITE_SENTRY_DSN_PUBLIC) {
+if (process.env.MIX_SENTRY_DSN_PUBLIC) {
     Sentry.init({
-        dsn: import.meta.env.VITE_SENTRY_DSN_PUBLIC,
+        dsn: process.env.MIX_SENTRY_DSN_PUBLIC,
     });
 }
 
