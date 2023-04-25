@@ -15,22 +15,22 @@ import replaceLodash from "lodash/replace";
 import * as Sentry from "@sentry/browser";
 
 if (process.env.MIX_SENTRY_DSN_PUBLIC) {
-    Sentry.init({
-        dsn: process.env.MIX_SENTRY_DSN_PUBLIC,
-    });
+	Sentry.init({
+		dsn: process.env.MIX_SENTRY_DSN_PUBLIC,
+	});
 }
 
 window.translate = function (string, args) {
-    let value = getLodash(window.i18n, string);
+	let value = getLodash(window.i18n, string);
 
-    eachRightLodash(args, (paramVal, paramKey) => {
-        value = replaceLodash(value, `:${paramKey}`, paramVal);
-    });
-    return value;
+	eachRightLodash(args, (paramVal, paramKey) => {
+		value = replaceLodash(value, `:${paramKey}`, paramVal);
+	});
+	return value;
 };
 
 Vue.prototype.trans = (string, args) => {
-    return window.translate(string, args);
+	return window.translate(string, args);
 };
 
 Vue.component("modal-component", require("./vue-components/common/ModalComponent").default);
@@ -39,27 +39,27 @@ Vue.component("exercise-component", require("./vue-components/resources/Exercise
 
 
 new Vue({
-    el: "#app",
-    store: store
+	el: "#app",
+	store: store
 });
 (function ($) {
 
-    let init = function () {
-        closeDismissableAlerts();
-    };
+	let init = function () {
+		closeDismissableAlerts();
+	};
 
-    let closeDismissableAlerts = function () {
-        setTimeout(function () {
-            /*Close any flash message after some time*/
-            $(".alert-dismissible").fadeTo(4000, 500).slideUp(500);
-        }, 3000);
-    };
+	let closeDismissableAlerts = function () {
+		setTimeout(function () {
+			/*Close any flash message after some time*/
+			$(".alert-dismissible").fadeTo(4000, 500).slideUp(500);
+		}, 3000);
+	};
 
-    $(function () {
-        $(document).ready(function () {
-            init();
-        });
-    });
+	$(function () {
+		$(document).ready(function () {
+			init();
+		});
+	});
 
 })(window.jQuery);
 
