@@ -6,6 +6,7 @@ use App\BusinessLogicLayer\Shapes\ShapesIntegrationManager;
 use App\Http\Controllers\Controller;
 use App\Repository\Analytics\AnalyticsEventRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AnalyticsEventController extends Controller {
     protected $analyticsEventRepository;
@@ -26,7 +27,11 @@ class AnalyticsEventController extends Controller {
         $data = $request->all();
         $response = json_encode([]);
         if (isset($data['token']) && strlen($data['token']) > 5 && ShapesIntegrationManager::isEnabled()) {
-            $response = $this->shapesIntegrationManager->sendMobileUsageDataToDatalakeAPI($data['token'], $data['name'], $data['lang'], $data['version'], $data['source']);
+            try {
+                $response = $this->shapesIntegrationManager->sendMobileUsageDataToDatalakeAPI($data['token'], $data['name'], $data['lang'], $data['version'], $data['source']);
+            } catch (\Exception $e) {
+                Log::error($e);
+            }
         }
 
         $record = $this->analyticsEventRepository->create([
