@@ -10,6 +10,7 @@ use App\Repository\User\UserRole\UserRolesLkp;
 use Carbon\Carbon;
 use DateTime;
 use Exception;
+use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -162,23 +163,27 @@ class ShapesIntegrationManager {
      * @throws Exception
      */
     public function sendMobileUsageDataToDatalakeAPI(string $token, string $action, string $lang, string $version, string $source) {
-        $response = Http::withHeaders([
-            'X-Authorisation' => $token,
-            'Accept' => 'application/json',
-        ])
-            ->post($this->datalakeAPIUrl . '/mobile', [
-                'action' => $action,
-                'devId' => 'dianoia_mobile_' . $source,
-                'lang' => $lang,
-                'source' => $source,
-                'time' => Carbon::now()->format(DateTime::RFC3339),
-                'version' => $version,
-            ]);
-        if (!$response->ok()) {
-            throw new Exception($response->body());
-        }
-        Log::info('SHAPES Mobile Datalake response: ' . json_encode($response->json()));
+        $response = new PendingRequest();
+        try {
+            $response = Http::withHeaders([
+                'X-Authorisation' => $token,
+                'Accept' => 'application/json',
+            ])
+                ->post($this->datalakeAPIUrl . '/mobile', [
+                    'action' => $action,
+                    'devId' => 'dianoia_mobile_' . $source,
+                    'lang' => $lang,
+                    'source' => $source,
+                    'time' => Carbon::now()->format(DateTime::RFC3339),
+                    'version' => $version,
+                ]);
+            if (!$response->ok()) {
+                throw new Exception($response->body());
+            }
+        } finally {
+            Log::info('SHAPES Mobile Datalake response: ' . json_encode($response->json()));
 
-        return json_encode($response->json());
+            return json_encode($response->json());
+        }
     }
 }

@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class AnalyticsEventController extends Controller {
-    protected $analyticsEventRepository;
+    protected AnalyticsEventRepository $analyticsEventRepository;
 
-    protected $shapesIntegrationManager;
+    protected ShapesIntegrationManager $shapesIntegrationManager;
 
     public function __construct(AnalyticsEventRepository $analyticsEventRepository,
                                 ShapesIntegrationManager $shapesIntegrationManager) {
@@ -34,13 +34,11 @@ class AnalyticsEventController extends Controller {
             }
         }
 
-        $record = $this->analyticsEventRepository->create([
+        return $this->analyticsEventRepository->create([
             'name' => $request->name,
             'source' => $request->source,
             'payload' => json_encode($request->all()),
             'response' => $response,
         ]);
-
-        return $record;
     }
 }
