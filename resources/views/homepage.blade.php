@@ -49,7 +49,7 @@
                     {!!__('messages.app-description')!!}
                 </p>
 
-                <a href="https://www.scify.gr/site/el/impact-areas/assistive-technologies/dianoia#download"
+                <a href="https://play.google.com/store/apps/details?id=org.scify.dianoia.app&hl={{ app()->getLocale() }}"
                    class="mt-5 btn btn--primary" style="margin:5px;" target="_blank">{{__('messages.download-app')}}</a>
                 <a href="https://dianoia-app.scify.org/" class="mt-5 btn btn--primary" style="margin:5px;"
                    target="_blank">{{__('messages.dianoia-web-version')}}</a>

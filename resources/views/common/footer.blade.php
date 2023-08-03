@@ -7,7 +7,7 @@
                     <ul>
                         <li><a href="{{ route('resources.display') }}">{!! __('messages.exercises') !!}</a></li>
                         <li><a href="{{ route('about') }}">{!! __('messages.about') !!}</a></li>
-                        <li><a href="https://www.scify.gr/site/el/impact-areas/assistive-technologies/dianoia#download"
+                        <li><a href="https://play.google.com/store/apps/details?id=org.scify.dianoia.app&hl={{ app()->getLocale() }}"
                                target="_blank">{{__('messages.download-app')}}</a></li>
                         <li><a href="https://dianoia-app.scify.org/"
                                target="_blank">{{__('messages.dianoia-web-version')}}</a></li>
