@@ -31,6 +31,7 @@ class AnalyticsEventController extends Controller {
                 $response = $this->shapesIntegrationManager->sendMobileUsageDataToDatalakeAPI($data['token'], $data['name'], $data['lang'], $data['version'], $data['source']);
             } catch (\Exception $e) {
                 Log::error($e);
+                app('sentry')->captureException($e);
             }
         }
 
