@@ -19,6 +19,7 @@
         "laravel/fortify": "^1.7",
         "laravel/framework": "^9.0",
         "laravel/tinker": "^2.5",
+        "opcodesio/log-viewer": "^2.5",
         "scify/laravel-cookies-consent": "^0.9.4",
         "sentry/sentry-laravel": "^3.3",
         "spatie/laravel-sitemap": "^6.2",
