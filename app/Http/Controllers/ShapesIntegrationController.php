@@ -22,9 +22,9 @@ class ShapesIntegrationController extends Controller {
     public ResourceTypeLkpRepository $resourceTypeLkpRepository;
 
     public function __construct(UserRoleManager $userRoleManager,
-                                ShapesIntegrationManager $shapesIntegrationManager,
-                                UserRepository $userRepository,
-                                ResourceTypeLkpRepository $resourceTypeLkpRepository) {
+        ShapesIntegrationManager $shapesIntegrationManager,
+        UserRepository $userRepository,
+        ResourceTypeLkpRepository $resourceTypeLkpRepository) {
         $this->userRoleManager = $userRoleManager;
         $this->shapesIntegrationManager = $shapesIntegrationManager;
         $this->userRepository = $userRepository;

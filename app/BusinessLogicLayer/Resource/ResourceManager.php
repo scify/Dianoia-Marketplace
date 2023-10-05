@@ -36,12 +36,12 @@ class ResourceManager {
     protected ShapesIntegrationManager $shapesIntegrationManager;
 
     public function __construct(ResourceRepository $resourceRepository,
-                                ContentLanguageLkpRepository $contentLanguageLkpRepository,
-                                DifficultiesLkpRepository $difficultiesLkpRepository,
-                                ResourceTypeLkpRepository $resourceTypeLkpRepository,
-                                ReportsRepository $reportsRepository,
-                                UserRepository $userRepository,
-                                ShapesIntegrationManager $shapesIntegrationManager
+        ContentLanguageLkpRepository $contentLanguageLkpRepository,
+        DifficultiesLkpRepository $difficultiesLkpRepository,
+        ResourceTypeLkpRepository $resourceTypeLkpRepository,
+        ReportsRepository $reportsRepository,
+        UserRepository $userRepository,
+        ShapesIntegrationManager $shapesIntegrationManager
     ) {
         $this->resourceRepository = $resourceRepository;
         $this->contentLanguageLkpRepository = $contentLanguageLkpRepository;
@@ -59,7 +59,7 @@ class ResourceManager {
         $lang = app()->getLocale();
 
         return new CreateEditResourceVM(
-            $contentLanguages, $difficulties, $types, collect(), new  Resource(), $lang
+            $contentLanguages, $difficulties, $types, collect(), new Resource(), $lang
         );
     }
 
@@ -77,7 +77,7 @@ class ResourceManager {
         $preselect_types = $resource_params['preselect_type_name'] ?: 'all';
 
         return new CreateEditResourceVM(
-            $contentLanguages, $difficulties, $type_ids, $preselect_types, new  Resource($resource_params), $lang
+            $contentLanguages, $difficulties, $type_ids, $preselect_types, new Resource($resource_params), $lang
         );
     }
 

@@ -17,8 +17,8 @@ class PlatformStatistics {
      * @param Collection $resourcesPerUserStatistics
      */
     public function __construct(Collection $generalPlatformStatistics,
-                                Collection $resourcesPerTypeStatistics,
-                                Collection $resourcesPerUserStatistics) {
+        Collection $resourcesPerTypeStatistics,
+        Collection $resourcesPerUserStatistics) {
         $this->generalPlatformStatistics = $generalPlatformStatistics;
         $this->resourcesPerTypeStatistics = $resourcesPerTypeStatistics;
         $this->resourcesPerUserStatistics = $resourcesPerUserStatistics;
