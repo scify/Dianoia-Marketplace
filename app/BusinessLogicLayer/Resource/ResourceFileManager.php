@@ -7,6 +7,7 @@ use App\Repository\Resource\ResourceRepository;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpKernel\Exception\UnsupportedMediaTypeHttpException;
 use ZipArchive;
 
 class ResourceFileManager {
@@ -29,30 +30,28 @@ class ResourceFileManager {
         $this->RESOURCE_PREFIX_FOLDER = getenv('RESOURCE_PREFIX_FOLDER') ?: 'resources/';
     }
 
-    public function deleteResourceImage(Resource $resource) {
+    public function deleteResourceImage(Resource $resource): void {
         Storage::disk('public')->delete($resource->img_path);
     }
 
-    public function deleteResourcePdf(Resource $resource) {
+    public function deleteResourcePdf(Resource $resource): void {
         Storage::disk('public')->delete($resource->pdf_path);
     }
 
-    public function deleteResourceAudio(Resource $resource) {
+    public function deleteResourceAudio(Resource $resource): void {
         echo $resource->audio_path;
         Storage::disk('public')->delete($resource->audio_path);
     }
 
-    public function keepLatinCharactersAndNumbersString($string) {
-        $newString = preg_replace("/[^A-Za-z0-9.!?\-()]/", '', $string);
-
-        return $newString;
+    public function keepLatinCharactersAndNumbersString($string): array|string|null {
+        return preg_replace("/[^A-Za-z0-9.!?\-()]/", '', $string);
     }
 
     public function getResourceFileWithoutExtension($string) {
         return pathinfo($string)['filename'];
     }
 
-    public function getNormalizedResourceName($resource, $id) {
+    public function getNormalizedResourceName($resource, $id): string {
         $resourceFullName = $resource->getClientOriginalName();
         $resourceNameWithoutExtension = $this->getResourceFileWithoutExtension($resourceFullName);
         $resourceNameCleaned = $this->keepLatinCharactersAndNumbersString($resourceNameWithoutExtension);
@@ -66,7 +65,7 @@ class ResourceFileManager {
     public function saveAudio($id, Request $request): ?string {
         $contentAudio = $request->file('sound');
         if (!$contentAudio) {
-            throw(new FileNotFoundException('Audio missing'));
+            throw (new FileNotFoundException('Audio missing'));
         }
         $audioFolder = $this->getResourceFileFolder('audio');
         $normalizedAudioName = $this->getNormalizedResourceName($contentAudio, $id);
@@ -81,7 +80,7 @@ class ResourceFileManager {
     public function saveImage($id, Request $request): ?string {
         $contentImage = $request->file('image');
         if (!$contentImage) {
-            throw(new FileNotFoundException('Image missing'));
+            throw (new FileNotFoundException('Image missing'));
         }
         $imageFolder = $this->getResourceFileFolder('image');
         $normalizedImageName = $this->getNormalizedResourceName($contentImage, $id);
@@ -96,7 +95,7 @@ class ResourceFileManager {
     public function savePdf($id, Request $request): ?string {
         $contentPdf = $request->file('pdf');
         if (!$contentPdf) {
-            throw(new FileNotFoundException('Pdf missing'));
+            throw (new FileNotFoundException('Pdf missing'));
         }
         $pdfFolder = $this->getResourceFileFolder('pdf');
         $normalizedPdfName = $this->getNormalizedResourceName($contentPdf, $id);
@@ -114,6 +113,7 @@ class ResourceFileManager {
         } elseif ($type == 'pdf') {
             return $this->getResourceFilePdfPath($name);
         }
+        throw new UnsupportedMediaTypeHttpException('File type not supported. Supported file types: ' . implode(',', $this->SUPPORTED_FILE_TYPES));
     }
 
     public function getResourceFileFolder($type): ?string {
@@ -125,6 +125,7 @@ class ResourceFileManager {
         } elseif ($type == 'pdf') {
             return $this->getResourcePdfFolder();
         }
+        throw new UnsupportedMediaTypeHttpException('File type not supported. Supported file types: ' . implode(',', $this->SUPPORTED_FILE_TYPES));
     }
 
     public function getResourceFileAudioPath($name): string {
@@ -151,7 +152,7 @@ class ResourceFileManager {
         return $this->RESOURCE_PREFIX_FOLDER . $this->PDF_FOLDER;
     }
 
-    public function copyResourceToDirectory($directory, $name, $type) {
+    public function copyResourceToDirectory($directory, $name, $type): void {
         copy(storage_path('app/public') . '/' . $this->getResourceFullPath($name, $type), $directory . '/' . $name);
     }
 
@@ -165,9 +166,8 @@ class ResourceFileManager {
         $pieces = explode('_', $nameNoExtension);
         array_splice($pieces, 2, count($pieces));
         $newName = implode('_', $pieces);
-        $newName = $newName . '_' . date('Y-m-d_h_i_s', time()) . '.' . $extension;
 
-        return $newName;
+        return $newName . '_' . date('Y-m-d_h_i_s', time()) . '.' . $extension;
     }
 
     public function cloneResourceToDirectory($name, $type): string {

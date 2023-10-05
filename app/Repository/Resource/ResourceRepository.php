@@ -22,8 +22,8 @@ class ResourceRepository extends Repository {
         array $difficulties = null,
         array $type_ids = null,
         array $ratings = null,
-              $paginate = null,
-              $api = false
+        $paginate = null,
+        $api = false
     ) {
         $whereArray = [];
         if ($lang_id) {

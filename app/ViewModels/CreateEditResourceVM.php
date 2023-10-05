@@ -19,12 +19,12 @@ class CreateEditResourceVM {
     public String $lang;
 
     public function __construct(Collection $languages,
-                                Collection $difficulties,
-                                Collection $types,
-                                string $preselectTypes,
-                                Resource $resource,
-                                string $lang
-                ) {
+        Collection $difficulties,
+        Collection $types,
+        string $preselectTypes,
+        Resource $resource,
+        string $lang
+    ) {
         $this->languages = $languages;
         $this->difficulties = $difficulties;
         $this->types = $types;

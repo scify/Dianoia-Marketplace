@@ -83,7 +83,8 @@ class ShapesIntegrationManager {
         if (!$response->ok()) {
             throw new Exception(json_decode($response->body())->error);
         }
-        Log::debug("SHAPES LOGIN RESPONSE", $response->json());
+        Log::debug('SHAPES LOGIN RESPONSE', $response->json());
+
         return $response->json();
     }
 
