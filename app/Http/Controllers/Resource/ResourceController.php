@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Resource;
 use App\BusinessLogicLayer\Resource\ResourceManager;
 use App\BusinessLogicLayer\User\UserManager;
 use App\Http\Controllers\Controller;
-use App\Models\Resource\Resource;
 use App\Notifications\AcceptanceNotice;
 use App\Notifications\AdminNotice;
 use App\Notifications\RejectionNotice;
@@ -88,7 +87,7 @@ class ResourceController extends Controller {
         $this->validate($request, [
             'name' => 'required|string|max:100',
             'image' => 'mimes:jpg,png,jpeg|file|between:3,10000|nullable',
-            'pdf' => 'required|mimes:pdf|max:50000',
+            'pdf' => 'required|mimes:pdf|max:500000',
             'type_id' => 'required|integer|gt:0',
             'difficulty_id' =>  'required|integer|gt:0',
             'lang' => 'required|integer|gt:0',
@@ -105,7 +104,7 @@ class ResourceController extends Controller {
             $this->submit($resource); //todo comment to pause exercise submission notifications
 
             return redirect()->route('resources.my_profile')->with('flash_message_success', __('messages.exercise-submit-success'));
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->route('resources.my_profile')->with('flash_message_failure', __('messages.exercise-submit-failure'));
         }
     }
@@ -121,7 +120,7 @@ class ResourceController extends Controller {
         $this->validate($request, [
             'name' => 'string|max:100',
             'image' => 'mimes:jpg,png|file|between:3,1000|nullable',
-            'pdf' => 'mimes:pdf|max:50000|nullable',
+            'pdf' => 'mimes:pdf|max:500000|nullable',
             'description' => 'string|max:1000',
             'accept-guideline-terms' => 'required',
             'accept-privacy-terms' => 'required',
@@ -141,20 +140,17 @@ class ResourceController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Request $request
+     * @param int $id
+     * @return RedirectResponse
      */
     public function delete_exercise(Request $request, int $id): RedirectResponse {
         try {
             $this->resourceManager->destroyResource($id);
-
             return redirect()->back()->with('flash_message_success', __('messages.exercise-delete-success'));
         } catch (\Exception $e) {
             return redirect()->back()->with('flash_message_failure', __('messages.exercise-delete-failure'));
         }
-
-        //
-        //Manager get id of card
-        //Manager calls repository
     }
 
     public function submit($resource): RedirectResponse {
@@ -340,9 +336,7 @@ class ResourceController extends Controller {
     }
 
     public function getReports(Request $request) {
-        $reportedResourcesWithMetadata = $this->resourceManager->getReportedExercises();
-
-        return $reportedResourcesWithMetadata;
+        return $this->resourceManager->getReportedExercises();
     }
 
     public function getContentLanguages() {
@@ -350,21 +344,15 @@ class ResourceController extends Controller {
     }
 
     public function getContentTypes() {
-        $ret = $this->resourceManager->getResourceTypes();
-
-        return $ret;
+        return $this->resourceManager->getResourceTypes();
     }
 
     public function getContentDifficulties() {
-        $ret = $this->resourceManager->getDifficultiesForResources();
-
-        return $ret;
+        return $this->resourceManager->getDifficultiesForResources();
     }
 
     public function getUsers() {
-        $ret = $this->userManager->getUsers();
-
-        return $ret;
+        return $this->userManager->getUsers();
     }
 
     public function coming_soon(): View {
