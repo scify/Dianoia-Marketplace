@@ -19,7 +19,7 @@
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.5",
         "opcodesio/log-viewer": "^3.1",
-        "scify/laravel-cookies-consent": "^1.0.1",
+        "scify/laravel-cookies-consent": "^v1.1.0",
         "sentry/sentry-laravel": "^3.3",
         "spatie/laravel-sitemap": "^6.2",
         "symfony/http-client": "^6.2",

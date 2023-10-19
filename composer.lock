@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2af9ace3d9271e2ed012c800747e40b2",
+    "content-hash": "22903fc7cfc8244976c008ce05de76eb",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -4770,23 +4770,23 @@
         },
         {
             "name": "scify/laravel-cookies-consent",
-            "version": "v1.0.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/scify/laravel-cookies-consent.git",
-                "reference": "8a6fdaa403e6d5e2d1cc52e643649c42c5858b9a"
+                "reference": "29a7f658035fc74fe4feabdc9864f6b9b4d03512"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/scify/laravel-cookies-consent/zipball/8a6fdaa403e6d5e2d1cc52e643649c42c5858b9a",
-                "reference": "8a6fdaa403e6d5e2d1cc52e643649c42c5858b9a",
+                "url": "https://api.github.com/repos/scify/laravel-cookies-consent/zipball/29a7f658035fc74fe4feabdc9864f6b9b4d03512",
+                "reference": "29a7f658035fc74fe4feabdc9864f6b9b4d03512",
                 "shasum": ""
             },
             "require": {
                 "php": "^7|^8"
             },
             "require-dev": {
-                "laravel/pint": "^1.0",
+                "laravel/pint": "^1.6",
                 "nunomaduro/collision": "^6.0",
                 "nunomaduro/larastan": "^2.0.1",
                 "orchestra/testbench": "^7.0",
@@ -4839,9 +4839,9 @@
             ],
             "support": {
                 "issues": "https://github.com/scify/laravel-cookies-consent/issues",
-                "source": "https://github.com/scify/laravel-cookies-consent/tree/v1.0.1"
+                "source": "https://github.com/scify/laravel-cookies-consent/tree/v1.1.0"
             },
-            "time": "2023-03-16T07:16:32+00:00"
+            "time": "2023-10-18T07:46:35+00:00"
         },
         {
             "name": "sentry/sdk",
