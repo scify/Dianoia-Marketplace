@@ -19,7 +19,7 @@
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.5",
         "opcodesio/log-viewer": "^3.1",
-        "scify/laravel-cookies-consent": "^v1.1.0",
+        "scify/laravel-cookies-consent": "dev-main",
         "sentry/sentry-laravel": "^3.3",
         "spatie/laravel-sitemap": "^6.2",
         "symfony/http-client": "^6.2",
@@ -76,6 +76,15 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../laravel-cookies-consent/",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
 }

@@ -4,7 +4,7 @@
     background-color: #2D2D2D;
     position: fixed;
     left: 25px;
-    z-index: 1;
+    z-index: 999999;
     color: #FFFFFF;
     -webkit-animation-name: slide_to_top;
     -webkit-animation-duration: 1.5s;
@@ -64,6 +64,8 @@
     width: 30px;
     height: 30px;
     font-size: 0;
+    /* declare the background-color as bootstrap seems to reset it to default body's color:*/
+    background-color: #2d2d2d;
 }
 
 .laravel-cookies-consent .cookies-close:before,
@@ -109,56 +111,65 @@
     height: 35px;
     color: #FFFFFF;
     border-radius: 35px;
-    padding-left: 10px;
-    padding-right: 10px;
     text-align: center;
     border: 1px solid;
     width: 48%;
     font-size: small;
+    line-height: 35px;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
 }
 
 .laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit.hidden {
     display: none;
 }
 
-.laravel-cookies-consent .consent-form-container .consent-buttons a.consent-submit {
-    padding-top: 9px;
-}
-
 .laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit:hover {
     cursor: pointer;
 }
 
+.laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
 .laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit.consent-accept {
-    background-color: #6BBE6B;
-    border-color: #6BBE6B;
     float: left;
 }
 
 .laravel-cookies-consent .consent-form-container .consent-buttons .consent-submit.consent-decline-all {
-    background-color: transparent;
-    border-color: #FFFFFF;
     float: right;
 }
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .laravel-cookies-consent {
-        width: 80%;
+        bottom: 10px;
+        left: 5px;
+        width: calc(100% - 10px);
+    }
+
+    .laravel-cookies-consent .outer-wrapper {
+        padding: 10px;
     }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     .laravel-cookies-consent {
-        width: 60%;
+        width: 75%;
+    }
+
+    .laravel-cookies-consent .outer-wrapper {
+        padding: 15px;
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .laravel-cookies-consent {
-        width: 40%;
+        width: 55%;
     }
 }
 

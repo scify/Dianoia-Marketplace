@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'youtube_url'=> 'https://www.youtube.com/embed/hNHfDPX5jDM',
+    'youtube_url' => 'https://www.youtube.com/embed/hNHfDPX5jDM',
     'category-executive' => 'Category "Executive Functions"',
     'category-though' => 'Category "Thought and Speech Exercises"',
     'category-attention' => 'Category "Attention Exercises"',
@@ -66,7 +66,7 @@ return [
     'guidelines-header-3' => 'Notes for the finding, editing, and uploading content for the exercises and activities',
     'guidelines-header-2' => 'Content creation - Content for caregivers of people with onset dementia',
     'guidelines-header-1' => 'Content creation - Content for people with onset dementia',
-    'guidelines-prologue'=>'
+    'guidelines-prologue' => '
         <p> Dianoia Marketplace </a> is an online application implemented and available for free by the non-profit SciFY so that everyone can create and share their own free content for the Dianoia application. </p>
         <p> The content of Dianoia Marketplace is mainly aimed at people that take care of people/patients with onset dementia or/and Alzheimer’s.</p>
         <p>People with onset dementia, due to the progressive decline of their mental abilities, have the need for appropriate care at every stage. The caregivers feel that they have a great responsibility for their care.</p>',
@@ -191,13 +191,13 @@ You can also create your own exercises and if you wish to, you can share them wi
     'exercise-acceptance' => 'Approval of an exercise',
     'name' => 'Name',
     'exercise-description' => 'Description of exercise',
-    'upload-image'=>'Upload an image',
+    'upload-image' => 'Upload an image',
     'necessary-info' => 'Necessary elements',
     'upload-pdf' => 'Upload the .pdf file with the exercise',
     'accept-rules-of-conduct' => 'I have read the <b><u>content and copyright rules</u></b> as well as the conditions for the structure of the exercise  like in the <b><u><a target="_blank" href="/coming-soon"> example</a></u></b>. <span>*</span>',
     'cancel' => 'Cancel',
     'exercise-creation' => 'Create an exercise',
-    'submission-tutorial'=> 'In case the exercise you have created is approved, the managerial team of SciFY will choose if the exercise will be available only from the marketplace to download, or from the mobile application as well.',
+    'submission-tutorial' => 'In case the exercise you have created is approved, the managerial team of SciFY will choose if the exercise will be available only from the marketplace to download, or from the mobile application as well.',
     'sign-in' => 'Sign in',
     'sign-up' => 'Sign up',
     'rand-date' => 'June 10th 2021',
@@ -267,6 +267,15 @@ You can also create your own exercises and if you wish to, you can share them wi
     'rejection_other' => 'Other',
     'choose_reporting_reason' => 'Choose your reason for reporting',
     'optionally_include_comments' => 'Optionally include some comments below',
+    'data_deletion_title' => 'Data Deletion Request',
+    'data_deletion_request' => "At :app_name, we value your privacy and are committed to ensuring the security of your personal information. If you wish to have all your personal and usage-related data deleted from our records, we're here to assist you.
 
+                                To proceed with the deletion of your data, please send an email to :app_support_email with the subject line: \":app_name Data Deletion Request - [Your Registered Email with Us]\".
+                                
+                                <br>Upon receiving your email, our team will promptly initiate the process of removing your data from our system. <br>Please note that this action is irreversible and will result in the permanent deletion of all your associated information from our databases.
+                                
+                                Your privacy matters to us, and we're dedicated to respecting your choices regarding your data. If you have any further questions or concerns about your privacy or data management, feel free to include them in your email, and we'll be happy to assist you.
+                                
+                                <br><br>Thank you for using :app_name. We appreciate your trust in us."
 
 ];

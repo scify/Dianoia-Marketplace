@@ -267,6 +267,15 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
     'rejection_other' => 'Altro',
     'choose_reporting_reason' => 'Scegliete il motivo della segnalazione',
     'optionally_include_comments' => 'È possibile includere alcuni commenti qui di seguito',
+    'data_deletion_title' => 'Richiesta di cancellazione dei dati',
+    'data_deletion_request' => "Noi di :app_name diamo valore alla tua privacy e ci impegniamo a garantire la sicurezza delle tue informazioni personali. Se desideri che tutti i tuoi dati personali e relativi all'utilizzo vengano cancellati dai nostri archivi, siamo qui per aiutarti.
 
+                                 Per procedere con la cancellazione dei tuoi dati, invia un'e-mail a :app_support_email con oggetto: \":app_name Richiesta di eliminazione dati - [La tua email registrata con noi]\".
+                                
+                                 <br>Dopo aver ricevuto la tua email, il nostro team avvierà tempestivamente il processo di rimozione dei tuoi dati dal nostro sistema. <br>Tieni presente che questa azione è irreversibile e comporterà la cancellazione permanente di tutte le informazioni associate dai nostri database.
+                                
+                                 La tua privacy è importante per noi e ci impegniamo a rispettare le tue scelte in merito ai tuoi dati. Se hai ulteriori domande o dubbi sulla tua privacy o sulla gestione dei dati, non esitare a includerli nella tua email e saremo felici di aiutarti.
+                                
+                                 <br><br>Grazie per aver utilizzato :app_name. Apprezziamo la tua fiducia in noi."
 
 ];
