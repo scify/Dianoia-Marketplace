@@ -1,11 +1,11 @@
 repo_name: scify/Dianoia-Marketplace
-report_id: 46168b1bf89761773b9b8274f009b798
+report_id: 4bad03dffe9986194ad0780e376b2e00
 repo_type: Public
-timestamp: '2023-11-10T06:41:19+00:00'
+timestamp: '2023-12-14T10:12:29+00:00'
 requested_by: PavlosIsaris
 provider: github
 branch: master
-detected_tools_count: 31
+detected_tools_count: 44
 tools:
 - name: JavaScript
   description: Lightweight, interpreted, object-oriented language with first-class
@@ -40,7 +40,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Front-End Frameworks
   image_url: https://img.stackshare.io/service/1101/C9QJ7V3X.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-05 10:33:40.000000000 Z
@@ -60,16 +60,40 @@ tools:
 - name: Laravel
   description: A PHP Framework For Web Artisans
   website_url: http://laravel.com/
-  version: 10.26.2
+  version: 10.29.0
   open_source: false
   hosted_saas: false
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/992/AcA2LnWL_400x400.jpg
-  detection_source_url: composer.lock
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
   detection_source: composer.json
   last_updated_by: Paul Isaris
-  last_updated_on: 2023-10-19 14:19:45.000000000 Z
+  last_updated_on: 2023-12-05 07:42:33.000000000 Z
+- name: PostCSS
+  description: Transform CSS with JS plugins
+  website_url: https://github.com/postcss/postcss
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: CSS Pre-processors / Extensions
+  image_url: https://img.stackshare.io/service/3339/rlFcjEdI.png
+  detection_source: package.json
+  last_updated_by: NikolasGialitsis
+  last_updated_on: 2021-10-18 17:15:18.000000000 Z
+- name: Sass
+  description: Syntactically Awesome Style Sheets
+  website_url: http://sass-lang.com/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: CSS Pre-processors / Extensions
+  image_url: https://img.stackshare.io/service/1171/jCR2zNJV.png
+  detection_source: package.json
+  last_updated_by: NikolasGialitsis
+  last_updated_on: 2021-10-18 17:15:18.000000000 Z
 - name: Symfony
   description: A PHP full-stack web framework
   website_url: http://symfony.com/
@@ -92,7 +116,7 @@ tools:
   category: Libraries
   sub_category: Javascript MVC Frameworks
   image_url: https://img.stackshare.io/service/3837/paeckCWC.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
@@ -106,7 +130,7 @@ tools:
   category: Libraries
   sub_category: Javascript UI Libraries
   image_url: https://img.stackshare.io/service/1021/lxEKmMnB_400x400.jpg
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-05 10:33:40.000000000 Z
@@ -120,7 +144,7 @@ tools:
   category: Libraries
   sub_category: Javascript UI Libraries
   image_url: https://img.stackshare.io/service/1022/jqueryui_avatar_96.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-05 10:33:40.000000000 Z
@@ -136,6 +160,17 @@ tools:
   detection_source: package.json
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
+- name: pgvector
+  description: Open-source vector similarity search for Postgres
+  website_url: https://github.com/pgvector/pgvector/
+  open_source: false
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Database Tools
+  image_url: https://img.stackshare.io/service/109221/default_b888cdf5617d936aa6aacf130911906955508639.png
+  detection_source: public/.well-known/security.txt
+  last_updated_by: Paul Isaris
+  last_updated_on: 2023-10-06 13:16:02.000000000 Z
 - name: ESLint
   description: The fully pluggable JavaScript code quality tool
   website_url: http://eslint.org/
@@ -160,14 +195,14 @@ tools:
 - name: PHPUnit
   description: Testing framework for PHP
   website_url: https://phpunit.de/
-  version: 10.3.5
+  version: 10.4.2
   license: BSD-3-Clause
   open_source: true
   hosted_saas: false
   category: Build, Test, Deploy
   sub_category: Testing Frameworks
   image_url: https://img.stackshare.io/service/1616/1_WsEnddd5Y4EgEHsT054kUQ.jpeg
-  detection_source_url: composer.lock
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
   detection_source: composer.json
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
@@ -192,7 +227,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: JS Build Tools / JS Task Runners
   image_url: https://img.stackshare.io/service/1682/IMG_4636.PNG
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-05-23 11:08:34.000000000 Z
@@ -216,10 +251,21 @@ tools:
   category: Design
   sub_category: Fonts
   image_url: https://img.stackshare.io/service/3244/1_Mr1Fy00XjPGNf1Kkp_hWtw_2x.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-04-25 12:00:04.000000000 Z
+- name: LangChain
+  description: Build AI apps with LLMs through composability
+  website_url: https://github.com/hwchase17/langchain
+  open_source: true
+  hosted_saas: false
+  category: Communications
+  sub_category: Large Language Model Tools
+  image_url: https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg
+  detection_source: public/.well-known/security.txt
+  last_updated_by: Paul Isaris
+  last_updated_on: 2023-10-06 13:16:02.000000000 Z
 - name: Lodash
   description: A JavaScript utility library
   website_url: https://lodash.com
@@ -229,7 +275,7 @@ tools:
   category: Libraries
   sub_category: Javascript Utilities & Libraries
   image_url: https://img.stackshare.io/service/2438/lodash.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
@@ -253,7 +299,7 @@ tools:
   category: Libraries
   sub_category: Javascript Utilities & Libraries
   image_url: https://img.stackshare.io/no-img-open-source.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-05 10:33:40.000000000 Z
@@ -266,6 +312,150 @@ tools:
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-04-25 12:00:04.000000000 Z
+- name: doctrine/dbal
+  description: Powerful PHP database abstraction layer
+  package_url: https://packagist.org/doctrine/dbal
+  version: 3.7.1
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/packagist/image.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
+  detection_source: composer.json
+  last_updated_by: Paul Isaris
+  last_updated_on: 2022-12-12 14:01:09.000000000 Z
+- name: guzzlehttp/guzzle
+  description: Guzzle is a PHP HTTP client library
+  package_url: https://packagist.org/guzzlehttp/guzzle
+  version: 7.8.0
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/packagist/image.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
+  detection_source: composer.json
+  last_updated_by: Paul Isaris
+  last_updated_on: 2023-04-06 13:37:28.000000000 Z
+- name: laravel/framework
+  description: The Laravel Framework
+  package_url: https://packagist.org/laravel/framework
+  version: 10.29.0
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/packagist/image.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
+  detection_source: composer.json
+  last_updated_by: Paul Isaris
+  last_updated_on: 2023-12-05 07:42:33.000000000 Z
+- name: laravel/tinker
+  description: Powerful REPL for the Laravel framework
+  package_url: https://packagist.org/laravel/tinker
+  version: 2.8.2
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/packagist/image.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
+  detection_source: composer.json
+  last_updated_by: Paul Isaris
+  last_updated_on: 2023-12-05 07:42:33.000000000 Z
+- name: mockery/mockery
+  description: Mockery is a simple yet flexible PHP mock object framework
+  package_url: https://packagist.org/mockery/mockery
+  version: 1.6.6
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/packagist/image.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
+  detection_source: composer.json
+  last_updated_by: NikolasGialitsis
+  last_updated_on: 2021-10-18 17:15:18.000000000 Z
+- name: nunomaduro/collision
+  description: Cli error handling for console/command-line PHP applications
+  package_url: https://packagist.org/nunomaduro/collision
+  version: 7.10.0
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/packagist/image.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
+  detection_source: composer.json
+  last_updated_by: Paul Isaris
+  last_updated_on: 2023-10-19 15:00:33.000000000 Z
+- name: nunomaduro/larastan
+  description: Larastan - Discover bugs in your code without running it
+  package_url: https://packagist.org/nunomaduro/larastan
+  version: 2.6.4
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/packagist/image.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
+  detection_source: composer.json
+  last_updated_by: Paul Isaris
+  last_updated_on: 2023-12-05 07:42:33.000000000 Z
+- name: phpunit/phpunit
+  description: The PHP Unit Testing framework
+  package_url: https://packagist.org/phpunit/phpunit
+  version: 10.4.2
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/packagist/image.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
+  detection_source: composer.json
+  last_updated_by: Paul Isaris
+  last_updated_on: 2023-10-05 10:33:40.000000000 Z
+- name: sentry/sentry-laravel
+  description: Laravel SDK for Sentry
+  package_url: https://packagist.org/sentry/sentry-laravel
+  version: 3.8.2
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/packagist/image.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
+  detection_source: composer.json
+  last_updated_by: Paul Isaris
+  last_updated_on: 2023-12-05 07:42:33.000000000 Z
+- name: spatie/laravel-sitemap
+  description: Create and generate sitemaps with ease
+  package_url: https://packagist.org/spatie/laravel-sitemap
+  version: 6.4.0
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/packagist/image.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
+  detection_source: composer.json
+  last_updated_by: Paul Isaris
+  last_updated_on: 2023-12-05 07:42:33.000000000 Z
+- name: symfony/http-client
+  description: Provides powerful methods to fetch HTTP resources synchronously or
+    asynchronously
+  package_url: https://packagist.org/symfony/http-client
+  version: 6.3.6
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/packagist/image.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.lock
+  detection_source: composer.json
+  last_updated_by: Paul Isaris
+  last_updated_on: 2023-04-06 13:37:28.000000000 Z
 - name: "@fortawesome/fontawesome-free"
   description: The iconic font, CSS, and SVG framework
   package_url: https://www.npmjs.com/@fortawesome/fontawesome-free
@@ -276,7 +466,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/17170/default_37d9ccc57ae4d32e7ff46614e4f8bb2c4ddc7964.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-04-25 12:00:04.000000000 Z
@@ -290,7 +480,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/18385/default_3918a37cf2f76449e061a2c79fb02113faa1391a.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-19 15:00:33.000000000 Z
@@ -304,43 +494,10 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15950/default_f49d4c116f8ea0155f4d92673b084378bba02760.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-19 15:00:33.000000000 Z
-- name: postcss
-  description: Tool for transforming styles with JS plugins
-  package_url: https://www.npmjs.com/postcss
-  version: 7.0.35
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/16012/default_7a88bebb451873cc63bd99007de5bd3bb8ef85de.png
-  detection_source_url: package-lock.json
-  detection_source: package.json
-  last_updated_by: Paul Isaris
-  last_updated_on: 2023-10-05 10:33:40.000000000 Z
-  vulnerabilities:
-  - name: PostCSS line return parsing error
-    cve_id: CVE-2023-44270
-    cve_url: https://github.com/advisories/GHSA-7fh5-64p2-3v2j
-    detected_date: Oct 4
-    severity: moderate
-    first_patched: 8.4.31
-  - name: Regular Expression Denial of Service in postcss
-    cve_id: CVE-2021-23382
-    cve_url: https://github.com/advisories/GHSA-566m-qj78-rww5
-    detected_date: Jan 28
-    severity: moderate
-    first_patched: 7.0.36
-  - name: Regular Expression Denial of Service in postcss
-    cve_id: CVE-2021-23368
-    cve_url: https://github.com/advisories/GHSA-hwj9-h5mp-3pm3
-    detected_date: Aug 22
-    severity: moderate
-    first_patched: 7.0.36
 - name: resolve-url-loader
   description: Webpack loader that resolves relative paths in url
   package_url: https://www.npmjs.com/resolve-url-loader
@@ -351,21 +508,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16468/default_73c88a18b684e01cbdbf945631a40a44aff5a777.png
-  detection_source_url: package-lock.json
-  detection_source: package.json
-  last_updated_by: Paul Isaris
-  last_updated_on: 2023-10-19 15:00:33.000000000 Z
-- name: sass
-  description: A pure JavaScript implementation of Sass
-  package_url: https://www.npmjs.com/sass
-  version: 1.69.4
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/16057/default_5fd43aeff4d6a935abc13737de01a0355210499d.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-19 15:00:33.000000000 Z
@@ -379,7 +522,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15842/default_b71c906aeda030a5e2f1fe40bf12a93be52404ab.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-19 15:00:33.000000000 Z
@@ -393,7 +536,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15844/default_b71c906aeda030a5e2f1fe40bf12a93be52404ab.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
@@ -407,7 +550,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15901/default_3af1504b6f77c55205ba630fe08c472f43b95f6e.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-19 15:00:33.000000000 Z
@@ -421,7 +564,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15850/default_0b10af8ca19c215f781dc07442e75bdc831089d0.png
-  detection_source_url: package-lock.json
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-19 15:00:33.000000000 Z
