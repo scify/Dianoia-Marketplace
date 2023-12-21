@@ -159,7 +159,7 @@ return [
     'total-activities' => 'συνολικές δραστηριότητες',
     'new-exercise' => 'Νέα άσκηση',
     'exercise-upload-rules' => 'Οι ασκήσεις που θα ανεβάσεις στην πλατφόρμα πρέπει να έχουν περιεχόμενο σύμφωνο με την δομή του πρωτότυπου εγγράφου <a target="_blank" href="https://dianoia.scify.org/content-guidelines">εδώ</a>. ',
-    'give-rating' => 'Δώσε την δική σου βαθμολογία',
+    'give-rating' => 'Βαθμολόγησε την άσκηση',
     'Ελληνικά' => 'Ελληνικά',
     'Spanish' => 'Ισπανικά',
     'English' => 'Αγγλικά',
