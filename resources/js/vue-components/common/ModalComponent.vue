@@ -1,6 +1,6 @@
 <template>
     <transition name="modal" v-if="open" @click="cancel">
-        <div class="modal-mask">
+        <div v-if="show" class="modal-mask">
             <div class="modal-wrapper">
                 <div class="modal-container">
                     <div class="modal-dialog modal-lg modal-dialog-scrollable" :class="classes">
@@ -41,7 +41,9 @@ export default {
 		}
 	},
 	data: function () {
-		return {};
+		return {
+			show: false,
+		};
 	},
 	methods: {
 		cancel() {
@@ -55,7 +57,7 @@ export default {
 		}
 	},
 	mounted() {
-
+		this.show = true;
 	}
 };
 </script>

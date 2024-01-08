@@ -92,5 +92,15 @@
                 text-align: right;
             }
         }
+
+        .btn.btn--secondary.disabled {
+            outline-color: var(--color-grey-dark);
+        }
+    }
+
+    .rating-btn {
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
