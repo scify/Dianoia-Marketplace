@@ -66,7 +66,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [scify/Dianoia-Marketplace](https://github.com/scify/Dianoia-Marketplace)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|44<br/>Tools used|12/14/23 <br/>Report generated|
+|45<br/>Tools used|01/05/24 <br/>Report generated|
 |------|------|
 </div>
 
@@ -298,7 +298,7 @@ Full tech stack [here](/techstack.md)
 </table>
 
 
-## <img src='https://img.stackshare.io/group.svg' /> Open source packages (19)</h2>
+## <img src='https://img.stackshare.io/group.svg' /> Open source packages (20)</h2>
 
 ## <img width='24' height='24' src='https://img.stackshare.io/package_manager/1778/default_90cb8b66e85ae5b95928b10bb076ab6a27c7e151.png'/> Packagist (11)
 
@@ -317,13 +317,14 @@ Full tech stack [here](/techstack.md)
 |[symfony/http-client](https://packagist.org/symfony/http-client)|v6.3.6|04/06/23|Paul Isaris |N/A|N/A|
 
 
-## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (8)
+## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (9)
 
 |NAME|VERSION|LAST UPDATED|LAST UPDATED BY|LICENSE|VULNERABILITIES|
 |:------|:------|:------|:------|:------|:------|
 |[@fortawesome/fontawesome-free](https://www.npmjs.com/@fortawesome/fontawesome-free)|v5.15.4|04/25/23|Paul Isaris |CC-BY-4.0,OFL-1.1,MIT|N/A|
 |[@sentry/browser](https://www.npmjs.com/@sentry/browser)|v7.74.1|10/19/23|Paul Isaris |MIT|N/A|
 |[eslint-plugin-vue](https://www.npmjs.com/eslint-plugin-vue)|v9.17.0|10/19/23|Paul Isaris |MIT|N/A|
+|[laravel-mix](https://www.npmjs.com/laravel-mix)|v6.0.49|04/25/23|Paul Isaris |MIT|N/A|
 |[resolve-url-loader](https://www.npmjs.com/resolve-url-loader)|v5.0.0|10/19/23|Paul Isaris |MIT|N/A|
 |[sass-loader](https://www.npmjs.com/sass-loader)|v11.1.1|10/19/23|Paul Isaris |MIT|N/A|
 |[vue](https://www.npmjs.com/vue)|v2.7.14|10/18/21|NikolasGialitsis |MIT|N/A|

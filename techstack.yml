@@ -1,11 +1,12 @@
 repo_name: scify/Dianoia-Marketplace
-report_id: 4bad03dffe9986194ad0780e376b2e00
+report_id: 46168b1bf89761773b9b8274f009b798
+version: 0.1
 repo_type: Public
-timestamp: '2023-12-14T10:12:29+00:00'
+timestamp: '2024-01-05T08:58:14+00:00'
 requested_by: PavlosIsaris
 provider: github
 branch: master
-detected_tools_count: 44
+detected_tools_count: 45
 tools:
 - name: JavaScript
   description: Lightweight, interpreted, object-oriented language with first-class
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package.json
   detection_source: package.json
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
@@ -28,6 +30,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/991/hwUcGZ41_400x400.jpg
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace
   detection_source: Repo Metadata
 - name: Bootstrap
   description: Simple and flexible HTML, CSS, and JS for popular UI components and
@@ -54,6 +57,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Microframeworks (Backend)
   image_url: https://img.stackshare.io/service/2350/638632.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.json
   detection_source: composer.json
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
@@ -79,6 +83,7 @@ tools:
   category: Languages & Frameworks
   sub_category: CSS Pre-processors / Extensions
   image_url: https://img.stackshare.io/service/3339/rlFcjEdI.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package.json
   detection_source: package.json
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
@@ -91,6 +96,7 @@ tools:
   category: Languages & Frameworks
   sub_category: CSS Pre-processors / Extensions
   image_url: https://img.stackshare.io/service/1171/jCR2zNJV.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package.json
   detection_source: package.json
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
@@ -103,6 +109,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1197/logosf_positif_03_icon.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/composer.json
   detection_source: composer.json
   last_updated_by: Paul Isaris
   last_updated_on: 2022-12-09 09:03:11.000000000 Z
@@ -157,6 +164,7 @@ tools:
   category: Libraries
   sub_category: State Management Library
   image_url: https://img.stackshare.io/service/6705/6128107.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package.json
   detection_source: package.json
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
@@ -168,6 +176,7 @@ tools:
   category: Data Stores
   sub_category: Database Tools
   image_url: https://img.stackshare.io/service/109221/default_b888cdf5617d936aa6aacf130911906955508639.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/public/.well-known/security.txt
   detection_source: public/.well-known/security.txt
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-06 13:16:02.000000000 Z
@@ -180,6 +189,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Code Review
   image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package.json
   detection_source: package.json
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
@@ -191,6 +201,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace
   detection_source: Repo Metadata
 - name: PHPUnit
   description: Testing framework for PHP
@@ -214,6 +225,7 @@ tools:
   category: Monitoring
   sub_category: Exception Monitoring
   image_url: https://img.stackshare.io/service/191/default_9262326592c97828a2a4299dec085a3674dd05f4.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-19 15:00:33.000000000 Z
@@ -239,6 +251,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Front End Package Manager
   image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package.json
   detection_source: package.json
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
@@ -263,6 +276,7 @@ tools:
   category: Communications
   sub_category: Large Language Model Tools
   image_url: https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/public/.well-known/security.txt
   detection_source: public/.well-known/security.txt
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-06 13:16:02.000000000 Z
@@ -288,6 +302,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace
   detection_source: Repo Metadata
 - name: axios
   description: Promise based HTTP client for the browser and node.js
@@ -309,6 +324,7 @@ tools:
   open_source: false
   hosted_saas: false
   image_url: https://img.stackshare.io/service/7945/h7umz7fz_normal.jpg
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package.json
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-04-25 12:00:04.000000000 Z
@@ -498,6 +514,20 @@ tools:
   detection_source: package.json
   last_updated_by: Paul Isaris
   last_updated_on: 2023-10-19 15:00:33.000000000 Z
+- name: laravel-mix
+  description: Laravel Mix is an elegant wrapper around Webpack for the 80% use case
+  package_url: https://www.npmjs.com/laravel-mix
+  version: 6.0.49
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17350/default_33c3173e7d0e91f7cea0eab9883ca83b157bd4a5.png
+  detection_source_url: https://github.com/scify/Dianoia-Marketplace/blob/master/package-lock.json
+  detection_source: package.json
+  last_updated_by: Paul Isaris
+  last_updated_on: 2023-04-25 12:00:04.000000000 Z
 - name: resolve-url-loader
   description: Webpack loader that resolves relative paths in url
   package_url: https://www.npmjs.com/resolve-url-loader
