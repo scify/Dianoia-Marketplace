@@ -2,7 +2,7 @@ repo_name: scify/Dianoia-Marketplace
 report_id: 46168b1bf89761773b9b8274f009b798
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-05T08:58:14+00:00'
+timestamp: '2024-02-29T18:31:07+00:00'
 requested_by: PavlosIsaris
 provider: github
 branch: master
@@ -218,7 +218,7 @@ tools:
   last_updated_by: NikolasGialitsis
   last_updated_on: 2021-10-18 17:15:18.000000000 Z
 - name: Sentry
-  description: 'See performance issues, fix errors faster, and optimize code health. '
+  description: See performance issues, fix errors faster, and optimize code health.
   website_url: https://sentry.io/welcome/?utm_source=stackshare&utm_medium=link&utm_campaign=profile
   open_source: true
   hosted_saas: true
