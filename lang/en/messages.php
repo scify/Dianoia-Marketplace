@@ -166,7 +166,7 @@ You can also create your own exercises and if you wish to, you can share them wi
     'total-activities' => 'All the activities',
     'new-exercise' => 'New exercise',
     'exercise-upload-rules' => 'The exercises you upload to the platform must have content that is consistent with the structure of the original file  <a target="_blank" href="https://dianoia.scify.org/content-guidelines"> here </a>.',
-    'give-rating' => 'Give your grading',
+    'give-rating' => 'Give your rating',
     'Ελληνικά' => 'Greek',
     'Spanish' => 'Spanish',
     'English' => 'English',

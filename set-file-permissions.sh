@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# usage: ./set-file-permissions www-data user .
+
 # Default variables
 groupname="${1:-www-data}"
 username="${2:-$USER}"
