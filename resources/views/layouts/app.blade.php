@@ -43,7 +43,7 @@
     @include('common.navbar')
     @include('common.alerts')
 
-    <main class="pb-5">
+    <main>
         <div id="main-content">
             @yield('content')
         </div>
