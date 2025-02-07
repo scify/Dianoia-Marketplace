@@ -93,7 +93,7 @@
 
 .search input:focus {
     box-shadow: none;
-    border: 2px solid color('primary');
+    border: 2px solid $primary;
 }
 
 .search .fa-search {
@@ -106,7 +106,7 @@
     position: absolute;
     top: 15px;
     right: 10px;
-    border-color: color('primary')
+    border-color: $primary;
 }
 
 .fa-envelope:hover {
