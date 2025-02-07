@@ -63,14 +63,14 @@
 
 .mobile-app {
     background-color: var(--color-grey-light);
-    height: 80vh;
+    height: 60vh;
 
     @media screen and (max-width: 992px) {
-        height: 60vh;
+        height: 50vh;
     }
 
     @media screen and (max-width: 370px) {
-        height: 70vh;
+        height: 40vh;
     }
 
     h1 {
