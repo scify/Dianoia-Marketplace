@@ -12,7 +12,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown navbar-item-dropdown">
+                <li class="nav-item px2 dropdown navbar-item-dropdown">
                     <a aria-label="Actions" class="nav-link dropdown-toggle" href="#" id="navbarDropdownActions"
                        role="button"
                        data-bs-toggle="dropdown" aria-expanded="false"> {{__('messages.dianoia')}}
@@ -32,36 +32,36 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item px2">
                     <a class="nav-link {{ UrlMatchesMenuItem("about") }}" href="{{ route('about')}}">
                         About
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item px2">
                     <a class="nav-link {{ UrlMatchesMenuItem("tutorial") }}" href="{{ route('tutorial')}}">
                         Tutorial
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item px2">
                     <a class="nav-link" id="mobileAppDropdownItem"
                        href="{{ !Request::is('home') ? route('homepage') : '' }}#downloadMobileAppBtn">
                         {{__('messages.mobile-app')}}
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item px2">
                     <a class="nav-link {{ UrlMatchesMenuItem("resources.display") }}"
                        href="{{route('resources.display')}}">
                         {{__('messages.exercises')}}
                     </a>
                 </li>
                 @guest()
-                    <li class="nav-item">
+                    <li class="nav-item px2">
                         <a class="nav-link" href="{{ route('login') }}">
                             {!! __('auth.login_btn')!!}/{!! __('auth.register_btn')!!}
                         </a>
                     </li>
                 @else
-                    <li class="nav-item dropdown">
+                    <li class="nav-item px2 dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdminActions" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
                             {{ Auth::user()->name }}
@@ -112,13 +112,13 @@
 
                     </li>
                 @endguest
-                <li class="nav-item">
+                <li class="nav-item px2">
                     <a aria-label="Content Guidelines" href="{{route('content-guidelines')}}">
                         <i class="fa fa-question-circle " title="Content Guidelines" aria-hidden="true"
                            style="font-size:24px;color:#3F51B5;padding:7px"></i>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item px2 dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLangSelection" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         <img
