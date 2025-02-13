@@ -30,7 +30,7 @@
                             <a href="{{route('resources.create')}}">  {!!__('messages.create-content')!!}</a>
                         </div>
                         <div class="header__text-box-3 col-md-6 col-sm-12">
-                            <a href="{{url("https://www.scify.gr/site/el/impact-areas/assistive-technologies/dianoia")}}"
+                            <a href="{{url("https://scify.org/el/project/%ce%b4%ce%b9%ce%ac%ce%bd%ce%bf%ce%b9%ce%b1/")}}"
                                target="_blank" rel="noopener noreferrer">{{__('messages.learn-more-mobile')}}</a>
                         </div>
                     </div>
