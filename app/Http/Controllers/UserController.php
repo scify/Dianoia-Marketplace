@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cookie;
 
 class UserController extends Controller {
@@ -111,6 +112,7 @@ class UserController extends Controller {
             return back();
         }
         Cookie::queue(Cookie::forever('lang', $request->lang));
+        App::setLocale($request->lang);
 
         return redirect()->back();
     }
