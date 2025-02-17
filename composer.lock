@@ -4381,12 +4381,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/scify/laravel-cookies-consent.git",
-                "reference": "fc9778d617c89b9e87c4b9e23b9b092ba63b146a"
+                "reference": "99ad705c0a3a60308a380b3e39a992431cd8a6e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/scify/laravel-cookies-consent/zipball/fc9778d617c89b9e87c4b9e23b9b092ba63b146a",
-                "reference": "fc9778d617c89b9e87c4b9e23b9b092ba63b146a",
+                "url": "https://api.github.com/repos/scify/laravel-cookies-consent/zipball/99ad705c0a3a60308a380b3e39a992431cd8a6e1",
+                "reference": "99ad705c0a3a60308a380b3e39a992431cd8a6e1",
                 "shasum": ""
             },
             "require": {
@@ -4448,7 +4448,7 @@
                 "issues": "https://github.com/scify/laravel-cookies-consent/issues",
                 "source": "https://github.com/scify/laravel-cookies-consent/tree/v4.0.0"
             },
-            "time": "2025-02-17T10:28:30+00:00"
+            "time": "2025-02-17T10:31:18+00:00"
         },
         {
             "name": "sentry/sentry",
