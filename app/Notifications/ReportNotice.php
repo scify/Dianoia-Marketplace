@@ -14,9 +14,9 @@ class ReportNotice extends Notification implements ShouldQueue {
 
     protected Resource $resource;
 
-    protected String $reportComment;
+    protected string $reportComment;
 
-    protected String $reportReason;
+    protected string $reportReason;
 
     protected User $creator;
 

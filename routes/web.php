@@ -50,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/users/update/{user}', [UserController::class, 'update'])->name('users.update');
 
     Route::resource('resources', ResourceController::class)
-        ->except([//ONLY
+        ->except([// ONLY
             'index', 'show',
         ])
         ->names([

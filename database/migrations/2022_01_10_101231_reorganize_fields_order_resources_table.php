@@ -21,6 +21,6 @@ class ReorganizeFieldsOrderResourcesTable extends Migration {
      * @return void
      */
     public function down() {
-        //not applicable
+        // not applicable
     }
 }

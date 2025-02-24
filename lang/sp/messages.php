@@ -98,7 +98,7 @@ return [
     'people' => 'Personas',
     'useful-links' => 'Enlaces útiles',
     'contact-us' => 'Contacto',
-    'footer-scify' => 'SciFY</a> es una organización sin fines de lucro que desarrolla sistemas de tecnología de la información de vanguardia y los ofrece gratuitamente a todos, incluido el diseño, los detalles de implementación y el soporte necesario para resolver problemas de la vida real.</p>',
+    'footer-scify' => '<a href="https://scify.org/en/who-we-are/our-mission/" target="_blank">SciFY</a> es una organización sin fines de lucro que desarrolla sistemas de tecnología de la información de vanguardia y los ofrece gratuitamente a todos, incluido el diseño, los detalles de implementación y el soporte necesario para resolver problemas de la vida real.',
     'team' => 'El Equipo',
     'dianoia-web-version' => 'Versión web de Dianoia',
     'Dianoia admin' => 'Administrador(a) de la plataforma DiAnoia',
@@ -249,18 +249,18 @@ Puedes también crear tus propios ejercicios y compartirlos con la comunidad.',
     'choose_reporting_reason' => 'Elija el motivo de la notificación',
     'optionally_include_comments' => 'Si lo desea, incluya algunos comentarios a continuación',
     'data_deletion_title' => 'Solicitud de eliminación de datos',
-    'data_deletion_request' => "En :app_name, valoramos su privacidad y estamos comprometidos a garantizar la seguridad de su información personal. Si desea que todos sus datos personales y relacionados con el uso se eliminen de nuestros registros, estamos aquí para ayudarlo.
+    'data_deletion_request' => 'En :app_name, valoramos su privacidad y estamos comprometidos a garantizar la seguridad de su información personal. Si desea que todos sus datos personales y relacionados con el uso se eliminen de nuestros registros, estamos aquí para ayudarlo.
 
-                                 Para continuar con la eliminación de sus datos, envíe un correo electrónico a :app_support_email con el asunto: \":app_name Solicitud de eliminación de datos - [Su correo electrónico registrado con nosotros]\".
+                                 Para continuar con la eliminación de sus datos, envíe un correo electrónico a :app_support_email con el asunto: ":app_name Solicitud de eliminación de datos - [Su correo electrónico registrado con nosotros]".
                                 
                                  <br>Al recibir su correo electrónico, nuestro equipo iniciará de inmediato el proceso de eliminación de sus datos de nuestro sistema. <br>Tenga en cuenta que esta acción es irreversible y resultará en la eliminación permanente de toda su información asociada de nuestras bases de datos.
                                 
                                  Su privacidad nos importa y estamos dedicados a respetar sus elecciones con respecto a sus datos. Si tiene más preguntas o inquietudes sobre su privacidad o administración de datos, no dude en incluirlas en su correo electrónico y estaremos encantados de ayudarle.
                                 
-                                 <br><br>Gracias por usar :app_name. Agradecemos su confianza en nosotros.",
-    "terms-of-service-link" => "https://go.scify.gr/dianoia-terms-sp",
-    "privacy-policy-link" => "https://go.scify.gr/dianoia-privacy-sp",
-    "cookies-policy-link" => "https://go.scify.gr/dianoia-cookies-sp",
-    "cookies-policy" => "Política de cookies",
-    "funding-footer" => "Este proyecto ha recibido financiación del programa de investigación e innovación Horizonte 2020 de la Unión Europea bajo el acuerdo de subvención No. 857159.",
+                                 <br><br>Gracias por usar :app_name. Agradecemos su confianza en nosotros.',
+    'terms-of-service-link' => 'https://go.scify.gr/dianoia-terms-sp',
+    'privacy-policy-link' => 'https://go.scify.gr/dianoia-privacy-sp',
+    'cookies-policy-link' => 'https://go.scify.gr/dianoia-cookies-sp',
+    'cookies-policy' => 'Política de cookies',
+    'funding-footer' => 'Este proyecto ha recibido financiación del programa de investigación e innovación Horizonte 2020 de la Unión Europea bajo el acuerdo de subvención No. 857159.',
 ];

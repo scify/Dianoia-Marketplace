@@ -184,7 +184,7 @@ class ResourceFileManager {
         $zip->addEmptyDir(basename($path));
         $nodes = glob($path . '/*');
         foreach ($nodes as $node) {
-            //print $node . '<br>';
+            // print $node . '<br>';
             if (is_dir($node)) {
                 $zip = $this->addDir($zip, $node);
             } elseif (is_file($node)) {

@@ -13,11 +13,11 @@ class RejectionNotice extends Notification implements ShouldQueue {
 
     protected Resource $resource;
 
-    protected String $rejectionMessage;
+    protected string $rejectionMessage;
 
-    protected String $rejectionReason;
+    protected string $rejectionReason;
 
-    protected String $username;
+    protected string $username;
 
     /**
      * Create a new notification instance.

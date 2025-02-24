@@ -101,7 +101,7 @@ return [
     'people' => 'People',
     'useful-links' => 'Useful links',
     'contact-us' => 'Contact us',
-    'footer-scify' => 'SciFY</a> is a not-for-profit organization, that develops cutting-edge information technology systems and freely offers them to all, including the design, the implementation details, and the support needed, in order to solve real-life problems.</p>',
+    'footer-scify' => '<a href="https://scify.org/en/who-we-are/our-mission/" target="_blank">SciFY</a> is a not-for-profit organization, that develops cutting-edge information technology systems and freely offers them to all, including the design, the implementation details, and the support needed, in order to solve real-life problems.',
     'team' => 'The Team',
     'dianoia-web-version' => 'Dianoia web version',
     'Dianoia admin' => 'DiAnoia Platform Administrator',
@@ -263,9 +263,9 @@ You can also create your own exercises and if you wish to, you can share them wi
                                 Your privacy matters to us, and we're dedicated to respecting your choices regarding your data. If you have any further questions or concerns about your privacy or data management, feel free to include them in your email, and we'll be happy to assist you.
                                 
                                 <br><br>Thank you for using :app_name. We appreciate your trust in us.",
-    "terms-of-service-link" => "https://go.scify.gr/dianoia-terms-en",
-    "privacy-policy-link" => "https://go.scify.gr/dianoia-privacy-en",
-    "cookies-policy-link" => "https://go.scify.gr/dianoia-cookies-en",
-    "cookies-policy" => "Cookies Policy",
-    "funding-footer" => "This project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No. 857159."
+    'terms-of-service-link' => 'https://go.scify.gr/dianoia-terms-en',
+    'privacy-policy-link' => 'https://go.scify.gr/dianoia-privacy-en',
+    'cookies-policy-link' => 'https://go.scify.gr/dianoia-cookies-en',
+    'cookies-policy' => 'Cookies Policy',
+    'funding-footer' => "This project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No. 857159.",
 ];

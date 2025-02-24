@@ -37,9 +37,9 @@
                 </div>
                 <div class="col-md-6 item text">
                     <h3>{!! __('messages.Organization') !!}</h3>
-                    <p style="font-size: small; color:whitesmoke!important"><a
-                                href="https://scify.org/en/who-we-are/our-mission/"
-                                target="_blank">{!! __('messages.footer-scify') !!}
+                    <p style="font-size: small; color:whitesmoke!important">
+                        {!! __('messages.footer-scify') !!}
+                    </p>
                 </div>
                 <div class="col-md-6 col-sm-6 item text" style="margin-left: auto; margin-right: 0;">
 

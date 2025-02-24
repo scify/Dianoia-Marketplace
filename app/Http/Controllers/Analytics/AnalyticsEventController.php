@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Analytics;
+
 use App\Http\Controllers\Controller;
 use App\Repository\Analytics\AnalyticsEventRepository;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class AnalyticsEventController extends Controller {
             'source' => 'required',
         ]);
         $response = json_encode([]);
+
         return $this->analyticsEventRepository->create([
             'name' => $request->name,
             'source' => $request->source,

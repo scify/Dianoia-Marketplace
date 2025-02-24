@@ -16,12 +16,12 @@ class ResourceRepository extends Repository {
     }
 
     public function getResources(
-        int $user_id = null,
-        int $lang_id = null,
-        array $status_ids = null,
-        array $difficulties = null,
-        array $type_ids = null,
-        array $ratings = null,
+        ?int $user_id = null,
+        ?int $lang_id = null,
+        ?array $status_ids = null,
+        ?array $difficulties = null,
+        ?array $type_ids = null,
+        ?array $ratings = null,
         $paginate = null,
         $api = false
     ) {
@@ -42,11 +42,11 @@ class ResourceRepository extends Repository {
 
 
         if ($type_ids) {
-            $resourcesBuilder->whereIn('type_id', $type_ids); //maybe $resourcesBuilder = ...
+            $resourcesBuilder->whereIn('type_id', $type_ids); // maybe $resourcesBuilder = ...
         }
 
         if ($api) {
-            $resourcesBuilder->where('display_in_api', true); //maybe $resourcesBuilder = ...
+            $resourcesBuilder->where('display_in_api', true); // maybe $resourcesBuilder = ...
         }
 
 

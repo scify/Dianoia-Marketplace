@@ -101,7 +101,7 @@ Linee guida più dettagliate per le diverse categorie di contenuti per le person
     'people' => 'Le persone',
     'useful-links' => 'Link utili',
     'contact-us' => 'Contatto',
-    'footer-scify' => 'SciFY</a> è un organizzazione senza scopo di lucro che sviluppa sistemi informatici all avanguardia e li offre gratuitamente a tutti, inclusi il design, i dettagli di implementazione e il supporto necessario per risolvere i problemi della vita reale.</p>',
+    'footer-scify' => '<a href="https://scify.org/en/who-we-are/our-mission/" target="_blank">SciFY</a> è un organizzazione senza scopo di lucro che sviluppa sistemi informatici all avanguardia e li offre gratuitamente a tutti, inclusi il design, i dettagli di implementazione e il supporto necessario per risolvere i problemi della vita reale.',
     'team' => 'Il Gruppo',
     'dianoia-web-version' => 'Dianoia versione web',
     'Dianoia admin' => 'Amministratore/a della piattaforma DiAnoia',
@@ -261,9 +261,9 @@ Puoi anche creare I tuoi esercizi e, se lo desideri, puoi condividerli con la co
                                  La tua privacy è importante per noi e ci impegniamo a rispettare le tue scelte in merito ai tuoi dati. Se hai ulteriori domande o dubbi sulla tua privacy o sulla gestione dei dati, non esitare a includerli nella tua email e saremo felici di aiutarti.
                                 
                                  <br><br>Grazie per aver utilizzato :app_name. Apprezziamo la tua fiducia in noi.",
-    "terms-of-service-link" => "https://go.scify.gr/dianoia-terms-it",
-    "privacy-policy-link" => "https://go.scify.gr/dianoia-privacy-it",
-    "cookies-policy-link" => "https://go.scify.gr/dianoia-cookies-it",
-    "cookies-policy" => "Politica sui cookie",
-    "funding-footer" => "Questo progetto ha ricevuto finanziamenti dal programma di ricerca e innovazione Horizon 2020 dell'Unione Europea con l'accordo di sovvenzione n. 857159.",
+    'terms-of-service-link' => 'https://go.scify.gr/dianoia-terms-it',
+    'privacy-policy-link' => 'https://go.scify.gr/dianoia-privacy-it',
+    'cookies-policy-link' => 'https://go.scify.gr/dianoia-cookies-it',
+    'cookies-policy' => 'Politica sui cookie',
+    'funding-footer' => "Questo progetto ha ricevuto finanziamenti dal programma di ricerca e innovazione Horizon 2020 dell'Unione Europea con l'accordo di sovvenzione n. 857159.",
 ];

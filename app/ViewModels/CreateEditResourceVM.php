@@ -12,11 +12,11 @@ class CreateEditResourceVM {
 
     public Collection $types;
 
-    public String $preselect_types;
+    public string $preselect_types;
 
     public Resource $resource;
 
-    public String $lang;
+    public string $lang;
 
     public function __construct(Collection $languages,
         Collection $difficulties,

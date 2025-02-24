@@ -53,7 +53,7 @@ class ResourceManager {
         $lang = app()->getLocale();
 
         return new CreateEditResourceVM(
-            $contentLanguages, $difficulties, $types, collect(), new Resource(), $lang
+            $contentLanguages, $difficulties, $types, collect(), new Resource, $lang
         );
     }
 
@@ -104,7 +104,7 @@ class ResourceManager {
         return $this->resourceRepository->find($id);
     }
 
-    public function getResources(int $lang_id = null, $user_id = null, array $status_ids = [], array $difficulties = null, array $type_ids = null, array $ratings = null) {
+    public function getResources(?int $lang_id = null, $user_id = null, array $status_ids = [], ?array $difficulties = null, ?array $type_ids = null, ?array $ratings = null) {
         if ($status_ids == []) {
             $status_ids = [ResourceStatusesLkp::APPROVED];
         }
@@ -136,7 +136,7 @@ class ResourceManager {
         ];
 
         $resource = $this->resourceRepository->create($storeArr);
-        $resourceFileManager = new ResourceFileManager();
+        $resourceFileManager = new ResourceFileManager;
         try {
             $img_path = $resourceFileManager->saveImage($resource->id, $request);
         } catch (FileNotFoundException $e) {
@@ -175,7 +175,7 @@ class ResourceManager {
         $storeArr['img_path'] = $old_resource['img_path'];
         $storeArr['pdf_path'] = $old_resource['pdf_path'];
         $resource = $this->resourceRepository->update($storeArr, $id);
-        $resourceFileManager = new ResourceFileManager();
+        $resourceFileManager = new ResourceFileManager;
         if (isset($request['image'])) {
             $resourceFileManager->deleteResourceImage($old_resource);
             $img_path = $resourceFileManager->saveImage($resource->id, $request);
@@ -207,7 +207,7 @@ class ResourceManager {
 
     public function destroyResource($id) {
         $resource = $this->resourceRepository->find($id);
-        $resourceFileManager = new ResourceFileManager();
+        $resourceFileManager = new ResourceFileManager;
         $resourceFileManager->deleteResourceAudio($resource);
         $resourceFileManager->deleteResourceImage($resource);
         $this->resourceRepository->delete($id);
@@ -215,7 +215,7 @@ class ResourceManager {
 
     public function cloneResource($id, $newParentId) {
         $resource = $this->resourceRepository->find($id);
-        $fileManager = new ResourceFileManager();
+        $fileManager = new ResourceFileManager;
         $storeArr = [
             'name' => $resource->name,
             'img_path' => $fileManager->cloneResourceToDirectory(basename($resource->img_path), 'image'),

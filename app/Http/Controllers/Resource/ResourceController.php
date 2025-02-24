@@ -101,7 +101,7 @@ class ResourceController extends Controller {
             $request['slug'] = Str::slug($request['name'], '_') . '_' . $resource->id;
             $this->resourceManager->updateResource($request, $resource['id']);
 
-            $this->submit($resource); //todo comment to pause exercise submission notifications
+            $this->submit($resource); // todo comment to pause exercise submission notifications
 
             return redirect()->route('resources.my_profile')->with('flash_message_success', __('messages.exercise-submit-success'));
         } catch (\Exception $e) {
@@ -116,16 +116,16 @@ class ResourceController extends Controller {
      * @param  int  $id
      * @return RedirectResponse
      */
-    public function update(Request $request, int $id): RedirectResponse {//after submit, (action-route submit button directs here)
+    public function update(Request $request, int $id): RedirectResponse { // after submit, (action-route submit button directs here)
         $this->validate($request, [
-            'name' => 'string|max:100',
-            'image' => 'mimes:jpg,png|file|between:3,1000|nullable',
-            'pdf' => 'mimes:pdf|max:500000|nullable',
-            'description' => 'string|max:1000',
-            'accept-guideline-terms' => 'required',
-            'accept-privacy-terms' => 'required',
-            'type_id' => 'required',
-        ]);
+                'name' => 'string|max:100',
+                'image' => 'mimes:jpg,png|file|between:3,1000|nullable',
+                'pdf' => 'mimes:pdf|max:500000|nullable',
+                'description' => 'string|max:1000',
+                'accept-guideline-terms' => 'required',
+                'accept-privacy-terms' => 'required',
+                'type_id' => 'required',
+            ]);
         try {
             $request['slug'] = Str::slug($request['name'], '_') . '_' . $id;
             $request['status_id'] = ResourceStatusesLkp::CREATED_PENDING_APPROVAL;
@@ -140,13 +140,14 @@ class ResourceController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param Request $request
-     * @param int $id
+     * @param  Request  $request
+     * @param  int  $id
      * @return RedirectResponse
      */
     public function delete_exercise(Request $request, int $id): RedirectResponse {
         try {
             $this->resourceManager->destroyResource($id);
+
             return redirect()->back()->with('flash_message_success', __('messages.exercise-delete-success'));
         } catch (\Exception $e) {
             return redirect()->back()->with('flash_message_failure', __('messages.exercise-delete-failure'));
@@ -155,7 +156,7 @@ class ResourceController extends Controller {
 
     public function submit($resource): RedirectResponse {
         $admins = $this->userManager->get_admin_users();
-        Notification::send($admins, new AdminNotice($resource)); //Todo when dianoia email for admin has been setup
+        Notification::send($admins, new AdminNotice($resource)); // Todo when dianoia email for admin has been setup
         try {
             return redirect()->route('resources.display')->with('flash_message_success', __('messages.exercise-submit-success'));
         } catch (\Exception $e) {

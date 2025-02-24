@@ -12,9 +12,9 @@ class PlatformStatistics {
     public Collection $resourcesPerUserStatistics;
 
     /**
-     * @param Collection $generalPlatformStatistics
-     * @param Collection $resourcesPerTypeStatistics
-     * @param Collection $resourcesPerUserStatistics
+     * @param  Collection  $generalPlatformStatistics
+     * @param  Collection  $resourcesPerTypeStatistics
+     * @param  Collection  $resourcesPerUserStatistics
      */
     public function __construct(Collection $generalPlatformStatistics,
         Collection $resourcesPerTypeStatistics,
