@@ -2,7 +2,6 @@
 
 namespace App\BusinessLogicLayer\Resource;
 
-use App\BusinessLogicLayer\Shapes\ShapesIntegrationManager;
 use App\Models\Resource\Resource;
 use App\Repository\ContentLanguageLkpRepository;
 use App\Repository\DifficultiesLkpRepository;
@@ -17,7 +16,6 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use InvalidArgumentException;
 
 class ResourceManager {
@@ -33,15 +31,12 @@ class ResourceManager {
 
     protected UserRepository $userRepository;
 
-    protected ShapesIntegrationManager $shapesIntegrationManager;
-
     public function __construct(ResourceRepository $resourceRepository,
         ContentLanguageLkpRepository $contentLanguageLkpRepository,
         DifficultiesLkpRepository $difficultiesLkpRepository,
         ResourceTypeLkpRepository $resourceTypeLkpRepository,
         ReportsRepository $reportsRepository,
         UserRepository $userRepository,
-        ShapesIntegrationManager $shapesIntegrationManager
     ) {
         $this->resourceRepository = $resourceRepository;
         $this->contentLanguageLkpRepository = $contentLanguageLkpRepository;
@@ -49,7 +44,6 @@ class ResourceManager {
         $this->resourceTypeLkpRepository = $resourceTypeLkpRepository;
         $this->reportsRepository = $reportsRepository;
         $this->userRepository = $userRepository;
-        $this->shapesIntegrationManager = $shapesIntegrationManager;
     }
 
     public function getCreateResourcesViewModel(): CreateEditResourceVM {
@@ -155,14 +149,6 @@ class ResourceManager {
         }
 
         $user = $this->userRepository->find(Auth::id());
-        if ($user->shapes_auth_token && ShapesIntegrationManager::isEnabled()) {
-            $resourceType = $this->resourceTypeLkpRepository->find($request['type_id']);
-            try {
-                $this->shapesIntegrationManager->sendUsageDataToDatalakeAPI($user, 'resource_created', $resourceType->name);
-            } catch (\Exception $e) {
-                Log::error($e);
-            }
-        }
 
         return $this->resourceRepository->update([
             'img_path' => $img_path,

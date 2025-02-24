@@ -72,25 +72,12 @@ return [
         <p>People with onset dementia, due to the progressive decline of their mental abilities, have the need for appropriate care at every stage. The caregivers feel that they have a great responsibility for their care.</p>',
 
 
-    'checkbox-terms-privacy-' => 'I have read and agree with the <a href="https://dianoia.scify.org/terms-of-use"> terms of use </a> and <a href="https://dianoia.scify.org/privacy-policy"> privacy policy </a> of the platform',
+    'checkbox-terms-privacy-' => 'I have read and agree with the <a href="https://go.scify.gr/dianoia-terms-en"> terms of use </a> and <a href="https://go.scify.gr/dianoia-privacy-en"> privacy policy </a> of the platform',
     'checkbox-guidelines' => 'The content I will upload aligns with the <a href="https://dianoia.scify.org/content-guidelines"> content rules and guidelines </a>',
 
     'content-guidelines' => 'Content guidelines',
     'privacy-policy' => 'Privacy policy',
     'meta_tags_description' => 'Dianoia Marketplace is an online application implemented and available for free by the non-profit  SciFY so that everyone can create and share their own free content for the Dianoia application. The content of Dianoia Marketplace is mainly aimed at people that take care of people/patients with onset dementia or/and Alzheimer’s. People with onset dementia, due to the progressive decline of their mental abilities, have the need for appropriate care at every stage. The caregivers feel that they have a great responsibility for their care.',
-    'term-of-use-11' => 'Except for the conditions of the previous paragraph regarding personal data, <a href="https://www.scify.org/" target="_blank" rel="noopener noreferrer">  SciFY </a> maintains the right to change the Terms and Conditions, if they need to be updated or completed, at any time and without notice, therefore the user must be informed of any changes before each use of the application.',
-    'term-of-use-10' => '<a href="https://www.scify.org/" target="_blank" rel="noopener noreferrer">  SciFY </a> uses the personal data that each user enters only in the context of the <a href="https://dianoia.scify.org/" target="_blank" rel="noopener noreferrer"> Dianoia Marketplace </a> project, for statistical purposes and for coming in touch with them, if need be. Personal data is not made public to third parties without the user’s permission.',
-    'term-of-use-9' => 'Each content creator may allow other creators to build on their content and enrich it, or to create something new.',
-    'term-of-use-8' => 'Each content creator does not compete with other content creators, they recognize their contribution and co-operate with them to improve and enrich the content of <a href="https://dianoia.scify.org/" target="_blank" rel="noopener noreferrer"> Dianoia Marketplace </a>.',
-    'term-of-use-7' => '<a href="https://www.scify.org/" target="_blank" rel="noopener noreferrer">  SciFY </a> cannot guarantee the appropriateness of the content of other game creators of <a href="https://dianoia.scify.org/" target="_blank" rel="noopener noreferrer"> Dianoia Marketplace </a>. However, it maintains the right to request that the creator makes corrections to or deletes the content, if something unacceptable comes to its attention. The users are encouraged to notify <a href="https://www.scify.org/" target="_blank" rel="noopener noreferrer">  SciFY </a> about non-acceptable content.',
-    'term-of-use-6' => 'Each content creator must not infringe / abuse intellectual or any other rights of a third party. The content they upload (images, audios, texts) must be their own, or they must have obtained permission to use it, or they must use free copyright material and according to the instructions of its original creator.',
-    'term-of-use-5' => 'Each content creator is entirely and solely responsible for the content they upload. The content must be appropriate for the end-users, and should respect their personality and their rights. Content that violates the laws, rules or regulations is not allowed. Indicatively, offensive, misleading, abusive, threatening, vulgar, violent, obscene, proselytizing, racist, defamatory, homophobic, sexist, or advertising content or personal data content is not allowed.',
-    'term-of-use-4' => '<a href="https://www.scify.org/" target="_blank" rel="noopener noreferrer">  SciFY </a> is not responsible for the quality/appropriateness of the content or the content uploaded to the application, its correctness or its quality, but only for the content uploaded by <a href="https://www.scify.org/" target="_blank">  SciFY </a> itself as a creator.',
-    'term-of-use-3' => 'The <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> application is addressed to services and scientists that deal with the care and rehabilitation of people that belong to the groups mentioned above, as well as people providing relevant care at home.',
-    'term-of-use-2' => 'The content of <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> is mainly addressed to the caregivers of people/patients with onset dementia or/and Alzheimer’s.',
-    'term-of-use-1' => '<a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> is an online application implemented and provided for free by the Non-Profit Organization <a href="https://www.scify.org/" target="_blank">  SciFY </a>, so that anyone can create and share with others free content for the <a href=https://play.google.com/store/apps/details?id=org.scify.dianoia.app" target="_blank"> Dianoia application </a>.',
-    'terms-of-use-prologue' => 'Using the <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> platform, I understand, agree and accept that:',
-    'last-amendment' => 'Last Amendment',
     'terms-of-use' => 'Terms of use',
     'please_sign_in' => 'You need to sign-in in order to rate this exercise',
     'exercise-create-success' => 'Success! The exercise has been created',
@@ -175,7 +162,6 @@ You can also create your own exercises and if you wish to, you can share them wi
     'edit-profile' => 'Edit profile',
     'my-profile' => 'My Profile',
     'Carer' => 'Exercises for caretakers',
-    'Shapes User' => 'Shapes Platform User',
     'patient-exercises' => 'Exercises for patients',
     'all-updates' => 'All the additions',
     'search-submissions' => 'Search all entries',
@@ -276,6 +262,10 @@ You can also create your own exercises and if you wish to, you can share them wi
                                 
                                 Your privacy matters to us, and we're dedicated to respecting your choices regarding your data. If you have any further questions or concerns about your privacy or data management, feel free to include them in your email, and we'll be happy to assist you.
                                 
-                                <br><br>Thank you for using :app_name. We appreciate your trust in us."
-
+                                <br><br>Thank you for using :app_name. We appreciate your trust in us.",
+    "terms-of-service-link" => "https://go.scify.gr/dianoia-terms-en",
+    "privacy-policy-link" => "https://go.scify.gr/dianoia-privacy-en",
+    "cookies-policy-link" => "https://go.scify.gr/dianoia-cookies-en",
+    "cookies-policy" => "Cookies Policy",
+    "funding-footer" => "This project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No. 857159."
 ];

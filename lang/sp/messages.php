@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'youtube_url'=> 'https://www.youtube.com/embed/2NwabNjsImI',
+    'youtube_url' => 'https://www.youtube.com/embed/2NwabNjsImI',
     'category-executive' => 'Categoría "Funciones Ejecutivas"',
     'category-though' => 'Categoría "Ejercicios de pensamiento y habla"',
     'category-attention' => 'Categoría “Ejercicios de atención”',
@@ -63,31 +63,18 @@ return [
     'guidelines-header-3' => 'Notas sobre la búsqueda, edición y carga de contenido para ejercicios y actividades',
     'guidelines-header-2' => 'Creación de contenido - Contenido para cuidadores de personas con demencia',
     'guidelines-header-1' => 'Creación de contenido: contenido para personas con demencia incipiente',
-    'guidelines-prologue'=>'
+    'guidelines-prologue' => '
         <p>Dianoia Marketplace es una aplicación en línea que se implementó sin fines de lucro, SciFY para que cualquiera pueda crear y compartir con otros contenido gratuito para implementar Intellect.</p>
         <p>El contenido del Dianoia Marketplace está dirigido principalmente a personas que cuidan de personas/pacientes con inicio de demencia y/o enfermedad de Alzheimer.</p>
 
         <p>Las personas con demencia en desarrollo, debido al declive evolutivo de sus capacidades mentales, necesitan atención adecuada en cada etapa. Los cuidadores sienten que tienen una gran responsabilidad por su cuidado. Así que la demencia no solo afecta a la persona con demencia, sino también a quien la cuida.</p>',
 
 
-    'checkbox-terms-privacy-' => 'He leído y acepto  <a href="https://dianoia.scify.org/terms-of-use"> las condiciones de uso </a> y la <a href="https://dianoia.scify.org/privacy-policy"> política de privacidad  </a> de la plataforma',
+    'checkbox-terms-privacy-' => 'He leído y acepto  <a href="https://go.scify.gr/dianoia-terms-sp"> las condiciones de uso </a> y la <a href="https://go.scify.gr/dianoia-privacy-sp"> política de privacidad  </a> de la plataforma',
     'checkbox-guidelines' => 'El contenido que subiré se ajusta a las  <a href="https://dianoia.scify.org/content-guidelines"> normas y directrices de contenido   </a>',
     'content-guidelines' => 'Pautas de contenido',
     'privacy-policy' => 'Política de privacidad',
     'meta_tags_description' => 'Dianoia Marketplace es una aplicación en línea implementada y proporcionada de forma gratuita por la compañía sin fines de lucro SciFY, para que todos puedan crear y compartir contenido gratuito para la aplicación Intellect. El contenido del Dianoia Marketplace está dirigido principalmente a las personas que cuidan de personas/pacientes con inicio de demencia y/o enfermedad de Alzheimer. La aplicación Dianoia Marketplace está dirigida a organizaciones y científicos involucrados en el cuidado y rehabilitación de personas pertenecientes a los grupos descritos anteriormente, así como a personas que brindan atención relevante en el hogar. ',
-    'term-of-use-11' => 'Además de lo dispuesto en el párrafo anterior respecto a los datos personales, <a href="https://www.scify.org/" target="_blank">  SciFY </a> reserva el derecho de modificar los Términos y Condiciones de Uso si es necesario para actualizarlos y complementarlos, en cualquier momento y sin previo aviso, en cuyo caso el usuario deberá ser informado. de cualquier cambio antes de usar la aplicación.',
-    'term-of-use-10' => '<a href="https://www.scify.org/" target="_blank">  SciFY </a> utiliza la información personal ingresada por cada usuario solo como parte del proyecto <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>, con fines estadísticos y para contactarlos si es necesario. La información personal no se divulga a terceros sin el permiso del usuario.',
-    'term-of-use-9' => 'Cada creador de contenido permite que otro creador se base en su contenido y lo enriquezca o cree otros nuevos.',
-    'term-of-use-8' => 'Cada creador de contenido no compite con otros creadores, reconoce su contribución y trabaja con ellos para mejorar y enriquecer el contenido de <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>.',
-    'term-of-use-7' => '<a href="https://www.scify.org/" target="_blank">  SciFY </a> no puede garantizar la idoneidad del contenido de otros desarrolladores de juegos de <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a>. Sin embargo, se reserva el derecho de solicitar correcciones al creador o eliminar el contenido si percibe algo inaceptable. Se alienta a los usuarios a advertir a <a href="https://www.scify.org/" target="_blank">  SciFY </a> sobre contenido inaceptable.',
-    'term-of-use-6' => 'Cualquier creador de contenido no debe infringir los derechos de autor o derechos de terceros. El contenido que subas (imágenes, sonidos, textos) debe ser obra propia o tener una licencia de uso o usar material con derechos de autor y de acuerdo con las instrucciones de su creador.',
-    'term-of-use-5' => 'Cada creador de contenido es el único responsable del contenido que carga. El contenido debe ser apropiado para los usuarios finales y no debe atentar contra su personalidad o derechos. No se permite contenido que infrinja leyes, reglamentos o normativas. De manera indicativa, no se permiten contenidos ofensivos, engañosos, abusivos, amenazantes, vulgares, violentos, obscenos, proselitistas, racistas, difamatorios, homofóbicos, sexistas, publicitarios o relacionados con datos personales.',
-    'term-of-use-4' => '<a href="https://www.scify.org/" target="_blank">  SciFY </a> no es responsable de la calidad/adecuación del contenido o el contenido que se descarga a la aplicación, su corrección o calidad, excepto por el contenido que ha subido como creador.',
-    'term-of-use-3' => 'La aplicación <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> está dirigida a organizaciones y científicos involucrados en el cuidado y rehabilitación de personas pertenecientes a los grupos descritos anteriormente, así como a personas que brindan atención relevante en el hogar.',
-    'term-of-use-2' => 'El contenido del <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> está dirigido principalmente a las personas que cuidan de personas/pacientes con inicio de demencia y/o enfermedad de Alzheimer.',
-    'term-of-use-1' => '<a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> es una aplicación en línea implementada y proporcionada de forma gratuita por la compañía sin fines de lucro <a href="https://www.scify.org/" target="_blank">  SciFY </a>, para que todos puedan crear y compartir contenido gratuito para la aplicación Intellect.',
-    'terms-of-use-prologue' => 'Usando la plataforma <a href="https://dianoia.scify.org/" target="_blank"> Dianoia Marketplace </a> entiendo y acepto que:',
-    'last-amendment' => 'Última modificación',
     'terms-of-use' => 'Términos y condiciones de uso',
     'please_sign_in' => 'Debes iniciar sesión para calificar este ejercicio.',
     'exercise-create-success' => '¡Éxito! El ejercicio ha sido creado',
@@ -170,7 +157,6 @@ Puedes también crear tus propios ejercicios y compartirlos con la comunidad.',
     'edit-profile' => 'Edición de perfil',
     'my-profile' => 'Mi Perfil',
     'Carer' => 'Ejercicios para los/as cuidadores/as',
-    'Shapes User' => 'Usuario de la plataforma SHAPES',
     'patient-exercises' => 'Ejercicios para los pacientes',
     'all-updates' => 'Todas las adiciones',
     'search-submissions' => 'Busca las entradas',
@@ -186,13 +172,13 @@ Puedes también crear tus propios ejercicios y compartirlos con la comunidad.',
     'exercise-acceptance' => 'Aprobar el ejercicio',
     'name' => 'Nombre',
     'exercise-description' => 'Descripción del ejercicio',
-    'upload-image'=>'Subir una imágen',
+    'upload-image' => 'Subir una imágen',
     'necessary-info' => 'Elementos necesarios.',
     'upload-pdf' => 'Suba el archivo .pdf con el ejercicio',
     'accept-rules-of-conduct' => 'He leído <b><u> las normas de contenido y de propiedad intelectual</u></b>así como las condiciones para la estructura del ejercicio, <b><u><a target="_blank" href="/coming-soon"> como en el ejemplo</a></u></b>. <span>*</span>',
     'cancel' => 'Cancelar',
     'exercise-creation' => 'Crear un ejercicio',
-    'submission-tutorial'=> 'En caso de que el ejercicio creado se apruebe, el equipo directivo de SciFY elegirá si el ejercicio estará disponible solo en el marketplace para bajarlo como .pdf, o también en la aplicación de móvil.',
+    'submission-tutorial' => 'En caso de que el ejercicio creado se apruebe, el equipo directivo de SciFY elegirá si el ejercicio estará disponible solo en el marketplace para bajarlo como .pdf, o también en la aplicación de móvil.',
     'sign-in' => 'Iniciar sesión',
     'sign-up' => 'Registrarse',
     'rand-date' => '10 de junio de 2021',
@@ -271,5 +257,10 @@ Puedes también crear tus propios ejercicios y compartirlos con la comunidad.',
                                 
                                  Su privacidad nos importa y estamos dedicados a respetar sus elecciones con respecto a sus datos. Si tiene más preguntas o inquietudes sobre su privacidad o administración de datos, no dude en incluirlas en su correo electrónico y estaremos encantados de ayudarle.
                                 
-                                 <br><br>Gracias por usar :app_name. Agradecemos su confianza en nosotros."
+                                 <br><br>Gracias por usar :app_name. Agradecemos su confianza en nosotros.",
+    "terms-of-service-link" => "https://go.scify.gr/dianoia-terms-sp",
+    "privacy-policy-link" => "https://go.scify.gr/dianoia-privacy-sp",
+    "cookies-policy-link" => "https://go.scify.gr/dianoia-cookies-sp",
+    "cookies-policy" => "Política de cookies",
+    "funding-footer" => "Este proyecto ha recibido financiación del programa de investigación e innovación Horizonte 2020 de la Unión Europea bajo el acuerdo de subvención No. 857159.",
 ];

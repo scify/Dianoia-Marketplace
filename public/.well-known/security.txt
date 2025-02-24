@@ -2,5 +2,5 @@ Contact: mailto:info@scify.org
 Expires: 2999-12-31T10:00:00.000Z
 Preferred-Languages: en,el
 Canonical: https://dianoia.scify.org/.well-known/security.txt
-Policy: https://dianoia.scify.org/privacy-policy
+Policy: https://go.scify.gr/dianoia-privacy-en
 

@@ -11,6 +11,4 @@ abstract class UserRolesLkp {
     const PROFESSIONAL_CARER = 3;
 
     const ORGANIZATION = 4;
-
-    const SHAPES_USER = 5;
 }

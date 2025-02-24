@@ -98,10 +98,6 @@ class UserManager {
                 });
     }
 
-    public function getNonShapesUserRoles() {
-        return $this->userRoleManager->getNonShapesUserRoles();
-    }
-
     public function getUserRoles() {
         return $this->userRoleManager->getAllUserRoles();
     }

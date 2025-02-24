@@ -3,8 +3,6 @@
 
 use App\Http\Controllers\PlatformStatisticsController;
 use App\Http\Controllers\Resource\ResourceController;
-use App\Http\Controllers\ShapesIntegrationController;
-use App\Http\Controllers\TermsPrivacyController;
 use App\Http\Controllers\UserController;
 use App\Models\Resource\Resource;
 use App\Models\User;
@@ -28,22 +26,12 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'homepage')->name('homepage');
 Route::view('/about', 'about')->name('about');
 Route::view('/content-guidelines', 'content-guidelines')->name('content-guidelines');
-Route::view('/terms-of-use', 'terms-of-use')->name('terms-of-use');
 Route::view('/tutorial', 'tutorial')->name('tutorial');
-
-Route::get('/privacy-policy', [TermsPrivacyController::class, 'showPrivacyPolicyPage'])->name('privacy-policy');
-
 
 Route::get('/lang/{lang}', [UserController::class, 'setLangLocaleCookie'])->name('set-lang-locale');
 
 Route::get('resources/display_exercises', [ResourceController::class, 'display'])->name('resources.display');
 Route::get('/coming-soon', [ResourceController::class, 'coming_soon'])->name('resources.coming-soon');
-Route::middleware(['guest'])->group(function () {
-    Route::get('/login-shapes/', [ShapesIntegrationController::class, 'login'])->name('shapes.login');
-    Route::get('/register-shapes/', [ShapesIntegrationController::class, 'register'])->name('shapes.register-shapes');
-    Route::post('/request-shapes-user-creation/', [ShapesIntegrationController::class, 'request_create_user'])->name('shapes.request-create-user');
-    Route::post('/request-shapes-user-login_token/', [ShapesIntegrationController::class, 'request_login_token'])->name('shapes.request-login-token');
-});
 
 Route::middleware(['auth'])->group(function () {
     Route::prefix('administration')->middleware('can:manage-platform')->name('administration.')->group(function () {

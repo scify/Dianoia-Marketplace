@@ -43,12 +43,13 @@
                             <input id="upload_img" type="file" name="image"/>
                         </div>
                         @if($viewModel->isEditMode())
-                            <img src={{asset("storage/".$viewModel->resource->img_path)}} id="url" class="mt-3"
+                            <img src="{{asset("storage/".$viewModel->resource->img_path)}}" id="url" class="mt-3"
+                                 alt="resource image"
                                  height="200px"/>
                         @else
-                            <img src={{asset('/img/happiness.png')}} style="display:none" id="url"
+                            <img src="{{asset('/img/happiness.png')}}" style="display:none" id="url"
                                  class="mt-3"
-                                 height="200px"/>
+                                 height="200px" alt="happiness"/>
                         @endif
 
                     </div>
@@ -88,7 +89,7 @@
                                             selected> {{trans('messages.'.$difficulty->name)}} </option>
                                 @else
                                     <option
-                                        value="{{$difficulty->id}}"> {{trans('messages.'.$difficulty->name)}} </option>
+                                            value="{{$difficulty->id}}"> {{trans('messages.'.$difficulty->name)}} </option>
                                 @endif
                             @endforeach
                         </select>
@@ -104,7 +105,7 @@
 
                 <div class="pdf-file d-flex align-items-center mb-5 mt-5">
                     <label for="pdf" class="form-label">{!!__('messages.upload-pdf')!!}<span
-                            style="color:#ff0000">*</span></label>
+                                style="color:#ff0000">*</span></label>
 
 
                     <div class="file btn circle d-flex align-items-center ms-3">

@@ -82,19 +82,8 @@
             <button type="submit" class="btn btn-primary mb-1 mt-3"> {{ __('auth.register_btn') }}</button>
 
             <p class="text-left mt-5">  {{ __('auth.already_account') }}: <a
-                    href="{{ route('login') }} ">{{ __('auth.login_btn') }}</a></p>
-
-
-            <hr class="mt-5">
-            <div style="text-align: center">
-                <a class="btn btn-success" href="{{ route('shapes.login') }}">Login / Register with a SHAPES account</a>
-                <img alt="Shapes Logo" title="" src="img/shapes_logo.png" style="width:70px">
-                <p style="font-size:small; font-style: italic; margin-top: 1rem">Create an account shared across all
-                    SHAPES - powered
-                    platforms</p>
-            </div>
-
-
+                        href="{{ route('login') }} ">{{ __('auth.login_btn') }}</a>
+            </p>
         </form>
     </div>
 @endsection

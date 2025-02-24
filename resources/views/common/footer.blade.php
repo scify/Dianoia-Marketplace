@@ -13,6 +13,12 @@
                         <li><a href="https://dianoia-app.scify.org/"
                                target="_blank">{{__('messages.dianoia-web-version')}}</a></li>
                         <li><a href="{{route('content-guidelines')}}"> {{__('messages.content-guidelines')}} </a></li>
+                        <li><a href="javascript:void(0);" onclick="toggleCookieBanner()"
+                               onkeyup="if (event.key === 'Enter') toggleCookieBanner()"
+                               role="button" aria-label="{{ __('cookies_consent::messages.cookies_settings') }}">
+                                {{ __('cookies_consent::messages.cookies_settings') }}
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-6 item">
@@ -21,9 +27,12 @@
                         <li><a target="_blank" href="https://www.scify.org/en/">{!! __('messages.team') !!} </a></li>
                         <li><a href="https://scify.org/en/#footer-form"
                                target="_blank">{!! __('messages.contact-us') !!} </a></li>
-                        <li><a href="{{'/terms-of-use' }}">{!! __('messages.terms-of-use') !!}</a></li>
-                        <li><a href="{{route('privacy-policy')}}"
+                        <li><a href="{{ __('messages.terms-of-service-link') }}"
+                               target="_blank">{!! __('messages.terms-of-use') !!}</a></li>
+                        <li><a href="{{ __('messages.privacy-policy-link') }}"
                                target="_blank">{!! __('messages.privacy-policy') !!}</a></li>
+                        <li><a href="{{ __('messages.cookies-policy-link') }}"
+                               target="_blank">{!! __('messages.cookies-policy') !!}</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6 item text">
@@ -49,9 +58,9 @@
                         <img alt="Shapes Logo" title="" src="{{asset("img/shapes_logo.png")}}"
                              style="width:70px;height:50px; float: right; display: block; background: white; margin-right:10px;">
                     </div>
-                    <p style="font-size: small; color:white!important">This project has received funding from the
-                        European Union's Horizon 2020 research and innovation programme under grant agreement No.
-                        857159.</p>
+                    <p style="font-size: small; color:white!important">
+                        {{__('messages.funding-footer')}}
+                    </p>
                 </div>
             </div>
         </div>

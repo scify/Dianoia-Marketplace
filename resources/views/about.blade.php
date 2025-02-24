@@ -14,27 +14,26 @@
                 <p style="text-align: left!important;"> {!! __('messages.about_development_text') !!}</p>
                 <div class="col-6">
                     <div>
-                        <img src={{asset("img/scify_logo_big.png")}} height="150px" alt="scify logo"
+                        <img src="{{asset("img/scify_logo_big.png")}}" height="150px" alt="scify logo"
                              style="margin-left:auto;margin-right:auto;display:block">
                     </div>
                     <div class="mt-5">
-                        <img src={{asset("img/eu_logo.jpg")}}  alt="EU-logo"
+                        <img src="{{asset("img/eu_logo.jpg")}}" alt="EU-logo"
                              style="width:auto; height:40pt; margin-left:auto;margin-right:auto;display:block">
                     </div>
                 </div>
                 <div class="col-6">
                     <div>
-                        <img src={{asset("img/alzheimer_athens.png")}} height="150px" alt="Alzheimer Athens"
+                        <img src="{{asset("img/alzheimer_athens.png")}}" height="150px" alt="Alzheimer Athens"
                              style="margin-left:auto;margin-right:auto;display:block">
                     </div>
                     <div class="mt-5">
-                        <img src={{asset("img/shapes_logo.png")}} alt="Shapes-Logo"
+                        <img src="{{asset("img/shapes_logo.png")}}" alt="Shapes project Logo"
                              style="width:auto; height:40pt; margin-left:auto;margin-right:auto;display:block">
                     </div>
                 </div>
                 <p style="font-size:10pt; margin-top: 20pt">
-                    This project has received funding from the European Union's Horizon 2020 research and innovation
-                    programme under grant agreement No. 857159.
+                    {{__('messages.funding-footer')}}
                 </p>
             </div>
             <hr>
@@ -47,13 +46,14 @@
                 </div>
                 <div class="col-4">
                     <ul>
-                        <li><a href="{{app()->getLocale() .'/privacy-policy'}}"
+                        <li><a href="{{ __('messages.privacy-policy-link') }}"
                                target="_blank">{!! __('messages.privacy-policy') !!}</a></li>
                     </ul>
                 </div>
                 <div class="col-4">
                     <ul>
-                        <li><a href="{{'/terms-of-use' }}">{!! __('messages.terms-of-use') !!}</a></li>
+                        <li><a href="{{ __('messages.terms-of-service-link') }}"
+                               target="_blank">{!! __('messages.terms-of-use') !!}</a></li>
                     </ul>
                 </div>
             </div>

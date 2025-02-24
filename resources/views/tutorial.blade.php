@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('css')
-    <link rel="stylesheet" href="{{mix('dist/css/terms-of-use.css')}}">
+    <link rel="stylesheet" href="{{mix('dist/css/tutorial.css')}}">
 @endpush
 @section('content')
     <div id="tutorial-page" class="container my-5 py-3">

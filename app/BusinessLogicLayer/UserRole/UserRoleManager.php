@@ -27,10 +27,6 @@ class UserRoleManager {
         });
     }
 
-    public function getNonShapesUserRoles() {
-        return $this->userRoleLkpRepository->all()->whereNotIn('id', [UserRolesLkp::ADMIN,  UserRolesLkp::SHAPES_USER]);
-    }
-
     public function getAllUserRoles() {
         return $this->userRoleLkpRepository->all()->where('id', '<>', UserRolesLkp::ADMIN);
     }

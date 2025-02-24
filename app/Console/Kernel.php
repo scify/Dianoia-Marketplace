@@ -22,7 +22,6 @@ class Kernel extends ConsoleKernel {
      * @return void
      */
     protected function schedule(Schedule $schedule) {
-        $schedule->command('shapes:update-user-tokens')->everyThreeHours()->withoutOverlapping();
         $schedule->command('cache:prune-stale-tags')->hourly();
     }
 
