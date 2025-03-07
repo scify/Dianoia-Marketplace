@@ -27,6 +27,10 @@ Route::view('/', 'homepage')->name('homepage');
 Route::view('/about', 'about')->name('about');
 Route::view('/content-guidelines', 'content-guidelines')->name('content-guidelines');
 Route::view('/tutorial', 'tutorial')->name('tutorial');
+//
+Route::get('/cookie-policy/{locale}', function () {
+    return view('cookie-policy');
+});
 
 Route::get('/lang/{lang}', [UserController::class, 'setLangLocaleCookie'])->name('set-lang-locale');
 

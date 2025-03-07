@@ -52,7 +52,8 @@
 </div>
 @include('common.footer-scripts')
 @stack('modals')
-<x-laravel-cookies-consent></x-laravel-cookies-consent>
+<x-laravel-cookie-guard></x-laravel-cookie-guard>
+<x-laravel-cookie-guard-scripts></x-laravel-cookie-guard-scripts>
 </body>
 </html>
 

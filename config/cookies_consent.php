@@ -21,6 +21,7 @@ return [
     'hide_floating_button_on_mobile' => false, // Set to true to hide the floating button on mobile
     'use_separate_page' => false, // Set to true to use a separate page for cookies explanation
     'categories_collapsed_by_default' => true, // Set to false to collapse only the optional categories
+    'cookie_policy_page_custom_url' => null, // Set the custom page URL if use_separate_page is set to true and you want to use a custom URL or Laravel route
     /*
     |--------------------------------------------------------------------------
     | Editor
@@ -38,7 +39,7 @@ return [
                 'name' => 'dianoia_marketplace_cookies_consent',
                 'description' => 'cookies_consent::messages.cookie_cookies_consent_description',
                 'duration' => 'cookies_consent::messages.years',
-                'duration_count' => 2,
+                'duration_count' => 1,
                 'policy_external_link' => null,
             ],
             [
