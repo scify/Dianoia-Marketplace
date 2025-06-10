@@ -22,3 +22,4 @@ resources/sass/*.css
 resources/sass/*.css.map
 public/sitemap.xml
 public/google*.html
+.vscode/

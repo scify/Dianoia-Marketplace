@@ -13,8 +13,7 @@
                         <li><a href="https://dianoia-app.scify.org/"
                                target="_blank">{{__('messages.dianoia-web-version')}}</a></li>
                         <li><a href="{{route('content-guidelines')}}"> {{__('messages.content-guidelines')}} </a></li>
-                        <li><a href="javascript:void(0);" onclick="toggleCookieBanner()"
-                               onkeyup="if (event.key === 'Enter') toggleCookieBanner()"
+                        <li><a href="#consent-settings"
                                role="button" aria-label="{{ __('cookies_consent::messages.cookies_settings') }}">
                                 {{ __('cookies_consent::messages.cookies_settings') }}
                             </a>
