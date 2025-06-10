@@ -13,7 +13,7 @@
 
 [Project URL](https://dianoia.scify.org/)
 
-## Installation Instructions:
+## Installation Instructions
 
 ### Pre-initialization steps
 
@@ -33,13 +33,13 @@ Also, make sure that the `APP_URL` is set to the correct domain and port that yo
 
 0. Make sure php 8.0 (or newer) is installed.
 
-
 1. After cloning the project, create an .env file (should be a copy of .env.example),
    containing the information about your database name and credentials.
    Then run ```php artisan migrate``` to create the DB schema and
    ```php artisan db:seed``` in order to insert the starter data to the DB
 
 2. Install laravel/back-end dependencies
+
 ```bash
 composer install
 
@@ -81,6 +81,7 @@ In order to run the generator for the current application installation, run the 
 ```bash
 php artisan sitemap:generate
 ```
+
 ## PHP code style - Laravel Pint
 
 This application uses [Laravel Pint](https://laravel.com/docs/9.x/pint) in order to perform code-style.
@@ -93,7 +94,7 @@ In order to run the styler, run :
 ./vendor/bin/pint -v # this command will actually perform the code style changes 
 ```
 
-## Apache configuration example:
+## Apache configuration example
 
 ```
 % sudo touch /etc/apache2/sites-available/dianoiamarketplace.conf
@@ -113,11 +114,15 @@ In order to run the styler, run :
 
 </VirtualHost>
 ```
+
 Make the symbolic link:
+
 ```
 % cd /etc/apache2/sites-enabled && sudo ln -s ../sites-available/dianoiamarketplace.conf
 ```
+
 Enable mod_rewrite, mod_ssl and restart apache:
+
 ```
 % sudo a2enmod rewrite && sudo a2enmod ssl && sudo service apache2 restart
 ```
@@ -143,6 +148,7 @@ sudo ./set-file-permissions.sh www-data {{app_user}} .
 ```
 
 Change hosts file so dev.dianoiamarketplace points to localhost
+
 ```$xslt
 sudo nano /etc/hosts
 
@@ -150,6 +156,7 @@ sudo nano /etc/hosts
 ```
 
 ## How to debug
+
 - Install and configure Xdebug on your machine
 - At Chrome install [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc?utm_source=chrome-app-launcher-info-dialog)
 - At PhpStorm/IntelliJ click the "Start listening for PHP debug connections"
