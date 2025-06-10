@@ -9,13 +9,13 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/scify)
 
-**Laravel 11** Web Application for Creating content for the Dianoia mobile app
+**Laravel 12** Web Application for Creating content for the Dianoia mobile app
 
 [Project URL](https://dianoia.scify.org/)
 
-# Installation Instructions:
+## Installation Instructions:
 
-## Pre-initialization steps
+### Pre-initialization steps
 
 After cloning the project, create an .env file (should be a copy of .env.example),
 containing the information about your database name and credentials:
@@ -29,7 +29,7 @@ Also, make sure that the `APP_URL` is set to the correct domain and port that yo
 
 <hr>
 
-## First time install (setup database and install dependencies)
+### First time install (setup database and install dependencies)
 
 0. Make sure php 8.0 (or newer) is installed.
 
