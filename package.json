@@ -25,9 +25,9 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.4",
         "@popperjs/core": "^2.11.8",
-        "@sentry/browser": "^9.35.0",
+        "@sentry/browser": "^10.11.0",
         "bootstrap": "^5.3.8",
-        "eslint": "^9.30.1",
+        "eslint": "^9.35.0",
         "eslint-plugin-vue": "^9.32.0",
         "eslint-webpack-plugin": "^4.2.0",
         "flickity": "^2.3.0",
