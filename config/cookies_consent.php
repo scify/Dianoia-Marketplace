@@ -82,9 +82,6 @@ return [
             ],
         ],
     ],
-    'enabled' => [
-        'strictly_necessary',
-    ],
     'required' => ['strictly_necessary'],
     /*
      * Set the cookie duration in days.  Default is 365 days.
