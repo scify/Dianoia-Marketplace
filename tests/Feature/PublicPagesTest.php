@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Cache;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
@@ -39,5 +40,13 @@ class PublicPagesTest extends TestCase {
             ->assertOk()
             ->assertHeader('Content-Type', 'text/javascript; charset=UTF-8')
             ->assertSee('window.i18n = {', false);
+    }
+
+    public function test_translations_script_keeps_the_application_cache(): void {
+        Cache::put('probe', 'kept');
+
+        $this->get('/js/translations.js')->assertOk();
+
+        $this->assertSame('kept', Cache::get('probe'));
     }
 }
