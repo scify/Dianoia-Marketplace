@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('css')
-    <link rel="stylesheet" href="{{ mix('dist/css/content-guidelines.css') }}">
+    @vite('resources/sass/content-guidelines.scss')
 @endpush
 
 @section('content')
@@ -151,5 +151,5 @@
 @endsection
 @push('scripts')
 
-    <script src="{{ mix('dist/js/content-guidelines.js') }}"></script>
+    @vite('resources/js/content-guidelines.js')
 @endpush

@@ -59,9 +59,11 @@ nvm use
 Then, install and compile the front-end dependencies:
 
 ```bash
-npm install
+npm ci
 
-npm run dev #(use prod if in production)
+npm run build # production build into public/build
+
+npm run dev # local development with the Vite dev server
 ```
 
 4. Create the symbolic link for user-uploaded files.

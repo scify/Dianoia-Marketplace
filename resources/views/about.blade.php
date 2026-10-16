@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('css')
-    <link rel="stylesheet" href="{{ mix('dist/css/homepage.css') }}">
+    @vite('resources/sass/homepage.scss')
     <title> About Page</title>
 @endpush
 
@@ -62,5 +62,5 @@
 
 @endsection
 @push('scripts')
-    <script src="{{ mix('dist/js/home.js') }}"></script>
+    @vite('resources/js/home.js')
 @endpush

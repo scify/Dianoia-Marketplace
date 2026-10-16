@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @push('css')
-    <link rel="stylesheet" href="{{ mix('dist/css/login-page.css') }}">
+    @vite('resources/sass/login-page.scss')
 @endpush
 
 @section('content')

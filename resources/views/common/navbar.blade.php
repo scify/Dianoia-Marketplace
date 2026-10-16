@@ -170,6 +170,6 @@
     </div>
 </nav>
 @push('scripts')
-    <script src="{{ mix('dist/js/create-edit-resource.js') }}"></script>
+    @vite('resources/js/create-edit-resource.js')
 @endpush
 

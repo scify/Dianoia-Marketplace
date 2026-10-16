@@ -20,7 +20,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=5" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('common.favicons')
-    <link rel="stylesheet" href="{{ mix('dist/css/main.css') }}">
+    @vite('resources/sass/main.scss')
     <link
         href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css"
         rel="stylesheet"

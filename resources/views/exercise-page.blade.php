@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @push('css')
-    <link rel="stylesheet" href="{{mix('dist/css/exercise-template.css')}}">
-    <link rel="stylesheet" href="{{mix('dist/css/exercise-page.css')}}">
+    @vite('resources/sass/exercise-template.scss')
+    @vite('resources/sass/exercise-page.scss')
 @endpush
 
 @section('content')
@@ -55,5 +55,5 @@
 
 @push('scripts')
 
-    <script src="{{ mix('dist/js/create-edit-resource.js') }}"></script>
+    @vite('resources/js/create-edit-resource.js')
 @endpush
