@@ -25,9 +25,12 @@ Route::middleware(['metadata'])->group(function () {
     Route::get('/content-difficulties', [ResourceController::class, 'getContentDifficulties'])->name('content_difficulties.get');
     Route::get('/resources', [ResourceController::class, 'getResources'])->name('resources.get');
     Route::get('/content-ratings', [ResourceRatingController::class, 'getContentRatings'])->name('content_ratings.get');
-    Route::get('/resources/user-rating', [ResourceRatingController::class, 'getUserRatingForResource'])->name('resources.user-rating.get');
-    Route::post('/resources/user-rating', [ResourceRatingController::class, 'storeOrUpdateRating'])->name('resources.user-rating.post');
-    Route::post('/resources/update-resource-avg-rating', [ResourceRatingController::class, 'storeOrUpdateAverageResourceRating'])->name('resources.update_resource_rating.post');
     Route::get('/resources/user-reports', [ResourceController::class, 'getReports'])->name('resources.user-reports.get');
     Route::post('/resources/respond', [ResourceController::class, 'respond'])->name('resources.respond.post');
+});
+
+// Members only. The "web" group adds the session and the CSRF check.
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::get('/resources/user-rating', [ResourceRatingController::class, 'getUserRatingForResource'])->name('resources.user-rating.get');
+    Route::post('/resources/user-rating', [ResourceRatingController::class, 'storeOrUpdateRating'])->name('resources.user-rating.post');
 });

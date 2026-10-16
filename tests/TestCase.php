@@ -2,7 +2,9 @@
 
 namespace Tests;
 
+use App\Models\Resource\Resource;
 use App\Models\User;
+use App\Repository\Resource\ResourceStatusesLkp;
 use Database\Seeders\ContentLanguageLkpSeeder;
 use Database\Seeders\DifficultiesLkpSeeder;
 use Database\Seeders\ResourceStatusLkpTableSeeder;
@@ -67,6 +69,19 @@ abstract class TestCase extends BaseTestCase {
         } finally {
             ob_end_clean();
         }
+    }
+
+    protected function createResource(User $creator, int $statusId = ResourceStatusesLkp::APPROVED): Resource {
+        return Resource::create([
+            'name' => 'Test exercise',
+            'slug' => 'test-exercise-' . uniqid(),
+            'status_id' => $statusId,
+            'lang_id' => 1,
+            'type_id' => 1,
+            'difficulty_id' => 1,
+            'creator_user_id' => $creator->id,
+            'description' => 'Test description',
+        ]);
     }
 
     protected function createUserWithRole(int $roleId): User {
