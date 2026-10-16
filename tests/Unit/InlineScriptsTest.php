@@ -20,7 +20,7 @@ class InlineScriptsTest extends TestCase {
                 $isModule = str_contains($script['attributes'], 'type="module"');
                 $usesJquery = preg_match('/(^|[^\w.])(\$|jQuery)[(.]/', $script['body']);
 
-                if ($usesJquery && ! $isModule) {
+                if ($usesJquery && !$isModule) {
                     $offenders[] = $file->getRelativePathname();
                 }
             }

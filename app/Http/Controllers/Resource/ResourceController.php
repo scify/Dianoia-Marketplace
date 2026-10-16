@@ -11,6 +11,7 @@ use App\Notifications\RejectionNotice;
 use App\Notifications\ReportNotice;
 use App\Notifications\ReportResponseNotice;
 use App\Repository\Resource\ResourceStatusesLkp;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
@@ -18,6 +19,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class ResourceController extends Controller {
     protected ResourceManager $resourceManager;
@@ -80,8 +82,8 @@ class ResourceController extends Controller {
      * @param  Request  $request
      * @return RedirectResponse
      *
-     * @throws \Illuminate\Validation\ValidationException
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @throws ValidationException
+     * @throws FileNotFoundException
      */
     public function store(Request $request) {
         $this->validate($request, [
