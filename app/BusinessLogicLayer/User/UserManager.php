@@ -107,7 +107,7 @@ class UserManager {
     }
 
     public function getUsers() {
-        return $this->userRepository->all();
+        return $this->userRepository->allIdsAndNames();
     }
 
     public function getUser($id) {

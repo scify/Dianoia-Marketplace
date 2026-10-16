@@ -28,6 +28,10 @@ class UserRepository extends Repository {
         return parent::create($storeArr);
     }
 
+    public function allIdsAndNames(): Collection {
+        return User::query()->without('roles')->get(['id', 'name']);
+    }
+
     public function getUsersWithAdminRoleStatus(int $userIdToExclude): Collection {
         return collect(DB::select('select u.id, u.name, u.email,
                                     (

@@ -396,7 +396,10 @@ export default {
 			});
 		},
 		getUsers(){
-			// console.log("retrieving users");
+			// Only administrators may list users (for "Reported by").
+			if (this.isAdmin !== "1") {
+				return Promise.resolve([]);
+			}
 			const instance = this;
 			return new Promise(function callback(resolve, reject) {
 				instance.get({

@@ -63,10 +63,8 @@
               }}</p>
           </div>
 
-          <i v-for="user in this.users" :key="user.id">
-            <div class="created-by" v-if="user.id===resource.creator_user_id">{{ trans('messages.created-by')
-              }}{{user.name}}
-            </div>
+          <i v-if="resource.creator">
+            <div class="created-by">{{ trans('messages.created-by') }}{{ resource.creator.name }}</div>
           </i>
 
 
