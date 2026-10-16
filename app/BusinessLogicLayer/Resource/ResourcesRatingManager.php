@@ -2,13 +2,17 @@
 
 namespace App\BusinessLogicLayer\Resource;
 
+use App\Repository\Resource\ResourceRepository;
 use App\Repository\Resource\ResourcesRatingRepository;
 
 class ResourcesRatingManager {
     protected ResourcesRatingRepository $resourcesRatingRepository;
 
-    public function __construct(ResourcesRatingRepository $resourcesRatingRepository) {
+    protected ResourceRepository $resourceRepository;
+
+    public function __construct(ResourcesRatingRepository $resourcesRatingRepository, ResourceRepository $resourceRepository) {
         $this->resourcesRatingRepository = $resourcesRatingRepository;
+        $this->resourceRepository = $resourceRepository;
     }
 
     public function storeOrUpdateRating(int $user_id, int $resources_id, int $rating) {
@@ -17,9 +21,22 @@ class ResourcesRatingManager {
             'resources_id' => $resources_id,
         ];
 
-        return $this->resourcesRatingRepository->updateOrCreate(
+        $resourceRating = $this->resourcesRatingRepository->updateOrCreate(
             $data,
             array_merge($data, ['rating' => $rating])
+        );
+
+        $this->updateAverageRating($resources_id);
+
+        return $resourceRating;
+    }
+
+    private function updateAverageRating(int $resources_id): void {
+        $ratings = $this->resourcesRatingRepository->allWhere(['resources_id' => $resources_id])->pluck('rating');
+
+        $this->resourceRepository->update(
+            ['avg_rating' => (int) round($ratings->avg() ?? 0)],
+            $resources_id
         );
     }
 

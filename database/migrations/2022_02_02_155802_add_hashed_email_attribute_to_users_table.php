@@ -15,7 +15,10 @@ class AddHashedEmailAttributeToUsersTable extends Migration {
         Schema::table('users', function (Blueprint $table) {
             $table->string('hashed_email')->nullable();
         });
-        DB::statement('ALTER TABLE users MODIFY COLUMN hashed_email VARCHAR(255) AFTER email');
+        // Column order is cosmetic and MySQL-only syntax, so other drivers (SQLite in tests) skip it.
+        if (DB::getDriverName() === 'mysql') {
+            DB::statement('ALTER TABLE users MODIFY COLUMN hashed_email VARCHAR(255) AFTER email');
+        }
     }
 
     /**

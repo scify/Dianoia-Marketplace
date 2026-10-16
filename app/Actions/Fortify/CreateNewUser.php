@@ -6,6 +6,7 @@ use App\BusinessLogicLayer\User\UserManager;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers {
@@ -23,7 +24,7 @@ class CreateNewUser implements CreatesNewUsers {
      * @param  array  $input
      * @return User
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function create(array $input): User {
         Validator::make($input, [

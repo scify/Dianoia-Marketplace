@@ -6,6 +6,7 @@ use App\BusinessLogicLayer\Resource\ResourceManager;
 use App\BusinessLogicLayer\Resource\ResourcesRatingManager;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ResourceRatingController extends Controller {
     protected ResourcesRatingManager $resourcesRatingManager;
@@ -19,12 +20,11 @@ class ResourceRatingController extends Controller {
 
     public function getUserRatingForResource(Request $request) {
         $this->validate($request, [
-            'user_id' => 'required|integer',
             'resources_id' => 'required|integer',
         ]);
 
         return $this->resourcesRatingManager->getUserRatingForResource(
-            $request->user_id,
+            Auth::id(),
             $request->resources_id
         );
     }
@@ -39,13 +39,12 @@ class ResourceRatingController extends Controller {
 
     public function storeOrUpdateRating(Request $request) {
         $this->validate($request, [
-            'user_id' => 'required|integer',
             'resources_id' => 'required|integer|exists:resources,id',
             'rating' => 'required|integer|min:1|max:5',
         ]);
 
         return $this->resourcesRatingManager->storeOrUpdateRating(
-            $request->user_id,
+            Auth::id(),
             $request->resources_id,
             $request->rating
         );
@@ -77,19 +76,6 @@ class ResourceRatingController extends Controller {
         }
 
         return $currentAvg;
-    }
-
-    public function storeOrUpdateAverageResourceRating(Request $request) {
-        $this->validate($request, [
-            'id' => 'sometimes|required|integer|exists:resources,id',
-            'avg_rating' => 'required|numeric|min:1|max:5',
-        ]);
-        $data = $request->all();
-
-        return $this->resourceManager->storeOrUpdateAverageResourceRating(
-            $data['id'],
-            $data['avg_rating']
-        );
     }
 
     public function getContentRatings() {

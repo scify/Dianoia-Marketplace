@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\DifficultiesLkp;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
@@ -11,7 +12,7 @@ class SoftDeleteEasyDifficulty extends Migration {
      */
     public function up() {
         DB::raw('UPDATE resources SET difficulty_id = 2 WHERE difficulty_id = 1');
-        $toDelete = \App\Models\DifficultiesLkp::where('code', 'EASY')->first();
+        $toDelete = DifficultiesLkp::where('code', 'EASY')->first();
         if ($toDelete) {
             $toDelete->delete();
         }
@@ -23,7 +24,7 @@ class SoftDeleteEasyDifficulty extends Migration {
      * @return void
      */
     public function down() {
-        \App\Models\DifficultiesLkp::create([
+        DifficultiesLkp::create([
             'name' => 'Εύκολης Δυσκολίας',
             'code' => 'EASY',
         ]);

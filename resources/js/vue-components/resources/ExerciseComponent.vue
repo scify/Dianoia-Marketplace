@@ -63,10 +63,8 @@
               }}</p>
           </div>
 
-          <i v-for="user in this.users" :key="user.id">
-            <div class="created-by" v-if="user.id===resource.creator_user_id">{{ trans('messages.created-by')
-              }}{{user.name}}
-            </div>
+          <i v-if="resource.creator">
+            <div class="created-by">{{ trans('messages.created-by') }}{{ resource.creator.name }}</div>
           </i>
 
 
@@ -400,22 +398,6 @@ export default {
 		showChildrenResourcesModal() {
 			this.resourceChildrenModalOpen = true;
 		},
-		updateAverageResourceRating() {
-			const ratings = _.map(this.resource.ratings, "rating");
-			const sum = ratings.reduce((a, b) => a + b, 0);
-			let avg_rating = Math.round(sum / ratings.length) || 0;
-			this.post({
-				url: this.getUpdateExerciseRatingRoute(),
-				data: {
-					id: this.resource.id,
-					avg_rating: avg_rating
-				},
-				urlRelative: false
-			}).then(() => {
-				console.log("Stored avg rating = " + avg_rating.toString() + " for resource = " + this.resource.id.toString());
-				window.location.reload();
-			});
-		},
 		showRateModal() {
 
 			this.rateModalOpen = true;
@@ -423,17 +405,13 @@ export default {
 				return;
 			if (this.userLoggedIn()) {
 				this.get({
-					url: window.route("resources.user-rating.get")
-              + "?resources_id=" + this.resource.id + "&user_id=" + this.user.id,
+					url: window.route("resources.user-rating.get") + "?resources_id=" + this.resource.id,
 					urlRelative: false
 				}).then(response => {
 
 					this.userRating = response.data.rating;
 				});
 			}
-		},
-		getUpdateExerciseRatingRoute() {
-			return window.route("resources.update_resource_rating.post", this.resource.id);
 		},
 		showEditModal() {
 			this.editModalOpen = true;
@@ -520,7 +498,6 @@ export default {
 			this.post({
 				url: window.route("resources.user-rating.post"),
 				data: {
-					user_id: this.user.id,
 					resources_id: this.resource.id,
 					rating: rateIndex
 				},
@@ -535,7 +512,8 @@ export default {
 				}
 				if (!found)
 					this.resource.ratings.push(response.data);
-				this.updateAverageResourceRating();
+				// The server recalculates the average rating; reload to show it.
+				window.location.reload();
 			});
 		},
 		loggedInUserIsDifferentFromContentUser() {

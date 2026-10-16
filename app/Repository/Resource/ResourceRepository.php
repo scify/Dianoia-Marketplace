@@ -6,8 +6,6 @@ use App\Models\Resource\Resource;
 use App\Repository\Repository;
 
 class ResourceRepository extends Repository {
-    protected array $defaultRelationships = ['creator', 'ratings'];
-
     /**
      * {@inheritDoc}
      */
@@ -35,9 +33,9 @@ class ResourceRepository extends Repository {
 
 
         if ($status_ids) {
-            $resourcesBuilder = Resource::where($whereArray)->whereIn('status_id', $status_ids)->with($this->defaultRelationships);
+            $resourcesBuilder = Resource::where($whereArray)->whereIn('status_id', $status_ids)->with($this->publicListRelationships());
         } else {
-            $resourcesBuilder = Resource::where($whereArray)->with($this->defaultRelationships);
+            $resourcesBuilder = Resource::where($whereArray)->with($this->publicListRelationships());
         }
 
 
@@ -85,5 +83,15 @@ class ResourceRepository extends Repository {
         }
 
         return $ret;
+    }
+
+    /**
+     * The resources list is public, so expose only the creator's id and name.
+     */
+    private function publicListRelationships(): array {
+        return [
+            'creator' => fn ($query) => $query->select('id', 'name')->without('roles'),
+            'ratings',
+        ];
     }
 }
