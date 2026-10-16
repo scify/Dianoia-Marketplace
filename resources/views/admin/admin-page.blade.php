@@ -202,7 +202,7 @@
 @endsection
 
 @push('scripts')
-    <script>
+    <script type="module">
         $(".toggle-password").click(function () {
 
             $(this).toggleClass("fa-eye fa-eye-slash");
