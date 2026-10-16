@@ -1,4 +1,5 @@
-require("jquery-ui-dist/jquery-ui.js");
+import $ from "./jquery-global";
+import "jquery-ui-dist/jquery-ui.js";
 
 (function () {
 	$(document).ready(function () {

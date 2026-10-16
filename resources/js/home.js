@@ -1,3 +1,4 @@
+import $ from "jquery";
 import Flickity from "flickity";
 
 (function () {

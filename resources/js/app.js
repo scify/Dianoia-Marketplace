@@ -1,9 +1,8 @@
+import "./jquery-global";
 import "bootstrap";
-import $ from "jquery";
 import Vue from "vue";
 
-require("./bootstrap");
-window.$ = window.jQuery = $;
+import "./bootstrap";
 import route from "./backend-route";
 
 window.route = route;
@@ -13,10 +12,13 @@ import getLodash from "lodash/get";
 import eachRightLodash from "lodash/eachRight";
 import replaceLodash from "lodash/replace";
 import * as Sentry from "@sentry/browser";
+import ModalComponent from "./vue-components/common/ModalComponent.vue";
+import ExercisesWithFilters from "./vue-components/resources/ExercisesWithFilters.vue";
+import ExerciseComponent from "./vue-components/resources/ExerciseComponent.vue";
 
-if (process.env.MIX_SENTRY_DSN_PUBLIC) {
+if (import.meta.env.VITE_SENTRY_DSN_PUBLIC) {
 	Sentry.init({
-		dsn: process.env.MIX_SENTRY_DSN_PUBLIC,
+		dsn: import.meta.env.VITE_SENTRY_DSN_PUBLIC,
 	});
 }
 
@@ -33,9 +35,9 @@ Vue.prototype.trans = (string, args) => {
 	return window.translate(string, args);
 };
 
-Vue.component("modal-component", require("./vue-components/common/ModalComponent").default);
-Vue.component("exercises-with-filters", require("./vue-components/resources/ExercisesWithFilters").default);
-Vue.component("exercise-component", require("./vue-components/resources/ExerciseComponent").default);
+Vue.component("modal-component", ModalComponent);
+Vue.component("exercises-with-filters", ExercisesWithFilters);
+Vue.component("exercise-component", ExerciseComponent);
 
 
 new Vue({

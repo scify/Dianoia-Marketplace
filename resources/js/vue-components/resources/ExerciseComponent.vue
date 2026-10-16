@@ -568,5 +568,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "resources/sass/resources";
+@import "../../../sass/resources";
 </style>

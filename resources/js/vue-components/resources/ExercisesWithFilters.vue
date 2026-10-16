@@ -143,6 +143,7 @@
 </template>
 
 <script>
+import $ from "jquery";
 import {mapActions} from "vuex";
 import Promise from "lodash/_Promise";
 import _ from "lodash";
@@ -538,8 +539,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "resources/sass/common/variables";
-@import "resources/sass/exercise-page";
+@import "../../../sass/common/variables";
+@import "../../../sass/exercise-page";
 
 
 
