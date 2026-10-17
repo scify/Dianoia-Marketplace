@@ -4,7 +4,9 @@ namespace App\BusinessLogicLayer\User;
 
 use App\BusinessLogicLayer\UserRole\UserRoleManager;
 use App\Models\User;
+use App\Models\UserRole\UserRoleLkp;
 use App\Repository\User\UserRepository;
+use App\Repository\User\UserRole\UserRolesLkp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -113,6 +115,15 @@ class UserManager {
                 function ($obj) {
                     return $this->userRepository->find($obj->id);
                 });
+    }
+
+    /**
+     * The user's own type (private carer, professional carer or organization), without the admin role.
+     */
+    public function getRegisteredUserType(User $user): ?UserRoleLkp {
+        return $user->roles->first(
+            fn (UserRoleLkp $role) => in_array($role->id, UserRolesLkp::REGISTERED_USER_TYPES, true)
+        );
     }
 
     public function getUserRoles() {

@@ -13,7 +13,7 @@
                     <div class="row user-info ">
                         <div class="col-xl-9 col-md-7 col-xs-12 ">
                             <h1>{{$user->name}} <span>({{$user->email}})</span></h1>
-                            <p>{{trans('messages.'.$user->type->name)}}</p>
+                            <p>{{trans('messages.'.$user->type?->name)}}</p>
                         </div>
 
                         <div class="col-xl-3 col-md-5 col-xs-12">
@@ -48,9 +48,9 @@
                                                                name="name" value="{{$user->name}}">
                                                     </div>
                                                     <input style="display:none" type="text" class="form-control"
-                                                           name="prev_type_id" value="{{$user->type->id}}">
+                                                           name="prev_type_id" value="{{$user->type?->id}}">
 
-                                                    <p style="display:none">{{trans('messages.'.$user->type->name)}}</p>
+                                                    <p style="display:none">{{trans('messages.'.$user->type?->name)}}</p>
                                                     <div class="col-12">
                                                         <label for="email" class="form-label">Email
                                                             <span>*</span></label>
@@ -75,9 +75,9 @@
                                                         <select class="form-select" aria-label="Default select example"
                                                                 name="type_id">
                                                             @foreach(['Private Carer', 'Professional Carer', 'Organization'] as $i=>$type)
-                                                                @if($type === $user->type->name)
-                                                                    <option value="{{$user->type->id}}"
-                                                                            selected> {{trans('messages.'.$user->type->name)}}</option>
+                                                                @if($type === $user->type?->name)
+                                                                    <option value="{{$user->type?->id}}"
+                                                                            selected> {{trans('messages.'.$user->type?->name)}}</option>
                                                                 @else
                                                                     <option
                                                                         value="{{$i+2}}">{{trans('messages.'.$type)}} </option>

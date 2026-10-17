@@ -56,6 +56,9 @@ class User extends Authenticatable {
      */
     protected $with = ['roles'];
 
+    /**
+     * @return BelongsToMany<UserRoleLkp, $this>
+     */
     public function roles(): BelongsToMany {
         return $this->belongsToMany(UserRoleLkp::class, 'user_roles', 'user_id', 'role_id')
             ->wherePivot('deleted_at', null);

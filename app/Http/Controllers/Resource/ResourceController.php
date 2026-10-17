@@ -247,25 +247,7 @@ class ResourceController extends Controller {
                 'rejected' => ResourceStatusesLkp::REJECTED,
             ];
             $user = Auth::user();
-            $userRoleMap = $this->userManager->getUserRolesMapping()->filter(
-                function ($entry) use ($user) {
-                    return $entry->user_id === $user->id;
-                }
-            );
-            $userRoleId = $userRoleMap->first()->role_id;
-            if ($viewModel->isAdmin) {
-                $user->type = $this->userManager->get_admin_users()->filter(
-                    function ($entry) use ($userRoleId) {
-                        return $entry->id === $userRoleId;
-                    }
-                )->first();
-            } else {
-                $user->type = $this->userManager->getUserRoles()->filter(
-                    function ($entry) use ($userRoleId) {
-                        return $entry->id === $userRoleId;
-                    }
-                )->first();
-            }
+            $user->type = $this->userManager->getRegisteredUserType($user);
 
             return view('profile-page')->with(['viewModel' => $viewModel,  'user' => $user]);
         } catch (ModelNotFoundException $e) {
@@ -287,25 +269,7 @@ class ResourceController extends Controller {
             ];
 
             $user = Auth::user();
-            $userRoleMap = $this->userManager->getUserRolesMapping()->filter(
-                function ($entry) use ($user) {
-                    return $entry->user_id === $user->id;
-                }
-            );
-            $userRoleId = $userRoleMap->first()->role_id;
-            if ($viewModel->isAdmin) {
-                $user->type = $this->userManager->get_admin_users()->filter(
-                    function ($entry) use ($userRoleId) {
-                        return $entry->id === $userRoleId;
-                    }
-                )->first();
-            } else {
-                $user->type = $this->userManager->getUserRoles()->filter(
-                    function ($entry) use ($userRoleId) {
-                        return $entry->id === $userRoleId;
-                    }
-                )->first();
-            }
+            $user->type = $this->userManager->getRegisteredUserType($user);
 
             return view('admin.admin-page')->with(['viewModel' => $viewModel,  'user' => $user]);
         } catch (ModelNotFoundException $e) {
