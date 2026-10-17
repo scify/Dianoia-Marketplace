@@ -138,5 +138,4 @@ live until then; after migrating old data, check `user_roles` for unexpected adm
 - The mobile rating `update` path lets any client change an anonymous rating with a given value (by design so far).
 - `user-role-mapping` is public and shows which user ids are admins.
 - `ResourceManager::getTransformExercisesForMobileApp()`: the `stories` case has no `break`.
-- PHP 8.5 prints a `PDO::MYSQL_ATTR_SSL_CA` deprecation (`config/database.php`); Sass prints `@import` and
-  division deprecations (Bootstrap 5.3); seeders print to stdout.
+- Sass prints `@import` and division deprecations (Bootstrap 5.3); seeders print to stdout.

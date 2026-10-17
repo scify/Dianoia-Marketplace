@@ -16,6 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - The README has a table of contents.
 
+### Fixed
+
+- The PHP 8.5 deprecation of `PDO::MYSQL_ATTR_SSL_CA` in `config/database.php`.
+
 ## [1.1.0] - 2026-10-17
 
 ### Upgrade notes
