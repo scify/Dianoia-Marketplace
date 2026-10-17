@@ -368,9 +368,6 @@ export default {
 		getFormValues() {
 			this.output = this.$refs.message.value;
 		},
-		getDownloadExerciseRoute() {
-			return window.route("resources.download", this.resource.id);
-		},
 		getEditExerciseRoute() {
 
 			// return window.route('resources.edit', this.resource.id);
@@ -387,9 +384,6 @@ export default {
 		},
 		getHideExerciseRoute() {
 			return window.route("resources.hide", this.resource.id);
-		},
-		getCloneExerciseRoute() {
-			return window.route("resources.clone", this.resource.id);
 		},
 		getDeleteExerciseRoute() {
 			return window.route("resources.delete_exercise", this.resource.id);
