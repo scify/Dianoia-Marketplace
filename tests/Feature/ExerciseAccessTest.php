@@ -121,6 +121,32 @@ class ExerciseAccessTest extends TestCase {
         $this->assertSame(ResourceStatusesLkp::CREATED_PENDING_APPROVAL, (int) $otherExercise->fresh()->status_id);
     }
 
+    public function test_member_cannot_open_edit_form_of_other_users_exercise(): void {
+        $this->actingAs($this->otherMember)
+            ->get('/resources/' . $this->exercise->id . '/edit')
+            ->assertForbidden();
+    }
+
+    public function test_member_cannot_update_other_users_exercise(): void {
+        $this->actingAs($this->otherMember)
+            ->put('/resources/' . $this->exercise->id, ['name' => 'Hijacked', 'type_id' => 1])
+            ->assertForbidden();
+
+        $this->assertSame('Test exercise', $this->exercise->fresh()->name);
+    }
+
+    public function test_creator_can_open_edit_form(): void {
+        $this->actingAs($this->creator)
+            ->get('/resources/' . $this->exercise->id . '/edit')
+            ->assertOk();
+    }
+
+    public function test_admin_can_open_edit_form(): void {
+        $this->actingAs($this->admin)
+            ->get('/resources/' . $this->exercise->id . '/edit')
+            ->assertOk();
+    }
+
     private function rejection(): array {
         return ['id' => $this->exercise->id, 'rejection_reason' => 'Rules', 'rejection_comment' => 'Not allowed'];
     }

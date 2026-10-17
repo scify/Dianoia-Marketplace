@@ -41,6 +41,7 @@ class ResourceController extends Controller {
      */
     public function edit(int $resource_id): View {
         $resource = $this->resourceManager->getResource($resource_id);
+        $this->authorize('manage', $resource);
         $editResourceViewModel = $this->resourceManager->getEditResourcesViewModel($resource);
 
         return view('form-new-exercise')->with(['viewModel' => $editResourceViewModel]);
@@ -119,15 +120,17 @@ class ResourceController extends Controller {
      * @return RedirectResponse
      */
     public function update(Request $request, int $id): RedirectResponse { // after submit, (action-route submit button directs here)
+        $this->authorize('manage', $this->resourceManager->getResource($id));
+
         $this->validate($request, [
-                'name' => 'string|max:100',
-                'image' => 'mimes:jpg,png|file|between:3,1000|nullable',
-                'pdf' => 'mimes:pdf|max:500000|nullable',
-                'description' => 'string|max:1000',
-                'accept-guideline-terms' => 'required',
-                'accept-privacy-terms' => 'required',
-                'type_id' => 'required',
-            ]);
+            'name' => 'string|max:100',
+            'image' => 'mimes:jpg,png|file|between:3,1000|nullable',
+            'pdf' => 'mimes:pdf|max:500000|nullable',
+            'description' => 'string|max:1000',
+            'accept-guideline-terms' => 'required',
+            'accept-privacy-terms' => 'required',
+            'type_id' => 'required',
+        ]);
         try {
             $request['slug'] = Str::slug($request['name'], '_') . '_' . $id;
             $request['status_id'] = ResourceStatusesLkp::CREATED_PENDING_APPROVAL;
