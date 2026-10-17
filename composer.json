@@ -63,7 +63,29 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "setup": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+            "composer install",
+            "@php -r \"preg_match('/^APP_KEY=\\S/m', file_get_contents('.env')) || passthru(PHP_BINARY . ' artisan key:generate --ansi');\"",
+            "@php -r \"is_link('public/storage') || passthru(PHP_BINARY . ' artisan storage:link --ansi');\"",
+            "npm ci",
+            "npm run build"
+        ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "@php artisan test"
+        ],
+        "test:coverage": [
+            "@putenv XDEBUG_MODE=coverage",
+            "@php artisan config:clear --ansi",
+            "@php artisan test --coverage --coverage-html=coverage"
         ]
+    },
+    "scripts-descriptions": {
+        "setup": "Create .env if missing, install PHP and npm dependencies, generate APP_KEY if empty, link storage and build the frontend.",
+        "test": "Run the test suite (SQLite in memory).",
+        "test:coverage": "Run the test suite with a coverage summary and an HTML report in coverage/ (needs PCOV or Xdebug)."
     },
     "extra": {
         "laravel": {
