@@ -382,9 +382,6 @@ export default {
 		getResponseRoute() {
 			return window.route("resources.respond.post");
 		},
-		getHideExerciseRoute() {
-			return window.route("resources.hide", this.resource.id);
-		},
 		getDeleteExerciseRoute() {
 			return window.route("resources.delete_exercise", this.resource.id);
 		},

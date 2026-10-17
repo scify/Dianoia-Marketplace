@@ -40,24 +40,6 @@ import {Modal} from "bootstrap";
 	};
 
 
-	// let listenForExerciseSubmitClick = function () {
-	//     $("#exerciseSubmitBtn").on("click", function () {
-	//         console.log("clicked  exercise submit");
-	//         let exercise_id = $("#exercise_id").attr("value");
-	//         let type_id = $("#type_id").attr("value");
-	//         // const route = window.route('resources.update_resource,[\'id\' => '.concat(card_id).concat(', \'type_id\' => ').concat(type_id).concat(']'));
-	//         let route = window.route("resources.update", exercise_id);
-	//         let lastChar = route.substr(-1); // Selects the last character
-	//         if (lastChar === "/") {         // If the last character is a slash
-	//             route = route.slice(0, -1);
-	//         }
-	//         console.log(route);
-	//         route = route.concat("?type_id=").concat(type_id);
-	//         //
-	//         console.log(route);
-	//         $("#md-form").attr("action", route);
-	//     });
-	// };
 
 	let listenForEditCardClick = function () {
 		$(".editCardBtn").on("click", function () {
@@ -77,7 +59,6 @@ import {Modal} from "bootstrap";
 			let card_id = card.children("input").attr("value");
 
 			let type_id = $("#type_id").attr("value");
-			// const route = window.route('resources.update_resource,[\'id\' => '.concat(card_id).concat(', \'type_id\' => ').concat(type_id).concat(']'));
 
 			const route = window.route("resources.update", card_id.concat("?type_id=").concat(type_id));
 
