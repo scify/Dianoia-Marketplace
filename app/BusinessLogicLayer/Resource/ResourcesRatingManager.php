@@ -41,7 +41,7 @@ class ResourcesRatingManager {
     }
 
     public function storeRating(int $resources_id, int $rating, bool $update, int $previousRating) {
-        $resource = $this->resourcesRatingRepository->find($resources_id);
+        $resource = $this->resourceRepository->find($resources_id);
         $data = [
             'resources_id' => $resources_id,
             'resources_slug' => $resource->slug,

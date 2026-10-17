@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Resource;
 use App\BusinessLogicLayer\Resource\ResourceManager;
 use App\BusinessLogicLayer\Resource\ResourcesRatingManager;
 use App\Http\Controllers\Controller;
+use App\Repository\Resource\ResourceStatusesLkp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class ResourceRatingController extends Controller {
     protected ResourcesRatingManager $resourcesRatingManager;
@@ -51,29 +53,33 @@ class ResourceRatingController extends Controller {
     }
 
     public function storeOrUpdateMobileRating(Request $request): array {
+        // Only approved exercises are public, so only they can be rated.
+        $approvedResource = fn (string $column) => Rule::exists('resources', $column)
+            ->where('status_id', ResourceStatusesLkp::APPROVED)
+            ->whereNull('deleted_at');
+
         $this->validate($request, [
-            'resources_id' => 'required_without:resources_slug|integer|exists:resources,id',
-            'resources_slug' => 'required_without:resources_id|string',
+            'resources_id' => ['required_without:resources_slug', 'integer', $approvedResource('id')],
+            'resources_slug' => ['required_without:resources_id', 'string', $approvedResource('slug')],
             'rating' => 'required|integer|min:1|max:5',
             'update' => 'required|boolean',
             'previous_rating' => 'integer|min:1|max:5',
         ]);
 
         $data = $request->all();
+        $resource = isset($data['resources_id'])
+            ? $this->resourceManager->getResource($data['resources_id'])
+            : $this->resourceManager->getResourceBySlug($data['resources_slug']);
         $previousRating = $data['update'] && isset($data['previous_rating']) ? $data['previous_rating'] : 0;
-        if (isset($data['resources_id']) && $data['resources_id']) {
-            $this->resourcesRatingManager->storeRating($data['resources_id'], $data['rating'], $data['update'], $previousRating);
+
+        if (isset($data['resources_id'])) {
+            $this->resourcesRatingManager->storeRating($resource->id, $data['rating'], $data['update'], $previousRating);
         } else {
-            $this->resourcesRatingManager->storeRatingBySlug($data['resources_slug'], $data['rating'], $data['update'], $previousRating);
+            $this->resourcesRatingManager->storeRatingBySlug($resource->slug, $data['rating'], $data['update'], $previousRating);
         }
-        $currentAvg = $this->resourcesRatingManager->getAverageRatingForResource($data['resources_slug']);
-        $resource = $this->resourceManager->getResourceBySlug($data['resources_slug']);
-        if ($resource) {
-            $this->resourceManager->storeOrUpdateAverageResourceRating(
-                $resource->id,
-                $currentAvg['avg_rating']
-            );
-        }
+
+        $currentAvg = $this->resourcesRatingManager->getAverageRatingForResource($resource->slug);
+        $this->resourceManager->storeOrUpdateAverageResourceRating($resource->id, $currentAvg['avg_rating']);
 
         return $currentAvg;
     }
