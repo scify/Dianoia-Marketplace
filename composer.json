@@ -65,10 +65,11 @@
             "@php artisan key:generate --ansi"
         ],
         "setup": [
+            "Composer\\Config::disableProcessTimeout",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "composer install",
-            "@php -r \"preg_match('/^APP_KEY=\\S/m', file_get_contents('.env')) || passthru(PHP_BINARY . ' artisan key:generate --ansi');\"",
-            "@php -r \"is_link('public/storage') || passthru(PHP_BINARY . ' artisan storage:link --ansi');\"",
+            "@composer install",
+            "@php -r \"require 'vendor/autoload.php'; empty(Dotenv\\Dotenv::parse(file_get_contents('.env'))['APP_KEY'] ?? null) && exit(pclose(popen(escapeshellarg(PHP_BINARY) . ' artisan key:generate --ansi', 'w')));\"",
+            "@php -r \"is_link('public/storage') || exit(pclose(popen(escapeshellarg(PHP_BINARY) . ' artisan storage:link --ansi', 'w')));\"",
             "npm ci",
             "npm run build"
         ],
@@ -77,6 +78,7 @@
             "@php artisan test"
         ],
         "test:coverage": [
+            "Composer\\Config::disableProcessTimeout",
             "@putenv XDEBUG_MODE=coverage",
             "@php artisan config:clear --ansi",
             "@php artisan test --coverage --coverage-html=coverage"
