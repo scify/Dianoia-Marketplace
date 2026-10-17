@@ -326,7 +326,7 @@ class ResourceManager {
         }
 
         $paginated = $this->resourceRepository->getResources(
-            null, $whereArray['lang_id'], null, null, $whereArray['type_id'], null, 10, true);
+            null, $whereArray['lang_id'], [ResourceStatusesLkp::APPROVED], null, $whereArray['type_id'], null, 10, true);
         $paginated->appends(['lang' => $requestLanguage])->links();
         $paginated->appends(['category' => $requestCategory])->links();
 
