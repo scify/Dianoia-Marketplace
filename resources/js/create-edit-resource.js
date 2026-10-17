@@ -39,24 +39,6 @@ import {Modal} from "bootstrap";
 		});
 	};
 
-	let listenForDeleteCardClick = function () {
-		$(".deleteCardBtn").on("click", function () {
-			let modal = document.getElementById("deleteConfirmationModal");
-			let card = $(this).parents(".card");
-			let card_title = card.children(".card-title").children("p").css(
-				{"color": "green", "border": "2px solid green"});
-			console.log(card_title.html());
-			let card_id = card.children("input").attr("value");
-
-			const route = window.route("resources.destroy", card_id);
-			$("#md-delete-form").attr("action", route);
-
-			console.log(route);
-
-			new Modal(modal).show();
-		});
-	};
-
 
 	// let listenForExerciseSubmitClick = function () {
 	//     $("#exerciseSubmitBtn").on("click", function () {
@@ -76,17 +58,6 @@ import {Modal} from "bootstrap";
 	//         $("#md-form").attr("action", route);
 	//     });
 	// };
-
-	let listenForSaveBundleClick = function () {
-		$("#saveBundleBtn").on("click", function () {
-			console.log("clicked  save bundle");
-			let id = $("#packageId").attr("value");
-			let modal = document.getElementById("saveBundleModal");
-			const route = window.route("resources.submit", id);
-			$("#md-save-bundle-form").attr("action", route);
-			new Modal(modal).show();
-		});
-	};
 
 	let listenForEditCardClick = function () {
 		$(".editCardBtn").on("click", function () {
@@ -281,8 +252,6 @@ import {Modal} from "bootstrap";
 		scrollToButton();
 		listenForEditCardClick();
 		listenForNewCardClick();
-		listenForDeleteCardClick();
-		listenForSaveBundleClick();
 		scrollToMobileApp();
 		scrollToPatients();
 		scrollToCarers();

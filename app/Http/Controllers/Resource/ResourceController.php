@@ -162,7 +162,7 @@ class ResourceController extends Controller {
         }
     }
 
-    public function submit($resource): RedirectResponse {
+    private function submit($resource): RedirectResponse {
         $admins = $this->userManager->get_admin_users();
         Notification::send($admins, new AdminNotice($resource)); // Todo when dianoia email for admin has been setup
         try {
