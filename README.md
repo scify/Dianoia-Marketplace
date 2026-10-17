@@ -79,13 +79,20 @@ refuses to reset any database except SQLite in memory, and `composer test` clear
 
 ## Code quality
 
+The project uses three tools:
+
+- [Laravel Pint](https://laravel.com/docs/pint) for the PHP code style (rules in `pint.json`)
+- [Larastan](https://github.com/larastan/larastan) (PHPStan) for static analysis of `app/` (settings in `phpstan.neon`;
+  known errors are in `phpstan-baseline.neon`, and new code must not add entries)
+- [ESLint](https://eslint.org/) for `resources/js` (rules in `eslint.config.js`)
+
 ```bash
-vendor/bin/pint --test       # check the PHP code style (vendor/bin/pint fixes it)
-vendor/bin/phpstan analyse   # static analysis; known errors are in phpstan-baseline.neon
-npm run lint                 # ESLint for resources/js
+composer lint:check   # run all three tools; report problems, change nothing
+composer lint:fix     # fix the PHP style and the JavaScript, then report what PHPStan still finds
 ```
 
-New code must not add entries to `phpstan-baseline.neon`.
+`lint:check` stops at the first tool that reports a problem. PHPStan cannot fix code, so after `lint:fix` you fix the
+remaining PHPStan errors by hand. CI runs the same checks.
 
 ## Continuous integration
 
