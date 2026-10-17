@@ -51,7 +51,7 @@ class UserController extends Controller {
             'email' => 'required|email|unique:users,email',
             // 'email' => 'required|email:rfc,dns|unique:users,email',
             'password' => $this->passwordRules(),
-            'role' => 'required|integer|gt:1',
+            'role' => ['required', 'integer', Rule::in(UserRolesLkp::REGISTERED_USER_TYPES)],
         ]);
         try {
             $this->userManager->create($request->all());

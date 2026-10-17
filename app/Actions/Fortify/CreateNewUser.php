@@ -4,6 +4,7 @@ namespace App\Actions\Fortify;
 
 use App\BusinessLogicLayer\User\UserManager;
 use App\Models\User;
+use App\Repository\User\UserRole\UserRolesLkp;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -37,7 +38,7 @@ class CreateNewUser implements CreatesNewUsers {
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
-            'role' => 'required|integer|gt:1',
+            'role' => ['required', 'integer', Rule::in(UserRolesLkp::REGISTERED_USER_TYPES)],
         ])->validate();
 
         return $this->userManager->create([
