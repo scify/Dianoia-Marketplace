@@ -8,7 +8,9 @@ use App\Notifications\AcceptanceNotice;
 use App\Repository\Resource\ResourceStatusesLkp;
 use App\Repository\User\UserRole\UserRolesLkp;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class ExerciseAccessTest extends TestCase {
@@ -163,6 +165,26 @@ class ExerciseAccessTest extends TestCase {
         $exercise = $this->exercise->fresh();
         $this->assertSame('Edited by admin', $exercise->name);
         $this->assertSame($this->creator->id, (int) $exercise->creator_user_id);
+    }
+
+    public function test_creator_can_upload_a_pdf_when_none_exists(): void {
+        Storage::fake('public');
+        $this->assertNull($this->exercise->pdf_path);
+
+        $this->actingAs($this->creator)
+            ->put('/resources/' . $this->exercise->id, [
+                'name' => 'With PDF',
+                'description' => 'Edited',
+                'lang' => 1,
+                'difficulty_id' => 1,
+                'type_id' => 1,
+                'accept-guideline-terms' => 'on',
+                'accept-privacy-terms' => 'on',
+                'pdf' => UploadedFile::fake()->create('exercise.pdf', 10, 'application/pdf'),
+            ])
+            ->assertSessionHas('flash_message_success');
+
+        $this->assertNotNull($this->exercise->fresh()->pdf_path);
     }
 
     private function rejection(): array {

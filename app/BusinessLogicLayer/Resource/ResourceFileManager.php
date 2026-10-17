@@ -37,7 +37,9 @@ class ResourceFileManager {
     }
 
     public function deleteResourcePdf(Resource $resource): void {
-        Storage::disk('public')->delete($resource->pdf_path);
+        if ($resource->pdf_path) {
+            Storage::disk('public')->delete($resource->pdf_path);
+        }
     }
 
     public function deleteResourceAudio(Resource $resource): void {
