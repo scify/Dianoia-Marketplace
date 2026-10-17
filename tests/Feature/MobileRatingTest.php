@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Resource\Resource;
 use App\Repository\Resource\ResourceStatusesLkp;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Testing\TestResponse;
 use Tests\TestCase;
 
 class MobileRatingTest extends TestCase {
@@ -58,5 +59,28 @@ class MobileRatingTest extends TestCase {
             ->assertUnprocessable();
 
         $this->assertDatabaseCount('resources_ratings', 0);
+    }
+
+    public function test_update_changes_the_previous_rating(): void {
+        $this->rateApproved(['rating' => 2, 'update' => false]);
+
+        $this->rateApproved(['rating' => 5, 'update' => true, 'previous_rating' => 2])->assertOk();
+
+        $this->assertDatabaseCount('resources_ratings', 1);
+        $this->assertDatabaseHas('resources_ratings', ['resources_id' => $this->approved->id, 'rating' => 5]);
+    }
+
+    public function test_update_without_a_matching_previous_rating_stores_a_new_rating(): void {
+        $this->rateApproved(['rating' => 3, 'update' => true, 'previous_rating' => 1])->assertOk();
+
+        $this->assertDatabaseHas('resources_ratings', ['resources_id' => $this->approved->id, 'rating' => 3]);
+    }
+
+    public function test_update_requires_the_previous_rating(): void {
+        $this->rateApproved(['rating' => 3, 'update' => true])->assertUnprocessable();
+    }
+
+    private function rateApproved(array $data): TestResponse {
+        return $this->postJson('/mobile/resources/user-rating', array_merge(['resources_id' => $this->approved->id], $data));
     }
 }

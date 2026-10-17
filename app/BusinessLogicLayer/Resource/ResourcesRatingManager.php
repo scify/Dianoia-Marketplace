@@ -47,8 +47,9 @@ class ResourcesRatingManager {
             'resources_slug' => $resource->slug,
             'rating' => $rating,
         ];
-        if ($update) {
-            $resourceRating = $this->resourcesRatingRepository->where(['resources_id' => $resource->id, 'rating' => $previousRating, 'voter_user_id' => null]);
+        // An update without a matching previous rating stores a new rating.
+        $resourceRating = $update ? $this->resourcesRatingRepository->where(['resources_id' => $resource->id, 'rating' => $previousRating, 'voter_user_id' => null]) : null;
+        if ($resourceRating) {
             $resourceRating->rating = $rating;
 
             return $resourceRating->save();
@@ -62,8 +63,9 @@ class ResourcesRatingManager {
             'resources_slug' => $resources_slug,
             'rating' => $rating,
         ];
-        if ($update) {
-            $resourceRating = $this->resourcesRatingRepository->where(['resources_slug' => $resources_slug, 'rating' => $previousRating, 'voter_user_id' => null]);
+        // An update without a matching previous rating stores a new rating.
+        $resourceRating = $update ? $this->resourcesRatingRepository->where(['resources_slug' => $resources_slug, 'rating' => $previousRating, 'voter_user_id' => null]) : null;
+        if ($resourceRating) {
             $resourceRating->rating = $rating;
 
             return $resourceRating->save();

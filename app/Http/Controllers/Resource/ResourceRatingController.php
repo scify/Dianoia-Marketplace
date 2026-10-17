@@ -63,7 +63,7 @@ class ResourceRatingController extends Controller {
             'resources_slug' => ['required_without:resources_id', 'string', $approvedResource('slug')],
             'rating' => 'required|integer|min:1|max:5',
             'update' => 'required|boolean',
-            'previous_rating' => 'integer|min:1|max:5',
+            'previous_rating' => 'required_if_accepted:update|integer|min:1|max:5',
         ]);
 
         $data = $request->all();
