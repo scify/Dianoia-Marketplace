@@ -50,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
         });
         Route::get('/platform-statistics', [PlatformStatisticsController::class, 'show_platform_statistics'])->name('platform_statistics');
     });
-    Route::put('/users/update/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::put('/users/update/{user}', [UserController::class, 'updateProfile'])->name('users.update');
 
     Route::resource('resources', ResourceController::class)
         ->except([// ONLY

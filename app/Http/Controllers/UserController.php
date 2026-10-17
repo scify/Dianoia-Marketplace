@@ -6,11 +6,14 @@ use App\Actions\Fortify\PasswordValidationRules;
 use App\BusinessLogicLayer\User\UserManager;
 use App\BusinessLogicLayer\ViewModelProviders\AdministrationVMProvider;
 use App\Models\User;
+use App\Repository\User\UserRole\UserRolesLkp;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller {
     protected AdministrationVMProvider $administrationVMProvider;
@@ -67,6 +70,26 @@ class UserController extends Controller {
      * @param  User  $user
      * @return RedirectResponse
      */
+    /**
+     * The logged-in user updates their own profile. Roles other than the
+     * registered user type are managed only by administrators.
+     */
+    public function updateProfile(Request $request, User $user): RedirectResponse {
+        abort_unless($user->is(Auth::user()), 403);
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'password' => $request['password'] ? $this->passwordRules() : 'nullable',
+            'type_id' => ['nullable', 'integer', Rule::in(UserRolesLkp::REGISTERED_USER_TYPES)],
+        ]);
+
+        $this->userManager->updateProfile($user, $request->only(['name', 'email', 'password', 'type_id']));
+        session()->flash('flash_message_success', 'User successfuly updated');
+
+        return back();
+    }
+
     public function update(Request $request, User $user): RedirectResponse {
         if ($request['password']) {
             $request->validate([

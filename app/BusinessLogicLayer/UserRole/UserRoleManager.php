@@ -10,6 +10,7 @@ use App\Repository\User\UserRole\UserRolesLkp;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
+use InvalidArgumentException;
 
 class UserRoleManager {
     private $userRoleRepository;
@@ -33,6 +34,24 @@ class UserRoleManager {
 
     public function assignRegisteredUserRoleTo(User $user, int $roleId) {
         return $this->assignRoleTo($user, $roleId);
+    }
+
+    /**
+     * Sets the user's registered type. Other registered types are removed;
+     * the admin role is never touched.
+     */
+    public function changeRegisteredUserRole(User $user, int $roleId): void {
+        if (!in_array($roleId, UserRolesLkp::REGISTERED_USER_TYPES, true)) {
+            throw new InvalidArgumentException("Role {$roleId} is not a registered user type.");
+        }
+
+        foreach (UserRolesLkp::REGISTERED_USER_TYPES as $registeredType) {
+            if ($registeredType !== $roleId) {
+                $this->removeRoleFromUser($user, $registeredType);
+            }
+        }
+
+        $this->assignRoleTo($user, $roleId);
     }
 
     public function assignAdminUserRoleTo(User $user) {

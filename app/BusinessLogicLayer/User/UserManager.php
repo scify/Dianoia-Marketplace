@@ -47,6 +47,23 @@ class UserManager {
         return $this->userRoleManager->userHasAdminRole($user);
     }
 
+    public function updateProfile(User $user, array $data): User {
+        $user = $this->userRepository->update([
+            'name' => trim($data['name']),
+            'email' => trim($data['email']),
+        ], $user->id);
+
+        if (!empty($data['password'])) {
+            $user = $this->userRepository->update(['password' => Hash::make($data['password'])], $user->id);
+        }
+
+        if (!empty($data['type_id'])) {
+            $this->userRoleManager->changeRegisteredUserRole($user, (int) $data['type_id']);
+        }
+
+        return $user;
+    }
+
     /**
      * Updates a User in the DB.
      * Also checks the existence of the administrator field

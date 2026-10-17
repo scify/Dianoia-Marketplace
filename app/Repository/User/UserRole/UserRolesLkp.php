@@ -11,4 +11,7 @@ abstract class UserRolesLkp {
     const PROFESSIONAL_CARER = 3;
 
     const ORGANIZATION = 4;
+
+    // The types a user may choose for themselves. ADMIN is assigned only by administrators.
+    const REGISTERED_USER_TYPES = [self::PRIVATE_CARER, self::PROFESSIONAL_CARER, self::ORGANIZATION];
 }
