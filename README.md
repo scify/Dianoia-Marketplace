@@ -89,13 +89,15 @@ New code must not add entries to `phpstan-baseline.neon`.
 
 ## Continuous integration
 
-Pull requests and pushes to `master` run the shared [SciFY workflows](https://github.com/scify/.github):
+The repository uses the shared [SciFY workflows](https://github.com/scify/.github):
 
-- `ci.yml` (`laravel-ci.yml`): Pint, PHPStan, ESLint, the frontend build and the tests. The required check is
-  **`ci / CI`**.
-- `security.yml`: secret scanning, npm supply-chain checks, `composer audit` and `npm audit`. It also runs every Monday.
+- `ci.yml` (`laravel-ci.yml`) runs on pull requests and on pushes to `master`: Pint, PHPStan, ESLint, the frontend
+  build and the tests. The required check is **`ci / CI`**.
+- `security.yml` runs on pull requests and every Monday: secret scanning, npm supply-chain checks, `composer audit`
+  and `npm audit`.
 
-Dependabot opens pull requests for security updates only.
+Dependabot opens pull requests for security updates only. `dependabot_auto_merge.yml` merges the minor and patch
+updates after the required checks pass.
 
 ## Deployment
 
@@ -106,13 +108,26 @@ A deployment needs these steps:
 2. `composer install --no-dev --optimize-autoloader`
 3. `.env` for production:
    - `APP_ENV=production`, `APP_DEBUG=false`
-   - `APP_URL` must match the host name that users open. `TrustHosts` rejects requests for other hosts with HTTP 400.
-     If a reverse proxy is in front of the app, make sure that it forwards the original `Host` header.
+   - `APP_URL` must match the host name that users open. Outside the `local` environment, `TrustHosts` accepts only
+     the `APP_URL` host and its subdomains, and answers other hosts with HTTP 400. If a reverse proxy is in front of
+     the app, make sure that it forwards the original `Host` header.
+   - `MAIL_*`: the app sends notifications (approvals, rejections, reports) by email.
+   - `SENTRY_LARAVEL_DSN` for backend error reporting.
    - `VITE_SENTRY_DSN_PUBLIC` for frontend error reporting. Vite reads `VITE_*` values at build time, so set them
      before `npm run build`.
 4. `php artisan migrate --force`, `php artisan storage:link`, then `php artisan config:cache`, `route:cache` and
    `view:cache`.
-5. The web server's document root is `public/`.
+5. The web server's user must be able to write to `storage/` and `bootstrap/cache/`.
+   `sudo ./set-file-permissions.sh www-data <deploy-user> .` sets the owner group and the permissions.
+6. The web server's document root is `public/`.
+7. Run the scheduler every minute (it prunes stale cache tags every hour):
+
+   ```text
+   * * * * * cd /path/to/app && php artisan schedule:run >> /dev/null 2>&1
+   ```
+
+8. If you set `QUEUE_CONNECTION` to anything other than `sync`, run a queue worker (`php artisan queue:work`) under a
+   process manager such as Supervisor. The email notifications are queued.
 
 ## Sitemap
 
