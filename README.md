@@ -10,6 +10,21 @@ each exercise; approved exercises that are marked for the API also appear in the
 
 [Project URL](https://dianoia.scify.org/)
 
+## Contents
+
+- [Tech stack](#tech-stack)
+- [Requirements](#requirements)
+- [Getting started](#getting-started)
+  - [npm supply-chain settings](#npm-supply-chain-settings)
+- [Tests](#tests)
+- [Code quality](#code-quality)
+- [Continuous integration](#continuous-integration)
+- [Releasing](#releasing)
+- [Deployment](#deployment)
+- [Sitemap](#sitemap)
+- [Debugging](#debugging)
+- [License](#license)
+
 ## Tech stack
 
 - **Backend:** Laravel 12, PHP 8.2 or newer (CI runs PHP 8.4), MySQL
