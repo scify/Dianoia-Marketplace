@@ -13,7 +13,7 @@
                     <div class="row user-info ">
                         <div class="col-xl-9 col-md-7 col-xs-12 ">
                             <h1>{{$user->name}} <span>({{$user->email}})</span></h1>
-                            <p>{{trans('messages.'.$user->type?->name)}}</p>
+                            @if($user->type)<p>{{trans('messages.'.$user->type->name)}}</p>@endif
                         </div>
 
                         <div class="col-xl-3 col-md-5 col-xs-12">
@@ -50,7 +50,7 @@
                                                     <input style="display:none" type="text" class="form-control"
                                                            name="prev_type_id" value="{{$user->type?->id}}">
 
-                                                    <p style="display:none">{{trans('messages.'.$user->type?->name)}}</p>
+                                                    @if($user->type)<p style="display:none">{{trans('messages.'.$user->type->name)}}</p>@endif
                                                     <div class="col-12">
                                                         <label for="email" class="form-label">Email
                                                             <span>*</span></label>
@@ -74,6 +74,9 @@
 
                                                         <select class="form-select" aria-label="Default select example"
                                                                 name="type_id">
+                                                            @unless($user->type)
+                                                                <option value="" selected></option>
+                                                            @endunless
                                                             @foreach(['Private Carer', 'Professional Carer', 'Organization'] as $i=>$type)
                                                                 @if($type === $user->type?->name)
                                                                     <option value="{{$user->type?->id}}"

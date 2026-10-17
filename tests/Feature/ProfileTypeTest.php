@@ -46,4 +46,24 @@ class ProfileTypeTest extends TestCase {
             ->get('/administration/admin/exercise-management')
             ->assertOk();
     }
+
+    public function test_admin_without_registered_type_gets_an_empty_type_option(): void {
+        $html = $this->actingAs($this->createUserWithRole(UserRolesLkp::ADMIN))
+            ->get('/administration/admin/exercise-management')
+            ->assertOk()
+            ->getContent();
+
+        $this->assertMatchesRegularExpression('/<option value=""\s+selected>/', $html);
+        $this->assertStringNotContainsString('>messages.<', $html);
+    }
+
+    public function test_saving_with_an_empty_type_keeps_the_roles(): void {
+        $admin = $this->createUserWithRole(UserRolesLkp::ADMIN);
+
+        $this->actingAs($admin)
+            ->put('/users/update/' . $admin->id, ['name' => $admin->name, 'email' => $admin->email, 'type_id' => ''])
+            ->assertSessionHasNoErrors();
+
+        $this->assertSame([UserRolesLkp::ADMIN], $admin->fresh()->roles->pluck('id')->all());
+    }
 }
