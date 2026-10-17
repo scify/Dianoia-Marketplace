@@ -147,6 +147,8 @@ class ResourceController extends Controller {
      * @return RedirectResponse
      */
     public function delete_exercise(Request $request, int $id): RedirectResponse {
+        $this->authorize('manage', $this->resourceManager->getResource($id));
+
         try {
             $this->resourceManager->destroyResource($id);
 

@@ -31,7 +31,9 @@ class ResourceFileManager {
     }
 
     public function deleteResourceImage(Resource $resource): void {
-        Storage::disk('public')->delete($resource->img_path);
+        if ($resource->img_path) {
+            Storage::disk('public')->delete($resource->img_path);
+        }
     }
 
     public function deleteResourcePdf(Resource $resource): void {
@@ -39,8 +41,9 @@ class ResourceFileManager {
     }
 
     public function deleteResourceAudio(Resource $resource): void {
-        echo $resource->audio_path;
-        Storage::disk('public')->delete($resource->audio_path);
+        if ($resource->audio_path) {
+            Storage::disk('public')->delete($resource->audio_path);
+        }
     }
 
     public function keepLatinCharactersAndNumbersString($string): array|string|null {

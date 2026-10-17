@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('resources/download/{id}', [ResourceController::class, 'download'])->name('resources.download');
     Route::get('resources/clone/{id}', [ResourceController::class, 'clone'])->name('resources.clone');
     Route::get('/my-profile', [ResourceController::class, 'my_profile'])->name('resources.my_profile');
-    Route::get('/resources/delete/exercise/{id}', [ResourceController::class, 'delete_exercise'])->name('resources.delete_exercise');
+    Route::delete('/resources/delete/exercise/{id}', [ResourceController::class, 'delete_exercise'])->name('resources.delete_exercise');
     Route::post('/resources/approve/{id}', [ResourceController::class, 'approve'])->name('resources.approve');
     Route::post('/resources/reject/{id}', [ResourceController::class, 'reject'])->name('resources.reject');
     Route::post('/resources/report/{id}', [ResourceController::class, 'report'])->name('resources.report');

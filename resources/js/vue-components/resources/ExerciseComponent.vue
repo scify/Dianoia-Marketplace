@@ -167,9 +167,13 @@
               <div>
                 <h4>{{trans('messages.warning_deletion')}}</h4>
               </div>
-              <a :href="getDeleteExerciseRoute()" class="btn btn-danger">
-                {{trans('messages.delete')}}
-              </a>
+              <form :action="getDeleteExerciseRoute()" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" :value="csrfToken">
+                <button type="submit" class="btn btn-danger">
+                  {{trans('messages.delete')}}
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -337,7 +341,8 @@ export default {
 			exerciseReportModalOpen: false,
 			responseModalOpen: false,
 			rateTitleKey: "rate_exercise_modal_body_text_no_rating",
-			resource: {}
+			resource: {},
+			csrfToken: window.Laravel.csrfToken
 		};
 	},
 	created() {
