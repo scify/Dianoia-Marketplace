@@ -168,7 +168,6 @@ class ResourceManager {
             'type_id' => $request['type_id'],
             'difficulty_id' => $request['difficulty_id'],
             'status_id' => $request['status_id'],
-            'creator_user_id' => Auth::id(),
             'admin_user_id' => null,
         ];
         $old_resource = $this->resourceRepository->find($id);

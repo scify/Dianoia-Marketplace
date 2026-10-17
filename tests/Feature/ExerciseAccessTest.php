@@ -147,6 +147,24 @@ class ExerciseAccessTest extends TestCase {
             ->assertOk();
     }
 
+    public function test_admin_update_keeps_the_creator(): void {
+        $this->actingAs($this->admin)
+            ->put('/resources/' . $this->exercise->id, [
+                'name' => 'Edited by admin',
+                'description' => 'Edited',
+                'lang' => 1,
+                'difficulty_id' => 1,
+                'type_id' => 1,
+                'accept-guideline-terms' => 'on',
+                'accept-privacy-terms' => 'on',
+            ])
+            ->assertRedirect();
+
+        $exercise = $this->exercise->fresh();
+        $this->assertSame('Edited by admin', $exercise->name);
+        $this->assertSame($this->creator->id, (int) $exercise->creator_user_id);
+    }
+
     private function rejection(): array {
         return ['id' => $this->exercise->id, 'rejection_reason' => 'Rules', 'rejection_comment' => 'Not allowed'];
     }
