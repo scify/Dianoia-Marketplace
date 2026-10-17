@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -324,6 +325,12 @@ class ResourceController extends Controller {
         $status_ids = [];
         if ($request->status_ids) {
             $status_ids = explode(',', $request->status_ids);
+        }
+        // Pending and rejected exercises are visible only to administrators and to their creator.
+        $viewer = Auth::user();
+        $isOwnContent = $viewer !== null && $user_id === $viewer->id;
+        if (!$isOwnContent && Gate::denies('manage-platform')) {
+            $status_ids = [ResourceStatusesLkp::APPROVED];
         }
         $type_ids = null;
         if ($request->type_ids) {

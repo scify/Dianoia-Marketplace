@@ -22,8 +22,12 @@ Route::middleware(['metadata'])->group(function () {
     Route::get('/user-roles', [UserController::class, 'getRoles'])->name('user_roles.get');
     Route::get('/user-role-mapping', [UserController::class, 'getRolesMapping'])->name('user_role_mapping.get');
     Route::get('/content-difficulties', [ResourceController::class, 'getContentDifficulties'])->name('content_difficulties.get');
-    Route::get('/resources', [ResourceController::class, 'getResources'])->name('resources.get');
     Route::get('/content-ratings', [ResourceRatingController::class, 'getContentRatings'])->name('content_ratings.get');
+});
+
+// Public, with the session, so the response can depend on who asks.
+Route::middleware(['web'])->group(function () {
+    Route::get('/resources', [ResourceController::class, 'getResources'])->name('resources.get');
 });
 
 // Members only. The "web" group adds the session and the CSRF check.
