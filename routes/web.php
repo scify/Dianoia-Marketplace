@@ -69,8 +69,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('resources/clone/{id}', [ResourceController::class, 'clone'])->name('resources.clone');
     Route::get('/my-profile', [ResourceController::class, 'my_profile'])->name('resources.my_profile');
     Route::delete('/resources/delete/exercise/{id}', [ResourceController::class, 'delete_exercise'])->name('resources.delete_exercise');
-    Route::post('/resources/approve/{id}', [ResourceController::class, 'approve'])->name('resources.approve');
-    Route::post('/resources/reject/{id}', [ResourceController::class, 'reject'])->name('resources.reject');
+    Route::post('/resources/approve/{id}', [ResourceController::class, 'approve'])->middleware('can:manage-platform')->name('resources.approve');
+    Route::post('/resources/reject/{id}', [ResourceController::class, 'reject'])->middleware('can:manage-platform')->name('resources.reject');
     Route::post('/resources/report/{id}', [ResourceController::class, 'report'])->name('resources.report');
     Route::post('/resources/submit', [ResourceController::class, 'submit'])->name('resources.submit');
     Route::put('/resources/update_resource/{id}/{type_id}', [ResourceController::class, 'update_resource'])->name('resources.update_resource');

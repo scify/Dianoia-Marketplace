@@ -4,8 +4,11 @@ namespace Tests\Feature;
 
 use App\Models\Resource\Resource;
 use App\Models\User;
+use App\Notifications\AcceptanceNotice;
+use App\Repository\Resource\ResourceStatusesLkp;
 use App\Repository\User\UserRole\UserRolesLkp;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class ExerciseAccessTest extends TestCase {
@@ -28,7 +31,7 @@ class ExerciseAccessTest extends TestCase {
         $this->creator = $this->createUserWithRole(self::PRIVATE_CARER);
         $this->otherMember = $this->createUserWithRole(self::PRIVATE_CARER);
         $this->admin = $this->createUserWithRole(UserRolesLkp::ADMIN);
-        $this->exercise = $this->createResource($this->creator);
+        $this->exercise = $this->createResource($this->creator, ResourceStatusesLkp::CREATED_PENDING_APPROVAL);
     }
 
     public function test_get_delete_route_is_gone(): void {
@@ -61,6 +64,65 @@ class ExerciseAccessTest extends TestCase {
             ->assertRedirect();
 
         $this->assertSoftDeleted($this->exercise);
+    }
+
+    public function test_member_cannot_approve(): void {
+        Notification::fake();
+
+        $this->actingAs($this->otherMember)
+            ->post('/resources/approve/' . $this->exercise->id, ['id' => $this->exercise->id])
+            ->assertForbidden();
+
+        $this->assertSame(ResourceStatusesLkp::CREATED_PENDING_APPROVAL, (int) $this->exercise->fresh()->status_id);
+        Notification::assertNothingSent();
+    }
+
+    public function test_member_cannot_reject(): void {
+        Notification::fake();
+
+        $this->actingAs($this->otherMember)
+            ->post('/resources/reject/' . $this->exercise->id, $this->rejection())
+            ->assertForbidden();
+
+        $this->assertSame(ResourceStatusesLkp::CREATED_PENDING_APPROVAL, (int) $this->exercise->fresh()->status_id);
+        Notification::assertNothingSent();
+    }
+
+    public function test_admin_can_approve(): void {
+        Notification::fake();
+
+        $this->actingAs($this->admin)
+            ->post('/resources/approve/' . $this->exercise->id, ['id' => $this->exercise->id])
+            ->assertRedirect();
+
+        $this->assertSame(ResourceStatusesLkp::APPROVED, (int) $this->exercise->fresh()->status_id);
+        Notification::assertSentTo($this->creator, AcceptanceNotice::class);
+    }
+
+    public function test_admin_can_reject(): void {
+        Notification::fake();
+
+        $this->actingAs($this->admin)
+            ->post('/resources/reject/' . $this->exercise->id, $this->rejection())
+            ->assertRedirect();
+
+        $this->assertSame(ResourceStatusesLkp::REJECTED, (int) $this->exercise->fresh()->status_id);
+    }
+
+    public function test_approve_uses_the_route_id_not_the_body_id(): void {
+        Notification::fake();
+        $otherExercise = $this->createResource($this->otherMember, ResourceStatusesLkp::CREATED_PENDING_APPROVAL);
+
+        $this->actingAs($this->admin)
+            ->post('/resources/approve/' . $this->exercise->id, ['id' => $otherExercise->id])
+            ->assertRedirect();
+
+        $this->assertSame(ResourceStatusesLkp::APPROVED, (int) $this->exercise->fresh()->status_id);
+        $this->assertSame(ResourceStatusesLkp::CREATED_PENDING_APPROVAL, (int) $otherExercise->fresh()->status_id);
+    }
+
+    private function rejection(): array {
+        return ['id' => $this->exercise->id, 'rejection_reason' => 'Rules', 'rejection_comment' => 'Not allowed'];
     }
 
     private function deleteUrl(): string {

@@ -168,14 +168,14 @@ class ResourceController extends Controller {
         }
     }
 
-    public function reject(Request $request): RedirectResponse {
+    public function reject(Request $request, int $id): RedirectResponse {
         $data = $request->all();
         $rejectionMessage = $data['rejection_comment'];
         $rejectionReason = $data['rejection_reason'];
-        $resource = $this->resourceManager->getResource($data['id']);
+        $resource = $this->resourceManager->getResource($id);
         try {
             $creator = $this->userManager->getUser($resource['creator_user_id']);
-            $this->resourceManager->rejectResource($data['id']);
+            $this->resourceManager->rejectResource($id);
             Notification::send($creator, new RejectionNotice($resource, $rejectionMessage, $rejectionReason, $creator->name));
 
             return redirect()->back()->with('flash_message_success', __('messages.exercise-reject-success'));
@@ -184,11 +184,10 @@ class ResourceController extends Controller {
         }
     }
 
-    public function approve(Request $request): RedirectResponse {
-        $data = $request->all();
-        $resource = $this->resourceManager->getResource($data['id']);
+    public function approve(int $id): RedirectResponse {
+        $resource = $this->resourceManager->getResource($id);
         try {
-            $this->resourceManager->approveResource($data['id']);
+            $this->resourceManager->approveResource($id);
             $creator = $this->userManager->getUser($resource['creator_user_id']);
             Notification::send($creator, new AcceptanceNotice($resource, $creator->name));
 
