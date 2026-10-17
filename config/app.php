@@ -117,7 +117,8 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
-    'version' => env('APP_VERSION', '1.0.0'),
+    // The version is defined only in package.json (see "Releasing" in README.md).
+    'version' => json_decode(file_get_contents(base_path('package.json')), true)['version'],
     'google_tag_manager_id' => env('GOOGLE_TAG_MANAGER_ID'),
     'userway_id' => env('USERWAY_ID'),
     /*
