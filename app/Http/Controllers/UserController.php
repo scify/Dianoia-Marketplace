@@ -64,13 +64,6 @@ class UserController extends Controller {
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  User  $user
-     * @return RedirectResponse
-     */
-    /**
      * The logged-in user updates their own profile. Roles other than the
      * registered user type are managed only by administrators.
      */
@@ -90,6 +83,13 @@ class UserController extends Controller {
         return back();
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  Request  $request
+     * @param  User  $user
+     * @return RedirectResponse
+     */
     public function update(Request $request, User $user): RedirectResponse {
         if ($request['password']) {
             $request->validate([
