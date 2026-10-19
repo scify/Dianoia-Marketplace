@@ -23,6 +23,7 @@ each exercise; approved exercises that are marked for the API also appear in the
 - [Continuous integration](#continuous-integration)
 - [Releasing](#releasing)
 - [Deployment](#deployment)
+- [Cookie consent](#cookie-consent)
 - [Sitemap](#sitemap)
 - [Debugging](#debugging)
 - [License](#license)
@@ -231,6 +232,24 @@ Deploy a release tag (`git checkout vX.Y.Z`), not `master`. A deployment needs t
 
 8. If you set `QUEUE_CONNECTION` to anything other than `sync`, run a queue worker (`php artisan queue:work`) under a
    process manager such as Supervisor. The email notifications are queued.
+
+## Cookie consent
+
+[SciFY Laravel Cookie Guard](https://github.com/scify/laravel-cookie-guard) shows the cookie consent dialog. Composer
+publishes its assets to `public/vendor/scify` after every install (`post-autoload-dump`, with `--force`), so that folder
+is not in git and any edit there is lost. To change the colours, override the plugin's CSS variables in
+`resources/sass/main.scss`. The `html` prefix makes the rule win over the plugin's `_variables.css`, which loads later:
+
+```scss
+html #scify-cookies-consent-wrapper,
+html #scify-cookie-policy-page,
+html #scify-cookie-consent-floating-button {
+    --scify-cookies-primary-color: #ff5722;
+    --scify-cookies-primary-hover-color: #e64a19;
+}
+```
+
+The full list of variables is in `vendor/scify/laravel-cookie-guard/public/_variables.css`.
 
 ## Sitemap
 

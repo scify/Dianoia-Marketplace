@@ -25,7 +25,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   a pull request, as the `master` ruleset requires.
 - `composer setup` runs `npm ci` only when `package-lock.json` changed, and creates `public/storage` as a relative
   link that works on the host and in DDEV.
-- The cookie consent assets are republished after every Composer autoload dump (also on `composer install`).
+- The cookie consent assets are republished after every Composer autoload dump (also on `composer install`) and are
+  no longer tracked in git (`public/vendor/scify`). Override their colours in `resources/sass` (README "Cookie consent").
 - `phpunit.xml` fixes `APP_URL`, so the tests do not depend on `.env`.
 - `.env.example` has a `MAIL_FROM_ADDRESS` value.
 - The README has a table of contents.

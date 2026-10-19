@@ -84,6 +84,8 @@ mobile app through `routes/mobile.php`. Default branch: `master`.
 - `common/footer-scripts.blade.php` sets `window.Laravel` (`csrfToken`, `baseUrl`, route map); the frontend calls
   routes by name through `window.route()`, so keep route names stable. Use `window.Laravel.baseUrl` for URLs;
   `VITE_*` values are fixed at build time.
+- `public/vendor/scify` is published by Composer on every install (`--force`) and is not in git. Cookie dialog colours
+  are CSS-variable overrides in `resources/sass/main.scss` (README "Cookie consent").
 
 ## Known issues
 
