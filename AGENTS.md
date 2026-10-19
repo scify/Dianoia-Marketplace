@@ -1,141 +1,98 @@
 # AGENTS.md
 
-Guidance for AI coding agents (and humans) working in this repository. `CLAUDE.md` imports this file.
+Guidance for AI coding agents working in this repository. `CLAUDE.md` imports this file. Commands, setup and
+deployment are in `README.md`; changes are recorded in `CHANGELOG.md`.
 
 ## Project
 
-Dianoia Marketplace: a Laravel 12 web application where carers create and share exercises for people with dementia.
-Administrators review each exercise; approved exercises marked `display_in_api` also appear in the Dianoia mobile
-app through `routes/mobile.php`. Production: <https://dianoia.scify.org/>. Default branch: `master`.
+Dianoia Marketplace (<https://dianoia.scify.org/>): a Laravel 12 app where carers create and share exercises for people
+with dementia. Administrators approve exercises; approved exercises marked `display_in_api` also reach the Dianoia
+mobile app through `routes/mobile.php`. Default branch: `master`.
 
-Stack: PHP ^8.2 (CI uses 8.4), MySQL, Vue 2.7 (end of life), Vite 7, Bootstrap 5, Sass, jQuery, Laravel Fortify for
-authentication. Node **24.21.0** (`.nvmrc`), npm ≥ 11.19.
+## Working rules
 
-## Commands
-
-| Task | Command |
-|---|---|
-| Install everything (safe to re-run; no DB step) | `composer setup` |
-| Create tables and starter data (after editing `DB_*` in `.env`) | `php artisan migrate --seed` |
-| Run locally | `php artisan serve` and `npm run dev` |
-| Tests | `composer test` |
-| Tests with coverage (PCOV or Xdebug) | `composer test:coverage` |
-| Pint + PHPStan + ESLint, no changes | `composer lint:check` |
-| Fix style (Pint, ESLint), then PHPStan report | `composer lint:fix` |
-| Production frontend build | `npm ci && npm run build` (writes `public/build`) |
-
-Before every commit, all of these must pass (check each exit code; do not chain a commit after a test run):
-`vendor/bin/pint --test`, `vendor/bin/phpstan analyse`, `npm run lint`, `npm run build`, and the test suite.
-
-## Safety rules (from real incidents)
-
-- **Tests must never touch the developer's MySQL database.** `phpunit.xml` forces SQLite in memory, and
-  `tests/TestCase.php` refuses to reset any other database (the check runs in `setUpTraits()`, because the
-  `RefreshDatabase` trait's own `beforeRefreshingDatabase()` would override an inherited guard). A cached config or a
-  `DATABASE_URL` can override `phpunit.xml`; `composer test` runs `config:clear` first. When in doubt, run
-  `env DB_HOST=192.0.2.1 php artisan test` so a wrong target fails instead of wiping data. (On 2026-10-16 a
-  `RefreshDatabase` test ran against the local MySQL and deleted all data.)
-- Do not run `migrate`, `db:seed` or tinker writes against the developer's database without asking. For manual
-  checks, create temporary users/data and delete them afterwards.
-- `composer require` without `-W` (it upgrades unrelated packages).
-- Never suggest `git pull` on production (see Deployment).
-- Ask before pushing, tagging or releasing. Commits are authored by Paul only: no `Co-Authored-By` lines. Pull request
-  descriptions: no "Test plan" section and no mention of AI tools.
-
-## Architecture
-
-- `app/Http/Controllers` → `app/BusinessLogicLayer/*Manager` (business logic) → `app/Repository/*Repository`
-  (Eloquent access; base class `Repository` with `find`, `where` (first match), `allWhere`, `update`, …).
-- `app/ViewModels` + `app/BusinessLogicLayer/ViewModelProviders`: data for Blade pages.
-- `app/Models`: `User` (relation `roles()` to `UserRoleLkp` via `user_roles`; `$with = ['roles']`),
-  `Resource\Resource` (an exercise; soft deletes), `Resource\ResourcesRating`, `Reports` (column `resource_id`).
-- Old Laravel structure: middleware and groups in `app/Http/Kernel.php`, routes registered in
-  `app/Providers/RouteServiceProvider.php`.
-
-### Routes
-
-- `routes/web.php` (`web`, `set.locale`): pages, auth, exercise CRUD, admin pages under `administration/`
-  (`can:manage-platform`), `js/translations.js`.
-- `routes/metadata.php` (prefix `metadata`, middleware `metadata` = throttle + bindings). Three tiers:
-  public read-only lookups; `/metadata/resources` in `web` (session, no login, so visibility can depend on the viewer);
-  ratings in `web` + `auth`; users, reports and report responses in `web` + `auth` + `can:manage-platform`.
-  Route names are used by the frontend through `window.route()`; keep them stable.
-- `routes/mobile.php` (prefix `mobile`, throttled, no auth by design): exercise list (approved + `display_in_api`
-  only), anonymous ratings (approved exercises only), analytics.
-
-### Access control
-
-- Roles (`App\Repository\User\UserRole\UserRolesLkp`): `ADMIN = 1`, `PRIVATE_CARER = 2`, `PROFESSIONAL_CARER = 3`,
-  `ORGANIZATION = 4`; `REGISTERED_USER_TYPES = [2, 3, 4]` (users may choose only these).
-- Gate `manage-platform` (admin) in `UserRoleManager::registerUserPolicies()`.
-- `App\Policies\ResourcePolicy::manage`: creator or admin may edit, update and delete an exercise.
-- Profile updates (`users.update` → `UserController::updateProfile`) change only the logged-in user's name, email,
-  password and registered type, never the admin role. Admin user management uses `administration.users.*`.
-- Non-admins see only approved exercises, except in their own list. Public payloads expose a creator's `id` and
-  `name` only. Ratings use `Auth::id()`, never a user id from the request; the server computes `avg_rating`.
-- `TrustHosts` is on: outside `local`/testing, only the `APP_URL` host and its subdomains are accepted (HTTP 400).
-
-## Frontend
-
-- Vite entries are listed in `vite.config.js` (5 JS files, 12 Sass files); Blade loads them with `@vite()`. Adding a
-  page asset means adding it to `input` as well.
-- `#app` wraps the whole layout and uses in-DOM Vue templates, so `vue` is aliased to the full build
-  (`vue/dist/vue.esm.js`). `@vitejs/plugin-vue2` supports Vite ≤ 7; Vue 3 would be a separate migration.
-- jQuery: `resources/js/jquery-global.js` sets `window.$`/`window.jQuery` (needed by `jquery-ui-dist` and inline
-  scripts). Import `$` explicitly in modules. **Inline Blade `<script>` blocks that use jQuery must be
-  `type="module"`** (`tests/Unit/InlineScriptsTest.php` enforces this).
-- `common/footer-scripts.blade.php` sets `window.Laravel` (`csrfToken`, `baseUrl`, route map) and loads
-  `/js/translations.js` (`window.i18n`, `window.translate`). Use `window.Laravel.baseUrl` for runtime URLs; `VITE_*`
-  values are fixed at build time (only `VITE_SENTRY_DSN_PUBLIC` is used).
-- axios sends the CSRF header from the `XSRF-TOKEN` cookie; forms posted from Vue add `_token`.
-- ESLint flat config (`flat/vue2-essential`): tabs, double quotes, semicolons.
+- **Run everything in DDEV** (`ddev composer …`, `ddev artisan …`, `ddev npm …`, `ddev exec …`). The host may have a
+  different PHP; the project needs PHP 8.4.1 (`composer.lock` contains Symfony 8.1). `ddev start` runs
+  `composer setup` and `php artisan migrate` on the DDEV database (post-start hook).
+- `ddev start`, `ddev restart` and `ddev import-db` run the migrations, and `ddev import-db` also replaces the
+  database: ask before each one.
+- **The developer's databases hold real local data** (the DDEV database, and possibly a host MySQL). Ask before
+  `migrate`, `db:seed` or tinker writes. For browser checks, create temporary users and data, and delete them
+  afterwards.
+- **Commit gate**: run each tool as its own command and read its exit code, then commit in a separate command:
+  `ddev composer lint:check`, `ddev npm run build`, and the tests (`ddev exec php artisan config:clear`, then
+  `ddev exec php artisan test --compact`). Chained commits went in with failing tests and a PHPStan error before.
+- `phpstan-baseline.neon`: new code adds no entries. When a change removes code that an entry ignores, lower or
+  remove that entry in the same commit (PHPStan fails on unmatched entries). Fix types instead of suppressing.
+- `composer require` / `composer update` without `-W`; use `-w` with the exact packages instead. New npm packages:
+  pick versions released at least 7 days ago (`.npmrc` `min-release-age`); npm 12 `install-scripts` warnings are
+  expected (`ignore-scripts=true`).
+- `master` accepts only pull requests with a passing `ci / CI` check (ruleset `master-branch-require-ci`). Work on a
+  branch; ask before every push, force push, tag and release.
+- Commits are authored by Paul only, without `Co-Authored-By` lines. Pull request descriptions have no "Test plan"
+  section and no mention of AI tools.
+- Every user-visible change gets an entry under `## [Unreleased]` in `CHANGELOG.md`; deployment-relevant changes also
+  get an upgrade note. Releases follow "Releasing" in `README.md`.
+- Production still runs an old version deployed with `git pull`. The next deployment is a fresh setup of a release
+  tag (checklist in `README.md`). Never suggest `git pull` on production.
 
 ## Tests
 
-PHPUnit 11 (`tests/Feature`, `tests/Unit`), SQLite in memory, `withoutVite()`. Helpers in `tests/TestCase.php`:
-`seedLookupTables()`, `createUserWithRole(int)`, `createResource(User, int $statusId)`. Write the test first and
-watch it fail. Laravel skips CSRF checks in tests, so check CSRF-sensitive changes in a browser. A test that changes
-`$this->app['env']` for `TrustHosts` must reset `Request::setTrustedHosts([])` in `tearDown`.
+- **Tests must run on SQLite in memory only.** On 2026-10-16 a `RefreshDatabase` test reset the developer's MySQL.
+  DDEV sets `DB_CONNECTION=mysql` and `DB_HOST=db` as container variables, which `<env>` lines in `phpunit.xml`
+  would not override; the `<server>` lines do. `tests/TestCase.php` throws before any database trait runs on another
+  database (the check is in `setUpTraits()`; the `RefreshDatabase` trait's own `beforeRefreshingDatabase()` would
+  override an inherited guard). Keep both. `phpunit.xml` also fixes `APP_URL`, because the console request takes its
+  scheme from it.
+- Helpers in `tests/TestCase.php`: `seedLookupTables()` (silences the seeders' output), `createUserWithRole()`,
+  `createResource($creator, $statusId)`.
+- Write the test first and watch it fail; for access rules, also remove the check once and watch the test fail.
+- Without a terminal, a failing `ddev composer test` prints no test output. For scripted runs use
+  `ddev exec php artisan test --compact`.
+- Laravel skips CSRF in tests: check CSRF-relevant changes in a browser with a real session.
+- A test that sets `$this->app['env']` for `TrustHosts` resets `Request::setTrustedHosts([])` in `tearDown()`
+  (the trusted hosts are static and leak into later tests).
 
-## Code quality
+## Domain and architecture
 
-Pint (`pint.json`: braces on the same line, Laravel preset), Larastan level 5 with `phpstan-baseline.neon` — new
-code must not add baseline entries; lowering a count after a fix is fine. Fix types instead of suppressing errors
-(for example generic `@return BelongsToMany<…>` on relations).
+- Controllers → `app/BusinessLogicLayer/*Manager` → `app/Repository/*Repository`. `Repository::where()` returns the
+  first match or `null`. Middleware and route registration use the old structure (`app/Http/Kernel.php`,
+  `RouteServiceProvider`).
+- An exercise is a `Resource` (soft deletes). Statuses (`ResourceStatusesLkp`): 1 pending, 2 approved, 3 rejected.
+  Roles (`UserRolesLkp`): 1 admin; 2-4 are the registered user types (`REGISTERED_USER_TYPES`) a user may choose.
+  `User::$with = ['roles']` loads the roles on every user query. `Reports` uses the column `resource_id`.
+- Access: gate `manage-platform` (admin); `ResourcePolicy::manage` (creator or admin) for edit, update and delete.
+  Profile updates (`UserController::updateProfile`) never change the admin role. Ids come from the route and the
+  session user, never from the request body; the server computes `avg_rating`.
+- `routes/metadata.php` has three tiers: public lookups; `/metadata/resources` in `web` (session, no login, so
+  non-approved exercises are visible only to admins and their creator); ratings in `web` + `auth`; users, reports and
+  report responses in `web` + `auth` + `can:manage-platform`. Public payloads show a creator by `id` and `name` only.
+- `routes/mobile.php` has no login by design: approved exercises with `display_in_api`, anonymous ratings of approved
+  exercises.
+- `TrustHosts` is on outside `local` and outside tests: only the `APP_URL` host and its subdomains (others get
+  HTTP 400).
+- `public/storage` is a relative link (`composer setup` creates it), so it works on the host and in DDEV.
 
-## npm supply chain
+## Frontend
 
-`.npmrc`: `ignore-scripts=true`, `min-release-age=7`, `engine-strict=true` (CI checks them). Use `npm ci`; choose
-new package versions released at least 7 days ago. npm 12 may print `install-scripts` warnings; that is expected.
+- Vite entries are listed in `vite.config.js`; Blade loads them with `@vite()`. A new page asset needs an `input`
+  entry. The Vite dev server runs in DDEV on port 5179 (the same port as Talk & Play Marketplace).
+- `#app` wraps the layout with in-DOM Vue 2.7 templates, so `vue` resolves to the full build. `@vitejs/plugin-vue2`
+  supports Vite ≤ 7.
+- jQuery: `resources/js/jquery-global.js` sets `window.$`; modules import `$`. Inline Blade scripts that use jQuery
+  must be `type="module"` (`tests/Unit/InlineScriptsTest.php` enforces it).
+- `common/footer-scripts.blade.php` sets `window.Laravel` (`csrfToken`, `baseUrl`, route map); the frontend calls
+  routes by name through `window.route()`, so keep route names stable. Use `window.Laravel.baseUrl` for URLs;
+  `VITE_*` values are fixed at build time.
+- `public/vendor/scify` is published by Composer on every install (`--force`) and is not in git. Cookie dialog colours
+  are CSS-variable overrides in `resources/sass/main.scss` (README "Cookie consent").
 
-## CI
-
-Shared SciFY workflows (`scify/.github@v0.1`): `ci.yml` (pull requests + pushes to `master`; required check
-`ci / CI`) and `security.yml` (pull requests + weekly). Dependabot: security updates only;
-`dependabot_auto_merge.yml` merges minor/patch updates after the required checks.
-
-## Releasing
-
-Semantic Versioning; the version is defined only in `package.json` (`config/app.php` reads it; the footer shows it).
-Record changes in `CHANGELOG.md` (Keep a Changelog) under `[Unreleased]`. Release steps are in `README.md`
-("Releasing"): `npm version X.Y.Z --no-git-tag-version`, commit `chore: release vX.Y.Z`, annotated tag `vX.Y.Z`,
-`git push origin master --follow-tags`, `gh release create` with the CHANGELOG section. First release: `v1.1.0`
-(2026-10-17).
-
-## Deployment
-
-Production still runs an old version deployed with `git pull`; the current code needs a **fresh deployment** of a
-release tag (checklist in `README.md`: Node 24, `npm ci && npm run build`, `VITE_*` keys, `APP_URL`/proxy `Host` for
-TrustHosts, mail and Sentry settings, permissions, scheduler, queue worker). The access-control fixes of v1.1.0 are not
-live until then; after migrating old data, check `user_roles` for unexpected admins (role 1).
-
-## Known issues (not fixed yet)
+## Known issues
 
 - Web ratings (by `resources_id`) and mobile ratings (by slug) compute `avg_rating` from different rows; the last
   writer wins. No unique key per voter and exercise.
-- `ResourceManager::getReportedExercises()` replaces `creator` with the reporting user (admin reports list shows the
-  reporter as "Created by").
-- The mobile rating `update` path lets any client change an anonymous rating with a given value (by design so far).
+- `ResourceManager::getReportedExercises()` replaces `creator` with the reporting user, so the admin reports list
+  shows the reporter as "Created by".
+- The mobile rating `update` path lets any client change an anonymous rating with a given value.
 - `user-role-mapping` is public and shows which user ids are admins.
 - `ResourceManager::getTransformExercisesForMobileApp()`: the `stories` case has no `break`.
-- Sass prints `@import` and division deprecations (Bootstrap 5.3); seeders print to stdout.

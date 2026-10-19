@@ -15,61 +15,93 @@ each exercise; approved exercises that are marked for the API also appear in the
 - [Tech stack](#tech-stack)
 - [Requirements](#requirements)
 - [Getting started](#getting-started)
+  - [Everyday commands](#everyday-commands)
+  - [Without DDEV](#without-ddev)
   - [npm supply-chain settings](#npm-supply-chain-settings)
 - [Tests](#tests)
 - [Code quality](#code-quality)
 - [Continuous integration](#continuous-integration)
 - [Releasing](#releasing)
 - [Deployment](#deployment)
+- [Cookie consent](#cookie-consent)
 - [Sitemap](#sitemap)
 - [Debugging](#debugging)
 - [License](#license)
 
 ## Tech stack
 
-- **Backend:** Laravel 12, PHP 8.2 or newer (CI runs PHP 8.4), MySQL
+- **Backend:** Laravel 12, PHP 8.4.1 or newer, MySQL 8.4
 - **Frontend:** Vue 2.7, Vite 7, Bootstrap 5, Sass, jQuery
-- **Tooling:** PHPUnit, Laravel Pint, Larastan (PHPStan), ESLint
+- **Tooling:** DDEV, PHPUnit, Laravel Pint, Larastan (PHPStan), ESLint
 
 ## Requirements
 
-- PHP 8.2 or newer, with the extensions that Laravel needs, plus `pdo_mysql`, `pdo_sqlite` (for tests) and `zip`
-- [Composer](https://getcomposer.org/)
-- Node.js **24.21.0** and npm 11.19 or newer. The version is pinned in `.nvmrc`; with
-  [nvm](https://github.com/nvm-sh/nvm), run `nvm use`
-- MySQL (or MariaDB)
+- [DDEV](https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/) and Docker (on Windows, inside WSL2)
+- Git
+
+DDEV runs PHP 8.4, Composer, MySQL 8.4 and Node.js in containers, so you do not need them on your machine. The Node.js
+version comes from `.nvmrc` (**24.21.0**); a DDEV start hook keeps `nodejs_version` in `.ddev/config.yaml` in sync with
+it. To run the app without DDEV, see [Without DDEV](#without-ddev).
 
 ## Getting started
 
-1. Install everything with one command:
+1. Clone the repository and start DDEV:
 
    ```bash
-   composer setup
+   git clone https://github.com/scify/Dianoia-Marketplace.git
+   cd Dianoia-Marketplace
+   ddev start
    ```
 
-   It creates `.env` from `.env.example` (only if `.env` is missing), installs the PHP and npm dependencies, generates
-   `APP_KEY` (only if it is empty), links `public/storage` to `storage/app/public` and builds the frontend. You can run it
-   again at any time.
+   Every `ddev start` runs `composer setup` and then the database migrations. `composer setup` creates `.env` from
+   `.env.example` (only if `.env` is missing), installs the PHP dependencies and, when `package-lock.json` changed, the
+   npm dependencies (`npm ci`), generates `APP_KEY` (only if it is empty), links `public/storage` to
+   `storage/app/public` (a relative link, so it works on the host and in DDEV) and builds the frontend. It is safe to
+   run again at any time, also by hand: `ddev composer setup`. DDEV writes the database, mail and `APP_URL` settings
+   into `.env`.
 
 2. Edit `.env`:
-   - `DB_*`: the connection to an existing, empty MySQL database
-   - `APP_URL`: the URL you use to open the app, for example `http://localhost:8000`
    - `DEFAULT_ADMIN_USER_PASSWORD_FOR_SEED` and `DEFAULT_TEST_USER_PASSWORD_FOR_SEED`: passwords for the seeded accounts
+   - `MAIL_FROM_ADDRESS`: any sender address, for example `noreply@example.com`. Without it, the app cannot send its
+     notification emails. DDEV catches all mail in [Mailpit](https://mailpit.axllent.org/) (`ddev mailpit`).
 
-3. Create the tables and the starter data:
+3. Create the starter data:
 
    ```bash
-   php artisan migrate --seed
+   ddev artisan db:seed
    ```
 
    The seeders create the lookup data and two accounts: `admin-dianoia@scify.org` (administrator) and `test@scify.org`.
 
-4. Start the app and the Vite dev server in two terminals:
+4. For frontend work, start the Vite dev server (hot reload through port 5179):
 
    ```bash
-   php artisan serve
-   npm run dev
+   ddev npm run dev
    ```
+
+   Talk & Play Marketplace uses the same port, so only one of the two dev servers can run at a time.
+
+5. Open <https://dianoia-marketplace.ddev.site:8443>.
+
+### Everyday commands
+
+| Task | Command |
+|---|---|
+| Start or stop the environment | `ddev start`, `ddev stop` |
+| Run Artisan, Composer or npm in the container | `ddev artisan ...`, `ddev composer ...`, `ddev npm ...` |
+| Open a MySQL shell | `ddev mysql` |
+| Import a database dump | `ddev import-db --file=dump.sql.gz` (runs the migrations afterwards) |
+| Open Mailpit (all outgoing mail) | `ddev mailpit` |
+| Show URLs and services | `ddev describe` |
+
+### Without DDEV
+
+You need PHP 8.4.1 or newer (with `pdo_mysql`, `pdo_sqlite` and `zip`), Composer, Node.js 24.21.0 (`nvm use`) and a
+MySQL server. Then run `composer setup`, set `DB_*`, `APP_URL` and the seed passwords in `.env`, run
+`php artisan migrate --seed`, and start `php artisan serve` and `npm run dev` in two terminals. DDEV rewrites
+`DB_*`, `APP_URL` and the mail settings in `.env`, so keep a separate copy of `.env` for each setup. The host and DDEV
+share `node_modules`: after you switch between them on a machine other than Linux (for example macOS), run `npm ci`
+again in the new environment, because some packages install platform-specific binaries.
 
 ### npm supply-chain settings
 
@@ -79,18 +111,22 @@ each exercise; approved exercises that are marked for the API also appear in the
 - `min-release-age=7`: npm installs only package versions that are at least 7 days old
 - `engine-strict=true`: npm refuses to install with a Node or npm version outside `engines` in `package.json`
 
-Use `npm ci` to install exactly what `package-lock.json` specifies.
+Use `npm ci` to install exactly what `package-lock.json` specifies (`composer setup` does this).
 
 ## Tests
 
 ```bash
-composer test            # run the test suite
-composer test:coverage   # the same, with a coverage summary and an HTML report in coverage/
+ddev composer test   # run the test suite
+ddev coverage        # the same, with a coverage summary and an HTML report in coverage/
 ```
 
-The tests run on SQLite in memory (see `phpunit.xml`). They never use the database in `.env`: `tests/TestCase.php`
-refuses to reset any database except SQLite in memory, and `composer test` clears a cached configuration first.
-`composer test:coverage` needs [PCOV](https://github.com/krakjoe/pcov) or [Xdebug](https://xdebug.org/).
+The tests run on SQLite in memory (see the `<server>` values in `phpunit.xml`). They never use the DDEV MySQL database:
+`<server>` values override the database variables that DDEV sets in the container, `tests/TestCase.php` refuses to
+reset any database except SQLite in memory, and `composer test` clears a cached configuration first. `phpunit.xml`
+also fixes `APP_URL`, so the tests do not depend on `.env`.
+`ddev coverage` turns Xdebug on for the run and then restores its previous state (also when a test fails), because
+Xdebug slows down every request. It runs `composer test:coverage`, which needs a coverage driver such as Xdebug or PCOV.
+Without DDEV, run `composer test` and `composer test:coverage`.
 
 ## Code quality
 
@@ -102,8 +138,8 @@ The project uses three tools:
 - [ESLint](https://eslint.org/) for `resources/js` (rules in `eslint.config.js`)
 
 ```bash
-composer lint:check   # run all three tools; report problems, change nothing
-composer lint:fix     # fix the PHP style and the JavaScript, then report what PHPStan still finds
+ddev composer lint:check   # run all three tools; report problems, change nothing
+ddev composer lint:fix     # fix the PHP style and the JavaScript, then report what PHPStan still finds
 ```
 
 `lint:check` stops at the first tool that reports a problem. PHPStan cannot fix code, so after `lint:fix` you fix the
@@ -128,26 +164,36 @@ users or deployments without a migration path, the **minor** version for new fea
 **patch** version for bug fixes only. The version is defined only in `package.json`; the app shows it in the footer.
 Releases are tagged `vX.Y.Z`. All changes are recorded in [CHANGELOG.md](CHANGELOG.md).
 
-To release version `X.Y.Z` from an up-to-date `master` with green CI:
+`master` accepts changes only through pull requests with a passing `ci / CI` check (repository ruleset), so a release
+goes through a pull request. To release version `X.Y.Z` from an up-to-date `master` with green CI:
 
-1. In `CHANGELOG.md`, rename `## [Unreleased]` to `## [X.Y.Z] - YYYY-MM-DD`, add a new empty `## [Unreleased]` above
-   it, and update the compare links at the end of the file.
+1. Create a branch, for example `git switch -c chore/release-vX.Y.Z`. In `CHANGELOG.md`, rename `## [Unreleased]`
+   to `## [X.Y.Z] - YYYY-MM-DD`, add a new empty `## [Unreleased]` above it, and update the compare links at the end
+   of the file.
 2. Set the version (this updates `package.json` and `package-lock.json`, without a commit or tag):
 
    ```bash
-   npm version X.Y.Z --no-git-tag-version
+   ddev npm version X.Y.Z --no-git-tag-version
    ```
 
-3. Commit, tag and push:
+3. Commit, push and open a pull request; merge it when CI passes:
 
    ```bash
    git add CHANGELOG.md package.json package-lock.json
    git commit -m "chore: release vX.Y.Z"
-   git tag -a vX.Y.Z -m "vX.Y.Z"
-   git push origin master --follow-tags
+   git push -u origin chore/release-vX.Y.Z
+   gh pr create --title "chore: release vX.Y.Z" --body "Release vX.Y.Z. See CHANGELOG.md."
    ```
 
-4. Create the GitHub release, with the changelog section as the release notes:
+4. Tag the merge commit on `master` and push the tag:
+
+   ```bash
+   git switch master && git pull --ff-only
+   git tag -a vX.Y.Z -m "vX.Y.Z"
+   git push origin vX.Y.Z
+   ```
+
+5. Create the GitHub release, with the changelog section as the release notes:
 
    ```bash
    awk '/^## \[X.Y.Z\]/{found=1; next} /^## \[/{found=0} found' CHANGELOG.md > release-notes.md
@@ -155,14 +201,14 @@ To release version `X.Y.Z` from an up-to-date `master` with green CI:
    rm release-notes.md
    ```
 
-5. Deploy the tag, not the branch (see below).
+6. Deploy the tag, not the branch (see below).
 
 ## Deployment
 
 Deploy a release tag (`git checkout vX.Y.Z`), not `master`. A deployment needs these steps:
 
-1. Node.js 24.21.0 on the build machine; build the frontend with `npm ci && npm run build`. The build writes to
-   `public/build`.
+1. PHP 8.4.1 or newer on the server. Node.js 24.21.0 on the build machine; build the frontend with
+   `npm ci && npm run build`. The build writes to `public/build`.
 2. `composer install --no-dev --optimize-autoloader`
 3. `.env` for production:
    - `APP_ENV=production`, `APP_DEBUG=false`
@@ -187,6 +233,24 @@ Deploy a release tag (`git checkout vX.Y.Z`), not `master`. A deployment needs t
 8. If you set `QUEUE_CONNECTION` to anything other than `sync`, run a queue worker (`php artisan queue:work`) under a
    process manager such as Supervisor. The email notifications are queued.
 
+## Cookie consent
+
+[SciFY Laravel Cookie Guard](https://github.com/scify/laravel-cookie-guard) shows the cookie consent dialog. Composer
+publishes its assets to `public/vendor/scify` after every install (`post-autoload-dump`, with `--force`), so that folder
+is not in git and any edit there is lost. To change the colours, override the plugin's CSS variables in
+`resources/sass/main.scss`. The `html` prefix makes the rule win over the plugin's `_variables.css`, which loads later:
+
+```scss
+html #scify-cookies-consent-wrapper,
+html #scify-cookie-policy-page,
+html #scify-cookie-consent-floating-button {
+    --scify-cookies-primary-color: #ff5722;
+    --scify-cookies-primary-hover-color: #e64a19;
+}
+```
+
+The full list of variables is in `vendor/scify/laravel-cookie-guard/public/_variables.css`.
+
 ## Sitemap
 
 [Spatie Laravel Sitemap](https://github.com/spatie/laravel-sitemap) creates `public/sitemap.xml` (not in git):
@@ -197,8 +261,8 @@ php artisan sitemap:generate
 
 ## Debugging
 
-Install [Xdebug](https://xdebug.org/), set `xdebug.mode=debug`, and start listening for debug connections in your IDE
-(for example PhpStorm). A browser extension such as Xdebug Helper starts the debug session for a page.
+Turn on Xdebug in the container with `ddev xdebug on` (and off again with `ddev xdebug off`), then start listening for
+debug connections in your IDE (for example PhpStorm). Without DDEV, install Xdebug and set `xdebug.mode=debug`.
 
 ## License
 

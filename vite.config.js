@@ -2,6 +2,17 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import vue from "@vitejs/plugin-vue2";
 
+// Port 5179 is exposed in .ddev/config.yaml (web_extra_exposed_ports).
+const ddevServer = process.env.IS_DDEV_PROJECT === "true"
+	? {
+		host: "0.0.0.0",
+		port: 5179,
+		strictPort: true,
+		origin: `${process.env.DDEV_PRIMARY_URL_WITHOUT_PORT}:5179`,
+		cors: { origin: process.env.DDEV_PRIMARY_URL },
+	}
+	: {};
+
 export default defineConfig({
 	plugins: [
 		laravel({
@@ -39,6 +50,7 @@ export default defineConfig({
 		// The Blade layout uses in-DOM Vue templates, so the build must include the template compiler.
 		alias: [{ find: /^vue$/, replacement: "vue/dist/vue.esm.js" }],
 	},
+	server: ddevServer,
 	build: {
 		sourcemap: true,
 	},

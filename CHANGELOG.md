@@ -8,12 +8,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Upgrade notes
+
+- PHP 8.4.1 or newer is required. `composer.json` now says `^8.4.1`; `composer.lock` already required it since 1.1.0.
+
 ### Added
 
+- DDEV setup (`.ddev/`): PHP 8.4, MySQL 8.4, Node.js from `.nvmrc`, Mailpit, and a start hook that runs
+  `composer setup` and the migrations. The Vite dev server runs in DDEV on port 5179.
+- `ddev coverage`: runs the tests with coverage and restores the previous Xdebug state.
 - `AGENTS.md` with guidance for AI coding agents; `CLAUDE.md` imports it.
 
 ### Changed
 
+- The README describes the DDEV workflow (with a short section for running without DDEV), and its release steps use
+  a pull request, as the `master` ruleset requires.
+- `composer setup` runs `npm ci` only when `package-lock.json` changed, and creates `public/storage` as a relative
+  link that works on the host and in DDEV.
+- The cookie consent assets are republished after every Composer autoload dump (also on `composer install`) and are
+  no longer tracked in git (`public/vendor/scify`). Override their colours in `resources/sass` (README "Cookie consent").
+- `phpunit.xml` fixes `APP_URL`, so the tests do not depend on `.env`.
+- `.env.example` has a `MAIL_FROM_ADDRESS` value.
 - The README has a table of contents.
 
 ### Fixed
@@ -26,6 +41,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 This release changes how the application is built and configured. Before you deploy it:
 
+- PHP 8.4.1 or newer is required (the dependency updates of this release need it; note added on 2026-10-19).
 - Install Node.js 24.21.0 on the build machine and build with `npm ci && npm run build` (Vite writes to
   `public/build`; the `npm run prod` script no longer exists).
 - In `.env`, rename `MIX_SENTRY_DSN_PUBLIC` to `VITE_SENTRY_DSN_PUBLIC`, and delete `MIX_APP_URL`, `VITE_APP_URL`
