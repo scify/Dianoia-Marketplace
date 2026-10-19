@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Upgrade notes
 
-- PHP 8.4.1 or newer is required. `composer.json` now says `^8.4`; `composer.lock` already required it since 1.1.0.
+- PHP 8.4.1 or newer is required. `composer.json` now says `^8.4.1`; `composer.lock` already required it since 1.1.0.
 
 ### Added
 

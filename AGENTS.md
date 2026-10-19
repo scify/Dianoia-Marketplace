@@ -12,17 +12,21 @@ mobile app through `routes/mobile.php`. Default branch: `master`.
 ## Working rules
 
 - **Run everything in DDEV** (`ddev composer …`, `ddev artisan …`, `ddev npm …`, `ddev exec …`). The host may have a
-  different PHP; the project needs PHP 8.4 (`composer.lock` contains Symfony 8.1). `ddev start` runs
+  different PHP; the project needs PHP 8.4.1 (`composer.lock` contains Symfony 8.1). `ddev start` runs
   `composer setup` and `php artisan migrate` on the DDEV database (post-start hook).
+- `ddev start`, `ddev restart` and `ddev import-db` run the migrations, and `ddev import-db` also replaces the
+  database: ask before each one.
 - **The developer's databases hold real local data** (the DDEV database, and possibly a host MySQL). Ask before
   `migrate`, `db:seed` or tinker writes. For browser checks, create temporary users and data, and delete them
   afterwards.
 - **Commit gate**: run each tool as its own command and read its exit code, then commit in a separate command:
-  `ddev composer lint:check`, `ddev npm run build`, `ddev composer test`. Chained commits went in with failing tests
-  and a PHPStan error before.
+  `ddev composer lint:check`, `ddev npm run build`, and the tests (`ddev exec php artisan config:clear`, then
+  `ddev exec php artisan test --compact`). Chained commits went in with failing tests and a PHPStan error before.
 - `phpstan-baseline.neon`: new code adds no entries. When a change removes code that an entry ignores, lower or
   remove that entry in the same commit (PHPStan fails on unmatched entries). Fix types instead of suppressing.
-- `composer require` / `composer update` without `-W`; use `-w` with the exact packages instead.
+- `composer require` / `composer update` without `-W`; use `-w` with the exact packages instead. New npm packages:
+  pick versions released at least 7 days ago (`.npmrc` `min-release-age`); npm 12 `install-scripts` warnings are
+  expected (`ignore-scripts=true`).
 - `master` accepts only pull requests with a passing `ci / CI` check (ruleset `master-branch-require-ci`). Work on a
   branch; ask before every push, force push, tag and release.
 - Commits are authored by Paul only, without `Co-Authored-By` lines. Pull request descriptions have no "Test plan"
@@ -65,7 +69,8 @@ mobile app through `routes/mobile.php`. Default branch: `master`.
   report responses in `web` + `auth` + `can:manage-platform`. Public payloads show a creator by `id` and `name` only.
 - `routes/mobile.php` has no login by design: approved exercises with `display_in_api`, anonymous ratings of approved
   exercises.
-- `TrustHosts` is on outside `local`: only the `APP_URL` host and its subdomains (others get HTTP 400).
+- `TrustHosts` is on outside `local` and outside tests: only the `APP_URL` host and its subdomains (others get
+  HTTP 400).
 - `public/storage` is a relative link (`composer setup` creates it), so it works on the host and in DDEV.
 
 ## Frontend

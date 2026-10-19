@@ -29,13 +29,13 @@ each exercise; approved exercises that are marked for the API also appear in the
 
 ## Tech stack
 
-- **Backend:** Laravel 12, PHP 8.4 or newer, MySQL 8.4
+- **Backend:** Laravel 12, PHP 8.4.1 or newer, MySQL 8.4
 - **Frontend:** Vue 2.7, Vite 7, Bootstrap 5, Sass, jQuery
 - **Tooling:** DDEV, PHPUnit, Laravel Pint, Larastan (PHPStan), ESLint
 
 ## Requirements
 
-- [DDEV](https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/) and Docker
+- [DDEV](https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/) and Docker (on Windows, inside WSL2)
 - Git
 
 DDEV runs PHP 8.4, Composer, MySQL 8.4 and Node.js in containers, so you do not need them on your machine. The Node.js
@@ -95,10 +95,12 @@ it. To run the app without DDEV, see [Without DDEV](#without-ddev).
 
 ### Without DDEV
 
-You need PHP 8.4 or newer (with `pdo_mysql`, `pdo_sqlite` and `zip`), Composer, Node.js 24.21.0 (`nvm use`) and a
+You need PHP 8.4.1 or newer (with `pdo_mysql`, `pdo_sqlite` and `zip`), Composer, Node.js 24.21.0 (`nvm use`) and a
 MySQL server. Then run `composer setup`, set `DB_*`, `APP_URL` and the seed passwords in `.env`, run
 `php artisan migrate --seed`, and start `php artisan serve` and `npm run dev` in two terminals. DDEV rewrites
-`DB_*`, `APP_URL` and the mail settings in `.env`, so keep a separate copy of `.env` for each setup.
+`DB_*`, `APP_URL` and the mail settings in `.env`, so keep a separate copy of `.env` for each setup. The host and DDEV
+share `node_modules`: after you switch between them on a machine other than Linux (for example macOS), run `npm ci`
+again in the new environment, because some packages install platform-specific binaries.
 
 ### npm supply-chain settings
 
@@ -204,7 +206,7 @@ goes through a pull request. To release version `X.Y.Z` from an up-to-date `mast
 
 Deploy a release tag (`git checkout vX.Y.Z`), not `master`. A deployment needs these steps:
 
-1. PHP 8.4 or newer on the server. Node.js 24.21.0 on the build machine; build the frontend with
+1. PHP 8.4.1 or newer on the server. Node.js 24.21.0 on the build machine; build the frontend with
    `npm ci && npm run build`. The build writes to `public/build`.
 2. `composer install --no-dev --optimize-autoloader`
 3. `.env` for production:
