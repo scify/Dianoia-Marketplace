@@ -9,6 +9,11 @@
 .phpunit.result.cache
 /.phpunit.cache
 /coverage
+.ddev/.env
+.ddev/docker-compose.*.yaml
+.ddev/db_snapshots
+.ddev/import-db
+.ddev/import.yaml
 docker-compose.override.yml
 Homestead.json
 Homestead.yaml
