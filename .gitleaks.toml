@@ -1,0 +1,15 @@
+# Gitleaks configuration for the security workflow (scify/.github security.yml).
+# Keep all built-in rules; allow only known false positives, as narrowly as possible.
+
+[extend]
+useDefault = true
+
+# The translation files link exercise PDFs with public Google Drive share URLs. Their resourcekey parameter is part of
+# a public link, not a secret. Allowed only as the matched token, only for this rule, only in translation files.
+[[allowlists]]
+description = "Google Drive resourcekey in public share links in translations"
+targetRules = ["generic-api-key"]
+condition = "AND"
+regexTarget = "match"
+regexes = ['''resourcekey=0-[A-Za-z0-9_-]+''']
+paths = ['''(^|/)(resources/)?lang/[a-z_-]+/messages\.php$''']
