@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Upgrade notes
 
 - PHP 8.4.1 or newer is required. `composer.json` now says `^8.4.1`; `composer.lock` already required it since 1.1.0.
+- Node.js 24.22.1 or newer (or 22.23.4+ / 26.12.1+) and npm 11.19.1 or newer are required to build the frontend.
+  `npm ci` and `npm run` refuse older versions (`engines` and `devEngines` in `package.json`).
 
 ### Added
 
@@ -34,6 +36,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixed
 
 - The PHP 8.5 deprecation of `PDO::MYSQL_ATTR_SSL_CA` in `config/database.php`.
+
+### Security
+
+- Node.js 24.22.1 in `.nvmrc` and DDEV (CVE-2026-111497, CVE-2026-105483, CVE-2026-106069, CVE-2026-105482).
+- Laravel 12.70.1, now the minimum (`^12.70.1`): Mail Markdown did not escape inline Markdown in user input
+  (laravel/framework #61755, #62027).
+- `follow-redirects` 1.16.1 (npm audit, high).
 
 ## [1.1.0] - 2026-10-17
 
