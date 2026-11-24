@@ -23,6 +23,7 @@ each exercise; approved exercises that are marked for the API also appear in the
 - [Continuous integration](#continuous-integration)
 - [Releasing](#releasing)
 - [Deployment](#deployment)
+- [Health endpoint](#health-endpoint)
 - [Cookie consent](#cookie-consent)
 - [Sitemap](#sitemap)
 - [Debugging](#debugging)
@@ -231,7 +232,42 @@ Deploy a release tag (`git checkout vX.Y.Z`), not `master`. A deployment needs t
    ```
 
 8. If you set `QUEUE_CONNECTION` to anything other than `sync`, run a queue worker (`php artisan queue:work`) under a
-   process manager such as Supervisor. The email notifications are queued.
+   process manager such as Supervisor. The email notifications are queued. On every deployment, run
+   `php artisan queue:restart` after `php artisan cache:clear` (if you run it), so the worker loads the new code. The
+   restart signal is stored in the cache, so a `cache:clear` after it deletes the signal.
+
+## Health endpoint
+
+`GET /health` runs the dependency checks live and returns JSON for the SciFY monitoring app. It comes from the package
+[scify/laravel-health-endpoint](https://github.com/scify/laravel-health-endpoint), whose README lists the checks and
+options.
+
+1. Generate a token and store it as `HEALTH_TOKEN` in the production `.env`, one token per environment. An empty token
+   disables the endpoint. Set `HEALTH_EXPECTED_ENV` to the environment name (`production`, `staging`).
+
+   ```bash
+   openssl rand -hex 32
+   ```
+
+2. The monitor sends the token in a header, never in the URL:
+
+   ```bash
+   curl -sS -H "X-Health-Token: $HEALTH_TOKEN" https://dianoia.scify.org/health
+   ```
+
+   HTTP 200 means `ok` or `warning`; HTTP 503 means `failed`. Requests without a valid token get 404.
+
+3. The `schedule` and `queue` checks need the scheduler (Deployment, step 7) and a queue worker (step 8). Run the
+   scheduler in the crontab of the user that runs PHP-FPM and the worker (often `www-data`), not root or a personal
+   account. The package schedules its own heartbeat commands. Right after a deploy, both checks can report
+   `No heartbeat yet` for up to 2 minutes. With `QUEUE_CONNECTION=sync` there is no `queue` check.
+
+4. The `mail` check asks the Mailgun domains API with `MAILGUN_SECRET`. This needs an account API key. With a domain
+   sending key, set `HEALTH_MAILGUN_PROBE=smtp`, `HEALTH_MAILGUN_SMTP_USERNAME` and `HEALTH_MAILGUN_SMTP_PASSWORD`.
+   Mailgun IP Access Management is on, so the check reports `failed` from machines outside the allowlist (local,
+   staging).
+
+5. Set `expose_php = Off` in the PHP-FPM `php.ini`, so responses carry no `X-Powered-By` header.
 
 ## Cookie consent
 

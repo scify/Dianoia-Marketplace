@@ -8,6 +8,7 @@
 /vendor
 .env
 .env.backup
+.env.production
 .phpunit.result.cache
 /.phpunit.cache
 /coverage

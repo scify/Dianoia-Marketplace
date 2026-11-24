@@ -20,6 +20,7 @@
         "laravel/tinker": "^2.5",
         "opcodesio/log-viewer": "^3.14",
         "scify/laravel-cookie-guard": "^5.1.0",
+        "scify/laravel-health-endpoint": "^0.1",
         "sentry/sentry-laravel": "^4.7.1",
         "spatie/laravel-sitemap": "^7.3",
         "symfony/http-client": "^6.2",
