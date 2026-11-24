@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-11-24
+
 ### Added
 
 - `php artisan email-notification:test {email}`: queues a test email notification to the given address, the same way
@@ -144,6 +146,7 @@ This release changes how the application is built and configured. Before you dep
 
 The state of the application before release tags were introduced. It is not tagged.
 
-[Unreleased]: https://github.com/scify/Dianoia-Marketplace/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/scify/Dianoia-Marketplace/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/scify/Dianoia-Marketplace/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/scify/Dianoia-Marketplace/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/scify/Dianoia-Marketplace/compare/57960ac...v1.1.0
