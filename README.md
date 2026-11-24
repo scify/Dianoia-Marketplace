@@ -202,11 +202,13 @@ goes through a pull request. To release version `X.Y.Z` from an up-to-date `mast
    rm release-notes.md
    ```
 
-6. Deploy the tag, not the branch (see below).
+6. Deploy `master` (see below).
 
 ## Deployment
 
-Deploy a release tag (`git checkout vX.Y.Z`), not `master`. A deployment needs these steps:
+Production is updated in place: run `git pull` on `master` in the app folder on the server. Then run the steps below.
+If the server's default `php` is older than 8.4.1, call the 8.4 binary (for example `php8.4`) in every `composer`
+and `artisan` command and in the cron entry. A deployment needs these steps:
 
 1. PHP 8.4.1 or newer on the server. Node.js 24.21.0 on the build machine; build the frontend with
    `npm ci && npm run build`. The build writes to `public/build`.

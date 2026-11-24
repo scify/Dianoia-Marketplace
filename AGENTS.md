@@ -33,8 +33,9 @@ mobile app through `routes/mobile.php`. Default branch: `master`.
   section and no mention of AI tools.
 - Every user-visible change gets an entry under `## [Unreleased]` in `CHANGELOG.md`; deployment-relevant changes also
   get an upgrade note. Releases follow "Releasing" in `README.md`.
-- Production still runs an old version deployed with `git pull`. The next deployment is a fresh setup of a release
-  tag (checklist in `README.md`). Never suggest `git pull` on production.
+- Production is updated in place with `git pull` on the server, followed by the "Deployment" steps in `README.md`.
+  The server's CLI `php` is 8.2, so deploy commands and the cron `schedule:run` call `php8.4`. Production runs
+  `composer install --no-dev`: code the app loads belongs in `autoload` and `require`.
 
 ## Tests
 
