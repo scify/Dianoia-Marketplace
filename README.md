@@ -41,7 +41,7 @@ each exercise; approved exercises that are marked for the API also appear in the
 - Git
 
 DDEV runs PHP 8.4, Composer, MySQL 8.4 and Node.js in containers, so you do not need them on your machine. The Node.js
-version comes from `.nvmrc` (**24.21.0**); a DDEV start hook keeps `nodejs_version` in `.ddev/config.yaml` in sync with
+version comes from `.nvmrc`; a DDEV start hook keeps `nodejs_version` in `.ddev/config.yaml` in sync with
 it. To run the app without DDEV, see [Without DDEV](#without-ddev).
 
 ## Getting started
@@ -97,8 +97,8 @@ it. To run the app without DDEV, see [Without DDEV](#without-ddev).
 
 ### Without DDEV
 
-You need PHP 8.4.1 or newer (with `pdo_mysql`, `pdo_sqlite` and `zip`), Composer, Node.js 24.21.0 (`nvm use`) and a
-MySQL server. Then run `composer setup`, set `DB_*`, `APP_URL` and the seed passwords in `.env`, run
+You need PHP 8.4.1 or newer (with `pdo_mysql`, `pdo_sqlite` and `zip`), Composer, the Node.js version in `.nvmrc`
+(`nvm use`) and a MySQL server. Then run `composer setup`, set `DB_*`, `APP_URL` and the seed passwords in `.env`, run
 `php artisan migrate --seed`, and start `php artisan serve` and `npm run dev` in two terminals. DDEV rewrites
 `DB_*`, `APP_URL` and the mail settings in `.env`, so keep a separate copy of `.env` for each setup. The host and DDEV
 share `node_modules`: after you switch between them on a machine other than Linux (for example macOS), run `npm ci`
@@ -210,8 +210,9 @@ Production is updated in place: run `git pull` on `master` in the app folder on 
 If the server's default `php` is older than 8.4.1, call the 8.4 binary (for example `php8.4`) in every `composer`
 and `artisan` command and in the cron entry. A deployment needs these steps:
 
-1. PHP 8.4.1 or newer on the server. Node.js 24.21.0 on the build machine; build the frontend with
-   `npm ci && npm run build`. The build writes to `public/build`.
+1. PHP 8.4.1 or newer on the server. On the build machine, the Node.js and npm versions that `engines` in
+   `package.json` allows (`.nvmrc` has the tested version); build the frontend with `npm ci && npm run build`. The
+   build writes to `public/build`.
 2. `composer install --no-dev --optimize-autoloader`
 3. `.env` for production:
    - `APP_ENV=production`, `APP_DEBUG=false`
