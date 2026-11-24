@@ -265,7 +265,14 @@ options.
 4. The `mail` check asks the Mailgun domains API with `MAILGUN_SECRET`. This needs an account API key. With a domain
    sending key, set `HEALTH_MAILGUN_PROBE=smtp`, `HEALTH_MAILGUN_SMTP_USERNAME` and `HEALTH_MAILGUN_SMTP_PASSWORD`.
    Mailgun IP Access Management is on, so the check reports `failed` from machines outside the allowlist (local,
-   staging).
+   staging). The check sends no email. To test the delivery, queue a real test email the same way as the app's other
+   notifications:
+
+   ```bash
+   php artisan email-notification:test you@example.org
+   ```
+
+   With `QUEUE_CONNECTION=sync`, the email is sent at once. With another queue connection, a worker must run.
 
 5. Set `expose_php = Off` in the PHP-FPM `php.ini`, so responses carry no `X-Powered-By` header.
 

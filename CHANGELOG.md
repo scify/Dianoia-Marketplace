@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- `php artisan email-notification:test {email}`: queues a test email notification to the given address, the same way
+  as the app's other notifications. Use it to test the mail delivery and, with a queue worker, the queue.
+
 ## [1.2.0] - 2026-11-24
 
 ### Upgrade notes
