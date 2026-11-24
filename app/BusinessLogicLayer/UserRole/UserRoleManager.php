@@ -111,10 +111,6 @@ class UserRoleManager {
      * @see User has the admin role
      */
     public function userHasRole(User $user, int $roleId) {
-        if ($user == null) {
-            return false;
-        }
-
         return $this->checkCacheOrDBForRoleAndStore($user, $roleId);
     }
 

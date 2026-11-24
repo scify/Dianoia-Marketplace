@@ -19,6 +19,12 @@ import ExerciseComponent from "./vue-components/resources/ExerciseComponent.vue"
 if (import.meta.env.VITE_SENTRY_DSN_PUBLIC) {
 	Sentry.init({
 		dsn: import.meta.env.VITE_SENTRY_DSN_PUBLIC,
+		// SDK 11 collects all of these by default; keep the SDK 10 privacy level.
+		dataCollection: {
+			userInfo: false,
+			cookies: false,
+			httpBodies: [],
+		},
 	});
 }
 

@@ -25,7 +25,7 @@
         "lint:fix": "eslint --fix resources/js vite.config.js eslint.config.js"
     },
     "devDependencies": {
-        "@eslint/js": "^9.39.5",
+        "@eslint/js": "^10.0.1",
         "@vitejs/plugin-vue2": "^2.3.4",
         "axios": "^1.20.0",
         "globals": "^17.13.0",
@@ -39,9 +39,9 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.4",
         "@popperjs/core": "^2.11.8",
-        "@sentry/browser": "^10.76.2",
+        "@sentry/browser": "^11.13.0",
         "bootstrap": "^5.3.8",
-        "eslint": "^9.39.5",
+        "eslint": "^10.15.0",
         "eslint-plugin-vue": "^10.11.1",
         "flickity": "^2.3.0",
         "jquery": "^3.7.1",

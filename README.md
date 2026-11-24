@@ -31,7 +31,7 @@ each exercise; approved exercises that are marked for the API also appear in the
 
 ## Tech stack
 
-- **Backend:** Laravel 12, PHP 8.4.1 or newer, MySQL 8.4
+- **Backend:** Laravel 13, PHP 8.4.1 or newer, MySQL 8.4
 - **Frontend:** Vue 2.7, Vite 7, Bootstrap 5, Sass, jQuery
 - **Tooling:** DDEV, PHPUnit, Laravel Pint, Larastan (PHPStan), ESLint
 

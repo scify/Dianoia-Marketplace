@@ -416,7 +416,7 @@ export default {
 		getResources(sort_difficulty=false) {
 			this.resources = [];
 			this.filteredResources = [];
-			let url = "";
+			let url;
 			if(this.showReports()){
 				url = this.reportsRoute;
 			}
