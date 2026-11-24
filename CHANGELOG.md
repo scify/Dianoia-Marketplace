@@ -13,8 +13,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - PHP 8.4.1 or newer is required. `composer.json` now says `^8.4.1`; `composer.lock` already required it since 1.1.0.
 - Node.js 24.22.1 or newer (or 22.23.4+ / 26.12.1+) and npm 11.19.1 or newer are required to build the frontend.
   `npm ci` and `npm run` refuse older versions (`engines` and `devEngines` in `package.json`).
+- Set `HEALTH_TOKEN` (`openssl rand -hex 32`) and `HEALTH_EXPECTED_ENV=production` in `.env` to enable `GET /health`.
+  Run `schedule:run` every minute as the PHP-FPM user. With a queue worker, run `php artisan queue:restart` on every
+  deployment. README "Health endpoint" has the steps.
 
 ### Added
+
+- `GET /health` for the SciFY monitoring app, from the package `scify/laravel-health-endpoint`. It is protected by a
+  token in the `X-Health-Token` header and checks the database, cache, mail, scheduler, queue worker, disk, debug
+  mode, environment and error tracker.
 
 - DDEV setup (`.ddev/`): PHP 8.4, MySQL 8.4, Node.js from `.nvmrc`, Mailpit, and a start hook that runs
   `composer setup` and the migrations. The Vite dev server runs in DDEV on port 5179.
