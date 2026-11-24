@@ -5,7 +5,7 @@ deployment are in `README.md`; changes are recorded in `CHANGELOG.md`.
 
 ## Project
 
-Dianoia Marketplace (<https://dianoia.scify.org/>): a Laravel 12 app where carers create and share exercises for people
+Dianoia Marketplace (<https://dianoia.scify.org/>): a Laravel 13 app where carers create and share exercises for people
 with dementia. Administrators approve exercises; approved exercises marked `display_in_api` also reach the Dianoia
 mobile app through `routes/mobile.php`. Default branch: `master`.
 

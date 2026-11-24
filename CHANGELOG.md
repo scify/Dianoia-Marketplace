@@ -30,6 +30,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- Laravel 13 (from 12), Laravel Tinker 3, PHPUnit 12, Spatie Laravel Sitemap 8, and Symfony Mailgun Mailer and HTTP
+  Client 8. The other Composer packages are updated within their version ranges.
+- The CSRF middleware extends `PreventRequestForgery`, the Laravel 13 name. Laravel 13 also accepts a same-origin
+  request (`Sec-Fetch-Site`) without a token.
+- `@sentry/browser` 11. The frontend keeps the earlier privacy level: no user info, cookies or HTTP bodies are sent.
+- ESLint 10 and `@eslint/js` 10. The other npm packages are updated within their version ranges.
 - The README describes the DDEV workflow (with a short section for running without DDEV), and its release steps use
   a pull request, as the `master` ruleset requires.
 - `composer setup` runs `npm ci` only when `package-lock.json` changed, and creates `public/storage` as a relative
@@ -39,6 +45,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `phpunit.xml` fixes `APP_URL`, so the tests do not depend on `.env`.
 - `.env.example` has a `MAIL_FROM_ADDRESS` value.
 - The README has a table of contents.
+
+### Removed
+
+- `doctrine/dbal`: the app does not use it, and Laravel 11 and newer change columns without it.
+- `config/sitemap.php`: it configured only the sitemap crawler, which the app does not use.
 
 ### Fixed
 
@@ -50,6 +61,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Laravel 12.70.1, now the minimum (`^12.70.1`): Mail Markdown did not escape inline Markdown in user input
   (laravel/framework #61755, #62027).
 - `follow-redirects` 1.16.1 (npm audit, high).
+- Symfony 8.1 and 7.4.23 components, through the Laravel 13 update: 13 Composer advisories from November 2026
+  (`symfony/http-foundation`, `http-kernel`, `routing`, `serializer`, `http-client`, `mime`, `yaml`).
 
 ## [1.1.0] - 2026-10-17
 
