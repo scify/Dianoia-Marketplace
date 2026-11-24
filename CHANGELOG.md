@@ -53,6 +53,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- Every page with the navbar failed after `composer install --no-dev` ("Call to undefined function
+  UrlMatchesMenuItem()"): `app/Utils/UrlHelpers.php` was in `autoload-dev`. It is in `autoload` now.
 - The PHP 8.5 deprecation of `PDO::MYSQL_ATTR_SSL_CA` in `config/database.php`.
 
 ### Security
