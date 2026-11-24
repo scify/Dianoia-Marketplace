@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-11-24
+
 ### Upgrade notes
 
 - PHP 8.4.1 or newer is required. `composer.json` now says `^8.4.1`; `composer.lock` already required it since 1.1.0.
@@ -60,8 +62,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Security
 
 - Node.js 24.22.1 in `.nvmrc` and DDEV (CVE-2026-111497, CVE-2026-105483, CVE-2026-106069, CVE-2026-105482).
-- Laravel 12.70.1, now the minimum (`^12.70.1`): Mail Markdown did not escape inline Markdown in user input
-  (laravel/framework #61755, #62027).
+- Laravel 13.43 (the version in `composer.lock`, see "Changed") includes the fix from Laravel 12.70.1: Mail Markdown
+  did not escape inline Markdown in user input (laravel/framework #61755, #62027).
 - `follow-redirects` 1.16.1 (npm audit, high).
 - Symfony 8.1 and 7.4.23 components, through the Laravel 13 update: 13 Composer advisories from November 2026
   (`symfony/http-foundation`, `http-kernel`, `routing`, `serializer`, `http-client`, `mime`, `yaml`).
@@ -137,5 +139,6 @@ This release changes how the application is built and configured. Before you dep
 
 The state of the application before release tags were introduced. It is not tagged.
 
-[Unreleased]: https://github.com/scify/Dianoia-Marketplace/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/scify/Dianoia-Marketplace/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/scify/Dianoia-Marketplace/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/scify/Dianoia-Marketplace/compare/57960ac...v1.1.0
